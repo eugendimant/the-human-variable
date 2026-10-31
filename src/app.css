@@ -450,3 +450,17 @@ body.in-play{background:var(--paper)}
 .path-flag{font-style:normal;align-self:flex-start;font-size:var(--t7);font-weight:750;background:var(--ev);color:var(--ink);padding:3px 9px;border-radius:999px}
 .paths .path:first-child strong{font-size:clamp(24px,2.4vw,32px)}
 .paths .path:first-child span{font-size:18px;max-width:34em}
+
+.score-strip{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin:26px 0 22px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
+.score-big b{display:block;font-size:clamp(72px,10vw,128px);letter-spacing:-.06em;line-height:.9;font-weight:800}
+.score-big span{font-size:var(--t6);color:var(--muted)}
+.score-meta{display:flex;gap:28px;flex-wrap:wrap;margin:0}
+.score-meta dt{font-size:var(--t7);color:var(--muted)}
+.score-meta dd{margin:2px 0 0;font-weight:700;font-size:18px}
+.how{margin:22px 0 0;padding:16px 20px;border-radius:var(--r-panel);background:var(--sunk)}
+.how summary{cursor:pointer;font-weight:650}
+.how p{font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink-2);margin:10px 0 0;max-width:46em}
+.tools{align-items:center;gap:18px}
+.tool-links{display:flex;gap:18px;flex-wrap:wrap}
+.link-quiet{text-align:left;font-weight:650;color:var(--ink)}
+.link-quiet:hover{text-decoration:underline}

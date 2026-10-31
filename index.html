@@ -452,6 +452,20 @@ body.in-play{background:var(--paper)}
 .path-flag{font-style:normal;align-self:flex-start;font-size:var(--t7);font-weight:750;background:var(--ev);color:var(--ink);padding:3px 9px;border-radius:999px}
 .paths .path:first-child strong{font-size:clamp(24px,2.4vw,32px)}
 .paths .path:first-child span{font-size:18px;max-width:34em}
+
+.score-strip{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin:26px 0 22px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
+.score-big b{display:block;font-size:clamp(72px,10vw,128px);letter-spacing:-.06em;line-height:.9;font-weight:800}
+.score-big span{font-size:var(--t6);color:var(--muted)}
+.score-meta{display:flex;gap:28px;flex-wrap:wrap;margin:0}
+.score-meta dt{font-size:var(--t7);color:var(--muted)}
+.score-meta dd{margin:2px 0 0;font-weight:700;font-size:18px}
+.how{margin:22px 0 0;padding:16px 20px;border-radius:var(--r-panel);background:var(--sunk)}
+.how summary{cursor:pointer;font-weight:650}
+.how p{font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink-2);margin:10px 0 0;max-width:46em}
+.tools{align-items:center;gap:18px}
+.tool-links{display:flex;gap:18px;flex-wrap:wrap}
+.link-quiet{text-align:left;font-weight:650;color:var(--ink)}
+.link-quiet:hover{text-decoration:underline}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="./" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -921,22 +935,21 @@ function record() {
   if (st.session.length) {
     const worst = st.session.reduce((a, r) => r.score < a.score ? r : a), best = st.session.reduce((a, r) => r.score > a.score ? r : a);
     const sc = S.calibration(st.session.map(r => S.toCalibrationRecord(BY_ID[r.id], r)));
-    summary = `<div class="summary">${best.score > worst.score ? `<div class="panel lesson-card"><span class="kicker">Best call</span><h3>${esc(BY_ID[best.id].title)}</h3><p>${esc(BY_ID[best.id].answerTitle)}. Score ${pct(best.score)}.</p></div>` : ''}<div class="panel lesson-card"><span class="kicker">Biggest surprise</span><h3>${esc(BY_ID[worst.id].title)}</h3><p>${esc(BY_ID[worst.id].answerTitle)}. ${esc(BY_ID[worst.id].implication)}</p><button class="link-btn" data-play="${esc(worst.id)}">Play it again</button></div><div class="panel lesson-card"><span class="kicker">Confidence this round</span><h3>${sc.overconfidence === null ? '–' : sc.overconfidence > 8 ? 'More sure than right' : sc.overconfidence < -8 ? 'More right than sure' : 'Well matched'}</h3><p>You stated ${Math.round(st.session.filter(r => r.confidence !== null).reduce((a, r) => a + r.confidence, 0) / Math.max(1, st.session.filter(r => r.confidence !== null).length))}% confidence on average and matched the evidence on ${st.session.filter(r => r.correct).length} of ${st.session.length} decisions.</p></div></div>`;
+    summary = `<div class="summary">${best.score > worst.score ? `<div class="panel lesson-card"><span class="kicker">Best call</span><h3>${esc(BY_ID[best.id].title)}</h3><p>${esc(BY_ID[best.id].answerTitle)}. Score ${pct(best.score)}.</p></div>` : ''}<div class="panel lesson-card"><span class="kicker">Biggest surprise</span><h3>${esc(BY_ID[worst.id].title)}</h3><p>${esc(BY_ID[worst.id].answerTitle)}. ${esc(BY_ID[worst.id].implication)}</p><button class="link-btn" data-play="${esc(worst.id)}">Play it again</button></div></div>`;
   }
-  return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1><p class="hero-lede" style="margin:0">How close your calls were, and whether your confidence matched your accuracy. Stored only in this browser.</p>
-    <div class="kpis">
-      <div class="panel kpi"><b>${sess ?? meanScore ?? '—'}</b><span>${sess !== null ? 'Score this round, out of 100' : 'Average score, out of 100'}</span></div>
-      <div class="panel kpi"><b>${all.length}</b><span>Calls saved on this device</span></div>
-      <div class="panel kpi"><b>${cal.brier === null ? '—' : cal.brier.toFixed(2)}</b><span>Brier score (lower is better)</span></div>
-      <div class="panel kpi"><b>${cal.overconfidence === null ? '—' : (cal.overconfidence > 0 ? '+' : '') + Math.round(cal.overconfidence)}</b><span>${cal.overconfidence === null ? 'Confidence gap' : cal.overconfidence > 3 ? 'Points more confident than accurate' : cal.overconfidence < -3 ? 'Points less confident than accurate' : 'Confidence matches accuracy'}</span></div>
-    </div>${summary}</section>
+  const played = byTrack.filter(t => t[1]);
+  const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
+  return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
+    <div class="score-strip"><div class="score-big"><b class="num">${sess ?? meanScore ?? '–'}</b><span>${sess !== null ? 'score this round' : 'average score'}, out of 100</span></div>
+      <dl class="score-meta"><div><dt>Brier score</dt><dd class="num">${cal.brier === null ? '–' : cal.brier.toFixed(2)}</dd></div><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Calls on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
+    ${summary}</section>
     <section class="wrap"><div class="rec-grid">
-      <div class="panel rec-panel"><h2>Calibration</h2><p>Each dot compares how sure you said you were with how often you were right in that range. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>
-      <div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><p>Score out of 100 for each decision.</p><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><strong>${esc(c.title)}</strong><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${pct(r.score)}<span class="bar-score"><i style="width:${pct(r.score)}%"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a round to start your record.</span></li>'}</ul></div>
-      <div class="panel rec-panel"><h2>By area</h2><p>Average score where you have played.</p><ul class="hist">${byTrack.map(([t, n, s]) => `<li><span>${esc(t)}<br><small>${n} calls</small></span><span class="num">${s ?? '—'}${s !== null ? `<span class="bar-score"><i style="width:${s}%"></i></span>` : ''}</span></li>`).join('')}</ul></div>
-      <div class="panel rec-panel"><h2>What the numbers mean</h2><p style="font-family:var(--serif);font-size:17px;color:var(--ink-2)">The score gives partial credit: an estimate inside the shaded band earns 100, and credit falls with distance. Forecasts use the Brier rule, the standard used in forecasting tournaments. The calibration plot uses your stated confidence for every format except forecasts, where the probability itself is the statement. This is a learning record, not a validated assessment.</p></div>
+      <div class="panel rec-panel"><h2>Calibration</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>
+      <div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><button class="link-quiet" data-play="${esc(r.id)}">${esc(c.title)}</button><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${pct(r.score)}<span class="bar-score"><i style="width:${pct(r.score)}%"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a path to start your record.</span></li>'}</ul></div>
+      ${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} calls</small></span><span class="num">${sc}<span class="bar-score"><i style="width:${sc}%"></i></span></span></li>`).join('')}</ul></div>` : ''}
     </div>
-    <div class="tools"><button class="btn btn-solid" data-act="replay">Play another round</button><button class="btn btn-quiet" data-act="csv">Export CSV</button><button class="btn btn-quiet" data-act="json">Export JSON</button><button class="btn btn-quiet" data-act="erase">Erase this device’s record</button></div></section>`;
+    <details class="how"><summary>How scoring works</summary><p>Each decision scores 0 to 100 with partial credit. An estimate inside the shaded band earns 100, and credit falls with distance. Ranks score the share of pairs in the measured order. Budgets score the share of the best possible payoff under the reported effects. Forecasts use the Brier rule, the standard in forecasting tournaments: 0 is perfect, 0.25 is always saying 50%. The calibration plot uses your stated confidence, except for forecasts, where the probability is the statement. This is a learning record, not a validated assessment.</p></details>
+    <div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play another round</button><span class="tool-links"><button class="link-btn" data-act="csv">Export CSV</button><button class="link-btn" data-act="json">Export JSON</button><button class="link-btn" data-act="erase">Erase this device’s record</button></span></div></section>`;
 }
 function calPlot(cal) {
   const W = 320, P = 34, sx = v => P + v / 100 * (W - P - 10), sy = v => W - P - v / 100 * (W - P - 10);
