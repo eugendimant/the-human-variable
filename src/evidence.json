@@ -169,6 +169,11 @@
    "source": "hoffman18",
    "quote": "Job-testing technologies enable firms to rely less on human judgment when making hiring decisions.",
    "location": "Abstract"
+  },
+  {
+   "source": "hoffman18",
+   "quote": "When faced with similar applicant pools, we find that managers who appear to hire against test recommendations end up with worse average hires.",
+   "location": "QJE abstract"
   }
  ],
  "axb07": [
@@ -319,6 +324,16 @@
    "source": "yeomans19",
    "quote": "accuracy alone is not enough for recommender systems; they must also be understood",
    "location": "Abstract (Crossref; fetch-tool summary wording)"
+  },
+  {
+   "source": "yeomans19",
+   "quote": "We find that recommender systems outperform humans, whether strangers, friends, or family. Yet people are averse to relying on these recommender systems.",
+   "location": "JBDM abstract (version of record)"
+  },
+  {
+   "source": "yeomans19",
+   "quote": "This aversion partly stems from the fact that people believe the human recommendation process is easier to understand.",
+   "location": "JBDM abstract"
   }
  ],
  "axb12": [
@@ -341,6 +356,16 @@
    "source": "lambrecht19",
    "quote": "this empirical regularity extends to other major digital platforms",
    "location": "Abstract"
+  },
+  {
+   "source": "lambrecht19",
+   "quote": "Empirically, however, fewer women saw the ad than men. This happened because younger women are a prized demographic and are more expensive to show ads to.",
+   "location": "Management Science abstract (version of record)"
+  },
+  {
+   "source": "lambrecht19",
+   "quote": "An algorithm that simply optimizes cost-effectiveness in ad delivery will deliver ads that were intended to be gender neutral in an apparently discriminatory way, because of crowding out.",
+   "location": "Management Science abstract"
   }
  ],
  "axb13": [
@@ -459,6 +484,11 @@
    "source": "bry25",
    "quote": "customers are more polite and less likely to ask to speak to a manager",
    "location": "Abstract"
+  },
+  {
+   "source": "bry25",
+   "quote": "We study the staggered introduction of a generative AI–based conversational assistant using data from 5,172 customer-support agents.",
+   "location": "QJE abstract (version of record)"
   }
  ],
  "rollout3": [
@@ -744,6 +774,11 @@
    "source": "gneezy00",
    "quote": "10 centers analyzed (6 test, 4 control); 20 weeks; NIS 10 fine for 10+ minutes late, introduced week 5, removed week 17 (design section, as extracted)",
    "location": "Design"
+  },
+  {
+   "source": "gneezy00",
+   "quote": "Table 2, center 1: weeks 1-4 = 7.25; weeks 17-20 = 15.25 (Average Number of Late-Coming Parents, according to Four Periods of the Study)",
+   "location": "J. Legal Studies 29(1), Table 2"
   }
  ],
  "bz09": [
@@ -837,6 +872,16 @@
    "source": "card12",
    "quote": "differences in pay rank matter more than differences in pay levels",
    "location": "Abstract"
+  },
+  {
+   "source": "card12",
+   "quote": "Among this group, the information treatment also increases the probability that respondents report being \"very likely\" to search for a new job by 4.3 percentage points (t = 2.4), which represents a 20 percent increase in this measure over the base rate for the controls.",
+   "location": "AER 102(6), p. 2994, Section on Table 4 (published version, author-hosted)"
+  },
+  {
+   "source": "card12",
+   "quote": "Above-median earners are unaffected.",
+   "location": "AER abstract"
   }
  ],
  "bz13": [
@@ -876,6 +921,11 @@
    "source": "bohnet16",
    "quote": "in which people are evaluated jointly rather than separately",
    "location": "Abstract; abstract also cites blind auditions for women musicians and greater reliance on group stereotypes in separate evaluation (paraphrased)"
+  },
+  {
+   "source": "bohnet16",
+   "quote": "Evaluators are more likely to base their decisions on individual performance in joint than in separate evaluation and on group stereotypes in separate than in joint evaluation, making joint evaluation the profit-maximizing evaluation procedure.",
+   "location": "Management Science abstract (version of record)"
   }
  ],
  "bz15": [
@@ -920,6 +970,11 @@
    "source": "benartzi01",
    "quote": "the proportion invested in stocks depends strongly on the proportion of stock funds in the plan",
    "location": "Abstract"
+  },
+  {
+   "source": "benartzi01",
+   "quote": "We show that some investors follow the \"1/n strategy\": they divide their contributions evenly across the funds offered in the plan.",
+   "location": "AER abstract (version of record)"
   }
  ],
  "civic-wallet-rank": [
@@ -1436,6 +1491,21 @@
    "source": "requiem20",
    "quote": "then rolled a digital die, and then reported whether the two numbers coincide ... whether or not the report was truthful remained unobservable to the experimenters.",
    "location": "Published abstract"
+  },
+  {
+   "source": "requiem20",
+   "quote": "Our main experiment contains data from a high-powered study that was collected from 1,200 Amazon Mechanical Turk participants in May 2019",
+   "location": "JEBO 172, p. 249, Section 2.1 (published version, author-hosted)"
+  },
+  {
+   "source": "requiem20",
+   "quote": "with misreporting (= winning reports about expected value of 16 ) hovering at around 30% in all treatments",
+   "location": "JEBO 172, p. 248-249, Introduction"
+  },
+  {
+   "source": "requiem20",
+   "quote": "we observe reporting rates significantly greater than chance (16.67%)",
+   "location": "JEBO 172, Section 2.4"
   }
  ],
  "dimant-notalie-causal": [
@@ -1458,6 +1528,16 @@
    "source": "notalie23",
    "quote": "Consider an environment where the subject can earn a monetary reward by lying.",
    "location": "Published abstract"
+  },
+  {
+   "source": "notalie23",
+   "quote": "the belief that \"the majority lies\" increases considerably as we move from the Unknown to the Known condition (38.1% versus 62.7%, Equality of Proportions Test (EPT), p<0.001)",
+   "location": "GEB 138, p. 329, Section 6.2 (published version, author-hosted)"
+  },
+  {
+   "source": "notalie23",
+   "quote": "belief distortion resulted in a greater incidence of winning reports in the Known compared to the Unknown condition (40.5% versus 21.4%, EPT, p<0.001)",
+   "location": "GEB 138, p. 329, Section 6.2"
   }
  ],
  "dimant-proximity-estimate": [
@@ -1522,6 +1602,21 @@
    "source": "prox22",
    "quote": "With social proximity, participants conform to both types of observed behaviors, thus halting the erosion of compliance.",
    "location": "Published version of record (GEB 2022, OA), abstract"
+  },
+  {
+   "source": "contagion19",
+   "quote": "We obtained behavioral data for 185 participants through 9 sessions",
+   "location": "J. Economic Psychology 73, Section 3 (published version, author-hosted)"
+  },
+  {
+   "source": "contagion19",
+   "quote": "observing anti-social behavior triggers behavioral contagion significantly more often than observing pro-social behavior (33.7% vs. 19.4%, p = 0.027)",
+   "location": "J. Economic Psychology 73, Section 3.1"
+  },
+  {
+   "source": "contagion19",
+   "quote": "behavioral contagion is asymmetric only where social proximity is high, with the difference being highly significant according to the equality of proportion statistic (88.2% vs. 34.8%, p < 0.001)",
+   "location": "J. Economic Psychology 73, Section 3.2"
   }
  ],
  "dimant-deviant-choice": [
@@ -1549,6 +1644,21 @@
    "source": "deviant21",
    "quote": "Across six conditions, we systematically vary the combination of the existence of weak punishment and norm information.",
    "location": "Published abstract"
+  },
+  {
+   "source": "deviant21",
+   "quote": "We recruited a total of 418 participants (in 34 sessions ranging from 10 to 16 participants) across six treatments at the University of Pennsylvania",
+   "location": "JEBO 188, p. 213, Section 3 (published version, author-hosted)"
+  },
+  {
+   "source": "deviant21",
+   "quote": "The combination of punishment and normative information leads to a significant increase in trustees' return behavior in LS over the Baseline (42.7% vs. 28.7%, BSM, p<0.01)",
+   "location": "JEBO 188, p. 216, Section 4.3"
+  },
+  {
+   "source": "deviant21",
+   "quote": "significantly decreases return rates as compared to those in the Baseline and Pun_NoInfo treatments (22.2% vs. 36.5%, BSM, p=0.01; 22.2% vs. 36.8%, BSM, p=0.01)",
+   "location": "JEBO 188, p. 218, Section 4.3 (high stakes, Pun_EmpInfo)"
   }
  ],
  "dimant-enforcers-rank": [
@@ -1608,6 +1718,21 @@
    "source": "observ21",
    "quote": "increasing the salience of norms can mitigate unintended consequences and successfully increase pro-sociality",
    "location": "Published abstract"
+  },
+  {
+   "source": "observ21",
+   "quote": "we collected data from a total of 1650 participants in the role of Player A (49.4% female)",
+   "location": "JEBO 191, Section 3.2 (published version, author-hosted)"
+  },
+  {
+   "source": "observ21",
+   "quote": "SocSig leads to a significant backfiring effect overall with respect to money remaining in the charity account (−28.3% vs. −18.4%, MWU, p = 0.0401)",
+   "location": "JEBO 191, Section 3.4.1"
+  },
+  {
+   "source": "observ21",
+   "quote": "the norm focus intervention substantially increases (decreases) the monetary amounts given to (taken from) charity, both in the SelfSig (1.8% vs. −18.4%, MWU, p < 0.001) as well as the SocSig (9.3% vs. −28.3%, MWU, p < 0.001) treatments",
+   "location": "JEBO 191, norm-focus analysis (Fig. 9)"
   }
  ],
  "dimant-motivated-estimate": [
@@ -1677,6 +1802,21 @@
    "source": "beyond23",
    "quote": "People readily share conspiracy theories that they know to be untrue.",
    "location": "Published highlights"
+  },
+  {
+   "source": "beyond23",
+   "quote": "Across a pilot study and three preregistered experiments (N = 4128), we demonstrated that people knowingly shared conspiracy theories to advance social motives",
+   "location": "JESP 104, abstract (published version, author-hosted)"
+  },
+  {
+   "source": "beyond23",
+   "quote": "the proportion of participants sharing conspiracy theories in the Conspiracy theory reinforcement condition nearly doubled after four rounds, a significant difference in a two-proportion z-test (17% to 33%, z = 4.42, p < .001",
+   "location": "JESP 104, Study 2, Section 5.2"
+  },
+  {
+   "source": "beyond23",
+   "quote": "After four rounds, participants in the Control condition did not significantly change their information-sharing behavior across rounds (21% to 17%, z = 1.03, p = .301",
+   "location": "JESP 104, Study 2, Section 5.2"
   }
  ],
  "dimant-opioid-forecast": [
@@ -1694,6 +1834,21 @@
    "source": "opioid26",
    "quote": "Abstract states the cards also lowered cost per pill returned and cost per participant who returned pills; pre-registered field experiment with U.S. Veterans using timely reminders, implementation prompts, and loss framing",
    "location": "Published abstract (Europe PMC record PMID 41834481; read in full, reported here as paraphrase because the fetch tool limited verbatim length)"
+  },
+  {
+   "source": "opioid26",
+   "quote": "The sample for our project consisted of 512 Veterans visiting the VAMC for outpatient surgeries from June 2019 to January 2022.",
+   "location": "Health Economics (2026), Data section (published open-access PDF, Warwick repository)"
+  },
+  {
+   "source": "opioid26",
+   "quote": "the cards increase the probability that patients return unused opioid pills by 6.88% points over an unadjusted control group mean of 24.8% (p = 0.007, one-sided; p = 0.014, two-sided)",
+   "location": "Health Economics (2026), Results (Figure 2, Table 2)"
+  },
+  {
+   "source": "opioid26",
+   "quote": "the total program cost per pill returned is $12.57 in the treatment group, and $15.66 in the control group",
+   "location": "Health Economics (2026), Discussion"
   }
  ],
  "dimant-hate-choice": [
@@ -1721,6 +1876,21 @@
    "source": "hate23",
    "quote": "I quantify this phenomenon via five preregistered studies in the context of Donald J. Trump",
    "location": "Published abstract"
+  },
+  {
+   "source": "hate23",
+   "quote": "the fraction of Conditional Cooperators in the Trump Prime is significantly different (p < 0.01) between those who are matched with someone who has an aligned opinion about Trump (72.8%) and those who have an opposing opinion about Trump (59.0%), the same is true for the Conditional Cooperators in the Minimal Group Prime (73.2% versus 62.4%, p = 0.035). As the differences-in-differences are indistinguishable",
+   "location": "Management Science, Articles in Advance, pp. 16-17, Section 3.2"
+  },
+  {
+   "source": "hate23",
+   "quote": "when matched with a partner with a concordant opinion about Trump, participants felt closer, had higher expectations of the partner's contribution, and effectively contributed more in the PGG",
+   "location": "Management Science, p. 15"
+  },
+  {
+   "source": "hate23",
+   "quote": "The observed interfaction animosity in the form of ingroup/outgroup variability in contributions is a result of fallacious beliefs about the other's behavior, not of adverse preferences per se.",
+   "location": "Management Science, p. 17"
   }
  ],
  "dimant-polarizednorms-choice": [
@@ -1753,6 +1923,16 @@
    "source": "norms24",
    "quote": "Using a representative sample of the U.S. population, we experimentally investigate",
    "location": "Published abstract"
+  },
+  {
+   "source": "norms24",
+   "quote": "Figure 7 shows that the polarized norm induces polarization in subsequent contribution behavior (σ2 = 2.68).",
+   "location": "Management Science 71(3), p. 2254, Section 4.2"
+  },
+  {
+   "source": "norms24",
+   "quote": "participants choose contribution levels that are tightly centered around the mean of the shown distribution (σ2 = 1.26)",
+   "location": "Management Science 71(3), pp. 2253-2254"
   }
  ],
  "ai01": [
@@ -1771,8 +1951,14 @@
  ],
  "ai02": [
   {
-   "quote": "incentivized, occupation-specific writing tasks",
-   "location": "AAAS press release, eurekalert.org/news-releases/995024"
+   "source": "noy23",
+   "quote": "we assigned occupation-specific, incentivized writing tasks to 453 college-educated professionals and randomly exposed half of them to ChatGPT",
+   "location": "Science abstract (version of record)"
+  },
+  {
+   "source": "noy23",
+   "quote": "The average time taken decreased by 40% and output quality rose by 18%. Inequality between workers decreased",
+   "location": "Science abstract (version of record)"
   }
  ],
  "ai04": [
@@ -1821,6 +2007,21 @@
   {
    "quote": "there is little effect of having access to generative AI ideas on the creativity of their stories",
    "location": "Full text, Europe PMC PMC11244532 (Methods and Results) (highly creative writers)"
+  },
+  {
+   "source": "doshi24",
+   "quote": "writers in the Human with five GenAI ideas condition show an increase in novelty of 8.1% ( b = 0.311, P < 0.001) over writers without generative AI access",
+   "location": "Science Advances full text, Results (Fig. 2)"
+  },
+  {
+   "source": "doshi24",
+   "quote": "Having access to up to five AI ideas increases usefulness by 9.0% ( b = 0.453, P < 0.001) over those with no generative AI access",
+   "location": "Science Advances full text, Results"
+  },
+  {
+   "source": "doshi24",
+   "quote": "the increase in similarity from having access to one or five generative AI ideas represents 10.7% and 8.9% of the total range, respectively",
+   "location": "Science Advances full text, Results (Fig. 4)"
   }
  ],
  "ai09": [
@@ -1847,6 +2048,16 @@
   {
    "quote": "earning an extra $1 each time the forecast they used was within 5 percentiles",
    "location": "Full text, Wharton author PDF, p. 116"
+  },
+  {
+   "source": "diet15",
+   "quote": "Figure 3, Study 1 bars: Control 65%; Saw Results of Model's and Human's Forecasts 23% (% Choosing Statistical Model to Forecast MBA Students' Performance)",
+   "location": "JEP:General 144(1), p. 120, Figure 3 (bar labels, published version, Wharton-hosted author copy)"
+  },
+  {
+   "source": "diet15",
+   "quote": "15-29% more error than the model in the MBA student forecasting task of Studies 1, 2, and 4",
+   "location": "JEP:General 144(1), p. 119"
   }
  ],
  "ai10": [
@@ -1879,6 +2090,21 @@
   {
    "quote": "increasing perceived task objectivity increases reliance; making algorithms seem more humanlike in affective ability increases use for subjective tasks (paraphrase)",
    "location": "JMR abstract, Crossref api.crossref.org/works/10.1177/0022243719851788"
+  },
+  {
+   "source": "cast19",
+   "quote": "These findings are supported by the results of four online lab studies with over 1,400 participants and two online field studies with over 56,000 participants.",
+   "location": "JMR abstract (version of record)"
+  },
+  {
+   "source": "cast19",
+   "quote": "They find that algorithms are trusted and relied on less for tasks that seem subjective (vs. objective) in nature.",
+   "location": "JMR abstract"
+  },
+  {
+   "source": "cast19",
+   "quote": "increasing a task's perceived objectivity increases trust in and use of algorithms for that task",
+   "location": "JMR abstract"
   }
  ],
  "ai12": [
@@ -1897,6 +2123,21 @@
   {
    "quote": "People actually did prefer the AI provider so long as it outperformed the human provider.",
    "location": "Pezzo & Beckstead (2020), Judgment and Decision Making 15(3), commentary, cambridge.org core-reader"
+  },
+  {
+   "source": "long19",
+   "quote": "Uniqueness neglect, a concern that AI providers are less able than human providers to account for consumers' unique characteristics and circumstances, drives consumer resistance to medical AI.",
+   "location": "JCR abstract (version of record)"
+  },
+  {
+   "source": "long19",
+   "quote": "resistance to medical AI is stronger for consumers who perceive themselves to be more unique (study 5)",
+   "location": "JCR abstract"
+  },
+  {
+   "source": "long19",
+   "quote": "is eliminated when AI provides care (a) that is framed as personalized (study 7)",
+   "location": "JCR abstract"
   }
  ],
  "biz01": [
@@ -1941,7 +2182,18 @@
    "location": "Introduction"
   }
  ],
- "biz02": [],
+ "biz02": [
+  {
+   "source": "defaults01",
+   "quote": "a substantial fraction of 401(k) participants hired under automatic enrollment retain both the default contribution rate and fund allocation even though few employees hired before automatic enrollment picked this particular outcome",
+   "location": "QJE abstract (version of record)"
+  },
+  {
+   "source": "defaults01",
+   "quote": "This \"default\" behavior appears to result from participant inertia and from employee perceptions of the default as investment advice.",
+   "location": "QJE abstract"
+  }
+ ],
  "biz03": [
   {
    "quote": "a midsized, midpriced hotel in the Southwest that was part of a national hotel chain",
@@ -1958,20 +2210,33 @@
   {
    "quote": "room attendants simply recorded whether guests reused at least one towel",
    "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Results"
+  },
+  {
+   "source": "hotel08",
+   "quote": "a significantly higher towel reuse rate (44.1%) than the environmental protection condition (35.1%",
+   "location": "JCR 35(3), Experiment 1 Results (published version, Carlson School author copy; read via fetch tool)"
   }
  ],
  "biz04": [
   {
-   "quote": "Same-room 49.3%; citizen 43.5%; gender 40.9%; guest 44.0%; environmental 37.2% (paraphrase)",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Exp. 2 Results"
+   "source": "bohner14",
+   "quote": "In two hotels in Germany (Study 1: N = 724; Study 2: N = 204)",
+   "location": "PLoS ONE abstract"
   },
   {
-   "quote": "this condition produced the highest level of towel reuse",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Exp. 2 Results"
+   "source": "bohner14",
+   "quote": "four descriptive norm conditions combined (81.9%) did not fare better than the standard environmental message (83.7%)",
+   "location": "PLoS ONE 9(8), Study 1 Results"
   },
   {
-   "quote": "Over a 53-day span; 1,595 instances of potential towel reuse (paraphrase)",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Exp. 2 Method"
+   "source": "bohner14",
+   "quote": "the standard environmental message (93.3%) was more effective than the four descriptive norm messages combined (75.4%)",
+   "location": "PLoS ONE 9(8), Study 2 Results (sentence split across columns in the PDF)"
+  },
+  {
+   "source": "bohner14",
+   "quote": "mainly due to the no-intervention baseline (64.3%), which differed markedly from the five message conditions combined (79.6%)",
+   "location": "PLoS ONE 9(8), Study 2 Results"
   }
  ],
  "biz05": [
@@ -1990,6 +2255,16 @@
   {
    "quote": "3 weeks after the distribution of the second feedback message",
    "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results, Procedure"
+  },
+  {
+   "source": "energy07",
+   "quote": "the descriptive-norm-only condition produced a significant increase in electricity usage (longer-term M = 11.13, SE = 0.44 vs. baseline M = 10.15, SE = 0.34; n = 68)",
+   "location": "Psychological Science 18(5), Results (extracted text shows '=' as '5')"
+  },
+  {
+   "source": "energy07",
+   "quote": "the combined injunctive-plus-descriptive message produced no change from baseline for low-consuming households (longer-term M = 10.14, SE = 0.37 vs. baseline M = 10.04, SE = 0.35; n = 70)",
+   "location": "Psychological Science 18(5), Results"
   }
  ],
  "biz06": [
@@ -2008,6 +2283,16 @@
   {
    "quote": "Above average, descriptive+injunctive: -1.72 short term, -1.23 longer term (paraphrase)",
    "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results"
+  },
+  {
+   "source": "energy07",
+   "quote": "the descriptive-norm-only message produced an increase in energy consumption from baseline (M = 11.27, SE = 0.46 vs. baseline M = 10.38, SE = 0.33; n = 79)",
+   "location": "Psychological Science 18(5), Results, short term"
+  },
+  {
+   "source": "energy07",
+   "quote": "households that were consuming less energy than average continued to consume at the desirable low rate (M = 10.58, SE = 0.38 vs. baseline M = 10.34, SE = 0.33; n = 81)",
+   "location": "Psychological Science 18(5), Results, short term, descriptive plus injunctive"
   }
  ],
  "biz07": [
@@ -2026,6 +2311,16 @@
   {
    "quote": "less likely to identify subtractive changes when not cued, with one (vs several) opportunity, under higher cognitive load (paraphrase)",
    "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)"
+  },
+  {
+   "source": "subtract21",
+   "quote": "In experiment 4, the cue increased the likelihood of participants listing at least one subtractive idea within the improvement conditions (no-cue = 21%, cue = 48%, chi2 = 13.63, P < 0.001)",
+   "location": "Nature 592, Extended Data Fig. 4 legend (publisher page)"
+  },
+  {
+   "source": "subtract21",
+   "quote": "Participants were randomly assigned to a no-cue instruction that mentioned neither addition nor subtraction or to a cue condition that reminded participants they could 'add or subtract'.",
+   "location": "Nature 592, Extended Data Fig. 3 legend"
   }
  ],
  "biz08": [
@@ -2044,6 +2339,11 @@
   {
    "quote": "the study involved 1,153 participants performing eight improvement problem experiments",
    "location": "University of Mississippi news release (libarts.olemiss.edu/?p=37866)"
+  },
+  {
+   "source": "subtract21",
+   "quote": "Across eight experiments, participants were less likely to identify advantageous subtractive changes when the task did not (versus did) cue them to consider subtraction, when they had only one opportunity (versus several) to recognize the shortcomings of an additive search strategy or when they were under a higher (versus lower) cognitive load.",
+   "location": "Nature abstract (version of record)"
   }
  ],
  "biz11": [
@@ -2088,6 +2388,16 @@
   {
    "quote": "In polarized environments, most individuals prefer extreme actions, which expose them to considerable strategic risk",
    "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2245"
+  },
+  {
+   "source": "norms24",
+   "quote": "we recruited a sample of about 1,200 U.S. participants who are representative in terms of age, gender, and ethnicity",
+   "location": "Management Science 71(3), p. 2253, Section 3.3 (published version, author copy)"
+  },
+  {
+   "source": "norms24",
+   "quote": "in tight environments (low variance), participants choose contribution levels that are tightly centered around the mean of the shown distribution (σ2 = 1.26). In loose environments (high variance), by contrast, we see a much larger variation in behavior (σ2 = 1.65).",
+   "location": "Management Science 71(3), pp. 2253-2254, Section 4.2"
   }
  ],
  "social03": [
@@ -2110,6 +2420,16 @@
   {
    "quote": "seems to be even larger in the polarized condition",
    "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2255"
+  },
+  {
+   "source": "norms24",
+   "quote": "through the lens of a well-powered (n = 1,203) and preregistered study",
+   "location": "Management Science 71(3), Introduction"
+  },
+  {
+   "source": "norms24",
+   "quote": "In loose environments (high variance), by contrast, we see a much larger variation in behavior (σ2 = 1.65).",
+   "location": "Management Science 71(3), p. 2254, Section 4.2"
   }
  ],
  "social04": [
@@ -2132,6 +2452,11 @@
   {
    "quote": "students' perceived deviance correlated with various measures of campus alienation",
    "location": "Abstract, Princeton research portal (collaborate.princeton.edu)"
+  },
+  {
+   "source": "plural93",
+   "quote": "All studies found widespread evidence of pluralistic ignorance",
+   "location": "JPSP abstract (Princeton research portal; read via fetch tool, which summarized the rest)"
   }
  ],
  "social07": [
@@ -2154,6 +2479,26 @@
   {
    "quote": "Democrats are more likely to agree on what the most common views are within their group than Republicans are",
    "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)"
+  },
+  {
+   "source": "plural24",
+   "quote": "We recruited a politically representative sample of US respondents ( N = 996 , 49% female, 75% college educated",
+   "location": "PNAS Nexus 3(10), Results"
+  },
+  {
+   "source": "plural24",
+   "quote": "we found evidence of multiple views within each partisan group",
+   "location": "PNAS Nexus 3(10), Results (Fig. 4)"
+  },
+  {
+   "source": "plural24",
+   "quote": "the most commonly reported view (that same-sex couples should have the right to both date and marry) was reported by 95% of respondents",
+   "location": "PNAS Nexus 3(10), Results (Democrats predicting own party)"
+  },
+  {
+   "source": "plural24",
+   "quote": "the most frequently reported view (that all proposed policies to reduce gun violence are appropriate) was reported by only 50% of respondents and had a mean share of 13%",
+   "location": "PNAS Nexus 3(10), Results (Republicans predicting own party)"
   }
  ],
  "social08": [
@@ -2200,11 +2545,33 @@
    "location": "Full text, annotated copy (students.cs.byu.edu CollectiveIntelligence_annotated.pdf)"
   }
  ],
- "social12": [],
+ "social12": [
+  {
+   "source": "resume04",
+   "quote": "We study race in the labor market by sending fictitious resumes to help-wanted ads in Boston and Chicago newspapers.",
+   "location": "AER abstract (version of record)"
+  },
+  {
+   "source": "resume04",
+   "quote": "White names receive 50 percent more callbacks for interviews. Callbacks are also more responsive to resume quality for White names than for African-American ones.",
+   "location": "AER abstract"
+  }
+ ],
  "social13": [
   {
-   "quote": "individual fixed-effects framework; some estimates have large standard errors and one effect goes the other way (paraphrase)",
-   "location": "AER abstract, Crossref api.crossref.org/works/10.1257/aer.90.4.715"
+   "source": "blind00",
+   "quote": "the screen increases— by 50 percent—the probability that a woman will be advanced from certain preliminary rounds and increases by severalfold the likelihood that a woman will be selected in the final round",
+   "location": "AER 90(4), p. 738, Conclusion (published AER PDF, hosted on a Notre Dame course page)"
+  },
+  {
+   "source": "blind00",
+   "quote": "the switch to blind auditions can explain 30 percent of the increase in the proportion female among new hires",
+   "location": "AER 90(4), p. 738"
+  },
+  {
+   "source": "blind00",
+   "quote": "Although some of our estimates have large standard errors and there is one persistent effect in the opposite direction",
+   "location": "AER abstract"
   }
  ],
  "social14": [
@@ -2227,6 +2594,16 @@
   {
    "quote": "Seven studies (count from abstract record)",
    "location": "Abstract, Princeton research portal and data.zhenzhi.com record"
+  },
+  {
+   "source": "contact05",
+   "quote": "Studies 1 and 2 demonstrate that Whites and Blacks would like to have more contact with the out-group but believe the out-group does not want to have contact with them.",
+   "location": "JPSP abstract (PubMed 15631577)"
+  },
+  {
+   "source": "contact05",
+   "quote": "individuals explained their own inaction in terms of their fear of being rejected because of their race but attributed the out-group members' inaction to their lack of interest",
+   "location": "JPSP abstract"
   }
  ],
  "judg02": [
@@ -2261,54 +2638,26 @@
  ],
  "social15": [
   {
-   "quote": "five preregistered studies in the context of Donald J. Trump",
-   "location": "Management Science abstract, Crossref api.crossref.org/works/10.1287/mnsc.2023.4701"
+   "source": "hate23",
+   "quote": "of their own political faction (78.1%, green bar in top-left panel) compared with the feelings of closeness reported by participants with the same painting preferences in the MGP treatment (~39%, bootstrap two-sample t-test method (BSM), p < 0.001)",
+   "location": "Management Science, Articles in Advance (24 Feb 2023), p. 10, Section 3.1 (published version, author-hosted)"
   },
   {
-   "quote": "15 well-powered behavioral experiments and a diverse set of over 8,600 participants",
-   "location": "Management Science abstract, Crossref api.crossref.org/works/10.1287/mnsc.2023.4701"
+   "source": "hate23",
+   "quote": "The prosocial behavior toward one's own political faction (14.97%, green bar in bottom-left panel) is indistinguishable from the behavior in MGP, regardless of whether their partners held the same (13.54%, green bar bottom-right panel, p = 0.78)",
+   "location": "Management Science, p. 10"
   },
   {
-   "quote": "one's grim expectations regarding cooperativeness of the opposing faction",
-   "location": "Management Science abstract, Crossref api.crossref.org/works/10.1287/mnsc.2023.4701"
-  },
-  {
-   "quote": "lack of cooperation is not the result of a categorical unwillingness to cooperate across factions",
-   "location": "Working-paper version (cess-nuffield.nuff.ox.ac.uk Eugen-Dimant_Hate-Trumps-Love.pdf), p. 34"
-  },
-  {
-   "quote": "Take-or-Give (T-o-G) Dictator Game; ABC of cooperation public goods game (paraphrase)",
-   "location": "Working-paper version (cess-nuffield.nuff.ox.ac.uk Eugen-Dimant_Hate-Trumps-Love.pdf), pp. 1-3"
-  },
-  {
-   "quote": "data from a total of n = 7, 893 participants was collected between the summer and winter of 2020",
-   "location": "Working-paper version (cess-nuffield.nuff.ox.ac.uk Eugen-Dimant_Hate-Trumps-Love.pdf), p. 6"
+   "source": "hate23",
+   "quote": "with a significant proportion of participants exhibiting a propensity for inflicting harm (−22.9%, red bar bottom-left panel)",
+   "location": "Management Science, p. 10"
   }
  ],
  "social16": [
   {
-   "quote": "popular behavioral interventions (defaults and norm-nudges)",
-   "location": "Management Science abstract, Crossref api.crossref.org/works/10.1287/mnsc.2023.4701"
-  },
-  {
-   "quote": "are ineffective in closing the polarization gap",
-   "location": "Management Science abstract, Crossref api.crossref.org/works/10.1287/mnsc.2023.4701"
-  },
-  {
-   "quote": "the sports prime produces no differences with respect to attitudes, beliefs, or cooperation",
-   "location": "Working-paper version (cess-nuffield.nuff.ox.ac.uk Eugen-Dimant_Hate-Trumps-Love.pdf), p. 28"
-  },
-  {
-   "quote": "substantial polarization exists also in non-political contexts",
-   "location": "Working-paper version (cess-nuffield.nuff.ox.ac.uk Eugen-Dimant_Hate-Trumps-Love.pdf), p. 28"
-  },
-  {
-   "quote": "the ingroup-outgroup polarization remains at comparable levels in terms of both effect sizes",
-   "location": "Working-paper version (cess-nuffield.nuff.ox.ac.uk Eugen-Dimant_Hate-Trumps-Love.pdf), p. 29 (default nudge)"
-  },
-  {
-   "quote": "one's grim expectations regarding cooperativeness of the opposing faction",
-   "location": "Management Science abstract, Crossref api.crossref.org/works/10.1287/mnsc.2023.4701"
+   "source": "hate23",
+   "quote": "the default indeed increases altruism at the aggregate level: antisocial (taking) behavior toward the outgroup is reduced from about 20% to essentially 0% of the initial endowment and prosocial (giving) behavior to the ingroup increased from about 10%–15% to about 25%–35% of the initial endowment. The difference in behavior toward one's political ingroup and outgroup remains highly statistically significant (p < 0.001).",
+   "location": "Management Science, Articles in Advance, p. 11, Section 3.1.5.1"
   }
  ],
  "social20": [
@@ -2702,6 +3051,16 @@
    "source": "hui24",
    "quote": "we do not find evidence that high-quality service, measured by past performance and employment, moderates the adverse effects on employment",
    "location": "Abstract"
+  },
+  {
+   "source": "hui24",
+   "quote": "We find that freelancers in highly affected occupations suffer from the introduction of generative AI, experiencing reductions in both employment and earnings.",
+   "location": "Organization Science abstract (version of record)"
+  },
+  {
+   "source": "hui24",
+   "quote": "we do not find evidence that high-quality service, measured by their past performance and employment, moderates the adverse effects on employment. In fact, we find suggestive evidence that top freelancers are disproportionately affected by AI.",
+   "location": "Organization Science abstract"
   }
  ],
  "axe09": [
@@ -2724,6 +3083,16 @@
    "source": "granulo19",
    "quote": "being replaced by robots is associated with a greater perceived threat to one's economic future",
    "location": "Abstract"
+  },
+  {
+   "source": "granulo19",
+   "quote": "people tend to prefer workers to be replaced by other human workers (versus robots); however, paradoxically, this preference reverses when people consider the prospect of their own job loss",
+   "location": "Nature Human Behaviour abstract (PubMed 31384025)"
+  },
+  {
+   "source": "granulo19",
+   "quote": "being replaced by machines, robots or software (versus other humans) is associated with reduced self-threat. In contrast, being replaced by robots is associated with a greater perceived threat to one's economic future.",
+   "location": "Nature Human Behaviour abstract"
   }
  ],
  "axe10": [
@@ -3141,6 +3510,11 @@
    "source": "garvey23",
    "quote": "Potential ethical concerns with the use of AI to bypass consumer resistance to negative offers are discussed.",
    "location": "Abstract"
+  },
+  {
+   "source": "garvey23",
+   "quote": "AI agents, compared with human agents, are perceived to have weaker intentions when administering offers, which accounts for this effect",
+   "location": "Journal of Marketing abstract"
   }
  ],
  "axf05": [

@@ -12,11 +12,11 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 116 (formats: forecast 32, choice 30, estimate 24, multi 11, rank 6, causal 6, delegate 5, allocate 2).
+- Decisions in scored play: 115 (formats: forecast 32, choice 29, estimate 24, multi 11, rank 6, causal 6, delegate 5, allocate 2).
 - Sources: 108 (48 checked against full text, 59 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
-- Decisions retired with reasons: 30 (listed below).
-- Track balance: AI × Business 48, Culture & Society 31, Business 30, Judgment 7.
+- Decisions retired with reasons: 31 (listed below).
+- Track balance: AI × Business 48, Business 30, Culture & Society 30, Judgment 7.
 
 ## Sources
 
@@ -63,7 +63,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Dimant & Gesche (2023). *Nudging enforcers: how norm perceptions and motives for lying shape sanctions*. [doi:10.1093/pnasnexus/pgad224](https://doi.org/10.1093/pnasnexus/pgad224) | PNAS Nexus 2(7) pgad224 | Full text | dimant-enforcers-rank |  |
 | Dimant et al. (2022). *Politicizing mask-wearing: predicting the success of behavioral interventions among republicans and democrats in the U.S.*. [doi:10.1038/s41598-022-10524-1](https://doi.org/10.1038/s41598-022-10524-1) | Scientific Reports 12 7575 | Full text | dimant-masks-forecast |  |
 | Dimant, Galeotti & Villeval (2024). *Motivated information acquisition and social norm formation*. [doi:10.1016/j.euroecorev.2024.104778](https://doi.org/10.1016/j.euroecorev.2024.104778) | European Economic Review 167 104778 | Full text | dimant-motivated-estimate |  |
-| Dimant, Gelfand, Hochleitner & Sonderegger (2025). *Strategic Behavior with Tight, Loose, and Polarized Norms*. [doi:10.1287/mnsc.2023.01022](https://doi.org/10.1287/mnsc.2023.01022) | Management Science 71(3) 2245-2263 | Full text | social01, social03, dimant-polarizednorms-choice |  |
+| Dimant, Gelfand, Hochleitner & Sonderegger (2025). *Strategic Behavior with Tight, Loose, and Polarized Norms*. [doi:10.1287/mnsc.2023.01022](https://doi.org/10.1287/mnsc.2023.01022) | Management Science 71(3) 2245-2263 | Full text | social01, dimant-polarizednorms-choice |  |
 | Dimant, van Kleef & Shalvi (2020). *Requiem for a Nudge: Framing effects in nudging honesty*. [doi:10.1016/j.jebo.2020.02.015](https://doi.org/10.1016/j.jebo.2020.02.015) | Journal of Economic Behavior & Organization 172 247-266 | Abstract | dimant-requiem-forecast |  |
 | Doshi & Hauser (2024). *Generative AI enhances individual creativity but reduces the collective diversity of novel content*. [doi:10.1126/sciadv.adn5290](https://doi.org/10.1126/sciadv.adn5290) | Science Advances 10(28) eadn5290 | Abstract | ai07 |  |
 | Fischbacher & Föllmi-Heusi (2013). *Lies in Disguise: An Experimental Study on Cheating*. [doi:10.1111/jeea.12014](https://doi.org/10.1111/jeea.12014) | Journal of the European Economic Association 11(3) 525-547 | Abstract | lies-in-disguise |  |
@@ -191,6 +191,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 - social19 (The near-peer effect): Superseded by dimant-contagion-multi.
 - social21 (Beyond a single norm): Concept-label question.
 - axe03 (Who decides, who coaches?): Review 4: routings rested on author suggestions, and the abstracts report no effect sizes.
+- social03 (When peers vary): Review 4: duplicate of social01 (same paper, same tight-versus-loose result).
 
 ## Not verified
 

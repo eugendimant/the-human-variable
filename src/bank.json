@@ -2360,7 +2360,7 @@
    "scene": "In an online experiment, 453 professionals did short writing tasks for their occupation, half with ChatGPT. Independent professionals graded the finished work blind.",
    "question": "By how much did graded quality change with ChatGPT?",
    "answerTitle": "Quality improved 18%",
-   "explain": "The study found faster completion and higher externally evaluated quality.",
+   "explain": "Noy and Zhang gave half of 453 college-educated professionals access to ChatGPT for occupation-specific writing tasks. Graded output quality rose 18%, and inequality between workers decreased.",
    "implication": "Set up double-outcome tests, with blind quality evaluation.",
    "boundary": "Occupation-specific, incentivized writing tasks for 453 college-educated professionals.",
    "sources": [
@@ -2474,7 +2474,7 @@
     "Gains were largest for the most creative writers"
    ],
    "answerTitle": "A creativity trade-off",
-   "explain": "AI-assisted stories scored higher on creativity but became more similar to one another.",
+   "explain": "Doshi and Hauser's 293 writers produced stories rated 8.1% more novel and 9.0% more useful when given five AI ideas. Those stories were also more similar to each other, a shift worth 8.9% of the similarity range.",
    "implication": "Evaluate distinctiveness across your full campaign, not only each asset.",
    "boundary": "Online writers produced eight-sentence stories with no AI ideas, one AI idea, or up to five AI ideas.",
    "sources": [
@@ -2530,7 +2530,7 @@
    ],
    "answer": 1,
    "answerTitle": "A visible error can dominate",
-   "explain": "Participants became reluctant to use an algorithm after watching it err, even when it outperformed people.",
+   "explain": "In Dietvorst, Simmons and Massey's Study 1, 65% of participants who saw no forecasts bet on the model. After seeing both the model's and their own forecasts, only 23% did, although people made 15 to 29% more error than the model.",
    "implication": "Communicate expected error rates and compare human and model performance symmetrically.",
    "boundary": "Incentivized forecasts of MBA students' performance and US states' airline-passenger ranks, by lab and online participants.",
    "sources": [
@@ -2642,7 +2642,7 @@
    ],
    "answer": 1,
    "answerTitle": "Subjectivity changes acceptance",
-   "explain": "The task-dependent aversion experiments link perceived subjectivity to resistance to algorithms.",
+   "explain": "Castelo, Bos and Lehmann ran four online lab studies with over 1,400 participants and two field studies with over 56,000. People trusted and used algorithms less for tasks that seem subjective; making a task seem more objective raised reliance.",
    "implication": "For taste-based recommendations, explain the measurable inputs the algorithm uses, which makes the task seem more objective.",
    "boundary": "Online lab and field studies of consumers' reliance on algorithms for tasks seen as subjective or objective.",
    "sources": [
@@ -2693,7 +2693,7 @@
    ],
    "answer": 2,
    "answerTitle": "People care about being seen",
-   "explain": "Medical-AI resistance research highlights concerns that algorithms will not consider unique circumstances.",
+   "explain": "Longoni, Bonezzi and Morewedge traced resistance to uniqueness neglect: consumers doubt an AI provider can account for their unique characteristics and circumstances. Resistance was stronger among people who saw themselves as more unique and disappeared when AI care was framed as personalized.",
    "implication": "Present AI as supporting a clinician's or advisor's decision, and say how it adapts to each person's case.",
    "boundary": "Consumers choosing between AI and human providers of medical care, in real and hypothetical choices.",
    "sources": [
@@ -2810,7 +2810,7 @@
    ],
    "answer": 0,
    "answerTitle": "Defaults communicate advice",
-   "explain": "The researchers linked persistence partly to inertia and perceiving defaults as implicit advice.",
+   "explain": "Madrian and Shea found that many employees hired under automatic enrollment kept both the default contribution rate and the default fund, a pairing few earlier hires chose. They trace this to inertia and to employees reading the default as investment advice.",
    "implication": "Set default contribution rates at the level you would recommend, since most enrollees keep whatever rate you choose.",
    "boundary": "Contribution rates and fund choices of new hires at one US firm, measured in their first months of tenure.",
    "sources": [
@@ -2861,7 +2861,7 @@
    ],
    "answer": 2,
    "answerTitle": "Behavioral evidence beat a generic appeal",
-   "explain": "Descriptive-norm messaging outperformed a conventional environmental appeal in the hotel field experiments.",
+   "explain": "In Goldstein, Cialdini and Griskevicius's first hotel experiment (1,058 reuse opportunities), 44.1% of guests reused towels under the \"most guests reuse\" sign, against 35.1% under the standard environmental sign.",
    "implication": "In customer prompts, replace purely environmental or civic appeals with an accurate statement of what most peers do.",
    "boundary": "Field studies in one US hotel. Later replications found modest effects, and some found the norm sign no better than a plain environmental sign.",
    "sources": [
@@ -2906,7 +2906,7 @@
    "scene": "A famous US study found hotel guests reused more towels when a sign said most guests do, especially guests of the same room. Researchers repeated the test in two German hotels.",
    "question": "Is this what the replication found?",
    "answerTitle": "Both signs helped; the norm sign did no better",
-   "explain": "Both message types raised towel reuse compared with no message, but the descriptive-norm message was not more effective than the standard environmental message, and same-room effects were inconsistent.",
+   "explain": "Bohner and Schlüter repeated the test in two German hotels. In the first (N = 724), norm signs combined reached 81.9% reuse against 83.7% for the standard environmental sign; in the second (N = 204), the environmental sign reached 93.3% versus 75.4%.",
    "implication": "Before rolling out a famous nudge, test it against the plain message you would otherwise use, not just against doing nothing.",
    "boundary": "Two hotels in Germany; later meta-analyses report modest, consistent effects of norm messages across studies.",
    "sources": [
@@ -2962,7 +2962,7 @@
     "A smiley face kept efficient homes steady"
    ],
    "answerTitle": "A norm message can backfire",
-   "explain": "Information on typical neighborhood consumption increased consumption among some already-efficient households.",
+   "explain": "Schultz and colleagues gave usage feedback to 290 San Marcos households. Below-average homes shown only the neighborhood average raised daily use from 10.15 to 11.13 kWh over the longer term; adding a smiley-face approval cue held them at baseline.",
    "implication": "When sending peer comparisons, add explicit approval for customers already doing better than average.",
    "boundary": "Two doorhanger messages to 290 California households, with electricity read from meters over about four weeks.",
    "sources": [
@@ -3011,7 +3011,7 @@
    "scene": "Researchers add an approval cue (a smiley face for households using less than average) to neighborhood comparison feedback.",
    "question": "Is this what the study found?",
    "answerTitle": "Approval changed the response",
-   "explain": "Injunctive feedback counteracted the increase among households already below average.",
+   "explain": "Among 290 San Marcos households, below-average homes shown only the neighborhood average raised daily use from 10.38 to 11.27 kWh. Comparable homes that also got a smiley face stayed near baseline, at 10.58 against 10.34 kWh.",
    "implication": "Pair every peer comparison with a simple approval or disapproval signal, such as a happy or sad face.",
    "boundary": "Hand-drawn faces on doorhanger feedback to California households; follow-up ended three weeks after the second message.",
    "sources": [
@@ -3065,7 +3065,7 @@
    ],
    "answer": 2,
    "answerTitle": "Subtraction is often missed",
-   "explain": "Across experiments, people overlooked beneficial subtractive changes, especially without prompts to consider deletion.",
+   "explain": "In Adams, Converse, Hales and Klotz's experiment 4, only 21% of uncued participants listed any subtractive idea for improving a mini-golf hole. Reminded that they could add or subtract, 48% did.",
    "implication": "Make “What can we remove?” mandatory in process reviews.",
    "boundary": "Eight experiments with puzzles and design tasks in which removing an element was an advantageous change.",
    "sources": [
@@ -3097,7 +3097,7 @@
    "theme": "choice",
    "study": {
     "design": "Eight experiments",
-    "n": "1,153 participants"
+    "n": "312 participants in experiments 2 and 3; 369 in experiment 4"
    },
    "permuted": true
   },
@@ -3110,7 +3110,7 @@
    "scene": "An operations team must solve a complex process problem while juggling other tasks.",
    "question": "Is this what the study found?",
    "answerTitle": "Pressure favors additions",
-   "explain": "The Nature experiments found subtractive improvements were less likely under greater cognitive load.",
+   "explain": "Across eight experiments, Adams, Converse, Hales and Klotz found people were less likely to spot helpful subtractive changes under higher cognitive load, and also when nothing cued subtraction or when they had only one chance to notice it.",
    "implication": "Schedule deliberate simplification sessions with fewer distractions.",
    "boundary": "Cognitive load was manipulated in controlled experiments on puzzle and design tasks.",
    "sources": [
@@ -3142,7 +3142,7 @@
    "theme": "choice",
    "study": {
     "design": "Eight experiments",
-    "n": "1,153 participants"
+    "n": "Eight experiments"
    },
    "forecast": {
     "claim": "People juggling other tasks were more likely to find improvements that remove something.",
@@ -3228,7 +3228,7 @@
     "The average alone predicted how most people chose"
    ],
    "answerTitle": "The distribution matters",
-   "explain": "Dimant and colleagues found that variance and polarization of observed norms affect behavior beyond the mean.",
+   "explain": "Dimant, Gelfand, Hochleitner and Sonderegger showed about 1,200 Americans co-player behavior with the same mean but different spreads. Choices tracked the spread: contribution variance was 1.26 after a tight norm and 1.65 after a loose one.",
    "implication": "Report the spread and clustering of team behavior alongside averages in culture and engagement dashboards.",
    "boundary": "Two-player contribution game with 1,203 US adults, varying the shape of the norm while holding its average fixed.",
    "sources": [
@@ -3269,57 +3269,6 @@
    "permuted": true
   },
   {
-   "id": "social03",
-   "track": "Culture & Society",
-   "concept": "Norm distributions",
-   "tag": "29 / VARIANCE",
-   "title": "When peers vary",
-   "scene": "Colleagues see highly variable peer behavior rather than a tight shared pattern.",
-   "question": "What tends to happen to their own behavior in the studied settings?",
-   "options": [
-    "Their choices clustered on the average",
-    "Their choices varied more",
-    "Their choices split into two camps"
-   ],
-   "answer": 1,
-   "answerTitle": "Looser norms, wider responses",
-   "explain": "Loose norm distributions generated greater behavioral variation in the experiments.",
-   "implication": "Where peer behavior varies widely, state expected conduct explicitly, since individual values then drive choices more.",
-   "boundary": "Two-player contribution game in which the spread of the norm was set by design; whether variety helps depends on the task.",
-   "sources": [
-    "norms24"
-   ],
-   "visual": "distribution",
-   "values": [],
-   "labels": [
-    "Alternative",
-    "Observed pattern"
-   ],
-   "unit": "",
-   "follow": [
-    {
-     "q": "How were peers' choices shown?",
-     "a": "Participants saw a distribution of contributions built from an earlier session, and their partner's contribution was drawn from it."
-    },
-    {
-     "q": "What drives choices when norms are loose?",
-     "a": "Personal traits mattered more: sucker aversion, free-riding aversion, and personal values shaped decisions more under loose and polarized norms."
-    },
-    {
-     "q": "Did the average still matter?",
-     "a": "Yes. People contributed more when the observed mean was higher (2.4 vs 1.6 tokens), and the mean mattered even more in the polarized condition."
-    }
-   ],
-   "format": "choice",
-   "weight": 1,
-   "theme": "norms",
-   "study": {
-    "design": "Online experiment, two-player contribution game (6 treatments)",
-    "n": "1,203 US adults (representative sample)"
-   },
-   "permuted": true
-  },
-  {
    "id": "social04",
    "track": "Culture & Society",
    "concept": "Pluralistic ignorance",
@@ -3334,7 +3283,7 @@
    ],
    "answer": 2,
    "answerTitle": "Private views and public beliefs diverge",
-   "explain": "Pluralistic-ignorance research documents systematic differences between personal attitudes and perceived group attitudes.",
+   "explain": "In all four of Prentice and Miller's studies, students rated their peers as more comfortable with campus drinking than they were themselves. Over a semester, men shifted their own attitudes toward that mistaken norm; women did not.",
    "implication": "Elicit private views before public discussion.",
    "boundary": "Four studies of college students' own attitudes toward campus alcohol use and their estimates of peers' attitudes.",
    "sources": [
@@ -3385,7 +3334,7 @@
    ],
    "answer": 0,
    "answerTitle": "Groups are less monolithic",
-   "explain": "The study recovered divergence between parties and multiple co-existing views within each party, more so among Republicans than Democrats on most issues.",
+   "explain": "Among 996 US respondents, Panizza, Dimant, Kimbrough and Vostroknutov recovered several views within each party. Agreement ranged from 95% of Democrats naming the same top view on same-sex rights to only 50% of Republicans on gun policy.",
    "implication": "Before engaging a stakeholder group, map the distinct views inside it and estimate each view's share.",
    "boundary": "One incentivized online survey of 996 US respondents on seven political issues, compared with a standard single-norm measure.",
    "sources": [
@@ -3430,7 +3379,7 @@
    "scene": "In an online health community, researchers built networks that were either clustered (neighbors share neighbors) or random (more long-range ties), then seeded a health behavior.",
    "question": "Is this what the study found?",
    "answerTitle": "Reinforcement can beat reach",
-   "explain": "In the experimental networks, clustered ties supported diffusion of a health behavior requiring social reinforcement.",
+   "explain": "In Centola's online experiment with 1,528 participants, a health behavior reached 53.77% of people in clustered networks but only 38.26% in random networks, and it spread more than four times faster through the clustered ones.",
    "implication": "Launch hard-to-adopt practices inside tightly connected teams, so each person hears about them from several colleagues.",
    "boundary": "1,528 anonymous online participants in constructed networks deciding whether to register for a health forum.",
    "sources": [
@@ -3528,7 +3477,7 @@
    "scene": "In a field experiment, comparable résumés were assigned names signaling different racial identities.",
    "question": "Approximately how much higher was the callback rate for White-sounding names?",
    "answerTitle": "50% more callbacks",
-   "explain": "The field experiment found a large gap in callbacks associated with names, holding résumé content constant.",
+   "explain": "Bertrand and Mullainathan answered Boston and Chicago help-wanted ads with fictitious résumés randomly given African-American- or White-sounding names. White names received 50 percent more callbacks, and callbacks responded more to résumé quality for White names.",
    "implication": "Run periodic paired-résumé audits of your own screening, comparing callbacks for identical profiles with different names.",
    "boundary": "Fictitious résumés sent to sales, administrative, clerical, and customer-service ads in Boston and Chicago, 2001 to 2002.",
    "sources": [
@@ -3582,7 +3531,7 @@
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
    "question": "How strong was the evidence that screens helped women advance?",
    "answerTitle": "Favorable, but several estimates were imprecise",
-   "explain": "Goldin and Rouse found that the screen raised women’s chances of advancing and being hired, with several estimates imprecise and one running the other way.",
+   "explain": "Goldin and Rouse estimate that the screen raised by 50 percent the chance a woman advanced from certain preliminary rounds, and that blind auditions explain about 30 percent of the rise in women among new hires. Some estimates have large standard errors.",
    "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
    "boundary": "Orchestra audition records; the authors report large standard errors for several estimates, and one effect ran in the opposite direction.",
    "sources": [
@@ -3631,7 +3580,7 @@
    "concept": "Bias",
    "tag": "40 / CONTACT",
    "title": "Why did they stay away?",
-   "scene": "White and Black students were asked how interested they were in contact with the other group, and why each side might hold back.",
+   "scene": "White and Black participants were asked how interested they were in contact with the other group, and why each side might hold back.",
    "question": "How did each group explain the hesitation?",
    "options": [
     "Neither side wanted more contact with the other",
@@ -3640,7 +3589,7 @@
    ],
    "answer": 1,
    "answerTitle": "The misreading can be mutual",
-   "explain": "Participants attributed their own avoidance to fear of being rejected because of their race, but the other group's avoidance to lack of interest.",
+   "explain": "Across seven studies, Shelton and Richeson found that White and Black participants wanted more contact with the other group but believed it did not. Each explained its own hesitation by fear of racial rejection and the other side's by lack of interest.",
    "implication": "Have managers make the first cross-group introduction, so neither side has to risk reaching out first.",
    "boundary": "Seven studies of White and Black participants' interest in interracial contact and how they explained avoidance.",
    "sources": [
@@ -3745,7 +3694,7 @@
    ],
    "answer": 1,
    "answerTitle": "The domains diverged",
-   "explain": "The published study found ingroup love in perceived closeness, but outgroup hate in behavioral outcomes.",
+   "explain": "In Dimant's experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a neutral group-mate (about 39%), yet gave allies no more money (14.9% versus 13.5%). From opponents, they took 22.9%.",
    "implication": "When teams distrust each other, share evidence of the other side's actual cooperation, since pessimistic expectations drove the hostility.",
    "boundary": "Incentivized behavioral experiments with US Trump supporters and opponents, plus a sports-identity comparison.",
    "sources": [
@@ -3796,7 +3745,7 @@
     "Measured polarization gaps persisted"
    ],
    "answerTitle": "General improvement, persistent gap",
-   "explain": "In the paper, tested defaults and norm nudges raised prosociality but did not close measured polarization gaps.",
+   "explain": "With a default nudge, Dimant shows that taking from political opponents fell from about 20% of the endowment to essentially 0%, and giving to allies rose from about 10-15% to 25-35%. The ally-opponent difference stayed highly significant (p < 0.001).",
    "implication": "Track between-group gaps as a separate metric when testing interventions, since average cooperation can rise while the gap stays.",
    "boundary": "Default and norm nudges tested in incentivized giving and cooperation games with US Trump supporters and opponents.",
    "sources": [
@@ -3852,7 +3801,7 @@
    ],
    "answer": 3,
    "answerTitle": "Keep the whole distribution",
-   "explain": "The published measurement paper describes how eliciting norm-belief distributions can reveal disagreement hidden by mean or mode.",
+   "explain": "Dimant's method elicits, with incentives, each person's belief about the full distribution of views instead of the mean or most common view, so a unified team and one split into opposing camps can be told apart.",
    "implication": "In culture surveys, ask each person how views are spread across colleagues, not only what the typical view is.",
    "boundary": "A short methods paper presenting an incentive-compatible survey tool that measures each person's perceived norm distribution.",
    "sources": [
@@ -4266,7 +4215,7 @@
     "truth": false
    },
    "answerTitle": "Overruling the test went with worse hires",
-   "explain": "Comparing managers with similar applicant pools, those who appeared to hire against test recommendations ended up with worse average hires.",
+   "explain": "Across 15 firms that introduced job testing for low-skilled service workers, Hoffman, Kahn and Li found that managers facing similar applicant pools who hired against test recommendations ended up with worse average hires.",
    "implication": "Track override rates by manager, compare outcomes of overridden hires, and require a written reason for each override.",
    "boundary": "Low-skilled service jobs at 15 firms adopting job testing.",
    "sources": [
@@ -4492,7 +4441,7 @@
     2
    ],
    "answerTitle": "More accurate, yet people preferred humans",
-   "explain": "Recommender systems outperformed strangers, friends and family at predicting joke ratings. People still resisted relying on them, partly because human recommendations felt easier to understand.",
+   "explain": "Yeomans, Shah, Mullainathan and Kleinberg found recommender systems predicted which jokes people would find funny better than strangers, friends or family did. People still preferred human recommenders, partly because the human process felt easier to understand.",
    "implication": "When launching a recommender, explain in plain terms why it suggests each item; accuracy alone will not win adoption.",
    "boundary": "Joke preferences, a taste domain where humans have many advantages.",
    "sources": [
@@ -4535,7 +4484,7 @@
    ],
    "answer": 3,
    "answerTitle": "Young women cost more to reach",
-   "explain": "Younger women are a prized audience and more expensive to show ads to, so a cost-optimizing algorithm delivered fewer STEM ads to them through crowding out.",
+   "explain": "Lambrecht and Tucker found that a gender-neutral STEM job ad reached fewer women than men because younger women cost more to reach. An algorithm optimizing cost-effectiveness crowded them out, and the same pattern held on other major platforms.",
    "implication": "Audit who actually sees your recruiting ads and set reach targets by group rather than pure cost optimization.",
    "boundary": "One field test of STEM career ads, with the same pattern on other major platforms; it studies ad delivery, not hiring outcomes.",
    "sources": [
@@ -4712,7 +4661,7 @@
     "truth": false
    },
    "answerTitle": "Top agents: slightly faster, slightly lower quality",
-   "explain": "In the same rollout, the most experienced and highest-skilled agents saw small gains in speed and small declines in quality.",
+   "explain": "Across 5,172 customer-support agents, Brynjolfsson, Li and Raymond found that the most experienced, highest-skilled agents gained little from the AI assistant: small improvements in speed, alongside small declines in the quality of their output.",
    "implication": "Let top performers tune or skip suggestions, and monitor their quality scores after rollout.",
    "boundary": "One firm's support chat; the declines for top agents were small, and other occupations may differ.",
    "sources": [
@@ -5246,7 +5195,7 @@
     "truth": true
    },
    "answerTitle": "Lateness nearly doubled and stayed high",
-   "explain": "Late pickups rose steadily after the fine, settling almost twice as high as before, and after the fine was removed no reduction occurred.",
+   "explain": "In Gneezy and Rustichini's six fined day-care centers, late pickups settled at almost twice the pre-fine rate and stayed there after the fine ended (center 1: 7.25 a week before, 15.25 after). The four control centers did not change.",
    "implication": "Before fining a behavior, ask whether the fine turns a social obligation into a price people will happily pay.",
    "boundary": "A small fine in ten day-care centers over 20 weeks; four control centers showed no change.",
    "sources": [
@@ -5407,7 +5356,7 @@
    ],
    "answer": 2,
    "answerTitle": "Below-median earners grew unhappy and started looking",
-   "explain": "Workers paid below the median for their unit and occupation reported lower pay and job satisfaction and were more likely to look for a new job. Above-median earners were unaffected.",
+   "explain": "Card, Mas, Moretti and Saez found that below-median University of California earners told about the salary website became 4.3 percentage points more likely to report being very likely to seek a new job, a 20% rise. Above-median earners were unaffected.",
    "implication": "Before publishing pay data, prepare clear explanations of pay differences for below-median staff, who carry the morale cost.",
    "boundary": "University of California employees; outcomes were self-reported satisfaction and job-search intentions.",
    "dag": {
@@ -5549,7 +5498,7 @@
    ],
    "answer": 1,
    "answerTitle": "Side-by-side review focused choices on performance",
-   "explain": "Evaluators were more likely to base decisions on individual performance in joint than in separate evaluation, where they leaned more on group stereotypes, making joint evaluation the profit-maximizing procedure.",
+   "explain": "In Bohnet, van Geen and Bazerman's incentivized experiment, evaluators who compared candidates side by side relied more on individual performance, while those judging one at a time leaned more on gender stereotypes, so joint evaluation paid evaluators the most.",
    "implication": "Compare shortlisted candidates side by side on the same criteria instead of scoring each one in isolation.",
    "boundary": "Incentivized lab hiring task with clear performance scores; real hiring information is noisier.",
    "sources": [
@@ -5637,7 +5586,7 @@
    ],
    "answer": 0,
    "answerTitle": "Stock share follows the menu",
-   "explain": "Some investors divide contributions evenly across the funds offered, so the proportion invested in stocks depends strongly on the proportion of stock funds in the plan.",
+   "explain": "Benartzi and Thaler found some investors follow a 1/n rule, splitting contributions evenly across whatever funds are offered. As a result, the share invested in stocks rises strongly with the share of stock funds on the menu.",
    "implication": "Audit the mix of fund types on your plan menu, because it quietly sets employees' risk exposure.",
    "boundary": "Not every investor splits evenly; the evidence combines hypothetical allocation tasks with plan-level data.",
    "sources": [
@@ -6458,7 +6407,7 @@
     "truth": false
    },
    "answerTitle": "No message worked; forecasters still overestimated effects",
-   "explain": "The study found no evidence that any of the 7 nudges promoted mask-wearing in either party. Forecasters overestimated effects overall (z = 4.40, p < 0.001), most of all for Democrats.",
+   "explain": "Across 4,931 participants, none of the 7 nudges promoted mask-wearing in either party. Forecasters overestimated the effects overall (z = 4.40, p < 0.001), most of all for Democrats.",
    "implication": "Treat expert predictions about which message works as hypotheses. Run a small randomized test before scaling a compliance campaign.",
    "boundary": "One topic (COVID-19 mask-wearing), US Democrats and Republicans, and seven short messages.",
    "sources": [
@@ -6497,7 +6446,7 @@
     "truth": true
    },
    "answerTitle": "None of the four messages changed behavior",
-   "explain": "The pre-registered, high-powered study found null effects with tight confidence intervals for all four messages. A follow-up showed the messages did not change perceived norms.",
+   "explain": "Dimant, van Kleef and Shalvi show that among 1,200 MTurk participants, winning reports held at about 30% under every message, against 16.67% expected from honest reporting. A follow-up shows the messages left perceived norms unchanged.",
    "implication": "Before adding an honesty statement to expense or reporting forms, test whether it actually shifts employees' beliefs about the norm.",
    "boundary": "One-line messages before a die-reporting game with undetectable lies, in a high-powered preregistered study.",
    "sources": [
@@ -6519,7 +6468,7 @@
    ],
    "study": {
     "design": "Pre-registered experiment",
-    "n": "High-powered sample (size not confirmed in published text read)"
+    "n": "1,200 MTurk participants"
    },
    "theme": "evidence"
   },
@@ -6578,7 +6527,7 @@
     ]
    },
    "answerTitle": "Temptation reshapes beliefs to excuse lying",
-   "explain": "Results fit a model in which conditional norm-followers strategically distort their beliefs to justify self-serving behavior. Widespread honesty signaled disapproval of lying, but widespread lying did not signal approval.",
+   "explain": "Bicchieri, Dimant and Sonderegger show belief distortion: when people knew a chance to lie was coming, the share believing that most people lie rose from 38.1% to 62.7%, and winning reports rose from 21.4% to 40.5%.",
    "implication": "Do not treat \"everyone games it\" survey answers as facts; check them against actual compliance data and publish what peers really do.",
    "boundary": "Incentivized experiment in which lying paid money and beliefs concerned the other participants.",
    "sources": [
@@ -6668,7 +6617,7 @@
     2
    ],
    "answerTitle": "Bad behavior spreads more, especially among close peers",
-   "explain": "Anti-social behavior was generally more contagious than pro-social behavior, and social proximity amplified the contagion of anti-social behavior more strongly than that of pro-social behavior.",
+   "explain": "Dimant shows, with 185 lab participants, that seeing an anti-social peer prompted people to revise their choice 33.7% of the time, against 19.4% for a pro-social peer. Under high social proximity the gap widened to 88.2% versus 34.8%.",
    "implication": "Address visible misconduct inside tight-knit teams quickly; close peers copy it more readily than they copy good conduct.",
    "boundary": "Experiment with pro- and anti-social choices and peers who varied in social proximity.",
    "sources": [
@@ -6691,7 +6640,7 @@
    ],
    "study": {
     "design": "Behavioral experiment",
-    "n": "Not stated in published abstract"
+    "n": "185 participants"
    },
    "theme": "norms",
    "permuted": true
@@ -6712,7 +6661,7 @@
    ],
    "answer": 1,
    "answerTitle": "Penalty plus normative message, only when compliance is cheap",
-   "explain": "Neither weak punishment nor norm information alone increased reciprocity. Together, weak punishment and normative information raised it when compliance was cheap; with costly compliance, punishment plus empirical information could backfire.",
+   "explain": "With 418 Penn participants, Bicchieri, Dimant and Xiao show that weak punishment plus a normative message raised trustees' returns to 42.7%, against 28.7% at baseline, when stakes were low. At high stakes, punishment plus empirical information cut returns to 22.2% versus 36.5%.",
    "implication": "When a sanction is modest and compliance is costly, do not justify it with \"everyone complies\"; explain why the rule is right.",
    "boundary": "Lab trust game combining a weak penalty with norm messages at two levels of compliance cost.",
    "sources": [
@@ -6734,7 +6683,7 @@
    ],
    "study": {
     "design": "Lab experiment (trust game)",
-    "n": "Six conditions; size not confirmed in published text read"
+    "n": "418 participants"
    },
    "theme": "honesty",
    "permuted": true
@@ -6813,7 +6762,7 @@
    "scene": "To boost charity giving, an experiment let another person observe each donation decision. In some versions the observer simply watched, with no rewards or consequences attached.",
    "question": "Is this what the study found?",
    "answerTitle": "Watching alone did little and could backfire",
-   "explain": "Observability alone had very little positive effect and could even backfire, a pattern the authors trace to inequality aversion. Making norms more salient reduced the backfire and raised pro-social behavior.",
+   "explain": "Bolton, Dimant and Schmidt show, with 1,650 online participants, that being watched alone backfired: the charity account shrank 28.3% under observation against 18.4% unobserved. Asking people first about others' behavior turned this into a 9.3% gain.",
    "implication": "Do not rely on visibility alone in giving or compliance drives; pair it with a clear statement of what is expected.",
    "boundary": "Charity-giving experiments in which participants observed each other’s choices.",
    "sources": [
@@ -6835,7 +6784,7 @@
    ],
    "study": {
     "design": "Experiments",
-    "n": "Not confirmed in published text read"
+    "n": "423 lab and 1,650 online participants"
    },
    "theme": "honesty",
    "forecast": {
@@ -6898,7 +6847,7 @@
    ],
    "answer": 0,
    "answerTitle": "Expected engagement drove sharing of known falsehoods",
-   "explain": "Across a pilot and three preregistered experiments, people expected conspiracy theories to draw more engagement than factual news, and shared more of them when they got more feedback, even knowing they were false.",
+   "explain": "Ren, Dimant and Schweitzer (N = 4,128) show that engagement drives sharing. When conspiracy posts earned more feedback, the share of people sharing them rose from 17% to 33% over four rounds, while the control group did not change significantly (21% to 17%).",
    "implication": "Do not reward internal posts by raw engagement; recognize accuracy and sourcing, especially when reorganization rumors circulate.",
    "boundary": "A pilot and three preregistered experiments with a simulated social-media sharing task.",
    "sources": [
@@ -6920,7 +6869,7 @@
    ],
    "study": {
     "design": "Pilot plus three preregistered experiments",
-    "n": "Not stated in published abstract"
+    "n": "4,128 participants"
    },
    "theme": "persuasion",
    "permuted": true
@@ -6938,7 +6887,7 @@
     "truth": true
    },
    "answerTitle": "Cards raised returns and lowered cost per pill",
-   "explain": "The cards increased both the likelihood that patients returned unused pills and the number returned, and lowered cost per pill returned and per participant who returned pills.",
+   "explain": "Toma, Dimant and colleagues show, with 512 Veterans, that reminder cards raised the share returning unused pills by 6.88 percentage points over a 24.8% control rate, and cut program cost per pill returned from $15.66 to $12.57.",
    "implication": "Before raising an incentive, test cheap, well-timed reminders that help people act on the incentive they already have.",
    "boundary": "US veterans in one cash buyback program for opioid pills; the cards added to, not replaced, the cash incentive.",
    "sources": [
@@ -6960,7 +6909,7 @@
    ],
    "study": {
     "design": "Pre-registered field experiment",
-    "n": "US veterans (N not confirmed in published text read)"
+    "n": "512 veterans"
    },
    "theme": "honesty"
   },
@@ -6980,7 +6929,7 @@
    ],
    "answer": 2,
    "answerTitle": "Pessimistic expectations, not unwillingness, drove the gap",
-   "explain": "The intergroup conflict was attributed to grim expectations about the opposing faction’s cooperativeness, not actual unwillingness to cooperate.",
+   "explain": "In Dimant's public goods games, the share of conditional cooperators dropped no more for a Trump opponent (72.8% to 59.0%) than for a painting-preference outgroup (73.2% to 62.4%). Expectations differed: people predicted opponents would contribute less.",
    "implication": "In politically mixed teams, share evidence that colleagues on the other side do cooperate before launching joint projects.",
    "boundary": "Incentivized experiments on US polarization around Donald Trump, compared with other social identities.",
    "sources": [
@@ -7023,7 +6972,7 @@
    ],
    "answer": 0,
    "answerTitle": "Most picked extremes, accepting strategic risk",
-   "explain": "In polarized environments, most people preferred extreme actions that exposed them to considerable strategic risk over intermediate actions that minimized it.",
+   "explain": "With 1,203 US adults, Dimant and colleagues show that a polarized, two-camp norm produced the most dispersed contributions (variance 2.68, against 1.26 under a tight norm), as most people chose extreme actions despite their strategic risk.",
    "implication": "Report the spread of team behavior, not only the average; a split norm pulls people toward one camp or the other.",
    "boundary": "Two-player contribution game with 1,203 US adults, with the distribution of others’ behavior set by design.",
    "sources": [
@@ -7463,11 +7412,11 @@
    "scene": "Researchers tracked freelancers on a large online labor platform before and after ChatGPT, DALL-E 2 and Midjourney were released.",
    "question": "Is this what the study found?",
    "forecast": {
-    "claim": "Freelancers with strong past performance also lost jobs and earnings after ChatGPT arrived.",
-    "truth": true
+    "claim": "Freelancers with strong past performance were shielded from the losses.",
+    "truth": false
    },
    "answerTitle": "Top freelancers were not spared",
-   "explain": "Freelancers in highly affected occupations saw reductions in both employment and earnings, with suggestive evidence that top freelancers were disproportionately affected.",
+   "explain": "Hui, Reshef and Zhou found that after ChatGPT, DALL-E 2 and Midjourney launched, freelancers in highly affected occupations lost both jobs and earnings. Strong past performance offered no protection, and suggestive evidence shows top freelancers were hit harder.",
    "implication": "Do not assume your strongest contractors keep their rates; review vendor mix and pricing in writing and image work.",
    "boundary": "Short-term effects on one online platform after 2022 to 2023 model releases.",
    "sources": [
@@ -7506,7 +7455,7 @@
     "truth": true
    },
    "answerTitle": "For their own job, people preferred the robot",
-   "explain": "People preferred others to be replaced by humans, but this reversed for their own job. Robot replacement threatened self-worth less, though it threatened economic futures more.",
+   "explain": "Granulo, Fuchs and Puntoni found that people prefer other workers to be replaced by humans rather than robots but reverse that preference for their own job. Losing out to a machine threatens self-worth less, though it threatens one's economic future more.",
    "implication": "When automating roles, address economic security directly; do not assume staff will be less upset than with outsourcing to people.",
    "boundary": "Hypothetical job-loss scenarios in experiments.",
    "sources": [
@@ -8146,7 +8095,7 @@
     ]
    },
    "answerTitle": "AI for worse offers, humans for better ones",
-   "explain": "Worse-than-expected offers drew higher purchase likelihood and satisfaction from an AI agent; better-than-expected offers drew more positive responses from a human. Weaker perceived intentions of AI explain both.",
+   "explain": "Across consumer experiments, Garvey, Kim and Duhachek found worse-than-expected offers drew higher purchase likelihood and satisfaction from an AI agent, and better-than-expected offers drew more positive responses from a human, because AI seems to have weaker intentions.",
    "implication": "If bots deliver price increases, review that choice for fairness and disclosure; deliver generous offers through people, where they earn more credit.",
    "boundary": "Consumer experiments on purchase likelihood and satisfaction after single offers presented by AI or human agents.",
    "sources": [
@@ -8530,6 +8479,14 @@
     "tong21"
    ],
    "reason": "Review 4: routings rested on author suggestions, and the abstracts report no effect sizes."
+  },
+  {
+   "id": "social03",
+   "title": "When peers vary",
+   "sources": [
+    "norms24"
+   ],
+   "reason": "Review 4: duplicate of social01 (same paper, same tight-versus-loose result)."
   }
  ],
  "themes": [

@@ -180,3 +180,12 @@ def test_evidence_comes_from_versions_of_record():
     ev = json.loads((ROOT / 'src/evidence.json').read_text())
     bad = [(k, q['location'][:40]) for k, qs in ev.items() for q in qs if re.search(r'\b(NBER|working paper|SSRN|arXiv)\b', q.get('location', ''), re.I) and 'design details only' not in q.get('location', '')]
     assert not bad, bad[:5]
+
+# Explanations without a number: full text not readable, so the abstract-level statement stands (docs/audit/explain_rewrites_2026_10_31.json).
+NO_NUMBER = {'ai12', 'biz02', 'biz08', 'social04', 'social14', 'social20', 'axb11', 'axb12', 'bz14', 'bz16', 'axe08', 'axe09', 'axf04'}
+GENERIC = re.compile(r"\b(research (highlights|documents|shows)|experiments link|the study found|studies show)\b", re.I)
+def test_explanations_carry_the_key_number():
+    """Review 4, M7: the main teaching sentence states the result with its number, in plain words."""
+    assert not [c['id'] for c in LIVE if not re.search(r'\d', c['explain']) and c['id'] not in NO_NUMBER]
+    assert not [c['id'] for c in LIVE if GENERIC.search(c['explain'])]
+    assert GENERIC.search('Medical-AI resistance research highlights concerns')

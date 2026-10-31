@@ -223,3 +223,23 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 190 tests, audit doc and doc counts regenerated.
 
 **Count:** 1 Blocking + 7 Major found and addressed. Next: independent review 4.
+
+## Iteration 9 (2026-10-31)
+
+**Verified first:** iteration-8 fixes, by independent review 4 (fresh agent, snapshot `snap_r4`): served pages carry no answers (full scan), the class lock held on every route probed, midpoint guesses capped at 50, rank ties shown and unscored, axe 0 violations on 21 states, keyboard-only path, 50-student load.
+
+**Independent score:** 76/100 (review 4, `qa/reviews/review4.md`). 0 Blocking, 7 Major.
+
+**Fixes:**
+- **M1 path leaks.** Reveals and follow-ups that answered later items on the same path were rewritten (rollout3, rollout2, dimant-polarizednorms-choice, social01, dimant-hate-choice, social15, social16); the Dimant path and the design path were reordered. Gate: an item's key numbers may not appear in the reveal of an earlier item on its path.
+- **M2 versions of record (swept across the whole bank).** Every evidence quote located in a working paper was removed; content that rested on them was rewritten or re-sourced (social13, social12, biz02, ai01, ai02, biz01 now cites Cribb & Emmerson 2020 for the 86% and 37% figures). Gates: no working-paper material in decisions or evidence locations.
+- **M3 allocate.** Points are spread over which option worked best and scored with the same proper rule as forecasts (1 − sum of squared gaps); splitting pays under uncertainty. No separate confidence; the allocation itself enters calibration. The reveal shows points per option with the reported values as labels, no mixed axes.
+- **M4 class lock.** A class holds the lock only while active: the instructor console refreshes it, 20 idle minutes release it, an ended class never holds it. Solo players see a note before they answer. Reopening a decision takes it out of the released set.
+- **M5 contested and exploratory results.** bz06 and social13 became items about the strength of the evidence; axf06 became a forecast about the measured physician result; axe03 retired (routings rested on author suggestions); axe02 keeps only measured routings; axe08's forecast now claims the opposite of the suggestive result (false).
+- **M6 phone rank chart.** HTML bars with "#average rank" labels, matching the projector.
+- **M7 explanations.** 44 explanations rewritten from the versions of record with their key numbers (30 with effect sizes or samples; 13 abstract-only where full texts were unreadable, listed in the gate's allow-list). social03 retired as a duplicate of social01. Gate: a number in every explanation outside the allow-list, and no generic phrasing.
+- **Minors.** axf04 task order no longer alternates; pick-two items have four options with no logical negations; record strip shows only measures where higher is better plus the calibration gap; plain forecast caption; quiet "Slide to answer" prompts and faint untouched thumbs; projector view on the console; Streamlit tutor hides findings until asked, forecasts need an entered probability, rank start order matches the phones (parity-tested); CSV guard covers tab and carriage return; HEAD supported; docs state that the offline file carries answers and how to confirm Gemini model ids.
+
+**Gates:** build check, 194 tests, audit doc and counts regenerated.
+
+**Count:** 0 Blocking + 7 Major found and addressed. Next: independent review 5.
