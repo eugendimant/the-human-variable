@@ -155,6 +155,24 @@ function heroTry() {
   </section>`;
 }
 
+
+// ----- theme marks: one small drawing per principle, in the game's own code (blue = a call, amber = evidence) -----
+const L = 'stroke="var(--art-line)" fill="none" stroke-width="2" stroke-linecap="round"', Y = 'fill="var(--art-you)"', E = 'fill="var(--art-ev)"';
+const ART = {
+  'ai-work': `<path d="M8 70 C40 70 46 30 70 34 S104 72 124 52 S146 24 154 22" ${L} stroke-dasharray="3 5"/>${[[22, 54], [36, 44], [52, 52], [86, 24], [104, 36]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" ${Y}/>`).join('')}${[[92, 76], [118, 82], [140, 64]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" ${E}/>`).join('')}`,
+  'ai-trust': `<line x1="10" y1="60" x2="150" y2="60" ${L}/>${[20, 38, 56, 74, 92, 110].map(x => `<circle cx="${x}" cy="60" r="5" ${Y}/>`).join('')}<circle cx="132" cy="28" r="7" ${E}/><path d="M132 40 L132 54" ${L} stroke-dasharray="2 4"/>`,
+  'fairness': `<line x1="10" y1="88" x2="150" y2="88" ${L}/><rect x="28" y="22" width="18" height="66" rx="3" ${Y}/><rect x="50" y="34" width="18" height="54" rx="3" ${E}/><rect x="92" y="22" width="18" height="66" rx="3" ${Y}/><rect x="114" y="58" width="18" height="30" rx="3" ${E}/>`,
+  'persuasion': `${[18, 40, 62, 84].map(y => `<path d="M12 ${y} Q80 ${y} 128 52" ${L}/>`).join('')}<path d="M12 62 Q80 62 128 52" stroke="var(--art-ev)" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="136" cy="52" r="8" ${E}/>`,
+  'choice': `<path d="M10 52 H150" stroke="var(--art-ev)" stroke-width="5" stroke-linecap="round"/><path d="M60 52 C84 52 86 22 112 22 H150" ${L}/><path d="M60 52 C84 52 86 82 112 82 H150" ${L}/><circle cx="150" cy="52" r="6" ${E}/><circle cx="60" cy="52" r="6" ${Y}/>`,
+  'incentives': `<line x1="10" y1="88" x2="150" y2="88" ${L}/>${[0, 1, 2, 3, 4].map(i => `<rect x="${18 + i * 26}" y="${74 - i * 13}" width="20" height="${14 + i * 13}" rx="3" ${i === 4 ? E : Y} opacity="${i === 4 ? 1 : .35 + i * .15}"/>`).join('')}`,
+  'evidence': `<line x1="16" y1="34" x2="144" y2="34" ${L}/><line x1="16" y1="26" x2="16" y2="42" ${L}/><line x1="144" y1="26" x2="144" y2="42" ${L}/><circle cx="96" cy="34" r="6" ${Y}/><line x1="70" y1="72" x2="94" y2="72" stroke="var(--art-ev)" stroke-width="3"/><circle cx="82" cy="72" r="7" ${E}/>`,
+  'honesty': `<rect x="46" y="14" width="68" height="68" rx="14" ${L}/>${[[62, 30], [98, 30], [62, 66], [98, 66], [62, 48]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="6" ${Y}/>`).join('')}<circle cx="98" cy="48" r="6" ${E}/>`,
+  'norms': `<path d="M8 84 C40 84 50 20 80 20 S120 84 152 84" ${L} stroke-dasharray="3 5"/><path d="M8 84 C24 84 30 26 46 26 S64 84 80 84 S98 26 114 26 S136 84 152 84" stroke="var(--art-ev)" stroke-width="3" fill="none"/><circle cx="80" cy="84" r="6" ${Y}/>`,
+  'forecasting': `<line x1="14" y1="52" x2="146" y2="52" ${L} stroke-width="6"/><circle cx="62" cy="52" r="9" ${Y}/><path d="M72 52 H132" stroke="var(--art-ev)" stroke-width="2" stroke-dasharray="3 4"/><circle cx="146" cy="52" r="9" ${E}/>`,
+};
+const PATH_ART = { 'leading-ai': 'ai-work', 'ai-customers': 'ai-trust', 'trust-algo': 'forecasting', measure: 'evidence', 'dimant-lab': 'norms', design: 'choice', people: 'incentives', truth: 'persuasion' };
+const art = (id, cls = '') => ART[id] ? `<svg class="art ${cls}" viewBox="0 0 160 100" aria-hidden="true" focusable="false">${ART[id]}</svg>` : '';
+
 function home() {
   const nSrc = Object.values(SOURCE).filter(isLive).length;
   const dimant = Object.values(SOURCE).filter(s => isLive(s) && /Dimant/.test(s.authors));
@@ -169,7 +187,7 @@ function home() {
     ${heroTry()}</div></section>
   <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
-    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}">${pi === 0 ? '<em class="path-flag">Start here</em>' : p.case ? '<em class="path-flag">Multi-step case</em>' : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
+    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}">${art(PATH_ART[p.id])}${pi === 0 ? '<em class="path-flag">Start here</em>' : p.case ? '<em class="path-flag">Multi-step case</em>' : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
   </section>
   ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p>How the shape of a norm, the visibility of peers and political identity change what people do at work and in society.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
     <ul class="paper-list">${dimant.slice(0, 6).map(s => `<li><button data-source="${esc(s.id)}"><strong>${esc(s.title)}</strong><small>${esc(s.venue)}, ${s.year}</small></button></li>`).join('')}</ul></div></section>` : ''}`;
@@ -375,7 +393,7 @@ function almanac() {
   const themes = BANK.themes || [];
   return `<section class="atlas-head wrap">${libHead()}
     <nav class="theme-index" aria-label="Themes">${themes.map(t => `<a href="#theme-${esc(t.id)}">${esc(t.title)}</a>`).join('')}</nav></section>
-    <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; return `<article class="theme panel" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p>${(t.principle ? esc(t.principle) : libraryLoaded ? 'Held back while a live class is running on this server.' : 'Loading…')}</p></div>
+    <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; return `<article class="theme panel" id="theme-${esc(t.id)}">${art(t.id)}<div class="theme-head"><h2>${esc(t.title)}</h2><p>${(t.principle ? esc(t.principle) : libraryLoaded ? 'Held back while a live class is running on this server.' : 'Loading…')}</p></div>
       <details class="theme-more"><summary>The ${cs.length} findings behind it</summary><ul class="findings">${cs.map(c => `<li><div><strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small></div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
       <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play these ${cs.length}</button></article>` }).join('')}</section>`;
 }

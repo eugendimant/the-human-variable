@@ -2710,7 +2710,7 @@
    "question": "What mainly drove consumers’ resistance?",
    "options": [
     "It costs more than a human doctor",
-    "It takes longer than a human doctor",
+    "It is less accurate than a doctor",
     "It cannot account for my situation"
    ],
    "answer": 2,
@@ -4546,8 +4546,8 @@
    "scene": "A firm runs a gender-neutral ad promoting STEM careers and lets the platform's algorithm deliver it cost-effectively. Fewer women than men end up seeing it.",
    "question": "What best explains the gap?",
    "options": [
-    "Women rarely use the platform",
-    "The advertiser targeted men by mistake",
+    "Women scrolled past the ads more often",
+    "The ad copy appealed more to men",
     "The algorithm learned women click less",
     "Showing ads to young women costs more"
    ],
@@ -5666,7 +5666,6 @@
    "options": [
     "Higher under stock-heavy menu X",
     "Higher under bond-heavy menu Y",
-    "Unpredictable: it depends on markets",
     "Same: people pick their own risk level"
    ],
    "answer": 0,
@@ -7014,7 +7013,7 @@
    ],
    "answer": 2,
    "answerTitle": "Pessimistic expectations, not unwillingness, drove the gap",
-   "explain": "The intergroup conflict was attributed to grim expectations about the opposing faction's cooperativeness, not actual unwillingness to cooperate. Out-group hate appeared in behavior; in-group love appeared in perceptions.",
+   "explain": "The intergroup conflict was attributed to grim expectations about the opposing faction’s cooperativeness, not actual unwillingness to cooperate.",
    "implication": "In politically mixed teams, share evidence that colleagues on the other side do cooperate before launching joint projects.",
    "boundary": "Incentivized experiments on US polarization around Donald Trump, compared with other social identities.",
    "sources": [

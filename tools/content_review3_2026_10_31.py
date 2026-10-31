@@ -57,3 +57,14 @@ for c in bank['challenges']:
 C['axe05']['boundary'] = 'Public forum answers by volunteer physicians, rated for quality and empathy by a team of licensed health care professionals.'
 C['bz07']['boundary'] = 'One Chinese technology firm: a six-month randomized trial with 1,612 employees, with performance reviews over two years.'
 (ROOT / 'src/bank.json').write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('boundaries ok')
+# --- minor 8 and 9: weak distractors and a cross-item leak (same paper)
+def swap(cid, old, new):
+    C[cid]['options'] = [new if o == old else o for o in C[cid]['options']]
+swap('axb12', 'Women rarely use the platform', 'Women scrolled past the ads more often')
+swap('axb12', 'The advertiser targeted men by mistake', 'The ad copy appealed more to men')
+swap('ai12', 'It takes longer than a human doctor', 'It is less accurate than a doctor')
+if 'Unpredictable: it depends on markets' in C['bz16']['options'] or 'Lower under X: people offset the menu' in C['bz16']['options']:
+    o = C['bz16']['options']; drop = next(i for i, x in enumerate(o) if x in ('Unpredictable: it depends on markets', 'Lower under X: people offset the menu'))
+    del o[drop]; C['bz16']['answer'] -= C['bz16']['answer'] > drop
+C['dimant-hate-choice']['explain'] = 'The intergroup conflict was attributed to grim expectations about the opposing faction’s cooperativeness, not actual unwillingness to cooperate.'
+(ROOT / 'src/bank.json').write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('distractors ok')
