@@ -1,0 +1,259 @@
+{
+  "meta": {
+    "checked_utc": "2026-10-31",
+    "doi_verification": "Every DOI below was resolved through api.crossref.org (by direct /works/<DOI> lookup, or, where marked, by a Crossref bibliographic query whose returned DOI and metadata matched). Abstract quotes come from publisher pages, the open PDF, or abstracts reconstructed by OpenAlex; quotes were capped at about 125 characters, so some are partial sentences.",
+    "evidence_rule": "Only peer-reviewed journal articles are cited. Blogs and working papers are mentioned only in notes, never as evidence."
+  },
+  "findings": [
+    {
+      "id": 1,
+      "claim": "Hotel towel reuse: descriptive-norm messages ('most guests reuse towels') beat standard environmental appeals; 'provincial' (same-room) norms work best.",
+      "original": {
+        "citation": "Goldstein, N. J., Cialdini, R. B., & Griskevicius, V. (2008). A room with a viewpoint: Using social norms to motivate environmental conservation in hotels. Journal of Consumer Research, 35(3), 472-482.",
+        "doi": "10.1086/586910",
+        "doi_verified": true
+      },
+      "verdict": "MIXED",
+      "verdict_rationale": "Signs of either kind raise reuse compared with no sign, but whether the norm wording beats a plain environmental appeal depends on the study and on how the evidence is pooled. The 'provincial norm' (same-room) effect has not reliably replicated.",
+      "papers": [
+        {
+          "role": "replication (failed on the key contrast)",
+          "citation": "Bohner, G., & Schlüter, L. E. (2014). A room with a viewpoint revisited: Descriptive norms and hotel guests' towel reuse behavior. PLoS ONE, 9(8), e104086.",
+          "doi": "10.1371/journal.pone.0104086",
+          "doi_verified": true,
+          "doi_note": "The DOI in the request (10.1371/journal.pone.0106485) is wrong. Crossref rejected it; the correct DOI is e104086.",
+          "abstract_finding": "Both message types raised reuse compared with no message, but \"descriptive norm messages were not more effective than the standard message\", and proximity effects were inconsistent across the two hotels."
+        },
+        {
+          "role": "Bayesian evidence synthesis (supportive)",
+          "citation": "Scheibehenne, B., Jamil, T., & Wagenmakers, E.-J. (2016). Bayesian evidence synthesis can reconcile seemingly inconsistent results: The case of hotel towel reuse. Psychological Science, 27(7), 1043-1046.",
+          "doi": "10.1177/0956797616644081",
+          "doi_verified": true,
+          "abstract_finding": "Short report: no abstract was available through Crossref, OpenAlex or Semantic Scholar. The commentary below says it 'provided strong evidence for an effect of social-norm messages on towel reuse in hotels' by pooling the seven available studies."
+        },
+        {
+          "role": "critique of the synthesis",
+          "citation": "Carlsson, R., Schimmack, U., Williams, D. R., & Bürkner, P.-C. (2017). Bayes factors from pooled data are no substitute for Bayesian meta-analysis: Commentary on Scheibehenne, Jamil, and Wagenmakers (2016). Psychological Science, 28(11), 1694-1697.",
+          "doi": "10.1177/0956797616684682",
+          "doi_verified": true,
+          "abstract_finding": "Text excerpts (from the article PDF): \"allowing for some variability substantially reduced the evidence in favor of an effect\"; \"even a small amount of between-samples variability renders the evidence inconclusive.\""
+        },
+        {
+          "role": "conceptual replication (supportive, provincial norm)",
+          "citation": "Reese, G., Loew, K., & Steffgen, G. (2014). A towel less: Social norms enhance pro-environmental behavior in hotels. The Journal of Social Psychology, 154(2), 97-100.",
+          "doi": "10.1080/00224545.2013.855623",
+          "doi_verified": true,
+          "doi_verification_method": "Crossref bibliographic query",
+          "abstract_finding": "\"guests of two hotels used significantly fewer towels when provincial normative appeals\" rather than standard environmental messages were communicated."
+        },
+        {
+          "role": "meta-analysis (supportive, small effect)",
+          "citation": "Nisa, C., Varum, C., & Botelho, A. (2017). Promoting sustainable hotel guest behavior: A systematic review and meta-analysis. Cornell Hospitality Quarterly, 58(4), 354-363.",
+          "doi": "10.1177/1938965517704371",
+          "doi_verified": true,
+          "abstract_finding": "The social-norms effect on towel reuse was \"an effect weaker than reported in previous meta-analyses but consistent\", \"producing modest increases in the levels of towel reuse.\""
+        },
+        {
+          "role": "large field experiment (supportive of well-designed normative appeals, modest size)",
+          "citation": "Gössling, S., Araña, J. E., & Aguiar-Quintana, J. T. (2019). Towel reuse in hotels: Importance of normative appeal designs. Tourism Management, 70, 273-283.",
+          "doi": "10.1016/j.tourman.2018.08.027",
+          "doi_verified": true,
+          "abstract_finding": "With about 21,000 observations in 7 hotels, \"comprehensive message designs can increase towel reuse by 6.8% and bed linen reuse by 1.2%\"."
+        }
+      ],
+      "player_statement": "Telling guests most others reuse towels helps a little, but several replications found it works no better than a plain green appeal."
+    },
+    {
+      "id": 2,
+      "claim": "Groups have a general collective intelligence factor 'c' that predicts performance better than members' IQ, driven by social sensitivity, equal conversational turn-taking, and share of women.",
+      "original": {
+        "citation": "Woolley, A. W., Chabris, C. F., Pentland, A., Hashmi, N., & Malone, T. W. (2010). Evidence for a collective intelligence factor in the performance of human groups. Science, 330(6004), 686-688.",
+        "doi": "10.1126/science.1193147",
+        "doi_verified": true
+      },
+      "verdict": "CONTESTED",
+      "verdict_rationale": "The original team's 22-study meta-analysis supports c and the social-perceptiveness link. Independent work finds c weak or reducible to members' IQ, the turn-taking and gender effects did not replicate, and another meta-analysis finds most studies underpowered.",
+      "papers": [
+        {
+          "role": "independent replication (failed on key predictors)",
+          "citation": "Bates, T. C., & Gupta, S. (2017). Smart groups of smart people: Evidence for IQ as the origin of collective intelligence in the performance of human groups. Intelligence, 60, 46-56.",
+          "doi": "10.1016/j.intell.2016.11.004",
+          "doi_verified": true,
+          "abstract_finding": "\"Contrary to prediction, individual IQ accounted for around 80% of group-IQ differences\"; \"Hypotheses that group-IQ increases with number of women in the group and with turn-taking were not supported\"; \"RME exerted no influence on the group-IQ latent factor.\""
+        },
+        {
+          "role": "reanalysis / critique",
+          "citation": "Credé, M., & Howardson, G. (2017). The structure of group task performance—A second look at \"collective intelligence\": Comment on Woolley et al. (2010). Journal of Applied Psychology, 102(10), 1483-1492.",
+          "doi": "10.1037/apl0000176",
+          "doi_verified": true,
+          "abstract_finding": "\"we show that the general factor explains only little variance in many group tasks\"; \"there is insufficient support for the existence of a collective intelligence construct.\""
+        },
+        {
+          "role": "meta-analysis by original team (supportive)",
+          "citation": "Riedl, C., Kim, Y. J., Gupta, P., Malone, T. W., & Woolley, A. W. (2021). Quantifying collective intelligence in human groups. Proceedings of the National Academy of Sciences, 118(21), e2005737118.",
+          "doi": "10.1073/pnas.2005737118",
+          "doi_verified": true,
+          "abstract_finding": "\"We find strong support for a general factor of CI using meta-analytic methods in a dataset comprising 22 studies\"; the share of women predicts performance, \"mediated by social perceptiveness.\" The abstract names 'group collaboration process' as the strongest predictor but does not name turn-taking."
+        },
+        {
+          "role": "independent meta-analysis (skeptical)",
+          "citation": "Rowe, L. I., Hattie, J., & Hester, R. (2021). g versus c: Comparing individual and collective intelligence across two meta-analyses. Cognitive Research: Principles and Implications, 6(1), 26.",
+          "doi": "10.1186/s41235-021-00285-2",
+          "doi_verified": true,
+          "abstract_finding": "c correlated moderately with group performance, \"r, of .26 (95% CI .10, .40)\", and average member IQ had \"little to no correlation\" (r = .06); \"Around 80% of studies did not have enough statistical power\"; the authors \"caution against prematurely embracing notions of the c-factor.\""
+        },
+        {
+          "role": "extension by original team (supportive on social sensitivity)",
+          "citation": "Engel, D., Woolley, A. W., Jing, L. X., Chabris, C. F., & Malone, T. W. (2014). Reading the mind in the eyes or reading between the lines? Theory of mind predicts collective intelligence equally well online and face-to-face. PLoS ONE, 9(12), e115212.",
+          "doi": "10.1371/journal.pone.0115212",
+          "doi_verified": true,
+          "abstract_finding": "\"the ToM measure is equally predictive of collective intelligence in both face-to-face and online groups.\""
+        }
+      ],
+      "player_statement": "The original team keeps finding a 'group IQ' tied to social sensitivity; independent teams often find it shrinks to members' own IQ, and turn-taking effects did not replicate."
+    },
+    {
+      "id": 3,
+      "claim": "Blind auditions (screens) raised women's chances of advancing and being hired in US symphony orchestras.",
+      "original": {
+        "citation": "Goldin, C., & Rouse, C. (2000). Orchestrating impartiality: The impact of \"blind\" auditions on female musicians. American Economic Review, 90(4), 715-741.",
+        "doi": "10.1257/aer.90.4.715",
+        "doi_verified": true
+      },
+      "verdict": "MIXED",
+      "verdict_rationale": "Most point estimates favor the screen, but most are not statistically significant. The authors say so in the abstract and text: one effect runs the other way, and the hiring effects are not significant. No peer-reviewed reanalysis or rebuttal was found. Public critiques (2019, Gelman and Pallesen) are blogs or press and cannot be cited.",
+      "precision_detail": {
+        "source": "Goldin & Rouse (2000), read from the full-text PDF",
+        "abstract_quote": "\"Although some of our estimates have large standard errors and there is one persistent effect in the opposite direction, the weight of the evidence suggests that the blind audition procedure fostered impartiality in hiring and increased the proportion women in symphony orchestras.\"",
+        "table6_advancement_female_x_blind_LPM_individual_FE": {
+          "preliminaries_no_semifinal": "0.125 (SE 0.068); 0.111 (SE 0.067) with year FE: marginal at about p < .10 at best",
+          "preliminaries_with_semifinal": "0.013 (SE 0.215); -0.025 (SE 0.251): null",
+          "semifinals": "-0.179 (SE 0.126); -0.235 (SE 0.133): wrong sign, the 'persistent effect in the opposite direction'",
+          "finals": "0.308 (SE 0.196); 0.331 (SE 0.181): large but imprecise"
+        },
+        "table9_hiring_completely_blind_x_female": {
+          "no_semifinal": "0.051 (SE 0.046); 0.036 (SE 0.048)",
+          "with_semifinal": "0.001 (SE 0.016); -0.004 (SE 0.016)",
+          "all_auditions": "0.011 (SE 0.013); 0.006 (SE 0.013)",
+          "note": "None is statistically significant. Text: \"the standard errors are large and thus the effect is not statistically significant.\""
+        },
+        "headline_claims": "The '50 percent' increase in advancing from certain preliminary rounds and the '30 percent of the increase in female new hires' (roster data) are stated in the conclusion without standard errors. The authors say the roster coefficient is 'imprecisely estimated' and that some coefficients 'do not pass standard tests of statistical significance'.",
+        "table_numbering_caveat": "The coefficient tables were extracted from a PDF by a tool. Check them against the printed AER pages before showing exact numbers to players."
+      },
+      "papers": [],
+      "peer_reviewed_critique_found": false,
+      "notes": "Parodi, Périvier, Etienne et al. (2024) study French orchestra juries. It is an OFCE working paper, not peer reviewed, and is not cited.",
+      "player_statement": "The famous blind-audition study points toward helping women, but most of its estimates were too noisy to be statistically significant, as its authors noted."
+    },
+    {
+      "id": 4,
+      "claim": "Endowment effect: owners demand far more to sell a mug than buyers will pay (WTA >> WTP), reflecting loss aversion.",
+      "original": {
+        "citation": "Kahneman, D., Knetsch, J. L., & Thaler, R. H. (1990). Experimental tests of the endowment effect and the Coase theorem. Journal of Political Economy, 98(6), 1325-1348.",
+        "doi": "10.1086/261737",
+        "doi_verified": true
+      },
+      "verdict": "MIXED",
+      "verdict_rationale": "The WTA-WTP gap itself is robust across meta-analyses and replications, and it survived a direct replication of the procedure meant to eliminate it. Whether the gap reflects loss aversion over owned goods, or procedures and beliefs, is still debated, and the gap is smaller for ordinary market goods and with incentive-compatible elicitation.",
+      "papers": [
+        {
+          "role": "critique (gap vanishes with training)",
+          "citation": "Plott, C. R., & Zeiler, K. (2005). The willingness to pay-willingness to accept gap, the \"endowment effect,\" subject misconceptions, and experimental procedures for eliciting valuations. American Economic Review, 95(3), 530-545.",
+          "doi": "10.1257/0002828054201387",
+          "doi_verified": true,
+          "doi_verification_method": "Crossref bibliographic query",
+          "abstract_finding": "\"Using the modified procedures, we observe no gap between WTA and WTP.\""
+        },
+        {
+          "role": "comment (gap persists for lotteries in P&Z's own design)",
+          "citation": "Isoni, A., Loomes, G., & Sugden, R. (2011). The willingness to pay-willingness to accept gap, the \"endowment effect,\" subject misconceptions, and experimental procedures for eliciting valuations: Comment. American Economic Review, 101(2), 991-1011.",
+          "doi": "10.1257/aer.101.2.991",
+          "doi_verified": true,
+          "doi_verification_method": "Crossref bibliographic query",
+          "abstract_finding": "P&Z report the disparity \"is absent for mugs\", but \"other data from that same study, not published in that paper, exhibit a significant and persistent disparity\" for lotteries."
+        },
+        {
+          "role": "reply",
+          "citation": "Plott, C. R., & Zeiler, K. (2011). The willingness to pay-willingness to accept gap, the \"endowment effect,\" subject misconceptions, and experimental procedures for eliciting valuations: Reply. American Economic Review, 101(2), 1012-1028.",
+          "doi": "10.1257/aer.101.2.1012",
+          "doi_verified": true,
+          "doi_verification_method": "Crossref bibliographic query",
+          "abstract_finding": "\"First, all mug data reject endowment effect theory\"; lottery gaps reflect \"changing beliefs, as opposed to the shape of preferences.\""
+        },
+        {
+          "role": "failed replication of Plott & Zeiler (gap reappears)",
+          "citation": "Fehr, D., Hakimov, R., & Kübler, D. (2015). The willingness to pay-willingness to accept gap: A failed replication of Plott and Zeiler. European Economic Review, 78, 120-128.",
+          "doi": "10.1016/j.euroecorev.2015.05.006",
+          "doi_verified": true,
+          "abstract_finding": "With P&Z's procedures the mug gap persisted; \"we find no evidence of the idea that subject misconceptions are the main source of the WTP–WTA gap.\""
+        },
+        {
+          "role": "experiment (gap without misconceptions)",
+          "citation": "Bartling, B., Engl, F., & Weber, R. A. (2015). Game form misconceptions are not necessary for a willingness-to-pay vs. willingness-to-accept gap. Journal of the Economic Science Association, 1(1), 72-85.",
+          "doi": "10.1007/s40881-015-0008-0",
+          "doi_verified": true,
+          "abstract_finding": "\"We conclude that game form misconceptions are not a necessary condition for the emergence of WTP-WTA gaps.\""
+        },
+        {
+          "role": "meta-analysis (gap real, varies by context)",
+          "citation": "Tunçel, T., & Hammitt, J. K. (2014). A new meta-analysis on the WTP/WTA disparity. Journal of Environmental Economics and Management, 68(1), 175-187.",
+          "doi": "10.1016/j.jeem.2014.06.001",
+          "doi_verified": true,
+          "abstract_finding": "The disparity is smaller for ordinary private goods and with market or repeated-trial experience, and \"the disparity is significantly smaller in studies using incentive-compatible elicitation mechanisms.\""
+        },
+        {
+          "role": "meta-analysis of loss aversion (context for mechanism)",
+          "citation": "Brown, A. L., Imai, T., Vieider, F. M., & Camerer, C. F. (2024). Meta-analysis of empirical estimates of loss aversion. Journal of Economic Literature, 62(2), 485-516.",
+          "doi": "10.1257/jel.20221698",
+          "doi_verified": true,
+          "doi_verification_method": "Crossref bibliographic query and direct lookup",
+          "abstract_finding": "Across 607 estimates from 150 articles, the mean loss-aversion coefficient is about 1.955 (95% interval roughly 1.82-2.10)."
+        }
+      ],
+      "notes": "Chapman, Dean, Ortoleva, Snowberg & Camerer ('Willingness to accept, willingness to pay, and loss aversion', NBER w30836) is relevant, but no journal version was found, so it is not cited.",
+      "player_statement": "People usually ask more to sell something than they would pay for it; researchers still debate whether that reflects loss aversion or how the questions are asked."
+    },
+    {
+      "id": 5,
+      "claim": "Pluralistic ignorance: students believe peers are more comfortable with campus drinking than they themselves are, and this misperception shapes behavior.",
+      "original": {
+        "citation": "Prentice, D. A., & Miller, D. T. (1993). Pluralistic ignorance and alcohol use on campus: Some consequences of misperceiving the social norm. Journal of Personality and Social Psychology, 64(2), 243-256.",
+        "doi": "10.1037/0022-3514.64.2.243",
+        "doi_verified": true
+      },
+      "verdict": "ROBUST",
+      "verdict_rationale": "No published failed direct replication was found. The self-other gap has been reproduced many times and is supported meta-analytically. Peer-reviewed critiques question its size and measurement, not its existence.",
+      "papers": [
+        {
+          "role": "conceptual replication / extension",
+          "citation": "Suls, J., & Green, P. (2003). Pluralistic ignorance and college student perceptions of gender-specific alcohol norms. Health Psychology, 22(5), 479-486.",
+          "doi": "10.1037/0278-6133.22.5.479",
+          "doi_verified": true,
+          "abstract_finding": "Across four studies (N = 971), \"Men reported that same-sex peers were less concerned about campus alcohol practices than themselves or female students.\""
+        },
+        {
+          "role": "meta-analysis (supportive, with moderators)",
+          "citation": "Borsari, B., & Carey, K. B. (2003). Descriptive and injunctive norms in college drinking: A meta-analytic integration. Journal of Studies on Alcohol, 64(3), 331-341.",
+          "doi": "10.15288/jsa.2003.64.331",
+          "doi_verified": true,
+          "abstract_finding": "Across 23 studies, \"All five predictors were significantly related to self-other differences in perception of norms\"; the gaps were larger for injunctive norms, distal reference groups and smaller campuses."
+        },
+        {
+          "role": "critique (magnitude and measurement)",
+          "citation": "Pape, H. (2012). Young people's overestimation of peer substance use: An exaggerated phenomenon? Addiction, 107(5), 878-884.",
+          "doi": "10.1111/j.1360-0443.2011.03680.x",
+          "doi_verified": true,
+          "abstract_finding": "\"Young people's tendency to overestimate peer drinking and drug use has been exaggerated while the uncertainty surrounding the evidence in question has been understated.\""
+        },
+        {
+          "role": "critique (method artifact)",
+          "citation": "Melson, A. J., Davies, J. B., & Martinus, T. (2011). Overestimation of peer drinking: Error of judgement or methodological artefact? Addiction, 106(6), 1078-1084.",
+          "doi": "10.1111/j.1360-0443.2011.03392.x",
+          "doi_verified": true,
+          "abstract_finding": "Questionnaires that ask about both self and peers were \"significantly more likely to result in reports\" of more permissive peer drinking, which may inflate measured overestimation. The sample is Scottish school pupils, not college students."
+        }
+      ],
+      "player_statement": "Students really do think peers like heavy drinking more than they do; how big that gap is depends partly on how the survey asks."
+    }
+  ]
+}

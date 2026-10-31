@@ -7,6 +7,7 @@
 - Ayers et al. (2023). Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum. *JAMA Internal Medicine* 183(6), 589. https://doi.org/10.1001/jamainternmed.2023.1838
 - Bail et al. (2018). Exposure to opposing views on social media can increase political polarization. *Proceedings of the National Academy of Sciences* 115(37), 9216-9221. https://doi.org/10.1073/pnas.1804840115
 - Bastani et al. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. *Proceedings of the National Academy of Sciences* 122(26), e2422633122. https://doi.org/10.1073/pnas.2422633122
+- Bates & Gupta (2017). Smart groups of smart people: Evidence for IQ as the origin of collective intelligence in the performance of human groups. *Intelligence* 60, 46-56. https://doi.org/10.1016/j.intell.2016.11.004
 - Benartzi & Thaler (2001). Naive Diversification Strategies in Defined Contribution Saving Plans. *American Economic Review* 91(1), 79-98. https://doi.org/10.1257/aer.91.1.79
 - Bertrand & Mullainathan (2004). Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination. *American Economic Review* 94(4), 991-1013. https://doi.org/10.1257/0002828042002561
 - Bertrand et al. (2010). What's Advertising Content Worth? Evidence from a Consumer Credit Marketing Field Experiment. *The Quarterly Journal of Economics* 125(1), 263-305. https://doi.org/10.1162/qjec.2010.125.1.263
@@ -15,6 +16,7 @@
 - Bicchieri, Dimant, Gächter & Nosenzo (2022). Social proximity and the erosion of norm compliance. *Games and Economic Behavior* 132, 59-72. https://doi.org/10.1016/j.geb.2021.11.012
 - Bloom et al. (2015). Does Working from Home Work? Evidence from a Chinese Experiment. *The Quarterly Journal of Economics* 130(1), 165-218. https://doi.org/10.1093/qje/qju032
 - Bloom, Han & Liang (2024). Hybrid working from home improves retention without damaging performance. *Nature* 630(8018), 920-925. https://doi.org/10.1038/s41586-024-07500-2
+- Bohner & Schlüter (2014). A room with a viewpoint revisited: Descriptive norms and hotel guests’ towel reuse behavior. *PLoS ONE* 9(8), e104086. https://doi.org/10.1371/journal.pone.0104086
 - Bohnet, van Geen & Bazerman (2016). When Performance Trumps Gender Bias: Joint vs. Separate Evaluation. *Management Science* 62(5), 1225-1234. https://doi.org/10.1287/mnsc.2015.2186
 - Bolton, Dimant & Schmidt (2021). Observability and social image: On the robustness and fragility of reciprocity. *Journal of Economic Behavior & Organization* 191, 946-964. https://doi.org/10.1016/j.jebo.2021.09.018
 - Breza, Kaur & Shamdasani (2018). The Morale Effects of Pay Inequality. *The Quarterly Journal of Economics* 133(2), 611-663. https://doi.org/10.1093/qje/qjx041
@@ -74,13 +76,16 @@
 - Matz et al. (2024). The potential of generative AI for personalized persuasion at scale. *Scientific Reports* 14, 4692. https://doi.org/10.1038/s41598-024-53755-0
 - Mellers et al. (2014). Psychological Strategies for Winning a Geopolitical Forecasting Tournament. *Psychological Science* 25(5), 1106-1115. https://doi.org/10.1177/0956797614524255
 - Moore & Healy (2008). The trouble with overconfidence. *Psychological Review* 115(2), 502-517. https://doi.org/10.1037/0033-295X.115.2.502
+- Nisa, Varum & Botelho (2017). Promoting sustainable hotel guest behavior: A systematic review and meta-analysis. *Cornell Hospitality Quarterly* 58(4), 354-363. https://doi.org/10.1177/1938965517704371
 - Noy & Zhang (2023). Experimental evidence on the productivity effects of generative artificial intelligence. *Science* 381(6654), 187-192. https://doi.org/10.1126/science.adh2586
 - Obermeyer, Powers, Vogeli & Mullainathan (2019). Dissecting racial bias in an algorithm used to manage the health of populations. *Science* 366(6464), 447-453. https://doi.org/10.1126/science.aax2342
 - Panizza, Dimant, Kimbrough & Vostroknutov (2024). Measuring norm pluralism and perceived polarization in US politics. *PNAS Nexus* 3(10), pgae413. https://doi.org/10.1093/pnasnexus/pgae413
 - Pennycook et al. (2021). Shifting attention to accuracy can reduce misinformation online. *Nature* 592(7855), 590-595. https://doi.org/10.1038/s41586-021-03344-2
+- Plott & Zeiler (2005). The willingness to pay-willingness to accept gap, the "endowment effect," subject misconceptions, and experimental procedures for eliciting valuations. *American Economic Review* 95(3), 530-545. https://doi.org/10.1257/0002828054201387
 - Prentice & Miller (1993). Pluralistic ignorance and alcohol use on campus: Some consequences of misperceiving the social norm. *Journal of Personality and Social Psychology* 64(2), 243-256. https://doi.org/10.1037/0022-3514.64.2.243
 - Reif, Larrick & Soll (2025). Evidence of a social evaluation penalty for using AI. *Proceedings of the National Academy of Sciences* 122(19), e2426766122. https://doi.org/10.1073/pnas.2426766122
 - Ren, Dimant & Schweitzer (2023). Beyond belief: How social engagement motives influence the spread of conspiracy theories. *Journal of Experimental Social Psychology* 104, 104421. https://doi.org/10.1016/j.jesp.2022.104421
+- Riedl et al. (2021). Quantifying collective intelligence in human groups. *Proceedings of the National Academy of Sciences* 118(21), e2005737118. https://doi.org/10.1073/pnas.2005737118
 - Salvi, Horta Ribeiro, Gallotti & West (2025). On the conversational persuasiveness of GPT-4. *Nature Human Behaviour* 9(8), 1645-1653. https://doi.org/10.1038/s41562-025-02194-6
 - Scheibehenne, Greifeneder & Todd (2010). Can There Ever Be Too Many Options? A Meta-Analytic Review of Choice Overload. *Journal of Consumer Research* 37(3), 409-425. https://doi.org/10.1086/651235
 - Schultz et al. (2007). The Constructive, Destructive, and Reconstructive Power of Social Norms. *Psychological Science* 18(5), 429-434. https://doi.org/10.1111/j.1467-9280.2007.01917.x

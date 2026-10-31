@@ -2096,6 +2096,101 @@
     "text_read": "Abstract on IDEAS/RePEc",
     "text_url": "https://ideas.repec.org/a/eee/ijrema/v42y2025i1p13-31.html"
    }
+  },
+  "bohner14": {
+   "id": "bohner14",
+   "authors": "Bohner & Schlüter",
+   "year": 2014,
+   "title": "A room with a viewpoint revisited: Descriptive norms and hotel guests’ towel reuse behavior",
+   "venue": "PLoS ONE",
+   "volume": "9(8)",
+   "pages": "e104086",
+   "doi": "10.1371/journal.pone.0104086",
+   "url": "https://doi.org/10.1371/journal.pone.0104086",
+   "kind": "peer-reviewed",
+   "takeaway": "In two German hotels, both a descriptive-norm sign and a standard environmental sign raised towel reuse compared with no sign, and the norm sign did no better than the standard one.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "abstract (Crossref or publisher)"
+   }
+  },
+  "bates17": {
+   "id": "bates17",
+   "authors": "Bates & Gupta",
+   "year": 2017,
+   "title": "Smart groups of smart people: Evidence for IQ as the origin of collective intelligence in the performance of human groups",
+   "venue": "Intelligence",
+   "volume": "60",
+   "pages": "46-56",
+   "doi": "10.1016/j.intell.2016.11.004",
+   "url": "https://doi.org/10.1016/j.intell.2016.11.004",
+   "kind": "peer-reviewed",
+   "takeaway": "In independent replications, members’ individual IQ accounted for about 80% of differences in group IQ; effects of turn-taking and the share of women were not supported.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "abstract (Crossref or publisher)"
+   }
+  },
+  "plott05": {
+   "id": "plott05",
+   "authors": "Plott & Zeiler",
+   "year": 2005,
+   "title": "The willingness to pay-willingness to accept gap, the \"endowment effect,\" subject misconceptions, and experimental procedures for eliciting valuations",
+   "venue": "American Economic Review",
+   "volume": "95(3)",
+   "pages": "530-545",
+   "doi": "10.1257/0002828054201387",
+   "url": "https://doi.org/10.1257/0002828054201387",
+   "kind": "peer-reviewed",
+   "takeaway": "With procedures designed to remove misconceptions, the gap between willingness to accept and willingness to pay for mugs disappeared; later studies found it returns under other procedures.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "abstract (Crossref or publisher)"
+   }
+  },
+  "nisa17": {
+   "id": "nisa17",
+   "authors": "Nisa, Varum & Botelho",
+   "year": 2017,
+   "title": "Promoting sustainable hotel guest behavior: A systematic review and meta-analysis",
+   "venue": "Cornell Hospitality Quarterly",
+   "volume": "58(4)",
+   "pages": "354-363",
+   "doi": "10.1177/1938965517704371",
+   "url": "https://doi.org/10.1177/1938965517704371",
+   "kind": "peer-reviewed",
+   "takeaway": "Across hotel studies, the social-norms effect on towel reuse was weaker than earlier estimates but consistent, producing modest increases in reuse.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "abstract (Crossref or publisher)"
+   }
+  },
+  "riedl21": {
+   "id": "riedl21",
+   "authors": "Riedl et al.",
+   "year": 2021,
+   "title": "Quantifying collective intelligence in human groups",
+   "venue": "Proceedings of the National Academy of Sciences",
+   "volume": "118(21)",
+   "pages": "e2005737118",
+   "doi": "10.1073/pnas.2005737118",
+   "url": "https://doi.org/10.1073/pnas.2005737118",
+   "kind": "peer-reviewed",
+   "takeaway": "A meta-analysis of 22 studies found strong support for a general collective intelligence factor, with the share of women predicting performance through social perceptiveness.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "abstract (Crossref or publisher)"
+   }
   }
  },
  "challenges": [
@@ -2663,7 +2758,7 @@
    "answerTitle": "Behavioral evidence beat a generic appeal",
    "explain": "Descriptive-norm messaging outperformed a conventional environmental appeal in the hotel field experiments.",
    "implication": "In customer prompts, replace purely environmental or civic appeals with an accurate statement of what most peers do.",
-   "boundary": "Towel-reuse signs in the rooms of one midpriced US hotel, measured by room attendants.",
+   "boundary": "Field studies in one US hotel. Later replications found modest effects, and some found the norm sign no better than a plain environmental sign.",
    "sources": [
     "hotel08"
    ],
@@ -2699,23 +2794,19 @@
   {
    "id": "biz04",
    "track": "Business",
-   "concept": "Social proof",
+   "concept": "Replication",
    "tag": "16 / CONTEXT",
-   "title": "The most persuasive neighbor",
-   "scene": "A hotel can refer to guests across the hotel or guests who stayed in the same room.",
-   "question": "Which comparison raised reuse most?",
-   "options": [
-    "Guests across the whole hotel",
-    "Guests who stayed in this same room",
-    "Neither beat the conservation sign"
-   ],
-   "answer": 1,
-   "answerTitle": "Local norms can carry more weight",
-   "explain": "The hotel experiments found stronger influence from norms tied to the guests’ immediate setting.",
-   "implication": "In social-proof messages, cite the peers whose situation most closely matches the customer's, such as the same store or team.",
-   "boundary": "Five sign versions in one US hotel over 53 days; norms referred to guests, same-room guests, citizens, or same-gender guests.",
+   "title": "Does the towel sign travel?",
+   "scene": "A famous US study found hotel guests reused more towels when a sign said most guests do, especially guests of the same room. Researchers repeated the test in two German hotels.",
+   "question": "Is this what the replication found?",
+   "answerTitle": "Both signs helped; the norm sign did no better",
+   "explain": "Both message types raised towel reuse compared with no message, but the descriptive-norm message was not more effective than the standard environmental message, and same-room effects were inconsistent.",
+   "implication": "Before rolling out a famous nudge, test it against the plain message you would otherwise use, not just against doing nothing.",
+   "boundary": "Two hotels in Germany; later meta-analyses report modest, consistent effects of norm messages across studies.",
    "sources": [
-    "hotel08"
+    "bohner14",
+    "hotel08",
+    "nisa17"
    ],
    "visual": "network",
    "values": [],
@@ -2726,24 +2817,28 @@
    "unit": "",
    "follow": [
     {
-     "q": "What were the reuse rates?",
-     "a": "In the second experiment, the same-room norm produced 49.3% reuse, the general guest norm 44.0%, and the standard environmental message 37.2%."
+     "q": "What did the original study find?",
+     "a": "Goldstein, Cialdini and Griskevicius (2008) found that a sign saying most guests reuse towels beat a standard environmental appeal, and that a same-room norm worked best."
     },
     {
-     "q": "Did other shared identities work as well?",
-     "a": "Norms about fellow citizens (43.5%) and same-gender guests (40.9%) fell short of the same-room norm (49.3%)."
+     "q": "So do norm messages work at all?",
+     "a": "Modestly. A 2017 meta-analysis of hotel studies described the social-norms effect as weaker than earlier estimates but consistent."
     },
     {
-     "q": "How much data was there?",
-     "a": "1,595 recorded opportunities for towel reuse over 53 days, in the same hotel as the first experiment."
+     "q": "What should a manager compare against?",
+     "a": "The message you would send anyway. Here, any sign beat no sign, which a test against silence would have mistaken for a norm effect."
     }
    ],
-   "format": "choice",
+   "format": "forecast",
    "weight": 1,
-   "theme": "choice",
+   "theme": "evidence",
    "study": {
-    "design": "Field experiment in one hotel",
-    "n": "1,595 recorded towel-reuse opportunities"
+    "design": "Field replication",
+    "n": "Guests of two German hotels"
+   },
+   "forecast": {
+    "claim": "In the German hotels, the “most guests reuse” sign raised reuse more than a standard environmental sign.",
+    "truth": false
    }
   },
   {
@@ -3264,24 +3359,19 @@
   {
    "id": "social10",
    "track": "Culture & Society",
-   "concept": "Teams",
+   "concept": "Replication",
    "tag": "36 / TEAM IQ",
-   "title": "Who gets the floor?",
-   "scene": "Two project groups have similar individual talent. One shares discussion evenly; the other is dominated by a few voices.",
-   "question": "Which group feature predicted performance across many different tasks?",
-   "options": [
-    "More equal turn-taking in conversation",
-    "The smartest member’s individual score",
-    "The average intelligence of members",
-    "Group satisfaction and motivation"
-   ],
-   "answer": 0,
-   "answerTitle": "Air time matters",
-   "explain": "The group-intelligence study linked collective performance to social sensitivity and conversational turn-taking.",
-   "implication": "In team meetings, track who speaks and rotate the floor so one or two members do not dominate.",
-   "boundary": "Correlational lab studies of 699 people in groups of two to five; turn-taking was measured with badges in some groups.",
+   "title": "Does turn-taking make groups smart?",
+   "scene": "A 2010 Science paper reported a general “collective intelligence” factor in groups, linked to members’ social sensitivity and to equal turn-taking in conversation. Independent researchers ran their own groups.",
+   "question": "Is this what the independent replication found?",
+   "answerTitle": "Turn-taking did not predict it; members’ IQ did",
+   "explain": "In the replication, members’ individual IQ accounted for about 80% of differences in group performance, and the turn-taking and share-of-women effects were not supported.",
+   "implication": "Treat team-composition recipes from single studies as hypotheses. Track your own teams’ results before redesigning how meetings run.",
+   "boundary": "Lab groups on standardized tasks. The original team’s later meta-analysis of 22 studies supports a collective intelligence factor, so the debate continues.",
    "sources": [
-    "team10"
+    "bates17",
+    "team10",
+    "riedl21"
    ],
    "visual": "bars",
    "values": [],
@@ -3292,24 +3382,28 @@
    "unit": "",
    "follow": [
     {
-     "q": "What tasks did the groups do?",
-     "a": "A range including visual puzzles, brainstorming, collective moral judgments, and negotiating over limited resources."
+     "q": "What did the original paper claim?",
+     "a": "Woolley et al. (2010) reported a general factor across group tasks, correlated with average social sensitivity, equal turn-taking and the share of women."
     },
     {
-     "q": "Did individual IQ predict group performance?",
-     "a": "Not significantly. The group factor correlated r = .19 with average and r = .27 with maximum member intelligence, neither significant."
+     "q": "Is the whole idea dead?",
+     "a": "No. The original team’s 2021 meta-analysis of 22 studies supports the factor and points to social perceptiveness, while independent analyses find it weaker or explained by members’ IQ."
     },
     {
-     "q": "Why did having more women help?",
-     "a": "The effect appeared largely mediated by social sensitivity, on which women scored higher."
+     "q": "Why does replication matter here?",
+     "a": "Team-design advice spread widely from the original paper. When an independent test fails on the key predictors, the advice should wait for more evidence."
     }
    ],
-   "format": "choice",
+   "format": "forecast",
    "weight": 1,
-   "theme": "forecasting",
+   "theme": "evidence",
    "study": {
-    "design": "Two lab studies (correlational)",
-    "n": "699 people in groups of two to five"
+    "design": "Independent lab replications",
+    "n": "Groups of students"
+   },
+   "forecast": {
+    "claim": "Groups with more equal conversational turn-taking scored higher on collective intelligence.",
+    "truth": false
    }
   },
   {
@@ -3383,7 +3477,7 @@
    "answerTitle": "Screens helped reduce bias",
    "explain": "The study found evidence of increased female advancement and hiring, while noting imprecise and some opposing estimates.",
    "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
-   "boundary": "Audition records from major US symphony orchestras that adopted screens, mostly in the 1970s and 1980s.",
+   "boundary": "Orchestra audition records; the authors report large standard errors for several estimates, and one effect ran in the opposite direction.",
    "sources": [
     "blind00"
    ],
@@ -3396,8 +3490,8 @@
    "unit": "",
    "follow": [
     {
-     "q": "How large were the effects?",
-     "a": "In the working-paper version, the screen raised by 50% the chance a woman advanced out of certain preliminary rounds, and raised her chance of winning the final round severalfold."
+     "q": "How precise were the estimates?",
+     "a": "Not very. The authors note large standard errors for several estimates, so the direction favors women while many individual effects fall short of statistical significance."
     },
     {
      "q": "How much of the rise in women does it explain?",
@@ -4941,7 +5035,8 @@
    "implication": "When reallocating budgets, territories or assets, expect current holders to value them far above what others would pay.",
    "boundary": "Students trading mugs and pens in classroom markets; tokens with assigned cash values traded as predicted.",
    "sources": [
-    "kahneman90"
+    "kahneman90",
+    "plott05"
    ],
    "follow": [
     {
@@ -4953,8 +5048,8 @@
      "a": "No. Buyers and choosers gave similar values, so the gap reflects reluctance to give up the mug, not reluctance to spend."
     },
     {
-     "q": "Did repeated trading fix it?",
-     "a": "No. In Experiment 1, mug markets produced 1 to 4 trades per trial against 11 expected, while induced-value token markets matched predictions."
+     "q": "Is the gap just a quirk of the procedure?",
+     "a": "Debated. Plott and Zeiler (2005) removed it with extra training on the procedure; a later replication found it returned under their own method. The gap itself shows up widely."
     }
    ],
    "study": {
