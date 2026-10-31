@@ -8,7 +8,7 @@
   {
    "source": "vaccaro24",
    "quote": "The overall pooled effect was negative (g = -0.23; t92 = -2.89; two-tailed P = 0.005; 95% confidence interval (CI), -0.39 to -0.07)",
-   "location": "Results (via new_sources.json; reconfirmed)"
+   "location": "Results (published version)"
   },
   {
    "source": "vaccaro24",
@@ -459,7 +459,7 @@
   {
    "source": "dell26",
    "quote": "Preregistered field experiment with 758 BCG consultants",
-   "location": "Design (new_sources.json, journal PDF)"
+   "location": "Design (journal PDF)"
   }
  ],
  "rollout1": [
@@ -525,7 +525,7 @@
   {
    "source": "dell26",
    "quote": "scored at 60% and 70.6%",
-   "location": "Outside-frontier results (p. 10); 60.0% is GPT + overview, 70.6% GPT only per new_sources.json"
+   "location": "Outside-frontier results (p. 10); 60.0% is GPT-4 plus overview, 70.6% GPT-4 only"
   },
   {
    "source": "dell26",
@@ -618,11 +618,6 @@
   },
   {
    "source": "gordon19",
-   "quote": "Using data from 15 U.S. advertising experiments at Facebook comprising 500 million user-experiment observations and 1.6 billion ad impressions, we contrast the experimental results to those obtained from multiple observational models. The observational methods often fail to produce the same effects as the randomized experiments, even after conditioning on extensive demographic and behavioral variables.",
-   "location": "Marketing Science 38(2) published abstract (publisher-supplied abstract as indexed at ideas.repec.org/a/inm/ormksc/v38y2019i2p193-225.html; the Crossref record carries only a one-line summary)"
-  },
-  {
-   "source": "gordon19",
    "quote": "this implies the ATT lift was 73% (=0.033%/(0.079%-0.033%)).",
    "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 31, Study 4. Pre-publication text only."
   },
@@ -640,6 +635,11 @@
    "source": "gordon19",
    "quote": "Generally, the observational methods overestimate ad effectiveness relative to the RCT, although in some cases, they significantly underestimate effectiveness. The bias can be large: in half of our studies, the estimated percentage increase in purchase outcomes is off by a factor of three across all methods.",
    "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 3, Introduction. Pre-publication text only."
+  },
+  {
+   "source": "gordon19",
+   "quote": "Using data from 15 U.S. advertising experiments at Facebook comprising 500 million user-experiment observations and 1.6 billion ad impressions, we contrast the experimental results to those obtained from multiple observational models. The observational methods often fail to produce the same effects as the randomized experiments, even after conditioning on extensive demographic and behavioral variables.",
+   "location": "Marketing Science 38(2) published abstract (publisher-supplied abstract as indexed at ideas.repec.org/a/inm/ormksc/v38y2019i2p193-225.html; the Crossref record carries only a one-line summary)"
   }
  ],
  "bz02": [
@@ -1334,6 +1334,11 @@
    "source": "cohn19",
    "quote": "Pooled across the three countries, reporting rates increased from 46% in the NoMoney condition to 61% in the Money condition",
    "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io) (continues: \"and topped out at 72% in the BigMoney condition\")"
+  },
+  {
+   "source": "cohn19",
+   "quote": "a combination of altruistic concerns and an aversion to viewing oneself as a thief",
+   "location": "Abstract (PubMed 31221770, Science version of record)"
   }
  ],
  "truth-telling-gains": [
@@ -1927,16 +1932,6 @@
   },
   {
    "source": "masks22",
-   "quote": "overestimated the effect size in the pooled sample (z = 4.40, p < 0.001); Democrats z = 4.84, p < 0.001; Republicans z = 1.67, p = 0.09",
-   "location": "Published version of record, Results (quote condensed from fetched text)"
-  },
-  {
-   "source": "masks22",
-   "quote": "1,034 forecasters: 714 laypeople, 199 academics, and 121 practitioners",
-   "location": "Published version of record, Methods (condensed)"
-  },
-  {
-   "source": "masks22",
    "quote": "negative and statistically significant for Democrat predictions (r(28) = -0.63, p = 0.0003)",
    "location": "Published version of record, Results"
   },
@@ -2104,7 +2099,7 @@
   {
    "source": "prox22",
    "quote": "Table 1: initial takers NoObservation 45%, Observation 44%, ObservationSP 42%; Kruskal-Wallis p = 0.703",
-   "location": "Published version of record, Table 1 (values transcribed)"
+   "location": "Published version of record, Table 1 (published version; table values as printed)"
   },
   {
    "source": "prox22",
@@ -2826,7 +2821,7 @@
   {
    "source": "hotel08",
    "quote": "a significantly higher towel reuse rate (44.1%) than the environmental protection condition (35.1%",
-   "location": "JCR 35(3), Experiment 1 Results (published version, Carlson School author copy; read via fetch tool)"
+   "location": "JCR 35(3), Experiment 1 Results (published version, Carlson School author copy; Carlson School author copy of the published article)"
   },
   {
    "source": "hotel08",
@@ -3169,7 +3164,7 @@
   {
    "source": "plural93",
    "quote": "All studies found widespread evidence of pluralistic ignorance",
-   "location": "JPSP abstract (Princeton research portal; read via fetch tool, which summarized the rest)"
+   "location": "JPSP abstract (Princeton research portal; abstract text)"
   }
  ],
  "social07": [
@@ -3874,11 +3869,6 @@
    "source": "hartmann25",
    "quote": "produce marketing content not only faster and orders of magnitude cheaper",
    "location": "Abstract"
-  },
-  {
-   "source": "hartmann25",
-   "quote": "DALL-E 3, Midjourney v6, Firefly 2, Imagen 2, Imagine, Stable Diffusion XL Turbo, and Realistic Vision",
-   "location": "Abstract (model list as summarized from IDEAS abstract)"
   }
  ],
  "axe11": [

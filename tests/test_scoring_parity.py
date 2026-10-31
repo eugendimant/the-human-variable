@@ -45,3 +45,9 @@ def test_answers_score_full():
         if f == 'delegate': r = [t['answer'] for t in c['delegate']['tasks']]
         res = scoring.score(c, r); assert res['score'] == 1 and res['correct'], c['id']
         assert scoring.valid(c, r), c['id']
+
+def test_forecast_calibration_is_folded():
+    """Review 8, M1: a confident correct 'no' is calibrated, not overconfident."""
+    js = "const S=require('./src/scoring.js');const r=[{format:'forecast',response:10,outcome:0},{format:'forecast',response:90,outcome:1}].map(x=>S.toCalibrationRecord(null,x));console.log(JSON.stringify([r,S.calibration(r).overconfidence]))"
+    out = json.loads(subprocess.run(['node', '-e', js], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+    assert out[0] == [{'p': 90, 'outcome': 1}, {'p': 90, 'outcome': 1}] and out[1] <= 0

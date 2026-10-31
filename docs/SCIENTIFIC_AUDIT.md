@@ -12,11 +12,11 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 113 (formats: forecast 31, choice 29, estimate 25, multi 10, rank 7, causal 6, delegate 4, allocate 1).
+- Decisions in scored play: 112 (formats: forecast 30, choice 28, estimate 25, multi 10, rank 7, causal 6, delegate 4, allocate 2).
 - Sources: 108 (59 checked against the published full text, 4 against the authors' accepted manuscript, 44 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
-- Decisions retired with reasons: 33 (listed below).
-- Track balance: AI × Business 46, Business 30, Culture & Society 30, Judgment 7.
+- Decisions retired with reasons: 34 (listed below).
+- Track balance: AI × Business 46, Culture & Society 30, Business 29, Judgment 7.
 
 ## Sources
 
@@ -115,7 +115,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Riedl et al. (2021). *Quantifying collective intelligence in human groups*. [doi:10.1073/pnas.2005737118](https://doi.org/10.1073/pnas.2005737118) | Proceedings of the National Academy of Sciences 118(21) e2005737118 | Abstract | social10 |  |
 | Salvi, Horta Ribeiro, Gallotti & West (2025). *On the conversational persuasiveness of GPT-4*. [doi:10.1038/s41562-025-02194-6](https://doi.org/10.1038/s41562-025-02194-6) | Nature Human Behaviour 9(8) 1645-1653 | Full text | axb08 |  |
 | Scheibehenne, Greifeneder & Todd (2010). *Can There Ever Be Too Many Options? A Meta-Analytic Review of Choice Overload*. [doi:10.1086/651235](https://doi.org/10.1086/651235) | Journal of Consumer Research 37(3) 409-425 | Full text | bz10 |  |
-| Schultz et al. (2007). *The Constructive, Destructive, and Reconstructive Power of Social Norms*. [doi:10.1111/j.1467-9280.2007.01917.x](https://doi.org/10.1111/j.1467-9280.2007.01917.x) | Psychological Science 18(5) 429-434 | Full text | biz05, biz06 |  |
+| Schultz et al. (2007). *The Constructive, Destructive, and Reconstructive Power of Social Norms*. [doi:10.1111/j.1467-9280.2007.01917.x](https://doi.org/10.1111/j.1467-9280.2007.01917.x) | Psychological Science 18(5) 429-434 | Full text | biz05 |  |
 | Shelton & Richeson (2005). *Intergroup contact and pluralistic ignorance*. [doi:10.1037/0022-3514.88.1.91](https://doi.org/10.1037/0022-3514.88.1.91) | Journal of Personality and Social Psychology 88(1) 91-107 | Abstract | social14 |  |
 | Shu et al. (2012). *Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end*. [doi:10.1073/pnas.1209746109](https://doi.org/10.1073/pnas.1209746109) | Proceedings of the National Academy of Sciences 109(38) 15197-15200 | Abstract | bz11 | ["RETRACTED 13 September 2021 (doi:10.1073/pnas.2115397118). Cited only as the retracted original in a replication item."] |
 | Spitale, Biller-Andorno & Germani (2023). *AI model GPT-3 (dis)informs us better than humans*. [doi:10.1126/sciadv.adh1850](https://doi.org/10.1126/sciadv.adh1850) | Science Advances 9(26) eadh1850 | Full text | axe11 |  |
@@ -194,6 +194,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 - social03 (When peers vary): Review 4: duplicate of social01 (same paper, same tight-versus-loose result).
 - axe02 (Where does the AI go?): Review 5: its routings were not compared against each other in the cited studies.
 - ai04 (A real-world baseline): Review 7: repeats rollout1’s headline number from the same paper.
+- biz06 (Two types of social feedback): Review 8: repeats biz05 (same paper, same smiley-face result).
 
 ## Not verified
 

@@ -62,7 +62,7 @@ class Limiter:
     # Per-client buckets (X-Client-Id, a random id each browser keeps) plus a generous per-IP ceiling,
     # because a whole class often shares one campus NAT address.
     RULES = {'read': (4.0, 20), 'write': (2.0, 12), 'create': (10 / 3600, 10), 'tutor': (0.5, 6),
-             'ip_read': (150.0, 400), 'ip_write': (60.0, 200), 'join': (0.3, 60), 'ip_tutor': (2.0, 30)}
+             'ip_read': (150.0, 400), 'ip_write': (60.0, 200), 'join': (1.0, 130), 'ip_tutor': (2.0, 30)}  # join burst covers a full class (120) behind one NAT
     def __init__(self): self.b = defaultdict(lambda: [0.0, 0.0]); self.lock = threading.Lock()
     def allow(self, ip: str, name: str) -> bool:
         rate, burst = self.RULES[name]; now = time.time()
@@ -70,7 +70,10 @@ class Limiter:
             tokens, last = self.b[(ip, name)]
             tokens = burst if last == 0 else min(burst, tokens + (now - last) * rate)
             if tokens < 1: self.b[(ip, name)] = [tokens, now]; return False
-            self.b[(ip, name)] = [tokens - 1, now]; return True
+            self.b[(ip, name)] = [tokens - 1, now]
+            if len(self.b) > 50000:   # drop buckets idle for ten minutes (they would be full again anyway)
+                for k in [k for k, v in self.b.items() if now - v[1] > 600]: del self.b[k]
+            return True
 LIMIT = Limiter()
 CODE_RE = re.compile(r'^/api/rooms/([A-Z2-9]{4,8})(/[a-z.]+)?$')
 

@@ -360,7 +360,7 @@ function curated(q, c) {
   const cs = [cite(c.sources[0])];
   if (/\b(big|size|large|much|practice|magnitude)\b/i.test(q)) return { text: `${c.explain}${c.study && c.study.n && !/not (stated|confirmed)/i.test(c.study.n) ? ' Sample: ' + c.study.n + '.' : ''}\n\nIn practice: ${c.implication}`, cites: cs };
   if (/test|pilot|company|measure|experiment/i.test(q)) return { text: `Start with a small randomized pilot: assign the change to some teams and not others, fix the outcome metric in advance, and compare. ${c.implication}\n\nThe study itself: ${c.explain}`, cites: [cite(c.sources[0])] };
-  if (/today|hold|still|generali|apply|everywhere|always/i.test(q)) return { text: `${c.boundary}\n\n${c.explain}`, cites: [cite(c.sources[0])] };
+  if (/today|hold|still|generali|apply|transfer|everywhere|always/i.test(q)) return { text: `${c.boundary}\n\n${c.explain}`, cites: [cite(c.sources[0])] };
   if (fq && fq.s >= 1) return { text: fq.f.a, cites: [cite(c.sources[0])] };
   if (best && best.x.id !== c.id && best.x.explain && best.s >= 3) return { text: `A related study in the lab: ${best.x.explain}\n\nWhere it applies: ${best.x.implication}`, cites: [cite(best.x.sources[0])] };
   const topical = terms.some(t => fields(c).includes(t)) || (best && best.s - (best.x.id === c.id ? 1.5 : 0) >= 1);
@@ -489,7 +489,11 @@ async function roomJoin(code) {
   try {
     let tok = sessionStorage.getItem('thv:room:' + code);
     if (!tok) {
-      const r = await fetch(`/api/rooms/${code}/join`, { method: 'POST', headers: roomHeaders(true), body: '{}' }); const d = await r.json();
+      let r, d;
+      for (let i = 0; i < 6; i++) {   // a whole class joining at once: wait and retry when the server asks
+        r = await fetch(`/api/rooms/${code}/join`, { method: 'POST', headers: roomHeaders(true), body: '{}' }); d = await r.json();
+        if (r.status !== 429) break; await new Promise(res => setTimeout(res, 1500 + Math.random() * 2000));
+      }
       if (!r.ok) throw Error(d.error || 'Could not join'); tok = d.token; sessionStorage.setItem('thv:room:' + code, tok); sessionStorage.setItem('thv:room:' + code + ':n', d.number);
     }
     st.seed = hash(code) >>> 0;

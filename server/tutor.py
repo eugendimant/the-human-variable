@@ -20,6 +20,8 @@ STOP = set('a an and are as at be been but by can could did do does for from had
 TOK = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
 
 def tokens(s: str) -> list[str]:
+    import unicodedata   # Köbis and Kobis, Zünd and Zund match
+    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
     return [t for t in TOK.findall(s.lower()) if t not in STOP and len(t) > 2]
 
 def cite_label(sid: str) -> str:
@@ -77,7 +79,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         cites = [{'id': s, 'label': cite_label(s)} for s in c['sources']]
         if re.search(r'\b(test|pilot|measure|experiment|company|my team|roll ?out)\b', ql):
             return {'answer': f"Run a small randomized pilot: give the change to some teams or customers and not to others, fix one outcome metric in advance, and compare after a set period. For this finding: {c['implication']} What the study measured: {c['explain']}", 'citations': cites, 'mode': 'curated'}
-        if re.search(r'\b(today|still|hold|generali[sz]e|apply|always|everywhere|replicat)', ql):
+        if re.search(r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|always|everywhere|replicat)', ql):
             return {'answer': f"{c['boundary']} The study itself: {c['explain']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(big|size|large|much|practice|magnitude)\b', ql):
             return {'answer': f"{c['explain']} {c.get('study', {}).get('n', '') and 'Sample: ' + c['study']['n'] + '.'} In practice: {c['implication']}".strip(), 'citations': cites, 'mode': 'curated'}
@@ -87,7 +89,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     qt = set(tokens(question))
     docs = []
     for d in retrieve(question, challenge_id, 4, exclude):
-        if len(qt & set(tokens(d['body']))) <= len(qt) / 2: continue
+        ov = len(qt & set(tokens(d['body'])))
+        if ov < len(qt) / 2 or (len(qt) < 3 and ov <= len(qt) / 2): continue   # at least half the question's words
         if d['kind'] == 'decision': docs.append(d)
         else:  # a source record (authors, title): answer with the first decision built on it
             for cid in SRC_USERS.get(d['id'], []):

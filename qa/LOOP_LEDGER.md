@@ -305,3 +305,20 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Count:** 0 Blocking + 5 Major found and addressed. Next: independent review 8.
 
 **Needs the owner:** bz01's original figures (73% randomized lift, 222% to 316% observational) can return once checked against the published Marketing Science PDF, which requires library access.
+
+## Iteration 13 (2026-10-31)
+
+**Verified first:** iteration-12 fixes, by independent review 8 (snapshot `snap_r8`): no answer fields served on any route while open or closed, allocate rule and even-split cap, lock follows the instructor (60 students alone released it). Partly held: verbatim evidence (six entries the gate's wording missed) and the measurement path.
+
+**Independent score:** 78/100 (review 8, `qa/reviews/review8.md`). 0 Blocking, 4 Major.
+
+**Fixes:**
+- **M1.** Forecast calibration is folded to the side the player leaned to (10% on a false claim is a 90% call that was right; 50% is excluded). Test added.
+- **M2.** Estimate axes for effect sizes were re-ranged within plausible bounds so targets spread along their axes, and bands on high shares tightened (`tools/estimate_axes_2026_10_31.py`). Gate: no fixed slider position averages more than 0.35 (was 0.45); the constant-value gate still holds (0.33).
+- **M3.** The measurement path interleaves tests where the intervention worked (bz09, accuracy-prompt, bz05, bz07).
+- **M4.** Nodes that name the asked-about mechanism stay masked until the reveal (dimant-notalie, axe12, meta-perception). Gate: no visible node label repeats the correct option's key words; the served-page leak test checks masked labels exactly.
+- **Minors.** Remaining non-verbatim evidence relabelled or removed and the gate widened (condensed, summarized, transcribed, fetch tool); biz06 retired as a repeat of biz05; civic-wallet-experts no longer states the rank item's order; social15's action no longer states dimant-hate-choice's answer; axb08 is a second allocation item with one separated arm; join burst covers 120 students per network with client retries; offline tutor matches authors with accents and handles transfer questions; axe11 scores only the tested pairs; the mask item says intentions and pledges; forecasting principle states the open debate; limiter buckets pruned; biz02 distractor; compact path list on phones.
+
+**Gates:** build check, 205 tests, audit doc and counts regenerated.
+
+**Count:** 0 Blocking + 4 Major found and addressed. Next: independent review 9.

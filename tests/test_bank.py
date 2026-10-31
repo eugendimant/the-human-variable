@@ -231,7 +231,25 @@ def test_allocate_even_split_is_not_a_hit():
 def test_evidence_entries_are_verbatim():
     """Review 7, M3: evidence entries are quotes from published texts, not paraphrases or summaries."""
     ev = json.loads((ROOT / 'src/evidence.json').read_text())
-    weak = re.compile(r'paraphrase|as recorded|audit summary|fetch-tool|as extracted|rendering', re.I)
+    weak = re.compile(r'paraphrase|as recorded|audit summary|fetch[- ]tool|as extracted|rendering|condensed|summari[sz]ed|transcribed|new_sources', re.I)
     live = {c['id'] for c in LIVE}
     bad = [k for k, qs in ev.items() if k in live for q in qs if weak.search(q.get('location', '') + ' ' + q['quote'])]
     assert not bad, sorted(set(bad))
+
+def test_no_fixed_slider_position_pays():
+    """Review 8, M2: one position along the axis (say a quarter of the way) must not pay across estimates."""
+    from server import scoring
+    E = [c for c in LIVE if c['format'] == 'estimate']
+    best = max(sum(scoring.score(c, c['estimate']['min'] + f / 100 * (c['estimate']['max'] - c['estimate']['min']))['score'] for c in E) / len(E) for f in range(101))
+    assert best <= 0.35, best
+
+def test_causal_labels_do_not_name_the_answer():
+    """Review 8, M4: a node label visible before the reveal must not repeat the correct option's key words."""
+    stop = {'which', 'their', 'there', 'other', 'about', 'people', 'model', 'beliefs', 'belief'}
+    bad = []
+    for c in LIVE:
+        if c['format'] != 'causal' or 'dag' not in c: continue
+        ans = {w for w in re.findall(r'[a-z]{5,}', c['options'][c['answer']].lower())} - stop
+        vis = {w for n in c['dag']['nodes'] if not n.get('mask') for w in re.findall(r'[a-z]{5,}', n['label'].lower())}
+        if ans & vis: bad.append((c['id'], sorted(ans & vis)))
+    assert not bad, bad

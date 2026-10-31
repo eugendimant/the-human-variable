@@ -2340,7 +2340,7 @@
    "estimate": {
     "target": 40,
     "min": 0,
-    "max": 100,
+    "max": 60,
     "tolerance": 5,
     "label": "Decrease in completion time (%)"
    },
@@ -2716,7 +2716,7 @@
     "target": 86,
     "min": 0,
     "max": 100,
-    "tolerance": 8,
+    "tolerance": 5,
     "label": "Participation under automatic enrollment",
     "unit": "%"
    },
@@ -2749,7 +2749,7 @@
    "options": [
     "Inertia, and the default read as advice",
     "The employer match required the default rate",
-    "Employees read the form as mandatory"
+    "Few employees knew they could change it"
    ],
    "answer": 0,
    "answerTitle": "Defaults communicate advice",
@@ -2944,54 +2944,6 @@
     "n": "290 households in San Marcos, California"
    },
    "permuted": true
-  },
-  {
-   "id": "biz06",
-   "track": "Business",
-   "concept": "Norms",
-   "tag": "18 / FIX",
-   "title": "Two types of social feedback",
-   "scene": "Researchers add an approval cue (a smiley face for households using less than average) to neighborhood comparison feedback.",
-   "question": "Is this what the study found?",
-   "answerTitle": "Approval changed the response",
-   "explain": "Among 290 San Marcos households, below-average homes shown only the neighborhood average raised daily use from 10.38 to 11.27 kWh. Comparable homes that also got a smiley face stayed near baseline, at 10.58 against 10.34 kWh.",
-   "implication": "Pair every peer comparison with a simple approval or disapproval signal, such as a happy or sad face.",
-   "boundary": "Hand-drawn faces on doorhanger feedback to California households; follow-up ended three weeks after the second message.",
-   "sources": [
-    "energy07"
-   ],
-   "visual": "split",
-   "values": [],
-   "labels": [
-    "Alternative",
-    "Observed pattern"
-   ],
-   "unit": "",
-   "follow": [
-    {
-     "q": "What did the approval cue look like?",
-     "a": "Researchers drew a happy face on the feedback for households below the average and a sad face for those above it."
-    },
-    {
-     "q": "What happened to low users who got the happy face?",
-     "a": "Their use went from 10.34 to 10.58 kWh per day in the first week, and from 10.04 to 10.14 over the next three weeks. Neither change was statistically significant."
-    },
-    {
-     "q": "Did the sad face help heavy users?",
-     "a": "Yes. Above-average households that got it cut use by 1.72 kWh per day in the first week. Over the next three weeks their use fell from 20.62 to 19.39 kWh per day."
-    }
-   ],
-   "format": "forecast",
-   "weight": 1,
-   "theme": "choice",
-   "study": {
-    "design": "Field experiment",
-    "n": "290 households in San Marcos, California"
-   },
-   "forecast": {
-    "claim": "Adding an approval cue (a smiley face) stopped already-efficient households from increasing their energy use.",
-    "truth": true
-   }
   },
   {
    "id": "biz07",
@@ -3453,7 +3405,7 @@
    "estimate": {
     "target": 50,
     "min": 0,
-    "max": 200,
+    "max": 130,
     "tolerance": 10,
     "label": "Callback advantage (%)"
    },
@@ -3636,7 +3588,7 @@
    "answer": 1,
    "answerTitle": "The domains diverged",
    "explain": "In Dimant's experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a neutral group-mate (about 39%), yet gave allies no more money (14.9% versus 13.5%). From opponents, they took 22.9%.",
-   "implication": "When teams distrust each other, share evidence of the other side's actual cooperation, since pessimistic expectations drove the hostility.",
+   "implication": "When teams distrust each other, share evidence of the other side's actual cooperation.",
    "boundary": "Incentivized behavioral experiments with US Trump supporters and opponents, plus a sports-identity comparison.",
    "sources": [
     "hate23"
@@ -3821,7 +3773,7 @@
     "target": 78,
     "min": 0,
     "max": 100,
-    "tolerance": 8,
+    "tolerance": 6,
     "label": "Share choosing the gamble in the deaths frame",
     "unit": "%"
    },
@@ -3966,7 +3918,7 @@
    "estimate": {
     "target": 24.7,
     "min": 0,
-    "max": 100,
+    "max": 30,
     "tolerance": 5,
     "label": "Maximum crime reduction at the same jailing rate",
     "unit": "%"
@@ -4009,7 +3961,7 @@
    "estimate": {
     "target": 10,
     "min": 0,
-    "max": 100,
+    "max": 65,
     "tolerance": 2,
     "label": "Average accuracy advantage of formulas over experts",
     "unit": "%"
@@ -4224,11 +4176,11 @@
   {
    "id": "axb08",
    "track": "AI × Business",
-   "format": "choice",
+   "format": "allocate",
    "concept": "AI persuasion",
    "title": "Who argues your case?",
    "scene": "In 10-minute online debates on assigned topics, people faced either a human or GPT-4. Some opponents also received basic demographic details about the person they debated.",
-   "question": "Which opponent shifted agreement most, compared with human-human debates?",
+   "question": "Which opponent shifted agreement most? Spread 100 points by how likely each is.",
    "options": [
     "Human opponent",
     "GPT-4",
@@ -4262,23 +4214,28 @@
    ],
    "theme": "persuasion",
    "permuted": true,
-   "answer": 2,
-   "chart": {
-    "labels": [
-     "Human opponent",
-     "GPT-4",
-     "GPT-4 with demographic profile",
-     "Human with demographic profile"
-    ],
+   "allocate": {
+    "total": 100,
+    "step": 10,
+    "label": "Points placed",
+    "prefix": "",
+    "suffix": "",
     "values": [
      0,
-     21.9,
+     0,
      81.2,
-     -15.7
+     0
     ],
-    "unit": "%",
-    "highlight": 2,
-    "note": "Change in odds of higher agreement vs human-human debates (Salvi et al. 2025). Only personalized GPT-4 differed significantly (+81.2%)."
+    "valueLabels": [
+     "Baseline",
+     "+21.9% (n.s.)",
+     "+81.2%",
+     "−15.7% (n.s.)"
+    ],
+    "valueName": "change in odds of higher agreement than in human-human debates (non-significant changes count as zero)",
+    "best": [
+     2
+    ]
    }
   },
   {
@@ -4502,7 +4459,7 @@
    "estimate": {
     "target": 25.1,
     "min": 0,
-    "max": 100,
+    "max": 35,
     "tolerance": 5,
     "label": "Speed gain on inside-frontier tasks",
     "unit": "%"
@@ -4845,7 +4802,7 @@
    "estimate": {
     "target": 100,
     "min": 0,
-    "max": 500,
+    "max": 445,
     "tolerance": 30,
     "label": "Median width of the ROI confidence interval",
     "unit": " pp"
@@ -4888,7 +4845,7 @@
    "estimate": {
     "target": 13.6,
     "min": 0,
-    "max": 100,
+    "max": 20,
     "tolerance": 2,
     "label": "Average savings rate after four pay raises",
     "unit": "%"
@@ -5088,7 +5045,7 @@
    "estimate": {
     "target": 33,
     "min": 0,
-    "max": 100,
+    "max": 90,
     "tolerance": 7,
     "label": "Reduction in quit rate with two home days a week",
     "unit": "%"
@@ -5628,8 +5585,8 @@
      "a": "Their errors were smaller, but they predicted roughly flat rates of 69%, 69% and 66% rather than the rise that occurred."
     },
     {
-     "q": "What actually happened?",
-     "a": "In the US, UK and Poland, reporting rose from 46% with no money to 61% with US$13.45 and 72% with US$94.15."
+     "q": "Why might the experts have missed it?",
+     "a": "They expected self-interest to win out. The authors trace the rise to concern for the owner combined with an aversion to seeing oneself as a thief."
     }
    ],
    "study": {
@@ -5650,7 +5607,7 @@
     "target": 75,
     "min": 0,
     "max": 100,
-    "tolerance": 10,
+    "tolerance": 7,
     "label": "Share of potential lying gains forgone",
     "unit": "%"
    },
@@ -6005,7 +5962,7 @@
     "target": 87,
     "min": 0,
     "max": 100,
-    "tolerance": 8,
+    "tolerance": 5,
     "label": "Share privately supporting women working outside the home",
     "unit": "%"
    },
@@ -6138,7 +6095,8 @@
       "id": "fix",
       "label": "Correction",
       "x": 90,
-      "y": 170
+      "y": 170,
+      "mask": true
      }
     ],
     "edges": [
@@ -6336,11 +6294,11 @@
    "scene": "Researchers tested seven messages (moral frames, mortality, scientific evidence, the economy) to raise mask-wearing among 4,931 US Republicans and Democrats. Beforehand, 1,034 forecasters predicted each message's effect.",
    "question": "Is this what the study found?",
    "forecast": {
-    "claim": "At least one of the seven messages increased mask-wearing among Democrats or Republicans.",
+    "claim": "At least one of the seven messages increased mask-wearing intentions among Democrats or Republicans.",
     "truth": false
    },
    "answerTitle": "No message worked; forecasters still overestimated effects",
-   "explain": "Across 4,931 participants, none of the 7 nudges promoted mask-wearing in either party. Forecasters overestimated the effects overall (z = 4.40, p < 0.001), most of all for Democrats.",
+   "explain": "Across 4,931 participants, none of the 7 nudges raised mask-wearing intentions or pledges in either party. Forecasters overestimated the effects overall (z = 4.40, p < 0.001), most of all for Democrats.",
    "implication": "Treat expert predictions about which message works as hypotheses. Run a small randomized test before scaling a compliance campaign.",
    "boundary": "One topic (COVID-19 mask-wearing), US Democrats and Republicans, and seven short messages.",
    "sources": [
@@ -6428,7 +6386,8 @@
       "id": "gain",
       "label": "Lying pays",
       "x": 70,
-      "y": 100
+      "y": 100,
+      "mask": true
      },
      {
       "id": "belief",
@@ -6951,7 +6910,7 @@
     "target": 92,
     "min": 0,
     "max": 100,
-    "tolerance": 7,
+    "tolerance": 5,
     "label": "Share choosing the gamble with losses",
     "unit": "%"
    },
@@ -7006,7 +6965,7 @@
    "estimate": {
     "target": 20,
     "min": 0,
-    "max": 100,
+    "max": 95,
     "tolerance": 4,
     "label": "Drop in belief in their own conspiracy theory",
     "unit": "%"
@@ -7147,7 +7106,7 @@
     "target": 78.6,
     "min": 0,
     "max": 100,
-    "tolerance": 8,
+    "tolerance": 6,
     "label": "Evaluations preferring the chatbot",
     "unit": "%"
    },
@@ -7189,7 +7148,7 @@
    "estimate": {
     "target": 26.08,
     "min": 0,
-    "max": 100,
+    "max": 85,
     "tolerance": 10,
     "label": "Increase in completed tasks",
     "unit": "%"
@@ -7429,7 +7388,25 @@
     }
    ],
    "theme": "persuasion",
-   "permuted": true
+   "permuted": true,
+   "rankTies": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ]
+   ]
   },
   {
    "id": "axe12",
@@ -7467,7 +7444,8 @@
       "id": "lazy",
       "label": "Seen as lazy",
       "x": 260,
-      "y": 160
+      "y": 160,
+      "mask": true
      },
      {
       "id": "rating",
@@ -8347,6 +8325,14 @@
     "bry25"
    ],
    "reason": "Review 7: repeats rollout1’s headline number from the same paper."
+  },
+  {
+   "id": "biz06",
+   "title": "Two types of social feedback",
+   "sources": [
+    "energy07"
+   ],
+   "reason": "Review 8: repeats biz05 (same paper, same smiley-face result)."
   }
  ],
  "themes": [
@@ -8398,7 +8384,7 @@
   {
    "id": "forecasting",
    "title": "Forecasting and teams",
-   "principle": "Forecasts improve with training, teaming and scoring, and fail through overconfidence and planning optimism. Who is in a group matters more than equal turn-taking."
+   "principle": "Forecasts improve with training, teaming and scoring, and fail through overconfidence and planning optimism. Whether turn-taking or members’ ability drives group performance is still debated."
   }
  ],
  "paths": [
@@ -8460,10 +8446,12 @@
    "ids": [
     "bz01",
     "bz05",
-    "bz02",
     "bz11",
-    "bz07",
+    "bz09",
+    "bz02",
     "bz10",
+    "accuracy-prompt",
+    "bz07",
     "dimant-masks-forecast",
     "dimant-requiem-forecast",
     "civic-wallet-experts"

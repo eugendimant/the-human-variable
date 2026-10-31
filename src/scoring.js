@@ -124,7 +124,12 @@
 
   // A forecast converts to a calibration record about the claim; other formats about the answer.
   function toCalibrationRecord(c, rec) {
-    if ((c && c.format === 'forecast') || rec.format === 'forecast') return { p: rec.response, outcome: rec.outcome ?? (c.forecast.truth ? 1 : 0) };
+    // A forecast is folded to the side the player leaned to: 10% on a false claim is a 90% call that was right.
+    if ((c && c.format === 'forecast') || rec.format === 'forecast') {
+      const p = Number(rec.response), truth = rec.outcome ?? (c.forecast.truth ? 1 : 0);
+      if (p === 50) return null;
+      return { p: Math.max(p, 100 - p), outcome: (p > 50) === (truth === 1) ? 1 : 0 };
+    }
     // An allocation states the chance that the top-weighted option is the best one.
     if (rec.format === 'allocate' && Array.isArray(rec.response)) return { p: statedProbability({ format: 'allocate' }, rec.response), outcome: rec.correct ? 1 : 0 };
     return rec.confidence === null || rec.confidence === undefined ? null : { p: rec.confidence, outcome: rec.correct ? 1 : 0 };

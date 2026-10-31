@@ -100,7 +100,9 @@ def test_served_pages_carry_no_answers(base):
             if c['id'] not in cl.CHALLENGES: continue
             probes = [c['answerTitle'], c['explain'], c['implication']] + [f['a'] for f in c['follow']]
             probes += [cl.BANK['sources'][s]['takeaway'] for s in c['sources'] if cl.BANK['sources'][s].get('takeaway')]
-            if 'dag' in c: probes += [c['dag']['alt']] + [n['label'] for n in c['dag']['nodes'] if n.get('mask')]
+            if 'dag' in c:
+                probes += [c['dag']['alt']]
+                leaks += [(c['id'], n['label']) for n in c['dag']['nodes'] if n.get('mask') and ('"label":' + json.dumps(n['label'], ensure_ascii=False)) in text]
             leaks += [(c['id'], x[:50]) for x in probes if x and json.dumps(x, ensure_ascii=False)[1:-1].replace('</', '<\\/') in text]
         leaks += [('theme', t['id']) for t in cl.BANK.get('themes', []) if json.dumps(t['principle'], ensure_ascii=False)[1:-1] in text]
         assert not leaks, (p, leaks[:8])
@@ -151,5 +153,6 @@ def test_forwarded_for_uses_rightmost(base, monkeypatch):
 
 def test_join_flood_limited(base):
     _, room, _ = req(base, '/api/rooms', {'title': 'flood'}, client='inst7')
-    codes = [req(base, f"/api/rooms/{room['code']}/join", {}, client=f'f{i}')[0] for i in range(110)]
-    assert codes.count(200) <= 75 and 429 in codes
+    codes = [req(base, f"/api/rooms/{room['code']}/join", {}, client=f'f{i}')[0] for i in range(200)]
+    assert codes[:120].count(200) == 120          # a full class behind one network joins at once (review 8)
+    assert 429 in codes or 409 in codes           # a flood beyond the class cap is refused
