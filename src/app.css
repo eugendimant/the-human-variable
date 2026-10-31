@@ -557,3 +557,12 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
   .reveal .reveal-title{max-width:16ch}
   .focus:has(.reveal) .actionbar-in{max-width:1240px}
 }
+
+/* numeric reveal: the two numbers are the moment */
+.gap-head{display:grid;grid-template-columns:auto auto 1fr;align-items:end;gap:6px 36px;margin:2px 0 14px;padding-bottom:16px;border-bottom:1px solid var(--rule)}
+.gh-cell span{display:block;font-size:var(--t7);color:var(--ink-2);margin-bottom:4px}
+.gh-cell b{display:block;font-size:clamp(44px,4.6vw,68px);line-height:.95;font-weight:800;letter-spacing:-.04em}
+.gh-you{color:#1f3cc2}.gh-ev{color:#7d5200}
+.gh-gap{margin:0;justify-self:end;font-weight:700;font-size:var(--t4);color:var(--ink)}
+.gap:has(.gap-head) .gap-legend{display:none}
+@media (max-width:520px){.gap-head{grid-template-columns:1fr 1fr}.gh-gap{grid-column:1/-1;justify-self:start}}

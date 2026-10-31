@@ -269,8 +269,8 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
 
 function gapFigure(c, rec) {
   const r = rec.response; let body = '', cap = '';
-  if (c.format === 'estimate') { const e = c.estimate; body = gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); const u = (e.unit ?? '%') === '%' ? ' points' : e.unit; cap = `Shaded band: within ${e.tolerance}${u} of the study value counts as a hit. You were ${rec.detail.gap}${u} away.` }
-  else if (c.format === 'forecast') { body = `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = `A confident correct call earns 100, saying 50% earns 50, and a confident miss goes below zero.` }
+  if (c.format === 'estimate') { const e = c.estimate; const u = (e.unit ?? '%') === '%' ? ' points' : e.unit, f = x => x + (e.unit ?? '%'); body = gapHead(f(r), f(e.target), rec.detail.gap <= e.tolerance ? 'Inside the band' : `${rec.detail.gap}${u} off`) + gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); cap = `Shaded band: within ${e.tolerance}${u} of the study value counts as a hit.` }
+  else if (c.format === 'forecast') { body = gapHead(r + '%', c.forecast.truth ? 'True' : 'False', `Score ${pct(rec.score)}`, 'You gave it', 'The claim') + `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = `A confident correct call earns 100, saying 50% earns 50, and a confident miss goes below zero.` }
   else if (c.format === 'rank') {
     const truth = c.rankAnswer, ties = c.rankTies || [];
     const tied = (a, b) => ties.some(t => t.includes(a) && t.includes(b));
@@ -289,6 +289,10 @@ function gapFigure(c, rec) {
   else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
   else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
   return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.format === 'allocate' ? '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your points</span><span><span class="tag tag-ev">Worked best</span> marks the study’s answer</span></div>' : c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<div class="gap-legend" aria-hidden="true"><span>Study results</span><span><i class="dot dot-ev"></i>The result the question asks about</span></div>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
+}
+// The signature moment of a numeric reveal: your number against the study's, large, with the gap between them.
+function gapHead(you, ev, gap, youLab = 'Your call', evLab = 'The study') {
+  return `<div class="gap-head"><div class="gh-cell"><span>${esc(youLab)}</span><b class="num gh-you">${esc(you)}</b></div><div class="gh-cell"><span>${esc(evLab)}</span><b class="num gh-ev">${esc(ev)}</b></div><p class="gh-gap">${esc(gap)}</p></div>`;
 }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {
