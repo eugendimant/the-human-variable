@@ -43,7 +43,7 @@ House rules that apply to anything you write for Eugen:
 Each iteration does the following, in order:
 1. **Verify the previous iteration's fixes first,** with a reader who did not write them: a fresh agent or a test.
 2. **Run every gate:** `python src/build.py --check`, `python -m pytest -q`, and `python tools/make_audit_doc.py` after content changes.
-3. **Get an independent adversarial review.** Use a fresh agent that copies the tree to a snapshot and reviews only that copy. Give it real browser play at two widths, a live class, axe, content reading through ten lenses (MBA student, executive, behavioral scientist, learning scientist, game designer, creative director, UX and accessibility, engineer, instructor, skeptic), a server audit, and a 100-point score: science 15, learning 15, visual 15, gameplay 15, AI/business 10, content 10, technical 10, classroom 5, accessibility 5. The previous review prompts are in the ledger.
+3. **Get an independent adversarial review.** Use a fresh agent that copies the tree to a snapshot and reviews only that copy. Give it real browser play at two widths, a live class, axe, content reading through ten lenses (MBA student, executive, behavioral scientist, learning scientist, game designer, creative director, UX and accessibility, engineer, instructor, skeptic), a server audit, and a 100-point score: science 15, learning 15, visual 15, gameplay 15, AI/business 10, content 10, technical 10, classroom 5, accessibility 5. The review prompt is in `qa/REVIEW_PROMPT.md`.
 4. **Triage** into Blocking, Major, Minor and Optional.
 5. **Fix** in this order: the fact, then the number, then the calibration, then the wording. Turn every new defect class into a test.
 6. **Count** Blocking plus Major. With two or more, iterate again. Do not stop below a 95 independent score.
@@ -74,3 +74,10 @@ Run each through the loop and an independent reviewer before calling it done.
 1. Create the GitHub repository (private first) and push. Add a license chosen by Eugen. Fonts are OFL, and their licenses are in `src/fonts/`.
 2. GitHub Pages for the offline game, a Render or Fly container for live classes (set `THV_INSTRUCTOR_PASSCODE`), and/or Streamlit Community Cloud. Follow `docs/DEPLOYMENT.md`.
 3. Never commit secrets or SQLite data. `.gitignore` covers both.
+
+## Where it stands (2026-10-31, after iteration 24)
+
+- Independent scores: 62 at review 1, 82 at review 10, 86 to 87 at reviews 15 to 19 (latest 87, 0 Blocking, 1 Major, fixed in iteration 24). The target is 95.
+- The category that has not moved is visual (12/15). Reviewers ask for: one signature illustration per theme at large scale (reveal header and path cards), the space under the evidence card on wide reveals filled (for example "how others called it"), a darker editorial evidence plate, an animated gap from the player's call to the evidence, and a tighter type scale on the reveal's left column.
+- Learning (13/15): the key-less tutor is a grounded summary tool; reviewers keep asking it detail questions. Extend the shared routing table (`tools/tutor_routes_2026_10_31.py`) and its tests rather than adding free-text generation.
+- Open verification items: bz01's 73%, 222% and 316% figures need the published Marketing Science PDF (library access); dimant-opioid-forecast figures should be rechecked against the Health Economics version of record (a pre-publication summary differs slightly); Dimant 2019 (contagion) percentages are paywalled; the polarized-norms "most chose extremes" line follows the abstract while the body reports 46% above the midpoint.
