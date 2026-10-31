@@ -116,3 +116,8 @@ def test_curated_says_locked_not_off_topic():
     q = 'Did the anchoring wheel of fortune change estimates of African countries in the UN?'
     assert 'outside' not in tu.curated(q, None)['answer']
     assert 'opens after' in tu.curated(q, None, exclude=lambda i: True)['answer']
+
+def test_curated_answers_by_author_name():
+    from server import tutor as tu
+    r = tu.curated('What did Salvi find about GPT-4 persuasion?', None)
+    assert 'outside' not in r['answer'] and r['citations']

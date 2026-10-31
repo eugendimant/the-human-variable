@@ -2305,7 +2305,7 @@
    "scene": "In an online experiment, 453 professionals complete short occupation-specific writing tasks; half are randomly given access to ChatGPT.",
    "question": "How much less time did the ChatGPT group take?",
    "answerTitle": "40% less time",
-   "explain": "Across 453 professionals, average completion time fell 40%. Output quality also rose 18%.",
+   "explain": "Across 453 professionals, average completion time fell 40%.",
    "implication": "Pilot AI on measurable tasks. Track quality as well as speed.",
    "boundary": "Short, incentivized, occupation-specific writing tasks done online by 453 college-educated professionals.",
    "sources": [
@@ -2378,7 +2378,7 @@
    "follow": [
     {
      "q": "Did quality really improve?",
-     "a": "Yes. Average output quality rose 18%, alongside a 40% cut in time."
+     "a": "Yes. Average output quality rose 18%."
     },
     {
      "q": "Which tasks?",
@@ -2402,60 +2402,6 @@
    "study": {
     "design": "Preregistered online experiment",
     "n": "453 college-educated professionals"
-   }
-  },
-  {
-   "id": "ai04",
-   "track": "AI × Business",
-   "concept": "Adoption",
-   "tag": "04 / OPERATIONS",
-   "title": "A real-world baseline",
-   "scene": "A company deploys AI in a live customer-support workflow.",
-   "question": "How much did issues resolved per hour rise on average?",
-   "answerTitle": "15% on average",
-   "explain": "Across 5,172 customer-support agents, access to a generative AI assistant raised issues resolved per hour by 15% on average.",
-   "implication": "Report AI productivity gains separately for new and experienced staff, since gains concentrated among less experienced workers.",
-   "boundary": "5,172 customer-support agents given a generative AI conversational assistant in a staggered rollout.",
-   "sources": [
-    "bry25"
-   ],
-   "visual": "bars",
-   "values": [
-    100,
-    115
-   ],
-   "labels": [
-    "Pre-adoption",
-    "AI assistance"
-   ],
-   "unit": "relative output",
-   "follow": [
-    {
-     "q": "Who gained the most?",
-     "a": "Less experienced and lower-skilled agents improved in both speed and quality. The most experienced agents saw small speed gains and slight quality declines."
-    },
-    {
-     "q": "How did customers react?",
-     "a": "Customers were more polite to agents and less likely to ask for a manager."
-    },
-    {
-     "q": "Which problems saw the biggest gains?",
-     "a": "Moderately rare problems, where agents had limited experience but the AI had enough training data."
-    }
-   ],
-   "format": "estimate",
-   "weight": 1,
-   "estimate": {
-    "target": 15,
-    "min": 0,
-    "max": 100,
-    "tolerance": 3,
-    "label": "Increase in issues per hour (%)"
-   },
-   "theme": "ai-work",
-   "study": {
-    "design": "Staggered workplace rollout (field data)",
-    "n": "5,172 customer-support agents"
    }
   },
   {
@@ -2631,15 +2577,14 @@
    "track": "AI × Business",
    "concept": "Trust in AI",
    "tag": "11 / FIT",
-   "title": "A model for taste?",
+   "title": "Two jobs for an algorithm",
    "scene": "A retailer considers algorithms to recommend a practical product versus judge a highly personal aesthetic preference.",
    "question": "For which task were people more reluctant to rely on an algorithm?",
    "options": [
-    "Equally reluctant for both",
     "Judging a personal aesthetic preference",
     "Recommending a product for its practical use"
    ],
-   "answer": 1,
+   "answer": 0,
    "answerTitle": "Subjectivity changes acceptance",
    "explain": "Castelo, Bos and Lehmann ran four online lab studies with over 1,400 participants and two field studies with over 56,000. People trusted and used algorithms less for tasks that seem subjective; making a task seem more objective raised reliance.",
    "implication": "For taste-based recommendations, explain the measurable inputs the algorithm uses, which makes the task seem more objective.",
@@ -2723,8 +2668,7 @@
    "weight": 1,
    "theme": "ai-trust",
    "study": {
-    "design": "Series of consumer choice experiments",
-    "n": "Consumer samples across multiple studies (sizes not read)"
+    "design": "Series of consumer choice experiments"
    },
    "permuted": true
   },
@@ -2805,7 +2749,7 @@
    "options": [
     "Inertia, and the default read as advice",
     "The employer match required the default rate",
-    "The default had the best expected returns"
+    "Employees read the form as mandatory"
    ],
    "answer": 0,
    "answerTitle": "Defaults communicate advice",
@@ -2862,7 +2806,7 @@
    "answerTitle": "Behavioral evidence beat a generic appeal",
    "explain": "In Goldstein, Cialdini and Griskevicius's first hotel experiment (1,058 reuse opportunities), 44.1% of guests reused towels under the \"most guests reuse\" sign, against 35.1% under the standard environmental sign.",
    "implication": "In customer prompts, replace purely environmental or civic appeals with an accurate statement of what most peers do.",
-   "boundary": "Field studies in one US hotel. Later replications found modest effects, and some found the norm sign no better than a plain environmental sign.",
+   "boundary": "Field studies in one US hotel; later replications found smaller effects, with the norm sign sometimes matching a plain environmental sign.",
    "sources": [
     "hotel08"
    ],
@@ -3055,7 +2999,7 @@
    "concept": "Innovation",
    "tag": "19 / PROCESS",
    "title": "Fixing a slow process",
-   "scene": "A team has a slow approval process. Asked to improve it, members suggest new steps and dashboards.",
+   "scene": "A team has a slow approval process and is asked how to improve it.",
    "question": "Which kind of fix do people tend to miss?",
    "options": [
     "Adding a review step",
@@ -3095,8 +3039,7 @@
    "weight": 1,
    "theme": "choice",
    "study": {
-    "design": "Eight experiments",
-    "n": "Eight experiments"
+    "design": "Eight experiments"
    },
    "permuted": true
   },
@@ -3209,8 +3152,7 @@
     "note": "Tversky & Kahneman (1974), p. 1128."
    },
    "study": {
-    "design": "Classroom experiment",
-    "n": "Groups of participants"
+    "design": "Classroom experiment"
    }
   },
   {
@@ -3330,7 +3272,7 @@
    "options": [
     "Several coexisting views within each party",
     "Near-uniform views held by members of each party",
-    "Identical views across parties"
+    "Two opposed camps within each party"
    ],
    "answer": 0,
    "answerTitle": "Groups are less monolithic",
@@ -3460,8 +3402,7 @@
    "weight": 1,
    "theme": "evidence",
    "study": {
-    "design": "Independent lab replications",
-    "n": "Groups of students"
+    "design": "Independent lab replications"
    },
    "forecast": {
     "claim": "Groups with more equal conversational turn-taking scored higher on collective intelligence.",
@@ -3567,12 +3508,12 @@
    },
    "permuted": true,
    "options": [
-    "Precise gains for women in each round",
-    "No effect of the screen on women",
-    "Favorable to women, some with large standard errors",
-    "Unfavorable to women overall"
+    "Large gains, mostly in final rounds",
+    "No effect, though estimates were noisy",
+    "Unfavorable to women, mostly in early rounds",
+    "Favorable to women, some with large standard errors"
    ],
-   "answer": 2
+   "answer": 3
   },
   {
    "id": "social14",
@@ -3791,15 +3732,15 @@
    "concept": "Measurement",
    "tag": "54 / MEASUREMENT",
    "title": "Same average, two teams",
-   "scene": "Two departments report identical average appropriateness ratings. One is unified; the other contains opposing camps.",
+   "scene": "Two departments report the same average rating of how acceptable a practice is. You suspect their norms still differ.",
    "question": "Two teams give the same average answer on what conduct is acceptable. How do you see whether their norms differ?",
    "options": [
     "Ask each team’s manager to describe the norm",
-    "Compare the two team averages",
-    "Count past policy violations",
-    "Look at the spread of views, not the mean"
+    "Collect each person’s view and look at the spread",
+    "Compare how often each team breaks the rule",
+    "Survey a larger sample and compare averages again"
    ],
-   "answer": 3,
+   "answer": 1,
    "answerTitle": "Keep the whole distribution",
    "explain": "Dimant's method elicits, with incentives, each person's belief about the full distribution of views instead of the mean or most common view, so a unified team and one split into opposing camps can be told apart.",
    "implication": "In culture surveys, ask each person how views are spread across colleagues, not only what the typical view is.",
@@ -3908,7 +3849,7 @@
    "format": "delegate",
    "concept": "Human-AI synergy",
    "title": "Who should have the final say?",
-   "scene": "You are designing workflows for three AI-supported tasks. A meta-analysis of 106 experiments shows when humans plus AI beat either one working alone.",
+   "scene": "You are designing workflows for two AI-supported tasks. A meta-analysis of 106 experiments shows when humans plus AI beat either one working alone.",
    "question": "For each task, who should do the work?",
    "delegate": {
     "choices": [
@@ -3932,7 +3873,7 @@
    "answerTitle": "Combine only where humans beat the AI",
    "explain": "Across 370 effect sizes, human-AI teams did worse than the best performer alone (g = -0.23). They gained when humans beat the AI (g = 0.46) and lost when the AI was better (g = -0.54).",
    "implication": "Benchmark humans and AI separately before adding a human review layer; skip that layer where the AI alone is clearly stronger.",
-   "boundary": "Covers experiments published January 2020 to June 2023; averages span very different tasks, so they are no rule for one workflow.",
+   "boundary": "Covers experiments published January 2020 to June 2023 across very different tasks; the averages describe that range of tasks.",
    "sources": [
     "vaccaro24"
    ],
@@ -4033,7 +3974,7 @@
    "answerTitle": "Up to 24.7% less crime",
    "explain": "Simulations showed crime reductions up to 24.7% with no change in jailing rates, or jailing cuts up to 41.9% with no rise in crime.",
    "implication": "Audit high-volume screening decisions with a prediction model and estimate how many errors you could cut at today's approval rate.",
-   "boundary": "These are policy simulations on past bail cases, not a deployed system; crime outcomes exist only for released defendants.",
+   "boundary": "Policy simulations on past bail cases; crime outcomes exist only for released defendants.",
    "sources": [
     "kleinberg18"
    ],
@@ -4076,7 +4017,7 @@
    "answerTitle": "About 10% more accurate",
    "explain": "Across 136 studies, formulas were about 10% more accurate on average. Experts were substantially more accurate in only 6% to 16% of studies.",
    "implication": "For repeated predictions from structured data, make a validated scoring rule the default and log every expert override.",
-   "boundary": "Studies of clinical and behavioral prediction up to 2000 using statistical formulas, not modern AI; many studies showed ties.",
+   "boundary": "Studies of clinical and behavioral prediction up to 2000 using statistical formulas; many studies showed ties.",
    "sources": [
     "grove00"
    ],
@@ -4486,7 +4427,7 @@
    "answerTitle": "Young women cost more to reach",
    "explain": "Lambrecht and Tucker found that a gender-neutral STEM job ad reached fewer women than men because younger women cost more to reach. An algorithm optimizing cost-effectiveness crowded them out, and the same pattern held on other major platforms.",
    "implication": "Audit who actually sees your recruiting ads and set reach targets by group rather than pure cost optimization.",
-   "boundary": "One field test of STEM career ads, with the same pattern on other major platforms; it studies ad delivery, not hiring outcomes.",
+   "boundary": "One field test of how STEM career ads were delivered, with the same pattern on other major platforms.",
    "sources": [
     "lambrecht19"
    ],
@@ -4526,7 +4467,7 @@
    "answerTitle": "Customers got politer and escalated less",
    "explain": "With AI assistance, customers were more polite and less likely to ask to speak to a manager, alongside a 15% average rise in issues resolved per hour.",
    "implication": "Track escalation rates and customer tone in AI pilots; part of the payoff may show up in supervisors' time.",
-   "boundary": "One firm's customer-support chat operation with a staggered rollout, not random assignment of agents.",
+   "boundary": "One firm’s customer-support chat operation, with a staggered rollout across agents.",
    "sources": [
     "bry25"
    ],
@@ -4818,7 +4759,7 @@
    "answerTitle": "The experiment found 73%, not 222%",
    "explain": "In Study 4 the randomized lift was 73%, while exact matching on age and gender gave 222% and the naive exposed-versus-unexposed comparison 316%.",
    "implication": "Keep a randomized holdout for major campaigns before trusting matched or platform-reported lift numbers.",
-   "boundary": "Fifteen US Facebook campaigns; observational methods sometimes underestimated lift, so the bias does not always run upward.",
+   "boundary": "Fifteen US Facebook campaigns; observational methods both over- and underestimated lift across campaigns.",
    "dag": {
     "alt": "A random holdout determines ad exposure. Unobserved user activity drives both who sees the ad and who buys, so comparing exposed and unexposed users confounds the ad's effect on purchase.",
     "height": 200,
@@ -4970,7 +4911,7 @@
    "answerTitle": "Savings rates rose from 3.5% to 13.6%",
    "explain": "In the first implementation, participants' savings rates increased from 3.5 percent to 13.6 percent over 40 months, and 78 percent of those offered the plan joined.",
    "implication": "Offer a sign-up that raises retirement contributions at each future raise, so take-home pay never falls.",
-   "boundary": "Early company implementations with employees who chose to join; not a randomized trial.",
+   "boundary": "Early company implementations with employees who chose to join.",
    "sources": [
     "thaler04"
    ],
@@ -5086,7 +5027,7 @@
    "format": "choice",
    "concept": "Endowment effect",
    "title": "The mug market, revisited",
-   "scene": "In classic classroom markets, students given a mug asked a median $7.12 to sell it, while buyers offered $2.87. Plott and Zeiler reran the design with procedures that remove misunderstandings: training, practice rounds and anonymous offers.",
+   "scene": "In classic classroom markets, students given a mug asked a median $7.12 to sell it, while buyers offered $2.87. Plott and Zeiler reran the design with training, practice rounds and anonymous offers.",
    "question": "What happened to the gap between sellers and buyers?",
    "answerTitle": "Under careful procedures, the mug gap disappeared",
    "explain": "Sellers’ median of $7.12 against buyers’ $2.87 in the original markets gave way to no gap under Plott and Zeiler’s procedures. Isoni, Loomes and Sugden later confirmed this for mugs but found a persistent gap for lotteries.",
@@ -5276,7 +5217,7 @@
    "answerTitle": "On average, the effect is near zero",
    "explain": "A meta-analysis of 63 conditions from 50 experiments (5,036 participants) found a mean effect size of virtually zero (D = 0.02), with considerable variance between studies.",
    "implication": "Test a range cut in your own category before assuming fewer options will sell more.",
-   "boundary": "Large variance between studies means overload appears in some settings; the average does not say which ones.",
+   "boundary": "Large variance between studies: overload appears in some settings and is absent in others.",
    "sources": [
     "scheib10",
     "iyengar00"
@@ -5316,7 +5257,7 @@
    "answerTitle": "No effect of signing first",
    "explain": "Across five conceptual replications (n = 4,559) and a preregistered direct replication (n = 1,235), the authors observed no effect of signing first on honest reporting. PNAS retracted the 2012 paper in 2021.",
    "implication": "Before rolling out a published nudge, check for replications and retractions, then pilot it on your own forms.",
-   "boundary": "Tests one form-design nudge on experimental self-reports; it does not evaluate honesty interventions in general.",
+   "boundary": "Tests one form-design nudge on experimental self-reports.",
    "sources": [
     "kristal20",
     "shu12"
@@ -5596,7 +5537,7 @@
    "answerTitle": "Stock share follows the menu",
    "explain": "Benartzi and Thaler found some investors follow a 1/n rule, splitting contributions evenly across whatever funds are offered. As a result, the share invested in stocks rises strongly with the share of stock funds on the menu.",
    "implication": "Audit the mix of fund types on your plan menu, because it quietly sets employees' risk exposure.",
-   "boundary": "Not every investor splits evenly; the evidence combines hypothetical allocation tasks with plan-level data.",
+   "boundary": "Combines hypothetical allocation tasks with plan-level data; investors differ in how evenly they split.",
    "sources": [
     "benartzi01"
    ],
@@ -5774,7 +5715,7 @@
    "answerTitle": "About 39% honest, at most 22% full liars",
    "explain": "The authors estimate that 39% of subjects were honest and at most 22% lied completely; others lied without maximizing their income.",
    "implication": "Design expense or time reporting so moderate inflation, not only extreme claims, meets a check or a reminder.",
-   "boundary": "One-shot lab die task; the shares are inferred from the distribution of reports, not from observing any individual's lie.",
+   "boundary": "One-shot lab die task; the shares are inferred from the distribution of reports.",
    "sources": [
     "fischbacher13"
    ],
@@ -5813,7 +5754,7 @@
    "answerTitle": "More rule-bending, not more maximal cheating",
    "explain": "Mean claims were 3.17 in low-violation pools and 3.53 in high-violation pools, near the 3.47 'justified dishonesty' benchmark; the share claiming the maximum was unrelated to rule violations.",
    "implication": "Where rule-breaking is common, expect small self-justified stretching more than brazen fraud; remove ambiguity people use to rationalize.",
-   "boundary": "2,568 students in 23 countries; a cross-society correlation measured years after the country index, not a causal test of institutions.",
+   "boundary": "2,568 students in 23 countries; a cross-society correlation with a country index measured years earlier.",
    "sources": [
     "gachter16"
    ],
@@ -6043,7 +5984,7 @@
    "answerTitle": "People, not bots, drove the faster spread",
    "explain": "Across about 126,000 stories, falsehood spread farther and faster in all categories; bots accelerated true and false news at the same rate, so humans drove the gap.",
    "implication": "Counter workplace rumors by addressing human sharing, such as fast, specific official updates, rather than relying on filtering automated accounts.",
-   "boundary": "Twitter from 2006 to 2017, stories verified by fact-checkers; it describes diffusion patterns and tests no intervention.",
+   "boundary": "Twitter from 2006 to 2017, with stories verified by fact-checkers; it describes how true and false stories diffused.",
    "sources": [
     "vosoughi18"
    ],
@@ -6124,13 +6065,13 @@
     "Fell, because of social backlash",
     "No change: beliefs moved, behavior did not",
     "Rose from about 6% to about 16%",
-    "Rose from about 6% to about 45%"
+    "Rose from about 6% to about 8%, within noise"
    ],
    "answer": 2,
    "answerTitle": "Applications nearly tripled, 5.8% to 16.2%",
    "explain": "Wives of informed men applied for outside jobs at 16.2% versus 5.8%, and interviewed at 5.8% versus 1.1%.",
    "implication": "Share accurate peer-support data to move stalled behavior, then track actual outcomes for months, not just stated intentions.",
-   "boundary": "Employment itself rose from 7.4% to 9.4%, not significant; one city, one cohort of married men.",
+   "boundary": "One city and one cohort of married men; employment itself rose from 7.4% to 9.4%, a difference within statistical noise.",
    "chart": {
     "labels": [
      "Applied, control",
@@ -6162,7 +6103,7 @@
     },
     {
      "q": "How wrong were the original beliefs?",
-     "a": "On average men guessed that 63% of their peers supported women working outside the home, when 87% did."
+     "a": "Men had underestimated how many of their peers privately supported women working outside the home."
     }
    ],
    "study": {
@@ -6239,7 +6180,7 @@
    "answerTitle": "Correcting beliefs cut obstructionism attributions",
    "explain": "Across 4,282 participants people overestimated out-group negativity; in an experiment with 1,122 people, showing true out-group reactions significantly reduced perceived obstructionism.",
    "implication": "In a divided team, collect each side's actual reactions to a proposal and share them before anyone assumes deliberate blocking.",
-   "boundary": "Found in competitive, not cooperative, contexts; the correction showed no credible persistence at an exploratory one-week follow-up.",
+   "boundary": "Found in competitive contexts; at an exploratory one-week follow-up the correction had faded.",
    "sources": [
     "lees20"
    ],
@@ -6291,7 +6232,7 @@
    "answerTitle": "Teams beat crowd-belief, which beat independents",
    "explain": "Team forecasters were more accurate than crowd-belief forecasters, t(1036) = 5.52, who in turn outperformed independent forecasters, t(1120) = 5.92.",
    "implication": "For risk forecasts, have analysts work in teams that share reasoning, and score their forecasts for accuracy over time.",
-   "boundary": "Geopolitical questions scored with Brier scores; volunteers in one tournament; the paper reports test statistics, not percentage gains.",
+   "boundary": "Geopolitical questions scored with Brier scores, with volunteers in one tournament; the paper reports test statistics.",
    "sources": [
     "mellers14"
    ],
@@ -6334,7 +6275,7 @@
    "answerTitle": "Probability training beat scenario training",
    "explain": "Probability training was more effective than scenario training, t(1053) = 2.23, p = .026, and training was one of three interventions that raised accuracy.",
    "implication": "Give forecasting and planning staff short training in probabilistic reasoning, and check its value with scored forecasts.",
-   "boundary": "Geopolitical forecasts by tournament volunteers; the paper reports significance tests, not percentage gains, so the size is uncertain.",
+   "boundary": "Geopolitical forecasts by tournament volunteers; the paper reports significance tests for the training effect.",
    "sources": [
     "mellers14"
    ],
@@ -6637,8 +6578,8 @@
      "a": "Anti-social individuals were the most susceptible to contagion from other anti-social peers."
     },
     {
-     "q": "Does closeness always make things worse?",
-     "a": "Not always. In a later repeated-group study (Bicchieri, Dimant, Gächter & Nosenzo 2022), a minimal shared-identity cue led people to copy good examples too, halting the erosion of compliance."
+     "q": "How was closeness varied?",
+     "a": "By how socially close participants were to the peers whose earlier choices they saw."
     },
     {
      "q": "What is the finding meant to inform?",
@@ -6896,7 +6837,7 @@
    "answerTitle": "Cards raised returns and lowered cost per pill",
    "explain": "Toma, Dimant and colleagues show, with 512 Veterans, that reminder cards raised the share returning unused pills by 6.88 percentage points over a 24.8% control rate, and cut program cost per pill returned from $15.66 to $12.57.",
    "implication": "Before raising an incentive, test cheap, well-timed reminders that help people act on the incentive they already have.",
-   "boundary": "US veterans in one cash buyback program for opioid pills; the cards added to, not replaced, the cash incentive.",
+   "boundary": "US veterans in one cash buyback program for opioid pills; the cards came on top of the cash incentive.",
    "sources": [
     "opioid26"
    ],
@@ -7143,7 +7084,7 @@
    "answerTitle": "AI for practical picks; humans for taste",
    "explain": "Across Studies 1 to 7b, people saw AI as more competent for utilitarian attributes and less competent for hedonic ones. Human-AI hybrid recommendations eliminated the effect.",
    "implication": "Label AI picks for practical product attributes; present taste-based picks as expert recommendations supported by AI.",
-   "boundary": "Consumer experiments on recommendations; the effect concerns perceived competence, not whether the AI picks were actually better.",
+   "boundary": "Consumer experiments on recommendations, measuring how competent people judged AI and human recommenders.",
    "sources": [
     "longoni22"
    ],
@@ -7170,39 +7111,12 @@
   {
    "id": "axe04",
    "track": "AI × Business",
-   "format": "allocate",
+   "format": "estimate",
    "concept": "AI persuasion",
    "title": "Can a model out-argue a professional?",
    "scene": "Researchers showed 8,221 US adults real articles from covert state-aligned propaganda campaigns, GPT-3 articles on the same claims, or no article, and measured agreement.",
-   "question": "How likely is each version to have persuaded most? Spread 100 points.",
-   "options": [
-    "GPT-3 article, no human editing",
-    "No article",
-    "Original propaganda article"
-   ],
-   "allocate": {
-    "total": 100,
-    "step": 10,
-    "label": "Points placed",
-    "prefix": "",
-    "suffix": "",
-    "values": [
-     43.5,
-     24.4,
-     47.4
-    ],
-    "valueLabels": [
-     "43.5%",
-     "24.4%",
-     "47.4%"
-    ],
-    "valueName": "share agreeing with the claim; the paper reports no test of the 3.9-point gap between the original and GPT-3, so both count as best",
-    "best": [
-     2,
-     0
-    ]
-   },
-   "answerTitle": "Unedited GPT-3 nearly matched the propagandists",
+   "question": "With no article, 24.4% agreed with the claims. What share agreed after one unedited GPT-3 article?",
+   "answerTitle": "Unedited GPT-3 reached 43.5%, near the originals’ 47.4%",
    "explain": "Agreement rose from 24.4% with no article to 47.4% after the original propaganda and 43.5% after an unedited GPT-3 article.",
    "implication": "Assume cheap AI copy can persuade nearly as well as professionals; review AI-written material for accuracy, not only tone.",
    "boundary": "One exposure to a single article on six foreign-policy-style claims in 2021, with GPT-3.",
@@ -7228,7 +7142,14 @@
     }
    ],
    "theme": "persuasion",
-   "permuted": true
+   "estimate": {
+    "target": 43.5,
+    "min": 20,
+    "max": 100,
+    "tolerance": 6,
+    "label": "Share agreeing after an unedited GPT-3 article",
+    "unit": "%"
+   }
   },
   {
    "id": "axe05",
@@ -7292,7 +7213,7 @@
    "answerTitle": "Completed tasks rose about 26%",
    "explain": "Pooling 4,867 developers, access to the assistant raised completed tasks by 26.08% (standard error 10.3%).",
    "implication": "Prioritize coding-assistant licenses and onboarding for junior developers, and track completed tasks before and after.",
-   "boundary": "Three firms' developers; single experiments were noisy and varied, and completed tasks do not measure code quality.",
+   "boundary": "Developers at three firms; single experiments were noisy and varied, and the outcome is completed tasks.",
    "sources": [
     "cui26"
    ],
@@ -7414,8 +7335,7 @@
     "granulo19"
    ],
    "study": {
-    "design": "Series of experiments",
-    "n": "Multiple online studies"
+    "design": "Series of experiments"
    },
    "follow": [
     {
@@ -7654,7 +7574,7 @@
    "answerTitle": "Trip spending rose $117; sneakers did not move",
    "explain": "Personalized getaway ads raised willingness to spend by $117 and were rated more effective; sneaker effects trended positive but were not significant.",
    "implication": "Test AI personalization product by product; start with experiential offers before rolling it out across the catalog.",
-   "boundary": "Short ChatGPT prompts with minimal profile data and stated willingness to pay, not actual purchases.",
+   "boundary": "Short ChatGPT prompts with minimal profile data, measuring stated willingness to pay.",
    "sources": [
     "matz24"
    ],
@@ -7767,7 +7687,7 @@
    "answerTitle": "More work, more favorites, less visual novelty",
    "explain": "Adopters produced more and their favorites per view rose from 2% to 3%. Average content novelty and visual novelty both declined.",
    "implication": "Use AI to raise volume, but assign a reviewer to flag look-alike output and reward novel concepts.",
-   "boundary": "Artists who chose to adopt AI on one platform; favorites measure peer reactions, not sales.",
+   "boundary": "Artists who chose to adopt AI on one platform; favorites measure peer reactions.",
    "sources": [
     "zhou24"
    ],
@@ -7807,7 +7727,7 @@
    "scene": "Your team will publish persuasive AI-written articles. A survey experiment of 8,221 US adults tested GPT-3 articles with different amounts of human prompt editing and curation.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "About 53%, against 47% for the originals",
-   "explain": "Editing the prompt and choosing the best of three outputs reached 52.7% agreement, against 47.4% for the human-written originals and 43.5% for raw GPT-3.",
+   "explain": "Editing the prompt and choosing the best of three outputs reached 52.7% agreement, above the human-written originals and well above unedited GPT-3.",
    "implication": "Budget editor time for prompt design and picking among several drafts rather than line-editing one draft.",
    "boundary": "GPT-3 articles on six claims from propaganda campaigns, read once.",
    "sources": [
@@ -7824,11 +7744,11 @@
     },
     {
      "q": "Was prompt editing alone enough?",
-     "a": "Nearly. It reached 46.4% versus 47.4% for the originals, a small difference that was not statistically significant."
+     "a": "Nearly. Editing the prompt alone brought it level with the originals; the small remaining difference was not statistically significant."
     },
     {
-     "q": "What was the baseline?",
-     "a": "Only 24.4% of respondents who saw no article agreed with the claims."
+     "q": "How much did curation matter?",
+     "a": "Picking the best of three drafts added agreement beyond what prompt editing alone achieved."
     }
    ],
    "theme": "persuasion",
@@ -7909,12 +7829,11 @@
    "format": "allocate",
    "concept": "Unethical delegation",
    "title": "How should staff instruct the machine?",
-   "scene": "Online participants privately rolled a die ten times and earned more for reporting higher numbers. Some reported themselves; others delegated the reports to a machine through one of three interfaces.",
-   "question": "Which setup kept people most honest? Spread 100 points by how likely each is.",
+   "scene": "Online participants privately rolled a die ten times and earned more for reporting higher numbers. They delegated the reports to a machine through one of three interfaces. About 95% reported honestly when they reported themselves.",
+   "question": "Which interface kept people most honest? Spread 100 points by how likely each is.",
    "options": [
     "Machine set on a dial from accuracy to profit",
     "Machine follows if-then rules you write",
-    "Report it yourself, no machine",
     "Machine trained on example data you pick"
    ],
    "allocate": {
@@ -7926,13 +7845,11 @@
     "values": [
      15,
      75,
-     95,
      50
     ],
     "valueLabels": [
      "~15% honest",
      "~75% honest",
-     "~95% honest",
      "~50% honest"
     ],
     "valueName": "share of participants who reported honestly (studies 1 and 2)"
@@ -8438,6 +8355,14 @@
     "cui26"
    ],
    "reason": "Review 5: its routings were not compared against each other in the cited studies."
+  },
+  {
+   "id": "ai04",
+   "title": "A real-world baseline",
+   "sources": [
+    "bry25"
+   ],
+   "reason": "Review 7: repeats rollout1’s headline number from the same paper."
   }
  ],
  "themes": [
@@ -8489,7 +8414,7 @@
   {
    "id": "forecasting",
    "title": "Forecasting and teams",
-   "principle": "Forecasts improve with training, teaming and scoring, and fail through overconfidence and planning optimism. How a group talks and connects matters as much as who is in it."
+   "principle": "Forecasts improve with training, teaming and scoring, and fail through overconfidence and planning optimism. Who is in a group matters more than equal turn-taking."
   }
  ],
  "paths": [
@@ -8547,11 +8472,13 @@
   {
    "id": "measure",
    "title": "Measure before you scale",
-   "blurb": "Matched ad lift, famous nudges and expert forecasts, each checked against a randomized test.",
+   "blurb": "Ad lift, nudges, remote work and expert forecasts, each put to a randomized test.",
    "ids": [
     "bz01",
+    "bz05",
     "bz02",
     "bz11",
+    "bz07",
     "bz10",
     "dimant-masks-forecast",
     "dimant-requiem-forecast",

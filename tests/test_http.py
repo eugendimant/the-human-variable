@@ -93,7 +93,7 @@ def test_served_pages_carry_no_answers(base):
             if isinstance(o, dict): keys.update(o); [walk(v) for v in o.values()]
             elif isinstance(o, list): [walk(v) for v in o]
         walk(bank['challenges'])
-        assert not keys & {'answer', 'multiAnswers', 'rankAnswer', 'target', 'truth', 'values', 'explain', 'answerTitle', 'why'}, p
+        assert not keys & {'answer', 'multiAnswers', 'rankAnswer', 'rankTies', 'rankValues', 'target', 'truth', 'values', 'valueLabels', 'valueName', 'best', 'also', 'explain', 'answerTitle', 'why', 'chart', 'implication', 'follow', 'boundary'}, p
         # Review 3, B1/M1: no answer-bearing text anywhere in the page bytes (sources, themes, diagrams included).
         text = body.decode('utf-8'); leaks = []
         for c in cl.BANK['challenges']:

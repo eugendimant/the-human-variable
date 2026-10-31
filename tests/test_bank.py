@@ -148,7 +148,7 @@ def test_bank_order_does_not_carry_the_answer():
     assert not [c['id'] for c in LIVE if c['format'] == 'rank' and c['rankAnswer'] == list(range(len(c['options'])))]
     assert sum(1 for c in LIVE if c['format'] == 'multi' and c['multiAnswers'] == [0, 1]) <= 0.4 * sum(1 for c in LIVE if c['format'] == 'multi')
 
-NEG_SCOPE = re.compile(r"\b(were|was) not (tested|studied)\b", re.I)
+NEG_SCOPE = re.compile(r"\b(were|was) not (tested|studied)\b|\bdoes not\b|\bdo not\b|, not\b|\bnot (a|an|the|every|whether|modern|random)\b|\btests no\b", re.I)
 def test_boundaries_state_scope_positively():
     """Review 3, minor 4 and CONTENT_GUIDE: a boundary says what the study covers."""
     assert not [c['id'] for c in LIVE if NEG_SCOPE.search(c['boundary'])]
@@ -205,3 +205,25 @@ def test_no_constant_guess_pays_across_estimates():
     E = [c for c in LIVE if c['format'] == 'estimate']
     best = max(sum(scoring.score(c, min(max(x, c['estimate']['min']), c['estimate']['max']))['score'] for c in E) / len(E) for x in range(-50, 501))
     assert best <= 0.35, best
+
+def _reveal_text(e):
+    return ' '.join([e['explain'], e['implication'], e['answerTitle'], (e.get('chart') or {}).get('note', '')] + [f['a'] for f in e['follow']] + [t.get('why', '') for t in (e.get('delegate') or {}).get('tasks', [])])
+
+def test_siblings_do_not_leak_each_other():
+    """Review 7, minor 3: decisions built on the same paper can meet in any round, so neither reveal may carry the other's key number."""
+    bad = []
+    for c in LIVE:
+        key = _nums(c['answerTitle']) | ({f"{c['estimate']['target']:g}"} if c['format'] == 'estimate' else set())
+        for e in LIVE:
+            if e['id'] == c['id'] or not set(e['sources']) & set(c['sources']) or (c.get('case') and e.get('case')): continue
+            hit = {k for k in key if re.search(r'(?<![\d.])' + re.escape(k) + r'(?![\d])', _reveal_text(e))}
+            if hit: bad.append((e['id'], '->', c['id'], sorted(hit)))
+    assert not bad, bad
+
+def test_allocate_even_split_is_not_a_hit():
+    """Review 7, M2: an allocation item must reward a prediction, not a hedge."""
+    from server import scoring
+    for c in LIVE:
+        if c['format'] != 'allocate': continue
+        n = len(c['options']); t = c['allocate']['total']
+        assert scoring.score(c, [t // n] * (n - 1) + [t - t // n * (n - 1)])['score'] <= 0.6, c['id']

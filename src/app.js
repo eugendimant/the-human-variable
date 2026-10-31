@@ -33,7 +33,7 @@ const store = {
 };
 async function ensureFull(id) {
   const c = BY_ID[id]; if (!PUBLIC || !c || c.answerTitle) return true;
-  try { const r = await fetch('/api/reveal/' + encodeURIComponent(id), { headers: { 'X-Client-Id': clientId() } }); const d = await r.json(); if (!r.ok) { notice(d.error || 'The evidence could not be loaded.'); return false } mergeFull(c, d); return true }
+  try { const r = await fetch('/api/reveal/' + encodeURIComponent(id), { headers: { 'X-Client-Id': clientId() } }); const d = await r.json(); if (!r.ok) { if (d.class_lock) CLASS_LOCK = true; notice(d.error || 'The evidence could not be loaded.'); return false } mergeFull(c, d); return true }
   catch { notice('The evidence could not be loaded. Check your connection and lock again.'); return false }
 }
 // Source takeaways and notes state findings, so the server sends them with the evidence.
@@ -126,7 +126,7 @@ async function lock() {
   locking = true; const b = qs('#lock-btn'); if (b) { b.disabled = true; b.textContent = PUBLIC ? 'Checking the evidence' : 'Locked' }
   qs('.focus-card')?.classList.add('is-locked');
   const okFull = await ensureFull(c.id);
-  if (!okFull) { locking = false; syncLock(); if (b) b.textContent = 'Try again'; qs('.focus-card')?.classList.remove('is-locked'); return }
+  if (!okFull) { locking = false; syncLock(); if (b) b.textContent = CLASS_LOCK ? 'Results open after the class reveal' : 'Try again'; qs('.focus-card')?.classList.remove('is-locked'); return }
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) await new Promise(z => setTimeout(z, 420));
   locking = false;
   finalize(c, st.resp, noConf(c) ? null : st.conf);
@@ -281,13 +281,13 @@ function gapFigure(c, rec) {
   }
   else if (c.format === 'allocate') {
     const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, hi = Math.max(...a.values), isBest = k => a.best ? a.best.includes(k) : a.values[k] === hi;
-    body = `<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${c.options.map((o, k) => `<div class="hb-row"><span class="hb-label">${esc(o)}<small class="alloc-val">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</small></span><span class="hb-track"><i class="grow ${isBest(k) ? 'ev' : 'you'}" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num ${isBest(k) ? 'ev' : 'you'}">${pct(r[k] / tot)}</b></div>`).join('')}</div>`;
-    cap = `Bars: the points you gave each option. Amber marks the option that worked best (or options the study did not separate); the small figure under each option is ${esc(a.valueName)}. Score ${pct(rec.score)}: 100 for all points on the best option, lower the more points sat elsewhere.`
+    body = `<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${c.options.map((o, k) => `<div class="hb-row"><span class="hb-label">${esc(o)}${isBest(k) ? ' <span class="tag tag-ev">Worked best</span>' : ''}<small class="alloc-val">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</small></span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num you">${pct(r[k] / tot)}</b></div>`).join('')}</div>`;
+    cap = `Bars: your points. Score ${pct(rec.score)}: 100 when all points sit on the option that worked best.`
   }
   else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
   else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
   else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
-  return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<div class="gap-legend" aria-hidden="true"><span>Study results</span><span><i class="dot dot-ev"></i>The answer</span></div>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
+  return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<div class="gap-legend" aria-hidden="true"><span>Study results</span><span><i class="dot dot-ev"></i>The result the question asks about</span></div>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
 }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {

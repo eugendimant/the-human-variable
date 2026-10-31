@@ -12,11 +12,11 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 114 (formats: forecast 31, choice 29, estimate 25, multi 10, rank 7, causal 6, delegate 4, allocate 2).
+- Decisions in scored play: 113 (formats: forecast 31, choice 29, estimate 25, multi 10, rank 7, causal 6, delegate 4, allocate 1).
 - Sources: 108 (59 checked against the published full text, 4 against the authors' accepted manuscript, 44 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
-- Decisions retired with reasons: 32 (listed below).
-- Track balance: AI × Business 47, Business 30, Culture & Society 30, Judgment 7.
+- Decisions retired with reasons: 33 (listed below).
+- Track balance: AI × Business 46, Business 30, Culture & Society 30, Judgment 7.
 
 ## Sources
 
@@ -42,7 +42,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Bohnet, van Geen & Bazerman (2016). *When Performance Trumps Gender Bias: Joint vs. Separate Evaluation*. [doi:10.1287/mnsc.2015.2186](https://doi.org/10.1287/mnsc.2015.2186) | Management Science 62(5) 1225-1234 | Abstract | bz14 |  |
 | Bolton, Dimant & Schmidt (2021). *Observability and social image: On the robustness and fragility of reciprocity*. [doi:10.1016/j.jebo.2021.09.018](https://doi.org/10.1016/j.jebo.2021.09.018) | Journal of Economic Behavior & Organization 191 946-964 | Full text | dimant-observability-choice |  |
 | Breza, Kaur & Shamdasani (2018). *The Morale Effects of Pay Inequality*. [doi:10.1093/qje/qjx041](https://doi.org/10.1093/qje/qjx041) | The Quarterly Journal of Economics 133(2) 611-663 | Abstract | bz13 |  |
-| Brynjolfsson, Li & Raymond (2025). *Generative AI at Work*. [doi:10.1093/qje/qjae044](https://doi.org/10.1093/qje/qjae044) | Quarterly Journal of Economics 140(2) 889-942 | Abstract | ai04, axb13, rollout1, rollout2 |  |
+| Brynjolfsson, Li & Raymond (2025). *Generative AI at Work*. [doi:10.1093/qje/qjae044](https://doi.org/10.1093/qje/qjae044) | Quarterly Journal of Economics 140(2) 889-942 | Abstract | axb13, rollout1, rollout2 |  |
 | Buehler, Griffin & Ross (1994). *Exploring the "planning fallacy": Why people underestimate their task completion times*. [doi:10.1037/0022-3514.67.3.366](https://doi.org/10.1037/0022-3514.67.3.366) | Journal of Personality and Social Psychology 67(3) 366-381 | Full text | bz04 |  |
 | Bursztyn, González & Yanagizawa-Drott (2020). *Misperceived Social Norms: Women Working Outside the Home in Saudi Arabia*. [doi:10.1257/aer.20180975](https://doi.org/10.1257/aer.20180975) | American Economic Review 110(10) 2997-3029 | Full text | misperceived-norms-support, misperceived-norms-action |  |
 | Buçinca, Malaya & Gajos (2021). *To Trust or to Think: Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making*. [doi:10.1145/3449287](https://doi.org/10.1145/3449287) | Proceedings of the ACM on Human-Computer Interaction (CSCW1) 5(CSCW1) 1-21 | Abstract | axb10 |  |
@@ -193,6 +193,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 - axe03 (Who decides, who coaches?): Review 4: routings rested on author suggestions, and the abstracts report no effect sizes.
 - social03 (When peers vary): Review 4: duplicate of social01 (same paper, same tight-versus-loose result).
 - axe02 (Where does the AI go?): Review 5: its routings were not compared against each other in the cited studies.
+- ai04 (A real-world baseline): Review 7: repeats rollout1’s headline number from the same paper.
 
 ## Not verified
 

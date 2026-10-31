@@ -1,5 +1,5 @@
 import streamlit as st
-import json
+import hmac, json
 from .common import FORMAT_NAME, ROOT, secret, store, style
 
 def join_url(code: str) -> str:
@@ -30,9 +30,10 @@ def run():
             title = st.text_input('Session name', max_chars=80, placeholder='Leading with AI, week 3')
             pw = st.text_input('Instructor passcode', type='password') if secret('THV_INSTRUCTOR_PASSCODE') else ''
             if st.form_submit_button('Create the session', type='primary'):
-                if secret('THV_INSTRUCTOR_PASSCODE') and pw != secret('THV_INSTRUCTOR_PASSCODE'): st.error('Wrong passcode.')
+                if secret('THV_INSTRUCTOR_PASSCODE') and not hmac.compare_digest(str(pw).encode(), secret('THV_INSTRUCTOR_PASSCODE').encode()): st.error('Wrong passcode.')
                 else: ss.inst = S.create(title); st.rerun()
         st.caption('Answers are stored by participant number only and deleted when you end the session or after 48 hours.')
+        if not secret('THV_INSTRUCTOR_PASSCODE'): st.warning('No instructor passcode is set, so anyone who opens this page can start a class. Set THV_INSTRUCTOR_PASSCODE in the app secrets before sharing the link.')
         return
     I = ss.inst
     join = join_url(I['code'])

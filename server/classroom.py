@@ -276,7 +276,7 @@ def public_challenge(c: dict) -> dict:
     out = {k: c[k] for k in keep if k in c}
     if c['format'] == 'estimate': out['estimate'] = {k: c['estimate'][k] for k in ('min', 'max', 'label', 'unit', 'step') if k in c['estimate']}
     if c['format'] == 'forecast': out['forecast'] = {'claim': c['forecast']['claim']}
-    if c['format'] == 'allocate': out['allocate'] = {k: v for k, v in c['allocate'].items() if k not in ('values', 'valueLabels', 'pass')}
+    if c['format'] == 'allocate': out['allocate'] = {k: c['allocate'][k] for k in ('total', 'step', 'label', 'prefix', 'suffix') if k in c['allocate']}  # allow-list: nothing that names the best arm
     if c['format'] == 'delegate': out['delegate'] = {'choices': c['delegate']['choices'], 'tasks': [{'text': t['text']} for t in c['delegate']['tasks']]}
     if 'dag' in c:  # the written explanation and the masked label state the answer; edge styles mark the questioned link
         d = c['dag']; out['dag'] = {k: v for k, v in d.items() if k not in ('alt', 'nodes', 'edges')}

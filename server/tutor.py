@@ -16,7 +16,7 @@ from datetime import datetime, timedelta, timezone
 from .classroom import BANK, CHALLENGES
 
 SOURCES = BANK['sources']
-STOP = set('a an and are as at be been but by can could did do does for from had has have how i if in into is it its me more most my no not of on or our should so than that the their them then there these they this those to too up us was we were what when where which who why will with would you your about after also any because before being both each few just much many only other over same some such very study studies research researchers paper finding findings result results effect effects people thing'.split())
+STOP = set('a an and are as at be been but by can could did do does for from had has have how i if in into is it its me more most my no not of on or our should so than that the their them then there these they this those to too up us was we were what when where which who why will with would you your about after also any because before being both each few just much many only other over same some such very study studies research researchers paper finding findings result results effect effects people thing find found show shows showed tell report reported'.split())
 TOK = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
 
 def tokens(s: str) -> list[str]:
@@ -85,7 +85,13 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         if best and len(qt & set(tokens(best['q'] + ' ' + best['a']))) >= 1:
             return {'answer': best['a'], 'citations': cites, 'mode': 'curated'}
     qt = set(tokens(question))
-    docs = [d for d in retrieve(question, challenge_id, 3, exclude) if d['kind'] == 'decision' and len(qt & set(tokens(d['body']))) > len(qt) / 2]
+    docs = []
+    for d in retrieve(question, challenge_id, 4, exclude):
+        if len(qt & set(tokens(d['body']))) <= len(qt) / 2: continue
+        if d['kind'] == 'decision': docs.append(d)
+        else:  # a source record (authors, title): answer with the first decision built on it
+            for cid in SRC_USERS.get(d['id'], []):
+                if not (exclude and exclude(cid)): docs.append({'id': cid, 'kind': 'decision', 'body': d['body']}); break
     if docs:
         d = docs[0]; cc = CHALLENGES[d['id']]
         return {'answer': f"{cc['explain']} {cc['implication']}", 'citations': [{'id': s, 'label': cite_label(s)} for s in cc['sources']], 'mode': 'curated'}
