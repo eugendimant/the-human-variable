@@ -2371,17 +2371,11 @@
    "track": "AI × Business",
    "concept": "Trust in AI",
    "tag": "10 / ADVICE",
-   "title": "Do people always dislike algorithms?",
-   "scene": "A forecasting tool and a person offer advice in a prediction task.",
-   "question": "Which generalization is supported by published research?",
-   "options": [
-    "They weighted human advice more",
-    "They weighted algorithmic advice more",
-    "They ignored both sources equally"
-   ],
-   "answer": 1,
-   "answerTitle": "Algorithm appreciation exists",
-   "explain": "In several tasks, participants relied more on algorithmic advice than human advice.",
+   "title": "Advice from a person or a program",
+   "scene": "People estimated a person’s weight from a photo, then saw an advice estimate and could revise. The same advice was labeled as coming from other people for some and from an algorithm for others. With human-labeled advice, they moved 30% of the way toward it.",
+   "question": "How far did people move toward the same advice labeled as an algorithm’s?",
+   "answerTitle": "45% of the way, versus 30% for human advice",
+   "explain": "Weight on advice averaged 0.45 when the advice was labeled algorithmic and 0.30 when labeled human, for identical advice.",
    "implication": "Check whether experienced staff discount model advice; in this study, experts who relied less on the algorithm were less accurate.",
    "boundary": "Six experiments, mostly with lay participants, on estimation and forecasting tasks; one tested experienced forecasters.",
    "sources": [
@@ -2408,12 +2402,33 @@
      "a": "It weakened when people had to choose between the algorithm's estimate and their own, rather than weighing advice from an outside source."
     }
    ],
-   "format": "choice",
+   "format": "estimate",
    "weight": 1,
    "theme": "ai-trust",
    "study": {
     "design": "Six experiments",
     "n": "Lay participants, plus one study of experienced forecasters"
+   },
+   "estimate": {
+    "target": 45,
+    "min": 0,
+    "max": 100,
+    "tolerance": 7,
+    "label": "Share of the distance moved toward algorithmic advice",
+    "unit": "%"
+   },
+   "chart": {
+    "labels": [
+     "Labeled as people",
+     "Labeled as an algorithm"
+    ],
+    "values": [
+     30,
+     45
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Logg, Minson & Moore (2019), Experiment 1A, weight on advice."
    }
   },
   {
@@ -2791,13 +2806,7 @@
    "tag": "18 / FIX",
    "title": "Two types of social feedback",
    "scene": "Researchers add an approval cue (a smiley face for households using less than average) to neighborhood comparison feedback.",
-   "question": "What happened to the unwanted boomerang effect?",
-   "options": [
-    "It was counteracted",
-    "It doubled",
-    "It spread to every household"
-   ],
-   "answer": 0,
+   "question": "Is this what the study found?",
    "answerTitle": "Approval changed the response",
    "explain": "Injunctive feedback counteracted the increase among households already below average.",
    "implication": "Pair every peer comparison with a simple approval or disapproval signal, such as a happy or sad face.",
@@ -2826,12 +2835,16 @@
      "a": "Yes. Above-average households that got it cut use by 1.72 kWh per day in the first week and 1.23 over the following three weeks."
     }
    ],
-   "format": "choice",
+   "format": "forecast",
    "weight": 1,
    "theme": "choice",
    "study": {
     "design": "Field experiment",
     "n": "290 households in San Marcos, California"
+   },
+   "forecast": {
+    "claim": "Adding an approval cue (a smiley face) stopped already-efficient households from increasing their energy use.",
+    "truth": true
    }
   },
   {
@@ -2891,13 +2904,7 @@
    "tag": "20 / COGNITIVE LOAD",
    "title": "Under pressure",
    "scene": "An operations team must solve a complex process problem while juggling other tasks.",
-   "question": "How does higher cognitive load affect whether people find subtractive improvements?",
-   "options": [
-    "They find subtractive changes more often",
-    "They find subtractive changes less often",
-    "No measurable difference"
-   ],
-   "answer": 1,
+   "question": "Is this what the study found?",
    "answerTitle": "Pressure favors additions",
    "explain": "The Nature experiments found subtractive improvements were less likely under greater cognitive load.",
    "implication": "Schedule deliberate simplification sessions with fewer distractions.",
@@ -2926,12 +2933,16 @@
      "a": "No. It was one of eight experiments, with 1,153 participants in total, that all pointed to a default toward adding."
     }
    ],
-   "format": "choice",
+   "format": "forecast",
    "weight": 1,
    "theme": "choice",
    "study": {
     "design": "Eight experiments",
     "n": "1,153 participants"
+   },
+   "forecast": {
+    "claim": "People juggling other tasks were more likely to find improvements that remove something.",
+    "truth": false
    }
   },
   {
@@ -3208,14 +3219,8 @@
    "concept": "Networks",
    "tag": "34 / DIFFUSION",
    "title": "Which network spreads change?",
-   "scene": "A new behavior requires repeated reassurance from peers before adoption.",
-   "question": "Which network structure helped diffusion in the experiment?",
-   "options": [
-    "Clustered, reinforcing ties",
-    "Randomly rewired networks",
-    "No social ties"
-   ],
-   "answer": 0,
+   "scene": "In an online health community, researchers built networks that were either clustered (neighbors share neighbors) or random (more long-range ties), then seeded a health behavior.",
+   "question": "Is this what the study found?",
    "answerTitle": "Reinforcement can beat reach",
    "explain": "In the experimental networks, clustered ties supported diffusion of a health behavior requiring social reinforcement.",
    "implication": "Launch hard-to-adopt practices inside tightly connected teams, so each person hears about them from several colleagues.",
@@ -3244,12 +3249,16 @@
      "a": "Yes. Fewer than 15% of adopters who got one signal returned to the forum, against over 30% of those who got two."
     }
    ],
-   "format": "choice",
+   "format": "forecast",
    "weight": 1,
    "theme": "forecasting",
    "study": {
     "design": "Online network experiment, six trials",
     "n": "1,528 participants"
+   },
+   "forecast": {
+    "claim": "The behavior spread farther through networks with random long ties than through clustered networks with redundant ties.",
+    "truth": false
    }
   },
   {
@@ -4170,18 +4179,11 @@
   {
    "id": "axb09",
    "track": "AI × Business",
-   "format": "choice",
+   "format": "forecast",
    "concept": "AI disclosure",
    "title": "The cost of an AI label",
    "scene": "A news site plans to tag headlines 'AI-generated' whenever AI was involved, including true headlines its staff wrote and checked.",
-   "question": "How do readers treat true headlines that carry the label?",
-   "options": [
-    "No change; they judge the content",
-    "Rate them less accurate and share less",
-    "Trust them more for the transparency",
-    "Treat them like a 'false' label"
-   ],
-   "answer": 1,
+   "question": "Is this what the study found?",
    "answerTitle": "Less believed and less shared",
    "explain": "Across 4,976 participants, the label cut perceived accuracy and sharing whether headlines were true or false, human- or AI-made. The effect was three times smaller than a 'false' label.",
    "implication": "If you label AI use, state what the AI did; vague labels read as full automation and penalize accurate content.",
@@ -4207,7 +4209,11 @@
      "a": "Yes. Human-made headlines wrongly labeled as AI-generated were also rated lower."
     }
    ],
-   "theme": "persuasion"
+   "theme": "persuasion",
+   "forecast": {
+    "claim": "Labeling headlines “AI-generated” lowered belief in them even when the headlines were true and written by people.",
+    "truth": true
+   }
   },
   {
    "id": "axb10",
@@ -5274,18 +5280,11 @@
   {
    "id": "bz13",
    "track": "Business",
-   "format": "choice",
+   "format": "forecast",
    "concept": "Pay inequality morale",
    "title": "Unequal pay, lower output",
    "scene": "For a month, Indian manufacturing workers in production teams were randomly paid either the same flat daily wage or different wages based on their baseline productivity rank.",
-   "question": "Where coworkers' productivity was hard to observe, what did unequal pay do?",
-   "options": [
-    "Raised output through stronger incentives",
-    "Cut output and attendance",
-    "Had no effect on output",
-    "Raised attendance but cut cooperation"
-   ],
-   "answer": 1,
+   "question": "Is this what the study found?",
    "answerTitle": "Output fell 0.45 SD; attendance fell 18 points",
    "explain": "When coworkers' productivity was difficult to observe, pay inequality reduced output by 0.45 standard deviations and attendance by 18 percentage points, and weakened cooperation.",
    "implication": "If pay differs within a team, make the productivity basis visible to everyone before the gap takes effect.",
@@ -5311,7 +5310,11 @@
     "design": "Randomized field experiment",
     "n": "Indian manufacturing workers, one month"
    },
-   "theme": "incentives"
+   "theme": "incentives",
+   "forecast": {
+    "claim": "Where coworkers could not easily see who was more productive, paying them unequal wages raised output.",
+    "truth": false
+   }
   },
   {
    "id": "bz14",
@@ -6571,19 +6574,12 @@
   },
   {
    "id": "dimant-observability-choice",
-   "format": "choice",
+   "format": "forecast",
    "track": "Culture & Society",
    "concept": "Being watched",
    "title": "Just let colleagues see it",
    "scene": "To boost charity giving, an experiment let another person observe each donation decision. In some versions the observer simply watched, with no rewards or consequences attached.",
-   "question": "What did being watched, with nothing attached, do to giving?",
-   "options": [
-    "Raised giving sharply",
-    "Did little and could backfire",
-    "Raised giving among the best-paid",
-    "Raised giving only at first"
-   ],
-   "answer": 1,
+   "question": "Is this what the study found?",
    "answerTitle": "Watching alone did little and could backfire",
    "explain": "Observability alone had very little positive effect and could even backfire, a pattern the authors trace to inequality aversion. Making norms more salient reduced the backfire and raised pro-social behavior.",
    "implication": "Do not rely on visibility alone in giving or compliance drives; pair it with a clear statement of what is expected.",
@@ -6609,7 +6605,11 @@
     "design": "Experiments",
     "n": "Not confirmed in published text read"
    },
-   "theme": "honesty"
+   "theme": "honesty",
+   "forecast": {
+    "claim": "Simply letting another person watch each donation decision raised giving substantially.",
+    "truth": false
+   }
   },
   {
    "id": "dimant-motivated-estimate",
