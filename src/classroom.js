@@ -20,7 +20,11 @@ let state = null, filter = { q: '', track: 'All', format: 'All' }, timer = null,
 
 async function api(path, body, method) {
   const h = { 'X-Client-Id': cid }; if (body !== undefined) h['Content-Type'] = 'application/json'; if (S) h['X-Instructor-Key'] = S.secret;
-  const r = await fetch(path, { method: method || (body === undefined ? 'GET' : 'POST'), headers: h, body: body === undefined ? undefined : JSON.stringify(body) });
+  let r;
+  for (let i = 0; i < 5; i++) {   // a busy class network can throttle the console too: wait and retry instead of dropping the instructor's click
+    r = await fetch(path, { method: method || (body === undefined ? 'GET' : 'POST'), headers: h, body: body === undefined ? undefined : JSON.stringify(body) });
+    if (r.status !== 429) break; await new Promise(res => setTimeout(res, 1000 * (+(r.headers.get('Retry-After')) || 1 + i)));
+  }
   const d = await r.json().catch(() => ({})); if (!r.ok) throw Error(d.error || 'Request failed (' + r.status + ')'); return d;
 }
 function toast(m) { const t = qs('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 3000) }

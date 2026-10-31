@@ -273,7 +273,7 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
 function gapFigure(c, rec) {
   const r = rec.response; let body = '', cap = '';
   if (c.format === 'estimate') { const e = c.estimate; const u = (e.unit ?? '%') === '%' ? ' points' : e.unit, f = x => x + (e.unit ?? '%'); body = gapHead(f(r), f(e.target), rec.detail.gap <= e.tolerance ? 'Inside the band' : `${rec.detail.gap}${u} off`) + gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); cap = `Shaded band: within ${e.tolerance}${u} of the study value counts as a hit.` }
-  else if (c.format === 'forecast') { body = gapHead(r + '%', c.forecast.truth ? 'True' : 'False', `Score ${pct(rec.score)}`, 'You gave it', 'The claim') + `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = `A confident correct call earns 100, saying 50% earns 50, and a confident miss goes below zero.` }
+  else if (c.format === 'forecast') { body = gapHead(r + '%', c.forecast.truth ? 'True' : 'False', `${Math.abs(r - (c.forecast.truth ? 100 : 0))} points from the truth`, 'You gave it', 'The claim') + `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = `A confident correct call earns 100, saying 50% earns 50, and a confident miss goes below zero.` }
   else if (c.format === 'rank') {
     const truth = c.rankAnswer, ties = c.rankTies || [];
     const tied = (a, b) => ties.some(t => t.includes(a) && t.includes(b));
@@ -338,7 +338,7 @@ function play() {
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">${label}
-      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}</span>`}</p>${!rec.missed && rec.confidence !== null ? `<p class="conf-line">You said ${rec.confidence}% sure. On the calibration rule that earns ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))}: sure and right scores high, sure and wrong scores low.</p>` : ''}
+      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}</span>`}</p>${!rec.missed && rec.confidence !== null ? `<p class="conf-line">Confidence score ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))} (from −100 to 100). You were ${rec.confidence}% sure and ${rec.correct ? 'right' : 'missed'}.</p>` : ''}
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
       ${rec.missed ? '' : gapFigure(c, rec)}
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
@@ -346,7 +346,7 @@ function play() {
       <div class="action-note"><h2>What a manager does with this</h2><p>${esc(c.implication)}</p></div>
       <div class="deep"><div class="tabs" role="tablist" aria-label="Go deeper">${tabs.map(([k, l]) => `<button role="tab" id="tab-${k}" aria-selected="${tab === k}" aria-controls="tabpanel" data-tab="${k}" tabindex="${tab === k ? 0 : -1}">${l}</button>`).join('')}</div><div class="tabpanel" id="tabpanel" role="tabpanel" aria-labelledby="tab-${tab}">${panel}</div></div>
     </article>
-    <div class="actionbar"><div class="actionbar-in"><span class="kicker">${st.room ? `Live class ${esc(st.room.code)}. Your instructor opens the next decision.` : `${st.session.filter(r => r.correct).length} of ${st.session.length} called right so far`}</span>${st.room ? '' : `<button class="btn btn-solid btn-lg" data-act="next" id="next-btn">${nextLabel}</button>`}</div></div></section>`;
+    <div class="actionbar"><div class="actionbar-in"><span class="kicker">${st.room ? `Live class ${esc(st.room.code)}. Your instructor opens the next decision.` : `${st.session.filter(r => r.correct).length} of ${st.session.length} called right, average score ${st.session.length ? pct(st.session.reduce((a, r) => a + r.score, 0) / st.session.length) : 0}`}</span>${st.room ? '' : `<button class="btn btn-solid btn-lg" data-act="next" id="next-btn">${nextLabel}</button>`}</div></div></section>`;
 }
 // ----- tutor -----
 let TUTOR_REMOTE = null; // the server endpoint, when the page is served
@@ -359,28 +359,42 @@ function tutorPanel(c) {
     ${t.text ? `<div class="tutor-answer" aria-live="polite">${esc(t.text)}${t.cites.length ? '\n\n' + t.cites.map(x => `<cite>${esc(x)}</cite>`).join(' ') : ''}</div>` : ''}
     <p class="small">${TUTOR_AI ? 'AI answers use only the lab’s checked sources. Check details in the source.' : 'Answers come from the lab’s checked summaries.'}</p></div>`;
 }
+// Offline tutor. The same routing table and order as server/tutor.py curated (BANK.tutorRoutes), so both tutors agree.
+const TR = BANK.tutorRoutes || { stop: [], generic: [], suffixes: [], syn: {}, routes: [], subgroupFollow: '^who\\b' };
+const TR_STOP = new Set(TR.stop), TR_SYN = {}; for (const [k, ws] of Object.entries(TR.syn)) for (const w of ws.split(' ')) TR_SYN[w] = k.split(' ');
+function trStem(w) { for (const s of TR.suffixes) if (w.endsWith(s) && w.length - s.length >= 4) return w.slice(0, -s.length); return w }
+function trTokens(s) {
+  const out = (String(s).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().match(/[a-z0-9]+(?:'[a-z]+)?/g) || []).filter(w => !TR_STOP.has(w) && (w.length > 2 || /^\d+$/.test(w))).map(trStem);
+  return out.concat(out.flatMap(w => TR_SYN[w] || []));
+}
+const TR_GENERIC = new Set(TR.generic.map(trStem));
+const trNorm = s => (String(s).toLowerCase().match(/[a-z0-9]+/g) || []).join(' ');
+function trNames(q, x) { const qt = new Set(trTokens(q)); return x.sources.some(id => SOURCE[id] && trTokens(SOURCE[id].authors).some(a => qt.has(a))) }
+function trBody(x) { return new Set(trTokens([x.title, x.scene, x.question, x.answerTitle, x.explain, x.implication, x.boundary, ...(x.follow || []).map(f => f.q + ' ' + f.a)].join(' '))) }
 function curated(q, c) {
-  const stop = new Set('what which where when does that this with from about have should would there their these they them then into could work study research finding found people your thing much more make'.split(' '));
-  const stem = w => { for (const s of ['ations', 'ation', 'ments', 'ment', 'ions', 'ion', 'ing', 'ers', 'ed', 'es', 'er', 'e', 's', 'ly']) if (w.endsWith(s) && w.length - s.length >= 4) return w.slice(0, -s.length); return w };   // as in server/tutor.py
-  let terms = (q.toLowerCase().match(/[a-z]{4,}|\d+/g) || []).filter(w => !stop.has(w)).map(stem);
-  if (terms.some(w => /^(junior|senior|novic|newer|newcom|veteran|tenur|rooki)/.test(w))) terms = terms.concat('experienc');   // the papers' word for it
-  const fields = x => [x.concept, x.title, x.explain, x.boundary, x.implication, x.scene, ...(x.follow || []).map(f => f.q + ' ' + f.a)].join(' ').toLowerCase();
-  const scoreOf = x => terms.reduce((s, t) => s + (fields(x).includes(t) ? 1 : 0), 0) + (x.id === c.id ? 1.5 : 0);
-  const best = ALL.map(x => ({ x, s: scoreOf(x) })).sort((a, b) => b.s - a.s)[0];
-  const fq = (c.follow || []).map(f => ({ f, s: terms.filter(t => (f.q + ' ' + f.a).toLowerCase().includes(t)).length })).sort((a, b) => b.s - a.s)[0];
-  const cs = [cite(c.sources[0])];
-  if (/\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff)|subgroup)/i.test(q)) { const fh = (c.follow || []).find(f => /^(who\b|which (workers|agents|employees|people|consultants|staff|groups?)\b)/i.test(f.q)); if (fh) return { text: fh.a, cites: cs } }
-  if (/\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)/i.test(q)) return { text: `The study measures what happened, not what is right; that call is yours. What it covers: ${c.boundary}\n\nWhat a manager can do with it: ${c.implication}`, cites: cs };
-  if (/\b(big|size|large|much|practice|magnitude)\b/i.test(q)) return { text: `${c.explain}${c.study && c.study.n && !/not (stated|confirmed)/i.test(c.study.n) ? ' Sample: ' + c.study.n + '.' : ''}\n\nIn practice: ${c.implication}`, cites: cs };
-  if (/\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|set ?up|randomi[sz]\w*|control group)\b/i.test(q) && !/\b(my|our)\b/i.test(q) && c.study) return { text: `Design: ${c.study.design}; sample: ${c.study.n}.\n\n${c.explain}`, cites: cs };
-  if (/\b(test|pilot|company|measure)\b/i.test(q)) return { text: `Start with a small randomized pilot: assign the change to some teams and not others, fix the outcome metric in advance, and compare. ${c.implication}\n\nThe study itself: ${c.explain}`, cites: [cite(c.sources[0])] };
-  if (/today|hold|still|generali|apply|transfer|everywhere|always/i.test(q)) return { text: `${c.boundary}\n\n${c.explain}`, cites: [cite(c.sources[0])] };
-  if (fq && fq.s >= Math.min(2, terms.length)) return { text: fq.f.a, cites: [cite(c.sources[0])] };
-  const named = x => x.sources.some(id => SOURCE[id] && (SOURCE[id].authors.toLowerCase().match(/[a-z]{4,}/g) || []).some(a => terms.includes(a)));
-  if (best && best.x.id !== c.id && best.x.explain && best.s >= 3 && (named(best.x) || !terms.some(t => fields(c).includes(t)))) return { text: `A related study in the lab: ${best.x.explain}\n\nWhere it applies: ${best.x.implication}`, cites: [cite(best.x.sources[0])] };
-  const topical = terms.some(t => fields(c).includes(t)) || (best && best.s - (best.x.id === c.id ? 1.5 : 0) >= 1);
-  if (!topical) return { text: 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', cites: [] };
-  return { text: `${c.explain}\n\n${c.boundary}`, cites: [cite(c.sources[0])] };
+  const qt = new Set(trTokens(q)), topic = [...qt].filter(w => !TR_GENERIC.has(w)), ql = q.toLowerCase(), fol = c.follow || [];
+  const cs = x => [cite(x.sources[0])], off = { text: 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', cites: [] };
+  const exact = fol.find(f => trNorm(f.q) === trNorm(q)); if (exact) return { text: exact.a, cites: cs(c) };
+  const jac = f => { const ft = new Set(trTokens(f.q)); const inter = [...ft].filter(w => qt.has(w)).length; return inter / Math.max(1, new Set([...ft, ...qt]).size) };
+  const near = fol.slice().sort((a, b) => jac(b) - jac(a))[0]; if (near && jac(near) >= 0.6) return { text: near.a, cites: cs(c) };
+  const named = trNames(q, c) ? [] : ALL.filter(x => x.explain && !x.sources.some(s => c.sources.includes(s)) && trNames(q, x));
+  if (named.length) { const ov = x => topic.filter(w => trTokens([x.answerTitle, x.explain, x.question].join(' ')).includes(w)).length; const b = named.sort((a, z) => ov(z) - ov(a))[0]; return { text: `${b.explain}\n\n${b.implication}`, cites: cs(b) } }
+  const st0 = c.study || {};
+  for (const [name, rx] of TR.routes) {
+    if (!new RegExp(rx, 'i').test(ql)) continue;
+    if (name === 'ethics') return { text: `The study measures what happened, not what is right; that call is yours. What it covers: ${c.boundary}\n\nWhat a manager can do with it: ${c.implication}`, cites: cs(c) };
+    if (name === 'subgroup') { const fh = fol.find(f => new RegExp(TR.subgroupFollow, 'i').test(f.q)); if (fh) return { text: fh.a, cites: cs(c) }; continue }
+    if (name === 'design' && !/\b(my|our)\b/.test(ql)) return { text: `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\n${c.explain}`, cites: cs(c) };
+    if (name === 'pilot') return { text: `Run a small randomized pilot: give the change to some teams or customers and not to others, fix one outcome metric in advance, and compare after a set period. For this finding: ${c.implication}\n\nWhat the study measured: ${c.explain}`, cites: cs(c) };
+    if (name === 'size') return { text: `${c.explain}\n\nIn practice: ${c.implication}`, cites: cs(c) };
+    if (name === 'transfer') return { text: `${c.boundary}\n\nThe study itself: ${c.explain}`, cites: cs(c) };
+  }
+  if (fol.length) { const ov = f => trTokens(f.q + ' ' + f.a).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const f0 = fol.slice().sort((a, b) => ov(b) - ov(a))[0]; if (ov(f0) >= 2) return { text: f0.a, cites: cs(c) } }
+  const body = trBody(c);
+  if (!topic.length || topic.some(w => body.has(w))) return { text: `${c.explain}\n\n${c.implication}`, cites: cs(c) };
+  const rel = ALL.filter(x => x.explain && x.id !== c.id).map(x => ({ x, n: topic.filter(w => trBody(x).has(w)).length })).sort((a, b) => b.n - a.n)[0];
+  if (rel && rel.n >= Math.max(2, 0.6 * topic.length)) return { text: `A related study in the lab: ${rel.x.explain}\n\n${rel.x.implication}`, cites: cs(rel.x) };
+  return off;
 }
 async function ask(q) {
   q = String(q || '').trim().slice(0, 300); const c = card(); if (!c || st.tutor.busy) return;
@@ -729,5 +743,5 @@ if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; TUTOR_AI = true; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }
 if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else { const v = fromHash(location.hash); if (v !== 'play') st.view = v; render(); if (PARAM.get('play')) notice('That decision link is out of date. Pick a decision from the list.') }
-if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records }; // test hook (offline file only)
+if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records, curated }; // test hook (offline file only)
 })();

@@ -145,3 +145,23 @@ def test_offline_tutor_names_a_locked_study():
 def test_offline_tutor_review13(q, cid, bad):
     """Review 13, M2: method words answer from the decision on screen and never pick another study."""
     r = T.curated(q, cid); assert bad.lower() not in r['answer'].lower(), r['answer'][:120]
+
+
+GENERIC_QS = ['What is the answer?', 'Can you explain the result?', 'What were the numbers?', 'What did the study find?', 'Why does this matter?',
+              'How big is this effect in practice?', 'Would this hold with AI tools today?', 'How would I test this in my company?', 'Was this randomized?', 'Does this replicate?']
+
+def test_every_decision_answers_from_itself():
+    """Review 14, M1: generic questions and the item's own follow-ups are answered from the decision on screen."""
+    bad = []
+    for cid, c in CHALLENGES.items():
+        for q in GENERIC_QS:
+            r = T.curated(q, cid)
+            if not {x['id'] for x in r['citations']} & set(c['sources']): bad.append((cid, q, r['answer'][:60]))
+        for f in c['follow']:
+            if T.curated(f['q'], cid)['answer'] != f['a']: bad.append((cid, f['q']))
+    assert not bad, (len(bad), bad[:10])
+
+def test_naming_another_study_switches():
+    c = CHALLENGES['ai01']; other = next(x for x in CHALLENGES.values() if 'salvi25' in x['sources'])
+    r = T.curated('What did Salvi and colleagues find?', 'ai01')
+    assert {x['id'] for x in r['citations']} & set(other['sources'])

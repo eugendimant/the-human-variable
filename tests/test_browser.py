@@ -185,3 +185,15 @@ def test_allocate_rebalances_and_needs_a_real_change(browser):
     vals = [v for _, v in sorted(pg.eval_on_selector_all('[data-alloc]', 'els => els.map(e => [+e.dataset.alloc, +e.value])'))]   # displayed in shuffled order
     assert vals[0] == 80 and sum(vals) == c['allocate']['total'] and pg.is_enabled('#lock-btn'), vals
     assert not pg.errors, pg.errors; pg.close()
+
+
+def test_offline_tutor_matches_server_rules(browser):
+    """Review 14, M1: the page's offline tutor follows the same table as the server: generic questions and own follow-ups answer from the decision on screen."""
+    pg = page(browser); pg.goto(URL); pg.wait_for_timeout(300)
+    from tests.test_tutor import GENERIC_QS
+    bad = pg.evaluate("""qs => { const out = []; for (const c of THV.ALL) { const cite0 = THV.curated('x', c) && null;
+        for (const q of qs) { const r = THV.curated(q, c); if (!r.cites.length || !r.text || /outside what this lab/.test(r.text)) out.push([c.id, q]) }
+        for (const f of c.follow) if (THV.curated(f.q, c).text !== f.a) out.push([c.id, f.q]) } return out }""", GENERIC_QS)
+    assert not bad, (len(bad), bad[:10])
+    r = pg.evaluate("THV.curated('What is the capital of France?', THV.ALL[0]).text"); assert 'outside' in r
+    assert not pg.errors, pg.errors; pg.close()

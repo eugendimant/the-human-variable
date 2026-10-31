@@ -233,7 +233,7 @@ def test_evidence_entries_are_verbatim():
     ev = json.loads((ROOT / 'src/evidence.json').read_text())
     weak = re.compile(r'paraphrase|as recorded|audit summary|fetch[- ]tool|as extracted|rendering|condensed|summari[sz]ed|transcribed|new_sources', re.I)
     live = {c['id'] for c in LIVE}
-    bad = [k for k, qs in ev.items() if k in live for q in qs if weak.search(q.get('location', '') + ' ' + q['quote'])]
+    bad = [k for k, qs in ev.items() if k in live for q in qs if weak.search(q.get('location', '') + ' ' + q.get('quote', q.get('printed', '')))]
     assert not bad, sorted(set(bad))
 
 def test_no_fixed_slider_position_pays():
@@ -267,7 +267,7 @@ def test_every_explained_number_is_quoted():
     (allowing rounding, percent versus share, and number words)."""
     ev = json.loads((ROOT / 'src/evidence.json').read_text()); bad = []
     for c in LIVE:
-        qtext = ' '.join(q['quote'] for q in ev.get(c['id'], [])).lower().replace(',', '')
+        qtext = ' '.join(q.get('quote', q.get('printed', '')) for q in ev.get(c['id'], [])).lower().replace(',', '')   # prose quotes and values as printed
         qnums = [float(x) for x in re.findall(r'(?<![\w.])-?\.?\d+(?:\.\d+)?', qtext) if x not in ('-', '.')]
         txt = ' '.join([c['explain'], c['answerTitle']] + [f['a'] for f in c.get('follow', [])]).replace(',', '')   # review 11: follow-ups too
         txt = re.sub(r'\b(Stud(y|ies)|Experiments?|GPT|DALL-E|Midjourney v|Fortune|Firefly|Imagen)[- ]?\d+[a-z]?(\s*(to|and|-)\s*\d+[a-z]?)?', ' ', txt)  # names, not results
@@ -288,8 +288,8 @@ def test_no_rehosted_or_working_paper_links_in_provenance():
 def test_quotes_do_not_stop_mid_sentence():
     """Review 11, M2: a quote cut off before the number it should support (", with GPT only producing") passes a number gate but misleads."""
     ev = json.loads((ROOT / 'src/evidence.json').read_text())
-    bad = [(k, q['quote'][-40:]) for k, qs in ev.items() if isinstance(qs, list) for q in qs
-           if re.search(r'\b(with|the|a|an|of|and|by|for|producing|than|was|were)$', q['quote'].strip().rstrip(',;:').lower())]
+    bad = [(k, q['quote'][-40:]) for k, qs in ev.items() if isinstance(qs, list) for q in qs if 'quote' in q
+           and re.search(r'\b(with|the|a|an|of|and|by|for|producing|than|was|were)$', q['quote'].strip().rstrip(',;:').lower())]
     assert not bad, bad
 
 
@@ -314,5 +314,6 @@ def test_evidence_entries_are_clean():
     ev = json.loads((ROOT / 'src/evidence.json').read_text()); C = {c['id']: c for c in LIVE}; bad = []
     for k, qs in ev.items():
         if not isinstance(qs, list) or k not in C: continue
-        bad += [(k, q['quote'][:40]) for q in qs if q.get('source') not in C[k]['sources'] or re.search(r'extracted text|rendered as|values below|^PMC\d+, Europe PMC', q['quote'], re.I)]
+        bad += [(k, q.get('quote', q.get('printed', ''))[:40]) for q in qs if q.get('source') not in C[k]['sources'] or ('quote' in q) == ('printed' in q)
+                or re.search(r'extracted text|rendered as|values below|^PMC\d+|^PubMed \d+|^DOI:|^OCR |^Studies? \d\w*$|^Experiment \d\w*$', q.get('quote', q.get('printed', '')), re.I)]   # review 14: annotations are not evidence
     assert not bad, bad

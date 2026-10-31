@@ -402,3 +402,17 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 221 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 3 Major found and addressed. Next: independent review 14.
+
+## Iteration 19 (2026-10-31)
+
+**Verified first:** iteration-18 fixes, by independent review 14 (snapshot `snap_r14`): titles gated on both builds, poll errors survived, rank projector, class lock routes. Not held: tutor routing (M1) and evidence annotations.
+
+**Independent score:** 85/100 (review 14, `qa/reviews/review14.md`). 0 Blocking, 1 Major.
+
+**Fixes:**
+- **M1.** One routing table (`tutorRoutes` in `src/bank.json`, written by `tools/tutor_routes_2026_10_31.py`) drives both the server tutor and the page's offline tutor, in the same order: the item's own follow-up (exact, then near), a named study by author surname, ethics, subgroup, design, pilot, size and transfer routes, a two-word follow-up match, then the decision on screen. Generic words ("answer", "result", "numbers", "matter") never pick another study; another study answers only when named or when the question shares nothing with the decision on screen and strongly matches the other. Tests: every live decision answers ten generic questions with its own source and all 335 own follow-ups exactly (server), and the same on the page through Playwright.
+- **Minors.** Evidence split into verbatim prose quotes (`quote`) and values read from tables or figures (`printed`); 16 annotations removed; gate extended. Sample lines no longer say "not stated"; the observability scene includes taking from the charity; axe12's diagram drops the visible work-quality node, dimant-notalie's distractor names a candidate for the masked node, bz01 is a plain choice; dimant-conspiracy scene and two weak distractors rewritten; four forecasts reworded to resolve false so each path mixes true and false claims; confidence line reads "Confidence score N (from −100 to 100). You were X% sure and missed"; the forecast head shows the distance from the truth instead of repeating the score; the action bar shows the average score; the projector shows the live answer count large before the reveal; the console retries throttled requests; phone reveal tabs scroll sideways; punctuation.
+
+**Gates:** build check, 224 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 15.

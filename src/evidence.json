@@ -22,8 +22,8 @@
   },
   {
    "source": "vaccaro24",
-   "quote": "g = -0.54",
-   "location": "Results, moderators (values as printed)"
+   "location": "Results, moderators (values as printed)",
+   "printed": "g = -0.54"
   },
   {
    "source": "vaccaro24",
@@ -42,8 +42,8 @@
   },
   {
    "source": "vaccaro24",
-   "quote": "bird images; AI alone 73%",
-   "location": "Discussion (values as printed)"
+   "location": "Discussion (values as printed)",
+   "printed": "bird images; AI alone 73%"
   },
   {
    "source": "vaccaro24",
@@ -62,8 +62,8 @@
   },
   {
    "source": "vaccaro24",
-   "quote": "g = 0.64",
-   "location": "Results (values as printed)"
+   "location": "Results (values as printed)",
+   "printed": "g = 0.64"
   }
  ],
  "axb02": [
@@ -318,8 +318,8 @@
   },
   {
    "source": "altay24",
-   "quote": "N = 4,976 in abstract",
-   "location": "Methods, Studies 1 and 2 (values as printed)"
+   "location": "Methods, Studies 1 and 2 (values as printed)",
+   "printed": "N = 4,976 in abstract"
   }
  ],
  "axb10": [
@@ -596,8 +596,8 @@
   },
   {
    "source": "bastani25",
-   "quote": "GPT Tutor exam, estimate -0.004",
-   "location": "Results (values as printed)"
+   "location": "Results (values as printed)",
+   "printed": "GPT Tutor exam, estimate -0.004"
   },
   {
    "source": "bastani25",
@@ -635,11 +635,6 @@
    "source": "gordon19",
    "quote": "Using data from 15 U.S. advertising experiments at Facebook comprising 500 million user-experiment observations and 1.6 billion ad impressions, we contrast the experimental results to those obtained from multiple observational models. The observational methods often fail to produce the same effects as the randomized experiments, even after conditioning on extensive demographic and behavioral variables.",
    "location": "Marketing Science 38(2) published abstract (publisher-supplied abstract as indexed at ideas.repec.org/a/inm/ormksc/v38y2019i2p193-225.html; the Crossref record carries only a one-line summary)"
-  },
-  {
-   "source": "gordon19",
-   "quote": "publisher-supplied abstract as indexed at ideas.repec.org/a/inm/ormksc/v38y2019i2p193-225.html; the Crossref record carries only a one-line summary",
-   "location": "Marketing Science 38(2) published abstract (values as printed)"
   }
  ],
  "bz02": [
@@ -845,8 +840,8 @@
   },
   {
    "source": "bloom24",
-   "quote": "Figure 3 reports the distribution of performance grades for treatment and control employees for the four half-year periods: July to December 2021, January to June 2022, July to December 2022 and January to June 2023. These four performance reviews span a two-year period from the start of the experimental period. Across all review periods, we found no difference in reviews between the treatment and control groups",
-   "location": "Nature 630, open-access full text on nature.com, main text, Employee performance and promotions"
+   "location": "Nature 630, open-access full text on nature.com, main text, Employee performance and promotions",
+   "printed": "Figure 3 reports the distribution of performance grades for treatment and control employees for the four half-year periods: July to December 2021, January to June 2022, July to December 2022 and January to June 2023. These four performance reviews span a two-year period from the start of the experimental period. Across all review periods, we found no difference in reviews between the treatment and control groups"
   },
   {
    "source": "bloom24",
@@ -892,8 +887,8 @@
   },
   {
    "source": "gneezy00",
-   "quote": "Table 2, center 1: weeks 1-4 = 7.25; weeks 17-20 = 15.25 (Average Number of Late-Coming Parents, according to Four Periods of the Study)",
-   "location": "J. Legal Studies 29(1), Table 2"
+   "location": "J. Legal Studies 29(1), Table 2",
+   "printed": "Table 2, center 1: weeks 1-4 = 7.25; weeks 17-20 = 15.25 (Average Number of Late-Coming Parents, according to Four Periods of the Study)"
   },
   {
    "source": "gneezy00",
@@ -986,8 +981,8 @@
   },
   {
    "source": "iyengar00",
-   "quote": "104",
-   "location": "p. 997, extensive-choice condition; limited: 40% (values as printed)"
+   "location": "p. 997, extensive-choice condition; limited: 40% (values as printed)",
+   "printed": "104"
   },
   {
    "source": "iyengar00",
@@ -996,8 +991,8 @@
   },
   {
    "source": "iyengar00",
-   "quote": "31",
-   "location": "p. 997; limited-choice condition about 30% (values as printed)"
+   "location": "p. 997; limited-choice condition about 30% (values as printed)",
+   "printed": "31"
   },
   {
    "source": "scheib10",
@@ -1347,18 +1342,8 @@
   },
   {
    "source": "cohn19",
-   "quote": "continues: \"and topped out at 72% in the BigMoney condition\"",
-   "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io) (values as printed)"
-  },
-  {
-   "source": "cohn19",
    "quote": "a combination of altruistic concerns and an aversion to viewing oneself as a thief",
    "location": "Abstract (PubMed 31221770, Science version of record)"
-  },
-  {
-   "source": "cohn19",
-   "quote": "PubMed 31221770, Science version of record",
-   "location": "Abstract (values as printed)"
   }
  ],
  "truth-telling-gains": [
@@ -1801,8 +1786,8 @@
   },
   {
    "source": "mellers14",
-   "quote": "Figure 1 shows that in Year 1, team forecasters were more accurate than crowd-belief forecasters, t(1036) = 5.52, p < .001, and crowd-belief forecasters were more accurate than independent forecasters, t(1120) = 5.92, p < .001.",
-   "location": "pp. 1109-1110, Results, Teaming, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+   "location": "pp. 1109-1110, Results, Teaming, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)",
+   "printed": "Figure 1 shows that in Year 1, team forecasters were more accurate than crowd-belief forecasters, t(1036) = 5.52, p < .001, and crowd-belief forecasters were more accurate than independent forecasters, t(1120) = 5.92, p < .001."
   },
   {
    "source": "mellers14",
@@ -2113,8 +2098,8 @@
   },
   {
    "source": "prox22",
-   "quote": "Table 1: initial takers NoObservation 45%, Observation 44%, ObservationSP 42%; Kruskal-Wallis p = 0.703",
-   "location": "Published version of record, Table 1 (published version; table values as printed)"
+   "location": "Published version of record, Table 1 (published version; table values as printed)",
+   "printed": "Table 1: initial takers NoObservation 45%, Observation 44%, ObservationSP 42%; Kruskal-Wallis p = 0.703"
   },
   {
    "source": "prox22",
@@ -2224,8 +2209,8 @@
   },
   {
    "source": "enforcers23",
-   "quote": "P < 0.001",
-   "location": "Published version of record, Study 1 results (values as printed)"
+   "location": "Published version of record, Study 1 results (values as printed)",
+   "printed": "P < 0.001"
   },
   {
    "source": "enforcers23",
@@ -2239,8 +2224,8 @@
   },
   {
    "source": "enforcers23",
-   "quote": "77.8% vs 62.3%, P < 0.001",
-   "location": "PNAS Nexus, Results, inequity-creating vs equity-restoring bribes (Europe PMC full text; values as printed)"
+   "location": "PNAS Nexus, Results, inequity-creating vs equity-restoring bribes (Europe PMC full text; values as printed)",
+   "printed": "77.8% vs 62.3%, P < 0.001"
   }
  ],
  "dimant-observability-choice": [
@@ -2491,8 +2476,8 @@
   },
   {
    "source": "norms24",
-   "quote": "Figure 7 shows that the polarized norm induces polarization in subsequent contribution behavior (σ2 = 2.68).",
-   "location": "Management Science 71(3), p. 2254, Section 4.2"
+   "location": "Management Science 71(3), p. 2254, Section 4.2",
+   "printed": "Figure 7 shows that the polarized norm induces polarization in subsequent contribution behavior (σ2 = 2.68)."
   },
   {
    "source": "norms24",
@@ -2501,8 +2486,8 @@
   },
   {
    "source": "norms24",
-   "quote": "1,203 participants",
-   "location": "Management Science 71(3), Section 4 (published version; values as printed)"
+   "location": "Management Science 71(3), Section 4 (published version; values as printed)",
+   "printed": "1,203 participants"
   }
  ],
  "ai01": [
@@ -2609,8 +2594,8 @@
   },
   {
    "source": "diet15",
-   "quote": "Figure 3, Study 1 bars: Control 65%; Saw Results of Model's and Human's Forecasts 23% (% Choosing Statistical Model to Forecast MBA Students' Performance)",
-   "location": "JEP:General 144(1), p. 120, Figure 3 (bar labels, published version, Wharton-hosted author copy)"
+   "location": "JEP:General 144(1), p. 120, Figure 3 (bar labels, published version, Wharton-hosted author copy)",
+   "printed": "Figure 3, Study 1 bars: Control 65%; Saw Results of Model's and Human's Forecasts 23% (% Choosing Statistical Model to Forecast MBA Students' Performance)"
   },
   {
    "source": "diet15",
@@ -2654,8 +2639,8 @@
   },
   {
    "source": "diet15",
-   "quote": "Figure 3. Studies 1–4: Participants who saw the statistical model’s results were less likely to choose it. [Panel '% Choosing Statistical Model to Forecast MBA Students’ Performance', Study 1 bar labels: Control 65%; Saw Results of Human's Forecasts 63%; Saw Results of Model's Forecasts 26%; Saw Results of Model's and Human's Forecasts 23%]",
-   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 120, Figure 3 (legend verbatim; bar labels as printed in the figure, read from the rendered page)"
+   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 120, Figure 3 (legend verbatim; bar labels as printed in the figure, read from the rendered page)",
+   "printed": "Figure 3. Studies 1–4: Participants who saw the statistical model’s results were less likely to choose it. [Panel '% Choosing Statistical Model to Forecast MBA Students’ Performance', Study 1 bar labels: Control 65%; Saw Results of Human's Forecasts 63%; Saw Results of Model's Forecasts 26%; Saw Results of Model's and Human's Forecasts 23%]"
   }
  ],
  "ai10": [
@@ -2703,11 +2688,6 @@
    "source": "logg19",
    "quote": "Participants showed an appreciation of algorithms, relying more on the same advice when they thought it came from an algorithm (M = 0.45, SD = 0.37), than when they thought it came from other people (M = 0.30, SD = 0.35), F (1, 200) = 8.86, p = .003, d = 0.42; see Fig. 1.",
    "location": "OBHDP 151, p. 93, Section 2.2.1 Results (Experiment 1A)"
-  },
-  {
-   "source": "logg19",
-   "quote": "Experiment 1A",
-   "location": "OBHDP 151, p. 93, Section 2.2.1 Results (values as printed)"
   }
  ],
  "ai11": [
@@ -2927,11 +2907,6 @@
    "source": "subtract21",
    "quote": "Participants could stabilize the top platform of the Lego structure so it could hold a masonry brick above the head of the action figure by adding new supports to reinforce the single corner block or by removing the corner block and letting the platform sit flush on the layer below.",
    "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 2 legend (experiment 1)"
-  },
-  {
-   "source": "subtract21",
-   "quote": "experiment 1",
-   "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 2 legend (values as printed)"
   }
  ],
  "biz08": [
@@ -2939,11 +2914,6 @@
    "quote": "when they had only one opportunity (versus several)",
    "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)",
    "source": "subtract21"
-  },
-  {
-   "source": "subtract21",
-   "quote": "DOI:10.1038/s41586-021-03380-y",
-   "location": "Nature abstract via Europe PMC (values as printed)"
   },
   {
    "quote": "under a higher (versus lower) cognitive load",
@@ -3001,11 +2971,6 @@
    "source": "anchor74",
    "quote": "Two groups of high school students estimated, within 5 seconds, a numerical expression that was written on the blackboard. One group estimated the product 8x7x6x5x4x3x2x1 while another group estimated the product 1x2x3x4x5x6x7x8",
    "location": "Science 185, p. 1128 (OCR garbles '5' as 'S' in the first product; restored)"
-  },
-  {
-   "source": "anchor74",
-   "quote": "OCR garbles '5' as 'S' in the first product; restored",
-   "location": "Science 185, p. 1128 (values as printed)"
   },
   {
    "source": "anchor74",
@@ -3245,8 +3210,8 @@
   },
   {
    "source": "contact05",
-   "quote": "Study 6",
-   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (values as printed)"
+   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (values as printed)",
+   "printed": "Study 6"
   },
   {
    "quote": "applied theoretical work on the extended contact hypothesis to explore a means to reduce this self-other bias",
@@ -3255,23 +3220,13 @@
   },
   {
    "source": "contact05",
-   "quote": "Study 7",
-   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (values as printed)"
-  },
-  {
-   "quote": "Seven studies (count from abstract record)",
-   "location": "Abstract, Princeton research portal and data.zhenzhi.com record",
-   "source": "contact05"
+   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (values as printed)",
+   "printed": "Study 7"
   },
   {
    "source": "contact05",
    "quote": "Studies 1 and 2 demonstrate that Whites and Blacks would like to have more contact with the out-group but believe the out-group does not want to have contact with them.",
    "location": "JPSP abstract (PubMed 15631577)"
-  },
-  {
-   "source": "contact05",
-   "quote": "PubMed 15631577",
-   "location": "JPSP abstract (values as printed)"
   },
   {
    "source": "contact05",
@@ -3291,11 +3246,6 @@
    "source": "loss15"
   },
   {
-   "source": "loss15",
-   "quote": "DOI:10.1037/xge0000039",
-   "location": "Abstract, Europe PMC (values as printed)"
-  },
-  {
    "quote": "358 participants were recruited on Amazon Mechanical Turk (323 analyzed); 423 (382); 429 (401) (paraphrase)",
    "location": "Full text, Europe PMC PMC4312134",
    "source": "loss15"
@@ -3309,11 +3259,6 @@
    "quote": "a series of hypothetical lotteries",
    "location": "Full text, Europe PMC PMC4312134 (Exps 1a, 1b, 2)",
    "source": "loss15"
-  },
-  {
-   "source": "loss15",
-   "quote": "Exps 1a, 1b, 2",
-   "location": "Full text, Europe PMC PMC4312134 (values as printed)"
   },
   {
    "quote": "Exp 1a lambda: gains to 40/losses to 20 = 1.79; gains to 20/losses to 40 = 0.88 (paraphrase)",
@@ -3367,11 +3312,6 @@
    "source": "measure23"
   },
   {
-   "source": "measure23",
-   "quote": "Economics Letters 233, 111417",
-   "location": "Abstract, ideas.repec.org (values as printed)"
-  },
-  {
    "quote": "the distribution of norm-related beliefs at the individual level in an incentive-compatible way",
    "location": "Abstract, ideas.repec.org (Economics Letters 233, 111417)",
    "source": "measure23"
@@ -3407,11 +3347,6 @@
    "source": "frame81",
    "quote": "Problem 1 [N = 152]: Imagine that the U.S. is preparing for the outbreak of an unusual Asian disease, which is expected to kill 600 people. [...] If Program A is adopted, 200 people will be saved. [72 percent] If Program B is adopted, there is 1/3 probability that 600 people will be saved, and 2/3 probability that no people will be saved. [28 percent]",
    "location": "Science 211, p. 453 (OCR renders '152]' as '1521' and '1/3' as '113'; restored)"
-  },
-  {
-   "source": "frame81",
-   "quote": "OCR renders '152]' as '1521' and '1/3' as '113'; restored",
-   "location": "Science 211, p. 453 (values as printed)"
   },
   {
    "source": "frame81",
@@ -3459,11 +3394,6 @@
    "source": "longoni22",
    "quote": "An intervention based on the consider-the-opposite protocol attenuates the word-of-machine effect",
    "location": "Abstract (Studies 7a-7b)"
-  },
-  {
-   "source": "longoni22",
-   "quote": "Studies 7a-7b",
-   "location": "Abstract (values as printed)"
   }
  ],
  "axe04": [
@@ -3551,8 +3481,8 @@
   },
   {
    "source": "ayers23",
-   "quote": "chatbot 78.5%; physicians 22.1%",
-   "location": "Results (values as printed)"
+   "location": "Results (values as printed)",
+   "printed": "chatbot 78.5%; physicians 22.1%"
   },
   {
    "source": "ayers23",
@@ -3561,8 +3491,8 @@
   },
   {
    "source": "ayers23",
-   "quote": "physicians 4.6%; chatbot 45.1%",
-   "location": "Results (values as printed)"
+   "location": "Results (values as printed)",
+   "printed": "physicians 4.6%; chatbot 45.1%"
   },
   {
    "source": "ayers23",
@@ -3571,8 +3501,8 @@
   },
   {
    "source": "ayers23",
-   "quote": "52 vs 211 words",
-   "location": "Results (values as printed)"
+   "location": "Results (values as printed)",
+   "printed": "52 vs 211 words"
   },
   {
    "source": "ayers23",
@@ -3591,8 +3521,8 @@
   },
   {
    "source": "ayers23",
-   "quote": "generated December 22 and 23, 2022",
-   "location": "Methods (values as printed)"
+   "location": "Methods (values as printed)",
+   "printed": "generated December 22 and 23, 2022"
   }
  ],
  "axe06": [
@@ -3729,11 +3659,6 @@
   },
   {
    "source": "granulo19",
-   "quote": "PubMed 31384025",
-   "location": "Nature Human Behaviour abstract (values as printed)"
-  },
-  {
-   "source": "granulo19",
    "quote": "being replaced by machines, robots or software (versus other humans) is associated with reduced self-threat. In contrast, being replaced by robots is associated with a greater perceived threat to one's economic future.",
    "location": "Nature Human Behaviour abstract"
   }
@@ -3773,11 +3698,6 @@
   },
   {
    "source": "spitale23",
-   "quote": "869 recruited",
-   "location": "Methods (values as printed)"
-  },
-  {
-   "source": "spitale23",
    "quote": "recognized synthetic true tweets correctly more often than organic true tweets (scores 0.84 versus 0.72, respectively; P < 0.0001)",
    "location": "Results"
   },
@@ -3798,8 +3718,8 @@
   },
   {
    "source": "spitale23",
-   "quote": "scores around 0.5",
-   "location": "Results (values as printed)"
+   "location": "Results (values as printed)",
+   "printed": "scores around 0.5"
   },
   {
    "source": "spitale23",
@@ -3840,8 +3760,8 @@
   },
   {
    "source": "reif25",
-   "quote": "n = 1,203",
-   "location": "Study 2 results (values as printed)"
+   "location": "Study 2 results (values as printed)",
+   "printed": "n = 1,203"
   },
   {
    "source": "reif25",
@@ -4050,8 +3970,8 @@
   },
   {
    "source": "yin24",
-   "quote": "540 recruited, 455 analyzed",
-   "location": "Methods (values as printed)"
+   "location": "Methods (values as printed)",
+   "printed": "540 recruited, 455 analyzed"
   },
   {
    "source": "yin24",
@@ -4060,8 +3980,8 @@
   },
   {
    "source": "yin24",
-   "quote": "5.74 vs 5.17; P < 0.001",
-   "location": "Abstract (values as printed)"
+   "location": "Abstract (values as printed)",
+   "printed": "5.74 vs 5.17; P < 0.001"
   },
   {
    "source": "yin24",
@@ -4070,8 +3990,8 @@
   },
   {
    "source": "yin24",
-   "quote": "5.13 vs 5.81; P < 0.001",
-   "location": "Abstract (values as printed)"
+   "location": "Abstract (values as printed)",
+   "printed": "5.13 vs 5.81; P < 0.001"
   },
   {
    "source": "yin24",
@@ -4247,13 +4167,13 @@
  "judg09": [
   {
    "source": "loss79",
-   "quote": "PROBLEM 3: Choose between A: (4,000, .80), or B: (3,000). N = 95 [20] [80]*",
-   "location": "Econometrica 47(2), p. 266, Table I (values as printed)"
+   "location": "Econometrica 47(2), p. 266, Table I (values as printed)",
+   "printed": "PROBLEM 3: Choose between A: (4,000, .80), or B: (3,000). N = 95 [20] [80]*"
   },
   {
    "source": "loss79",
-   "quote": "PROBLEM 3': Choose between A: (-4,000, .80), or B: (-3,000). N = 95 [92]* [8]",
-   "location": "Econometrica 47(2), p. 268, Table I (values as printed)"
+   "location": "Econometrica 47(2), p. 268, Table I (values as printed)",
+   "printed": "PROBLEM 3': Choose between A: (-4,000, .80), or B: (-3,000). N = 95 [92]* [8]"
   }
  ],
  "axb15": [

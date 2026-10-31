@@ -145,7 +145,7 @@ class Store:
             db = self.db()
             n = db.execute('SELECT COUNT(*) FROM participants WHERE code=?', (code,)).fetchone()[0]
             if n >= MAX_PARTICIPANTS: raise Conflict('This session is full')
-            if not db.execute('SELECT joining FROM sessions WHERE code=?', (code,)).fetchone()[0]: raise Conflict('The instructor has closed joining for this session')
+            if not db.execute('SELECT joining FROM sessions WHERE code=?', (code,)).fetchone()[0]: raise Conflict('The instructor has closed joining for this session.')
             token = secrets.token_urlsafe(18)
             db.execute('INSERT INTO participants VALUES(?,?,?,?)', (code, _h(token), n + 1, time.time()))
             db.execute('UPDATE sessions SET touched=? WHERE code=?', (time.time(), code)); db.commit()

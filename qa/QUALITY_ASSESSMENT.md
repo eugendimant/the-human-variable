@@ -19,26 +19,27 @@ Scores in this file come only from independent reviewers: fresh agents that did 
 | 11 | iteration 15 | 81 | 0 | 4 |
 | 12 | iteration 16 | 84 | 0 | 1 |
 | 13 | iteration 17 | 83 | 0 | 3 |
+| 14 | iteration 18 | 85 | 0 | 1 |
 
 The target is 95 from an independent reviewer. It has not been reached yet; the loop continues.
 
-## Latest category scores (review 13)
+## Latest category scores (review 14)
 
 | Category | Points | Score |
 |---|---|---|
 | Science | 15 | 13 |
 | Learning | 15 | 12 |
 | Visual | 15 | 12 |
-| Gameplay | 15 | 12 |
+| Gameplay | 15 | 13 |
 | AI and business | 10 | 9 |
 | Content | 10 | 8 |
-| Technical | 10 | 9 |
-| Classroom | 5 | 4 |
-| Accessibility | 5 | 4 |
+| Technical | 10 | 8 |
+| Classroom | 5 | 5 |
+| Accessibility | 5 | 5 |
 
 ## Evidence the reviewers recorded
 
-- **Tests:** the full suite passed in every review (219 at review 13), including Playwright play of all eight formats at two widths, axe, a three-phone live class and a 50-student load test.
+- **Tests:** the full suite passed in every review (221 at review 14), including Playwright play of all eight formats at two widths, axe, a three-phone live class and a 50-student load test.
 - **Answer integrity:** a byte scan of the served pages found no answer text; the class lock held on every route probed in reviews 4 and 5.
 - **Accessibility:** axe reported no serious or critical violations on up to 30 states; keyboard-only play and reduced motion worked.
 - **Load:** 50 concurrent students, p95 under 45 ms, no errors.

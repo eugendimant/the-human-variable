@@ -2624,7 +2624,7 @@
    "scene": "A service uses AI for individualized medical recommendations. Consumers are told the system is highly accurate.",
    "question": "What mainly drove consumers’ resistance?",
    "options": [
-    "It costs more than a human doctor",
+    "It feels less accountable when it errs",
     "Its handling of health data feels unsafe",
     "It cannot account for each patient’s uniqueness"
    ],
@@ -3668,7 +3668,7 @@
    "theme": "norms",
    "study": {
     "design": "Methods paper (measurement tool)",
-    "n": "Not stated in abstract"
+    "n": ""
    },
    "permuted": true
   },
@@ -4085,8 +4085,8 @@
    "scene": "Readers see self-descriptions written for job, hospitality and dating profiles. Some were written by people, others by an AI language model.",
    "question": "Is this what the study found?",
    "forecast": {
-    "claim": "People could not tell AI-written from human-written self-descriptions better than chance.",
-    "truth": true
+    "claim": "People told AI-written from human-written self-descriptions apart well above chance.",
+    "truth": false
    },
    "answerTitle": "Detection was at chance: 50 to 52%",
    "explain": "Across experiments with 4,600 participants, people identified the source with only 50 to 52% accuracy, relying on cues like first-person pronouns and family topics.",
@@ -4643,7 +4643,7 @@
   {
    "id": "bz01",
    "track": "AI × Business",
-   "format": "causal",
+   "format": "choice",
    "concept": "Ad lift measurement",
    "title": "Measuring ad lift",
    "scene": "Your agency compares Facebook users who saw a campaign with users who did not, after matching on demographics and behavior. A randomized holdout ran at the same time.",
@@ -4659,56 +4659,6 @@
    "explain": "Across 15 Facebook ad experiments with 1.6 billion impressions, observational methods often failed to reproduce the randomized estimates, even after conditioning on extensive demographic and behavioral data.",
    "implication": "Keep a randomized holdout for major campaigns before trusting matched or platform-reported lift numbers.",
    "boundary": "Fifteen US Facebook campaigns; observational methods both over- and underestimated lift across campaigns.",
-   "dag": {
-    "alt": "A random holdout determines ad exposure. Unobserved user activity drives both who sees the ad and who buys, so comparing exposed and unexposed users confounds the ad's effect on purchase.",
-    "height": 200,
-    "nodes": [
-     {
-      "id": "rand",
-      "label": "Random holdout",
-      "x": 70,
-      "y": 150
-     },
-     {
-      "id": "exp",
-      "label": "Ad exposure",
-      "x": 220,
-      "y": 100
-     },
-     {
-      "id": "buy",
-      "label": "Purchase",
-      "x": 430,
-      "y": 100
-     },
-     {
-      "id": "act",
-      "label": "User activity",
-      "x": 325,
-      "y": 30,
-      "hidden": true
-     }
-    ],
-    "edges": [
-     [
-      "rand",
-      "exp"
-     ],
-     [
-      "exp",
-      "buy",
-      "q"
-     ],
-     [
-      "act",
-      "exp"
-     ],
-     [
-      "act",
-      "buy"
-     ]
-    ]
-   },
    "sources": [
     "gordon19"
    ],
@@ -5056,8 +5006,8 @@
    "scene": "A consumer lender mailed loan offers to clients, randomizing the interest rate along with ad content such as a photo, the number of example loans and the offer deadline.",
    "question": "Can ad content move demand as much as price?",
    "forecast": {
-    "claim": "A photo of an attractive woman raised loan demand about as much as a 25% interest-rate cut.",
-    "truth": true
+    "claim": "A photo of an attractive woman raised loan demand far less than a 25% interest-rate cut did.",
+    "truth": false
    },
    "answerTitle": "The photo matched a 25% rate cut",
    "explain": "Showing fewer example loans, not suggesting a particular use, or including a photo of an attractive woman each raised demand about as much as a 25% interest-rate reduction.",
@@ -5715,8 +5665,8 @@
    "scene": "Researchers paid frequent Twitter users who identified as Democrats or Republicans to follow, for one month, a bot retweeting elected officials and opinion leaders from the other party.",
    "question": "Did a month of opposing views moderate Republicans?",
    "forecast": {
-    "claim": "Republicans who followed a liberal bot became more conservative afterward.",
-    "truth": true
+    "claim": "Republicans who followed a liberal bot became more liberal afterward.",
+    "truth": false
    },
    "answerTitle": "Republicans moved right; Democrats barely moved",
    "explain": "For Republicans the intent-to-treat effect was 0.12 points toward conservatism on a seven-point scale, rising to 0.60 among full compliers; the Democrats' shift was small and not significant.",
@@ -6313,7 +6263,7 @@
    "options": [
     "Temptation distorts the belief to justify lying",
     "Seeing others lie taught both the belief and the habit",
-    "The belief is accurate information that drives lying",
+    "A taste for risk drives both the belief and lying",
     "The belief reflects general cynicism, not the task"
    ],
    "answer": 0,
@@ -6380,7 +6330,7 @@
    ],
    "study": {
     "design": "Incentivized lying experiment",
-    "n": "Not stated in published abstract"
+    "n": "Participants in an incentivized experiment"
    },
    "theme": "honesty",
    "permuted": true
@@ -6570,7 +6520,7 @@
    "track": "Culture & Society",
    "concept": "Being watched",
    "title": "Giving while watched",
-   "scene": "To boost charity giving, an experiment let another person observe each donation decision. In some versions the observer simply watched, with no rewards or consequences attached.",
+   "scene": "To boost charity giving, an experiment let another person observe each decision to give to a charity or take from its account. In some versions the observer simply watched, with no rewards or consequences attached.",
    "question": "Is this what the study found?",
    "answerTitle": "Watching alone did little and could backfire",
    "explain": "Bolton, Dimant and Schmidt show, with 1,650 online participants, that being watched alone backfired: the charity account shrank 28.3% under observation against 18.4% unobserved. Asking people first about others' behavior turned this into a 9.3% gain.",
@@ -6648,12 +6598,12 @@
    "track": "Culture & Society",
    "concept": "Engagement incentives",
    "title": "Sharing what you don't believe",
-   "scene": "In a multi-round sharing task, participants chose whether to share factual news or conspiracy theories, including ones they did not believe. The social feedback each kind of post earned varied.",
+   "scene": "In a multi-round sharing task, participants chose whether to share factual news or conspiracy theories, including ones they did not believe.",
    "question": "What drove sharing of conspiracy theories people knew were false?",
    "options": [
     "Expected and received social engagement",
     "Habit: they shared whatever appeared first",
-    "Low digital literacy among sharers",
+    "A hunch that the posts might be true after all",
     "Novelty: conspiracy posts felt more original"
    ],
    "answer": 0,
@@ -7221,8 +7171,8 @@
    "scene": "Researchers generated 10,320 marketing images with seven text-to-image models from 2,400 human-made images, then ran a live ad test with over 173,000 impressions.",
    "question": "Is this what the study found?",
    "forecast": {
-    "claim": "In the live ad test, an AI-generated image beat the human-made image on click-through rate.",
-    "truth": true
+    "claim": "In the live ad test, the human-made image beat the AI-generated images on click-through rate.",
+    "truth": false
    },
    "answerTitle": "Yes: up to 50% higher click-through",
    "explain": "In the field study, an AI-generated image achieved an up to 50% higher click-through rate than a human-made image, and 254,400 human evaluations showed AI images can surpass human ones.",
@@ -7312,8 +7262,8 @@
    ],
    "answer": 2,
    "dag": {
-    "alt": "Using AI may lower work quality, which lowers ratings; that path is questioned. A second path runs from disclosed AI use to perceived laziness to lower ratings, even when the work is held constant.",
-    "height": 200,
+    "alt": "Disclosed AI use leads raters to see the worker as lazy, which lowers the rating, even when the work is held constant.",
+    "height": 160,
     "nodes": [
      {
       "id": "ai",
@@ -7322,17 +7272,10 @@
       "y": 100
      },
      {
-      "id": "quality",
-      "label": "Work quality",
-      "x": 260,
-      "y": 40,
-      "hidden": true
-     },
-     {
       "id": "lazy",
       "label": "Seen as lazy",
       "x": 260,
-      "y": 160,
+      "y": 100,
       "mask": true
      },
      {
@@ -7343,16 +7286,6 @@
      }
     ],
     "edges": [
-     [
-      "ai",
-      "quality",
-      "q"
-     ],
-     [
-      "quality",
-      "rating",
-      "q"
-     ],
      [
       "ai",
       "lazy"
@@ -8497,5 +8430,226 @@
     "text_url": "https://api.openalex.org/works/doi:10.5465/amj.2022.0426"
    }
   }
+ },
+ "tutorRoutes": {
+  "note": "Order matters. Both tutors (server/tutor.py curated, src/app.js curated) apply these in this order; tests/test_tutor.py checks every decision.",
+  "stop": [
+   "a",
+   "an",
+   "and",
+   "are",
+   "as",
+   "at",
+   "be",
+   "been",
+   "but",
+   "by",
+   "can",
+   "could",
+   "did",
+   "do",
+   "does",
+   "for",
+   "from",
+   "had",
+   "has",
+   "have",
+   "how",
+   "i",
+   "if",
+   "in",
+   "into",
+   "is",
+   "it",
+   "its",
+   "me",
+   "more",
+   "most",
+   "my",
+   "no",
+   "not",
+   "of",
+   "on",
+   "or",
+   "our",
+   "should",
+   "so",
+   "than",
+   "that",
+   "the",
+   "their",
+   "them",
+   "then",
+   "there",
+   "these",
+   "they",
+   "this",
+   "those",
+   "to",
+   "too",
+   "up",
+   "us",
+   "was",
+   "we",
+   "were",
+   "what",
+   "when",
+   "where",
+   "which",
+   "who",
+   "why",
+   "will",
+   "with",
+   "would",
+   "you",
+   "your",
+   "about",
+   "after",
+   "also",
+   "any",
+   "because",
+   "before",
+   "being",
+   "both",
+   "each",
+   "few",
+   "just",
+   "much",
+   "many",
+   "only",
+   "other",
+   "over",
+   "same",
+   "some",
+   "such",
+   "very",
+   "study",
+   "studies",
+   "research",
+   "researchers",
+   "paper",
+   "finding",
+   "findings",
+   "result",
+   "results",
+   "effect",
+   "effects",
+   "people",
+   "thing",
+   "find",
+   "found",
+   "show",
+   "shows",
+   "showed",
+   "tell",
+   "report",
+   "reported"
+  ],
+  "generic": [
+   "answer",
+   "answers",
+   "explain",
+   "explanation",
+   "number",
+   "numbers",
+   "mean",
+   "means",
+   "happen",
+   "happened",
+   "result",
+   "outcome",
+   "replicate",
+   "replicated",
+   "replication",
+   "randomized",
+   "randomised",
+   "random",
+   "sample",
+   "design",
+   "method",
+   "control",
+   "group",
+   "size",
+   "big",
+   "large",
+   "apply",
+   "work",
+   "hold",
+   "today",
+   "still",
+   "test",
+   "pilot",
+   "conclusion",
+   "conclude",
+   "takeaway",
+   "summary",
+   "summarize",
+   "key",
+   "main",
+   "point",
+   "matter",
+   "matters",
+   "important",
+   "relevant",
+   "relevance",
+   "implication",
+   "implications",
+   "manager",
+   "managers",
+   "lesson",
+   "lessons",
+   "tell",
+   "more",
+   "detail",
+   "details"
+  ],
+  "suffixes": [
+   "ations",
+   "ation",
+   "ments",
+   "ment",
+   "ions",
+   "ion",
+   "ing",
+   "ers",
+   "ed",
+   "es",
+   "er",
+   "e",
+   "s",
+   "ly"
+  ],
+  "syn": {
+   "experienc skill": "junior senior novic newer newcom veteran tenur rooki junio senio",
+   "less": "reduct reduc decreas fell lower cut drop",
+   "rose": "increas rais higher grew improv"
+  },
+  "routes": [
+   [
+    "ethics",
+    "\\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)"
+   ],
+   [
+    "subgroup",
+    "\\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup)"
+   ],
+   [
+    "design",
+    "\\b(how (was|were|did)|design|method|ran|sample|participants|conducted|setup|set up|randomi[sz]\\w*|control group)\\b"
+   ],
+   [
+    "pilot",
+    "\\b(test (this|it)|pilot|in (my|our) (company|team|firm|organi[sz]ation)|roll ?out|measure (it|this))\\b"
+   ],
+   [
+    "size",
+    "\\b(big|size|large|how much|practice|magnitude)\\b"
+   ],
+   [
+    "transfer",
+    "\\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\\w*)"
+   ]
+  ],
+  "subgroupFollow": "^(who\\b|which (workers|agents|employees|people|consultants|staff|groups?)\\b)"
  }
 }
