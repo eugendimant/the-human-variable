@@ -372,3 +372,13 @@ def test_streamlit_tutor_holds_siblings():
     """Review 20, minor 6: the Streamlit tutor holds same-paper siblings of an open decision, as the server does."""
     t = (ROOT / 'thv_streamlit/tutor_page.py').read_text()
     assert re.search(r"any\(srcs\(i\) & srcs\(h\) for h in held\)", t)
+
+
+def test_estimate_scene_numbers_sit_outside_the_band():
+    """Review 20, minor 2 (class): no number printed in the scene, question or label lands inside the target band."""
+    bad = []
+    for c in LIVE:
+        if c['format'] != 'estimate': continue
+        e = c['estimate']; txt = ' '.join([c.get('scene', ''), c['question'], e.get('label', '')]).replace(',', '')
+        bad += [(c['id'], m) for m in re.findall(r'-?\d+(?:\.\d+)?', txt) if abs(float(m) - e['target']) <= e['tolerance']]
+    assert not bad, bad

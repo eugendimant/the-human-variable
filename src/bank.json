@@ -3826,7 +3826,7 @@
     "target": 78,
     "min": 0,
     "max": 100,
-    "tolerance": 6,
+    "tolerance": 5,
     "label": "Share choosing the gamble in the deaths frame",
     "unit": "%"
    },

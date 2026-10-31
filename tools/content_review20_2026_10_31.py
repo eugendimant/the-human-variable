@@ -24,3 +24,7 @@ for cid, c in C.items():
         ev.setdefault(cid, []).append(q)
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n'); ep.write_text(json.dumps(ev, ensure_ascii=False, indent=1) + '\n')
 print('ok')
+# own audit after review 20: judg05's scene value 72 sat inside the band 78 ± 6
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['judg05']['estimate']['tolerance'] = 5
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
