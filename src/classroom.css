@@ -24,3 +24,14 @@
 .rv-track i.ev{background:var(--ev)}
 @media (max-width:700px){.join-banner{flex-direction:column;align-items:flex-start}.rv-row{grid-template-columns:1fr 54px}.rv-track{grid-column:1/-1;grid-row:2}}
 .console-h{font-size:var(--t2);letter-spacing:-.035em;line-height:1.02;margin:0}
+
+/* projector view: the stage fills the screen, controls stay one click away */
+.proj-exit{display:none}
+body.projector .side,body.projector header.bar{display:none}
+body.projector .play-grid{grid-template-columns:1fr!important}
+body.projector .wrap{max-width:1500px}
+body.projector .play-grid>.card{font-size:clamp(18px,1.6vw,26px)}
+body.projector .stage-h{font-size:clamp(32px,3.4vw,56px)}
+body.projector .play-grid>.card .scene{font-size:clamp(18px,1.5vw,24px)}
+body.projector .rv-row,body.projector .present-opts li,body.projector .rv-row b{font-size:clamp(18px,1.6vw,26px)}
+body.projector .proj-exit{display:inline-flex;position:fixed;right:16px;bottom:16px;z-index:30}

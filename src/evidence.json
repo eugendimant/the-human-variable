@@ -1761,10 +1761,6 @@
    "location": "Science abstract, Crossref api.crossref.org/works/10.1126/science.adh2586"
   },
   {
-   "quote": "The occupations we draw on are marketers, grant writers, consultants, data analysts",
-   "location": "Noy & Zhang working paper (economics.mit.edu Noy_Zhang_1_0.pdf), p. 2-3; design details only, headline numbers taken from Science version"
-  },
-  {
    "quote": "participants with weaker skills benefited the most from the use of ChatGPT",
    "location": "AAAS press release, eurekalert.org/news-releases/995024"
   },
@@ -1775,20 +1771,8 @@
  ],
  "ai02": [
   {
-   "quote": "Quality is assessed by (blinded) experienced professionals working in the same occupations.",
-   "location": "Noy & Zhang working paper (economics.mit.edu Noy_Zhang_1_0.pdf), p. 2-3; design details only, headline numbers taken from Science version"
-  },
-  {
-   "quote": "a 'linear' scheme in which respondents are paid $1 for each point they receive",
-   "location": "Noy & Zhang working paper (economics.mit.edu Noy_Zhang_1_0.pdf), p. 2-3; design details only, headline numbers taken from Science version"
-  },
-  {
    "quote": "incentivized, occupation-specific writing tasks",
    "location": "AAAS press release, eurekalert.org/news-releases/995024"
-  },
-  {
-   "quote": "comprise 20-to 30-minute assignments designed to resemble real tasks performed in these",
-   "location": "Noy & Zhang working paper (economics.mit.edu Noy_Zhang_1_0.pdf), p. 2-3; design details only, headline numbers taken from Science version"
   }
  ],
  "ai04": [
@@ -1917,56 +1901,47 @@
  ],
  "biz01": [
   {
-   "quote": "automatically enrolled in the 401(k) plan with a 3% contribution rate allocated entirely to the money market fund",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 4"
+   "source": "cribb20",
+   "quote": "with 86% of employees enrolled in the 401(k) after 3–15 months",
+   "location": "Introduction"
   },
   {
-   "quote": "a large, publicly-traded Fortune 500 company in the health care and insurance industry",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 4"
+   "source": "cribb20",
+   "quote": "compared with only 37% of those who were not subject to automatic enrolment",
+   "location": "Introduction"
   },
   {
-   "quote": "The effects are largest among the groups with the lowest participation rates under the previous regime",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 13"
+   "source": "cribb20",
+   "quote": "with 86% of employees enrolled in the 401(k) after 3–15 months",
+   "location": "Introduction"
   },
   {
-   "quote": "the participation rate of women is virtually identical to that of men",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 12"
+   "source": "cribb20",
+   "quote": "compared with only 37% of those who were not subject to automatic enrolment",
+   "location": "Introduction"
   },
   {
-   "quote": "none of the economic features of the plan changed",
-   "location": "NBER WP 7682 abstract (nber.org/papers/w7682)"
+   "source": "cribb20",
+   "quote": "with 86% of employees enrolled in the 401(k) after 3–15 months",
+   "location": "Introduction"
   },
   {
-   "quote": "approximately 86% of employees hired under automatic enrollment participate",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 11"
+   "source": "cribb20",
+   "quote": "compared with only 37% of those who were not subject to automatic enrolment",
+   "location": "Introduction"
   },
   {
-   "quote": "The 401(k) participation rate of the WINDOW cohort at 3-15 months of tenure was 37%.",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 12"
+   "source": "cribb20",
+   "quote": "with 86% of employees enrolled in the 401(k) after 3–15 months",
+   "location": "Introduction"
+  },
+  {
+   "source": "cribb20",
+   "quote": "compared with only 37% of those who were not subject to automatic enrolment",
+   "location": "Introduction"
   }
  ],
- "biz02": [
-  {
-   "quote": "three-quarters of automatically enrolled participants contribute at the default rate of 3%",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 16"
-  },
-  {
-   "quote": "only 1% of the WINDOW, OLD and 3+ cohorts are participating in the 401(k) plan at a contribution rate of 3%",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 22"
-  },
-  {
-   "quote": "75% have all of their fund balances in the money market.",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 21"
-  },
-  {
-   "quote": "this particular savings choice is made by less than 1% of employees hired prior to automatic enrollment",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 23"
-  },
-  {
-   "quote": "the first 6% of compensation contributed is eligible for a 50% employer match",
-   "location": "NBER WP 7682 full text (nber.org/system/files/working_papers/w7682/w7682.pdf), p. 15 (after one year of service; new hires not eligible, p. 16)"
-  }
- ],
+ "biz02": [],
  "biz03": [
   {
    "quote": "a midsized, midpriced hotel in the Southwest that was part of a national hotel chain",
@@ -2225,49 +2200,8 @@
    "location": "Full text, annotated copy (students.cs.byu.edu CollectiveIntelligence_annotated.pdf)"
   }
  ],
- "social12": [
-  {
-   "quote": "the return to a White name is equivalent to about 8 additional years of experience",
-   "location": "NBER WP w9873 full text, p. 10"
-  },
-  {
-   "quote": "African Americans experience much less of an increase in callback rate for similar improvements in their credentials",
-   "location": "NBER WP w9873 full text, p. 12"
-  },
-  {
-   "quote": "neither the 'Equal Opportunity Employers' nor the federal contractors appear to discriminate less",
-   "location": "NBER WP w9873 full text, p. 17"
-  },
-  {
-   "quote": "we respond to over 1300 employment ads... and send nearly 5000 resumes",
-   "location": "NBER WP w9873 full text, p. 2"
-  },
-  {
-   "quote": "four occupational categories: sales, administrative support, clerical services and customer services",
-   "location": "NBER WP w9873 full text, p. 6"
-  },
-  {
-   "quote": "between July 2001 and January 2002 in Boston and between July 2001 and May 2002 in Chicago",
-   "location": "NBER WP w9873 full text, p. 8"
-  }
- ],
+ "social12": [],
  "social13": [
-  {
-   "quote": "increases by 50% the probability a woman will be advanced out of certain preliminary rounds",
-   "location": "NBER WP 5903 abstract (nber.org/papers/w5903); published AER abstract via Crossref gives no numbers"
-  },
-  {
-   "quote": "enhances, by severalfold, the likelihood a female contestant will be the winner in the final round",
-   "location": "NBER WP 5903 abstract (nber.org/papers/w5903); published AER abstract via Crossref gives no numbers"
-  },
-  {
-   "quote": "can explain between 30% and 55% of the increase in the proportion female among new hires",
-   "location": "NBER WP 5903 abstract (nber.org/papers/w5903); published AER abstract via Crossref gives no numbers"
-  },
-  {
-   "quote": "in the 1970s and 1980s",
-   "location": "NBER WP 5903 abstract (nber.org/papers/w5903); published AER abstract via Crossref gives no numbers"
-  },
   {
    "quote": "individual fixed-effects framework; some estimates have large standard errors and one effect goes the other way (paraphrase)",
    "location": "AER abstract, Crossref api.crossref.org/works/10.1257/aer.90.4.715"

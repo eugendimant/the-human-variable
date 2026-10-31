@@ -17,6 +17,8 @@ CHALLENGES = {c['id']: c for c in BANK['challenges'] if all(s in LIVE_SOURCES fo
 RETENTION_HOURS = float(os.environ.get('THV_RETENTION_HOURS', '48'))
 MAX_PARTICIPANTS = int(os.environ.get('THV_MAX_PARTICIPANTS', '120'))
 CLASS_LOCK_HOURS = float(os.environ.get('THV_CLASS_LOCK_HOURS', '3'))
+# A class holds the lock only while it is alive: the instructor console refreshes it; 20 idle minutes release it.
+CLASS_LOCK_IDLE_MIN = float(os.environ.get('THV_CLASS_LOCK_IDLE_MIN', '20'))
 CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'  # no 0/O/1/I
 
 class ClassroomError(Exception):
@@ -48,7 +50,7 @@ def answer_text(c, a):
 class Store:
     def __init__(self, path: str | Path):
         self.path = str(path); self._local = threading.local(); self.lock = threading.Lock()
-        self.cache: dict[str, dict] = {}
+        self.cache: dict[str, dict] = {}; self._beats: dict[str, float] = {}
         db = self.db()
         db.executescript('''
         PRAGMA journal_mode=WAL;
@@ -104,7 +106,8 @@ class Store:
         if action == 'open':
             if challenge not in CHALLENGES: raise ClassroomError('Unknown decision')
             if challenge not in played: played.append(challenge)
-            sql, args = 'UPDATE sessions SET challenge=?, phase=?, played=?', [challenge, 'open', json.dumps(played)]
+            rev = [x for x in json.loads(self.db().execute('SELECT revealed FROM sessions WHERE code=?', (code,)).fetchone()[0]) if x != challenge]
+            sql, args = 'UPDATE sessions SET challenge=?, phase=?, played=?, revealed=?', [challenge, 'open', json.dumps(played), json.dumps(rev)]
         elif action == 'close':
             if phase != 'open': raise Conflict('Nothing is open')
             sql, args = 'UPDATE sessions SET phase=?', ['closed']
@@ -158,7 +161,7 @@ class Store:
         if r[4] != 'open': raise Conflict('Responses are closed for this decision')
         c = CHALLENGES[r[3]]
         if not scoring.valid(c, answer): raise ClassroomError('That answer does not fit this decision')
-        if c['format'] != 'forecast':
+        if c['format'] not in ('forecast', 'allocate'):  # both are probability statements already
             if type(confidence) not in (int, float) or not 0 <= confidence <= 100: raise ClassroomError('Confidence must be 0 to 100')
             confidence = int(round(confidence))
         else:
@@ -173,8 +176,17 @@ class Store:
         return {'accepted': accepted, 'message': 'Recorded' if accepted else 'You already answered this decision'}
 
     # ---- reads ----
+    def heartbeat(self, code: str):
+        """The instructor console is open: keep the class alive (at most one write a minute)."""
+        now = time.time(); last = self._beats.get(code, 0)
+        if now - last < 60: return
+        self._beats[code] = now
+        with self.lock:
+            db = self.db(); db.execute('UPDATE sessions SET touched=? WHERE code=?', (now, code)); db.commit()
+
     def state(self, code: str, admin: bool = False) -> dict:
         code = str(code or '').upper()
+        if admin: self.heartbeat(code)
         hit = self.cache.get(code)
         if hit is None or time.time() - hit['_t'] > 30:
             r = self._row(code); db = self.db()
@@ -221,7 +233,8 @@ class Store:
         only for decisions that class has already revealed. Returns (locked, allowed ids). Cached for 2 s."""
         now = time.time(); hit = getattr(self, '_lock', None)
         if hit and now - hit[0] < 2: return hit[1]
-        rows = self.db().execute("SELECT s.revealed FROM sessions s WHERE s.touched > ? AND (s.phase IN ('open', 'closed') OR EXISTS (SELECT 1 FROM participants p WHERE p.code = s.code))", (now - CLASS_LOCK_HOURS * 3600,)).fetchall()
+        since = now - min(CLASS_LOCK_HOURS * 3600, CLASS_LOCK_IDLE_MIN * 60)
+        rows = self.db().execute("SELECT s.revealed FROM sessions s WHERE s.touched > ? AND s.phase != 'ended' AND (s.phase IN ('open', 'closed') OR EXISTS (SELECT 1 FROM participants p WHERE p.code = s.code))", (since,)).fetchall()
         # With several classes, a decision is released only once every running class has revealed it.
         sets = [set(json.loads(rv)) for (rv,) in rows]
         allowed = set.intersection(*sets) if sets else set()
@@ -240,7 +253,7 @@ class Store:
         rows = self.db().execute('SELECT num, challenge, answer, confidence, score, correct, created FROM responses WHERE code=? ORDER BY challenge, num', (code,)).fetchall()
         buf = io.StringIO(); w = csv.writer(buf)
         w.writerow(['participant', 'decision_id', 'decision_title', 'format', 'answer', 'answer_text', 'confidence', 'score', 'correct', 'utc_time'])
-        safe = lambda x: "'" + x if x[:1] in '=+-@' else x
+        safe = lambda x: "'" + x if x[:1] in '=+-@\t\r' else x
         for num, cid, a, conf, sc, ok, t in rows:
             c = CHALLENGES.get(cid, {})
             w.writerow([f'P{num:03d}', cid, safe(str(c.get('title', ''))), c.get('format', ''), a, safe(answer_text(c, json.loads(a))), '' if conf is None else conf, round(100 * sc), ok, time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(t))])

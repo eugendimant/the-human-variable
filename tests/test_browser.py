@@ -37,7 +37,7 @@ def answer(pg, c):
         for i in range(len(c['delegate']['tasks'])): pg.click(f'[data-deleg="{i}"][data-pick="0"]')
     if f == 'allocate':  # move one slider so the split is the player's own
         pg.eval_on_selector('[data-alloc="0"]', "e=>{e.value=+e.value;e.dispatchEvent(new Event('input',{bubbles:true}))}")
-    if f != 'forecast':
+    if f not in ('forecast', 'allocate'):
         pg.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}")
 
 def one_of_each():
@@ -68,7 +68,7 @@ def test_keyboard_round_and_record(browser):
         answer(pg, c); pg.focus('#q-h'); pg.keyboard.press('Enter')
         pg.wait_for_selector('#r-h'); pg.keyboard.press('n')
     pg.wait_for_selector('text=Round complete.')
-    assert pg.locator('.score-big').count() == 1 and pg.locator('.score-meta div').count() == 3 and not pg.errors
+    assert pg.locator('.score-big').count() == 1 and pg.locator('.score-meta div').count() == 2 and not pg.errors
 
 def test_quarantined_items_never_served(browser):
     pg = page(browser); pg.goto(URL)

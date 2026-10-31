@@ -29,6 +29,7 @@
 - Centola (2010). The Spread of Behavior in an Online Social Network Experiment. *Science* 329(5996), 1194-1197. https://doi.org/10.1126/science.1185231
 - Cohn, Maréchal, Tannenbaum & Zünd (2019). Civic honesty around the globe. *Science* 365(6448), 70-73. https://doi.org/10.1126/science.aau8712
 - Costello, Pennycook & Rand (2024). Durably reducing conspiracy beliefs through dialogues with AI. *Science* 385(6714), eadq1814. https://doi.org/10.1126/science.adq1814
+- Cribb & Emmerson (2020). What happens to workplace pension saving when employers are obliged to enrol employees automatically?. *International Tax and Public Finance* 27(3), 664-693. https://doi.org/10.1007/s10797-019-09565-6
 - Cui et al. (2026). The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers. *Management Science* , mnsc.2025.00535 (published online 27 February 2026). https://doi.org/10.1287/mnsc.2025.00535
 - Dell’Acqua et al. (2026). Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality. *Organization Science* 37(2), 403-423. https://doi.org/10.1287/orsc.2025.21838
 - Dietvorst & Bharti (2020). People Reject Algorithms in Uncertain Decision Domains Because They Have Diminishing Sensitivity to Forecasting Error. *Psychological Science* 31(10), 1302-1314. https://doi.org/10.1177/0956797620948841
@@ -44,7 +45,6 @@
 - Dimant, van Kleef & Shalvi (2020). Requiem for a Nudge: Framing effects in nudging honesty. *Journal of Economic Behavior & Organization* 172, 247-266. https://doi.org/10.1016/j.jebo.2020.02.015
 - Doshi & Hauser (2024). Generative AI enhances individual creativity but reduces the collective diversity of novel content. *Science Advances* 10(28), eadn5290. https://doi.org/10.1126/sciadv.adn5290
 - Fischbacher & Föllmi-Heusi (2013). Lies in Disguise: An Experimental Study on Cheating. *Journal of the European Economic Association* 11(3), 525-547. https://doi.org/10.1111/jeea.12014
-- Fügener, Grahl, Gupta & Ketter (2022). Cognitive Challenges in Human–Artificial Intelligence Collaboration: Investigating the Path Toward Productive Delegation. *Information Systems Research* 33(2), 678-696. https://doi.org/10.1287/isre.2021.1079
 - Garvey, Kim & Duhachek (2023). Bad News? Send an AI. Good News? Send a Human. *Journal of Marketing* 87(1), 10-25. https://doi.org/10.1177/00222429211066972
 - Gneezy & Rustichini (2000). A Fine is a Price. *The Journal of Legal Studies* 29(1), 1-17. https://doi.org/10.1086/468061
 - Goh et al. (2024). Large Language Model Influence on Diagnostic Reasoning. *JAMA Network Open* 7(10), e2440969. https://doi.org/10.1001/jamanetworkopen.2024.40969
@@ -99,7 +99,6 @@
 - Spitale, Biller-Andorno & Germani (2023). AI model GPT-3 (dis)informs us better than humans. *Science Advances* 9(26), eadh1850. https://doi.org/10.1126/sciadv.adh1850
 - Thaler & Benartzi (2004). Save More Tomorrow: Using Behavioral Economics to Increase Employee Saving. *Journal of Political Economy* 112(S1), S164-S187. https://doi.org/10.1086/380085
 - Toma et al. (2026). Promoting Safe Opioid Disposal: Experimental Evidence on Behavioral Messaging With Financial Incentives. *Health Economics* 35(7), 1023-1032. https://doi.org/10.1002/hec.70085
-- Tong, Jia, Luo & Fang (2021). The Janus face of artificial intelligence feedback: Deployment versus disclosure effects on employee performance. *Strategic Management Journal* 42(9), 1600-1631. https://doi.org/10.1002/smj.3322
 - Tversky & Kahneman (1974). Judgment under Uncertainty: Heuristics and Biases. *Science* 185(4157), 1124-1131. https://doi.org/10.1126/science.185.4157.1124
 - Tversky & Kahneman (1981). The framing of decisions and the psychology of choice. *Science* 211(4481), 453-458. https://doi.org/10.1126/science.7455683
 - Vaccaro, Almaatouq & Malone (2024). When combinations of humans and AI are useful: A systematic review and meta-analysis. *Nature Human Behaviour* 8(12), 2293-2303. https://doi.org/10.1038/s41562-024-02024-1

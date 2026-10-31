@@ -81,7 +81,10 @@ function buildDeck(pool, n, seed) {
   for (const u of shuffle(units, rng(seed))) { if (out.length >= n) break; out.push(...u) }
   return out;
 }
+let CLASS_LOCK = false;
+function refreshLock() { if (!PUBLIC) return; fetch('/api/health').then(r => r.ok ? r.json() : null).then(d => { const was = CLASS_LOCK; CLASS_LOCK = !!(d && d.class_lock); if (was !== CLASS_LOCK && st.view === 'play') render() }).catch(() => { }) }
 function start(pool, n) {
+  refreshLock();
   st.deck = buildDeck(pool, n, st.seed); st.i = 0; st.session = []; resetCard(); st.view = 'play'; render(true);
 }
 function startTrack() { const pool = st.track === 'Mixed' ? ALL : ALL.filter(c => c.track === st.track); start(pool.length ? pool : ALL, st.length) }
@@ -97,16 +100,18 @@ function evenSplit(c) { const k = c.options.length, t = c.allocate.total, step =
 function optionOrder(c) { return shuffle(c.options.map((t, i) => ({ t, i })), rng(hash(c.id + '-' + st.seed))) }
 
 function needsTouch(c) { return ['forecast', 'rank', 'allocate'].includes(c.format) }
+// Forecasts and allocations are probability statements already, so they take no separate confidence.
+const noConf = c => c.format === 'forecast' || c.format === 'allocate';
 // What "right" means for the confidence question, per format (matches S.score().correct).
 function confQuestion(c) {
   return ({ choice: 'How sure are you that this is right?', causal: 'How sure are you that this is right?', multi: 'How sure are you that both picks are right?',
     estimate: `How sure are you that you land within ${c.estimate ? c.estimate.tolerance : ''}${c.estimate && (c.estimate.unit ?? '%') === '%' ? ' points' : ''} of the study value?`,
-    rank: 'How sure are you of the exact order?', allocate: 'How sure are you that you captured 80% of the best payoff?', delegate: 'How sure are you that every task is routed right?' })[c.format] || 'How sure are you?';
+    rank: 'How sure are you of the exact order?', delegate: 'How sure are you that every task is routed right?' })[c.format] || 'How sure are you?';
 }
-function lockReady(c) { return S.ready(c, st.resp) && (!needsTouch(c) || st.touched) && (c.format === 'forecast' || st.confTouched) }
+function lockReady(c) { return S.ready(c, st.resp) && (!needsTouch(c) || st.touched) && (noConf(c) || st.confTouched) }
 function lockHint(c) {
   if (!S.ready(c, st.resp) || (needsTouch(c) && !st.touched)) return c.format === 'forecast' ? 'Move the slider to state a probability' : c.format === 'rank' ? 'Put the items in your order' : c.format === 'allocate' ? 'Split the budget your way' : 'Make your call';
-  if (c.format !== 'forecast' && !st.confTouched) return 'Now say how sure you are';
+  if (!noConf(c) && !st.confTouched) return 'Now say how sure you are';
   return '';
 }
 function syncLock() { const c = card(); const b = qs('#lock-btn'); if (!c || !b) return; b.disabled = !lockReady(c); const h = qs('.actionbar .kicker'); if (h) h.textContent = lockHint(c) }
@@ -114,7 +119,7 @@ let locking = false;
 async function lock() {
   const c = card(); if (!c || !lockReady(c) || locking) return;
   if (st.room) {  // the server holds the evidence until the instructor reveals it
-    st.pending = { response: st.resp, confidence: c.format === 'forecast' ? null : st.conf };
+    st.pending = { response: st.resp, confidence: noConf(c) ? null : st.conf };
     st.phase = 'reveal'; render(true); roomSubmit(c, st.pending); return;
   }
   locking = true; const b = qs('#lock-btn'); if (b) { b.disabled = true; b.textContent = PUBLIC ? 'Checking the evidence' : 'Locked' }
@@ -123,7 +128,7 @@ async function lock() {
   if (!okFull) { locking = false; syncLock(); if (b) b.textContent = 'Try again'; qs('.focus-card')?.classList.remove('is-locked'); return }
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) await new Promise(z => setTimeout(z, 420));
   locking = false;
-  finalize(c, st.resp, c.format === 'forecast' ? null : st.conf);
+  finalize(c, st.resp, noConf(c) ? null : st.conf);
   st.phase = 'reveal'; render(true);
 }
 function finalize(c, response, confidence) {
@@ -146,7 +151,7 @@ function heroTry() {
     <span class="kicker">Try one now</span>
     <h2 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h2>
     ${h.done ? `<div class="try-axis">${gapAxis({ min: e.min, max: e.max, unit: '%', you: v, ev: e.target, band: e.tolerance, evLabel: 'Study', id: 'hero' })}</div>`
-      : `<div class="try-read"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${v === null ? '?' : v + '%'}</b><span>less time</span></div>
+      : `<div class="try-read"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${v === null ? 'Slide to answer' : v + '%'}</b><span>less time</span></div>
     <label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
     <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">
     <div class="axis"><span>${e.min}%</span><span>${e.max}%</span></div>`}
@@ -207,12 +212,12 @@ function instrument(c) {
   }
   if (c.format === 'estimate') {
     const e = c.estimate, v = r ?? Math.round((e.min + e.max) / 2);
-    return `<div class="meter"><div class="meter-read"><span class="kicker" id="est-label">${esc(e.label)}</span><b class="${r === null ? 'empty' : ''}" id="est-read">${r === null ? '—' : r + (e.unit ?? '%')}</b></div>
+    return `<div class="meter"><div class="meter-read"><span class="kicker" id="est-label">${esc(e.label)}</span><b class="${r === null ? 'empty' : ''}" id="est-read">${r === null ? 'Slide to answer' : r + (e.unit ?? '%')}</b></div>
       <input type="range" id="est" aria-labelledby="est-label" min="${e.min}" max="${e.max}" step="${e.step || 1}" value="${v}" class="${r === null ? 'untouched' : ''}" style="--fill:${r === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%" ${rev ? 'disabled' : ''}>
       <div class="axis"><span>${e.min}${e.unit ?? '%'}</span><span>${e.max}${e.unit ?? '%'}</span></div></div>`;
   }
   if (c.format === 'forecast') {
-    return `<div class="meter"><div class="meter-read"><span class="kicker" id="fc-label">Probability the claim is true</span><b class="${st.touched ? '' : 'empty'}" id="fc-read">${st.touched ? r + '%' : '?'}</b></div>
+    return `<div class="meter"><div class="meter-read"><span class="kicker" id="fc-label">Probability the claim is true</span><b class="${st.touched ? '' : 'empty'}" id="fc-read">${st.touched ? r + '%' : 'Slide to answer'}</b></div>
       <input type="range" id="fc" aria-labelledby="fc-label" min="0" max="100" step="5" value="${r}" class="${st.touched ? '' : 'untouched'}" style="--fill:${st.touched ? r : 0}%" ${rev ? 'disabled' : ''}>
       <div class="axis"><span>0%, certainly false</span><span>100%, certainly true</span></div></div>`;
   }
@@ -222,7 +227,7 @@ function instrument(c) {
   if (c.format === 'allocate') {
     const a = c.allocate, sum = r.reduce((x, y) => x + y, 0);
     return `<div class="alloc">${c.options.map((o, k) => `<div class="alloc-row"><label for="al${k}">${esc(o)}</label><input type="range" id="al${k}" data-alloc="${k}" min="0" max="${a.total}" step="${a.step || 10}" value="${r[k]}" style="--fill:${r[k] / a.total * 100}%" ${rev ? 'disabled' : ''}><output for="al${k}" class="num">${a.prefix || ''}${r[k]}${a.suffix || ''}</output></div>`).join('')}
-      <div class="alloc-total ${sum === a.total ? 'ok' : ''}" aria-live="polite"><span>${esc(a.label)}</span><span class="num">${a.prefix || ''}${sum}${a.suffix || ''} of ${a.prefix || ''}${a.total}${a.suffix || ''}${sum === a.total ? '' : sum > a.total ? ', over budget' : ', unassigned'}</span></div></div>`;
+      <div class="alloc-total ${sum === a.total ? 'ok' : ''}" aria-live="polite"><span>${esc(a.label)}</span><span class="num">${a.prefix || ''}${sum}${a.suffix || ''} of ${a.prefix || ''}${a.total}${a.suffix || ''}${sum === a.total ? '' : sum > a.total ? ', too many' : ', still to place'}</span></div></div>`;
   }
   if (c.format === 'delegate') {
     return `<div class="deleg">${c.delegate.tasks.map((t, k) => `<div class="deleg-row" role="group" aria-label="${esc(t.text)}"><p>${esc(t.text)}</p><div class="deleg-opts">${c.delegate.choices.map((ch, m) => `<button data-deleg="${k}" data-pick="${m}" aria-pressed="${r[k] === m}" class="${rev && t.answer === m ? 'is-ev' : ''}" ${rev ? 'disabled' : ''}>${esc(ch)}</button>`).join('')}</div>${rev ? `<p class="deleg-why">${r[k] === t.answer ? 'Matches the evidence. ' : 'Evidence points to ' + esc(c.delegate.choices[t.answer]) + '. '}${esc(t.why)}</p>` : ''}</div>`).join('')}</div>`;
@@ -260,7 +265,7 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
 function gapFigure(c, rec) {
   const r = rec.response; let body = '', cap = '';
   if (c.format === 'estimate') { const e = c.estimate; body = gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); const u = (e.unit ?? '%') === '%' ? ' points' : e.unit; cap = `Shaded band: within ${e.tolerance}${u} of the study value counts as a hit. You were ${rec.detail.gap}${u} away.` }
-  else if (c.format === 'forecast') { body = `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = `Brier score ${rec.detail.brier.toFixed(2)} (0 is perfect, 0.25 is saying 50%, 1 is confidently wrong). Score = 100 − 200 × Brier, so a confident miss goes below zero.` }
+  else if (c.format === 'forecast') { body = `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = `A confident correct call earns 100, saying 50% earns 50, and a confident miss goes below zero.` }
   else if (c.format === 'rank') {
     const truth = c.rankAnswer, ties = c.rankTies || [];
     const tied = (a, b) => ties.some(t => t.includes(a) && t.includes(b));
@@ -271,9 +276,9 @@ function gapFigure(c, rec) {
     cap = `${rec.detail.agree} of ${rec.detail.total} scored pairs in the measured order.${ties.length ? ' Rows marked as not separated were not told apart by the study, so their order is not scored.' : ''}`
   }
   else if (c.format === 'allocate') {
-    const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, mx = Math.max(...a.values);
-    body = `<div class="hbars alloc-cmp" role="img" aria-label="Your allocation compared with reported effects">${c.options.map((o, k) => `<div class="hb-row two"><span class="hb-label">${esc(o)}</span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num you">${pct(r[k] / tot)}%</b><span class="hb-track"><i class="grow ev" style="width:${Math.max(1.5, Math.max(0, a.values[k]) / (mx || 1) * 100)}%"></i></span><b class="num ev">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</b></div>`).join('')}</div>`;
-    cap = `Blue: your split. Amber: ${esc(a.valueName)}. Score ${pct(rec.score)}: share of the maximum payoff your split captures under the reported effects.`
+    const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, hi = Math.max(...a.values);
+    body = `<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${c.options.map((o, k) => `<div class="hb-row"><span class="hb-label">${esc(o)}<small class="alloc-val">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</small></span><span class="hb-track"><i class="grow ${a.values[k] === hi ? 'ev' : 'you'}" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num ${a.values[k] === hi ? 'ev' : 'you'}">${pct(r[k] / tot)}</b></div>`).join('')}</div>`;
+    cap = `Bars: the points you gave each option. Amber marks the option that worked best; the small figure under each option is ${esc(a.valueName)}. Score ${pct(rec.score)}: 100 for all points on the best option, lower the more points sat elsewhere.`
   }
   else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${r[k] === t.answer ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${r[k] === t.answer ? '' : `<span class="chip ev">${esc(c.delegate.choices[t.answer])}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
   else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
@@ -303,9 +308,9 @@ function play() {
   const label = `<p class="eyebrow-line">${c.case ? `<span class="tag tag-you">${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}</span>` : ''}<span class="fmt">${FORMAT_NAME[c.format]}</span><span class="track">${esc(c.track)}</span></p>`;
   if (!rev) {
     const ready = lockReady(c);
-    const conf = c.format === 'forecast' ? '' : `<div class="conf-row"><label for="conf">${confQuestion(c)}</label>${(() => { const mn = c.format === 'choice' || c.format === 'causal' ? Math.round(100 / c.options.length / 5) * 5 : 0; return `<input type="range" id="conf" min="${mn}" max="100" step="5" value="${st.conf}" class="${st.confTouched ? '' : 'untouched'}" style="--fill:${st.confTouched ? (st.conf - mn) / (100 - mn) * 100 : 0}%"><output id="conf-read" class="num ${st.confTouched ? '' : 'empty'}" for="conf">${st.confTouched ? st.conf + '%' : '?'}</output>` })()}</div>`;
-    const verb = { estimate: 'estimate', allocate: 'budget', rank: 'ranking', delegate: 'routing', forecast: 'forecast' }[c.format] || 'answer';
-    return `<section class="focus">${top}<article class="focus-card" aria-labelledby="q-h">${label}
+    const conf = noConf(c) ? '' : `<div class="conf-row"><label for="conf">${confQuestion(c)}</label>${(() => { const mn = c.format === 'choice' || c.format === 'causal' ? Math.round(100 / c.options.length / 5) * 5 : 0; return `<input type="range" id="conf" min="${mn}" max="100" step="5" value="${st.conf}" class="${st.confTouched ? '' : 'untouched'}" style="--fill:${st.confTouched ? (st.conf - mn) / (100 - mn) * 100 : 0}%"><output id="conf-read" class="num ${st.confTouched ? '' : 'empty'}" for="conf">${st.confTouched ? st.conf + '%' : '?'}</output>` })()}</div>`;
+    const verb = { estimate: 'estimate', allocate: 'split', rank: 'ranking', delegate: 'routing', forecast: 'forecast' }[c.format] || 'answer';
+    return `<section class="focus">${top}<article class="focus-card" aria-labelledby="q-h">${CLASS_LOCK && !st.room && !BY_ID[c.id].answerTitle ? '<p class="lock-note" role="note">A live class is running on this server, so results for decisions it has not reached open after it reveals them. You can still make your call now.</p>' : ''}${label}
       <p class="scene">${esc(c.scene)}</p><p class="study-line">${esc(studyLine(c))}</p>
       ${c.format === 'forecast' ? `<p class="hint fc-ask">How likely is it that the study found this?</p><h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : ''}
       ${instrument(c)}${conf}</article>
@@ -416,7 +421,7 @@ function record() {
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
     <div class="score-strip"><div class="score-big"><b class="num">${sess ?? meanScore ?? '–'}</b><span>${sess !== null ? 'score this round' : 'average score'}, out of 100</span></div>
-      <dl class="score-meta"><div><dt>Calibration score (Brier, lower is better)</dt><dd class="num">${cal.brier === null ? '–' : cal.brier.toFixed(2)}</dd></div><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
+      <dl class="score-meta"><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">
       <div class="panel rec-panel"><h2>Calibration</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>
@@ -537,11 +542,11 @@ function roomLocked(c) {
 }
 function classPanel(c, a) {
   const f = c.format; let body = '';
-  const hbars = (labels, vals, ev) => { const mx = Math.max(1, ...vals); return `<svg viewBox="0 0 340 ${labels.length * 40 + 4}" role="img" aria-label="Class answers">${labels.map((l, i) => { const y = 2 + i * 40, w = vals[i] / mx * 230; return `<text x="0" y="${y + 12}" font-size="11.5" font-weight="650" fill="#14203a">${esc(short(l, 50))}</text><rect x="0" y="${y + 18}" width="${Math.max(2, w)}" height="12" rx="6" fill="${ev && ev.includes(i) ? '#e0a01c' : '#2f54eb'}"/><text x="${Math.max(2, w) + 6}" y="${y + 28}" font-size="11.5" font-weight="800" fill="#14203a">${vals[i]}</text>` }).join('')}</svg>` };
+  const hbars = (labels, vals, ev, show) => { const mx = Math.max(1, ...vals); return `<div class="hbars" role="img" aria-label="Class answers">${labels.map((l, i) => `<div class="hb-row"><span class="hb-label">${esc(l)}</span><span class="hb-track"><i class="grow ${ev && ev.includes(i) ? 'ev' : 'you'}" style="width:${Math.max(1.5, vals[i] / mx * 100)}%"></i></span><b class="num">${show ? show[i] : vals[i]}</b></div>`).join('')}</div>` };
   if (a.counts) { const o = optionOrder(c); body = hbars(o.map(x => x.t), o.map(x => a.counts[x.i]), o.map((x, k) => (f === 'multi' ? c.multiAnswers.includes(x.i) : x.i === c.answer) ? k : -1).filter(k => k >= 0)) }
   else if (a.hist) { const lo = a.lo, hi = a.hi, w = (hi - lo) / a.hist.length, mx = Math.max(1, ...a.hist), ev = f === 'estimate' ? c.estimate.target : (c.forecast.truth ? 100 : 0); body = `<svg viewBox="0 0 340 130" role="img" aria-label="Class distribution, median ${a.median}">${a.hist.map((h, i) => `<rect x="${10 + i * 32}" y="${100 - h / mx * 80}" width="28" height="${h / mx * 80}" rx="3" fill="#2f54eb" fill-opacity=".8"/>`).join('')}<line x1="${10 + (ev - lo) / (hi - lo) * 320}" y1="10" x2="${10 + (ev - lo) / (hi - lo) * 320}" y2="104" stroke="#e0a01c" stroke-width="3"/><text x="10" y="122" font-size="11" fill="#56617a">${lo}</text><text x="330" y="122" font-size="11" fill="#56617a" text-anchor="end">${hi}</text><text x="${Math.min(300, 14 + (ev - lo) / (hi - lo) * 320)}" y="20" font-size="11" font-weight="700" fill="#7d5200">Evidence</text></svg><p class="gap-caption">Class median ${a.median}${f === 'estimate' ? (c.estimate.unit ?? '%') : '%'}.</p>` }
-  else if (a.meanPosition) body = hbars(c.options.map((o, i) => o + ' (avg. rank ' + a.meanPosition[i] + ')'), a.meanPosition.map(p => +(c.options.length + 1 - p).toFixed(2)), [c.rankAnswer[0]]);
-  else if (a.meanShare) body = hbars(c.options.map((o, i) => o + ' (' + a.meanShare[i] + '%)'), a.meanShare, [c.allocate.values.indexOf(Math.max(...c.allocate.values))]);
+  else if (a.meanPosition) body = hbars(c.options, a.meanPosition.map(p => p == null ? 0 : +(c.options.length + 1 - p).toFixed(2)), [c.rankAnswer[0]], a.meanPosition.map(p => p == null ? '–' : '#' + p)) + '<p class="small">Longer bar: ranked nearer the top by the class. The number is the average rank (1 = top).</p>';
+  else if (a.meanShare) body = hbars(c.options, a.meanShare, [c.allocate.values.indexOf(Math.max(...c.allocate.values))], a.meanShare.map(v => v == null ? '–' : v + '%'));
   else if (a.taskCounts) body = `<ul class="hist">${c.delegate.tasks.map((t, i) => `<li><span>${esc(short(t.text, 60))}</span><span class="num">${a.taskCounts[i][t.answer]} of ${a.n}</span></li>`).join('')}</ul><p class="gap-caption">Number of classmates who routed each task the way the evidence suggests.</p>`;
   return `<section class="panel gap" aria-labelledby="class-h"><h2 id="class-h">The room, ${a.n} answers</h2><p class="gap-caption" style="margin:0 0 8px">Average score ${a.meanScore ?? '–'}. ${a.shareCorrect ?? 0}% matched the evidence${a.meanConfidence !== null ? `, at ${a.meanConfidence}% average confidence` : ''}.</p>${body}</section>`;
 }
@@ -671,7 +676,7 @@ document.body.insertAdjacentHTML('afterbegin', `<a class="skip" href="#view">Ski
 // Live classes need the Python server; hide their entry points in the offline file and inside Streamlit's frame.
 if (!location.protocol.startsWith('http')) qa('[data-act="join"], a[href="classroom.html"]').forEach(el => el.hidden = true);
 qs('#brand-glyph').outerHTML = glyph;
-if (PUBLIC) TUTOR_REMOTE = '/api/tutor';
+if (PUBLIC) { TUTOR_REMOTE = '/api/tutor'; refreshLock() }
 if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; TUTOR_AI = true; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }

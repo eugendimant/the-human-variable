@@ -52,16 +52,17 @@
     return { score, correct: score === 1, detail: { agree, total } };
   }
 
-  // Allocation: payoff of the user's split under the effects the study reported,
-  // rescaled so that all-on-worst = 0 and all-on-best = 1.
+  // Allocation as a probability split over "which option worked best" (a proper rule, like the forecast score).
+  // Target: equal shares on the best arm(s); score = 1 - sum of squared gaps, from -1 (all on a wrong arm) to 1.
+  // Spreading points is the best strategy when you are unsure, and all-in pays only when you are sure.
   function allocate(c, shares) {
-    const v = c.allocate.values;
+    const v = c.allocate.values, hi = Math.max(...v), best = v.map(x => x === hi ? 1 : 0), nb = best.reduce((a, b) => a + b, 0);
     const total = (shares || []).reduce((a, b) => a + Number(b || 0), 0);
     if (!total) return { score: 0, correct: false, detail: {} };
-    const ev = shares.reduce((a, s, i) => a + (Number(s || 0) / total) * v[i], 0);
-    const lo = Math.min(...v), hi = Math.max(...v);
-    const score = hi === lo ? 1 : clamp((ev - lo) / (hi - lo), 0, 1);
-    return { score, correct: score >= (c.allocate.pass ?? 0.8), detail: { ev: Math.round(ev * 100) / 100 } };
+    const p = shares.map(s => Number(s || 0) / total);
+    const score = 1 - p.reduce((a, x, i) => a + (x - best[i] / nb) ** 2, 0);
+    const top = Math.max(...p);
+    return { score, correct: p.some((x, i) => best[i] && x === top), detail: { onBest: Math.round(100 * p.reduce((a, x, i) => a + (best[i] ? x : 0), 0)) } };
   }
 
   // Delegation: one routing decision per task; score = share routed as the evidence suggests.
@@ -96,7 +97,9 @@
   // The probability the player assigned to "my answer is right".
   // For forecasts the stated probability is about the claim, so it is used directly.
   function statedProbability(c, response, confidence) {
-    return c.format === 'forecast' ? Number(response) : Number(confidence);
+    if (c.format === 'forecast') return Number(response);
+    if (c.format === 'allocate') { const t = response.reduce((a, b) => a + b, 0) || 1; return 100 * Math.max(...response) / t }
+    return Number(confidence);
   }
 
   // Reliability table and Brier score over records [{p: 0..100, outcome: 0|1}].
@@ -121,6 +124,8 @@
   // A forecast converts to a calibration record about the claim; other formats about the answer.
   function toCalibrationRecord(c, rec) {
     if ((c && c.format === 'forecast') || rec.format === 'forecast') return { p: rec.response, outcome: rec.outcome ?? (c.forecast.truth ? 1 : 0) };
+    // An allocation states the chance that the top-weighted option is the best one.
+    if (rec.format === 'allocate' && Array.isArray(rec.response)) return { p: statedProbability({ format: 'allocate' }, rec.response), outcome: rec.correct ? 1 : 0 };
     return rec.confidence === null || rec.confidence === undefined ? null : { p: rec.confidence, outcome: rec.correct ? 1 : 0 };
   }
 

@@ -12,6 +12,8 @@ Use this for self-study, with no live class and no AI tutor.
 
 `index.html` runs fully offline. Progress stays in each student's browser. The tutor answers from the lab's checked summaries.
 
+The offline file contains every answer, because it must reveal results without a server. That suits self-study. For graded or live classes, use Option B or C: the server strips answers from the page and releases evidence only after each call is locked, and holds it during a live class until the instructor reveals it.
+
 ## Option B: one container (recommended for teaching)
 
 The container runs the game, live classroom and tutor together, using only the Python standard library.

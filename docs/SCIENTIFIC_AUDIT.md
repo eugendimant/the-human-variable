@@ -12,11 +12,11 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 117 (formats: forecast 31, choice 29, estimate 24, multi 11, rank 7, delegate 6, causal 6, allocate 3).
-- Sources: 109 (48 checked against full text, 60 against the published abstract, 1 quarantined).
+- Decisions in scored play: 116 (formats: forecast 32, choice 30, estimate 24, multi 11, rank 6, causal 6, delegate 5, allocate 2).
+- Sources: 108 (48 checked against full text, 59 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
-- Decisions retired with reasons: 29 (listed below).
-- Track balance: AI × Business 49, Culture & Society 31, Business 30, Judgment 7.
+- Decisions retired with reasons: 30 (listed below).
+- Track balance: AI × Business 48, Culture & Society 31, Business 30, Judgment 7.
 
 ## Sources
 
@@ -51,6 +51,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Centola (2010). *The Spread of Behavior in an Online Social Network Experiment*. [doi:10.1126/science.1185231](https://doi.org/10.1126/science.1185231) | Science 329(5996) 1194-1197 | Full text | social08 |  |
 | Cohn, Maréchal, Tannenbaum & Zünd (2019). *Civic honesty around the globe*. [doi:10.1126/science.aau8712](https://doi.org/10.1126/science.aau8712) | Science 365(6448) 70-73 | Full text | civic-wallet-rank, civic-wallet-experts | ["Cross-country rankings rest on owner email responses; Yang et al. (2023, PNAS 120(29), e2213824120, doi:10.1073/pnas.2213824120) report email response rates were inversely related to collectivism and that a China replication found higher wallet recovery than email responses implied. Items here use |
 | Costello, Pennycook & Rand (2024). *Durably reducing conspiracy beliefs through dialogues with AI*. [doi:10.1126/science.adq1814](https://doi.org/10.1126/science.adq1814) | Science 385(6714) eadq1814 | Abstract | axb15 |  |
+| Cribb & Emmerson (2020). *What happens to workplace pension saving when employers are obliged to enrol employees automatically?*. [doi:10.1007/s10797-019-09565-6](https://doi.org/10.1007/s10797-019-09565-6) | International Tax and Public Finance 27(3) 664-693 | Full text | biz01 |  |
 | Cui et al. (2026). *The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers*. [doi:10.1287/mnsc.2025.00535](https://doi.org/10.1287/mnsc.2025.00535) | Management Science  mnsc.2025.00535 (published online 27 February 2026) | Abstract | axe02, axe06 | Authors note each experiment is noisy and results vary across experiments (SE 10.3% on the pooled estimate). |
 | Dell’Acqua et al. (2026). *Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality*. [doi:10.1287/orsc.2025.21838](https://doi.org/10.1287/orsc.2025.21838) | Organization Science 37(2) 403-423 | Full text | axb14, rollout3 |  |
 | Dietvorst & Bharti (2020). *People Reject Algorithms in Uncertain Decision Domains Because They Have Diminishing Sensitivity to Forecasting Error*. [doi:10.1177/0956797620948841](https://doi.org/10.1177/0956797620948841) | Psychological Science 31(10) 1302-1314 | Abstract | axe07 |  |
@@ -66,7 +67,6 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Dimant, van Kleef & Shalvi (2020). *Requiem for a Nudge: Framing effects in nudging honesty*. [doi:10.1016/j.jebo.2020.02.015](https://doi.org/10.1016/j.jebo.2020.02.015) | Journal of Economic Behavior & Organization 172 247-266 | Abstract | dimant-requiem-forecast |  |
 | Doshi & Hauser (2024). *Generative AI enhances individual creativity but reduces the collective diversity of novel content*. [doi:10.1126/sciadv.adn5290](https://doi.org/10.1126/sciadv.adn5290) | Science Advances 10(28) eadn5290 | Abstract | ai07 |  |
 | Fischbacher & Föllmi-Heusi (2013). *Lies in Disguise: An Experimental Study on Cheating*. [doi:10.1111/jeea.12014](https://doi.org/10.1111/jeea.12014) | Journal of the European Economic Association 11(3) 525-547 | Abstract | lies-in-disguise |  |
-| Fügener, Grahl, Gupta & Ketter (2022). *Cognitive Challenges in Human–Artificial Intelligence Collaboration: Investigating the Path Toward Productive Delegation*. [doi:10.1287/isre.2021.1079](https://doi.org/10.1287/isre.2021.1079) | Information Systems Research 33(2) 678-696 | Abstract | axe03 |  |
 | Garvey, Kim & Duhachek (2023). *Bad News? Send an AI. Good News? Send a Human*. [doi:10.1177/00222429211066972](https://doi.org/10.1177/00222429211066972) | Journal of Marketing 87(1) 10-25 | Abstract | axf04 | ["Full text not read (paywalled; repository copy unreachable). Item is qualitative and uses no study numbers. Online first 2022-02-18; issue 2023.", "No retraction, correction or failed replication found in a web search."] |
 | Gneezy & Rustichini (2000). *A Fine is a Price*. [doi:10.1086/468061](https://doi.org/10.1086/468061) | The Journal of Legal Studies 29(1) 1-17 | Full text | bz08 |  |
 | Goh et al. (2024). *Large Language Model Influence on Diagnostic Reasoning*. [doi:10.1001/jamanetworkopen.2024.40969](https://doi.org/10.1001/jamanetworkopen.2024.40969) | JAMA Network Open 7(10) e2440969 | Full text | axf06 | ["The GPT-4-alone comparison is a secondary exploratory analysis. No retraction found."] |
@@ -98,7 +98,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Longoni & Cian (2022). *Artificial Intelligence in Utilitarian vs. Hedonic Contexts: The "Word-of-Machine" Effect*. [doi:10.1177/0022242920957347](https://doi.org/10.1177/0022242920957347) | Journal of Marketing 86(1) 91-108 | Abstract | axe01 |  |
 | Longoni, Bonezzi & Morewedge (2019). *Resistance to Medical Artificial Intelligence*. [doi:10.1093/jcr/ucz013](https://doi.org/10.1093/jcr/ucz013) | Journal of Consumer Research 46(4) 629-650 | Abstract | ai12 |  |
 | Luo, Tong, Fang & Qu (2019). *Frontiers: Machines vs. Humans: The Impact of Artificial Intelligence Chatbot Disclosure on Customer Purchases*. [doi:10.1287/mksc.2019.1192](https://doi.org/10.1287/mksc.2019.1192) | Marketing Science 38(6) 937-947 | Abstract | axe02, axe14 |  |
-| Madrian & Shea (2001). *The Power of Suggestion: Inertia in 401(k) Participation and Savings Behavior*. [doi:10.1162/003355301753265543](https://doi.org/10.1162/003355301753265543) | Quarterly Journal of Economics 116(4) 1149-1187 | Full text | biz01, biz02 |  |
+| Madrian & Shea (2001). *The Power of Suggestion: Inertia in 401(k) Participation and Savings Behavior*. [doi:10.1162/003355301753265543](https://doi.org/10.1162/003355301753265543) | Quarterly Journal of Economics 116(4) 1149-1187 | Abstract | biz01, biz02 |  |
 | Matz et al. (2024). *The potential of generative AI for personalized persuasion at scale*. [doi:10.1038/s41598-024-53755-0](https://doi.org/10.1038/s41598-024-53755-0) | Scientific Reports 14 4692 | Full text | axe13 |  |
 | Mellers et al. (2014). *Psychological Strategies for Winning a Geopolitical Forecasting Tournament*. [doi:10.1177/0956797614524255](https://doi.org/10.1177/0956797614524255) | Psychological Science 25(5) 1106-1115 | Full text | forecast-teams-rank, forecast-training | ["The paper reports test statistics, not percentage accuracy gains; no percentages are derived here."] |
 | Milkman et al. (2022). *A 680,000-person megastudy of nudges to encourage vaccination in pharmacies*. [doi:10.1073/pnas.2115126119](https://doi.org/10.1073/pnas.2115126119) | Proceedings of the National Academy of Sciences 119(6) e2115126119 | Full text | axf02 | ["No retraction or expression of concern found. Pairwise differences between individual messages are not each tested; the paper rejects equality of all 22 effects (chi2 = 92.486, P < 0.001)."] |
@@ -121,7 +121,6 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Spitale, Biller-Andorno & Germani (2023). *AI model GPT-3 (dis)informs us better than humans*. [doi:10.1126/sciadv.adh1850](https://doi.org/10.1126/sciadv.adh1850) | Science Advances 9(26) eadh1850 | Full text | axe11 |  |
 | Thaler & Benartzi (2004). *Save More Tomorrow: Using Behavioral Economics to Increase Employee Saving*. [doi:10.1086/380085](https://doi.org/10.1086/380085) | Journal of Political Economy 112(S1) S164-S187 | Abstract | bz03 | ["First implementation is a non-randomized company rollout."] |
 | Toma et al. (2026). *Promoting Safe Opioid Disposal: Experimental Evidence on Behavioral Messaging With Financial Incentives*. [doi:10.1002/hec.70085](https://doi.org/10.1002/hec.70085) | Health Economics 35(7) 1023-1032 | Abstract | dimant-opioid-forecast |  |
-| Tong, Jia, Luo & Fang (2021). *The Janus face of artificial intelligence feedback: Deployment versus disclosure effects on employee performance*. [doi:10.1002/smj.3322](https://doi.org/10.1002/smj.3322) | Strategic Management Journal 42(9) 1600-1631 | Abstract | axe03 |  |
 | Tversky & Kahneman (1974). *Judgment under Uncertainty: Heuristics and Biases*. [doi:10.1126/science.185.4157.1124](https://doi.org/10.1126/science.185.4157.1124) | Science 185(4157) 1124-1131 | Full text | biz11 |  |
 | Tversky & Kahneman (1981). *The framing of decisions and the psychology of choice*. [doi:10.1126/science.7455683](https://doi.org/10.1126/science.7455683) | Science 211(4481) 453-458 | Full text | judg05 |  |
 | Vaccaro, Almaatouq & Malone (2024). *When combinations of humans and AI are useful: A systematic review and meta-analysis*. [doi:10.1038/s41562-024-02024-1](https://doi.org/10.1038/s41562-024-02024-1) | Nature Human Behaviour 8(12) 2293-2303 | Full text | axb01 |  |
@@ -191,6 +190,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 - social18 (Bad behavior travels): Superseded by dimant-contagion-multi.
 - social19 (The near-peer effect): Superseded by dimant-contagion-multi.
 - social21 (Beyond a single norm): Concept-label question.
+- axe03 (Who decides, who coaches?): Review 4: routings rested on author suggestions, and the abstracts report no effect sizes.
 
 ## Not verified
 

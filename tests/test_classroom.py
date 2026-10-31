@@ -89,3 +89,14 @@ def test_class_lock_with_two_classes(tmp_path):
     locked, allowed = s.class_lock(); assert locked and ids[0] not in allowed
     s.control(b['code'], b['secret'], 'open', ids[0]); s.control(b['code'], b['secret'], 'reveal'); s._lock = None
     assert ids[0] in s.class_lock()[1]
+
+def test_lock_lapses_when_class_idle_and_reopen_unreleases(tmp_path, monkeypatch):
+    """Review 4, M4 and minor 10: an abandoned class stops blocking practice; reopening a decision locks it again."""
+    s = cl.Store(tmp_path / 'idle.sqlite3'); cid = list(cl.CHALLENGES)[0]
+    a = s.create('A'); s.join(a['code'])
+    s.control(a['code'], a['secret'], 'open', cid); s.control(a['code'], a['secret'], 'reveal'); s._lock = None
+    assert cid in s.class_lock()[1]
+    s.control(a['code'], a['secret'], 'open', cid); s._lock = None
+    assert cid not in s.class_lock()[1]
+    db = s.db(); db.execute('UPDATE sessions SET touched=?', (cl.time.time() - 21 * 60,)); db.commit(); s._lock = None
+    assert s.class_lock()[0] is False

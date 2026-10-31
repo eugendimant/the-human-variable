@@ -58,6 +58,16 @@ def _rng(seed: int):
         t = (t ^ ((t + _imul(t ^ (t >> 7), t | 61)) & _M)) & _M
         return ((t ^ (t >> 14)) & _M) / 4294967296
     return nxt
+def _shuffle(n: int, seed: int) -> list:
+    a = list(range(n)); r = _rng(seed)
+    for i in range(n - 1, 0, -1):
+        j = int(r() * (i + 1)); a[i], a[j] = a[j], a[i]
+    return a
+
+def rank_order(cid: str, n: int, code: str) -> list:
+    """Starting order of a rank item on the phones (src/app.js resetCard with the room seed)."""
+    return _shuffle(n, _fnv(cid + str(_fnv(code))))
+
 def option_order(cid: str, n: int, code: str) -> list:
     """Indices 0..n-1 in the room's shared display order."""
     a = list(range(n)); r = _rng(_fnv(cid + '-' + str(_fnv(code))))

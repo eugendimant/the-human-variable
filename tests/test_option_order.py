@@ -16,3 +16,13 @@ for (const [id, n, code] of {json.dumps(cases)}) {{ const c = {{ id, options: Ar
 console.log(JSON.stringify(out));"""
     got = json.loads(subprocess.run(['node', '-e', js], capture_output=True, text=True, check=True).stdout)
     assert got == [option_order(cid, n, code) for cid, n, code in cases]
+
+@pytest.mark.skipif(not shutil.which('node'), reason='node not installed')
+def test_rank_start_order_matches_phones():
+    from thv_streamlit.common import rank_order
+    src = (ROOT / 'src/app.js').read_text()
+    fns = '\n'.join(re.search(rf'^function {n}\(.*$', src, re.M).group(0) for n in ('hash', 'rng', 'shuffle'))
+    cases = [(cid, n, code) for cid in ('axb02', 'axf05', 'bz15') for n in (3, 4, 5) for code in ('K7QPM', 'ZZ9Q2')]
+    js = fns + f"\nconsole.log(JSON.stringify({json.dumps(cases)}.map(([id, n, code]) => shuffle([...Array(n).keys()], rng(hash(id + (hash(code) >>> 0)))))))"
+    got = json.loads(subprocess.run(['node', '-e', js], capture_output=True, text=True, check=True).stdout)
+    assert got == [rank_order(*x) for x in cases]

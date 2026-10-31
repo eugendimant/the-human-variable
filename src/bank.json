@@ -219,11 +219,10 @@
    "volume": "116(4)",
    "pages": "1149-1187",
    "verification": {
-    "status": "verified_full_text",
+    "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "QJE abstract; numbers from the paper's NBER working-paper version (WP 7682, p. 12)",
-    "text_url": "https://www.nber.org/papers/w7682"
+    "text_read": "QJE abstract; participation figures as reported in Cribb & Emmerson (2020, International Tax and Public Finance)"
    }
   },
   "hotel08": {
@@ -1994,48 +1993,6 @@
     "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12088386/fullTextXML"
    }
   },
-  "fugener22": {
-   "id": "fugener22",
-   "authors": "Fügener, Grahl, Gupta & Ketter",
-   "authors_full": "Andreas Fügener, Jörn Grahl, Alok Gupta, Wolfgang Ketter",
-   "year": 2022,
-   "title": "Cognitive Challenges in Human–Artificial Intelligence Collaboration: Investigating the Path Toward Productive Delegation",
-   "venue": "Information Systems Research",
-   "volume": "33(2)",
-   "pages": "678-696",
-   "doi": "10.1287/isre.2021.1079",
-   "url": "https://doi.org/10.1287/isre.2021.1079",
-   "kind": "peer-reviewed",
-   "takeaway": "In classification tasks, human-AI teams improved only when the AI delegated work to humans; humans delegated poorly because they lack metaknowledge.",
-   "verification": {
-    "status": "verified_abstract",
-    "checked": "2026-10-31",
-    "metadata": "matched Crossref record",
-    "text_read": "Abstract on Erasmus University repository page",
-    "text_url": "https://pure.eur.nl/en/publications/7ce28963-ab8a-44f8-a647-b98064150835"
-   }
-  },
-  "tong21": {
-   "id": "tong21",
-   "authors": "Tong, Jia, Luo & Fang",
-   "authors_full": "Siliang Tong, Nan Jia, Xueming Luo, Zheng Fang",
-   "year": 2021,
-   "title": "The Janus face of artificial intelligence feedback: Deployment versus disclosure effects on employee performance",
-   "venue": "Strategic Management Journal",
-   "volume": "42(9)",
-   "pages": "1600-1631",
-   "doi": "10.1002/smj.3322",
-   "url": "https://doi.org/10.1002/smj.3322",
-   "kind": "peer-reviewed",
-   "takeaway": "AI feedback improves employee performance when deployed, but disclosing it triggers negative perceptions, a penalty that shrinks with tenure.",
-   "verification": {
-    "status": "verified_abstract",
-    "checked": "2026-10-31",
-    "metadata": "matched Crossref record",
-    "text_read": "Abstract reconstructed from OpenAlex record",
-    "text_url": "https://api.openalex.org/works/doi:10.1002/smj.3322"
-   }
-  },
   "jia24": {
    "id": "jia24",
    "authors": "Jia, Luo, Fang & Liao",
@@ -2149,7 +2106,7 @@
    "doi": "10.1257/0002828054201387",
    "url": "https://doi.org/10.1257/0002828054201387",
    "kind": "peer-reviewed",
-   "takeaway": "With procedures designed to remove misconceptions, the gap between willingness to accept and willingness to pay for mugs disappeared; later studies found it returns under other procedures.",
+   "takeaway": "With procedures designed to remove misconceptions, the gap between willingness to accept and willingness to pay for mugs disappeared; Isoni, Loomes and Sugden (2011) confirmed this for mugs but found a persistent gap for lotteries.",
    "verification": {
     "status": "verified_abstract",
     "checked": "2026-10-31",
@@ -2316,6 +2273,27 @@
    "flags": [
     "The GPT-4-alone comparison is a secondary exploratory analysis. No retraction found."
    ]
+  },
+  "cribb20": {
+   "id": "cribb20",
+   "authors": "Cribb & Emmerson",
+   "authors_full": "Jonathan Cribb, Carl Emmerson",
+   "year": 2020,
+   "title": "What happens to workplace pension saving when employers are obliged to enrol employees automatically?",
+   "venue": "International Tax and Public Finance",
+   "volume": "27(3)",
+   "pages": "664-693",
+   "doi": "10.1007/s10797-019-09565-6",
+   "url": "https://doi.org/10.1007/s10797-019-09565-6",
+   "kind": "peer-reviewed",
+   "takeaway": "Reports Madrian and Shea’s cohort comparison: 86% enrolled after 3 to 15 months under automatic enrollment against 37% without it; finds large rises in UK workplace pension saving after mandated automatic enrollment.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "full text, introduction (Springer)",
+    "text_url": "https://link.springer.com/article/10.1007/s10797-019-09565-6"
+   }
   }
  },
  "challenges": [
@@ -2346,8 +2324,8 @@
    "unit": "relative time",
    "follow": [
     {
-     "q": "Who was in the study?",
-     "a": "453 college-educated professionals recruited online, from occupations such as marketing, grant writing, consulting, data analysis, HR, and management. Each did writing tasks typical of their job."
+     "q": "Who took part?",
+     "a": "453 college-educated professionals, each given occupation-specific, incentivized writing tasks typical of their job."
     },
     {
      "q": "Who gained the most?",
@@ -2384,7 +2362,7 @@
    "answerTitle": "Quality improved 18%",
    "explain": "The study found faster completion and higher externally evaluated quality.",
    "implication": "Set up double-outcome tests, with blind quality evaluation.",
-   "boundary": "Quality was graded blind by professionals from each occupation, on writing tasks of 20 to 30 minutes.",
+   "boundary": "Occupation-specific, incentivized writing tasks for 453 college-educated professionals.",
    "sources": [
     "noy23"
    ],
@@ -2400,16 +2378,16 @@
    "unit": "quality index",
    "follow": [
     {
-     "q": "Who judged the quality?",
-     "a": "Experienced professionals working in the same occupations graded each piece without knowing whether ChatGPT had been used. Each output had three graders."
+     "q": "Did quality really improve?",
+     "a": "Yes. Average output quality rose 18%, alongside a 40% cut in time."
     },
     {
-     "q": "Were participants trying hard?",
-     "a": "Yes. The tasks were incentivized: pay depended on the quality grade each piece received."
+     "q": "Which tasks?",
+     "a": "Midlevel professional writing tasks matched to each participant’s occupation."
     },
     {
-     "q": "How long were the tasks?",
-     "a": "Each assignment was designed to take 20 to 30 minutes and to resemble real work in that occupation."
+     "q": "Who took part?",
+     "a": "453 college-educated professionals in a preregistered online experiment, randomly given access to ChatGPT or not."
     }
    ],
    "format": "estimate",
@@ -2764,7 +2742,8 @@
    "implication": "Make enrollment in beneficial programs the default, with easy opt-out, and track take-up by employee group.",
    "boundary": "New hires at one Fortune 500 health care and insurance firm, compared with the cohort hired just before the switch.",
    "sources": [
-    "defaults01"
+    "defaults01",
+    "cribb20"
    ],
    "visual": "flow",
    "values": [],
@@ -2809,7 +2788,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Madrian & Shea (2001); cohort comparison at similar tenure (NBER version, p. 12)."
+    "note": "Madrian & Shea (2001), cohorts at 3 to 15 months of tenure, as reported by Cribb & Emmerson (2020)."
    },
    "study": {
     "design": "Natural experiment in one firm",
@@ -2846,16 +2825,16 @@
    "unit": "",
    "follow": [
     {
-     "q": "How many kept the default rate?",
-     "a": "About three-quarters of automatically enrolled participants contributed at the 3% default. Among earlier hires, only about 1% of participants chose 3%."
+     "q": "Did many keep the default rate?",
+     "a": "Yes. A substantial share of employees hired under automatic enrollment kept the default contribution rate, which few earlier hires had chosen."
     },
     {
      "q": "Did they keep the default fund too?",
-     "a": "Yes. 75% held their whole balance in the money market fund, a choice made by under 1% of employees hired before the switch."
+     "a": "Yes. Many also kept the default fund allocation, an outcome few employees hired before the switch picked."
     },
     {
-     "q": "Was there an employer match?",
-     "a": "Yes: 50% on the first 6% of pay, but only after one year of service, so the new hires studied were not yet eligible."
+     "q": "What does this mean for plan design?",
+     "a": "The default sets the saving rate as well as participation, so choose a default contribution rate you would recommend."
     }
    ],
    "format": "choice",
@@ -2977,9 +2956,10 @@
    "scene": "A household already uses less electricity than its neighbors. It receives feedback showing the higher neighborhood average.",
    "question": "Which two results did the study find?",
    "options": [
+    "Above-average households raised their electricity use",
     "Some already-efficient households raised usage",
-    "Injunctive feedback counteracted the boomerang effect",
-    "Below-average households cut their use further still"
+    "Feedback had no effect on heavy users",
+    "A smiley face kept efficient homes steady"
    ],
    "answerTitle": "A norm message can backfire",
    "explain": "Information on typical neighborhood consumption increased consumption among some already-efficient households.",
@@ -3012,8 +2992,8 @@
    "format": "multi",
    "weight": 1,
    "multiAnswers": [
-    0,
-    1
+    1,
+    3
    ],
    "theme": "choice",
    "study": {
@@ -3271,8 +3251,8 @@
      "a": "About 1,200 US participants recruited on Prolific, representative by age, gender, and ethnicity."
     },
     {
-     "q": "How did polarized norms change choices?",
-     "a": "Most people picked extreme contributions, which carry more strategic risk than middle options."
+     "q": "Why does this matter for a manager?",
+     "a": "Two teams with the same average norm can behave very differently once the spread of views differs, so report the spread as well as the mean."
     }
    ],
    "format": "multi",
@@ -3566,16 +3546,16 @@
    "unit": "callback rate index",
    "follow": [
     {
-     "q": "What is the gap worth?",
-     "a": "A White name was worth about as much as eight additional years of experience in callbacks."
+     "q": "Was the gap the same across jobs?",
+     "a": "Yes. The racial gap was uniform across occupation, industry and employer size."
     },
     {
      "q": "Did a stronger résumé close the gap?",
      "a": "No. Better credentials raised callbacks much less for African-American names than for White names."
     },
     {
-     "q": "Did 'Equal Opportunity Employers' discriminate less?",
-     "a": "No. Neither employers using that label nor federal contractors showed a smaller gap."
+     "q": "Did \"Equal Opportunity Employer\" ads differ?",
+     "a": "No. Employers who listed that label in their ads discriminated as much as other employers."
     }
    ],
    "format": "estimate",
@@ -3590,7 +3570,7 @@
    "theme": "fairness",
    "study": {
     "design": "Field experiment (résumé audit)",
-    "n": "Nearly 5,000 résumés sent to over 1,300 job ads"
+    "n": "Fictitious résumés sent to help-wanted ads in Boston and Chicago"
    }
   },
   {
@@ -3600,15 +3580,9 @@
    "tag": "39 / HIRING",
    "title": "Screens at auditions",
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
-   "question": "What happened to women’s chances once screens were used?",
-   "options": [
-    "Women less likely to advance past auditions",
-    "Women more likely to advance and be hired",
-    "No measurable change for women"
-   ],
-   "answer": 1,
-   "answerTitle": "Screens helped reduce bias",
-   "explain": "The study found evidence of increased female advancement and hiring, while noting imprecise and some opposing estimates.",
+   "question": "How strong was the evidence that screens helped women advance?",
+   "answerTitle": "Favorable, but several estimates were imprecise",
+   "explain": "Goldin and Rouse found that the screen raised women’s chances of advancing and being hired, with several estimates imprecise and one running the other way.",
    "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
    "boundary": "Orchestra audition records; the authors report large standard errors for several estimates, and one effect ran in the opposite direction.",
    "sources": [
@@ -3627,8 +3601,8 @@
      "a": "Not very. The authors note large standard errors for several estimates, so the direction favors women while many individual effects fall short of statistical significance."
     },
     {
-     "q": "How much of the rise in women does it explain?",
-     "a": "Blind auditions explain 30% to 55% of the increase in women among new hires, by the working-paper estimates."
+     "q": "What did the authors conclude?",
+     "a": "That blind auditions fostered impartiality in hiring and contributed to the rising share of women in orchestras."
     },
     {
      "q": "How was this measured?",
@@ -3642,7 +3616,14 @@
     "design": "Panel of audition records (individual fixed effects)",
     "n": "Musicians auditioning at major US orchestras"
    },
-   "permuted": true
+   "permuted": true,
+   "options": [
+    "Strong: large, precise gains in each round",
+    "No effect: screens made no difference",
+    "Suggestive: favorable, several estimates imprecise",
+    "Harmful: screens lowered women’s chances"
+   ],
+   "answer": 2
   },
   {
    "id": "social14",
@@ -3783,12 +3764,12 @@
      "a": "Five preregistered studies with 15 behavioral experiments and over 8,600 participants."
     },
     {
-     "q": "What drove the hostile behavior?",
-     "a": "Grim expectations about how cooperative the other side would be, rather than a flat refusal to cooperate across factions."
+     "q": "Was this about politics alone?",
+     "a": "The studies compared political identity with other political and nonpolitical identities."
     },
     {
-     "q": "Which games measured behavior?",
-     "a": "In the working-paper version, a dictator game where people could give or take money, and a public goods game that also measured beliefs about others."
+     "q": "Which outcomes counted as behavior?",
+     "a": "How people helped, harmed and cooperated with members of each group in incentivized games."
     }
    ],
    "format": "choice",
@@ -3811,6 +3792,7 @@
    "options": [
     "The nudges closed the partisan gap on most measures",
     "The interventions improved prosociality",
+    "The norm nudge worked; the default did not",
     "Measured polarization gaps persisted"
    ],
    "answerTitle": "General improvement, persistent gap",
@@ -3833,19 +3815,19 @@
      "a": "A default nudge and a norm nudge that gave descriptive information about others' behavior."
     },
     {
-     "q": "Is this only about politics?",
-     "a": "In the working-paper version, a sports-identity comparison also showed an ingroup-outgroup gap in giving, though not in cooperation."
+     "q": "How large was the evidence base?",
+     "a": "Five preregistered studies with 15 experiments and over 8,600 participants."
     },
     {
-     "q": "Why might nudges miss the gap?",
-     "a": "The gap traced to grim expectations about the other side's cooperativeness, which raising overall giving does not address."
+     "q": "What does this mean for a manager?",
+     "a": "Raising overall goodwill can leave the gap between groups in place, so track the gap itself, not only the average."
     }
    ],
    "format": "multi",
    "weight": 1,
    "multiAnswers": [
     1,
-    2
+    3
    ],
    "theme": "norms",
    "study": {
@@ -4750,8 +4732,8 @@
      "a": "Slightly. They saw small gains in speed, offset by small declines in quality."
     },
     {
-     "q": "Did customers react?",
-     "a": "Customers were more polite and less likely to ask to speak to a manager."
+     "q": "Why might experts gain little?",
+     "a": "The authors argue the assistant spreads the know-how of the most able agents, which experienced agents already have."
     }
    ],
    "theme": "ai-work"
@@ -4794,7 +4776,7 @@
     ]
    },
    "answerTitle": "Use AI inside the frontier, not outside",
-   "explain": "Inside the frontier, consultants with GPT-4 completed 12.2% more tasks and worked 25.1% faster. On the outside-frontier case, correctness fell from 84.5% without AI to 70.6% with GPT-4 and 60.0% with GPT-4 plus a prompt overview.",
+   "explain": "Inside the frontier, consultants with GPT-4 completed 12.2% more tasks and finished them faster. On the outside-frontier case, correctness fell from 84.5% without AI to 70.6% with GPT-4 and 60.0% with GPT-4 plus a prompt overview.",
    "implication": "Test each task type for convincing AI errors before rollout; keep humans in charge where those errors appear.",
    "boundary": "One designed outside-frontier task for a fictional company; the frontier moves as models change.",
    "sources": [
@@ -5152,31 +5134,15 @@
   {
    "id": "bz06",
    "track": "Business",
-   "format": "rank",
+   "format": "choice",
    "concept": "Endowment effect",
-   "title": "The mug market",
-   "scene": "Students were split into three groups. Sellers were given a coffee mug, buyers could buy one, and choosers picked between the mug and cash.",
-   "question": "Rank the groups by the median value they placed on the same mug.",
-   "options": [
-    "Buyers",
-    "Sellers (given the mug)",
-    "Choosers (mug or cash)"
-   ],
-   "rankAnswer": [
-    1,
-    2,
-    0
-   ],
-   "rankLabel": "Highest median valuation of the mug",
-   "rankValues": [
-    "$2.87",
-    "$7.12",
-    "$3.12"
-   ],
-   "answerTitle": "Owners valued the mug over twice as much",
-   "explain": "Median valuations were $7.12 for sellers, $3.12 for choosers and $2.87 for buyers. Choosers face the same trade-off as sellers without owning the mug, so ownership drives the gap.",
-   "implication": "When reallocating budgets, territories or assets, expect current holders to value them far above what others would pay.",
-   "boundary": "Students trading mugs and pens in classroom markets; tokens with assigned cash values traded as predicted.",
+   "title": "The mug market, revisited",
+   "scene": "In classic classroom markets, students given a mug asked a median $7.12 to sell it, while buyers offered $2.87. Plott and Zeiler reran the design with procedures that remove misunderstandings: training, practice rounds and anonymous offers.",
+   "question": "What happened to the gap between sellers and buyers?",
+   "answerTitle": "Under careful procedures, the mug gap disappeared",
+   "explain": "Sellers’ median of $7.12 against buyers’ $2.87 in the original markets gave way to no gap under Plott and Zeiler’s procedures. Isoni, Loomes and Sugden later confirmed this for mugs but found a persistent gap for lotteries.",
+   "implication": "Before pricing on an \"owners overvalue\" story, test it with clear instructions and practice; the effect depends on how the choice is elicited.",
+   "boundary": "Student markets for mugs under two elicitation procedures, with the follow-up debate extending to lotteries.",
    "sources": [
     "kahneman90",
     "plott05"
@@ -5200,13 +5166,14 @@
     "n": "77 Simon Fraser students (Experiment 6)"
    },
    "theme": "incentives",
-   "rankTies": [
-    [
-     0,
-     2
-    ]
+   "permuted": true,
+   "options": [
+    "It stayed about as large",
+    "It shrank by about half",
+    "It disappeared",
+    "It reversed: buyers valued more"
    ],
-   "permuted": true
+   "answer": 2
   },
   {
    "id": "bz07",
@@ -6801,7 +6768,7 @@
    ],
    "answerTitle": "Inequity raised reporting; norm information helped most there",
    "explain": "Norm information raised reporting from 73.3% to 82.8% when the bribe created inequity (P < 0.005), and from 57.9% to 67.2% when it restored equity (marginal, P = 0.074). Inequity-creating bribes drew more reporting overall (77.8% vs 62.3%, P < 0.001).",
-   "implication": "When you build a speak-up channel, tell staff how many colleagues report and that most think reporting is right; it raises reporting most for unfair deals.",
+   "implication": "When you build a speak-up channel, tell staff that most colleagues object to bribes and back reporting; it raises reporting most for deals that create unfair advantages.",
    "boundary": "Bribery vignette with 225 US adults, alongside a main behavioral study with 1,240 punishers from a representative US sample.",
    "sources": [
     "enforcers23"
@@ -7021,12 +6988,12 @@
    ],
    "follow": [
     {
-     "q": "Did nudges close the gap?",
-     "a": "No. Defaults and norm-nudges improved prosociality but were ineffective in closing the polarization gap."
+     "q": "What does \"grim expectations\" mean here?",
+     "a": "Pessimistic beliefs about how cooperative the opposing faction would be, held before any interaction took place."
     },
     {
-     "q": "Is love or hate the stronger force?",
-     "a": "It depends on the domain: in-group love showed up in perceptions, while out-group hate showed up in how people helped, harmed and cooperated."
+     "q": "What is the lever for a manager?",
+     "a": "Correcting what each side expects of the other targets the source of the gap more directly than appeals to goodwill."
     },
     {
      "q": "How large is the evidence base?",
@@ -7056,7 +7023,7 @@
    ],
    "answer": 0,
    "answerTitle": "Most picked extremes, accepting strategic risk",
-   "explain": "In polarized environments, most people preferred extreme actions that exposed them to considerable strategic risk over intermediate actions that minimized it. Loose norms produced more varied behavior.",
+   "explain": "In polarized environments, most people preferred extreme actions that exposed them to considerable strategic risk over intermediate actions that minimized it.",
    "implication": "Report the spread of team behavior, not only the average; a split norm pulls people toward one camp or the other.",
    "boundary": "Two-player contribution game with 1,203 US adults, with the distribution of others’ behavior set by design.",
    "sources": [
@@ -7251,20 +7218,15 @@
    "question": "For each workflow, how should AI and staff split the work?",
    "delegate": {
     "choices": [
-     "AI drafts, human checks",
-     "Human alone",
-     "AI does first stage, human finishes"
+     "Person with an AI assistant",
+     "Person alone",
+     "AI first stage, person finishes"
     ],
     "tasks": [
      {
-      "text": "Replies to patients' medical questions",
-      "answer": 0,
-      "why": "Chatbot answers were rated better and more empathetic, but accuracy was not checked separately; the authors propose drafts reviewed by clinicians."
-     },
-     {
       "text": "Outbound sales calls where the bot must announce itself first",
       "answer": 1,
-      "why": "Disclosing the chatbot before the conversation cut purchase rates by more than 79.7%."
+      "why": "Undisclosed bots sold about as well as proficient staff, but disclosing the bot before the conversation cut purchase rates by more than 79.7%."
      },
      {
       "text": "Telemarketing: find leads, then persuade serious prospects",
@@ -7279,9 +7241,9 @@
     ]
    },
    "answerTitle": "AI drafts or opens; humans close where trust matters",
-   "explain": "Physician-forum answers from ChatGPT won 78.6% of blinded comparisons, yet the authors propose clinician review. Up-front bot disclosure cut sales calls' purchases by more than 79.7%.",
+   "explain": "Disclosing a sales bot up front cut purchases by more than 79.7%, AI on the codified first stage of telemarketing raised sales, and a coding assistant raised completed tasks by 26.08%.",
    "implication": "Map each workflow by stage; put AI on drafting and codified first steps, and keep humans where customers learn who they are talking to.",
-   "boundary": "Four separate settings with different designs; the sales result reflects reactions to disclosure, not weaker bot skill.",
+   "boundary": "Three field settings: outbound sales calls, a telemarketing firm, and software developers at three companies.",
    "sources": [
     "ayers23",
     "luo19",
@@ -7309,73 +7271,13 @@
    "theme": "ai-work"
   },
   {
-   "id": "axe03",
-   "track": "AI × Business",
-   "format": "delegate",
-   "concept": "Delegation and feedback",
-   "title": "Who decides, who coaches?",
-   "scene": "Your operations team uses AI to classify incoming cases and to score call agents. You must decide who routes the cases and who delivers coaching feedback.",
-   "question": "For each decision, who should own it?",
-   "delegate": {
-    "choices": [
-     "AI",
-     "Human",
-     "Human, with AI advice"
-    ],
-    "tasks": [
-     {
-      "text": "Decide which classification cases go to staff",
-      "answer": 0,
-      "why": "Team performance improved only when the AI delegated work to humans, not when humans delegated to the AI."
-     },
-     {
-      "text": "Deliver performance feedback to long-tenured agents",
-      "answer": 0,
-      "why": "AI feedback raises feedback quality, and the negative reaction to disclosed AI feedback was weaker for longer-tenured employees."
-     },
-     {
-      "text": "Deliver performance feedback to brand-new agents",
-      "answer": 1,
-      "why": "The authors suggest a tiered approach: AI feedback for veterans, human managers for novices."
-     }
-    ]
-   },
-   "answerTitle": "Let AI route; tier feedback by tenure",
-   "explain": "Humans delegated classification work poorly because they misjudge what they know. In a field experiment, AI feedback's quality gain and a disclosure penalty coexisted; tenure softened the penalty.",
-   "implication": "Let the model choose which cases need a person, and roll out AI coaching first to experienced staff.",
-   "boundary": "One classification setting and one firm's field experiment; abstracts report no effect sizes, so magnitudes are unknown.",
-   "sources": [
-    "fugener22",
-    "tong21"
-   ],
-   "study": {
-    "design": "Classification experiment; field experiment",
-    "n": "Two studies"
-   },
-   "follow": [
-    {
-     "q": "Why did humans delegate badly?",
-     "a": "They lacked metaknowledge, meaning they misjudged which cases they would get right. The authors say this cannot be explained by algorithm aversion."
-    },
-    {
-     "q": "Could humans plus AI beat the AI?",
-     "a": "Yes, humans and AI working together outperformed the AI alone, but only when the AI did the delegating."
-    },
-    {
-     "q": "How should firms disclose AI feedback?",
-     "a": "The authors advise communicating proactively about the AI's objectives, benefits and scope to ease employees' concerns."
-    }
-   ],
-   "theme": "ai-work"
-  },
-  {
    "id": "axe04",
    "track": "AI × Business",
    "format": "allocate",
    "concept": "AI persuasion",
    "title": "Can a model out-argue a professional?",
    "scene": "Researchers showed 8,221 US adults real articles from covert state-aligned propaganda campaigns, GPT-3 articles on the same claims, or no article, and measured agreement.",
-   "question": "Put the testing budget where it buys the most agreement.",
+   "question": "How likely is each version to have persuaded most? Spread 100 points.",
    "options": [
     "GPT-3 article, no human editing",
     "No article",
@@ -7384,9 +7286,9 @@
    "allocate": {
     "total": 100,
     "step": 10,
-    "label": "Testing budget",
+    "label": "Points placed",
     "prefix": "",
-    "suffix": "%",
+    "suffix": "",
     "values": [
      43.5,
      24.4,
@@ -7397,12 +7299,11 @@
      "24.4%",
      "47.4%"
     ],
-    "valueName": "share agreeing or strongly agreeing with the article's claim",
-    "pass": 0.8
+    "valueName": "share agreeing or strongly agreeing with the article's claim"
    },
    "answerTitle": "Unedited GPT-3 nearly matched the propagandists",
    "explain": "Agreement rose from 24.4% with no article to 47.4% after the original propaganda and 43.5% after an unedited GPT-3 article.",
-   "implication": "Assume cheap AI copy can persuade nearly as well as professionals; budget review for accuracy, not just tone.",
+   "implication": "Assume cheap AI copy can persuade nearly as well as professionals; review AI-written material for accuracy, not only tone.",
    "boundary": "One exposure to a single article on six foreign-policy-style claims in 2021, with GPT-3.",
    "sources": [
     "goldstein24"
@@ -7989,8 +7890,8 @@
      "a": "The authors conclude that ideation and filtering are likely necessary skills in the text-to-image process."
     },
     {
-     "q": "Was output volume the big win?",
-     "a": "Output rose substantially after adoption. The paper’s own figures differ (25% in the abstract, 50% at adoption in the results), so treat the size as uncertain."
+     "q": "How much did output rise?",
+     "a": "The abstract reports that artists’ productivity rose 25% after adoption, alongside more favorable peer evaluations of their work."
     }
    ],
    "theme": "ai-work",
@@ -8114,7 +8015,7 @@
    "concept": "Unethical delegation",
    "title": "How should staff instruct the machine?",
    "scene": "Online participants privately rolled a die ten times and earned more for reporting higher numbers. Some reported themselves; others delegated the reports to a machine through one of three interfaces.",
-   "question": "Split a rollout budget by how honest each setup kept people.",
+   "question": "Which setup kept people most honest? Spread 100 points by how likely each is.",
    "options": [
     "Machine set on a dial from accuracy to profit",
     "Machine follows if-then rules you write",
@@ -8124,9 +8025,9 @@
    "allocate": {
     "total": 100,
     "step": 10,
-    "label": "Rollout budget",
+    "label": "Points placed",
     "prefix": "",
-    "suffix": "%",
+    "suffix": "",
     "values": [
      15,
      75,
@@ -8139,8 +8040,7 @@
      "~95% honest",
      "~50% honest"
     ],
-    "valueName": "share of participants who reported honestly (studies 1 and 2)",
-    "pass": 0.8
+    "valueName": "share of participants who reported honestly (studies 1 and 2)"
    },
    "answerTitle": "Vaguer machine instructions meant more cheating",
    "explain": "About 95% reported honestly without delegation. Honesty fell to about 75% with explicit rules, 50% with training data and 15% with a high-level profit goal.",
@@ -8224,14 +8124,14 @@
     ],
     "tasks": [
      {
-      "text": "A renewal price higher than the customer expected",
-      "answer": 0,
-      "why": "For offers worse than expected, consumers showed higher purchase likelihood and satisfaction when dealing with an AI agent."
-     },
-     {
       "text": "A discount larger than the customer expected",
       "answer": 1,
       "why": "For offers better than expected, consumers responded more positively to a human agent."
+     },
+     {
+      "text": "A renewal price higher than the customer expected",
+      "answer": 0,
+      "why": "For offers worse than expected, consumers showed higher purchase likelihood and satisfaction when dealing with an AI agent."
      },
      {
       "text": "A delivery fee above the one first quoted",
@@ -8247,7 +8147,7 @@
    },
    "answerTitle": "AI for worse offers, humans for better ones",
    "explain": "Worse-than-expected offers drew higher purchase likelihood and satisfaction from an AI agent; better-than-expected offers drew more positive responses from a human. Weaker perceived intentions of AI explain both.",
-   "implication": "Have people deliver generous offers; if bots deliver price increases, review that choice for fairness and disclosure.",
+   "implication": "If bots deliver price increases, review that choice for fairness and disclosure; deliver generous offers through people, where they earn more credit.",
    "boundary": "Consumer experiments on purchase likelihood and satisfaction after single offers presented by AI or human agents.",
    "sources": [
     "garvey23"
@@ -8343,39 +8243,15 @@
   {
    "id": "axf06",
    "track": "AI × Business",
-   "format": "allocate",
+   "format": "forecast",
    "concept": "AI assistance gap",
    "title": "Does the chatbot help the doctor?",
    "scene": "Fifty physicians had 60 minutes for up to six hard clinical vignettes, randomized to GPT-4 plus usual resources or usual resources only. Researchers also had GPT-4 answer the cases alone.",
-   "question": "Split a pilot budget by diagnostic reasoning score.",
-   "options": [
-    "GPT-4 alone",
-    "Physicians with GPT-4 and usual resources",
-    "Physicians with usual resources"
-   ],
-   "allocate": {
-    "total": 100,
-    "step": 10,
-    "label": "Pilot budget",
-    "prefix": "",
-    "suffix": "%",
-    "values": [
-     16,
-     0,
-     0
-    ],
-    "valueLabels": [
-     "+16 pp",
-     "+2 pp (n.s.)",
-     "Baseline (74%)"
-    ],
-    "valueName": "difference in diagnostic reasoning score vs physicians with usual resources (non-significant differences count as zero)",
-    "pass": 0.8
-   },
-   "answerTitle": "GPT-4 alone outscored the physicians using it",
-   "explain": "Physicians scored a median 76% with GPT-4 and 74% without, a non-significant gap. GPT-4 alone scored 16 points higher than physicians with usual resources.",
+   "question": "How likely is it that the study found this?",
+   "answerTitle": "76% versus 74%: no clear gain for physicians",
+   "explain": "Physicians scored a median 76% with GPT-4 and 74% with usual resources only, a difference that was not statistically significant (P = .60).",
    "implication": "Before judging an AI tool by staff results, train staff to use it or build structured prompts into the workflow.",
-   "boundary": "Six challenging vignettes graded on a structured reasoning rubric; the GPT-4-alone comparison was a secondary, exploratory analysis.",
+   "boundary": "Fifty US physicians working six challenging clinical vignettes, graded on a structured reasoning rubric.",
    "sources": [
     "goh24"
    ],
@@ -8398,7 +8274,11 @@
     }
    ],
    "theme": "ai-work",
-   "permuted": true
+   "permuted": true,
+   "forecast": {
+    "claim": "Physicians given GPT-4 scored clearly higher on diagnostic reasoning than physicians with usual resources.",
+    "truth": false
+   }
   }
  ],
  "editorialRules": [
@@ -8641,6 +8521,15 @@
     "measure23"
    ],
    "reason": "Concept-label question."
+  },
+  {
+   "id": "axe03",
+   "title": "Who decides, who coaches?",
+   "sources": [
+    "fugener22",
+    "tong21"
+   ],
+   "reason": "Review 4: routings rested on author suggestions, and the abstracts report no effect sizes."
   }
  ],
  "themes": [
@@ -8711,7 +8600,6 @@
     "ai07",
     "axb13",
     "axe06",
-    "axe03",
     "axf01",
     "axf06"
    ]
@@ -8767,8 +8655,8 @@
    "title": "Norms, honesty, polarization",
    "blurb": "Eugen Dimant’s research on how the shape of a norm, the visibility of peers and political identity change what people do.",
    "ids": [
-    "dimant-polarizednorms-choice",
     "social01",
+    "dimant-polarizednorms-choice",
     "dimant-hate-choice",
     "dimant-contagion-multi",
     "dimant-proximity-estimate",
@@ -8784,12 +8672,12 @@
    "ids": [
     "biz01",
     "bz15",
+    "judg05",
     "bz03",
     "bz16",
     "biz03",
     "biz05",
-    "biz11",
-    "judg05"
+    "biz11"
    ]
   },
   {
@@ -8842,6 +8730,48 @@
     "metadata": "matched Crossref record",
     "text_read": "abstract only (PubMed)",
     "text_url": "https://pubmed.ncbi.nlm.nih.gov/?term=10.1037%2F0033-2909.129.1.139"
+   }
+  },
+  "fugener22": {
+   "id": "fugener22",
+   "authors": "Fügener, Grahl, Gupta & Ketter",
+   "authors_full": "Andreas Fügener, Jörn Grahl, Alok Gupta, Wolfgang Ketter",
+   "year": 2022,
+   "title": "Cognitive Challenges in Human–Artificial Intelligence Collaboration: Investigating the Path Toward Productive Delegation",
+   "venue": "Information Systems Research",
+   "volume": "33(2)",
+   "pages": "678-696",
+   "doi": "10.1287/isre.2021.1079",
+   "url": "https://doi.org/10.1287/isre.2021.1079",
+   "kind": "peer-reviewed",
+   "takeaway": "In classification tasks, human-AI teams improved only when the AI delegated work to humans; humans delegated poorly because they lack metaknowledge.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract on Erasmus University repository page",
+    "text_url": "https://pure.eur.nl/en/publications/7ce28963-ab8a-44f8-a647-b98064150835"
+   }
+  },
+  "tong21": {
+   "id": "tong21",
+   "authors": "Tong, Jia, Luo & Fang",
+   "authors_full": "Siliang Tong, Nan Jia, Xueming Luo, Zheng Fang",
+   "year": 2021,
+   "title": "The Janus face of artificial intelligence feedback: Deployment versus disclosure effects on employee performance",
+   "venue": "Strategic Management Journal",
+   "volume": "42(9)",
+   "pages": "1600-1631",
+   "doi": "10.1002/smj.3322",
+   "url": "https://doi.org/10.1002/smj.3322",
+   "kind": "peer-reviewed",
+   "takeaway": "AI feedback improves employee performance when deployed, but disclosing it triggers negative perceptions, a penalty that shrinks with tenure.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_url": "https://api.openalex.org/works/doi:10.1002/smj.3322"
    }
   }
  }

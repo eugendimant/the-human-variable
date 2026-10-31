@@ -1,6 +1,6 @@
 import json
 import streamlit as st
-from .common import FORMAT_NAME, option_order, store, style
+from .common import FORMAT_NAME, option_order, rank_order, store, style
 from server import classroom as cl
 
 def response_widgets(c: dict, key: str, code: str = ''):
@@ -16,10 +16,10 @@ def response_widgets(c: dict, key: str, code: str = ''):
         e = c['estimate']; return st.number_input(f"{e['label']} ({e['min']} to {e['max']})", min_value=e['min'], max_value=e['max'], value=None, step=e.get('step', 1), key=key + 'e', placeholder='Your estimate')
     if f == 'forecast':
         st.markdown(f"<div class='thv-claim'>{c['forecast']['claim']}</div>", unsafe_allow_html=True)
-        return st.slider('Probability the claim is true (%)', 0, 100, 50, step=5, key=key + 'f')
+        return st.number_input('Probability the claim is true (0 to 100%)', min_value=0, max_value=100, value=None, step=5, key=key + 'f', placeholder='Your probability')
     if f == 'rank':
         st.caption(c['rankLabel'] + '. Pick the top item first.')
-        order = st.multiselect('Your order', idx, format_func=lambda i: c['options'][i], key=key + 'k')
+        order = st.multiselect('Your order', rank_order(c['id'], len(c['options']), code) if code else idx, format_func=lambda i: c['options'][i], key=key + 'k')
         return order if len(order) == len(c['options']) else None
     if f == 'allocate':
         a = c['allocate']; vals = []
@@ -75,9 +75,9 @@ def run():
         st.write(c['scene']); st.subheader(c['question'])
         with st.form(key='f' + c['id']):
             r = response_widgets(c, c['id'], R['code'])
-            conf = None if c['format'] == 'forecast' else st.number_input('How sure are you that you got it right? (0 to 100%)', min_value=0, max_value=100, value=None, step=5, placeholder='Your confidence')
+            conf = None if c['format'] in ('forecast', 'allocate') else st.number_input('How sure are you that you got it right? (0 to 100%)', min_value=0, max_value=100, value=None, step=5, placeholder='Your confidence')
             if st.form_submit_button('Lock my answer', type='primary'):
-                if r is None or (c['format'] != 'forecast' and conf is None): st.error('Give your answer and your confidence first.')
+                if r is None or (c['format'] not in ('forecast', 'allocate') and conf is None): st.error('Give your answer and your confidence first.')
                 else:
                     try: m = S.submit(R['code'], R['token'], r, conf)['message']
                     except cl.ClassroomError as e: m = str(e)

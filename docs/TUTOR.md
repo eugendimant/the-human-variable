@@ -29,6 +29,8 @@ Students can open three predefined follow-up questions on every decision (curate
 | Model timeout | 12 s | `GEMINI_TIMEOUT` |
 | Models tried in order | `gemini-3.1-flash-lite,gemini-3.5-flash-lite` | `GEMINI_MODELS` |
 
+The default model ids follow Google's model list as read on 31 October 2026; confirm them in AI Studio before a class and change `GEMINI_MODELS` if Google has renamed them. An unknown id fails fast and the tutor falls back to curated answers.
+
 Google no longer publishes per-model free-tier numbers. Check your project's limits in AI Studio and set `GEMINI_RPM` and `GEMINI_RPD` slightly below them.
 
 In a class of 30 where each student asks three questions over ten minutes, the load is about 9 requests per minute before caching, which fits a 12-RPM budget. During bursts the extra questions get curated answers immediately; the test `test_global_rpm_cap_thirty_students` shows 10 model answers and 20 labelled curated answers, with no failures.

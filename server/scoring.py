@@ -31,9 +31,9 @@ def score(c: dict, r) -> dict:
     if f == 'allocate':
         v = c['allocate']['values']; tot = sum(r or [])
         if not tot: return {'score': 0.0, 'correct': False}
-        ev = sum(s / tot * v[i] for i, s in enumerate(r)); lo, hi = min(v), max(v)
-        sc = 1.0 if hi == lo else _clamp((ev - lo) / (hi - lo), 0, 1)
-        return {'score': sc, 'correct': sc >= c['allocate'].get('pass', 0.8)}
+        hi = max(v); best = [1 if x == hi else 0 for x in v]; nb = sum(best); p = [s / tot for s in r]
+        sc = 1 - sum((x - best[i] / nb) ** 2 for i, x in enumerate(p)); top = max(p)
+        return {'score': sc, 'correct': any(best[i] and x == top for i, x in enumerate(p))}
     if f == 'delegate':
         tasks = c['delegate']['tasks']; right = sum(1 for i, t in enumerate(tasks) if isinstance(r, list) and i < len(r) and r[i] == t['answer'])
         return {'score': right / len(tasks), 'correct': right == len(tasks)}

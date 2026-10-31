@@ -114,6 +114,14 @@ class Handler(BaseHTTPRequestHandler):
         if not LIMIT.allow(ip, 'ip_' + kind): return False
         return LIMIT.allow(ip + '|' + self.client(), kind)
 
+    def do_HEAD(self):
+        """For uptime monitors: status and headers only."""
+        p = urllib.parse.urlsplit(self.path).path
+        ok = p in STATIC or p == '/api/health'
+        self.send_response(200 if ok else 404)
+        self.send_header('Content-Type', 'text/html; charset=utf-8' if p in STATIC else 'application/json')
+        self.send_header('Content-Length', '0'); self.headers_common(); self.end_headers()
+
     def do_GET(self):
         u = urllib.parse.urlsplit(self.path); p = u.path; qs = urllib.parse.parse_qs(u.query)
         try:
@@ -122,7 +130,7 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_response(200); self.send_header('Content-Type', 'text/html; charset=utf-8'); self.send_header('Content-Length', str(len(data)))
                 self.send_header('Cache-Control', 'no-cache'); self.headers_common(); self.end_headers(); self.wfile.write(data); return
             if not self.allowed('read'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
-            if p == '/api/health': return self.json(200, {'ok': True, 'decisions': len(CHALLENGES), 'tutor': TUTOR.enabled})
+            if p == '/api/health': return self.json(200, {'ok': True, 'decisions': len(CHALLENGES), 'tutor': TUTOR.enabled, 'class_lock': STORE.class_lock()[0]})
             if p == '/api/tutor/status': return self.json(200, TUTOR.status((qs.get('client') or [''])[0][:40]))
             if p == '/api/challenges': return self.json(200, {'challenges': [public_challenge(c) for c in CHALLENGES.values()]})
             if p.startswith('/api/reveal/'):

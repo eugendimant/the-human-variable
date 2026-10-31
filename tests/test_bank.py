@@ -153,3 +153,30 @@ def test_boundaries_state_scope_positively():
     """Review 3, minor 4 and CONTENT_GUIDE: a boundary says what the study covers."""
     assert not [c['id'] for c in LIVE if NEG_SCOPE.search(c['boundary'])]
     assert NEG_SCOPE.search('long-run use was not studied')
+
+def test_no_working_paper_material_in_decisions():
+    """Review 4, M2: decisions draw on versions of record only."""
+    bad = [c['id'] for c in LIVE if re.search(r'\b(working[- ]paper|preprint|SSRN|NBER)\b', json.dumps(c, ensure_ascii=False), re.I)]
+    assert not bad, bad
+
+def _nums(t):
+    return set(re.findall(r'\d+(?:\.\d+)?%|\d+\.\d+|\d{2,}(?:,\d{3})*', t))
+
+def test_paths_do_not_leak_later_answers():
+    """Review 4, M1: an item's key numbers must not appear in the reveal of an earlier item on the same path."""
+    by = {c['id']: c for c in LIVE}; bad = []
+    for p in BANK['paths']:
+        ids = [i for i in p['ids'] if i in by]
+        for j, cj in enumerate(ids):
+            c = by[cj]; key = _nums(c['answerTitle'])
+            if c['format'] == 'estimate': key |= {f"{c['estimate']['target']:g}"}
+            for ci in ids[:j]:
+                e = by[ci]; text = ' '.join([e['explain'], e['implication']] + [f['a'] for f in e['follow']])
+                hit = {k for k in key if re.search(r'(?<![\d.])' + re.escape(k) + r'(?![\d])', text)}
+                if hit: bad.append((p['id'], ci, '->', cj, sorted(hit)))
+    assert not bad, bad
+
+def test_evidence_comes_from_versions_of_record():
+    ev = json.loads((ROOT / 'src/evidence.json').read_text())
+    bad = [(k, q['location'][:40]) for k, qs in ev.items() for q in qs if re.search(r'\b(NBER|working paper|SSRN|arXiv)\b', q.get('location', ''), re.I) and 'design details only' not in q.get('location', '')]
+    assert not bad, bad[:5]

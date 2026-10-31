@@ -14,7 +14,8 @@ def run():
     if not ids: return
     cid = st.selectbox('Decision', ids, format_func=lambda i: f"{cl.CHALLENGES[i]['title']} ({cl.CHALLENGES[i]['track']})")
     c = cl.CHALLENGES[cid]
-    st.write(f"**{c['answerTitle']}.** {c['explain']}")
+    with st.expander('Show the finding (play the decision first if you want to predict it)'):
+        st.write(f"**{c['answerTitle']}.** {c['explain']}")
     cols = st.columns(3); q = None
     for col, p in zip(cols, PRESETS.values()):
         if col.button(p, use_container_width=True): q = p
