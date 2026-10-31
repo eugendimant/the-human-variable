@@ -243,3 +243,23 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 194 tests, audit doc and counts regenerated.
 
 **Count:** 0 Blocking + 7 Major found and addressed. Next: independent review 5.
+
+## Iteration 10 (2026-10-31)
+
+**Verified first:** iteration-9 fixes, by independent review 5 (snapshot `snap_r5`): no answers in served pages or APIs, class lock on every route, phone and projector rank charts agree, idle lock release, proper allocate rule, midpoint cap, numbers in explanations. Not held: two path leaks, social01's options, axe02's routings, projector layout.
+
+**Independent score:** 78/100 (review 5, `qa/reviews/review5.md`). 0 Blocking, 7 Major.
+
+**Fixes:**
+- **M1.** rollout1's follow-up and rollout3's delegate reasons rewritten; the path-leak gate now scans answer titles, chart notes and delegate reasons of earlier items too.
+- **M2.** Delegate tasks can list equally supported routes (`also`), scored in JS and Python, shown on reveal, console and Streamlit; axe01's hedonic task accepts the hybrid and the human recommender.
+- **M3.** axe02 retired (routings not compared).
+- **M4.** The class lock follows instructor activity only (`beat`, refreshed by control and the open console; 5 idle minutes release it); student joins no longer revive it. Test added.
+- **M5.** Allocate sliders rebalance automatically so the total stays fixed; only a real change unlocks; a hint says how it works. Browser test added.
+- **M6.** Four forecast claims stated neutrally; axf06 became an estimate (median 76%, axis 40–100). Gate: no strong qualifiers in claims.
+- **M7.** Before the reveal, causal diagrams show dotted, undirected links with a one-line explanation; arrows appear at the reveal. Test: no arrowheads before the reveal.
+- **Minors.** social01 has four options with no negation pair, bz15 became a rank with a tie, gate requires four options in pick-two items; three distractors replaced; social13 asks how the authors described their own estimates; auditor-voice follow-ups and thin scope lines rewritten; axf04 reduced to its two distinct tasks; Isoni, Loomes & Sugden (2011) added as a source; dimant-notalie scene describes the experiment; allocate ties at the top no longer count as a hit; offline and server tutors decline off-topic questions and give a practical reading of effect size; projector view in two columns with the class chart beside the question; console notes pairs a study did not separate; diagrams fit their boxes; record calibration card no longer stretches; hero unit hidden until a call; record headings in order; README file map and `qa/QUALITY_ASSESSMENT.md` added.
+
+**Gates:** build check, 198 tests, audit doc, counts and reference screenshots regenerated.
+
+**Count:** 0 Blocking + 7 Major found and addressed. Next: independent review 6.

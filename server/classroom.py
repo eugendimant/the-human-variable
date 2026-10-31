@@ -17,8 +17,8 @@ CHALLENGES = {c['id']: c for c in BANK['challenges'] if all(s in LIVE_SOURCES fo
 RETENTION_HOURS = float(os.environ.get('THV_RETENTION_HOURS', '48'))
 MAX_PARTICIPANTS = int(os.environ.get('THV_MAX_PARTICIPANTS', '120'))
 CLASS_LOCK_HOURS = float(os.environ.get('THV_CLASS_LOCK_HOURS', '3'))
-# A class holds the lock only while it is alive: the instructor console refreshes it; 20 idle minutes release it.
-CLASS_LOCK_IDLE_MIN = float(os.environ.get('THV_CLASS_LOCK_IDLE_MIN', '20'))
+# A class holds the lock only while its instructor is active: the open console refreshes it, students joining do not.
+CLASS_LOCK_IDLE_MIN = float(os.environ.get('THV_CLASS_LOCK_IDLE_MIN', '5'))  # measured from instructor activity only
 CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'  # no 0/O/1/I
 
 class ClassroomError(Exception):
@@ -62,6 +62,7 @@ class Store:
         cols = {r[1] for r in db.execute('PRAGMA table_info(sessions)')}
         if 'revealed' not in cols: db.execute("ALTER TABLE sessions ADD COLUMN revealed TEXT NOT NULL DEFAULT '[]'")
         if 'joining' not in cols: db.execute("ALTER TABLE sessions ADD COLUMN joining INTEGER NOT NULL DEFAULT 1")
+        if 'beat' not in cols: db.execute("ALTER TABLE sessions ADD COLUMN beat REAL NOT NULL DEFAULT 0")  # last instructor activity
         db.commit()
 
     def db(self) -> sqlite3.Connection:
@@ -82,7 +83,7 @@ class Store:
             for _ in range(20):
                 code = ''.join(secrets.choice(CODE_ALPHABET) for _ in range(5))
                 try:
-                    db.execute('INSERT INTO sessions(code, secret_hash, title, created, touched) VALUES(?,?,?,?,?)', (code, _h(secret), title, now, now)); db.commit()
+                    db.execute('INSERT INTO sessions(code, secret_hash, title, created, touched, beat) VALUES(?,?,?,?,?,?)', (code, _h(secret), title, now, now, now)); db.commit()
                     self.cache.pop(code, None)
                     return {'code': code, 'secret': secret, 'title': title}
                 except sqlite3.IntegrityError:
@@ -125,7 +126,7 @@ class Store:
         else:
             raise ClassroomError('Unknown action')
         with self.lock:
-            db = self.db(); db.execute(sql + ', version=version+1, touched=? WHERE code=?', (*args, time.time(), code)); db.commit()
+            db = self.db(); db.execute(sql + ', version=version+1, touched=?, beat=? WHERE code=?', (*args, time.time(), time.time(), code)); db.commit()
             self.cache.pop(code, None); self._open = None; self._lock = None
         return self.state(code, admin=True)
 
@@ -182,7 +183,7 @@ class Store:
         if now - last < 60: return
         self._beats[code] = now
         with self.lock:
-            db = self.db(); db.execute('UPDATE sessions SET touched=? WHERE code=?', (now, code)); db.commit()
+            db = self.db(); db.execute('UPDATE sessions SET touched=?, beat=? WHERE code=?', (now, now, code)); db.commit()
 
     def state(self, code: str, admin: bool = False) -> dict:
         code = str(code or '').upper()
@@ -234,7 +235,7 @@ class Store:
         now = time.time(); hit = getattr(self, '_lock', None)
         if hit and now - hit[0] < 2: return hit[1]
         since = now - min(CLASS_LOCK_HOURS * 3600, CLASS_LOCK_IDLE_MIN * 60)
-        rows = self.db().execute("SELECT s.revealed FROM sessions s WHERE s.touched > ? AND s.phase != 'ended' AND (s.phase IN ('open', 'closed') OR EXISTS (SELECT 1 FROM participants p WHERE p.code = s.code))", (since,)).fetchall()
+        rows = self.db().execute("SELECT s.revealed FROM sessions s WHERE s.beat > ? AND s.phase != 'ended' AND (s.phase IN ('open', 'closed') OR EXISTS (SELECT 1 FROM participants p WHERE p.code = s.code))", (since,)).fetchall()
         # With several classes, a decision is released only once every running class has revealed it.
         sets = [set(json.loads(rv)) for (rv,) in rows]
         allowed = set.intersection(*sets) if sets else set()

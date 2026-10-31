@@ -59,10 +59,10 @@
 - Hartmann, Exner & Domdey (2025). The power of generative marketing: Can generative AI create superhuman visual marketing content?. *International Journal of Research in Marketing* 42(1), 13-31. https://doi.org/10.1016/j.ijresmar.2024.09.002
 - Hoffman, Kahn & Li (2018). Discretion in Hiring. *The Quarterly Journal of Economics* 133(2), 765-800. https://doi.org/10.1093/qje/qjx042
 - Hui, Reshef & Zhou (2024). The Short-Term Effects of Generative Artificial Intelligence on Employment: Evidence from an Online Labor Market. *Organization Science* 35(6), 1977-1989. https://doi.org/10.1287/orsc.2023.18441
+- Isoni, Loomes & Sugden (2011). The Willingness to Pay—Willingness to Accept Gap, the “Endowment Effect,” Subject Misconceptions, and Experimental Procedures for Eliciting Valuations: Comment. *American Economic Review* 101(2), 991-1011. https://doi.org/10.1257/aer.101.2.991
 - Iyengar & Lepper (2000). When choice is demotivating: Can one desire too much of a good thing?. *Journal of Personality and Social Psychology* 79(6), 995-1006. https://doi.org/10.1037/0022-3514.79.6.995
 - Jabbour et al. (2023). Measuring the Impact of AI in the Diagnosis of Hospitalized Patients. *JAMA* 330(23), 2275-2284. https://doi.org/10.1001/jama.2023.22295
 - Jakesch, Hancock & Naaman (2023). Human heuristics for AI-generated language are flawed. *Proceedings of the National Academy of Sciences* 120(11), e2208839120. https://doi.org/10.1073/pnas.2208839120
-- Jia, Luo, Fang & Liao (2024). When and How Artificial Intelligence Augments Employee Creativity. *Academy of Management Journal* 67(1), 5-32. https://doi.org/10.5465/amj.2022.0426
 - Johnson & Goldstein (2004). Defaults and Donation Decisions. *Transplantation* 78(12), 1713-1716. https://doi.org/10.1097/01.TP.0000149788.10382.B2
 - Kahneman & Tversky (1979). Prospect Theory: An Analysis of Decision under Risk. *Econometrica* 47(2), 263-292. https://doi.org/10.2307/1914185
 - Kahneman, Knetsch & Thaler (1990). Experimental Tests of the Endowment Effect and the Coase Theorem. *Journal of Political Economy* 98(6), 1325-1348. https://doi.org/10.1086/261737

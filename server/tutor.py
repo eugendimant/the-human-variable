@@ -80,15 +80,16 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         if re.search(r'\b(today|still|hold|generali[sz]e|apply|always|everywhere|replicat)', ql):
             return {'answer': f"{c['boundary']} The study itself: {c['explain']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(big|size|large|much|practice|magnitude)\b', ql):
-            return {'answer': f"{c['explain']} {c.get('study', {}).get('n', '') and 'Sample: ' + c['study']['n'] + '.'} {c['boundary']}".strip(), 'citations': cites, 'mode': 'curated'}
+            return {'answer': f"{c['explain']} {c.get('study', {}).get('n', '') and 'Sample: ' + c['study']['n'] + '.'} In practice: {c['implication']}".strip(), 'citations': cites, 'mode': 'curated'}
         qt = set(tokens(question)); best = max(c.get('follow', []), key=lambda f: len(qt & set(tokens(f['q'] + ' ' + f['a']))), default=None)
         if best and len(qt & set(tokens(best['q'] + ' ' + best['a']))) >= 1:
             return {'answer': best['a'], 'citations': cites, 'mode': 'curated'}
-    docs = [d for d in retrieve(question, challenge_id, 3, exclude) if d['kind'] == 'decision']
+    qt = set(tokens(question))
+    docs = [d for d in retrieve(question, challenge_id, 3, exclude) if d['kind'] == 'decision' and len(qt & set(tokens(d['body']))) > len(qt) / 2]
     if docs:
         d = docs[0]; cc = CHALLENGES[d['id']]
         return {'answer': f"{cc['explain']} {cc['implication']}", 'citations': [{'id': s, 'label': cite_label(s)} for s in cc['sources']], 'mode': 'curated'}
-    return {'answer': 'The lab has no checked study on that question. Try asking about the decision on screen, its sample, or how to apply it.', 'citations': [], 'mode': 'curated'}
+    return {'answer': 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', 'citations': [], 'mode': 'curated'}
 
 # ---------- budgets ----------
 class Budget:

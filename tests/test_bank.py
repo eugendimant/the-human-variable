@@ -171,7 +171,7 @@ def test_paths_do_not_leak_later_answers():
             c = by[cj]; key = _nums(c['answerTitle'])
             if c['format'] == 'estimate': key |= {f"{c['estimate']['target']:g}"}
             for ci in ids[:j]:
-                e = by[ci]; text = ' '.join([e['explain'], e['implication']] + [f['a'] for f in e['follow']])
+                e = by[ci]; text = ' '.join([e['explain'], e['implication'], e['answerTitle'], (e.get('chart') or {}).get('note', '')] + [f['a'] for f in e['follow']] + [t.get('why', '') for t in (e.get('delegate') or {}).get('tasks', [])])
                 hit = {k for k in key if re.search(r'(?<![\d.])' + re.escape(k) + r'(?![\d])', text)}
                 if hit: bad.append((p['id'], ci, '->', cj, sorted(hit)))
     assert not bad, bad
@@ -189,3 +189,12 @@ def test_explanations_carry_the_key_number():
     assert not [c['id'] for c in LIVE if not re.search(r'\d', c['explain']) and c['id'] not in NO_NUMBER]
     assert not [c['id'] for c in LIVE if GENERIC.search(c['explain'])]
     assert GENERIC.search('Medical-AI resistance research highlights concerns')
+
+QUALIFIERS = re.compile(r"\b(simply|clearly|closely|reliably|substantially|dramatically|strongly|vastly|about equally)\b", re.I)
+def test_forecast_claims_are_neutral():
+    """Review 5, M6: strong qualifiers must not mark false claims."""
+    assert not [c['id'] for c in LIVE if c['format'] == 'forecast' and QUALIFIERS.search(c['forecast']['claim'])]
+
+def test_pick_two_has_four_options():
+    """Review 5, minor 1: with three options one correct pick forces the other."""
+    assert not [c['id'] for c in LIVE if c['format'] == 'multi' and len(c['options']) < 4]

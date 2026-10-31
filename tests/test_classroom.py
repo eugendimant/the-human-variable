@@ -98,5 +98,15 @@ def test_lock_lapses_when_class_idle_and_reopen_unreleases(tmp_path, monkeypatch
     assert cid in s.class_lock()[1]
     s.control(a['code'], a['secret'], 'open', cid); s._lock = None
     assert cid not in s.class_lock()[1]
-    db = s.db(); db.execute('UPDATE sessions SET touched=?', (cl.time.time() - 21 * 60,)); db.commit(); s._lock = None
+    db = s.db(); db.execute('UPDATE sessions SET touched=?, beat=?', (cl.time.time() - 21 * 60, cl.time.time() - 21 * 60)); db.commit(); s._lock = None
     assert s.class_lock()[0] is False
+
+def test_student_join_does_not_revive_the_lock(tmp_path):
+    """Review 5, M4: only instructor activity keeps a class locking evidence."""
+    s = cl.Store(tmp_path / 'grief.sqlite3'); a = s.create('A'); s.join(a['code'])
+    db = s.db(); db.execute('UPDATE sessions SET beat=?', (cl.time.time() - 10 * 60,)); db.commit(); s._lock = None
+    assert s.class_lock()[0] is False
+    s.join(a['code']); s._lock = None
+    assert s.class_lock()[0] is False
+    s.state(a['code'], admin=True); s._lock = None
+    assert s.class_lock()[0] is True

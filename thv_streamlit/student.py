@@ -43,7 +43,7 @@ def show_reveal(c: dict, a: dict, code: str = ''):
     if 'meanPosition' in a: st.bar_chart({o[:40]: len(c['options']) + 1 - p for o, p in zip(c['options'], a['meanPosition']) if p is not None}, horizontal=True); st.caption('Higher bar = ranked nearer the top by the room. Measured order: ' + ', '.join(c['options'][i] for i in c['rankAnswer']) + '.')
     if 'meanShare' in a: st.bar_chart({o[:40]: v for o, v in zip(c['options'], a['meanShare']) if v is not None}, horizontal=True); st.caption('Average budget share. Reported effects: ' + '; '.join(f"{o} {l}" for o, l in zip(c['options'], c['allocate'].get('valueLabels', c['allocate']['values']))) + '.')
     if 'taskCounts' in a:
-        for t, cnt in zip(c['delegate']['tasks'], a['taskCounts']): st.write(f"**{t['text']}**: {cnt[t['answer']]} of {a['n']} chose {c['delegate']['choices'][t['answer']]}. {t['why']}")
+        for t, cnt in zip(c['delegate']['tasks'], a['taskCounts']): st.write(f"**{t['text']}**: {sum(cnt[j] for j in [t['answer'], *t.get('also', [])])} of {a['n']} chose {' or '.join(c['delegate']['choices'][j] for j in [t['answer'], *t.get('also', [])])}. {t['why']}")
     st.info(f"**What a manager does with this.** {c['implication']}\n\n**Where the evidence comes from.** {c['boundary']}")
 
 def run():

@@ -1993,27 +1993,6 @@
     "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12088386/fullTextXML"
    }
   },
-  "jia24": {
-   "id": "jia24",
-   "authors": "Jia, Luo, Fang & Liao",
-   "authors_full": "Nan Jia, Xueming Luo, Zheng Fang, Chengcheng Liao",
-   "year": 2024,
-   "title": "When and How Artificial Intelligence Augments Employee Creativity",
-   "venue": "Academy of Management Journal",
-   "volume": "67(1)",
-   "pages": "5-32",
-   "doi": "10.5465/amj.2022.0426",
-   "url": "https://doi.org/10.5465/amj.2022.0426",
-   "kind": "peer-reviewed",
-   "takeaway": "When AI handled the first, codified stage of telemarketing, employees became more creative with customers, mainly the higher-skilled ones.",
-   "verification": {
-    "status": "verified_abstract",
-    "checked": "2026-10-31",
-    "metadata": "matched Crossref record",
-    "text_read": "Abstract reconstructed from OpenAlex record",
-    "text_url": "https://api.openalex.org/works/doi:10.5465/amj.2022.0426"
-   }
-  },
   "cui26": {
    "id": "cui26",
    "authors": "Cui et al.",
@@ -2293,6 +2272,26 @@
     "metadata": "matched Crossref record",
     "text_read": "full text, introduction (Springer)",
     "text_url": "https://link.springer.com/article/10.1007/s10797-019-09565-6"
+   }
+  },
+  "isoni11": {
+   "id": "isoni11",
+   "authors": "Isoni, Loomes & Sugden",
+   "authors_full": "Andrea Isoni, Graham Loomes, Robert Sugden",
+   "year": 2011,
+   "title": "The Willingness to Pay—Willingness to Accept Gap, the “Endowment Effect,” Subject Misconceptions, and Experimental Procedures for Eliciting Valuations: Comment",
+   "venue": "American Economic Review",
+   "volume": "101(2)",
+   "pages": "991-1011",
+   "doi": "10.1257/aer.101.2.991",
+   "url": "https://doi.org/10.1257/aer.101.2.991",
+   "kind": "peer-reviewed",
+   "takeaway": "Under the Plott and Zeiler procedures, the willingness-to-pay/willingness-to-accept gap is absent for mugs but significant and persistent for lotteries.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "abstract (Crossref)"
    }
   }
  },
@@ -3223,9 +3222,10 @@
    "scene": "Two teams have the same average cooperation. One is consistent; the other is split between very high and low behavior.",
    "question": "Which two results did the experiments find?",
    "options": [
-    "Averages do not describe every norm environment",
+    "People ignored the norm and played their own strategy",
     "Loose norms generated more behavioral variation",
-    "The average alone predicted how most people chose"
+    "Tight norms produced the most extreme choices",
+    "The spread of others’ behavior shaped choices, not just its mean"
    ],
    "answerTitle": "The distribution matters",
    "explain": "Dimant, Gelfand, Hochleitner and Sonderegger showed about 1,200 Americans co-player behavior with the same mean but different spreads. Choices tracked the spread: contribution variance was 1.26 after a tight norm and 1.65 after a loose one.",
@@ -3258,8 +3258,8 @@
    "format": "multi",
    "weight": 1,
    "multiAnswers": [
-    0,
-    1
+    1,
+    3
    ],
    "theme": "norms",
    "study": {
@@ -3529,8 +3529,8 @@
    "tag": "39 / HIRING",
    "title": "Screens at auditions",
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
-   "question": "How strong was the evidence that screens helped women advance?",
-   "answerTitle": "Favorable, but several estimates were imprecise",
+   "question": "How did the authors describe the weight of their own estimates?",
+   "answerTitle": "Favorable to women, with some imprecise estimates",
    "explain": "Goldin and Rouse estimate that the screen raised by 50 percent the chance a woman advanced from certain preliminary rounds, and that blind auditions explain about 30 percent of the rise in women among new hires. Some estimates have large standard errors.",
    "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
    "boundary": "Orchestra audition records; the authors report large standard errors for several estimates, and one effect ran in the opposite direction.",
@@ -3567,10 +3567,10 @@
    },
    "permuted": true,
    "options": [
-    "Strong: large, precise gains in each round",
-    "No effect: screens made no difference",
-    "Suggestive: favorable, several estimates imprecise",
-    "Harmful: screens lowered women’s chances"
+    "Precise gains for women in each round",
+    "No effect of the screen on women",
+    "Favorable to women, some with large standard errors",
+    "Unfavorable to women overall"
    ],
    "answer": 2
   },
@@ -4627,8 +4627,8 @@
    },
    "follow": [
     {
-     "q": "Why not the stars?",
-     "a": "The most experienced and highest-skilled agents saw only small gains in speed and small declines in quality."
+     "q": "Why start with newer agents?",
+     "a": "Less experienced and lower-skilled agents improved both speed and quality, so the assistant closed part of the gap to their more experienced colleagues."
     },
     {
      "q": "How was productivity measured?",
@@ -4710,7 +4710,7 @@
      {
       "text": "Propose ten product ideas for an underserved market",
       "answer": 0,
-      "why": "Inside the frontier, consultants with GPT-4 finished 12.2% more tasks, 25.1% faster, with higher graded quality."
+      "why": "Inside the frontier, consultants with GPT-4 finished 12.2% more tasks, with higher graded quality."
      },
      {
       "text": "Draft press-release copy for the new product",
@@ -5094,7 +5094,8 @@
    "boundary": "Student markets for mugs under two elicitation procedures, with the follow-up debate extending to lotteries.",
    "sources": [
     "kahneman90",
-    "plott05"
+    "plott05",
+    "isoni11"
    ],
    "follow": [
     {
@@ -5493,7 +5494,7 @@
    "options": [
     "Neither: gender drove both equally",
     "Comparing candidates side by side",
-    "No difference between procedures",
+    "Neither: both leaned on interview impressions",
     "Seeing candidates one at a time"
    ],
    "answer": 1,
@@ -5528,20 +5529,15 @@
   {
    "id": "bz15",
    "track": "Business",
-   "format": "multi",
+   "format": "rank",
    "concept": "Default consent",
    "title": "Organ donor forms",
    "scene": "An online survey asked 161 people whether they would be organ donors. The question was framed as opt-in, opt-out, or a neutral form requiring a choice with no default.",
-   "question": "Which two forms produced similarly high consent?",
+   "question": "Rank the three forms by the share who agreed to be donors.",
    "options": [
-    "None: all three were similar",
+    "Opt-in (default: not a donor)",
     "Neutral (must choose, no default)",
-    "Opt-out (default: donor)",
-    "Opt-in (default: not a donor)"
-   ],
-   "multiAnswers": [
-    1,
-    2
+    "Opt-out (default: donor)"
    ],
    "answerTitle": "Opt-out and active choice both beat opt-in",
    "explain": "Consent was about twice as high under opt-out as under opt-in, and opt-out did not differ significantly from the neutral form (79%).",
@@ -5569,7 +5565,19 @@
     "n": "161 online respondents"
    },
    "theme": "choice",
-   "permuted": true
+   "permuted": true,
+   "rankAnswer": [
+    2,
+    1,
+    0
+   ],
+   "rankTies": [
+    [
+     1,
+     2
+    ]
+   ],
+   "rankLabel": "Highest share consenting to be a donor"
   },
   {
    "id": "bz16",
@@ -6028,7 +6036,7 @@
    "options": [
     "The gap appeared for political stories, not others",
     "Bots pushed false stories harder than true ones",
-    "False stories spread no faster overall",
+    "Platform ranking pushed false stories up",
     "People shared false stories more than true ones"
    ],
    "answer": 3,
@@ -6403,7 +6411,7 @@
    "scene": "Researchers tested seven messages (moral frames, mortality, scientific evidence, the economy) to raise mask-wearing among 4,931 US Republicans and Democrats. Beforehand, 1,034 forecasters predicted each message's effect.",
    "question": "Is this what the study found?",
    "forecast": {
-    "claim": "At least one of the seven messages reliably increased mask-wearing among Democrats or Republicans.",
+    "claim": "One of the seven messages increased mask-wearing among Democrats or Republicans.",
     "truth": false
    },
    "answerTitle": "No message worked; forecasters still overestimated effects",
@@ -6478,7 +6486,7 @@
    "track": "Business",
    "concept": "Motivated beliefs",
    "title": "\"Everyone does it,\" they say",
-   "scene": "A sales team knows its commission scheme can be gamed. In a survey, the people who misreport are also the ones most likely to say most colleagues misreport.",
+   "scene": "In an incentivized experiment, people could misreport for money. Those who misreported were also the most likely to say that most others misreport.",
    "question": "What best explains the link between this belief and misreporting?",
    "options": [
     "Temptation distorts the belief to justify lying",
@@ -6788,7 +6796,7 @@
    },
    "theme": "honesty",
    "forecast": {
-    "claim": "Simply letting another person watch each donation decision raised giving substantially.",
+    "claim": "Letting another person watch each donation decision raised giving.",
     "truth": false
    }
   },
@@ -6827,7 +6835,7 @@
    },
    "theme": "norms",
    "forecast": {
-    "claim": "Without political labels, people chose lenient and strict peers’ information about equally often.",
+    "claim": "Without political labels, people chose lenient and strict peers’ information equally often.",
     "truth": false
    }
   },
@@ -7126,7 +7134,10 @@
      {
       "text": "Pick a vacation spot chosen for sensory pleasure",
       "answer": 2,
-      "why": "Resistance to AI in hedonic choices was eliminated when AI augmented a human decision maker (Study 6)."
+      "why": "Resistance to AI in hedonic choices disappeared when AI augmented a human decision maker, bringing trust up to the level of a human recommender (Study 6), so both routes count.",
+      "also": [
+       1
+      ]
      }
     ]
    },
@@ -7156,68 +7167,6 @@
     }
    ],
    "theme": "ai-trust"
-  },
-  {
-   "id": "axe02",
-   "track": "AI × Business",
-   "format": "delegate",
-   "concept": "Task allocation",
-   "title": "Where does the AI go?",
-   "scene": "You are redesigning four frontline workflows. Field and forum studies from health care, sales and software tested what AI did to output and to customers.",
-   "question": "For each workflow, how should AI and staff split the work?",
-   "delegate": {
-    "choices": [
-     "Person with an AI assistant",
-     "Person alone",
-     "AI first stage, person finishes"
-    ],
-    "tasks": [
-     {
-      "text": "Outbound sales calls where the bot must announce itself first",
-      "answer": 1,
-      "why": "Undisclosed bots sold about as well as proficient staff, but disclosing the bot before the conversation cut purchase rates by more than 79.7%."
-     },
-     {
-      "text": "Telemarketing: find leads, then persuade serious prospects",
-      "answer": 2,
-      "why": "With AI on the first, codified stage, employees answered customers more creatively and sold more."
-     },
-     {
-      "text": "Coding tickets for less experienced developers",
-      "answer": 0,
-      "why": "An AI coding assistant raised completed tasks by 26.08%, with larger gains for less experienced developers."
-     }
-    ]
-   },
-   "answerTitle": "AI drafts or opens; humans close where trust matters",
-   "explain": "Disclosing a sales bot up front cut purchases by more than 79.7%, AI on the codified first stage of telemarketing raised sales, and a coding assistant raised completed tasks by 26.08%.",
-   "implication": "Map each workflow by stage; put AI on drafting and codified first steps, and keep humans where customers learn who they are talking to.",
-   "boundary": "Three field settings: outbound sales calls, a telemarketing firm, and software developers at three companies.",
-   "sources": [
-    "ayers23",
-    "luo19",
-    "jia24",
-    "cui26"
-   ],
-   "study": {
-    "design": "Cross-sectional comparison and field experiments",
-    "n": "195 forum questions; 6,200+ customers; 4,867 developers"
-   },
-   "follow": [
-    {
-     "q": "Were undisclosed bots worse sellers?",
-     "a": "No. Undisclosed chatbots were as effective as proficient workers and four times more effective than inexperienced workers."
-    },
-    {
-     "q": "Who gained most from AI in telemarketing?",
-     "a": "Higher-skilled employees. Lower-skilled employees made limited improvements to scripts and reported negative emotions at work."
-    },
-    {
-     "q": "Who gained most among developers?",
-     "a": "Less experienced developers had higher adoption rates and greater productivity gains."
-    }
-   ],
-   "theme": "ai-work"
   },
   {
    "id": "axe04",
@@ -7379,7 +7328,7 @@
    "answerTitle": "Uncertainty pushed people away from algorithms",
    "explain": "Across nine studies (N = 4,820), people were less likely to use the best algorithm in more unpredictable domains. They favored methods with a chance of a near-perfect answer.",
    "implication": "In volatile forecasting, such as demand or markets, report the model's track record against human forecasts, not its average error alone.",
-   "boundary": "Forecasting experiments with study participants.",
+   "boundary": "Nine forecasting experiments with 4,820 participants who chose between their own forecasts and an algorithm’s, under low and high uncertainty.",
    "sources": [
     "dietvorst20"
    ],
@@ -7457,7 +7406,7 @@
    "answerTitle": "For their own job, people preferred the robot",
    "explain": "Granulo, Fuchs and Puntoni found that people prefer other workers to be replaced by humans rather than robots but reverse that preference for their own job. Losing out to a machine threatens self-worth less, though it threatens one's economic future more.",
    "implication": "When automating roles, address economic security directly; do not assume staff will be less upset than with outsourcing to people.",
-   "boundary": "Hypothetical job-loss scenarios in experiments.",
+   "boundary": "Online experiments in which people imagined jobs, their own or others’, being taken over by robots or by other workers.",
    "sources": [
     "granulo19"
    ],
@@ -7511,7 +7460,7 @@
     },
     {
      "q": "Is 50% the average gain?",
-     "a": "No. The abstract says up to 50% higher click-through, an upper bound, not an average across images."
+     "a": "No. Up to 50% higher click-through is the best case across the images tested, not their average."
     },
     {
      "q": "What about cost?",
@@ -7665,7 +7614,7 @@
    "answerTitle": "AI users were judged lazier for the same work",
    "explain": "In Study 2 (n = 1,203), targets helped by AI were rated lazier (2.50) than those helped by non-AI sources (2.16) or with no help mentioned (2.02), and less competent.",
    "implication": "Before reading ratings as performance, train reviewers on AI-use bias and judge output against the same rubric.",
-   "boundary": "Vignette experiments with online participants.",
+   "boundary": "Four preregistered vignette experiments with 4,439 online participants rating colleagues and candidates who used AI or other help.",
    "sources": [
     "reif25"
    ],
@@ -7840,7 +7789,7 @@
     },
     {
      "q": "How much did output rise?",
-     "a": "The abstract reports that artists’ productivity rose 25% after adoption, alongside more favorable peer evaluations of their work."
+     "a": "Artists’ productivity rose 25% after adoption, alongside more favorable peer evaluations of their work."
     }
    ],
    "theme": "ai-work",
@@ -8054,7 +8003,7 @@
    ],
    "theme": "choice",
    "forecast": {
-    "claim": "Scientists’ average predictions closely tracked which texts raised vaccination most.",
+    "claim": "Scientists’ average predictions tracked which texts raised vaccination most.",
     "truth": false
    }
   },
@@ -8081,16 +8030,6 @@
       "text": "A renewal price higher than the customer expected",
       "answer": 0,
       "why": "For offers worse than expected, consumers showed higher purchase likelihood and satisfaction when dealing with an AI agent."
-     },
-     {
-      "text": "A delivery fee above the one first quoted",
-      "answer": 0,
-      "why": "Consumers infer that AI agents lack selfish intentions when an offer favors the agent, which dampens the negative reaction."
-     },
-     {
-      "text": "A free upgrade the customer did not expect",
-      "answer": 1,
-      "why": "Consumers infer that AI agents lack benevolent intentions when an offer favors the customer, so the AI gets less credit."
      }
     ]
    },
@@ -8192,11 +8131,11 @@
   {
    "id": "axf06",
    "track": "AI × Business",
-   "format": "forecast",
+   "format": "estimate",
    "concept": "AI assistance gap",
    "title": "Does the chatbot help the doctor?",
-   "scene": "Fifty physicians had 60 minutes for up to six hard clinical vignettes, randomized to GPT-4 plus usual resources or usual resources only. Researchers also had GPT-4 answer the cases alone.",
-   "question": "How likely is it that the study found this?",
+   "scene": "Fifty physicians had 60 minutes for up to six hard clinical vignettes, randomized to GPT-4 plus usual resources or usual resources only. Researchers also had GPT-4 answer the cases alone. Physicians with usual resources only scored a median 74%.",
+   "question": "What median score did physicians with GPT-4 reach?",
    "answerTitle": "76% versus 74%: no clear gain for physicians",
    "explain": "Physicians scored a median 76% with GPT-4 and 74% with usual resources only, a difference that was not statistically significant (P = .60).",
    "implication": "Before judging an AI tool by staff results, train staff to use it or build structured prompts into the workflow.",
@@ -8224,9 +8163,13 @@
    ],
    "theme": "ai-work",
    "permuted": true,
-   "forecast": {
-    "claim": "Physicians given GPT-4 scored clearly higher on diagnostic reasoning than physicians with usual resources.",
-    "truth": false
+   "estimate": {
+    "target": 76,
+    "min": 40,
+    "max": 100,
+    "tolerance": 3,
+    "label": "Median diagnostic reasoning score with GPT-4",
+    "unit": "%"
    }
   }
  ],
@@ -8487,6 +8430,17 @@
     "norms24"
    ],
    "reason": "Review 4: duplicate of social01 (same paper, same tight-versus-loose result)."
+  },
+  {
+   "id": "axe02",
+   "title": "Where does the AI go?",
+   "sources": [
+    "ayers23",
+    "luo19",
+    "jia24",
+    "cui26"
+   ],
+   "reason": "Review 5: its routings were not compared against each other in the cited studies."
   }
  ],
  "themes": [
@@ -8729,6 +8683,27 @@
     "metadata": "matched Crossref record",
     "text_read": "Abstract reconstructed from OpenAlex record",
     "text_url": "https://api.openalex.org/works/doi:10.1002/smj.3322"
+   }
+  },
+  "jia24": {
+   "id": "jia24",
+   "authors": "Jia, Luo, Fang & Liao",
+   "authors_full": "Nan Jia, Xueming Luo, Zheng Fang, Chengcheng Liao",
+   "year": 2024,
+   "title": "When and How Artificial Intelligence Augments Employee Creativity",
+   "venue": "Academy of Management Journal",
+   "volume": "67(1)",
+   "pages": "5-32",
+   "doi": "10.5465/amj.2022.0426",
+   "url": "https://doi.org/10.5465/amj.2022.0426",
+   "kind": "peer-reviewed",
+   "takeaway": "When AI handled the first, codified stage of telemarketing, employees became more creative with customers, mainly the higher-skilled ones.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_url": "https://api.openalex.org/works/doi:10.5465/amj.2022.0426"
    }
   }
  }

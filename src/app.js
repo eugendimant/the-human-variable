@@ -99,6 +99,7 @@ function resetCard() {
 function evenSplit(c) { const k = c.options.length, t = c.allocate.total, step = c.allocate.step || 10; const base = Math.floor(t / k / step) * step; const a = Array(k).fill(base); let rest = t - base * k; for (let i = 0; rest > 0; i = (i + 1) % k) { a[i] += step; rest -= step } return a }
 function optionOrder(c) { return shuffle(c.options.map((t, i) => ({ t, i })), rng(hash(c.id + '-' + st.seed))) }
 
+const okRoute = (t, m) => m === t.answer || (t.also || []).includes(m);
 function needsTouch(c) { return ['forecast', 'rank', 'allocate'].includes(c.format) }
 // Forecasts and allocations are probability statements already, so they take no separate confidence.
 const noConf = c => c.format === 'forecast' || c.format === 'allocate';
@@ -151,7 +152,7 @@ function heroTry() {
     <span class="kicker">Try one now</span>
     <h2 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h2>
     ${h.done ? `<div class="try-axis">${gapAxis({ min: e.min, max: e.max, unit: '%', you: v, ev: e.target, band: e.tolerance, evLabel: 'Study', id: 'hero' })}</div>`
-      : `<div class="try-read"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${v === null ? 'Slide to answer' : v + '%'}</b><span>less time</span></div>
+      : `<div class="try-read"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${v === null ? 'Slide to answer' : v + '%'}</b><span class="hero-unit" ${v === null ? 'hidden' : ''}>less time</span></div>
     <label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
     <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">
     <div class="axis"><span>${e.min}%</span><span>${e.max}%</span></div>`}
@@ -192,7 +193,7 @@ function home() {
     ${heroTry()}</div></section>
   <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
-    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}">${art(PATH_ART[p.id])}${pi === 0 ? '<em class="path-flag">Start here</em>' : p.case ? '<em class="path-flag">Multi-step case</em>' : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
+    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}">${art(PATH_ART[p.id])}${pi === 0 ? `<em class="path-flag">${p.case ? 'Start here: multi-step case' : 'Start here'}</em>` : p.case ? '<em class="path-flag">Multi-step case</em>' : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
   </section>
   ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p>How the shape of a norm, the visibility of peers and political identity change what people do at work and in society.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
     <ul class="paper-list">${dimant.slice(0, 6).map(s => `<li><button data-source="${esc(s.id)}"><strong>${esc(s.title)}</strong><small>${esc(s.venue)}, ${s.year}</small></button></li>`).join('')}</ul></div></section>` : ''}`;
@@ -208,7 +209,7 @@ function instrument(c) {
   if (c.format === 'choice' || c.format === 'causal' || c.format === 'multi') {
     const isEv = i => c.format === 'multi' ? c.multiAnswers.includes(i) : i === c.answer;
     const picked = i => Array.isArray(r) ? r.includes(i) : r === i;
-    return `${c.format === 'causal' && c.dag ? dag(c.dag, rev) : ''}<div class="opts" role="group" aria-label="Answer options">${optionOrder(c).map((o, j) => `<button class="opt ${rev && isEv(o.i) ? 'is-ev' : ''}" data-choice="${o.i}" aria-pressed="${picked(o.i)}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${j + 1}</span><span>${esc(o.t)}</span>${rev && (isEv(o.i) || picked(o.i)) ? `<span class="mark">${picked(o.i) ? '<span class="dot dot-you"></span>Your call' : ''}${isEv(o.i) ? '<span class="dot dot-ev"></span>Evidence' : ''}</span>` : ''}</button>`).join('')}</div>`;
+    return `${c.format === 'causal' && c.dag ? dag(c.dag, rev) + (rev ? '' : '<p class="hint dag-hint">Dotted lines link factors that may be connected. The reveal shows which way each arrow runs.</p>') : ''}<div class="opts" role="group" aria-label="Answer options">${optionOrder(c).map((o, j) => `<button class="opt ${rev && isEv(o.i) ? 'is-ev' : ''}" data-choice="${o.i}" aria-pressed="${picked(o.i)}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${j + 1}</span><span>${esc(o.t)}</span>${rev && (isEv(o.i) || picked(o.i)) ? `<span class="mark">${picked(o.i) ? '<span class="dot dot-you"></span>Your call' : ''}${isEv(o.i) ? '<span class="dot dot-ev"></span>Evidence' : ''}</span>` : ''}</button>`).join('')}</div>`;
   }
   if (c.format === 'estimate') {
     const e = c.estimate, v = r ?? Math.round((e.min + e.max) / 2);
@@ -227,10 +228,10 @@ function instrument(c) {
   if (c.format === 'allocate') {
     const a = c.allocate, sum = r.reduce((x, y) => x + y, 0);
     return `<div class="alloc">${c.options.map((o, k) => `<div class="alloc-row"><label for="al${k}">${esc(o)}</label><input type="range" id="al${k}" data-alloc="${k}" min="0" max="${a.total}" step="${a.step || 10}" value="${r[k]}" style="--fill:${r[k] / a.total * 100}%" ${rev ? 'disabled' : ''}><output for="al${k}" class="num">${a.prefix || ''}${r[k]}${a.suffix || ''}</output></div>`).join('')}
-      <div class="alloc-total ${sum === a.total ? 'ok' : ''}" aria-live="polite"><span>${esc(a.label)}</span><span class="num">${a.prefix || ''}${sum}${a.suffix || ''} of ${a.prefix || ''}${a.total}${a.suffix || ''}${sum === a.total ? '' : sum > a.total ? ', too many' : ', still to place'}</span></div></div>`;
+      <p class="hint">Moving one slider shifts points from the others, so the total stays at ${a.total}.</p><div class="alloc-total ${sum === a.total ? 'ok' : ''}" aria-live="polite"><span>${esc(a.label)}</span><span class="num">${a.prefix || ''}${sum}${a.suffix || ''} of ${a.prefix || ''}${a.total}${a.suffix || ''}${sum === a.total ? '' : sum > a.total ? ', too many' : ', still to place'}</span></div></div>`;
   }
   if (c.format === 'delegate') {
-    return `<div class="deleg">${c.delegate.tasks.map((t, k) => `<div class="deleg-row" role="group" aria-label="${esc(t.text)}"><p>${esc(t.text)}</p><div class="deleg-opts">${c.delegate.choices.map((ch, m) => `<button data-deleg="${k}" data-pick="${m}" aria-pressed="${r[k] === m}" class="${rev && t.answer === m ? 'is-ev' : ''}" ${rev ? 'disabled' : ''}>${esc(ch)}</button>`).join('')}</div>${rev ? `<p class="deleg-why">${r[k] === t.answer ? 'Matches the evidence. ' : 'Evidence points to ' + esc(c.delegate.choices[t.answer]) + '. '}${esc(t.why)}</p>` : ''}</div>`).join('')}</div>`;
+    return `<div class="deleg">${c.delegate.tasks.map((t, k) => `<div class="deleg-row" role="group" aria-label="${esc(t.text)}"><p>${esc(t.text)}</p><div class="deleg-opts">${c.delegate.choices.map((ch, m) => `<button data-deleg="${k}" data-pick="${m}" aria-pressed="${r[k] === m}" class="${rev && okRoute(t, m) ? 'is-ev' : ''}" ${rev ? 'disabled' : ''}>${esc(ch)}</button>`).join('')}</div>${rev ? `<p class="deleg-why">${okRoute(t, r[k]) ? 'Matches the evidence. ' : 'Evidence points to ' + [t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ') + '. '}${esc(t.why)}</p>` : ''}</div>`).join('')}</div>`;
   }
   return '';
 }
@@ -238,12 +239,15 @@ function instrument(c) {
 // Before the reveal, the accessible description lists boxes and arrows only; the written explanation (d.alt) states the answer.
 function dagAlt(d) {
   const lab = n => n.mask ? 'an unknown factor' : n.label, by = Object.fromEntries(d.nodes.map(n => [n.id, n]));
-  return `Causal diagram. Boxes: ${d.nodes.map(lab).join(', ')}. Arrows: ${d.edges.map(([a, b]) => lab(by[a]) + ' to ' + lab(by[b])).join('; ')}.`;
+  return `Causal diagram. Factors: ${d.nodes.map(lab).join(', ')}. Possible links, direction not shown: ${d.edges.map(([a, b]) => lab(by[a]) + ' and ' + lab(by[b])).join('; ')}.`;
 }
 function dag(d, rev) {
-  const W = 520, H = d.height || 200;
+  const W = 520, H = Math.min(d.height || 200, Math.max(...d.nodes.map(n => n.y)) + 34);  // no empty band under the lowest box
   const node = Object.fromEntries(d.nodes.map(n => [n.id, n]));
-  const edge = ([a, b, style0]) => { const style = rev ? style0 : ''; const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 72; return `<line x1="${A.x + ux * pad}" y1="${A.y + uy * pad * .45}" x2="${B.x - ux * pad}" y2="${B.y - uy * pad * .45}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
+  const edge = ([a, b, style0]) => { const style = rev ? style0 : ''; const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 72; const x1 = A.x + ux * pad, y1 = A.y + uy * pad * .45, x2 = B.x - ux * pad, y2 = B.y - uy * pad * .45;
+    // Before the reveal the diagram shows which factors are in play, not which way the arrows run.
+    if (!rev) return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#9aa6b6" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>`;
+    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
   return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(rev ? d.alt : dagAlt(d))}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n0 => { const n = !rev && n0.mask ? { ...n0, label: '?', hidden: true } : n0; return `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="17" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>` }).join('')}</svg>`;
 }
 
@@ -280,7 +284,7 @@ function gapFigure(c, rec) {
     body = `<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${c.options.map((o, k) => `<div class="hb-row"><span class="hb-label">${esc(o)}<small class="alloc-val">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</small></span><span class="hb-track"><i class="grow ${a.values[k] === hi ? 'ev' : 'you'}" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num ${a.values[k] === hi ? 'ev' : 'you'}">${pct(r[k] / tot)}</b></div>`).join('')}</div>`;
     cap = `Bars: the points you gave each option. Amber marks the option that worked best; the small figure under each option is ${esc(a.valueName)}. Score ${pct(rec.score)}: 100 for all points on the best option, lower the more points sat elsewhere.`
   }
-  else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${r[k] === t.answer ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${r[k] === t.answer ? '' : `<span class="chip ev">${esc(c.delegate.choices[t.answer])}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
+  else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
   else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
   else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
   return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<div class="gap-legend" aria-hidden="true"><span>Study results</span><span><i class="dot dot-ev"></i>The answer</span></div>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
@@ -354,11 +358,13 @@ function curated(q, c) {
   const best = ALL.map(x => ({ x, s: scoreOf(x) })).sort((a, b) => b.s - a.s)[0];
   const fq = (c.follow || []).map(f => ({ f, s: terms.filter(t => (f.q + ' ' + f.a).toLowerCase().includes(t)).length })).sort((a, b) => b.s - a.s)[0];
   const cs = [cite(c.sources[0])];
-  if (/\b(big|size|large|much|practice|magnitude)\b/i.test(q)) return { text: `${c.explain}${c.study && c.study.n && !/not (stated|confirmed)/i.test(c.study.n) ? ' Sample: ' + c.study.n + '.' : ''}\n\nWhere the evidence comes from: ${c.boundary}`, cites: cs };
+  if (/\b(big|size|large|much|practice|magnitude)\b/i.test(q)) return { text: `${c.explain}${c.study && c.study.n && !/not (stated|confirmed)/i.test(c.study.n) ? ' Sample: ' + c.study.n + '.' : ''}\n\nIn practice: ${c.implication}`, cites: cs };
   if (/test|pilot|company|measure|experiment/i.test(q)) return { text: `Start with a small randomized pilot: assign the change to some teams and not others, fix the outcome metric in advance, and compare. ${c.implication}\n\nThe study itself: ${c.explain}`, cites: [cite(c.sources[0])] };
   if (/today|hold|still|generali|apply|everywhere|always/i.test(q)) return { text: `${c.boundary}\n\n${c.explain}`, cites: [cite(c.sources[0])] };
   if (fq && fq.s >= 1) return { text: fq.f.a, cites: [cite(c.sources[0])] };
   if (best && best.x.id !== c.id && best.x.explain && best.s >= 3) return { text: `A related study in the lab: ${best.x.explain}\n\nWhere it applies: ${best.x.implication}`, cites: [cite(best.x.sources[0])] };
+  const topical = terms.some(t => fields(c).includes(t)) || (best && best.s - (best.x.id === c.id ? 1.5 : 0) >= 1);
+  if (!topical) return { text: 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', cites: [] };
   return { text: `${c.explain}\n\n${c.boundary}`, cites: [cite(c.sources[0])] };
 }
 async function ask(q) {
@@ -415,7 +421,7 @@ function record() {
   if (st.session.length) {
     const worst = st.session.reduce((a, r) => r.score < a.score ? r : a), best = st.session.reduce((a, r) => r.score > a.score ? r : a);
     const sc = S.calibration(st.session.map(r => S.toCalibrationRecord(BY_ID[r.id], r)));
-    summary = `<div class="summary">${best.score > worst.score ? `<div class="panel lesson-card"><span class="kicker">Best call</span><h3>${esc(best.title || BY_ID[best.id].title)}</h3><p>${esc(best.answerTitle || BY_ID[best.id].answerTitle)}. Score ${pct(best.score)}.</p></div>` : ''}<div class="panel lesson-card"><span class="kicker">Biggest surprise</span><h3>${esc(worst.title || BY_ID[worst.id].title)}</h3><p>${esc(worst.answerTitle || BY_ID[worst.id].answerTitle)}. ${esc(worst.implication || BY_ID[worst.id].implication)}</p><button class="link-btn" data-play="${esc(worst.id)}">Play it again</button></div></div>`;
+    summary = `<div class="summary">${best.score > worst.score ? `<div class="panel lesson-card"><span class="kicker">Best call</span><h2 class="card-h">${esc(best.title || BY_ID[best.id].title)}</h2><p>${esc(best.answerTitle || BY_ID[best.id].answerTitle)}. Score ${pct(best.score)}.</p></div>` : ''}<div class="panel lesson-card"><span class="kicker">Biggest surprise</span><h2 class="card-h">${esc(worst.title || BY_ID[worst.id].title)}</h2><p>${esc(worst.answerTitle || BY_ID[worst.id].answerTitle)}. ${esc(worst.implication || BY_ID[worst.id].implication)}</p><button class="link-btn" data-play="${esc(worst.id)}">Play it again</button></div></div>`;
   }
   const played = byTrack.filter(t => t[1]);
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
@@ -547,7 +553,7 @@ function classPanel(c, a) {
   else if (a.hist) { const lo = a.lo, hi = a.hi, w = (hi - lo) / a.hist.length, mx = Math.max(1, ...a.hist), ev = f === 'estimate' ? c.estimate.target : (c.forecast.truth ? 100 : 0); body = `<svg viewBox="0 0 340 130" role="img" aria-label="Class distribution, median ${a.median}">${a.hist.map((h, i) => `<rect x="${10 + i * 32}" y="${100 - h / mx * 80}" width="28" height="${h / mx * 80}" rx="3" fill="#2f54eb" fill-opacity=".8"/>`).join('')}<line x1="${10 + (ev - lo) / (hi - lo) * 320}" y1="10" x2="${10 + (ev - lo) / (hi - lo) * 320}" y2="104" stroke="#e0a01c" stroke-width="3"/><text x="10" y="122" font-size="11" fill="#56617a">${lo}</text><text x="330" y="122" font-size="11" fill="#56617a" text-anchor="end">${hi}</text><text x="${Math.min(300, 14 + (ev - lo) / (hi - lo) * 320)}" y="20" font-size="11" font-weight="700" fill="#7d5200">Evidence</text></svg><p class="gap-caption">Class median ${a.median}${f === 'estimate' ? (c.estimate.unit ?? '%') : '%'}.</p>` }
   else if (a.meanPosition) body = hbars(c.options, a.meanPosition.map(p => p == null ? 0 : +(c.options.length + 1 - p).toFixed(2)), [c.rankAnswer[0]], a.meanPosition.map(p => p == null ? '–' : '#' + p)) + '<p class="small">Longer bar: ranked nearer the top by the class. The number is the average rank (1 = top).</p>';
   else if (a.meanShare) body = hbars(c.options, a.meanShare, [c.allocate.values.indexOf(Math.max(...c.allocate.values))], a.meanShare.map(v => v == null ? '–' : v + '%'));
-  else if (a.taskCounts) body = `<ul class="hist">${c.delegate.tasks.map((t, i) => `<li><span>${esc(short(t.text, 60))}</span><span class="num">${a.taskCounts[i][t.answer]} of ${a.n}</span></li>`).join('')}</ul><p class="gap-caption">Number of classmates who routed each task the way the evidence suggests.</p>`;
+  else if (a.taskCounts) body = `<ul class="hist">${c.delegate.tasks.map((t, i) => `<li><span>${esc(short(t.text, 60))}</span><span class="num">${[t.answer, ...(t.also || [])].reduce((x, j) => x + (a.taskCounts[i][j] || 0), 0)} of ${a.n}</span></li>`).join('')}</ul><p class="gap-caption">Number of classmates who routed each task the way the evidence suggests.</p>`;
   return `<section class="panel gap" aria-labelledby="class-h"><h2 id="class-h">The room, ${a.n} answers</h2><p class="gap-caption" style="margin:0 0 8px">Average score ${a.meanScore ?? '–'}. ${a.shareCorrect ?? 0}% matched the evidence${a.meanConfidence !== null ? `, at ${a.meanConfidence}% average confidence` : ''}.</p>${body}</section>`;
 }
 function joinModal() {
@@ -635,7 +641,7 @@ document.addEventListener('click', e => {
 });
 document.addEventListener('input', e => {
   const el = e.target, c = card();
-  if (el.id === 'hero-range') { st.hero.value = +el.value; setRange(el); const hr = qs('#hero-read'); hr.textContent = el.value + '%'; hr.classList.remove('empty'); qs('[data-act="hero-lock"]').disabled = false; return }
+  if (el.id === 'hero-range') { st.hero.value = +el.value; setRange(el); const hr = qs('#hero-read'); hr.textContent = el.value + '%'; hr.classList.remove('empty'); const hu = qs('.hero-unit'); if (hu) hu.hidden = false; qs('[data-act="hero-lock"]').disabled = false; return }
   if (el.id === 'conf') { st.conf = +el.value; st.confTouched = true; setRange(el); const o = qs('#conf-read'); o.textContent = st.conf + '%'; o.classList.remove('empty'); syncLock(); return }
   if (!c || st.phase !== 'predict') {
     if (el.id === 'atlas-q') { st.atlasQuery = el.value; const tmp = document.createElement('div'); tmp.innerHTML = atlas(); qs('#atlas-grid').replaceWith(tmp.querySelector('#atlas-grid')); qs('#atlas-count').textContent = tmp.querySelector('#atlas-count').textContent }
@@ -644,10 +650,23 @@ document.addEventListener('input', e => {
   if (el.id === 'est') { st.resp = +el.value; setRange(el); qs('#est-read').textContent = st.resp + (c.estimate.unit ?? '%'); qs('#est-read').classList.remove('empty'); syncLock(); return }
   if (el.id === 'fc') { st.resp = +el.value; st.touched = true; setRange(el); qs('#fc-read').textContent = st.resp + '%'; qs('#fc-read').classList.remove('empty'); syncLock(); return }
   if (el.dataset.alloc !== undefined) {
-    const k = +el.dataset.alloc, a = c.allocate; let v = +el.value; const others = st.resp.reduce((x, y, i) => x + (i === k ? 0 : y), 0);
-    if (others + v > a.total) { v = a.total - others; el.value = v }
-    st.resp[k] = v; st.touched = true; setRange(el); el.nextElementSibling.textContent = (a.prefix || '') + v + (a.suffix || '');
-    const sum = st.resp.reduce((x, y) => x + y, 0), tot = qs('.alloc-total'); tot.classList.toggle('ok', sum === a.total); tot.lastElementChild.textContent = `${a.prefix || ''}${sum}${a.suffix || ''} of ${a.prefix || ''}${a.total}${a.suffix || ''}${sum === a.total ? '' : ', unassigned'}`;
+    // The points always add up to the total: raising one option takes points from the others in proportion.
+    const k = +el.dataset.alloc, a = c.allocate, step = a.step || 10, before = st.resp.slice();
+    let v = Math.min(a.total, Math.max(0, +el.value)), need = v - st.resp[k];
+    const r = st.resp.slice(); r[k] = v;
+    if (need > 0) {
+      for (let guard = 0; need > 0 && guard < 100; guard++) {
+        const donors = r.map((x, i) => i !== k && x > 0 ? i : -1).filter(i => i >= 0); if (!donors.length) break;
+        const i = donors.reduce((m, j) => r[j] > r[m] ? j : m, donors[0]); const take = Math.min(step, r[i], need); r[i] -= take; need -= take;
+      }
+      if (need > 0) r[k] -= need;
+    } else if (need < 0) {
+      let give = -need; for (let guard = 0; give > 0 && guard < 100; guard++) { const i = r.map((x, j) => j).filter(j => j !== k).reduce((m, j) => r[j] < r[m] ? j : m, k === 0 ? 1 : 0); const add = Math.min(step, give); r[i] += add; give -= add }
+    }
+    if (r.some((x, i) => x !== before[i])) st.touched = true;   // only a real change counts as the player's own split
+    st.resp = r;
+    qa('[data-alloc]').forEach(inp => { const i = +inp.dataset.alloc; inp.value = r[i]; setRange(inp); inp.nextElementSibling.textContent = (a.prefix || '') + r[i] + (a.suffix || '') });
+    const sum = r.reduce((x, y) => x + y, 0), tot = qs('.alloc-total'); tot.classList.toggle('ok', sum === a.total); tot.lastElementChild.textContent = `${a.prefix || ''}${sum}${a.suffix || ''} of ${a.prefix || ''}${a.total}${a.suffix || ''}`;
     syncLock(); return;
   }
 });

@@ -36,7 +36,7 @@ def answer(pg, c):
     elif f == 'delegate':
         for i in range(len(c['delegate']['tasks'])): pg.click(f'[data-deleg="{i}"][data-pick="0"]')
     if f == 'allocate':  # move one slider so the split is the player's own
-        pg.eval_on_selector('[data-alloc="0"]', "e=>{e.value=+e.value;e.dispatchEvent(new Event('input',{bubbles:true}))}")
+        pg.eval_on_selector('[data-alloc="0"]', "e=>{e.value=+e.value+10;e.dispatchEvent(new Event('input',{bubbles:true}))}")
     if f not in ('forecast', 'allocate'):
         pg.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}")
 
@@ -140,8 +140,10 @@ def test_lock_requires_confidence_and_touch(browser):
 def test_causal_diagram_hides_answer_until_reveal(browser):
     pg = page(browser); pg.goto(URL + '?play=axb05')
     assert 'Spending' not in pg.text_content('.dag')
+    assert pg.locator('.dag [marker-end]').count() == 0          # review 5, M7: no arrow directions before the reveal
     answer(pg, next(x for x in LIVE if x['id'] == 'axb05')); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
     assert 'Spending' in pg.text_content('.dag')
+    assert pg.locator('.dag [marker-end]').count() > 0
 
 def test_served_solo_round_fetches_evidence_after_lock(browser, tmp_path):
     """On the hosted page the bank has no answers; locking fetches the evidence and the reveal still works for every format."""
@@ -172,4 +174,14 @@ def test_back_button_moves_between_views(browser):
     assert pg.evaluate('location.hash') == '#record'
     pg.go_back(); pg.wait_for_selector('.theme'); assert pg.evaluate('location.hash') == '#library'
     pg.goto(URL + '#record'); assert pg.locator('.nav [aria-current="page"]').get_attribute('data-nav') == 'record'
+    assert not pg.errors, pg.errors; pg.close()
+
+def test_allocate_rebalances_and_needs_a_real_change(browser):
+    """Review 5, M5: raising one option takes points from the others; a no-op does not unlock."""
+    c = next(x for x in LIVE if x['format'] == 'allocate'); pg = page(browser); pg.goto(URL + '?play=' + c['id'])
+    pg.eval_on_selector('[data-alloc="0"]', "e=>{e.value=+e.value;e.dispatchEvent(new Event('input',{bubbles:true}))}")
+    assert not pg.is_enabled('#lock-btn')
+    pg.eval_on_selector('[data-alloc="0"]', "e=>{e.value=80;e.dispatchEvent(new Event('input',{bubbles:true}))}")
+    vals = pg.eval_on_selector_all('[data-alloc]', 'els => els.map(e => +e.value)')
+    assert vals[0] == 80 and sum(vals) == c['allocate']['total'] and pg.is_enabled('#lock-btn'), vals
     assert not pg.errors, pg.errors; pg.close()

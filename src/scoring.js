@@ -62,13 +62,14 @@
     const p = shares.map(s => Number(s || 0) / total);
     const score = 1 - p.reduce((a, x, i) => a + (x - best[i] / nb) ** 2, 0);
     const top = Math.max(...p);
-    return { score, correct: p.some((x, i) => best[i] && x === top), detail: { onBest: Math.round(100 * p.reduce((a, x, i) => a + (best[i] ? x : 0), 0)) } };
+    return { score, correct: p.filter(x => x === top).length === 1 && p.some((x, i) => best[i] && x === top), detail: { onBest: Math.round(100 * p.reduce((a, x, i) => a + (best[i] ? x : 0), 0)) } };
   }
 
   // Delegation: one routing decision per task; score = share routed as the evidence suggests.
   function delegate(c, picks) {
     const tasks = c.delegate.tasks;
-    const right = tasks.filter((t, i) => Array.isArray(picks) && picks[i] === t.answer).length;
+    // t.also lists routes the study found equally good (no significant difference), which also count.
+    const right = tasks.filter((t, i) => Array.isArray(picks) && (picks[i] === t.answer || (t.also || []).includes(picks[i]))).length;
     return { score: right / tasks.length, correct: right === tasks.length, detail: { right, total: tasks.length } };
   }
 

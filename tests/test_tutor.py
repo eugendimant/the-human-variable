@@ -102,3 +102,11 @@ def test_lock_excludes_sources_cache_and_accepts_sets(tmp_path):
     assert r['answer'] and r['mode'] in ('curated', 'ai')
     r = T.ask('How big is this effect in practice?', 'ai01', 'x', exclude=ex)
     assert r['mode'] == 'locked'
+
+def test_curated_declines_off_topic():
+    """Review 5, minor 9: the offline tutor says when a question is outside the lab."""
+    from server import tutor as tu
+    r = tu.curated('What is the capital of France?', 'ai01')
+    assert 'outside what this lab covers' in r['answer']
+    r = tu.curated('How big is this effect in practice?', 'ai01')
+    assert 'In practice' in r['answer']
