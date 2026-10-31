@@ -95,7 +95,7 @@ n = C['dimant-notalie-causal']
 n['scene'] = ('In an incentivized experiment, people could misreport a private outcome for money and were asked what most others do. '
               'Researchers varied whether people learned of the chance to misreport before or after stating that belief.')
 n['question'] = 'What best explains the link between believing most people lie and misreporting?'
-n['options'][1] = 'People who planned to lie projected their own choice onto others'
+n['options'] = ['People who planned to lie projected their own choice onto others' if o == 'Seeing others lie taught both the belief and the habit' else o for o in n['options']]   # by text, never by index: the stored order is permuted later
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
 # review 22, m15: scope states what this study covers, with nothing unsourced
 b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
@@ -141,18 +141,21 @@ bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
 b = json.loads(bp.read_text())
 PAIRS = [(0, 2), (1, 3), (0, 3), (1, 2), (2, 3), (0, 1)]
 for fmt in ('choice', 'causal', 'multi'):
-    items = sorted((c for c in b['challenges'] if c['format'] == fmt and not c.get('retired')), key=lambda c: c['id'])
-    for k, c in enumerate(items):
-        n = len(c['options']); keyed = sorted(c['multiAnswers']) if fmt == 'multi' else [c['answer']]
-        want = list(PAIRS[k % len(PAIRS)]) if fmt == 'multi' and n == 4 else [k % n] if fmt != 'multi' else keyed
-        others = [i for i in range(n) if i not in keyed]
-        order = [None] * n
-        for pos, i in zip(want, keyed): order[pos] = i
-        it = iter(others)
-        order = [i if i is not None else next(it) for i in order]
-        c['options'] = [c['options'][i] for i in order]
-        if fmt == 'multi': c['multiAnswers'] = sorted(order.index(i) for i in keyed)
-        else: c['answer'] = order.index(keyed[0])
+    allf = sorted((c for c in b['challenges'] if c['format'] == fmt and not c.get('retired')), key=lambda c: c['id'])
+    groups = {}
+    for c in allf: groups.setdefault(len(c['options']), []).append(c)   # balance within each option count (audit 28, minor 7)
+    for items in groups.values():
+      for k, c in enumerate(items):
+          n = len(c['options']); keyed = sorted(c['multiAnswers']) if fmt == 'multi' else [c['answer']]
+          want = list(PAIRS[k % len(PAIRS)]) if fmt == 'multi' and n == 4 else [k % n] if fmt != 'multi' else keyed
+          others = [i for i in range(n) if i not in keyed]
+          order = [None] * n
+          for pos, i in zip(want, keyed): order[pos] = i
+          it = iter(others)
+          order = [i if i is not None else next(it) for i in order]
+          c['options'] = [c['options'][i] for i in order]
+          if fmt == 'multi': c['multiAnswers'] = sorted(order.index(i) for i in keyed)
+          else: c['answer'] = order.index(keyed[0])
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
 # review 23: banned stock phrasing, a baseline splice, an overclaimed null, contest titles that cue the answer, hate23 game difference
 b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
@@ -182,4 +185,12 @@ bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
 b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
 C['axb05']['chart']['labels'] = ['Current algorithm', 'If the spending gap were removed (simulated)']
 C['axb05']['chart']['note'] = 'Share of Black patients flagged for extra help.'
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# audit 28: trailing zeros as printed; social15 highlights the bar that proves its title; social16's half-story chart removed
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['manylabs-anchoring']['chart']['decimals'] = 2
+C['opposing-views-bot']['chart']['decimals'] = 2
+C['ai07']['chart']['decimals'] = 1
+C['social15']['chart']['highlight'] = 2
+C['social16'].pop('chart', None)
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')

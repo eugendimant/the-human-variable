@@ -26,7 +26,7 @@ item = {
     'study': {'design': 'Multi-site replication', 'n': '36 samples, 6,344 participants'},
     'theme': 'evidence',
     'chart': {'labels': ['Original study, overall', 'Distance to New York', 'Population of Chicago', 'Height of Mount Everest', 'Babies born per day'],
-              'values': [0.93, 1.27, 2.05, 2.45, 2.60], 'unit': '', 'highlight': 4,
+              'values': [0.93, 1.27, 2.05, 2.45, 2.60], 'unit': '', 'highlight': 4, 'decimals': 2,
               'note': 'Anchoring effect size, Cohen’s d (unweighted replication estimate per question).'},
     'follow': [
         {'q': 'Which effects did not replicate?', 'a': 'Flag priming on conservatism and currency priming on system justification did not replicate; imagined contact reducing prejudice showed weak support.'},

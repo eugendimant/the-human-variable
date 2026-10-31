@@ -16,6 +16,12 @@ Every past Major is restated as an invariant with the test that enforces it. A c
 | I8 | Claim wording and length do not predict truth; every path mixes true and false forecasts; keyed options carry no positional cue in stored order | wording, length and balance gates; the content script's position balancing | reviews 5, 22, 23 |
 | I9 | The offline tutor answers from the decision on screen, never switches study on word overlap, and server and page agree | tests/test_tutor.py, page parity in test_browser.py | reviews 13 to 23 |
 | I10 | Reviewer phrasings that once failed keep passing | REVIEW20 to REVIEW23 lists in tests/test_tutor.py | reviews 20 to 23 |
+| I11 | Options are unique; a reorder never changes which text is keyed or which options exist; content scripts edit options by text, never by index | test_options_unique_and_keyed_texts_pinned (tests/keyed_options.json) | regression audit 28, B1 |
+| I12 | A chart with negative values draws a zero line and losses run left; numbers use a true minus sign; printed decimals are kept | design lint R29 and R13 on every decision; `decimals` in charts | regression audit 28, M1 |
+
+## History of the protocol
+
+- Audit 28 (the first run): found one Blocking (a duplicated option from an index-based script edit re-run after the stored order was balanced) and one Major (a signed chart drawn unsigned) before any external review; both fixed, both now invariants I11 and I12. The historical content scripts in tools/ are a record of what was done; the bank is the source of truth and the scripts are not re-run in order.
 
 ## Settled decisions (not reopened without the owner)
 

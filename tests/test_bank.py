@@ -452,3 +452,17 @@ def test_css_overrides_do_not_grow():
     The count of selectors defined in more than one top-level rule may only go down (ratchet)."""
     dup = _css_duplicate_selectors(ROOT / 'src/app.css')
     assert len(dup) <= 40, sorted(dup)
+
+
+def test_options_unique_and_keyed_texts_pinned():
+    """Invariant I11 (audit 28, B1): options are unique, and a reorder never changes which text is keyed or which options exist.
+    tests/keyed_options.json pins both; a deliberate content change updates the pin in the same commit."""
+    pin = json.loads((ROOT / 'tests/keyed_options.json').read_text()); bad = []
+    for c in BANK['challenges']:
+        if c['format'] not in ('choice', 'causal', 'multi'): continue
+        if len(set(c['options'])) != len(c['options']): bad.append((c['id'], 'duplicate option'))
+        keyed = sorted(c['options'][i] for i in (c['multiAnswers'] if c['format'] == 'multi' else [c['answer']]))
+        p = pin.get(c['id'])
+        if p is None: bad.append((c['id'], 'not pinned'))
+        elif p['keyed'] != keyed or p['options'] != sorted(c['options']): bad.append((c['id'], 'keyed text or option set changed'))
+    assert not bad, bad

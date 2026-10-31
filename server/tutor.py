@@ -154,7 +154,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 return out(f"{c['explain']}" + (f" {fd[0]['a']}" if fd else '') + f" {c['implication']}", c)
             if name == 'why':   # a reason: the follow-up that gives one, else the finding itself
                 whys = [f for f in fol if f['q'].lower().startswith('why')]
-                fw = [f for f in whys if rare & set(tokens(f['q'] + ' ' + f['a']))] or (whys if len(whys) == 1 and re.search(r"\b(didn.?t|did not|fail|work)", ql) else [])
+                fw = [f for f in whys if rare & set(tokens(f['q'] + ' ' + f['a']))] or (whys if len(whys) == 1 and re.search(r"\b(didn.?t|did not|fail)", ql) and re.search(r"\b(not|no|never|fail\w*|n't)\b", whys[0]['a']) else [])
                 fw = fw or [f for f in fol if re.search(r'\b(because|read (this|it)? ?as|reason|motive|concern|suggest)', f['a'], re.I) and (rare & set(tokens(f['a'])))]
                 if fw: return out(fw[0]['a'], c)
                 continue

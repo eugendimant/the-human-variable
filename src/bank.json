@@ -2503,7 +2503,8 @@
     ],
     "unit": "%",
     "highlight": 2,
-    "note": "Stories by writers with access to up to five AI ideas, against writers without; similarity as a share of its range."
+    "note": "Stories by writers with access to up to five AI ideas, against writers without; similarity as a share of its range.",
+    "decimals": 1
    }
   },
   {
@@ -2649,10 +2650,10 @@
    "scene": "In online lab and field studies, people decided whether to rely on an algorithm for tasks that seemed objective and measurable, or subjective and a matter of personal taste.",
    "question": "For which task were people more reluctant to rely on an algorithm?",
    "options": [
-    "Recommending a product for its practical use",
-    "Judging a personal aesthetic preference"
+    "Judging a personal aesthetic preference",
+    "Recommending a product for its practical use"
    ],
-   "answer": 1,
+   "answer": 0,
    "answerTitle": "Subjectivity changes acceptance",
    "explain": "Castelo, Bos and Lehmann ran four online lab studies with over 1,400 participants and two field studies with over 56,000. People trusted and used algorithms less for tasks that seem subjective; making a task seem more objective raised reliance.",
    "implication": "For taste-based recommendations, explain the measurable inputs the algorithm uses, which makes the task seem more objective.",
@@ -2699,11 +2700,11 @@
    "scene": "Consumers choose between medical care, such as diagnoses and recommendations, from an AI provider or from a human provider.",
    "question": "What mainly drove consumers’ resistance?",
    "options": [
+    "It cannot account for each patient’s uniqueness",
     "It feels less accountable when it errs",
-    "Its handling of health data feels unsafe",
-    "It cannot account for each patient’s uniqueness"
+    "Its handling of health data feels unsafe"
    ],
-   "answer": 2,
+   "answer": 0,
    "answerTitle": "People fear AI ignores what makes them unique",
    "explain": "Longoni, Bonezzi and Morewedge traced resistance to uniqueness neglect: consumers doubt an AI provider can account for their unique characteristics and circumstances. Resistance was stronger among people who saw themselves as more unique and disappeared when AI care was framed as personalized.",
    "implication": "Present AI as supporting a clinician's or advisor's decision, and say how it adapts to each person's case.",
@@ -2815,11 +2816,11 @@
    "scene": "After automatic enrollment, a large share of new hires kept both the default contribution rate and the default fund, a combination few earlier hires had chosen.",
    "question": "Why did so many keep the default?",
    "options": [
-    "The employer match required the default rate",
     "Inertia, and the default read as advice",
+    "The employer match required the default rate",
     "Few employees knew they could change it"
    ],
-   "answer": 1,
+   "answer": 0,
    "answerTitle": "Defaults communicate advice",
    "explain": "Madrian and Shea found that many employees hired under automatic enrollment kept both the default contribution rate and the default fund, a pairing few earlier hires chose. They trace this to inertia and to employees reading the default as investment advice.",
    "implication": "Set default contribution rates at the level you would recommend, since most enrollees keep whatever rate you choose.",
@@ -2931,9 +2932,9 @@
    "scene": "A household already uses less electricity than its neighbors. It receives feedback showing the higher neighborhood average.",
    "question": "Which two results did the study find?",
    "options": [
+    "Some already-efficient households raised usage",
     "Above-average households raised their electricity use",
     "Descriptive feedback alone kept low users steady",
-    "Some already-efficient households raised usage",
     "A smiley face kept efficient homes steady"
    ],
    "answerTitle": "A norm message can backfire",
@@ -2967,7 +2968,7 @@
    "format": "multi",
    "weight": 1,
    "multiAnswers": [
-    2,
+    0,
     3
    ],
    "theme": "choice",
@@ -3004,10 +3005,10 @@
    "question": "Which kind of fix do people tend to miss?",
    "options": [
     "Adding a review step",
-    "Automating an existing step",
-    "Removing an existing step"
+    "Removing an existing step",
+    "Automating an existing step"
    ],
-   "answer": 2,
+   "answer": 1,
    "answerTitle": "Subtraction is often missed",
    "explain": "In Adams, Converse, Hales and Klotz's experiment 4, only 21% of uncued participants listed any subtractive idea for improving a mini-golf hole. Reminded that they could add or subtract, 48% did.",
    "implication": "Make “What can we remove?” mandatory in process reviews.",
@@ -3178,9 +3179,9 @@
    "scene": "Two teams have the same average cooperation. In one, behavior is tightly clustered around the average; in the other, it is widely spread out.",
    "question": "Which two results did the experiments find?",
    "options": [
-    "People ignored the norm and played their own strategy",
     "Loose norms generated more behavioral variation",
     "The spread of behavior shaped choices",
+    "People ignored the norm and played their own strategy",
     "Tight norms produced the most extreme choices"
    ],
    "answerTitle": "The spread of others’ behavior changed choices",
@@ -3214,8 +3215,8 @@
    "format": "multi",
    "weight": 1,
    "multiAnswers": [
-    1,
-    2
+    0,
+    1
    ],
    "theme": "norms",
    "study": {
@@ -3247,10 +3248,10 @@
    "question": "What did students report?",
    "options": [
     "Peers were as comfortable as they were",
-    "Peers were less comfortable with drinking than they were",
-    "Peers were more comfortable than they were"
+    "Peers were more comfortable than they were",
+    "Peers were less comfortable with drinking than they were"
    ],
-   "answer": 2,
+   "answer": 1,
    "answerTitle": "Private views and public beliefs diverge",
    "explain": "In all four of Prentice and Miller's studies, students rated their peers as more comfortable with campus drinking than they were themselves. Over a semester, men shifted their own attitudes toward that mistaken norm; women did not.",
    "implication": "Elicit private views before public discussion.",
@@ -3297,11 +3298,11 @@
    "scene": "Members of a political party agree on its headline position. Researchers asked members to draw how views are spread within their party.",
    "question": "What did drawing each party’s norm reveal?",
    "options": [
-    "Several coexisting views within each party",
     "Near-uniform views held by members of each party",
-    "Two opposed camps within each party"
+    "Two opposed camps within each party",
+    "Several coexisting views within each party"
    ],
-   "answer": 0,
+   "answer": 2,
    "answerTitle": "Each party holds several distinct views",
    "explain": "Among 996 US respondents, Panizza, Dimant, Kimbrough and Vostroknutov recovered several views within each party. Agreement ranged from 95% of Democrats including the same view on same-sex rights in their drawings to only 50% of Republicans on gun policy.",
    "implication": "Before engaging a stakeholder group, map the distinct views inside it and estimate each view's share.",
@@ -3562,11 +3563,11 @@
    "permuted": true,
    "options": [
     "Favorable to women, precisely estimated",
-    "Favorable to women, with imprecise estimates",
     "Mixed by round, precisely estimated",
+    "Favorable to women, with imprecise estimates",
     "Unfavorable to women, mostly in early rounds"
    ],
-   "answer": 1
+   "answer": 2
   },
   {
    "id": "social14",
@@ -3577,11 +3578,11 @@
    "scene": "White and Black participants were asked how interested they were in contact with the other group, and why each side might hold back.",
    "question": "How did each group explain the hesitation?",
    "options": [
+    "Own side fears rejection; other lacks interest",
     "Each side said it feared open conflict",
-    "Both sides said they mainly feared being rejected",
-    "Own side fears rejection; other lacks interest"
+    "Both sides said they mainly feared being rejected"
    ],
-   "answer": 2,
+   "answer": 0,
    "answerTitle": "The misreading can be mutual",
    "explain": "Across seven studies, Shelton and Richeson found that White and Black participants wanted more contact with the other group but believed it did not. Each explained its own hesitation by fear of racial rejection and the other side's by lack of interest.",
    "implication": "Have managers make the first cross-group introduction, so neither side has to risk reaching out first.",
@@ -3682,11 +3683,11 @@
    "scene": "Across 15 experiments, Trump supporters and opponents rated how close they felt to each side, then chose whether to give money to, or take money from, members of each side.",
    "question": "Where did in-group love and out-group hate show up?",
    "options": [
-    "Love showed in feelings, hate in behavior",
     "Hate showed in feelings, love in behavior",
+    "Love showed in feelings, hate in behavior",
     "Love and hate showed mainly in feelings"
    ],
-   "answer": 0,
+   "answer": 1,
    "answerTitle": "Closer to allies, but no more generous to them",
    "explain": "In Dimant’s experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a group-mate who shared only a painting preference (about 39%), yet gave allies no more money (14.97% versus 13.54%). From opponents, they took 22.9%.",
    "implication": "When teams distrust each other, measure how they actually treat each other, not only how they feel about each other.",
@@ -3739,7 +3740,7 @@
      22.9
     ],
     "unit": "%",
-    "highlight": 0,
+    "highlight": 2,
     "note": "Share of the endowment given or taken."
    }
   },
@@ -3752,10 +3753,10 @@
    "scene": "A leader offers prosocial defaults and normative messages to participants divided by political identity.",
    "question": "Which two results did the nudges produce?",
    "options": [
-    "The nudges closed the partisan gap on most measures",
-    "The norm nudge worked; the default did not",
     "The interventions improved prosociality",
-    "Measured polarization gaps persisted"
+    "The nudges closed the partisan gap on most measures",
+    "Measured polarization gaps persisted",
+    "The norm nudge worked; the default did not"
    ],
    "answerTitle": "General improvement, persistent gap",
    "explain": "With a default nudge, Dimant shows that taking from political opponents fell from about 20% of the endowment to essentially 0%, and giving to allies rose from about 10-15% to 25-35%. The ally-opponent difference stayed highly significant (p < 0.001).",
@@ -3788,28 +3789,15 @@
    "format": "multi",
    "weight": 1,
    "multiAnswers": [
-    2,
-    3
+    0,
+    2
    ],
    "theme": "norms",
    "study": {
     "design": "Five preregistered studies, 15 behavioral experiments",
     "n": "Over 8,600 participants"
    },
-   "permuted": true,
-   "chart": {
-    "labels": [
-     "Taking from opponents, no default",
-     "Taking from opponents, default nudge"
-    ],
-    "values": [
-     20,
-     0
-    ],
-    "unit": "%",
-    "highlight": 1,
-    "note": "Share of the endowment taken from political opponents (about 20% without the nudge)."
-   }
+   "permuted": true
   },
   {
    "id": "social20",
@@ -3820,12 +3808,12 @@
    "scene": "Two departments report the same average rating of how acceptable a practice is. You suspect their norms still differ.",
    "question": "How do you check whether their norms differ?",
    "options": [
-    "Ask each person how views are spread across colleagues",
     "Ask each team’s manager to describe the norm",
     "Compare how often each team breaks the rule",
-    "Survey a larger sample and compare averages"
+    "Survey a larger sample and compare averages",
+    "Ask each person how views are spread across colleagues"
    ],
-   "answer": 0,
+   "answer": 3,
    "answerTitle": "Keep the whole distribution",
    "explain": "Dimant's method elicits, with incentives, each person's belief about the full distribution of views instead of the mean or most common view, so a unified team and one split into opposing camps can be told apart.",
    "implication": "In culture surveys, ask each person how views are spread across colleagues, not only what the typical view is.",
@@ -3991,8 +3979,8 @@
    "scene": "In an incentivized task, people forecast students' math percentiles. They may use an imperfect model that outperforms human forecasts, but each group gets different rules for adjusting it.",
    "question": "Which group chose to use the model least often?",
    "options": [
-    "Could not change the model at all",
     "Could adjust each forecast by up to 2",
+    "Could not change the model at all",
     "Could adjust each forecast by up to 10"
    ],
    "answerTitle": "Any control beats none; size barely matters",
@@ -4038,7 +4026,7 @@
     "highlight": 1,
     "note": "Share who chose to use the model, Study 2."
    },
-   "answer": 0
+   "answer": 1
   },
   {
    "id": "axb03",
@@ -4417,10 +4405,10 @@
    "question": "Which design best cut agreement with wrong AI advice?",
    "options": [
     "Showing the AI's confidence with each suggestion",
-    "Making users answer before seeing the AI",
-    "Plain explanations with each suggestion"
+    "Plain explanations with each suggestion",
+    "Making users answer before seeing the AI"
    ],
-   "answer": 1,
+   "answer": 2,
    "answerTitle": "Forcing functions worked, but users disliked them",
    "explain": "Among 199 participants, cognitive forcing designs significantly reduced overreliance compared with simple explainable-AI designs. The most effective designs received the least favorable ratings.",
    "implication": "On high-stakes calls, have reviewers record their own judgment before AI output appears, and plan for user pushback.",
@@ -4637,11 +4625,11 @@
    "question": "Which agents gained the most from the assistant?",
    "options": [
     "Agents with middling tenure",
-    "Top-rated, most experienced agents",
     "Newest, least experienced agents",
+    "Top-rated, most experienced agents",
     "Agents handling the most common problems"
    ],
-   "answer": 2,
+   "answer": 1,
    "answerTitle": "Start with less experienced agents",
    "explain": "In a staggered rollout to customer-support agents, issues resolved per hour rose 15% on average, and less experienced and lower-skilled agents improved both speed and quality.",
    "implication": "Target early licenses at newer and lower-performing staff, and report gains by tenure tier.",
@@ -4838,11 +4826,11 @@
    "question": "How did the matched estimates compare with the randomized tests across 15 campaigns?",
    "options": [
     "They matched the randomized lift",
-    "They often missed the randomized lift",
     "They understated the lift by a steady margin",
-    "They matched once enough data were added"
+    "They matched once enough data were added",
+    "They often missed the randomized lift"
    ],
-   "answer": 1,
+   "answer": 3,
    "answerTitle": "Matching often missed the experiment’s answer",
    "explain": "Across 15 Facebook ad experiments with 1.6 billion impressions, observational methods often failed to reproduce the randomized estimates, even after conditioning on extensive demographic and behavioral data.",
    "implication": "Keep a randomized holdout for major campaigns before trusting matched or platform-reported lift numbers.",
@@ -5077,12 +5065,12 @@
    "theme": "incentives",
    "permuted": true,
    "options": [
+    "It disappeared",
     "It stayed about as large",
     "It shrank by about half",
-    "It disappeared",
     "It reversed: buyers valued more"
    ],
-   "answer": 2
+   "answer": 0
   },
   {
    "id": "bz07",
@@ -5507,9 +5495,9 @@
    "scene": "An online survey asked 161 people whether they would be organ donors. The question was framed as opt-in, opt-out, or a neutral form requiring a choice with no default.",
    "question": "Which form produced the fewest donors?",
    "options": [
-    "Opt-in (default: not a donor)",
     "Neutral (must choose, no default)",
-    "Opt-out (default: donor)"
+    "Opt-out (default: donor)",
+    "Opt-in (default: not a donor)"
    ],
    "answerTitle": "Opt-out and active choice both beat opt-in",
    "explain": "Consent was about twice as high under opt-out as under opt-in, and opt-out did not differ significantly from the neutral form (79%).",
@@ -5537,7 +5525,7 @@
     "n": "161 online respondents"
    },
    "theme": "choice",
-   "answer": 0
+   "answer": 2
   },
   {
    "id": "bz16",
@@ -5931,7 +5919,8 @@
     ],
     "unit": "",
     "highlight": 1,
-    "note": "Shift toward conservatism on a seven-point scale."
+    "note": "Shift toward conservatism on a seven-point scale.",
+    "decimals": 2
    }
   },
   {
@@ -5943,14 +5932,14 @@
    "scene": "Before the 2018 US midterm election, researchers randomly paid some Facebook users to deactivate their accounts for four weeks and compared them with users who kept using it.",
    "question": "Which two effects did deactivation produce?",
    "options": [
-    "Lower political polarization",
     "Better factual news knowledge",
-    "Higher subjective well-being",
-    "Heavier Facebook use once reactivated"
+    "Heavier Facebook use once reactivated",
+    "Lower political polarization",
+    "Higher subjective well-being"
    ],
    "multiAnswers": [
-    0,
-    2
+    2,
+    3
    ],
    "answerTitle": "Less polarized and happier, but less informed",
    "explain": "Deactivation lowered the polarization index by 0.16 standard deviations and raised well-being by 0.09, but news knowledge fell by 0.19.",
@@ -6132,12 +6121,12 @@
    "scene": "Half of a group of married Saudi men were randomly shown the true share of their session peers who privately supported women working outside the home. Months later, researchers checked whether their wives had applied for outside jobs.",
    "question": "What happened to wives' job applications three to five months later?",
    "options": [
-    "Rose from about 6% to about 16%",
     "Fell, because of social backlash",
     "Fell slightly as husbands pushed back",
-    "Rose from about 6% to about 8%, within noise"
+    "Rose from about 6% to about 8%, within noise",
+    "Rose from about 6% to about 16%"
    ],
-   "answer": 0,
+   "answer": 3,
    "answerTitle": "Applications nearly tripled, 5.8% to 16.2%",
    "explain": "Wives of informed men applied for outside jobs at 16.2% versus 5.8%, and interviewed at 5.8% versus 1.1%.",
    "implication": "Share accurate peer-support data to move stalled behavior, then track actual outcomes for months alongside stated intentions.",
@@ -6379,12 +6368,12 @@
    "scene": "In a lab study, 82 students took a hard trivia quiz. Before scores came out, each estimated their own score and their rank among the others.",
    "question": "What pattern does the evidence predict on a hard task?",
    "options": [
-    "Overestimate own score, and think they beat peers",
     "Overestimate own score, think they trail peers",
+    "Overestimate own score, and think they beat peers",
     "Accurate on both",
     "Underestimate own score, think they beat peers"
    ],
-   "answer": 1,
+   "answer": 0,
    "answerTitle": "Overestimate their score, yet rank themselves low",
    "explain": "In 18 rounds of trivia quizzes with 82 students, people on difficult tasks overestimated their actual performance but believed they were worse than others; easy tasks reversed both.",
    "implication": "After hard tasks, do not read low self-rankings as humility; compare absolute self-estimates with actual scores before staffing decisions.",
@@ -6501,7 +6490,7 @@
    "question": "What best explains the link between believing most people lie and misreporting?",
    "options": [
     "People who planned to lie projected their own choice onto others",
-    "People who planned to lie projected their own choice onto others",
+    "A taste for risk drives both the belief and lying",
     "The belief reflects general cynicism, not the task",
     "Temptation distorts the belief to justify lying"
    ],
@@ -6643,14 +6632,14 @@
    "scene": "In an experiment, people saw what peers had chosen before making their own pro-social or anti-social choices. The design also varied how socially close those peers were.",
    "question": "Which two findings did the study report?",
    "options": [
+    "Pro-social individuals were the most easily swayed by their peers",
     "Anti-social behavior was more contagious than pro-social",
     "Closeness amplified bad behavior's spread more than good",
-    "Pro-social individuals were the most easily swayed by their peers",
     "Closeness made people copy good and bad choices equally"
    ],
    "multiAnswers": [
-    0,
-    1
+    1,
+    2
    ],
    "answerTitle": "Bad behavior spreads more, especially among close peers",
    "explain": "Dimant shows, with 185 lab participants, that seeing an anti-social peer prompted people to revise their choice 33.7% of the time, against 19.4% for a pro-social peer. Under high social proximity the gap widened to 88.2% versus 34.8%.",
@@ -7584,8 +7573,8 @@
    "scene": "697 participants judged whether tweets were accurate. Some were real tweets, others written by GPT-3, and each set mixed true and false claims.",
    "question": "Which two statements match what readers did?",
    "options": [
-    "True tweets by GPT-3 were judged correctly more often",
     "Readers took longer to judge GPT-3 tweets than human tweets",
+    "True tweets by GPT-3 were judged correctly more often",
     "Readers could tell which tweets GPT-3 had written",
     "False tweets by GPT-3 slipped past readers slightly more often"
    ],
@@ -7616,7 +7605,7 @@
    ],
    "theme": "persuasion",
    "multiAnswers": [
-    0,
+    1,
     3
    ],
    "chart": {
@@ -7965,10 +7954,10 @@
    "options": [
     "Labeling replies as AI raises trust and feeling heard",
     "Human replies feel more heard, whatever the label",
-    "AI replies feel colder, with or without a label",
-    "AI replies feel more heard; the label erodes it"
+    "AI replies feel more heard; the label erodes it",
+    "AI replies feel colder, with or without a label"
    ],
-   "answer": 3,
+   "answer": 2,
    "chart": {
     "labels": [
      "AI-written",
@@ -8342,7 +8331,8 @@
     ],
     "unit": "",
     "highlight": 4,
-    "note": "Anchoring effect size, Cohen’s d (unweighted replication estimate per question)."
+    "note": "Anchoring effect size, Cohen’s d (unweighted replication estimate per question).",
+    "decimals": 2
    },
    "follow": [
     {
@@ -9151,18 +9141,6 @@
     "\\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\\b"
    ],
    [
-    "signif",
-    "\\b(significan\\w*|statistically|by chance|just noise|p[- ]?value)\\b"
-   ],
-   [
-    "task",
-    "\\b(what (was|is|were) (the|their) (\\w+ )?(task|game|setup|procedure|experiment)|what did (they|participants|people) (do|have to do))\\b"
-   ],
-   [
-    "meaning",
-    "\\b(what does (the )?(word |term )?[\\'\\\"]?(\\w+)[\\'\\\"]? mean|what is meant by|what do (they|you) mean by)\\b"
-   ],
-   [
     "contest",
     "\\b(who is right|who.?s right|who is correct|which (one|side|study|paper) is right|who wins|(do|did) they (disagree|contradict))\\b"
    ],
@@ -9205,6 +9183,18 @@
    [
     "subgroup",
     "\\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\\w*|good writers|junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b"
+   ],
+   [
+    "signif",
+    "\\b(significan\\w*|statistically|by chance|just noise|p[- ]?value)\\b"
+   ],
+   [
+    "task",
+    "\\b(what (was|were) (the|their) (\\w+ )?(task|game|procedure|experiment)|what did participants have to do)\\b"
+   ],
+   [
+    "meaning",
+    "\\b(what does (the )?(word |term )?[\\'\\\"]?(\\w+)[\\'\\\"]? mean|what is meant by|what do (they|you) mean by)\\b"
    ],
    [
     "why",

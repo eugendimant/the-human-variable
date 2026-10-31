@@ -1,0 +1,508 @@
+{
+ "ai07": {
+  "keyed": [
+   "AI-assisted stories were more similar to each other",
+   "AI-assisted stories were rated more creative"
+  ],
+  "options": [
+   "AI help made stories less enjoyable to read",
+   "AI-assisted stories were more similar to each other",
+   "AI-assisted stories were rated more creative",
+   "Gains were largest for the most creative writers"
+  ]
+ },
+ "ai09": {
+  "keyed": [
+   "Themselves, though the model beat them"
+  ],
+  "options": [
+   "Each about half of the time",
+   "The model, more often than before the error",
+   "The model, since it beat them",
+   "Themselves, though the model beat them"
+  ]
+ },
+ "ai11": {
+  "keyed": [
+   "Judging a personal aesthetic preference"
+  ],
+  "options": [
+   "Judging a personal aesthetic preference",
+   "Recommending a product for its practical use"
+  ]
+ },
+ "ai12": {
+  "keyed": [
+   "It cannot account for each patient’s uniqueness"
+  ],
+  "options": [
+   "It cannot account for each patient’s uniqueness",
+   "It feels less accountable when it errs",
+   "Its handling of health data feels unsafe"
+  ]
+ },
+ "biz02": {
+  "keyed": [
+   "Inertia, and the default read as advice"
+  ],
+  "options": [
+   "Few employees knew they could change it",
+   "Inertia, and the default read as advice",
+   "The employer match required the default rate"
+  ]
+ },
+ "biz05": {
+  "keyed": [
+   "A smiley face kept efficient homes steady",
+   "Some already-efficient households raised usage"
+  ],
+  "options": [
+   "A smiley face kept efficient homes steady",
+   "Above-average households raised their electricity use",
+   "Descriptive feedback alone kept low users steady",
+   "Some already-efficient households raised usage"
+  ]
+ },
+ "biz07": {
+  "keyed": [
+   "Removing an existing step"
+  ],
+  "options": [
+   "Adding a review step",
+   "Automating an existing step",
+   "Removing an existing step"
+  ]
+ },
+ "social01": {
+  "keyed": [
+   "Loose norms generated more behavioral variation",
+   "The spread of behavior shaped choices"
+  ],
+  "options": [
+   "Loose norms generated more behavioral variation",
+   "People ignored the norm and played their own strategy",
+   "The spread of behavior shaped choices",
+   "Tight norms produced the most extreme choices"
+  ]
+ },
+ "social04": {
+  "keyed": [
+   "Peers were more comfortable than they were"
+  ],
+  "options": [
+   "Peers were as comfortable as they were",
+   "Peers were less comfortable with drinking than they were",
+   "Peers were more comfortable than they were"
+  ]
+ },
+ "social07": {
+  "keyed": [
+   "Several coexisting views within each party"
+  ],
+  "options": [
+   "Near-uniform views held by members of each party",
+   "Several coexisting views within each party",
+   "Two opposed camps within each party"
+  ]
+ },
+ "social13": {
+  "keyed": [
+   "Favorable to women, with imprecise estimates"
+  ],
+  "options": [
+   "Favorable to women, precisely estimated",
+   "Favorable to women, with imprecise estimates",
+   "Mixed by round, precisely estimated",
+   "Unfavorable to women, mostly in early rounds"
+  ]
+ },
+ "social14": {
+  "keyed": [
+   "Own side fears rejection; other lacks interest"
+  ],
+  "options": [
+   "Both sides said they mainly feared being rejected",
+   "Each side said it feared open conflict",
+   "Own side fears rejection; other lacks interest"
+  ]
+ },
+ "judg02": {
+  "keyed": [
+   "Loss aversion can reverse in experiments",
+   "The distributions of outcomes can matter"
+  ],
+  "options": [
+   "Loss aversion can reverse in experiments",
+   "Loss aversion held steady when gamble ranges changed",
+   "The distributions of outcomes can matter"
+  ]
+ },
+ "social15": {
+  "keyed": [
+   "Love showed in feelings, hate in behavior"
+  ],
+  "options": [
+   "Hate showed in feelings, love in behavior",
+   "Love and hate showed mainly in feelings",
+   "Love showed in feelings, hate in behavior"
+  ]
+ },
+ "social16": {
+  "keyed": [
+   "Measured polarization gaps persisted",
+   "The interventions improved prosociality"
+  ],
+  "options": [
+   "Measured polarization gaps persisted",
+   "The interventions improved prosociality",
+   "The norm nudge worked; the default did not",
+   "The nudges closed the partisan gap on most measures"
+  ]
+ },
+ "social20": {
+  "keyed": [
+   "Ask each person how views are spread across colleagues"
+  ],
+  "options": [
+   "Ask each person how views are spread across colleagues",
+   "Ask each team’s manager to describe the norm",
+   "Compare how often each team breaks the rule",
+   "Survey a larger sample and compare averages"
+  ]
+ },
+ "axb02": {
+  "keyed": [
+   "Could not change the model at all"
+  ],
+  "options": [
+   "Could adjust each forecast by up to 10",
+   "Could adjust each forecast by up to 2",
+   "Could not change the model at all"
+  ]
+ },
+ "axb05": {
+  "keyed": [
+   "Less is spent on Black patients at equal need"
+  ],
+  "options": [
+   "Less is spent on Black patients at equal need",
+   "Race was an input to the model",
+   "The model had too little training data",
+   "The model used zip code as a proxy for race"
+  ]
+ },
+ "axb10": {
+  "keyed": [
+   "Making users answer before seeing the AI"
+  ],
+  "options": [
+   "Making users answer before seeing the AI",
+   "Plain explanations with each suggestion",
+   "Showing the AI's confidence with each suggestion"
+  ]
+ },
+ "axb11": {
+  "keyed": [
+   "People preferred relying on human recommenders",
+   "The algorithm beat strangers, friends and family"
+  ],
+  "options": [
+   "People found the algorithm easier to understand",
+   "People preferred relying on human recommenders",
+   "Spouses and family beat the algorithm",
+   "The algorithm beat strangers but not friends",
+   "The algorithm beat strangers, friends and family"
+  ]
+ },
+ "axb12": {
+  "keyed": [
+   "Showing ads to young women costs more"
+  ],
+  "options": [
+   "Showing ads to young women costs more",
+   "The ad copy appealed more to men",
+   "The algorithm learned women click less",
+   "Women scrolled past the ads more often"
+  ]
+ },
+ "rollout1": {
+  "keyed": [
+   "Newest, least experienced agents"
+  ],
+  "options": [
+   "Agents handling the most common problems",
+   "Agents with middling tenure",
+   "Newest, least experienced agents",
+   "Top-rated, most experienced agents"
+  ]
+ },
+ "bz01": {
+  "keyed": [
+   "They often missed the randomized lift"
+  ],
+  "options": [
+   "They matched once enough data were added",
+   "They matched the randomized lift",
+   "They often missed the randomized lift",
+   "They understated the lift by a steady margin"
+  ]
+ },
+ "bz06": {
+  "keyed": [
+   "It disappeared"
+  ],
+  "options": [
+   "It disappeared",
+   "It reversed: buyers valued more",
+   "It shrank by about half",
+   "It stayed about as large"
+  ]
+ },
+ "bz12": {
+  "keyed": [
+   "Below-median earners: less satisfied, job hunting"
+  ],
+  "options": [
+   "Above-median earners: happier, job hunting less",
+   "Above-median earners: more satisfied",
+   "Below-median earners: less satisfied, job hunting",
+   "Below-median earners: more motivated to catch up"
+  ]
+ },
+ "bz14": {
+  "keyed": [
+   "Comparing candidates side by side"
+  ],
+  "options": [
+   "Comparing candidates side by side",
+   "Seeing candidates one at a time"
+  ]
+ },
+ "bz15": {
+  "keyed": [
+   "Opt-in (default: not a donor)"
+  ],
+  "options": [
+   "Neutral (must choose, no default)",
+   "Opt-in (default: not a donor)",
+   "Opt-out (default: donor)"
+  ]
+ },
+ "tax-letter-norms": {
+  "keyed": [
+   "Public-services messages raised payment rates",
+   "Social norm messages raised payment rates"
+  ],
+  "options": [
+   "Injunctive norms beat descriptive norms in the letters",
+   "Loss framing beat gain framing",
+   "Norm messages backfired overall",
+   "Public-services messages raised payment rates",
+   "Social norm messages raised payment rates"
+  ]
+ },
+ "facebook-deactivation": {
+  "keyed": [
+   "Higher subjective well-being",
+   "Lower political polarization"
+  ],
+  "options": [
+   "Better factual news knowledge",
+   "Heavier Facebook use once reactivated",
+   "Higher subjective well-being",
+   "Lower political polarization"
+  ]
+ },
+ "false-news-spread": {
+  "keyed": [
+   "People shared false stories more than true ones"
+  ],
+  "options": [
+   "Bots pushed false stories harder than true ones",
+   "People shared false stories more than true ones",
+   "Platform ranking pushed false stories up",
+   "The gap appeared for political stories, not others"
+  ]
+ },
+ "misperceived-norms-action": {
+  "keyed": [
+   "Rose from about 6% to about 16%"
+  ],
+  "options": [
+   "Fell slightly as husbands pushed back",
+   "Fell, because of social backlash",
+   "Rose from about 6% to about 16%",
+   "Rose from about 6% to about 8%, within noise"
+  ]
+ },
+ "meta-perception-causal": {
+  "keyed": [
+   "Randomly correcting beliefs cut obstructionism ratings"
+  ],
+  "options": [
+   "Inaccuracy tracked heavy political news consumption",
+   "Randomly correcting beliefs cut obstructionism ratings",
+   "The most inaccurate partisans were also the most hostile",
+   "The same bias appeared in a national sample"
+  ]
+ },
+ "forecast-training": {
+  "keyed": [
+   "Probability training"
+  ],
+  "options": [
+   "Neither beat no training",
+   "Probability training",
+   "Scenario training"
+  ]
+ },
+ "overconfidence-hard-task": {
+  "keyed": [
+   "Overestimate own score, think they trail peers"
+  ],
+  "options": [
+   "Accurate on both",
+   "Overestimate own score, and think they beat peers",
+   "Overestimate own score, think they trail peers",
+   "Underestimate own score, think they beat peers"
+  ]
+ },
+ "dimant-notalie-causal": {
+  "keyed": [
+   "Temptation distorts the belief to justify lying"
+  ],
+  "options": [
+   "A taste for risk drives both the belief and lying",
+   "People who planned to lie projected their own choice onto others",
+   "Temptation distorts the belief to justify lying",
+   "The belief reflects general cynicism, not the task"
+  ]
+ },
+ "dimant-contagion-multi": {
+  "keyed": [
+   "Anti-social behavior was more contagious than pro-social",
+   "Closeness amplified bad behavior's spread more than good"
+  ],
+  "options": [
+   "Anti-social behavior was more contagious than pro-social",
+   "Closeness amplified bad behavior's spread more than good",
+   "Closeness made people copy good and bad choices equally",
+   "Pro-social individuals were the most easily swayed by their peers"
+  ]
+ },
+ "dimant-deviant-choice": {
+  "keyed": [
+   "Penalty plus \"most think it's right,\" cheap compliance"
+  ],
+  "options": [
+   "Norm message alone",
+   "Penalty plus \"most others comply,\" with costly compliance",
+   "Penalty plus \"most think it's right,\" cheap compliance",
+   "Weak penalty alone"
+  ]
+ },
+ "dimant-conspiracy-choice": {
+  "keyed": [
+   "Expected and received social engagement"
+  ],
+  "options": [
+   "A hunch that the posts might be true",
+   "Expected and received social engagement",
+   "Habit: they shared whatever appeared first",
+   "Novelty: conspiracy posts felt more original"
+  ]
+ },
+ "dimant-hate-choice": {
+  "keyed": [
+   "Expecting the other side not to cooperate"
+  ],
+  "options": [
+   "Expecting the other side not to cooperate",
+   "Genuine unwillingness to cooperate with opponents",
+   "Stronger love for one's own side",
+   "Too little information about the other side"
+  ]
+ },
+ "dimant-polarizednorms-choice": {
+  "keyed": [
+   "Far more spread out, toward both ends"
+  ],
+  "options": [
+   "Close to the average of what they saw",
+   "Clustered at the safe middle option",
+   "Far more spread out, toward both ends",
+   "Much as they did after a tight norm"
+  ]
+ },
+ "axe11": {
+  "keyed": [
+   "False tweets by GPT-3 slipped past readers slightly more often",
+   "True tweets by GPT-3 were judged correctly more often"
+  ],
+  "options": [
+   "False tweets by GPT-3 slipped past readers slightly more often",
+   "Readers could tell which tweets GPT-3 had written",
+   "Readers took longer to judge GPT-3 tweets than human tweets",
+   "True tweets by GPT-3 were judged correctly more often"
+  ]
+ },
+ "axe12": {
+  "keyed": [
+   "Raters saw AI users as lazier"
+  ],
+  "options": [
+   "AI users’ work was simply weaker",
+   "Raters could tell which work used AI",
+   "Raters saw AI users as lazier",
+   "The penalty came mainly from managers who use AI"
+  ]
+ },
+ "axe13": {
+  "keyed": [
+   "Raised spending intent for the trip, not sneakers"
+  ],
+  "options": [
+   "Lowered spending intent for both products",
+   "Raised spending intent for both products",
+   "Raised spending intent for the sneakers, not the trip",
+   "Raised spending intent for the trip, not sneakers"
+  ]
+ },
+ "axe14": {
+  "keyed": [
+   "Disclosing the bot up front cut purchases sharply",
+   "Undisclosed bots sold as well as proficient agents"
+  ],
+  "options": [
+   "Disclosed bots seemed more knowledgeable to customers",
+   "Disclosing the bot up front cut purchases sharply",
+   "Disclosure made calls longer",
+   "Disclosure timing made no difference",
+   "Undisclosed bots sold as well as proficient agents"
+  ]
+ },
+ "genai1": {
+  "keyed": [
+   "Favorites per view rose",
+   "Output volume rose"
+  ],
+  "options": [
+   "Average content novelty rose",
+   "Favorites per view rose",
+   "Output volume rose",
+   "Prior originality decided who gained",
+   "Visual novelty increased"
+  ]
+ },
+ "genai3": {
+  "keyed": [
+   "AI replies feel more heard; the label erodes it"
+  ],
+  "options": [
+   "AI replies feel colder, with or without a label",
+   "AI replies feel more heard; the label erodes it",
+   "Human replies feel more heard, whatever the label",
+   "Labeling replies as AI raises trust and feeling heard"
+  ]
+ }
+}

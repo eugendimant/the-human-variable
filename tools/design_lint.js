@@ -84,6 +84,8 @@
   for (const e of document.querySelectorAll('.gap-legend')) if (vis(e)) push('R26', name(e), 'legend');
   for (const e of document.querySelectorAll('.plate-h')) if (vis(e) && /^what the study (measured|found)$/i.test(vt(e).trim())) push('R27', name(e), 'generic chart title');
   for (const f of document.querySelectorAll('figure.gap')) if (vis(f) && f.querySelector('.hbars') && !/Source: /.test(vt(f))) push('R28', name(f), 'chart without its source');
+  for (const h of document.querySelectorAll('.hbars')) if (vis(h) && /(^|\s)[−-]\d/.test(h.innerText) && !h.querySelector('.zero')) push('R29', name(h), 'signed values without a zero line');
+  for (const h of document.querySelectorAll('.hbars')) if (vis(h) && /(^|\s)-\d/.test(h.innerText)) push('R13', name(h), 'hyphen used as a minus sign');
   for (const h of document.querySelectorAll('.hbars:not(.alloc-cmp)')) if (vis(h) && h.querySelectorAll('i.ev').length > 1) push('R29', name(h), h.querySelectorAll('i.ev').length + ' highlighted bars');
   return out;
 }
