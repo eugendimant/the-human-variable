@@ -178,3 +178,22 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 - **Cluster E merged.** 17 AI × Business items from 17 newly checked sources (7 read in full), including the 3-step case "Generative AI in your content team". genai2 was converted from an allocation to an estimate so that small gaps are not scored as evidence.
 
 **Count:** 2 Blocking + 15 Major found. Iterate.
+
+## Iteration 7 (2026-10-31)
+
+**Verified first:** iteration-6 fixes, by independent review 2 (fresh agent, snapshot copy) and by a blind fact-check of 32 randomly drawn decisions against their sources (26 correct, 6 correctable, 0 wrong; `docs/audit/factcheck_sample32_2026-10-31.json`).
+
+**Independent score:** 59/100 (review 2, `qa/reviews/review2.md`). 2 Blocking, 15 Major.
+
+**Fixes:**
+- **Class lock (B2).** While any class with participants was active in the last 3 hours, `/api/reveal`, `/api/library` and the tutor release only decisions that class has revealed. Instructors can close and reopen joining. Tests: `test_class_lock_holds_evidence_until_revealed`, `test_join_can_be_closed`. The Streamlit Play and tutor pages follow the same lock.
+- **Proper forecast score (M1).** Score = 1 − 2 × Brier, unclamped (−100 to 100), in JS and Python; parity test passes. Copy explains that a confident miss goes below zero.
+- **Confidence (M2).** The question now states what "right" means for each format (for example "within ±7 of the true value", "the exact order").
+- **Content (M3–M10).** `tools/content_review2_2026_10_31.py` and `tools/content_review2b_2026_10_31.py`: all six fact-check corrections and author lists; bz07 became an estimate of the overall quit-rate drop (33%) with subgroups as a chart; rollout3 offers only the routes the study compared; the Costello boundary states the expression of concern and the reanalysis; 30 titles neutralized; 31 options rewritten. Two unverified numbers (agent count, subgroup P values) were removed rather than kept.
+- **New gates.** Correct option longest in at most 35% of choice items (now well under), the two correct pick-two options are never the two longest, no absolute words in distractors, titles may not state the finding.
+- **Classroom (M11, M12).** Streamlit phones and instructor use the projector's option order (Python port of the JS shuffle, parity-tested against the console code). Console rank chart: longer bar = nearer the top, labelled with the average rank. Decision list hides while answers are live. CSV export includes readable answer text.
+- **Interaction (M13–M15).** Confidence row no longer overflows; lock hint shows on phones; tabs wrap; Enter on an option selects it and no longer locks; scroll padding keeps focus above the action bar. Lifetime stats count first tries only.
+
+**Gates:** build check, 178 tests passed (163 non-browser, 15 browser), audit doc regenerated.
+
+**Count:** 2 Blocking + 15 Major found and addressed. Next: independent review 3.
