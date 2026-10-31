@@ -51,7 +51,7 @@
 ### Engineering and tests
 
 - **Source split:** `src/` holds the CSS, JS, scoring, shell and content; `src/build.py` builds the page and checks freshness with `--check`.
-- **171 automated checks:**
+- **Automated checks (194 at the last run):**
   - Content gates, including banned phrases, word limits and follow-up repeats.
   - JS/Python scoring parity.
   - Classroom store.

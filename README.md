@@ -5,7 +5,7 @@ A decision lab on behavioral science, AI and business for MBA students, graduate
 Players commit to a prediction about a published experiment, state how sure they are, and then see the evidence placed on the same axis as their call. Each reveal shows what a manager does with the finding, where the evidence comes from, three follow-up questions, the source, and an optional tutor.
 
 - **Decisions:** <!--n:decisions-->116<!--/n-->, drawn from <!--n:sources-->107<!--/n--> peer-reviewed papers and scholarly books (<!--n:fulltext-->48<!--/n--> checked against the full text, the rest against the published abstract). Each source has a recorded check against its DOI record and its published text; see [`docs/SCIENTIFIC_AUDIT.md`](docs/SCIENTIFIC_AUDIT.md).
-- **Formats:** eight ways to commit: forecast (proper Brier-based score), estimate, rank, allocate a budget, delegate tasks to AI, find the cause (with a causal diagram), pick one, pick two.
+- **Formats:** eight ways to commit: forecast, estimate, rank, spread points over which option worked best (both scored with proper rules), delegate tasks to AI, find the cause (with a causal diagram), pick one, pick two.
 - **Structure:** multi-step cases, <!--n:paths-->8<!--/n--> curated paths, a playbook of <!--n:principles-->10<!--/n--> principles, a personal calibration record, and live classes with an instructor console.
 - **Research by Eugen Dimant:** <!--n:dimant_decisions-->18<!--/n--> decisions from <!--n:dimant_papers-->14<!--/n--> of his published papers. Working papers are excluded.
 
@@ -37,7 +37,7 @@ Content lives in `src/bank.json` (decisions, sources, themes, paths) with suppor
 | `src/classroom.js`, `src/classroom.css` | Instructor console |
 | `server/` | Standard-library HTTP server: classroom store (SQLite WAL), tutor (retrieval + Gemini + budgets), Python mirror of the scorer |
 | `thv_streamlit/`, `streamlit_app.py` | Streamlit pages: embedded game, native live class, native tutor |
-| `tests/` | 150+ automated checks, including Playwright browser tests |
+| `tests/` | Content gates, scoring parity, classroom, tutor, HTTP load and Playwright browser tests with axe (count: `python -m pytest --collect-only -q`) |
 | `qa/` | Loop ledger, quality assessment, change log, screenshots |
 
 ## Status and limits

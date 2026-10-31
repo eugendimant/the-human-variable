@@ -23,13 +23,13 @@ House rules that apply to anything you write for Eugen:
 | Area | State |
 |---|---|
 | Content | <!--n:decisions-->116<!--/n--> decisions and <!--n:sources-->107<!--/n--> peer-reviewed sources, each checked against Crossref and against the text the checker read (full text or abstract, recorded per source). Corrections, retirements and replication decisions are logged in `docs/audit/`. <!--n:dimant_decisions-->18<!--/n--> decisions draw on <!--n:dimant_papers-->14<!--/n--> of Eugen Dimant's published papers. |
-| Formats | choice, causal (DAG, mediator masked until reveal), multi (pick two), estimate, forecast (1 − 2 × Brier, unclamped), rank (with `rankTies`), allocate, delegate. Two multi-step cases. |
+| Formats | choice, causal (DAG, mediator masked until reveal), multi (pick two), estimate, forecast (1 − 2 × Brier, unclamped), rank (with `rankTies`), allocate (points spread over which option worked best, scored with the same proper rule), delegate. Two multi-step cases. |
 | Structure | <!--n:paths-->8<!--/n--> curated paths, Library (<!--n:principles-->10<!--/n--> principles plus all decisions), personal record with calibration, live classes. |
 | UX | Focus mode during play with a fixed action bar. Reveal: verdict, gap figure, finding, one manager action, and tabs for Questions, Scope, Source and Note. |
 | Classroom | Standard-library server, SQLite WAL, versioned cache. Instructor console with QR code. Phones use the same option order as the projector. Served pages carry no answers. Evidence is released after lock, and held during a live question. |
 | Tutor | Presets, then cache, then Gemini, then curated answers. Budgets and grounding are enforced. See `docs/TUTOR.md`. |
 | Deployment | Offline file, Docker (Render or Fly configs), Streamlit multipage. See `docs/DEPLOYMENT.md`. |
-| Tests | 175+ checks, including Playwright browser tests and axe. Run `python -m pytest -q`. |
+| Tests | Content gates, scoring parity, classroom, tutor, HTTP load, Playwright browser tests and axe. Run `python -m pytest -q`; all must pass. |
 | Quality | Independent reviews are logged in `qa/reviews/` and `qa/LOOP_LEDGER.md`. The latest independent score is in `qa/QUALITY_ASSESSMENT.md`. |
 
 ## 3. First actions
