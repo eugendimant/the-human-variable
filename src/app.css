@@ -665,3 +665,4 @@ body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:con
 @media (min-width:1200px){.rev-art{left:calc(50% - 190px)}}
 @media (max-width:1199px){.rev-art{right:0}}
 @media (max-width:640px){.rev-art{width:96px;height:60px;top:-2px}}
+@media (min-width:821px){.paths .path:not(:first-child) .art{width:132px;height:82px;margin:-8px 0 4px -8px}}

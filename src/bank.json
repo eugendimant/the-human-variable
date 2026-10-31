@@ -1673,7 +1673,7 @@
   "opioid26": {
    "id": "opioid26",
    "authors": "Toma et al.",
-   "authors_full": "Mattie Toma, Elizabeth Burnett, Akshay Debroy, Eugen Dimant, Lu Liu, Steven Safran, Meghan Saya, Elizabeth Schultz",
+   "authors_full": "Mattie Toma, Russell Burnett, Pompa Debroy, Eugen Dimant, Jean Liu, Elana Safran, Uzaib Saya, Bill Schultz",
    "year": 2026,
    "title": "Promoting Safe Opioid Disposal: Experimental Evidence on Behavioral Messaging With Financial Incentives",
    "venue": "Health Economics",
@@ -6532,7 +6532,7 @@
     },
     {
      "q": "Were the groups different at the start?",
-     "a": "No. Initial takers were 45%, 44% and 42% across conditions (p = 0.703), so the gap emerged from watching peers."
+     "a": "No. Initial takers were 45%, 44% and 42% across conditions, so the gap emerged from watching peers."
     },
     {
      "q": "Does this match Dimant’s 2019 contagion study?",
@@ -6731,7 +6731,7 @@
    "answerTitle": "Watching alone did little and could backfire",
    "explain": "Bolton, Dimant and Schmidt show, with 1,650 online participants, that being watched alone backfired: the charity account shrank 28.3% under observation against 18.4% unobserved. Asking people first about others' behavior turned this into a 9.3% gain.",
    "implication": "Do not rely on visibility alone in giving or compliance drives; pair it with a clear statement of what is expected.",
-   "boundary": "Give-or-take charity games in the lab and online (n = 1,650), where a decision maker chose with or without a passive observer watching.",
+   "boundary": "Give-or-take charity games in the lab and online (1,650 decision makers online), where a decision maker chose with or without a passive observer watching.",
    "sources": [
     "observ21"
    ],
@@ -6790,7 +6790,7 @@
    ],
    "study": {
     "design": "Online experiments",
-    "n": "4,359 US MTurk participants (1,945 + 2,414)"
+    "n": "US MTurk participants in two experiments (1,945 and 2,414)"
    },
    "theme": "norms",
    "forecast": {

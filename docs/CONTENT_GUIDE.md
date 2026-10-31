@@ -10,6 +10,10 @@ Read this before you add or change a decision.
 - Contested findings appear only as items about the contest. Expressions of concern, retractions and failed replications go in the source record.
 - Scenes describe the real design: population, task and setting. A scene can frame the study for a manager, but it never invents a firm or a rollout that did not happen.
 
+Where a published text is paywalled, a number may be checked in the author's pre-publication version of the same article; the evidence location says so. The source is still the published article, and no number that appears only in a pre-publication version is used.
+
+Prof. Dimant hosts published PDFs of his papers, linked from https://eugendimant.github.io; `docs/audit/dimant_verification_2026_10_31.json` records the check of every number in the 18 Dimant decisions (92 against published texts, 3 cross-checked in a pre-publication version, none mismatched).
+
 ## Writing
 
 - Scene: at most 40 words. Question: at most 16 words. Options: at most 9 words each, plausible to a smart manager.

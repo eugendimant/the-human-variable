@@ -1984,6 +1984,41 @@
    "source": "masks22",
    "quote": "the correlation between aggregate forecasted and observed results is negative and statistically significant for Democrat predictions (r(28) = −0.63, t(26) = −4.12, p = 0.0003)",
    "location": "Results, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "the effectiveness of 7 nudge interventions relative to a baseline in a representative U.S. sample of Republicans and Democrats (N = 4931)",
+   "location": "Dimant et al. (2022), Scientific Reports 12:7575, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view (same text as https://www.nature.com/articles/s41598-022-10524-1) [PDF page 2]"
+  },
+  {
+   "source": "masks22",
+   "quote": "We evaluated whether academics, behavioral science practitioners, and laypeople (N = 1034) were able to forecast the effectiveness of seven different messages compared to a baseline message for Republicans and Democrats separately.",
+   "location": "Dimant et al. (2022), Scientific Reports 12:7575, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view (same text as https://www.nature.com/articles/s41598-022-10524-1) [PDF page 1]"
+  },
+  {
+   "source": "masks22",
+   "quote": "However, there was no evidence that 7 nudge interventions were effective at promoting mask-wearing among Democrats or Republicans in the U.S. relative to a baseline condition",
+   "location": "Dimant et al. (2022), Scientific Reports 12:7575, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view (same text as https://www.nature.com/articles/s41598-022-10524-1) [PDF page 2]"
+  },
+  {
+   "source": "masks22",
+   "quote": "showed that forecasters overestimated the effect size in the pooled sample (z − score = 4.40, p < 0.001, H4a). Forecasters also overestimated the nudge effects for Democrats (z − score = 4.84, p < 0.001, H4b), while the difference between forecasted and observed nudge effects was not statistically significantly different from zero for forecasts for Republicans (z − score = 1.67, p = 0.09, H4c).",
+   "location": "Dimant et al. (2022), Scientific Reports 12:7575, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view (same text as https://www.nature.com/articles/s41598-022-10524-1) [PDF page 7]"
+  },
+  {
+   "source": "masks22",
+   "quote": "This representative laypeople sample (n = 611) consisted of 294 Republicans and 317 Democrats",
+   "location": "Dimant et al. (2022), Scientific Reports 12:7575, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view (same text as https://www.nature.com/articles/s41598-022-10524-1) [PDF page 3]"
+  },
+  {
+   "source": "masks22",
+   "quote": "We added additional laypeople to the sample from our professional networks (n = 103).",
+   "location": "Dimant et al. (2022), Scientific Reports 12:7575, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view (same text as https://www.nature.com/articles/s41598-022-10524-1) [PDF page 3]"
+  },
+  {
+   "source": "masks22",
+   "quote": "Data for academics (n = 199) and practitioners (n = 121)",
+   "location": "Dimant et al. (2022), Scientific Reports 12:7575, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1L4xDXjuRE3dW7QsqQcKdvDqIjp6DBs77/view (same text as https://www.nature.com/articles/s41598-022-10524-1) [PDF page 3]"
   }
  ],
  "dimant-requiem-forecast": [
@@ -2021,6 +2056,26 @@
    "source": "requiem20",
    "quote": "we observe reporting rates significantly greater than chance (16.67%)",
    "location": "JEBO 172, Section 2.4"
+  },
+  {
+   "source": "requiem20",
+   "quote": "Our main experiment contains data from a high-powered study3 that was collected from 1,200 Amazon Mechanical Turk participants",
+   "location": "Dimant, van Kleef & Shalvi (2020), JEBO 172:247-266, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1hSaCg6ZVPofoa7phBDBgX9OryAqPItQM/view [PDF page 3]"
+  },
+  {
+   "source": "requiem20",
+   "quote": "we observe reporting rates signiﬁcantly greater than chance (16.67%)",
+   "location": "Dimant, van Kleef & Shalvi (2020), JEBO 172:247-266, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1hSaCg6ZVPofoa7phBDBgX9OryAqPItQM/view [PDF page 5]"
+  },
+  {
+   "source": "requiem20",
+   "quote": "with misreporting (= winning reports about expected value of 16 ) hovering at around 30% in all treatments.",
+   "location": "Dimant, van Kleef & Shalvi (2020), JEBO 172:247-266, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1hSaCg6ZVPofoa7phBDBgX9OryAqPItQM/view [PDF page 3]"
+  },
+  {
+   "source": "requiem20",
+   "quote": "Across four treatments, participants received one random truthful norm-nudge that emphasized ‘moral suasion based on either what other participants previously did (empirical message)",
+   "location": "Dimant, van Kleef & Shalvi (2020), JEBO 172:247-266, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1hSaCg6ZVPofoa7phBDBgX9OryAqPItQM/view [PDF page 1]"
   }
  ],
  "dimant-notalie-causal": [
@@ -2053,6 +2108,11 @@
    "source": "notalie23",
    "quote": "belief distortion resulted in a greater incidence of winning reports in the Known compared to the Unknown condition (40.5% versus 21.4%, EPT, p<0.001)",
    "location": "GEB 138, p. 329, Section 6.2"
+  },
+  {
+   "source": "notalie23",
+   "quote": "the belief that “the majority lies” increases considerably as we move from the Unknown to the Known condition (38.1% versus 62.7%, Equality of Proportions Test (EPT), p<0.001)",
+   "location": "Bicchieri, Dimant & Sonderegger (2023), GEB 138:321-354, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1YxNfVuI_yArjgmCLJKmsWSuC1Q-_z034/view [PDF page 10]"
   }
  ],
  "dimant-proximity-estimate": [
@@ -2095,6 +2155,46 @@
    "source": "prox22",
    "quote": "n=842 collected in the laboratory from students at the University of Pennsylvania.",
    "location": "Published version of record, Experiment 1 design"
+  },
+  {
+   "source": "prox22",
+   "quote": "By contrast, donations in Observation decline by about 20% compared to NoObservation.",
+   "location": "Bicchieri, Dimant, Gaechter & Nosenzo (2022), GEB 132:59-72, published version (open access), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view [PDF page 3]"
+  },
+  {
+   "source": "prox22",
+   "quote": "However, the decline in compliance appears to be much stronger in Observation, where participants took on average an additional 21.9 ECUs, compared to ObservationSP, where the balance of the charity was reduced only by an additional 7.5 ECUs.",
+   "location": "Bicchieri, Dimant, Gaechter & Nosenzo (2022), GEB 132:59-72, published version (open access), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view [PDF page 6]"
+  },
+  {
+   "source": "prox22",
+   "quote": "The feedback that other group members give on average 1 ECU to charity increases the amount donated by 0.21 - 0.01 = 0.20 ECUs",
+   "location": "Bicchieri, Dimant, Gaechter & Nosenzo (2022), GEB 132:59-72, published version (open access), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view [PDF page 9]"
+  },
+  {
+   "source": "prox22",
+   "quote": "Our estimate suggests that receiving feedback about other group members taking 1 ECU from the charity reduces the amount that is donated on average by -0.29 + 0.05 = -0.24 ECUs",
+   "location": "Bicchieri, Dimant, Gaechter & Nosenzo (2022), GEB 132:59-72, published version (open access), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view [PDF page 9]"
+  },
+  {
+   "source": "prox22",
+   "quote": "Table 1 ToG decisions in Part II of the experiment. Standard deviations in parentheses. Average amount given/taken Percentage of initial takers Percentage of initial equal split (abstainers) Percentage of initial givers NoObservation -18.9 (57.1) 45% 36% 19% Observation -25.2 (55.9) 44% 40% 16% ObservationSP -21.8 (51.1) 42% 41% 19%",
+   "location": "Bicchieri, Dimant, Gaechter & Nosenzo (2022), GEB 132:59-72, published version (open access), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view [PDF page 6]"
+  },
+  {
+   "source": "prox22",
+   "quote": "As expected per proper treatment randomization, we ﬁnd that behavior in Part II does not differ across treatments (Kruskal-Wallis test, df = 2, p = 0.703).",
+   "location": "Bicchieri, Dimant, Gaechter & Nosenzo (2022), GEB 132:59-72, published version (open access), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view [PDF page 6]"
+  },
+  {
+   "source": "prox22",
+   "quote": "We recruited N = 842 participants (University of Pennsylvania students) to make choices in the ToG game.",
+   "location": "Bicchieri, Dimant, Gaechter & Nosenzo (2022), GEB 132:59-72, published version (open access), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view [PDF page 3]"
+  },
+  {
+   "source": "prox22",
+   "quote": "Journal of Economic Psychology 73 (2019) 66–88",
+   "location": "Dimant (2019), J. Economic Psychology 73:66-88, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1K3irvHbjNidhGDtUmQJ_ayTyll7Pz3sJ/view [PDF page 1]"
   }
  ],
  "dimant-contagion-multi": [
@@ -2127,6 +2227,36 @@
    "source": "contagion19",
    "quote": "behavioral contagion is asymmetric only where social proximity is high, with the difference being highly significant according to the equality of proportion statistic (88.2% vs. 34.8%, p < 0.001)",
    "location": "J. Economic Psychology 73, Section 3.2"
+  },
+  {
+   "source": "contagion19",
+   "quote": "We obtained behavioral data for 185 participants through 9 sessions, in which participants were randomly assigned to one of the three treatments (unknown proximity, high proximity, and low proximity).",
+   "location": "Dimant (2019), J. Economic Psychology 73:66-88, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1K3irvHbjNidhGDtUmQJ_ayTyll7Pz3sJ/view [PDF page 6]"
+  },
+  {
+   "source": "contagion19",
+   "quote": "We find that observing anti-social behavior triggers behavioral contagion significantly more often than observing pro-social behavior (33.7% vs. 19.4%, p = 0.027).",
+   "location": "Dimant (2019), J. Economic Psychology 73:66-88, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1K3irvHbjNidhGDtUmQJ_ayTyll7Pz3sJ/view [PDF page 7]"
+  },
+  {
+   "source": "contagion19",
+   "quote": "We find that observing anti-social behavior triggers behavioral contagion significantly more often than observing pro-social behavior (33.7% vs. 19.4%, p=0.027).",
+   "location": "Author's pre-publication version of the same article (numbers identical to the published paper): Dimant, author's pre-publication version No. 8263 (April 2020): https://www.ifo.de/DocDL/cesifo1_wp8263.pdf [PDF page 15]"
+  },
+  {
+   "source": "contagion19",
+   "quote": "we observe that behavioral contagion is asymmetric only where social proximity is high, with the difference being highly significant according to the equality of proportion statistic (88.2% vs. 34.8%, p < 0.001).",
+   "location": "Dimant (2019), J. Economic Psychology 73:66-88, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1K3irvHbjNidhGDtUmQJ_ayTyll7Pz3sJ/view [PDF page 9]"
+  },
+  {
+   "source": "contagion19",
+   "quote": "we observe that behavioral contagion is asymmetric only where social proximity is high, with the difference being highly significant according to the equality of proportion statistic (88.2% vs. 34.8%, p<0.001).",
+   "location": "Author's pre-publication version of the same article (numbers identical to the published paper): Dimant, author's pre-publication version No. 8263 (April 2020): https://www.ifo.de/DocDL/cesifo1_wp8263.pdf [PDF page 18]"
+  },
+  {
+   "source": "contagion19",
+   "quote": "Games and Economic Behavior 132 (2022) 59–72",
+   "location": "Bicchieri, Dimant, Gaechter & Nosenzo (2022), GEB 132:59-72, published version (open access), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view [PDF page 1]"
   }
  ],
  "dimant-deviant-choice": [
@@ -2169,6 +2299,21 @@
    "source": "deviant21",
    "quote": "significantly decreases return rates as compared to those in the Baseline and Pun_NoInfo treatments (22.2% vs. 36.5%, BSM, p=0.01; 22.2% vs. 36.8%, BSM, p=0.01)",
    "location": "JEBO 188, p. 218, Section 4.3 (high stakes, Pun_EmpInfo)"
+  },
+  {
+   "source": "deviant21",
+   "quote": "We recruited a total of 418 10 The choice to send a request may be viewed as a signal that the investor does not trust the trustee. The norm information may further interact with this signal. For example, the investor’s decision whether to send the request may be affected by the message. However, as we report later, we do not observe the frequency of request to vary across treatments. In fact, the requests are made most of the time. 11 Since our main focus is to study the relationship between norm information and punishment and to retain comparability within and across treatments, we used generic empirical/normative messages throughout the experiment. That is, following existing literature, we did not specify whether the truthfullyobtained information was the result of behavior/beliefs in low- or high-stakes situations. In our design, introducing this separation would have created comparability problems and potential information asymmetries. Hence, while the source of the information was transparent and unambiguous (i.e., taken from a previous survey/experiment), the exact content of this information remained unspeciﬁed. We return to this point in our discussion section. 213 C. Bicchieri, E. Dimant and E. Xiao Journal of Economic Behavior and Organization 188 (2021) 209–235 participants (in 34 sessions ranging from 10 to 16 participants) across six treatments at the University of Pennsylvania in the summer of 2016.",
+   "location": "Bicchieri, Dimant & Xiao (2021), JEBO 188:209-235, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/12fmAUHenvKiqVKuoYwr4UO_L70YlG_mv/view [PDF page 5]"
+  },
+  {
+   "source": "deviant21",
+   "quote": "The combination of punishment and normative information leads to a signiﬁcant increase in trustees’ return behavior in LS over the Baseline (42.7% vs. 28.7%, BSM, p<0.01)",
+   "location": "Bicchieri, Dimant & Xiao (2021), JEBO 188:209-235, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/12fmAUHenvKiqVKuoYwr4UO_L70YlG_mv/view [PDF page 9]"
+  },
+  {
+   "source": "deviant21",
+   "quote": "Moreover, adding empirical information 19 It should also be noted that the return rate in the Pun_EmpInfo is very close to that in the Punishment-NoInfo condition (32.1% vs. 34.4%, BSM, p=0.43). 218 C. Bicchieri, E. Dimant and E. Xiao Journal of Economic Behavior and Organization 188 (2021) 209–235 signiﬁcantly decreases return rates as compared to those in the Baseline and Pun_NoInfo treatments (22.2% vs. 36.5%, BSM, p=0.01",
+   "location": "Bicchieri, Dimant & Xiao (2021), JEBO 188:209-235, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/12fmAUHenvKiqVKuoYwr4UO_L70YlG_mv/view [PDF page 10]"
   }
  ],
  "dimant-enforcers-rank": [
@@ -2226,6 +2371,41 @@
    "source": "enforcers23",
    "quote": "The Punisher Experiment featured n=1,240 subjects.",
    "location": "Methods, Europe PMC full text, version of record"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "This effect of providing norm information appears in both, the INEQUITY-scenario (82.8% vs. 73.3%; P < 0.005 ) and the EQUITY-scenario (67.2% vs. 57.9%; P = 0.074 ).",
+   "location": "Dimant & Gesche (2023), PNAS Nexus 2(7):pgad224, version of record, open-access full text via Europe PMC: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10360164/fullTextXML"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "the chosen average punishment for opportunistic behavior is higher if it creates INEQUITY rather than EQUITY (77.8% vs. 62.3%; P < 0.001 ).",
+   "location": "Dimant & Gesche (2023), PNAS Nexus 2(7):pgad224, version of record, open-access full text via Europe PMC: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10360164/fullTextXML"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "We collected a general population sample of n = 225 in person through research assistants across 10 US states.",
+   "location": "Dimant & Gesche (2023), PNAS Nexus 2(7):pgad224, version of record, open-access full text via Europe PMC: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10360164/fullTextXML"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "The Punisher Experiment featured n = 1 , 240 subjects. They were recruited through a professional market research firm in order to get a representative sample of the US working-age population",
+   "location": "Dimant & Gesche (2023), PNAS Nexus 2(7):pgad224, version of record, open-access full text via Europe PMC: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10360164/fullTextXML"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "While the share of punishment for lies that achieve equity is 43.6%, this share for lies that achieve inequity is 9.2 percentage points higher, at 52.8%. We also find that the punishment choices across these two equity norms are significantly different (Wilcoxon signed rank test: P < 0.001 ).",
+   "location": "Dimant & Gesche (2023), PNAS Nexus 2(7):pgad224, version of record, open-access full text via Europe PMC: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10360164/fullTextXML"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "we observe that the smallest possible lie (size = 1) is only assigned a share of punishment of 44.7% of the maximum possible punishment. With each larger lie, the share of the punishment increases by about 10 percentage points linearly.",
+   "location": "Dimant & Gesche (2023), PNAS Nexus 2(7):pgad224, version of record, open-access full text via Europe PMC: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10360164/fullTextXML"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "we examine norm perceptions across different transgressions in Study 3. We find that norm perceptions are malleable and norm-nudges are most effective when preexisting norms are ambiguous.",
+   "location": "Dimant & Gesche (2023), PNAS Nexus 2(7):pgad224, version of record, open-access full text via Europe PMC: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10360164/fullTextXML"
   }
  ],
  "dimant-observability-choice": [
@@ -2263,6 +2443,21 @@
    "source": "observ21",
    "quote": "the norm focus intervention substantially increases (decreases) the monetary amounts given to (taken from) charity, both in the SelfSig (1.8% vs. −18.4%, MWU, p < 0.001) as well as the SocSig (9.3% vs. −28.3%, MWU, p < 0.001) treatments",
    "location": "JEBO 191, norm-focus analysis (Fig. 9)"
+  },
+  {
+   "source": "observ21",
+   "quote": "the key result is that SocSig leads to a signiﬁcant backﬁring effect overall with respect to money remaining in the charity account (−28.3% vs. −18.4%, MWU, p = 0.0401).",
+   "location": "Bolton, Dimant & Schmidt (2021), JEBO 191:946-964, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1RCUgxQVsQm-C-vaBNbLUfWFneRkDogNB/view [PDF page 12]"
+  },
+  {
+   "source": "observ21",
+   "quote": "we observe that the norm focus intervention substantially increases (decreases) the monetary amounts given to (taken from) charity, both in the SelfSig (1.8% vs. −18.4%, MWU, p < 0.001) as well as the SocSig (9.3% vs. −28.3%, MWU, p < 0.001) treatments.",
+   "location": "Bolton, Dimant & Schmidt (2021), JEBO 191:946-964, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1RCUgxQVsQm-C-vaBNbLUfWFneRkDogNB/view [PDF page 15]"
+  },
+  {
+   "source": "observ21",
+   "quote": "For the laboratory experiment, we recruited 423 subjects from various disciplines at the experimental laboratory at the University of Kiel, Germany in the summer of 2016.",
+   "location": "Bolton, Dimant & Schmidt (2021), JEBO 191:946-964, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1RCUgxQVsQm-C-vaBNbLUfWFneRkDogNB/view [PDF page 6]"
   }
  ],
  "dimant-motivated-estimate": [
@@ -2300,6 +2495,16 @@
    "source": "motivated24",
    "quote": "We recruited participants located in the United States through Amazon Mechanical Turk for our online experiment",
    "location": "Published version of record, Experiment 1 design"
+  },
+  {
+   "source": "motivated24",
+   "quote": "In the Emp-Info condition, the average share of above-median information consumed was 54.61% (non-cheaters: 53.52%; cheaters: 56.77%). In the Norm-Info condition, it was 54.53%",
+   "location": "Dimant, Galeotti & Villeval (2024), European Economic Review 167:104778, published open-access version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1ZsKCqS5vjcYX6ylksCtAA2j2UfAW6PE9/view [PDF page 11]"
+  },
+  {
+   "source": "motivated24",
+   "quote": "In Emp-Info, participants selected in-group information 62.44% of the times when this was associated with more lenient behavior (non-cheaters: 62.22%; cheaters: 63.07%), and 58.29% of the times when it was associated with stricter behavior",
+   "location": "Dimant, Galeotti & Villeval (2024), European Economic Review 167:104778, published open-access version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1ZsKCqS5vjcYX6ylksCtAA2j2UfAW6PE9/view [PDF page 13]"
   }
  ],
  "dimant-conspiracy-choice": [
@@ -2347,6 +2552,16 @@
    "source": "beyond23",
    "quote": "After four rounds, participants in the Control condition did not significantly change their information-sharing behavior across rounds (21% to 17%, z = 1.03, p = .301",
    "location": "JESP 104, Study 2, Section 5.2"
+  },
+  {
+   "source": "beyond23",
+   "quote": "the proportion of participants sharing conspiracy theories in the Conspiracy theory reinforcement condition nearly doubled after four rounds, a significant difference in a two-proportion z-test (17% to 33%, z = 4.42, p < .001, 95% CI = [0.09, 0.23]; Cohen’s w = 0.18)",
+   "location": "Ren, Dimant & Schweitzer (2023), JESP 104:104421, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1t8FUvtElykVdrc_ducEe46rH9Ota9pQC/view [PDF page 6]"
+  },
+  {
+   "source": "beyond23",
+   "quote": "After four rounds, participants in the Control condition did not significantly change their information-sharing behavior across rounds (21% to 17%, z = 1.03, p = .301, Cohen’s w = 0.04)",
+   "location": "Ren, Dimant & Schweitzer (2023), JESP 104:104421, published version, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1t8FUvtElykVdrc_ducEe46rH9Ota9pQC/view [PDF page 6]"
   }
  ],
  "dimant-opioid-forecast": [
@@ -2399,6 +2614,11 @@
    "source": "opioid26",
    "quote": "the total program cost per pill returned is $12.57 in the treatment group, and $15.66 in the control group.",
    "location": "p. 1029, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+  },
+  {
+   "source": "opioid26",
+   "quote": "Panel A of Figure 2 shows that the cards increase the probability that patients return unused opioid pills by 6.88% points over an unadjusted control group mean of 24.8%",
+   "location": "Toma et al. (2026), Health Economics 35(7):1023-1032, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/10gk74zTFYebExSJuHwrvfaYsIuVc14r7/view [PDF page 5]"
   }
  ],
  "dimant-hate-choice": [
@@ -2441,6 +2661,16 @@
    "source": "hate23",
    "quote": "The observed interfaction animosity in the form of ingroup/outgroup variability in contributions is a result of fallacious beliefs about the other's behavior, not of adverse preferences per se.",
    "location": "Management Science, p. 17"
+  },
+  {
+   "source": "hate23",
+   "quote": "Although the fraction of Conditional Cooperators in the Trump Prime is significantly different (p < 0.01) between those who are matched with someone who has an aligned opinion about Trump (72.8%) and those who have an opposing opinion about Trump (59.0%), the same is true for the Conditional Cooperators in the Minimal Group Prime (73.2% versus 62.4%, p",
+   "location": "Dimant (2024), Management Science, published version (Articles in Advance PDF, INFORMS download stamp 24 Feb 2023), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view [PDF page 17]"
+  },
+  {
+   "source": "hate23",
+   "quote": "I quantify this phenomenon via five preregistered studies in the context of Donald J. Trump, comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.",
+   "location": "Dimant (2024), Management Science, published version (Articles in Advance PDF, INFORMS download stamp 24 Feb 2023), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view [PDF page 2]"
   }
  ],
  "dimant-polarizednorms-choice": [
@@ -2488,6 +2718,26 @@
    "source": "norms24",
    "quote": "through the lens of a well-powered (n = 1,203) and preregistered study.",
    "location": "Introduction, Management Science 71(3), published article as hosted by the coauthor; \"=\" restored from a replacement character"
+  },
+  {
+   "source": "norms24",
+   "quote": "Finally, Figure 7 shows that the polarized norm induces polarization in subsequent contribution behavior (σ2 = 2.68)",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 10]"
+  },
+  {
+   "source": "norms24",
+   "quote": "In particular, we see that in tight environments (low variance), participants choose contribution levels that are tightly centered around the mean of the shown distribution Management Science, 2025, vol. 71, no. 3, pp. 2245–2263, © 2024 INFORMS (σ2 = 1.26)",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 10]"
+  },
+  {
+   "source": "norms24",
+   "quote": "Yet, we find that a sizeable share of our subjects (46%, of which 41% contribute four) does precisely that.",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 13]"
+  },
+  {
+   "source": "norms24",
+   "quote": "In a betweensubject design, we implement six different treatments that vary the mean (high/low) and variance/shape (tight/loose/polarized) of the co-player’s distribution.",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 2]"
   }
  ],
  "ai01": [
@@ -3018,6 +3268,36 @@
    "source": "norms24",
    "quote": "through the lens of a well-powered (n = 1,203) and preregistered study.",
    "location": "Introduction, Management Science 71(3), published article as hosted by the coauthor; \"=\" restored from a replacement character"
+  },
+  {
+   "source": "norms24",
+   "quote": "In total, we recruited a sample of about 1,200 U.S. participants who are representative in terms of age, gender, and ethnicity",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 8]"
+  },
+  {
+   "source": "norms24",
+   "quote": "In particular, we see that in tight environments (low variance), participants choose contribution levels that are tightly centered around the mean of the shown distribution Management Science, 2025, vol. 71, no. 3, pp. 2245–2263, © 2024 INFORMS (σ2 = 1.26)",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 10]"
+  },
+  {
+   "source": "norms24",
+   "quote": "In loose environments (high variance), by contrast, we see a much larger variation in behavior (σ2 = 1.65)",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 10]"
+  },
+  {
+   "source": "norms24",
+   "quote": "In both Part I and Part II, we use a two-player variant of the PGG in which each participant can contribute up to four tokens",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 7]"
+  },
+  {
+   "source": "norms24",
+   "quote": "Tokens invested in the public good are multiplied by 1.4 and shared between both participants.",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 7]"
+  },
+  {
+   "source": "norms24",
+   "quote": "In a betweensubject design, we implement six different treatments that vary the mean (high/low) and variance/shape (tight/loose/polarized) of the co-player’s distribution.",
+   "location": "Dimant, Gelfand, Hochleitner & Sonderegger, Management Science 71(3):2245-2263 (March 2025), published version, hosted by coauthor: https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf [PDF page 2]"
   }
  ],
  "social04": [
@@ -3097,6 +3377,26 @@
    "source": "plural24",
    "quote": "the most frequently reported view (that all proposed policies to reduce gun violence are appropriate) was reported by only 50% of respondents and had a mean share of 13%",
    "location": "PNAS Nexus 3(10), Results (Republicans predicting own party)"
+  },
+  {
+   "source": "plural24",
+   "quote": "We recruited a politically representative sample of US respondents (N = 996, 49% female, 75% college educated;g mean age = 46 years, SD = 15) stratified by age, gender, and political orientation.",
+   "location": "Panizza, Dimant, Kimbrough & Vostroknutov (2024), PNAS Nexus 3(10):pgae413, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1-t7OuZUAh0CHNVcRpBzYVVIk8KU-Zurp/view [PDF page 4]"
+  },
+  {
+   "source": "plural24",
+   "quote": "measured among Democrats predicting their own party’s views on same-sex rights: the most commonly reported view (that same-sex couples should have the right to both date and marry) was reported by 95% of respondents",
+   "location": "Panizza, Dimant, Kimbrough & Vostroknutov (2024), PNAS Nexus 3(10):pgae413, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1-t7OuZUAh0CHNVcRpBzYVVIk8KU-Zurp/view [PDF page 6]"
+  },
+  {
+   "source": "plural24",
+   "quote": "measured among Republicans predicting their own party’s views on gun control: the most frequently reported view (that all proposed policies to reduce gun violence are appropriate) was reported by only 50% of respondents",
+   "location": "Panizza, Dimant, Kimbrough & Vostroknutov (2024), PNAS Nexus 3(10):pgae413, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1-t7OuZUAh0CHNVcRpBzYVVIk8KU-Zurp/view [PDF page 6]"
+  },
+  {
+   "source": "plural24",
+   "quote": "We selected seven issues around which there is an active public debate in the United States: abortion, same-sex rights, marijuana legalization, federal spending, gun violence, immigration, and energy investments.",
+   "location": "Panizza, Dimant, Kimbrough & Vostroknutov (2024), PNAS Nexus 3(10):pgae413, published open-access PDF, author-hosted via eugendimant.github.io: https://drive.google.com/file/d/1-t7OuZUAh0CHNVcRpBzYVVIk8KU-Zurp/view [PDF page 3]"
   }
  ],
  "social08": [
@@ -3276,6 +3576,16 @@
    "source": "hate23",
    "quote": "comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.",
    "location": "Abstract"
+  },
+  {
+   "source": "hate23",
+   "quote": "The prosocial behavior toward one’s own political faction (14.97%, green bar in bottom-left panel) is indistinguishable from the behavior in MGP, regardless of whether their partners held the same (13.54%, green bar bottom-right panel, p = 0.78)",
+   "location": "Dimant (2024), Management Science, published version (Articles in Advance PDF, INFORMS download stamp 24 Feb 2023), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view [PDF page 11]"
+  },
+  {
+   "source": "hate23",
+   "quote": "I quantify this phenomenon via five preregistered studies in the context of Donald J. Trump, comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.",
+   "location": "Dimant (2024), Management Science, published version (Articles in Advance PDF, INFORMS download stamp 24 Feb 2023), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view [PDF page 2]"
   }
  ],
  "social16": [
@@ -3288,6 +3598,16 @@
    "source": "hate23",
    "quote": "comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.",
    "location": "Abstract"
+  },
+  {
+   "source": "hate23",
+   "quote": "the default indeed increases altruism at the aggregate level: antisocial (taking) behavior toward the outgroup is reduced from about 20% to essentially 0% of the initial endowment and prosocial (giving) behavior to the ingroup increased from about 10%–15% to about 25%–35% of the initial endowment. The difference in behavior toward one’s political ingroup and outgroup remains highly statistically significant (p < 0.001).",
+   "location": "Dimant (2024), Management Science, published version (Articles in Advance PDF, INFORMS download stamp 24 Feb 2023), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view [PDF page 12]"
+  },
+  {
+   "source": "hate23",
+   "quote": "I quantify this phenomenon via five preregistered studies in the context of Donald J. Trump, comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.",
+   "location": "Dimant (2024), Management Science, published version (Articles in Advance PDF, INFORMS download stamp 24 Feb 2023), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view [PDF page 2]"
   }
  ],
  "social20": [
