@@ -122,7 +122,7 @@ function home() {
   return `<section class="hero wrap"><div class="hero-grid">
     <div><h1>Predict what people do. Then see the evidence.</h1>
     <p class="hero-lede">A decision lab for leaders who work with people and AI. Each round asks you to commit to a forecast about a published experiment, then shows how far your intuition was from the result, why, and what a manager should do with it.</p>
-    <div class="hero-actions"><button class="btn btn-solid" data-act="go-start">Choose a round</button><button class="btn btn-line" data-nav="atlas">Browse the ${ALL.length} studies</button></div>
+    <div class="hero-actions"><button class="btn btn-solid" data-act="go-start">Choose a round</button><button class="btn btn-line" data-nav="atlas">Browse all ${ALL.length} decisions</button></div>
     <p class="hero-meta">Original concept by Eugen Dimant. Every scored answer comes from a peer-reviewed article that was checked against its published text.</p></div>
     ${heroTry()}</div></section>
   <div class="wrap"><div class="facts">
@@ -243,7 +243,7 @@ function play() {
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
       <p class="reveal-body">${esc(c.explain)}</p>
       ${['choice', 'causal', 'multi', 'rank', 'delegate'].includes(c.format) ? `<div style="margin:0 0 22px">${instrument(c)}</div>` : ''}
-      <div class="lessons"><div class="lesson"><h3>What a manager does with this</h3><p>${esc(c.implication)}</p></div><div class="lesson"><h3>Where it stops holding</h3><p>${esc(c.boundary)}</p></div></div>
+      <div class="lessons"><div class="lesson"><h3>What a manager does with this</h3><p>${esc(c.implication)}</p></div><div class="lesson"><h3>Where the evidence comes from</h3><p>${esc(c.boundary)}</p></div></div>
       <div class="follow">${c.follow.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}
       <details class="note-box"><summary>Write a field note for your own work</summary><p>Which decision would you revisit, and what would you measure first?</p><textarea id="note" maxlength="480" aria-label="Field note">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note" style="margin:10px 0 16px">Save note on this device</button></details></div>
       ${st.room ? `<div class="next-row"><span class="kicker">Live class ${esc(st.room.code)}. The next decision appears when your instructor opens it.</span></div>` : ''}<div class="next-row" ${st.room ? 'hidden' : ''}><button class="btn btn-solid" data-act="next" id="next-btn">${st.i >= st.deck.length - 1 ? 'See your record' : c.case && c.case.step < c.case.of ? 'Next step in the case' : 'Next decision'}</button><span class="kicker">Press N</span></div></article>`;
@@ -383,7 +383,7 @@ function methodsModal() {
   modal(`<span class="kicker">How the lab is built</span><h2>Research standard</h2>
     <p>Scored answers come only from peer-reviewed journal articles or scholarly books. Each source was matched against the DOI registry, and every number used in a decision was checked against the published abstract or full text. ${live.length} sources passed${q.length ? `; ${q.length} are held back until their claims can be checked` : ''}.</p>
     <p>Scenarios are teaching adaptations written for managers. They describe the study design accurately but do not replicate it. Charts appear only where the study reported the values shown.</p>
-    <p>A single study is evidence about one population, task and time. Each decision states where the finding stops holding.</p>
+    <p>A single study is evidence about one population, task and time. Each decision states the population, task and setting the evidence comes from.</p>
     <p>Original concept by Eugen Dimant. A teaching tool, not a validated assessment.</p>`, 'Research standard');
 }
 

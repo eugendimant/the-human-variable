@@ -39,7 +39,7 @@ def show_reveal(c: dict, a: dict):
     cols[0].metric('Answers', a['n']); cols[1].metric('Matched the evidence', f"{a['shareCorrect'] or 0}%"); cols[2].metric('Average score', a['meanScore'] if a['meanScore'] is not None else '–')
     if 'counts' in a: st.bar_chart({o[:40]: v for o, v in zip(c['options'], a['counts'])}, horizontal=True)
     if 'hist' in a: st.bar_chart(a['hist']); st.caption(f"Class median {a['median']}. Evidence: {c['estimate']['target'] if c['format']=='estimate' else ('true' if c['forecast']['truth'] else 'false')}.")
-    st.info(f"**What a manager does with this.** {c['implication']}\n\n**Where it stops holding.** {c['boundary']}")
+    st.info(f"**What a manager does with this.** {c['implication']}\n\n**Where the evidence comes from.** {c['boundary']}")
 
 def run():
     style(); S = store(); ss = st.session_state

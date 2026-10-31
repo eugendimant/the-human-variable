@@ -2593,7 +2593,7 @@
    "answerTitle": "The distribution matters",
    "explain": "Dimant and colleagues found that variance and polarization of observed norms affect behavior beyond the mean.",
    "implication": "Look at spread and clustering, not only average culture scores.",
-   "boundary": "Findings concern studied strategic settings.",
+   "boundary": "Incentivized coordination games with a representative US sample, varying the shape of the norm while holding its average fixed.",
    "sources": [
     "norms24"
    ],
@@ -2643,7 +2643,7 @@
    "answerTitle": "Looser norms, wider responses",
    "explain": "Loose norm distributions generated greater behavioral variation in the experiments.",
    "implication": "Avoid assuming that the “average employee” describes your organization.",
-   "boundary": "Variation is not automatically bad; the task determines value.",
+   "boundary": "Coordination games in which the spread of the norm was set by design; whether variety helps depends on the task.",
    "sources": [
     "norms24"
    ],
@@ -2735,7 +2735,7 @@
    "answerTitle": "Groups are less monolithic",
    "explain": "The study recovered divergence between parties and multiple co-existing views within each party, more so among Republicans than Democrats on most issues.",
    "implication": "For stakeholder mapping, examine within-group factions.",
-   "boundary": "This does not establish the effects of a specific intervention.",
+   "boundary": "A norm-drawing method applied to seven policy issues with about 1,000 US respondents.",
    "sources": [
     "plural24"
    ],
@@ -3071,7 +3071,7 @@
    "answerTitle": "The domains diverged",
    "explain": "The published study found ingroup love in perceived closeness, but outgroup hate in behavioral outcomes.",
    "implication": "Assess actual cross-team cooperation, not only stated affinity.",
-   "boundary": "The studies centered on political identity in a particular US context.",
+   "boundary": "Five preregistered studies with more than 8,600 participants on US political identity.",
    "sources": [
     "hate23"
    ],
@@ -3117,7 +3117,7 @@
    "answerTitle": "General improvement, persistent gap",
    "explain": "In the paper, tested defaults and norm nudges raised prosociality but did not close measured polarization gaps.",
    "implication": "Measure between-group gaps separately from average cooperation.",
-   "boundary": "This is not proof that every intervention fails.",
+   "boundary": "The tested nudges raised prosocial behavior overall, and the gap between Trump supporters and opponents remained.",
    "sources": [
     "hate23"
    ],
@@ -3168,7 +3168,7 @@
    "answerTitle": "Keep the whole distribution",
    "explain": "The published measurement paper describes how eliciting norm-belief distributions can reveal disagreement hidden by mean or mode.",
    "implication": "Use distributions in culture audits before selecting interventions.",
-   "boundary": "The paper introduces a method; it does not validate every possible corporate use.",
+   "boundary": "A measurement method for tight, loose and polarized norms built on incentivized elicitation of each person’s beliefs.",
    "sources": [
     "measure23"
    ],
@@ -5799,7 +5799,7 @@
    "answerTitle": "None of the four messages changed behavior",
    "explain": "The pre-registered, high-powered study found null effects with tight confidence intervals for all four messages. A follow-up showed the messages did not change perceived norms.",
    "implication": "Before adding an honesty statement to expense or reporting forms, test whether it actually shifts employees' beliefs about the norm.",
-   "boundary": "One-line messages before a die-reporting game with undetectable lies; other norm interventions may behave differently.",
+   "boundary": "One-line messages before a die-reporting game with undetectable lies, in a high-powered preregistered study.",
    "sources": [
     "requiem20"
    ],
@@ -5880,7 +5880,7 @@
    "answerTitle": "Temptation reshapes beliefs to excuse lying",
    "explain": "Results fit a model in which conditional norm-followers strategically distort their beliefs to justify self-serving behavior. Widespread honesty signaled disapproval of lying, but widespread lying did not signal approval.",
    "implication": "Do not treat \"everyone games it\" survey answers as facts; check them against actual compliance data and publish what peers really do.",
-   "boundary": "Incentivized experiment where lying paid money; beliefs concerned other participants, not long-term colleagues.",
+   "boundary": "Incentivized experiment in which lying paid money and beliefs concerned the other participants.",
    "sources": [
     "notalie23"
    ],
@@ -5923,7 +5923,7 @@
    "answerTitle": "Donations fell about 20% with visibility alone",
    "explain": "With observation alone, participants took an additional 21.9 ECUs and donations fell by about 20% compared with no observation. People copied bad examples but ignored good ones.",
    "implication": "Before publishing peer compliance dashboards, build real shared identity in the team, or bad examples will spread faster than good ones.",
-   "boundary": "Lab game with Penn students in small groups, no sanctions; social proximity was a minimal shared-identity cue.",
+   "boundary": "Repeated giving game with Penn students; proximity was a minimal shared-identity cue.",
    "sources": [
     "prox22"
    ],
@@ -5969,7 +5969,7 @@
    "answerTitle": "Bad behavior spreads more, especially among close peers",
    "explain": "Anti-social behavior was generally more contagious than pro-social behavior, and social proximity amplified the contagion of anti-social behavior more strongly than that of pro-social behavior.",
    "implication": "Address visible misconduct inside tight-knit teams quickly; close peers copy it more readily than they copy good conduct.",
-   "boundary": "One experiment with stylized pro- and anti-social choices; real workplace misconduct was not observed.",
+   "boundary": "Experiment with pro- and anti-social choices and peers who varied in social proximity.",
    "sources": [
     "contagion19",
     "prox22"
@@ -6012,7 +6012,7 @@
    "answerTitle": "Penalty plus normative message, only when compliance is cheap",
    "explain": "Neither weak punishment nor norm information alone increased reciprocity. Together, weak punishment and normative information raised it when compliance was cheap; with costly compliance, punishment plus empirical information could backfire.",
    "implication": "When a sanction is modest and compliance is costly, do not justify it with \"everyone complies\"; explain why the rule is right.",
-   "boundary": "Lab trust game with a weak penalty and generic norm messages; strong sanctions and real team norms were not tested.",
+   "boundary": "Lab trust game combining a weak penalty with norm messages at two levels of compliance cost.",
    "sources": [
     "deviant21"
    ],
@@ -6066,7 +6066,7 @@
    "answerTitle": "Inequity and norm information both raised reporting",
    "explain": "Norm information raised reporting from 73.3% to 82.8% when the bribe created inequity (P < 0.005) and from 57.9% to 67.2% when it restored equity (P = 0.074).",
    "implication": "Give investigators explicit sanction guidelines; short norm statements and the perceived fairness of the gain shift how harshly they judge.",
-   "boundary": "Hypothetical vignette with 225 US adults; the paper's main behavioral study used small monetary punishments.",
+   "boundary": "Bribery vignette with 225 US adults, alongside a main study with monetary punishments.",
    "sources": [
     "enforcers23"
    ],
@@ -6108,7 +6108,7 @@
    "answerTitle": "Watching alone did little and could backfire",
    "explain": "Observability alone had very little positive effect and could even backfire, a pattern the authors trace to inequality aversion. Making norms more salient reduced the backfire and raised pro-social behavior.",
    "implication": "Do not rely on visibility alone in giving or compliance drives; pair it with a clear statement of what is expected.",
-   "boundary": "Experimental charity-giving games; observers were study participants, not colleagues with ongoing relationships.",
+   "boundary": "Charity-giving experiments in which participants observed each other’s choices.",
    "sources": [
     "observ21"
    ],
@@ -6151,7 +6151,7 @@
    "answerTitle": "About 55%, a self-serving tilt",
    "explain": "Without identity cues, the share of lenient (above-median) information chosen was 54.61% for peers' behavior and 54.53% for peers' views, a self-serving bias in source selection.",
    "implication": "When employees pick their own benchmarks or peer examples, default them to representative norm data instead.",
-   "boundary": "US MTurk participants, an undetectable lying game, and partisan identity as the group cue; workplace teams were not studied.",
+   "boundary": "US participants choosing information sources in an undetectable lying game, with partisan identity as the group cue.",
    "sources": [
     "motivated24"
    ],
@@ -6193,7 +6193,7 @@
    "answerTitle": "Expected engagement drove sharing of known falsehoods",
    "explain": "Across a pilot and three preregistered experiments, people expected conspiracy theories to draw more engagement than factual news, and shared more of them when they got more feedback, even knowing they were false.",
    "implication": "Do not reward internal posts by raw engagement; recognize accuracy and sourcing, especially when reorganization rumors circulate.",
-   "boundary": "Experiments with a simulated sharing task and conspiracy content; internal company channels and real reputations were not studied.",
+   "boundary": "A pilot and three preregistered experiments with a simulated social-media sharing task.",
    "sources": [
     "beyond23"
    ],
@@ -6274,7 +6274,7 @@
    "answerTitle": "Pessimistic expectations, not unwillingness, drove the gap",
    "explain": "The intergroup conflict was attributed to grim expectations about the opposing faction's cooperativeness, not actual unwillingness to cooperate. Out-group hate appeared in behavior; in-group love appeared in perceptions.",
    "implication": "In politically mixed teams, share evidence that colleagues on the other side do cooperate before launching joint projects.",
-   "boundary": "US polarization around Donald Trump in incentivized experiments, compared with other identities; ongoing coworker relationships were not studied.",
+   "boundary": "Incentivized experiments on US polarization around Donald Trump, compared with other social identities.",
    "sources": [
     "hate23"
    ],
@@ -6316,7 +6316,7 @@
    "answerTitle": "Most picked extremes, accepting strategic risk",
    "explain": "In polarized environments, most people preferred extreme actions that exposed them to considerable strategic risk over intermediate actions that minimized it. Loose norms produced more varied behavior.",
    "implication": "Report the spread of team behavior, not only the average; a split norm pulls people toward one camp or the other.",
-   "boundary": "Experimental strategic game with a representative US sample; real team norms and productivity were not measured.",
+   "boundary": "Strategic coordination game with a representative US sample, with norm distributions set by design.",
    "sources": [
     "norms24"
    ],

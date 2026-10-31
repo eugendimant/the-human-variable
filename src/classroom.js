@@ -67,7 +67,7 @@ function reveal(c, a) {
   const s = BANK.sources[c.sources[0]];
   return `<div class="rv"><div class="rv-head"><div><span class="kicker">The room</span><b class="num">${a.n}</b><span>answers</span></div><div><span class="kicker">Matched the evidence</span><b class="num">${a.shareCorrect ?? 0}%</b></div><div><span class="kicker">Average score</span><b class="num">${a.meanScore ?? '–'}</b></div>${a.meanConfidence !== null ? `<div><span class="kicker">Average confidence</span><b class="num">${a.meanConfidence}%</b></div>` : ''}</div>${chart}
     <h3 class="reveal-title" style="font-size:30px;margin-top:22px">${esc(c.answerTitle)}</h3><p class="reveal-body">${esc(c.explain)}</p>
-    <div class="lessons"><div class="lesson"><h3>Discussion prompt</h3><p>${esc(c.implication)} Where would this fail in your organization?</p></div><div class="lesson"><h3>Where it stops holding</h3><p>${esc(c.boundary)}</p></div></div><p class="kicker">${esc(s.authors)} (${s.year}), ${esc(s.venue)}.</p></div>`;
+    <div class="lessons"><div class="lesson"><h3>Discussion prompt</h3><p>${esc(c.implication)} Where would this fail in your organization?</p></div><div class="lesson"><h3>Where the evidence comes from</h3><p>${esc(c.boundary)}</p></div></div><p class="kicker">${esc(s.authors)} (${s.year}), ${esc(s.venue)}.</p></div>`;
 }
 
 function console_() {

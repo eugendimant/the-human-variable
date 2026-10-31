@@ -359,3 +359,4 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .deleg-opts button:disabled{opacity:.5}
 .deleg-opts button:disabled[aria-pressed="true"],.deleg-opts button:disabled.is-ev{opacity:1}
 .opt:disabled .k{opacity:1}
+.findings .btn{font-family:var(--sans)}
