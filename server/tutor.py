@@ -123,6 +123,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         for name, rx in R['routes']:
             if not re.search(rx, ql): continue
             if name == 'offtopic': return off
+            if name == 'stakes': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
+            if name == 'population': return out(f"What the study covers: {c['boundary']}" + (f" Sample: {st['n']}." if st.get('n') else '') + " Whether it holds elsewhere is a question to test locally.", c)
             if name == 'action': return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
             if name == 'models':
                 fm = [f for f in fol if re.search(r'\b(GPT|Claude|Llama|Gemini|ChatGPT|Bing|DALL|Midjourney)', f['a'])] or [f for f in fol if re.search(r'\b(models?|tools?)\b', f['q'], re.I)]

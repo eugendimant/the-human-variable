@@ -2831,7 +2831,7 @@
    "scene": "A famous US study found hotel guests reused more towels when a sign said most guests do, especially guests of the same room. Researchers repeated the test in two German hotels.",
    "question": "Is this what the replication found?",
    "answerTitle": "Both signs helped; the norm sign did no better",
-   "explain": "Bohner and Schlüter repeated the test in two German hotels. In the first (N = 724), norm signs combined reached 81.9% reuse against 83.7% for the standard environmental sign; in the second (N = 204), the environmental sign reached 93.3% versus 75.4%.",
+   "explain": "Bohner and Schlüter repeated the test in two German hotels. In the first (N = 724), norm signs combined reached 81.9% reuse against 83.7% for the standard environmental sign; in the second (N = 204), the environmental sign reached 93.3% versus 76.5% for the norm signs combined.",
    "implication": "Before rolling out a famous nudge, test it against the plain message you would otherwise use, not just against doing nothing.",
    "boundary": "Two hotels in Germany; later meta-analyses report modest, consistent effects of norm messages across studies.",
    "sources": [
@@ -2880,7 +2880,7 @@
     "values": [
      64.3,
      93.3,
-     75.4
+     76.5
     ],
     "unit": "%",
     "highlight": 2,
@@ -4232,10 +4232,9 @@
    "format": "allocate",
    "concept": "AI persuasion",
    "title": "Who argues your case?",
-   "scene": "In 10-minute online debates on assigned topics, people faced either a human or GPT-4. Some opponents also received basic demographic details about the person they debated.",
+   "scene": "In 10-minute online debates on assigned topics, people faced either a human or GPT-4. Some opponents also received basic demographic details about the person they debated. The options below are compared with debates between two people.",
    "question": "Which opponent shifted agreement most? Spread 100 points by how likely each is.",
    "options": [
-    "Human opponent",
     "GPT-4",
     "GPT-4 with demographic profile",
     "Human with demographic profile"
@@ -4269,25 +4268,23 @@
    "permuted": true,
    "allocate": {
     "total": 100,
-    "step": 5,
+    "step": 1,
     "label": "Points placed",
     "prefix": "",
     "suffix": "",
     "values": [
      0,
-     0,
      81.2,
      0
     ],
     "valueLabels": [
-     "Baseline",
      "+21.9% (n.s.)",
      "+81.2%",
      "−15.7% (n.s.)"
     ],
     "valueName": "change in odds of higher agreement than in human-human debates (non-significant changes count as zero)",
     "best": [
-     2
+     1
     ]
    }
   },
@@ -4801,7 +4798,7 @@
    "concept": "Ad ROI precision",
    "title": "The noisy ROI test",
    "scene": "Your CFO wants a randomized test to prove a digital campaign's return before renewing it. Individual customers' weekly sales swing wildly.",
-   "question": "Across 25 large ad experiments, how wide was the median ROI confidence interval?",
+   "question": "Across 25 large ad experiments, the median ROI confidence interval was more than how many percentage points wide?",
    "estimate": {
     "target": 100,
     "min": 0,
@@ -8503,7 +8500,7 @@
   {
    "id": "choice",
    "title": "Choice architecture",
-   "principle": "Defaults, menus, frames and anchors decide many choices before preferences do. The design of the decision is a management decision."
+   "principle": "Defaults, frames and anchors decide many choices before preferences do, while menu effects are contested in real plans. The design of the decision is a management decision."
   },
   {
    "id": "incentives",
@@ -8969,6 +8966,14 @@
    [
     "models",
     "\\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\\b"
+   ],
+   [
+    "stakes",
+    "\\b(real money|paid|incentiv\\w*|hypothetical|just a survey|for real|stakes)\\b"
+   ],
+   [
+    "population",
+    "\\b(american|americans|u\\.?s\\.? only|other countries|another country|culture|cultures|europe|asia|outside the us|elsewhere|just an? \\w+ thing)\\b"
    ],
    [
     "who",

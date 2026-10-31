@@ -13,6 +13,8 @@ bank['tutorRoutes'] = {
   ['action', r'\b(what should (i|we) do|what do (i|we) do|next steps?|monday( morning)?|what would you do|how (do|should|can) (i|we) (use|apply|act on) (this|it))\b'],
   ['ethics', r'\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)'],
   ['models', r'\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\b'],
+  ['stakes', r'\b(real money|paid|incentiv\w*|hypothetical|just a survey|for real|stakes)\b'],
+  ['population', r'\b(american|americans|u\.?s\.? only|other countries|another country|culture|cultures|europe|asia|outside the us|elsewhere|just an? \w+ thing)\b'],
   ['who', r'\b(who (was|were) (studied|in it|tested|the participants)|participants?|how many (people|participants|subjects|workers|agents)|sample size|who took part|population)\b'],
   ['catch', r'\b(catch|backfire|downside|drawback|limit\w*|risk|caveat|fail\w*|weakness|criticis\w*|question(ed)? this|later work)\b'],
   ['summary', r'\b(summar\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line)\b'],

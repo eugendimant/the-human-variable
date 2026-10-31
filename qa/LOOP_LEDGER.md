@@ -476,3 +476,17 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 234 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 19.
+
+## Iteration 24 (2026-10-31)
+
+**Verified first:** iteration-23 fixes, by independent review 19 (snapshot `snap_r19`): bz16 contest item, fidelity pass ("study designs, populations and nulls are described accurately"), allocate evidence bars, sibling hold, CSV, Streamlit.
+
+**Independent score:** 87/100 (review 19, `qa/reviews/review19.md`). 0 Blocking, 1 Major.
+
+**Fixes:**
+- **M1.** biz04 uses the full-sample comparison (93.3% vs 76.5%) in quote, explanation and figure, rechecked against the journal HTML.
+- **Minors.** "Choice architecture" principle says menu effects are contested in real plans; axb08 drops the human-human baseline as an option (it is the comparison point, stated in the scene); bz02 asks "more than how many points"; the server accepts estimates only on the slider's grid (no exception for the target, so validation is not an oracle); projector labels per format ("Most points on the best option", "Routed every task as the evidence suggests", "Exact order"); tutor routes for stakes and population.
+
+**Gates:** build check, 234 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 20.

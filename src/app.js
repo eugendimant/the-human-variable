@@ -387,6 +387,8 @@ function curated(q, c) {
   for (const [name, rx] of TR.routes) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
     if (name === 'offtopic') return off;
+    if (name === 'stakes') return { text: `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
+    if (name === 'population') return { text: `What the study covers: ${c.boundary}${st0.n ? ` Sample: ${st0.n}.` : ''} Whether it holds elsewhere is a question to test locally.`, cites: cs(c) };
     if (name === 'action') return { text: `${c.implication}\n\nWhy: ${c.explain}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
     if (name === 'models') { const fm = fol.find(f => /\b(GPT|Claude|Llama|Gemini|ChatGPT|Bing|DALL|Midjourney)/.test(f.a)) || fol.find(f => /\b(models?|tools?)\b/i.test(f.q)); if (fm) return { text: fm.a, cites: cs(c) }; continue }
     if (name === 'who') return { text: `Who was studied: ${st0.n || 'see the paper'}. Design: ${st0.design || 'see the paper'}.\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };

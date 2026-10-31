@@ -44,7 +44,9 @@ def valid(c: dict, r) -> bool:
     f = c['format']; isint = lambda x: type(x) is int
     if f in ('choice', 'causal'): return isint(r) and 0 <= r < len(c['options'])
     if f == 'multi': return isinstance(r, list) and len(r) == len(c['multiAnswers']) and all(isint(x) and 0 <= x < len(c['options']) for x in r) and len(set(r)) == len(r)
-    if f == 'estimate': return type(r) in (int, float) and math.isfinite(r) and c['estimate']['min'] <= r <= c['estimate']['max']
+    if f == 'estimate':
+        e = c['estimate']; s = e.get('step', 1)
+        return type(r) in (int, float) and math.isfinite(r) and e['min'] <= r <= e['max'] and (abs((r - e['min']) / s - round((r - e['min']) / s)) < 1e-6)   # on the slider's grid (no exception for the target: that would make validation an oracle)
     if f == 'forecast': return type(r) in (int, float) and 0 <= r <= 100
     if f == 'rank': return isinstance(r, list) and sorted(r) == list(range(len(c['options']))) and all(isint(x) for x in r)
     if f == 'allocate': return isinstance(r, list) and len(r) == len(c['options']) and all(isint(x) and x >= 0 for x in r) and sum(r) == c['allocate']['total']

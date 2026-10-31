@@ -35,7 +35,7 @@ def test_parity():
 def test_answers_score_full():
     for c in BANK['challenges']:
         f = c['format']
-        r = {'choice': c.get('answer'), 'causal': c.get('answer'), 'multi': c.get('multiAnswers'), 'estimate': c.get('estimate', {}).get('target'),
+        r = {'choice': c.get('answer'), 'causal': c.get('answer'), 'multi': c.get('multiAnswers'), 'estimate': (lambda e: e and e['min'] + round((e['target'] - e['min']) / e.get('step', 1)) * e.get('step', 1))(c.get('estimate')),   # nearest slider position to the target
              'forecast': 100 if c.get('forecast', {}).get('truth') else 0, 'rank': c.get('rankAnswer')}.get(f)
         if f == 'allocate':
             v = c['allocate']['values']; best = c['allocate'].get('best') or [v.index(max(v))]; t = c['allocate']['total']
