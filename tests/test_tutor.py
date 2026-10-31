@@ -238,3 +238,13 @@ REVIEW23 = [('why didnt the nudges work', 'dimant-requiem-forecast', 'did not ch
 def test_offline_tutor_review23(q, cid, want):
     """Review 23, minor 10: why-not questions, significance, a team's next step, the task itself, and a term's meaning."""
     a = T.curated(q, cid)['answer']; assert want in a and 'does not cover' not in a, a[:120]
+
+
+AUDIT28 = [('What did participants have to do?', 'social15', 'rated how close'),
+           ("Why didn't it work?", 'axb05', 'proxy')]
+
+
+@pytest.mark.parametrize('q,cid,want', AUDIT28)
+def test_offline_tutor_audit28(q, cid, want):
+    """Regression audit 28b: the task route answers before 'who'; a single why-follow-up that explains a miss still answers."""
+    a = T.curated(q, cid)['answer']; assert want in a, a[:120]

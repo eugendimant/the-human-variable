@@ -9165,6 +9165,10 @@
     "\\b(countries|which country|what country|where (was|were) (it|this|they)|american|americans|u\\.?s\\.? only|other countries|another country|culture|cultures|europe|asia|outside the us|elsewhere|just an? \\w+ thing)\\b"
    ],
    [
+    "task",
+    "\\b(what (was|were) (the|their) (\\w+ )?(task|game|procedure|experiment)|what did participants have to do)\\b"
+   ],
+   [
     "who",
     "\\b(who (was|were) (studied|in it|tested|the participants)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students)|sample size|who took part|population)\\b"
    ],
@@ -9187,10 +9191,6 @@
    [
     "signif",
     "\\b(significan\\w*|statistically|by chance|just noise|p[- ]?value)\\b"
-   ],
-   [
-    "task",
-    "\\b(what (was|were) (the|their) (\\w+ )?(task|game|procedure|experiment)|what did participants have to do)\\b"
    ],
    [
     "meaning",

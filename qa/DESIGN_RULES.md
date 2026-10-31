@@ -1,6 +1,6 @@
 # Design rules: no AI giveaways
 
-Thirty rules that every page of The Human Variable follows (home, play, reveal, record, Library, console, projector, phones). They come from published catalogues of the patterns that make a page read as machine-made, and from established usability guidance. Each rule names its detector. `tools/design_lint.py` runs the detectors in a real browser on every page state at 1440 and 390 px, and `tests/test_design.py` fails on any hit. A rule without a detector is checked by the independent reviewer (see `qa/REVIEW_PROMPT.md`).
+Thirty-one rules that every page of The Human Variable follows (home, play, reveal, record, Library, console, projector, phones). They come from published catalogues of the patterns that make a page read as machine-made, and from established usability guidance. Each rule names its detector. `tools/design_lint.py` runs the detectors in a real browser on every page state at 1440 and 390 px, and `tests/test_design.py` fails on any hit. A rule without a detector is checked by the independent reviewer (see `qa/REVIEW_PROMPT.md`).
 
 Sources:
 - [impeccable.style slop catalogue](https://impeccable.style/slop)
@@ -59,3 +59,4 @@ Sources:
 28. **The source sits inside the figure**, under the bars, so a screenshot carries it. *Detector R28.*
 29. **Colour only the mark that proves the headline.** One amber bar per chart; the rest are grey. *Detector R29.*
 30. **Ask on every page: what would Tufte do?** Maximise data ink: remove boxes, rules, labels and decoration that encode nothing; show comparisons at the same scale; annotate the moment that matters in place; prefer a sentence with a number to a widget. The page-by-page answers are in `qa/TUFTE_PASS.md` and every reviewer repeats the question. *Reviewer.*
+31. **Labels in a figure never overlap each other or a data mark**, and explanations of a reference line go in the caption, not in the data area. *Detector R31.*

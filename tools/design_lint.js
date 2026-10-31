@@ -45,6 +45,15 @@
     const vb = sv.viewBox && sv.viewBox.baseVal, k = vb && vb.width ? r.width / vb.width : 1, px = parseFloat(getComputedStyle(tx).fontSize) * k;
     if (px < 11.5) push('R16', name(sv) + ' text', px.toFixed(1) + 'px ' + tx.textContent.trim());
   }
+  for (const sv of document.querySelectorAll('svg')) {   // labels in a figure never sit on each other or on a data mark (audit 28b)
+    if (!vis(sv)) continue;
+    const box = e => e.getBoundingClientRect(), hit = (a, b) => Math.min(a.right, b.right) - Math.max(a.left, b.left) > 2 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 2;
+    const texts = [...sv.querySelectorAll('text')].filter(x => x.textContent.trim() && !x.getAttribute('transform')), marks = [...sv.querySelectorAll('circle')];
+    for (let i = 0; i < texts.length; i++) {
+      for (let j = i + 1; j < texts.length; j++) if (hit(box(texts[i]), box(texts[j]))) push('R31', name(sv), 'labels overlap: ' + texts[i].textContent.trim() + ' / ' + texts[j].textContent.trim());
+      for (const m of marks) if (hit(box(texts[i]), box(m)) && !m.closest('g.ev-mark')) push('R31', name(sv), 'label on a mark: ' + texts[i].textContent.trim());
+    }
+  }
   const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n;
   while ((n = tw.nextNode())) {
     const p = n.parentElement, x = n.textContent; if (!p || p.closest('script,style,svg,.sr-only') || !vis(p) || !x.trim()) continue;
