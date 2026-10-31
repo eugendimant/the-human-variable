@@ -44,7 +44,11 @@ def show_reveal(c: dict, a: dict, code: str = ''):
     cols = st.columns(3)
     cols[0].metric('Answers', a['n']); cols[1].metric('Matched the evidence', f"{a['shareCorrect'] or 0}%"); cols[2].metric('Average score', a['meanScore'] if a['meanScore'] is not None else '–')
     if 'counts' in a: st.bar_chart({c['options'][i][:40]: a['counts'][i] for i in option_order(c['id'], len(c['options']), code)} if code else {o[:40]: v for o, v in zip(c['options'], a['counts'])}, horizontal=True)
-    if 'hist' in a: st.bar_chart(a['hist']); st.caption(f"Class median {a['median']}. Evidence: {c['estimate']['target'] if c['format']=='estimate' else ('true' if c['forecast']['truth'] else 'false')}.")
+    ev_txt = (f"{c['estimate']['target']}{c['estimate'].get('unit', '%')}" if c['format'] == 'estimate' else ('true' if c.get('forecast', {}).get('truth') else 'false')) if c['format'] in ('estimate', 'forecast') else ''
+    if 'hist' in a and a.get('n'):
+        w = (a['hi'] - a['lo']) / len(a['hist'])   # bins labelled by value range, not by index
+        st.bar_chart({f"{round(a['lo'] + i * w)} to {round(a['lo'] + (i + 1) * w)}": v for i, v in enumerate(a['hist'])}); st.caption(f"Class median {a['median']}. Evidence: {ev_txt}.")
+    elif 'hist' in a: st.caption(f"No answers came in. Evidence: {ev_txt}.")
     if 'meanPosition' in a: st.bar_chart({o[:40]: len(c['options']) + 1 - p for o, p in zip(c['options'], a['meanPosition']) if p is not None}, horizontal=True); st.caption('Higher bar = ranked nearer the top by the room. Measured order: ' + ', '.join(c['options'][i] for i in c['rankAnswer']) + '.')
     if 'meanShare' in a: st.bar_chart({o[:40]: v for o, v in zip(c['options'], a['meanShare']) if v is not None}, horizontal=True); st.caption('Average budget share. Reported effects: ' + '; '.join(f"{o} {l}" for o, l in zip(c['options'], c['allocate'].get('valueLabels', c['allocate']['values']))) + '.')
     if 'taskCounts' in a:
@@ -72,6 +76,10 @@ def run():
             st.subheader('You are in. The first decision appears when your instructor opens it.'); return
         c = cl.CHALLENGES[s['challenge']]; done = ss.get('done', {})
         if s['phase'] == 'revealed' and s.get('aggregate'):
+            mine = ss.get('mine', {}).get(c['id'])
+            if mine is not None:   # the student's own result, as on the game's reveal
+                from server import scoring
+                sc = scoring.score(c, mine); st.success(f"Your call scored {round(100 * sc['score'])}{' and matched the evidence' if sc['correct'] else ''}.")
             show_reveal(c, s['aggregate'], R['code']); return
         if c['id'] in done:
             st.subheader(done[c['id']]); st.write('The evidence appears for everyone when your instructor reveals it.'); return
@@ -86,6 +94,6 @@ def run():
                 else:
                     try: m = S.submit(R['code'], R['token'], r, conf)['message']
                     except cl.ClassroomError as e: m = str(e)
-                    done[c['id']] = m; ss.done = done; st.rerun(scope='fragment')
+                    done[c['id']] = m; ss.done = done; ss.setdefault('mine', {})[c['id']] = r; st.rerun(scope='fragment')
     live()
     if st.button('Leave the class'): ss.pop('room', None); st.rerun()

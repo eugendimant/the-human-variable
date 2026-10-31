@@ -5,7 +5,7 @@ State that every participant polls is cached in memory and versioned, so 50 phon
 every two seconds cost a dictionary lookup, not a database query.
 """
 from __future__ import annotations
-import csv, hashlib, hmac, io, json, os, secrets, sqlite3, statistics, threading, time
+import csv, hashlib, hmac, io, json, os, re, secrets, sqlite3, statistics, threading, time
 from pathlib import Path
 from . import scoring
 
@@ -254,7 +254,7 @@ class Store:
         rows = self.db().execute('SELECT num, challenge, answer, confidence, score, correct, created FROM responses WHERE code=? ORDER BY challenge, num', (code,)).fetchall()
         buf = io.StringIO(); w = csv.writer(buf)
         w.writerow(['participant', 'decision_id', 'decision_title', 'format', 'answer', 'answer_text', 'confidence', 'score', 'correct', 'utc_time'])
-        safe = lambda x: "'" + x if x[:1] in '=+-@\t\r' else x
+        safe = lambda x: x if re.fullmatch(r'-?\d+(\.\d+)?\s?%?[A-Za-z$]*', x) else "'" + x if x[:1] in '=+-@\t\r' else x   # a plain negative number is not a formula
         for num, cid, a, conf, sc, ok, t in rows:
             c = CHALLENGES.get(cid, {})
             w.writerow([f'P{num:03d}', cid, safe(str(c.get('title', ''))), c.get('format', ''), a, safe(answer_text(c, json.loads(a))), '' if conf is None else conf, round(100 * sc), ok, time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(t))])

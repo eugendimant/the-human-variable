@@ -2285,6 +2285,26 @@
     "metadata": "matched Crossref record",
     "text_read": "abstract (Crossref)"
    }
+  },
+  "huberman06": {
+   "id": "huberman06",
+   "authors": "Huberman & Jiang",
+   "authors_full": "Gur Huberman, Wei Jiang",
+   "year": 2006,
+   "title": "Offering versus Choice in 401(k) Plans: Equity Exposure and Number of Funds",
+   "venue": "Journal of Finance",
+   "volume": "61(2)",
+   "pages": "763-801",
+   "doi": "10.1111/j.1540-6261.2006.00854.x",
+   "url": "https://doi.org/10.1111/j.1540-6261.2006.00854.x",
+   "kind": "peer-reviewed",
+   "takeaway": "In real 401(k) records, participants split contributions evenly across the few funds they use, but their equity share moves little with the share of equity funds offered.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched RePEc record of the published article",
+    "text_read": "Published abstract (IDEAS/RePEc)"
+   }
   }
  },
  "challenges": [
@@ -3046,8 +3066,8 @@
     "n": ""
    },
    "forecast": {
-    "claim": "People juggling other tasks were more likely to find improvements that remove something.",
-    "truth": false
+    "claim": "People juggling other tasks were more likely to overlook improvements that remove something.",
+    "truth": true
    }
   },
   {
@@ -3328,8 +3348,8 @@
     "n": "1,528 participants"
    },
    "forecast": {
-    "claim": "The behavior spread farther through clustered networks with redundant ties than through networks with random long ties.",
-    "truth": true
+    "claim": "The behavior spread farther through networks with random long ties than through clustered networks with redundant ties.",
+    "truth": false
    },
    "chart": {
     "labels": [
@@ -4537,12 +4557,12 @@
    "concept": "Targeted rollout",
    "title": "Who gets the assistant first?",
    "scene": "A firm rolled out a generative-AI reply assistant to its customer-support agents in waves. You decide which agents get the first licenses.",
-   "question": "Which agents should get the first licenses?",
+   "question": "Which agents gained the most from the assistant?",
    "options": [
-    "A random sample across tenure",
+    "Agents with middling tenure",
     "Newest, least experienced agents",
     "Top-rated, most experienced agents",
-    "Team leads, who coach others"
+    "Agents handling the most common problems"
    ],
    "answer": 1,
    "answerTitle": "Start with less experienced agents",
@@ -4693,7 +4713,7 @@
     "of": 4
    },
    "concept": "Deskilling risk",
-   "title": "Learning with a crutch",
+   "title": "Tutoring with GPT-4",
    "scene": "HR proposes unrestricted ChatGPT-style access in new-hire training. In a related field experiment, high school students practiced math with GPT-4, then took exams without it.",
    "question": "How did unrestricted-AI students score on unaided exams versus controls?",
    "estimate": {
@@ -4865,7 +4885,7 @@
    "track": "Business",
    "format": "estimate",
    "concept": "Planning fallacy",
-   "title": "Your best guess is late",
+   "title": "Thesis deadlines",
    "scene": "Senior honors students gave their most realistic date for finishing their thesis, plus a best-case and a worst-case date. Researchers then tracked when they actually finished.",
    "question": "What share finished by their own most realistic date?",
    "estimate": {
@@ -5449,44 +5469,42 @@
   {
    "id": "bz16",
    "track": "Business",
-   "format": "choice",
+   "format": "forecast",
    "concept": "Naive diversification",
-   "title": "Two fund menus",
-   "scene": "Your 401(k) offers five funds. Menu X has four stock funds and one bond fund. Menu Y has one stock fund and four bond funds.",
-   "question": "How will employees' stock exposure differ between the two menus?",
-   "options": [
-    "Higher under stock-heavy menu X",
-    "Higher under bond-heavy menu Y",
-    "Same: people pick their own risk level"
-   ],
-   "answer": 0,
-   "answerTitle": "Stock share follows the menu",
-   "explain": "Benartzi and Thaler found some investors follow a 1/n rule, splitting contributions evenly across whatever funds are offered. As a result, the share invested in stocks rises strongly with the share of stock funds on the menu.",
-   "implication": "Audit the mix of fund types on your plan menu, because it quietly sets employees' risk exposure.",
-   "boundary": "Combines hypothetical allocation tasks with plan-level data; investors differ in how evenly they split.",
+   "title": "Two fund menus, revisited",
+   "scene": "Benartzi and Thaler (2001) reported that the share invested in stocks rose with the share of stock funds on a 401(k) menu. Huberman and Jiang (2006) then examined administrative records of participants in many real 401(k) plans.",
+   "question": "How likely is it that the study found this?",
+   "answerTitle": "In real plans, the menu’s mix mattered little",
+   "explain": "Huberman and Jiang found that participants split contributions evenly across the funds they use, typically three or four, yet their propensity to put money into equity funds was not very sensitive to the fraction of equity funds offered.",
+   "implication": "Before redesigning a plan menu to steer risk, check your own participants’ records; in large real-plan data, equity exposure moved little with the menu’s mix.",
+   "boundary": "Administrative records of 401(k) participants across many plans, set against earlier evidence from hypothetical allocation tasks and plan-level comparisons.",
    "sources": [
+    "huberman06",
     "benartzi01"
    ],
    "follow": [
     {
-     "q": "What is the 1/n strategy?",
-     "a": "Dividing contributions evenly across whatever funds the plan offers, regardless of what those funds hold."
+     "q": "What did the original study find?",
+     "a": "Benartzi and Thaler reported that some investors split contributions evenly across whatever funds are offered, so the stock share rose with the share of stock funds on the menu."
     },
     {
-     "q": "Does everyone do it?",
-     "a": "No. The paper finds that some investors follow it, which is enough to shift average stock exposure."
+     "q": "Why do the results differ?",
+     "a": "The designs differ: hypothetical allocation tasks and comparisons across plans, versus records of individual participants inside real plans."
     },
     {
-     "q": "Does it show up in real plans?",
-     "a": "Yes. The authors report that the proportion invested in stocks depends strongly on the proportion of stock funds in the plan."
+     "q": "Does the even split still happen?",
+     "a": "Yes. Participants tend to allocate evenly across the funds they use, but they use only a few, and that number does not track how many are offered."
     }
    ],
    "study": {
-    "design": "Allocation experiments plus plan data",
-    "n": "Defined contribution plan participants"
+    "design": "Administrative 401(k) records",
+    "n": "Participants in many 401(k) plans"
    },
    "theme": "choice",
-   "permuted": true
+   "forecast": {
+    "claim": "In the real-plan records, the share of equity funds on the menu was a strong predictor of how much participants put into equity.",
+    "truth": false
+   }
   },
   {
    "id": "civic-wallet-rank",
@@ -5800,8 +5818,8 @@
    "scene": "Researchers paid frequent Twitter users who identified as Democrats or Republicans to follow, for one month, a bot retweeting elected officials and opinion leaders from the other party.",
    "question": "Did a month of opposing views moderate Republicans?",
    "forecast": {
-    "claim": "Republicans who followed a liberal bot became more liberal afterward.",
-    "truth": false
+    "claim": "Republicans who followed a liberal bot became more conservative afterward.",
+    "truth": true
    },
    "answerTitle": "Republicans moved right; Democrats barely moved",
    "explain": "For Republicans the intent-to-treat effect was 0.12 points toward conservatism on a seven-point scale, rising to 0.60 among full compliers; the Democrats' shift was small and not significant.",
@@ -7017,7 +7035,7 @@
    "concept": "Loss aversion",
    "theme": "choice",
    "format": "estimate",
-   "title": "Gains and losses flip risk",
+   "title": "Paired gambles",
    "scene": "Offered a sure $3,000 or an 80% chance of $4,000, 80% of people took the sure money. A second group faced the mirror image: a sure loss of $3,000 or an 80% chance of losing $4,000.",
    "question": "What share chose the gamble when both options were losses?",
    "answerTitle": "92% gambled to avoid a sure loss",
@@ -8171,7 +8189,6 @@
  "editorialRules": [
   "Peer-reviewed journal research only for scored conclusions.",
   "A scenario is a pedagogical illustration, not a replication.",
-  "Figures labeled stylized are conceptual, never empirical measurements.",
   "Do not generalize task-specific effects to all populations.",
   "Do not use working papers as evidence.",
   "Published research may be contested or context-dependent."
@@ -8563,7 +8580,8 @@
     "ai10",
     "axb11",
     "axb10",
-    "axe07"
+    "axe07",
+    "axf05"
    ]
   },
   {
@@ -8581,7 +8599,8 @@
     "bz07",
     "dimant-masks-forecast",
     "dimant-requiem-forecast",
-    "civic-wallet-experts"
+    "civic-wallet-experts",
+    "forecast-teams-rank"
    ]
   },
   {
@@ -8625,7 +8644,8 @@
     "bz08",
     "axb05",
     "axb12",
-    "social12"
+    "social12",
+    "civic-wallet-rank"
    ]
   },
   {

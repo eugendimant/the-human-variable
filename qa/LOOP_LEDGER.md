@@ -459,3 +459,20 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 233 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 18.
+
+## Iteration 23 (2026-10-31)
+
+**Verified first:** iteration-22 fixes, by independent review 18 (snapshot `snap_r18`): enforcers item (fact-checked correct against the full text), quoted scene numbers, estimate baseline, path balance, leak probes, lock, load, Streamlit.
+
+**Independent score:** 86/100 (review 18, `qa/reviews/review18.md`). 0 Blocking, 1 Major.
+
+**Also applied this iteration:** an in-house design-fidelity audit (`docs/audit/design_fidelity_2026_10_31.json`) corrected how 14 items describe their study's manipulation, measure or population (misperceived-norms-action, dimant-observability-choice, social07, social01, social15, dimant-notalie-causal, dimant-contagion-multi, biz05, social13, biz11, ai11, ai12, accuracy-prompt).
+
+**Fixes:**
+- **M1.** bz16 is now an item about the contest: Benartzi and Thaler's menu effect set against Huberman and Jiang's (2006) real-plan records (new source, three verbatim abstract quotes), as a forecast that resolves false, with follow-ups on how the designs differ.
+- **Minors.** rollout1 asks which agents gained most, with plausible rivals; neutral titles for bz04, rollout4, judg09; rank items added to the Trust, Measure and People paths; three claims reworded and the wording gate now also covers positive verbs; volume rendered only when present; plain negative numbers in the CSV are not prefixed; reveal tab "Scope"; Streamlit class reveal labels bins by value, handles no answers and shows each student's own score; open decisions hold their same-paper siblings (test); "Calibration points" on the verdict line; stale editorial rule removed; Library counts decisions.
+- **Visual.** Allocate reveal shows the player's points and the study's measured result per option, with non-significant effects drawn striped.
+
+**Gates:** build check, 234 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 19.

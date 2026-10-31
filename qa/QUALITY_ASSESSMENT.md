@@ -23,10 +23,11 @@ Scores in this file come only from independent reviewers: fresh agents that did 
 | 15 | iteration 19 | 86 | 0 | 1 |
 | 16 | iteration 20 | 83 | 0 | 1 |
 | 17 | iteration 21 | 86 | 0 | 1 |
+| 18 | iteration 22 | 86 | 0 | 1 |
 
 The target is 95 from an independent reviewer. It has not been reached yet; the loop continues.
 
-## Latest category scores (review 17)
+## Latest category scores (review 18)
 
 | Category | Points | Score |
 |---|---|---|
@@ -42,7 +43,7 @@ The target is 95 from an independent reviewer. It has not been reached yet; the 
 
 ## Evidence the reviewers recorded
 
-- **Tests:** the full suite passed in every review (232 at review 17), including Playwright play of all eight formats at two widths, axe, a three-phone live class and a 50-student load test.
+- **Tests:** the full suite passed in every review (233 at review 18), including Playwright play of all eight formats at two widths, axe, a three-phone live class and a 50-student load test.
 - **Answer integrity:** a byte scan of the served pages found no answer text; the class lock held on every route probed in reviews 4 and 5.
 - **Accessibility:** axe reported no serious or critical violations on up to 30 states; keyboard-only play and reduced motion worked.
 - **Load:** 50 concurrent students, p95 under 45 ms, no errors.

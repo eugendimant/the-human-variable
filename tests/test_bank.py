@@ -336,12 +336,16 @@ def test_random_slider_guess_earns_little():
 def test_forecast_wording_does_not_predict_truth():
     """Review 16, minor 1: a rule like 'negative wording means true' must not beat guessing."""
     N = re.compile(r'\b(no|not|none|fewer|less|lower|missed|cut|reduced|failed|without|never)\b', re.I)
+    P = re.compile(r'\b(raised|raise|more|increased|improved|beat|higher|further|rose|stronger|strong)\b', re.I)   # review 18: positive verbs too
     F = [c for c in LIVE if c['format'] == 'forecast']
+    cls = lambda c: 'n' if N.search(c['forecast']['claim']) else 'p' if P.search(c['forecast']['claim']) else 'o'
     best = 0
     for pn in range(0, 101, 5):
         for pp in range(0, 101, 5):
-            s = sum(1 - 2 * ((pn if N.search(c['forecast']['claim']) else pp) / 100 - (1 if c['forecast']['truth'] else 0)) ** 2 for c in F) / len(F)
-            best = max(best, s)
+            for po in range(0, 101, 5):
+                pm = {'n': pn, 'p': pp, 'o': po}
+                s = sum(1 - 2 * (pm[cls(c)] / 100 - (1 if c['forecast']['truth'] else 0)) ** 2 for c in F) / len(F)
+                best = max(best, s)
     assert best <= 0.55, round(best, 3)   # 0.5 is guessing
 
 

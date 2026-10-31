@@ -12,8 +12,8 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 111 (formats: forecast 31, choice 30, estimate 25, multi 11, causal 5, delegate 4, rank 3, allocate 2).
-- Sources: 108 (60 checked against the published full text, 3 against the authors' accepted manuscript, 44 against the published abstract, 1 quarantined).
+- Decisions in scored play: 111 (formats: forecast 32, choice 29, estimate 25, multi 11, causal 5, delegate 4, rank 3, allocate 2).
+- Sources: 109 (60 checked against the published full text, 3 against the authors' accepted manuscript, 45 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
 - Decisions retired with reasons: 35 (listed below).
 - Track balance: AI × Business 46, Culture & Society 30, Business 28, Judgment 7.
@@ -80,6 +80,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Hallsworth, List, Metcalfe & Vlaev (2017). *The behavioralist as tax collector: Using natural field experiments to enhance tax compliance*. [doi:10.1016/j.jpubeco.2017.02.003](https://doi.org/10.1016/j.jpubeco.2017.02.003) | Journal of Public Economics 148 14-31 | Abstract | tax-letter-norms |  |
 | Hartmann, Exner & Domdey (2025). *The power of generative marketing: Can generative AI create superhuman visual marketing content?*. [doi:10.1016/j.ijresmar.2024.09.002](https://doi.org/10.1016/j.ijresmar.2024.09.002) | International Journal of Research in Marketing 42(1) 13-31 | Abstract | axe10 |  |
 | Hoffman, Kahn & Li (2018). *Discretion in Hiring*. [doi:10.1093/qje/qjx042](https://doi.org/10.1093/qje/qjx042) | The Quarterly Journal of Economics 133(2) 765-800 | Abstract | axb06 |  |
+| Huberman & Jiang (2006). *Offering versus Choice in 401(k) Plans: Equity Exposure and Number of Funds*. [doi:10.1111/j.1540-6261.2006.00854.x](https://doi.org/10.1111/j.1540-6261.2006.00854.x) | Journal of Finance 61(2) 763-801 | Abstract | bz16 |  |
 | Hui, Reshef & Zhou (2024). *The Short-Term Effects of Generative Artificial Intelligence on Employment: Evidence from an Online Labor Market*. [doi:10.1287/orsc.2023.18441](https://doi.org/10.1287/orsc.2023.18441) | Organization Science 35(6) 1977-1989 | Abstract | axe08 |  |
 | Isoni, Loomes & Sugden (2011). *The Willingness to Pay—Willingness to Accept Gap, the “Endowment Effect,” Subject Misconceptions, and Experimental Procedures for Eliciting Valuations: Comment*. [doi:10.1257/aer.101.2.991](https://doi.org/10.1257/aer.101.2.991) | American Economic Review 101(2) 991-1011 | Abstract | bz06 |  |
 | Iyengar & Lepper (2000). *When choice is demotivating: Can one desire too much of a good thing?*. [doi:10.1037/0022-3514.79.6.995](https://doi.org/10.1037/0022-3514.79.6.995) | Journal of Personality and Social Psychology 79(6) 995-1006 | Full text | bz10 | ["Contested on average: Scheibehenne, Greifeneder & Todd (2010) meta-analysis finds a mean effect near zero. Used only in an item about that contest."] |

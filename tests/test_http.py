@@ -210,3 +210,18 @@ def test_served_prompts_have_no_undefined(base):
     bank = json.loads(re.search(rb'<script>const BANK = (.*?);</script>', body, re.S).group(1))
     est = [c for c in bank['challenges'] if c['format'] == 'estimate']
     assert est and all(isinstance(c['estimate'].get('tolerance'), (int, float)) for c in est)
+
+
+def test_open_decision_holds_its_same_paper_siblings(base, tmp_path, monkeypatch):
+    """Review 18, minor 10: after an idle lapse the open decision's siblings stay held too."""
+    monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 'sib2.sqlite3')); monkeypatch.setattr(app, 'LIMIT', app.Limiter())
+    users = {}
+    for c in cl.CHALLENGES.values():
+        for s in c['sources']: users.setdefault(s, []).append(c['id'])
+    a, b = next(u for u in users.values() if len(u) > 1)[:2]
+    _, room, _ = req(base, '/api/rooms', {'title': 'sib2'}, client='inst6'); key = room['secret']
+    req(base, f"/api/rooms/{room['code']}/join", {}, client='stu6')
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'open', 'challenge': a}, key=key, client='inst6')
+    monkeypatch.setattr(cl, 'CLASS_LOCK_IDLE_MIN', 0); app.STORE._lock = None; app.STORE._open = None
+    assert req(base, '/api/reveal/' + b, client='peek6')[0] == 409
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'end'}, key=key, client='inst6')

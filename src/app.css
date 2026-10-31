@@ -626,3 +626,4 @@ body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:con
 .verdict .tag{font-size:15px;font-weight:800;padding:6px 14px;border-radius:999px;background:var(--ink);color:#fff;letter-spacing:-.005em}
 .verdict .tag.tag-ev{background:var(--ev);color:var(--ink)}
 .verdict .num{font-size:15px;font-weight:750}
+.hb-track i.ev.ns{background:repeating-linear-gradient(135deg,var(--ev-soft) 0 6px,#efd59a 6px 12px)}   /* not significant: drawn, but not as a result */

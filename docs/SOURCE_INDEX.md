@@ -58,6 +58,7 @@
 - Hallsworth, List, Metcalfe & Vlaev (2017). The behavioralist as tax collector: Using natural field experiments to enhance tax compliance. *Journal of Public Economics* 148, 14-31. https://doi.org/10.1016/j.jpubeco.2017.02.003
 - Hartmann, Exner & Domdey (2025). The power of generative marketing: Can generative AI create superhuman visual marketing content?. *International Journal of Research in Marketing* 42(1), 13-31. https://doi.org/10.1016/j.ijresmar.2024.09.002
 - Hoffman, Kahn & Li (2018). Discretion in Hiring. *The Quarterly Journal of Economics* 133(2), 765-800. https://doi.org/10.1093/qje/qjx042
+- Huberman & Jiang (2006). Offering versus Choice in 401(k) Plans: Equity Exposure and Number of Funds. *Journal of Finance* 61(2), 763-801. https://doi.org/10.1111/j.1540-6261.2006.00854.x
 - Hui, Reshef & Zhou (2024). The Short-Term Effects of Generative Artificial Intelligence on Employment: Evidence from an Online Labor Market. *Organization Science* 35(6), 1977-1989. https://doi.org/10.1287/orsc.2023.18441
 - Isoni, Loomes & Sugden (2011). The Willingness to Pay—Willingness to Accept Gap, the “Endowment Effect,” Subject Misconceptions, and Experimental Procedures for Eliciting Valuations: Comment. *American Economic Review* 101(2), 991-1011. https://doi.org/10.1257/aer.101.2.991
 - Iyengar & Lepper (2000). When choice is demotivating: Can one desire too much of a good thing?. *Journal of Personality and Social Psychology* 79(6), 995-1006. https://doi.org/10.1037/0022-3514.79.6.995

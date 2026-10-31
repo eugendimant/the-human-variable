@@ -59,7 +59,9 @@ def blocked(cid: str) -> bool:
     """During a live class on this server, evidence is released only for decisions the class has already revealed."""
     locked, allowed = STORE.class_lock()
     # a decision open or closed-but-unrevealed in any class stays held even if the instructor's console went quiet
-    return (locked and cid not in allowed) or cid in STORE.open_challenges()
+    held = STORE.open_challenges()
+    # siblings on the same paper stay held too: a sibling's text can state the open decision's answer
+    return (locked and cid not in allowed) or cid in held or any(set(CHALLENGES[cid]['sources']) & set(CHALLENGES[h]['sources']) for h in held if h in CHALLENGES and cid in CHALLENGES)
 CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; "
        f"font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors {FRAME_ANCESTORS}")
 
