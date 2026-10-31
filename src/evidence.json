@@ -1048,11 +1048,6 @@
   },
   {
    "source": "kristal20",
-   "quote": "PMC7132248, Europe PMC full text",
-   "location": "Abstract, PNAS 117(13), published article (values as printed)"
-  },
-  {
-   "source": "kristal20",
    "quote": "Given the policy applications of this result, it is important to update the scientific record regarding the veracity of these results.",
    "location": "Abstract, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
   },
@@ -1060,11 +1055,6 @@
    "source": "kristal20",
    "quote": "Study 6. A sample of 1,235 adults was recruited across four laboratory sites",
    "location": "Methods, Study 6, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
-  },
-  {
-   "source": "kristal20",
-   "quote": "PMC7132248, Europe PMC full text",
-   "location": "Methods, Study 6, PNAS 117(13), published article (values as printed)"
   },
   {
    "source": "shu12",
@@ -1517,18 +1507,8 @@
   },
   {
    "source": "bail18",
-   "quote": "PMC6140520, Europe PMC full text",
-   "location": "Results, PNAS 115(37), published article (values as printed)"
-  },
-  {
-   "source": "bail18",
    "quote": "“Respondents Assigned to Treatment” describes the ITT effect for Democrats (ITT = −0.02, t = −0.76, p = 0.45, n = 416) and Republicans (ITT = 0.12, t = 2.68, p = 0.008, n = 316).",
    "location": "Fig. 3 legend, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
-  },
-  {
-   "source": "bail18",
-   "quote": "PMC6140520, Europe PMC full text",
-   "location": "Fig. 3 legend, PNAS 115(37), published article (values as printed)"
   },
   {
    "source": "bail18",
@@ -1539,11 +1519,6 @@
    "source": "bail18",
    "quote": "We received 1,652 responses to our pretreatment survey (901 Democrats and 751 Republicans).",
    "location": "Research Design, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
-  },
-  {
-   "source": "bail18",
-   "quote": "PMC6140520, Europe PMC full text",
-   "location": "Research Design, PNAS 115(37), published article (values as printed)"
   },
   {
    "source": "bail18",
@@ -1564,11 +1539,6 @@
    "source": "bail18",
    "quote": "Perhaps the most important limitation of our study is that we were unable to identify the precise mechanism that created the backfire effect among Republican respondents reported above.",
    "location": "Discussion, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
-  },
-  {
-   "source": "bail18",
-   "quote": "PMC6140520, Europe PMC full text",
-   "location": "Discussion, PNAS 115(37), published article (values as printed)"
   },
   {
    "source": "bail18",
@@ -1626,11 +1596,6 @@
   },
   {
    "source": "pennycook21",
-   "quote": "The first stage of the replication test (n = 701) was unsuccessful (p =.67) ... we found a small but significant interaction",
-   "location": "Roozenbeek, Freeman & van der Linden (2021), abstract; cited in flags, not a game source"
-  },
-  {
-   "source": "pennycook21",
    "quote": "First, we find that the veracity of headlines has little effect on sharing intentions, despite having a large effect on judgments of accuracy.",
    "location": "Abstract, Nature 592 (nature.com article page)"
   },
@@ -1653,11 +1618,6 @@
    "source": "pennycook21",
    "quote": "Participants in study 3 ( a ; n = 727 American individuals from MTurk), study 4 ( b ; n = 780 American individuals from MTurk) and study 5 ( c ; n = 1,268 American individuals from Lucid, quota-matched to the national distribution on age, gender, ethnicity and geographical region) indicated how likely they would be to consider sharing a series of actual headlines from social media. Participants in the ‘treatment’ condition rated the accuracy of a single non-political headline at the outset of the study",
    "location": "Fig. 2 legend (title: \"Inducing survey respondents to think about accuracy increases the veracity of headlines they are willing to share.\"), Nature 592, published figure legend (nature.com figure page); article body paywalled, not read"
-  },
-  {
-   "source": "pennycook21",
-   "quote": "The first stage of the replication test (n = 701) was unsuccessful (p = .67). After collecting a second round of data (additional n = 882, pooled N = 1,583), we found a small but significant interaction between treatment condition and truth discernment (uncorrected p = .017; treatment: d = 0.14, control: d = 0.10).",
-   "location": "Roozenbeek, Freeman & van der Linden (2021), Psychological Science 32(7), abstract (PMC8641132), titled \"A Preregistered Direct Replication of Pennycook et al. (2020)\". Supports follow[2]; cited in the source flags, not a game source."
   }
  ],
  "false-news-spread": [

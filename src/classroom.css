@@ -34,9 +34,16 @@ body.projector .play-grid>.card{font-size:clamp(18px,1.6vw,26px)}
 body.projector .stage-h{font-size:clamp(32px,3.4vw,56px)}
 body.projector .play-grid>.card .scene{font-size:clamp(18px,1.5vw,24px)}
 body.projector .rv-row,body.projector .present-opts li,body.projector .rv-row b{font-size:clamp(18px,1.6vw,26px)}
-body.projector .proj-exit{display:inline-flex;opacity:.7}.join-end{display:flex;align-items:center;gap:16px}body.projector .proj-exit:hover,body.projector .proj-exit:focus{opacity:1}
+body.projector .proj-exit{display:inline-flex}.join-end{display:flex;align-items:center;gap:16px}body.projector .proj-exit:hover,body.projector .proj-exit:focus{opacity:1}
 body.projector .play-grid>.card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);column-gap:48px;align-items:start}
 body.projector .play-grid>.card>*{grid-column:1}
 body.projector .play-grid>.card>.rv{grid-column:2;grid-row:1/span 30}
 
 .rv-row b{white-space:nowrap}
+
+/* rank reveal: the study's order as large numbered badges, the room's average beside each */
+.rank-proj{list-style:none;margin:8px 0 6px;padding:0;display:grid;gap:10px}
+.rank-proj li{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:10px 14px;border:1px solid var(--rule,#cbd3dd);border-radius:14px;background:#fff}
+.rp-badge{width:40px;height:40px;border-radius:50%;background:#e0a01c;color:#14203a;font-weight:800;display:grid;place-items:center;font-size:20px}
+.rp-name{font-weight:650}.rp-room{color:#56617a;font-size:.9em;white-space:nowrap}.rp-room b{color:#1f3cc2;font-size:1.15em}
+body.projector .rp-badge{width:56px;height:56px;font-size:28px}

@@ -22,7 +22,7 @@ FRAME_ANCESTORS = os.environ.get('THV_FRAME_ANCESTORS', "'self'")
 STATIC = {'/': 'index.html', '/index.html': 'index.html', '/classroom': 'classroom.html', '/classroom.html': 'classroom.html'}
 LOOPBACK = os.environ.get('HOST', '127.0.0.1') in ('127.0.0.1', 'localhost', '::1')
 
-SOURCE_PRIVATE = ('takeaway', 'flags')
+SOURCE_PRIVATE = ('takeaway', 'flags', 'title')   # many paper titles state their finding, so titles travel with the evidence
 def public_source(s: dict) -> dict:
     """Bibliographic record only: takeaways and notes state findings, so they travel with the evidence."""
     out = {k: v for k, v in s.items() if k not in SOURCE_PRIVATE}
@@ -34,7 +34,7 @@ for _c in BANK['challenges']:
 def with_sources(c: dict, hide=None) -> dict:
     """A full decision plus the private fields of its sources, for /api/reveal and /api/library.
     A source's takeaway can state a sibling decision's answer, so during a class it travels only once every decision on that source is open."""
-    keys = lambda sid: ('flags',) if hide and any(hide(x) for x in SRC_DECISIONS.get(sid, []) if x in CHALLENGES) else ('takeaway', 'flags')
+    keys = lambda sid: ('flags',) if hide and any(hide(x) for x in SRC_DECISIONS.get(sid, []) if x in CHALLENGES) else ('takeaway', 'title', 'flags')
     return c | {'sourceNotes': {sid: {k: BANK['sources'][sid][k] for k in keys(sid) if k in BANK['sources'][sid]} | (
         {'note': BANK['sources'][sid]['verification']['note']} if BANK['sources'][sid].get('verification', {}).get('note') else {}) for sid in c['sources'] if sid in BANK['sources']}}
 def public_bank() -> dict:

@@ -3402,7 +3402,7 @@
    },
    "permuted": true,
    "options": [
-    "Large gains, mostly in final rounds",
+    "Unfavorable to women, with tight estimates",
     "Large gains, concentrated in early rounds",
     "Unfavorable to women, mostly in early rounds",
     "Favorable to women, with imprecise estimates"
@@ -3530,7 +3530,7 @@
    "answer": 1,
    "answerTitle": "The domains diverged",
    "explain": "In Dimant’s experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a group-mate who shared only a painting preference (about 39%), yet gave allies no more money (14.97% versus 13.54%). From opponents, they took 22.9%.",
-   "implication": "When teams distrust each other, share evidence of the other side's actual cooperation.",
+   "implication": "When teams distrust each other, measure how they actually treat each other, not only how they feel about each other.",
    "boundary": "Incentivized behavioral experiments with US Trump supporters and opponents, plus a sports-identity comparison.",
    "sources": [
     "hate23"
@@ -3941,7 +3941,7 @@
    "format": "causal",
    "concept": "Proxy bias",
    "title": "Who gets extra care?",
-   "scene": "A health system uses a widely sold algorithm to choose patients for an extra-care program. It predicts future health-care costs and treats high predicted cost as high need.",
+   "scene": "A health system uses a widely sold algorithm to choose patients for an extra-care program.",
    "question": "Why were Black patients flagged less than equally sick White patients?",
    "options": [
     "Less is spent on Black patients at equal need",
@@ -4357,7 +4357,7 @@
    "format": "forecast",
    "concept": "Customer spillovers",
    "title": "Do customers notice the AI?",
-   "scene": "A firm rolled out a generative-AI assistant that suggests replies to its customer-support agents, in stages across 5,172 agents. A common expectation is calmer customers.",
+   "scene": "A firm rolled out a generative-AI assistant that suggests replies to its customer-support agents, in stages across 5,172 agents.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "After agents got AI assistance, customers became less likely to ask for a manager.",
@@ -4468,7 +4468,7 @@
    "follow": [
     {
      "q": "Why start with newer agents?",
-     "a": "Less experienced and lower-skilled agents improved both speed and quality, so the assistant closed part of the gap to their more experienced colleagues."
+     "a": "Less experienced and lower-skilled agents improved both speed and quality, which made them the natural first group."
     },
     {
      "q": "How was productivity measured?",
@@ -4494,7 +4494,7 @@
    },
    "concept": "Expert spillback",
    "title": "Will your stars get better too?",
-   "scene": "In a staggered rollout of an AI assistant to 5,172 customer-support agents, the assistant also reached the most experienced, highest-skilled agents. A common expectation is that it lifts their work as much as newer agents’.",
+   "scene": "In a staggered rollout of an AI assistant to 5,172 customer-support agents, the assistant also reached the most experienced, highest-skilled agents.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "For the most experienced, highest-skilled agents, AI assistance improved both speed and quality.",
@@ -5503,12 +5503,12 @@
    "concept": "Forecasting honesty",
    "title": "What the experts expected",
    "scene": "Researchers asked 279 academic economists and 299 other survey respondents to predict how adding cash to a lost wallet would change US return rates.",
-   "question": "Did most economists foresee that more cash means more returns?",
+   "question": "How likely is it that the study found this?",
    "forecast": {
-    "claim": "Most surveyed economists predicted that more money in a wallet would raise return rates.",
-    "truth": false
+    "claim": "Fewer than half of the surveyed economists predicted that return rates would rise with more money.",
+    "truth": true
    },
-   "answerTitle": "Only 29% of economists predicted the increase",
+   "answerTitle": "Fewer than a third of economists foresaw the pattern",
    "explain": "Among 279 economists, 49% predicted a decrease and 29% an increase; among 299 laypeople, 18% predicted an increase.",
    "implication": "Pilot honesty controls before scaling them; expert intuition about how people respond to temptation got the direction wrong here.",
    "boundary": "Predictions were for US return rates; actual behavior came from the 40-country field experiment with wallets handed to counter staff.",
@@ -5522,7 +5522,7 @@
     },
     {
      "q": "Were economists closer than laypeople?",
-     "a": "Their errors were smaller, but they predicted roughly flat rates of 69%, 69% and 66% rather than the rise that occurred."
+     "a": "Their errors were smaller, but they predicted roughly flat rates of 69%, 69% and 66%."
     },
     {
      "q": "Why might the experts have missed it?",
@@ -5829,16 +5829,16 @@
    ],
    "follow": [
     {
+     "q": "How was the Twitter test run?",
+     "a": "In Study 7, 5,379 Twitter users who had recently shared news links got a private message asking them to rate the accuracy of one non-political headline; the researchers then tracked what they shared."
+    },
+    {
      "q": "Why would people share news they doubt?",
      "a": "In the survey studies, headline truth had little effect on sharing intentions despite a large effect on accuracy judgments; the authors argue attention is focused elsewhere."
     },
     {
      "q": "What happened in the survey experiments?",
      "a": "Rating one non-political headline for accuracy at the start made people more discerning about which headlines they would share, in studies of 727, 780 and 1,268 Americans."
-    },
-    {
-     "q": "Has the accuracy prompt replicated?",
-     "a": "Partly. A preregistered replication of the authors' 2020 study failed at its first stage and found only a small effect after more data (Roozenbeek et al. 2021)."
     }
    ],
    "study": {
@@ -6112,7 +6112,7 @@
     "Beat crowd-belief, t(1036) = 5.52"
    ],
    "answerTitle": "Teams beat crowd-belief, which beat independents",
-   "explain": "Team forecasters were more accurate than crowd-belief forecasters, t(1036) = 5.52, who in turn outperformed independent forecasters, t(1120) = 5.92.",
+   "explain": "In a tournament that began with 2,246 forecasters, teams were clearly more accurate than forecasters who saw the crowd’s beliefs, who in turn clearly beat forecasters working alone.",
    "implication": "For risk forecasts, have analysts work in teams that share reasoning, and score their forecasts for accuracy over time.",
    "boundary": "Geopolitical questions scored with Brier scores, with volunteers in one tournament; the paper reports test statistics.",
    "sources": [
@@ -6154,7 +6154,7 @@
    ],
    "answer": 2,
    "answerTitle": "Probability training beat scenario training",
-   "explain": "Probability training was more effective than scenario training, t(1053) = 2.23, p = .026, and training was one of three interventions that raised accuracy.",
+   "explain": "In a tournament that began with 2,246 forecasters, about 45 minutes of probability training beat scenario training, and training was one of three interventions that raised accuracy.",
    "implication": "Give forecasting and planning staff short training in probabilistic reasoning, and check its value with scored forecasts.",
    "boundary": "Geopolitical forecasts by tournament volunteers; the paper reports significance tests for the training effect.",
    "sources": [
@@ -6167,7 +6167,7 @@
     },
     {
      "q": "Does training replace teamwork?",
-     "a": "No. The authors report that training, teaming and tracking top performers each increased forecast accuracy."
+     "a": "No. The authors treat training as one of several interventions that raised accuracy."
     },
     {
      "q": "Who were the forecasters?",
@@ -6691,7 +6691,7 @@
    "track": "Business",
    "concept": "Incentive follow-through",
    "title": "Cards on top of cash",
-   "scene": "A program paid US veterans cash to return unused opioid pills. Researchers randomly added two reminder cards built on timely reminders, planning prompts and loss framing. A common expectation is that such cards pay for themselves.",
+   "scene": "A program paid US veterans cash to return unused opioid pills. Researchers randomly added two reminder cards built on timely reminders, planning prompts and loss framing.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "Adding the reminder cards lowered the program's cost per pill returned.",
@@ -7218,7 +7218,7 @@
    "format": "forecast",
    "concept": "AI ad creative",
    "title": "Will AI images win the click?",
-   "scene": "Researchers generated 10,320 marketing images with seven text-to-image models from 2,400 human-made images, then ran a live ad test with over 173,000 impressions. Many marketers expect a machine-made image can win.",
+   "scene": "Researchers generated 10,320 marketing images with seven text-to-image models from 2,400 human-made images, then ran a live ad test with over 173,000 impressions.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "In the live ad test, an AI-generated image beat the human-made image on click-through rate.",
@@ -7767,8 +7767,8 @@
    ],
    "theme": "choice",
    "forecast": {
-    "claim": "Scientists’ average predictions tracked which texts raised vaccination most.",
-    "truth": false
+    "claim": "Scientists’ average predictions missed which texts raised vaccination most.",
+    "truth": true
    }
   },
   {
@@ -7778,7 +7778,7 @@
    "concept": "AI as messenger",
    "title": "Who should break the news?",
    "scene": "Your firm can present offers to customers through an AI agent or a human employee. A series of consumer experiments tested reactions to offers better or worse than customers expected.",
-   "question": "For each message, who should deliver it?",
+   "question": "For each message, which messenger drew the better customer response?",
    "delegate": {
     "choices": [
      "AI agent",

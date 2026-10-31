@@ -136,3 +136,12 @@ def test_offline_tutor_regressions(q, cid, bad):
 def test_offline_tutor_names_a_locked_study():
     r = T.curated('What did Cohn find about lost wallets?', None, exclude=lambda x: True)
     assert r['mode'] == 'locked'
+
+
+@pytest.mark.parametrize('q,cid,bad', [
+    ('Was this randomized?', 'axb05', 'Facebook'),
+    ('Does this replicate?', None, 'accuracy'),
+])
+def test_offline_tutor_review13(q, cid, bad):
+    """Review 13, M2: method words answer from the decision on screen and never pick another study."""
+    r = T.curated(q, cid); assert bad.lower() not in r['answer'].lower(), r['answer'][:120]

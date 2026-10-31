@@ -571,3 +571,5 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
 @keyframes edIn{from{opacity:0}to{opacity:1}}
 .dag .ed{opacity:0;animation:edIn .45s ease forwards}
 @media (prefers-reduced-motion:reduce){.dag .ed{opacity:1;animation:none}}
+
+.conf-line{margin:-4px 0 12px;font-size:var(--t6);color:var(--ink-2)}

@@ -314,5 +314,5 @@ def test_evidence_entries_are_clean():
     ev = json.loads((ROOT / 'src/evidence.json').read_text()); C = {c['id']: c for c in LIVE}; bad = []
     for k, qs in ev.items():
         if not isinstance(qs, list) or k not in C: continue
-        bad += [(k, q['quote'][:40]) for q in qs if q.get('source') not in C[k]['sources'] or re.search(r'extracted text|rendered as|values below', q['quote'], re.I)]
+        bad += [(k, q['quote'][:40]) for q in qs if q.get('source') not in C[k]['sources'] or re.search(r'extracted text|rendered as|values below|^PMC\d+, Europe PMC', q['quote'], re.I)]
     assert not bad, bad

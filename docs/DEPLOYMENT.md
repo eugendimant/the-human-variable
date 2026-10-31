@@ -85,3 +85,7 @@ Pages:
 ## Local classroom (one laptop, same network)
 
 Run `python start_classroom.py`. It binds `127.0.0.1` by default. To let phones on the same Wi-Fi join, run `HOST=0.0.0.0 python start_classroom.py` and share `http://<laptop-ip>:8502/`. This is plain HTTP, so use it only on a trusted network.
+
+## Streamlit without a passcode
+
+Without `THV_INSTRUCTOR_PASSCODE`, the Streamlit Play page embeds the self-study file, which carries its answers by design. That suits a private or course-only deployment. For a public deployment that runs live classes, set the passcode: solo play then stays off unless `THV_STREAMLIT_SOLO=1`.

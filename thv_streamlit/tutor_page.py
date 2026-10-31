@@ -8,8 +8,9 @@ def run():
     ss.setdefault('client', __import__('secrets').token_hex(6))
     st.title('Ask the tutor')
     st.caption(('Answers come from Gemini, restricted to the lab’s checked sources, with citations. ' if T.enabled else 'No AI key is configured, so answers come from the lab’s checked summaries. ') + 'Verify details in the source.')
-    locked, allowed = store().class_lock()
-    ids = [i for i in cl.CHALLENGES if not locked or i in allowed]
+    locked, allowed = store().class_lock(); held = store().open_challenges()   # an open question stays held even if the console went quiet
+    blocked = lambda i: (locked and i not in allowed) or i in held
+    ids = [i for i in cl.CHALLENGES if not blocked(i)]
     if locked: st.info('A live class is running, so the tutor covers only decisions your class has already revealed.')
     if not ids: return
     cid = st.selectbox('Decision', ids, format_func=lambda i: f"{cl.CHALLENGES[i]['title']} ({cl.CHALLENGES[i]['track']})")
@@ -25,7 +26,7 @@ def run():
     q = typed or q
     if q:
         with st.chat_message('user'): st.write(q)
-        r = T.ask(q, cid, ss.client, exclude=(lambda i: i not in allowed) if locked else None)
+        r = T.ask(q, cid, ss.client, exclude=blocked if (locked or held) else None)
         with st.chat_message('assistant'):
             st.write(r['answer'])
             if r.get('citations'): st.caption('Sources: ' + '; '.join(x['label'] for x in r['citations']))

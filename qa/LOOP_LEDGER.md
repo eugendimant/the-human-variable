@@ -386,3 +386,19 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 219 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 13.
+
+## Iteration 18 (2026-10-31)
+
+**Verified first:** iteration-17 fixes, by independent review 13 (snapshot `snap_r13`): biz03 retired, absolute-word gate, confidence score, allocate order and even split, axe11 pick-two, scenes, evidence hygiene, join message. Not held: two sibling spoilers in civic-wallet-experts.
+
+**Independent score:** 83/100 (review 13, `qa/reviews/review13.md`). 0 Blocking, 3 Major.
+
+**Fixes:**
+- **M1.** Paper titles are private fields, served with the evidence and gated like takeaways (during a class, only once every decision on the paper is open). The page shows a title once every decision built on the paper has been played; until then the source dialog shows authors and year and the home Dimant list shows a decision's title. The served-page leak test now probes titles.
+- **M2.** Method and replication words never pick another study: they answer from the decision on screen (design and sample, scope), and with no decision the tutor asks which study is meant. Subgroup questions use only follow-ups about who gained. Regression tests added.
+- **M3.** A class poll that returns an error (429 or other) keeps the phone's card and pending answer; only real state updates the screen.
+- **Minors.** Sibling spoilers removed (civic-wallet-experts question, claim, title and follow-up; social15 action; forecast-training and rollout1 follow-ups); prediction forecasts now resolve both ways (civic-wallet-experts and axf02 true); invented expectations removed from four scenes; axb05 scene no longer states the cost proxy; social13's keyed option is no longer the only hedged one; axf04 asks which messenger drew the better response; projector rank reveal shows the measured order as large numbered badges with the room's average beside each, "1 answer" grammar, causal factors on the open stage, exit button at full contrast; plain-language explanations for the two forecasting-tournament items; one score per decision, with the confidence result on its own line; Streamlit tutor holds open questions; deployment note on Streamlit without a passcode; location strings and quotes from a non-source replication paper removed from evidence (gate extended), and its unsourced follow-up replaced.
+
+**Gates:** build check, 221 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 3 Major found and addressed. Next: independent review 14.

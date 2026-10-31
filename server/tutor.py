@@ -83,6 +83,8 @@ PRESETS = {
     'test': 'How would I test this in my company?',
 }
 
+GENERIC = {stem(w) for w in 'replicate replicated replication randomized randomised random sample design method control group effect size big large happen happened apply work hold today still test pilot'.split()}
+
 def names(question: str, cid: str) -> bool:
     """Does the question name a study behind this decision (an author surname)?"""
     q = set(tokens(question))
@@ -98,14 +100,14 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         if re.search(r'\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)', ql):
             return {'answer': f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff)|subgroup)', ql):
-            fh = [f for f in c.get('follow', []) if re.search(r'\b(who|which)\b.*\b(most|gain|benefit|affected)', f['q'], re.I)]
+            fh = [f for f in c.get('follow', []) if re.search(r'^(who\b|which (workers|agents|employees|people|consultants|staff|groups?)\b)', f['q'], re.I)]
             if fh: return {'answer': fh[0]['a'], 'citations': cites, 'mode': 'curated'}   # who gained: the item's own heterogeneity result
         qt0 = set(tokens(question)); f0 = max(c.get('follow', []), key=lambda f: len(qt0 & set(tokens(f['q'] + ' ' + f['a']))), default=None)
         if f0 and len(qt0 & set(tokens(f0['q'] + ' ' + f0['a']))) >= 2:   # a follow-up that clearly matches beats a generic route
             return {'answer': f0['a'], 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|always|everywhere|replicat)', ql):
             return {'answer': f"{c['boundary']} The study itself: {c['explain']}", 'citations': cites, 'mode': 'curated'}
-        if re.search(r'\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|setup|set up)\b', ql) and not re.search(r'\b(my|our)\b', ql):
+        if re.search(r'\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|setup|set up|randomi[sz]\w*|control group)\b', ql) and not re.search(r'\b(my|our)\b', ql):
             st = c.get('study', {})
             return {'answer': f"Design: {st.get('design', 'see the paper')}; sample: {st.get('n', 'see the paper')}. {c['explain']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(big|size|large|much|practice|magnitude)\b', ql):
@@ -113,7 +115,9 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         qt = set(tokens(question)); best = max(c.get('follow', []), key=lambda f: len(qt & set(tokens(f['q'] + ' ' + f['a']))), default=None)
         if best and len(qt & set(tokens(best['q'] + ' ' + best['a']))) >= min(2, len(qt)):
             return {'answer': best['a'], 'citations': cites, 'mode': 'curated'}
-    qt = set(tokens(question))
+    qt = set(tokens(question)) - GENERIC   # words about method, not topic, never pick another study
+    if not qt and not c:
+        return {'answer': 'Open a decision and ask about it, or name the study or topic you mean.', 'citations': [], 'mode': 'curated'}
     docs = []
     for d in retrieve(question, challenge_id, 4, exclude):
         ov = len(qt & set(tokens(d['body'])))

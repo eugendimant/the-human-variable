@@ -197,7 +197,7 @@ function home() {
     <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}">${art(PATH_ART[p.id])}${pi === 0 ? `<em class="path-flag">${p.case ? 'Start here: multi-step case' : 'Start here'}</em>` : p.case ? '<em class="path-flag">Multi-step case</em>' : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
   </section>
   ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p>How the shape of a norm, the visibility of peers and political identity change what people do at work and in society.</p><p class="dimant-stat">${ALL.filter(c => c.sources.some(id => dimant.some(d => d.id === id))).length} decisions in the game draw on ${dimant.length} of his published papers, in Management Science, PNAS Nexus, Scientific Reports and other journals.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
-    <ul class="paper-list">${dimant.slice(0, 6).map(s => `<li><button data-source="${esc(s.id)}"><strong>${esc(s.title)}</strong><small>${esc(s.venue)}, ${s.year}</small></button></li>`).join('')}</ul></div></section>` : ''}`;
+    <ul class="paper-list">${dimant.slice(0, 6).map(s => `<li><button data-source="${esc(s.id)}"><strong>${esc(paperTitle(s) || ALL.find(c => c.sources.includes(s.id))?.title || s.venue)}</strong><small>${esc(s.venue)}, ${s.year}</small></button></li>`).join('')}</ul></div></section>` : ''}`;
 }
 function customRound() {
   const counts = Object.fromEntries(TRACKS.map(t => [t, ALL.filter(c => c.track === t).length]));
@@ -334,11 +334,11 @@ function play() {
   const src = SOURCE[c.sources[0]], [stLabel, stCls] = srcStatus(src);
   const panel = tab === 'questions' ? `<div class="follow">${c.follow.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</div>${tutorPanel(c)}`
     : tab === 'scope' ? `<p class="deep-text">${esc(c.boundary)}</p>`
-    : tab === 'source' ? c.sources.map(id => { const s = SOURCE[id], [l, k] = srcStatus(s); return `<div class="src"><p class="src-title">${esc(s.title)}</p><p>${esc(s.authors)}, <i>${esc(s.venue)}</i> ${esc(s.volume || '')}, ${s.year}.</p><p class="row"><span class="status ${k}">${l}</span> <button class="link-btn" data-source="${esc(id)}">More on this source</button> <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article</a></p></div>` }).join('')
+    : tab === 'source' ? c.sources.map(id => { const s = SOURCE[id], [l, k] = srcStatus(s); return `<div class="src"><p class="src-title">${esc(paperTitle(s) || 'Title shown once you have played every decision built on this paper')}</p><p>${esc(s.authors)}, <i>${esc(s.venue)}</i> ${esc(s.volume || '')}, ${s.year}.</p><p class="row"><span class="status ${k}">${l}</span> <button class="link-btn" data-source="${esc(id)}">More on this source</button> <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article</a></p></div>` }).join('')
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">${label}
-      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}${rec.confidence !== null ? `, at ${rec.confidence}% confidence: confidence score ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))}` : ''}</span>`}</p>
+      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}</span>`}</p>${!rec.missed && rec.confidence !== null ? `<p class="conf-line">You said ${rec.confidence}% sure. On the calibration rule that earns ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))}: sure and right scores high, sure and wrong scores low.</p>` : ''}
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
       ${rec.missed ? '' : gapFigure(c, rec)}
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
@@ -369,10 +369,10 @@ function curated(q, c) {
   const best = ALL.map(x => ({ x, s: scoreOf(x) })).sort((a, b) => b.s - a.s)[0];
   const fq = (c.follow || []).map(f => ({ f, s: terms.filter(t => (f.q + ' ' + f.a).toLowerCase().includes(t)).length })).sort((a, b) => b.s - a.s)[0];
   const cs = [cite(c.sources[0])];
-  if (/\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff)|subgroup)/i.test(q)) { const fh = (c.follow || []).find(f => /\b(who|which)\b.*\b(most|gain|benefit|affected)/i.test(f.q)); if (fh) return { text: fh.a, cites: cs } }
+  if (/\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff)|subgroup)/i.test(q)) { const fh = (c.follow || []).find(f => /^(who\b|which (workers|agents|employees|people|consultants|staff|groups?)\b)/i.test(f.q)); if (fh) return { text: fh.a, cites: cs } }
   if (/\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)/i.test(q)) return { text: `The study measures what happened, not what is right; that call is yours. What it covers: ${c.boundary}\n\nWhat a manager can do with it: ${c.implication}`, cites: cs };
   if (/\b(big|size|large|much|practice|magnitude)\b/i.test(q)) return { text: `${c.explain}${c.study && c.study.n && !/not (stated|confirmed)/i.test(c.study.n) ? ' Sample: ' + c.study.n + '.' : ''}\n\nIn practice: ${c.implication}`, cites: cs };
-  if (/\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|set ?up)\b/i.test(q) && !/\b(my|our)\b/i.test(q) && c.study) return { text: `Design: ${c.study.design}; sample: ${c.study.n}.\n\n${c.explain}`, cites: cs };
+  if (/\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|set ?up|randomi[sz]\w*|control group)\b/i.test(q) && !/\b(my|our)\b/i.test(q) && c.study) return { text: `Design: ${c.study.design}; sample: ${c.study.n}.\n\n${c.explain}`, cites: cs };
   if (/\b(test|pilot|company|measure)\b/i.test(q)) return { text: `Start with a small randomized pilot: assign the change to some teams and not others, fix the outcome metric in advance, and compare. ${c.implication}\n\nThe study itself: ${c.explain}`, cites: [cite(c.sources[0])] };
   if (/today|hold|still|generali|apply|transfer|everywhere|always/i.test(q)) return { text: `${c.boundary}\n\n${c.explain}`, cites: [cite(c.sources[0])] };
   if (fq && fq.s >= Math.min(2, terms.length)) return { text: fq.f.a, cites: [cite(c.sources[0])] };
@@ -401,7 +401,7 @@ function clientId() { let id = store.get('thv:client', null); if (!id) { id = Ma
 // ----- atlas -----
 function atlas() {
   const q = st.atlasQuery.trim().toLowerCase();
-  const m = ALL.filter(c => (st.atlasTrack === 'All' || c.track === st.atlasTrack) && (st.atlasFormat === 'All' || FORMAT_NAME[c.format] === st.atlasFormat) && (!q || [c.title, c.scene, c.question, c.concept, c.explain, cite(c.sources[0]), SOURCE[c.sources[0]].title].join(' ').toLowerCase().includes(q)));
+  const m = ALL.filter(c => (st.atlasTrack === 'All' || c.track === st.atlasTrack) && (st.atlasFormat === 'All' || FORMAT_NAME[c.format] === st.atlasFormat) && (!q || [c.title, c.scene, c.question, c.concept, c.explain, cite(c.sources[0])].join(' ').toLowerCase().includes(q)));
   return `<section class="atlas-head wrap">${libHead()}
     <div class="atlas-tools"><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Search</span><input id="atlas-q" type="search" value="${esc(st.atlasQuery)}" placeholder="Try defaults, Dimant, algorithm, norms" autocomplete="off"></label>
     <label class="sr-only" for="atlas-track">Area</label><select id="atlas-track" class="seg">${['All', ...TRACKS].map(t => `<option value="${esc(t)}" ${st.atlasTrack === t ? 'selected' : ''}>${t === 'All' ? 'All areas' : esc(t)}</option>`).join('')}</select>
@@ -478,9 +478,11 @@ function modal(html, label) {
   qs('#overlay .close').focus();
 }
 function closeModal() { if (!qs('#overlay').innerHTML) return; qs('#overlay').innerHTML = ''; lastFocus && lastFocus.focus && lastFocus.focus() }
+// A paper's title often states its finding, so it shows once every decision built on the paper has been played.
+function paperTitle(s) { const used = ALL.filter(c => c.sources.includes(s.id)); return s.title && used.every(c => records.some(r => r.id === c.id)) ? s.title : null }
 function sourceModal(id) {
   const s = SOURCE[id]; if (!s) return; const v = s.verification || {}; const used = ALL.filter(c => c.sources.includes(id));
-  modal(`<span class="kicker">Peer-reviewed source</span><h2>${esc(s.title)}</h2><p><strong>${esc(s.authors)}</strong> (${s.year}). <i>${esc(s.venue)}</i>${s.volume ? `, ${esc(s.volume)}` : ''}${s.pages ? `, ${esc(s.pages)}` : ''}.</p>
+  modal(`<span class="kicker">Peer-reviewed source</span><h2>${esc(paperTitle(s) || `${s.authors} (${s.year})`)}</h2>${paperTitle(s) ? '' : '<p class="small">The paper’s title appears once you have played every decision built on it, because titles often state the finding.</p>'}<p><strong>${esc(s.authors)}</strong> (${s.year}). <i>${esc(s.venue)}</i>${s.volume ? `, ${esc(s.volume)}` : ''}${s.pages ? `, ${esc(s.pages)}` : ''}.</p>
     ${s.takeaway && used.every(c => records.some(r => r.id === c.id)) ? `<p><strong>What the lab uses.</strong> ${esc(s.takeaway)}</p>` : `<p>The paper’s finding appears here once you have played ${used.length > 1 ? 'every decision' : 'the decision'} built on it.</p>`}
     <p><strong>How it was checked.</strong> ${esc(srcStatus(s)[0])}${v.checked ? ' on ' + esc(v.checked) : ''}. Metadata matched against the DOI registry.${v.note ? ' ' + esc(v.note) : ''}</p>
     ${used.length ? `<p><strong>Decisions built on it:</strong> ${used.map(c => `<button class="link-btn" data-play="${esc(c.id)}">${esc(c.title)}</button>`).join(', ')}.</p>` : ''}
@@ -527,8 +529,9 @@ async function roomPoll() {
   try {
     const r = await fetch(`/api/rooms/${R.code}?v=${encodeURIComponent(R.etag)}`, { headers: roomHeaders() });
     if (r.status === 404) { notice('This live session has ended.'); st.room = null; st.view = 'home'; render(true); return }
+    if (!r.ok) throw Error('poll ' + r.status);   // a 429 or error body is not class state: keep the current card and answer
     const d = await r.json(); R.misses = 0;
-    if (!d.same) {
+    if (!d.same && d.phase) {
       const changed = d.challenge !== R.challenge, phaseChanged = d.phase !== R.phase;
       R.etag = d.etag; R.phase = d.phase; R.agg = d.aggregate || null; R.participants = d.participants; R.responses = d.responses; R.title = d.title;
       if (d.evidence && BY_ID[d.evidence.id]) Object.assign(BY_ID[d.evidence.id], d.evidence);
