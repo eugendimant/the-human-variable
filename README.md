@@ -4,10 +4,10 @@ A decision lab on behavioral science, AI and business for MBA students, graduate
 
 Players commit to a prediction about a published experiment, state how sure they are, and then see the evidence placed on the same axis as their call. Each reveal shows what a manager does with the finding, where the evidence comes from, three follow-up questions, the source, and an optional tutor.
 
-- **Decisions:** 95, each tied to one of 81 peer-reviewed sources. Each source has a recorded check against its DOI record and its published text; see [`docs/SCIENTIFIC_AUDIT.md`](docs/SCIENTIFIC_AUDIT.md).
-- **Formats:** eight ways to commit: forecast (Brier-scored), estimate, rank, allocate a budget, delegate tasks to AI, find the cause (with a causal diagram), pick one, pick two.
-- **Structure:** multi-step cases, curated paths, a playbook of ten principles, a personal calibration record, and live classes with an instructor console.
-- **Research by Eugen Dimant:** 18 decisions from 12 of his published papers. Working papers are excluded.
+- **Decisions:** <!--n:decisions-->112<!--/n-->, drawn from <!--n:sources-->103<!--/n--> peer-reviewed papers and scholarly books (<!--n:fulltext-->45<!--/n--> checked against the full text, the rest against the published abstract). Each source has a recorded check against its DOI record and its published text; see [`docs/SCIENTIFIC_AUDIT.md`](docs/SCIENTIFIC_AUDIT.md).
+- **Formats:** eight ways to commit: forecast (proper Brier-based score), estimate, rank, allocate a budget, delegate tasks to AI, find the cause (with a causal diagram), pick one, pick two.
+- **Structure:** multi-step cases, <!--n:paths-->8<!--/n--> curated paths, a playbook of <!--n:principles-->10<!--/n--> principles, a personal calibration record, and live classes with an instructor console.
+- **Research by Eugen Dimant:** <!--n:dimant_decisions-->18<!--/n--> decisions from <!--n:dimant_papers-->14<!--/n--> of his published papers. Working papers are excluded.
 
 ## Run it
 

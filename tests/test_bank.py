@@ -124,3 +124,7 @@ def test_titles_do_not_state_the_finding():
         if t & a & {'backfired', 'surprise', 'wasn', 'worth', 'spared', 'unequal', 'fails', 'failed', 'failure', 'beats', 'doubled', 'halved'}: bad.append(c['id'])
         if re.search(r"backfire|wasn.t there|not spared|beats|fails", c['title'], re.I): bad.append(c['id'])
     assert not bad, bad
+
+def test_doc_counts_current():
+    sys.path.insert(0, str(ROOT / 'tools')); import sync_doc_counts
+    assert not sync_doc_counts.apply(check=True), 'run python tools/sync_doc_counts.py'

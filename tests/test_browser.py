@@ -54,7 +54,7 @@ def test_every_format_plays_and_reveals(browser, w, h):
         assert pg.locator('#gap-h').count() == 1, c['id']
         assert not pg.evaluate('document.documentElement.scrollWidth > innerWidth + 1'), (c['id'], w)
         assert not pg.errors, (c['id'], pg.errors)
-        rec = pg.evaluate('THV.records()'); assert rec[-1]['id'] == c['id'] and 0 <= rec[-1]['score'] <= 1
+        rec = pg.evaluate('THV.records()'); assert rec[-1]['id'] == c['id'] and -1 <= rec[-1]['score'] <= 1
         pg.close()
 
 def test_keyboard_round_and_record(browser):
@@ -157,3 +157,12 @@ def test_served_solo_round_fetches_evidence_after_lock(browser, tmp_path):
             assert not pg.errors, (c['id'], pg.errors); pg.close()
     finally:
         srv.shutdown()
+
+def test_back_button_moves_between_views(browser):
+    pg = page(browser); pg.goto(URL)
+    pg.click('.nav [data-nav="almanac"]'); pg.wait_for_selector('.theme')
+    pg.click('.nav [data-nav="record"]'); pg.wait_for_timeout(100)
+    assert pg.evaluate('location.hash') == '#record'
+    pg.go_back(); pg.wait_for_selector('.theme'); assert pg.evaluate('location.hash') == '#library'
+    pg.goto(URL + '#record'); assert pg.locator('.nav [aria-current="page"]').get_attribute('data-nav') == 'record'
+    assert not pg.errors, pg.errors; pg.close()

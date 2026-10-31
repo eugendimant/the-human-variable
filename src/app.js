@@ -95,7 +95,7 @@ function needsTouch(c) { return ['forecast', 'rank', 'allocate'].includes(c.form
 // What "right" means for the confidence question, per format (matches S.score().correct).
 function confQuestion(c) {
   return ({ choice: 'How sure are you that this is right?', causal: 'How sure are you that this is right?', multi: 'How sure are you that both picks are right?',
-    estimate: `How sure are you that you are within ±${c.estimate ? c.estimate.tolerance : ''} of the true value?`,
+    estimate: `How sure are you that you land within ${c.estimate ? c.estimate.tolerance : ''}${c.estimate && (c.estimate.unit ?? '%') === '%' ? ' points' : ''} of the study value?`,
     rank: 'How sure are you of the exact order?', allocate: 'How sure are you that you captured 80% of the best payoff?', delegate: 'How sure are you that every task is routed right?' })[c.format] || 'How sure are you?';
 }
 function lockReady(c) { return S.ready(c, st.resp) && (!needsTouch(c) || st.touched) && (c.format === 'forecast' || st.confTouched) }
@@ -231,7 +231,7 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
 
 function gapFigure(c, rec) {
   const r = rec.response; let body = '', cap = '';
-  if (c.format === 'estimate') { const e = c.estimate; body = gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); cap = `Shaded band: within ${e.tolerance}${e.unit ?? '%'} of the study value counts as a hit. You were ${rec.detail.gap}${e.unit ?? '%'} away.` }
+  if (c.format === 'estimate') { const e = c.estimate; body = gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); const u = (e.unit ?? '%') === '%' ? ' points' : e.unit; cap = `Shaded band: within ${e.tolerance}${u} of the study value counts as a hit. You were ${rec.detail.gap}${u} away.` }
   else if (c.format === 'forecast') { body = gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evLabel: c.forecast.truth ? 'True' : 'False', fmt: x => x + '%' }); cap = `Brier score ${rec.detail.brier.toFixed(2)} (0 is perfect, 0.25 is saying 50%, 1 is confidently wrong). Score = 100 − 200 × Brier, so a confident miss goes below zero.` }
   else if (c.format === 'rank') {
     const truth = c.rankAnswer;
@@ -520,7 +520,20 @@ function joinModal() {
 // ---------- render ----------
 let toastT;
 function notice(s) { const t = qs('#toast'); t.textContent = s; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3200) }
+// Browser Back and Forward move between views; #library, #studies and #record are linkable.
+const HASH = { almanac: '#library', atlas: '#studies', record: '#record', play: '#play', home: '' };
+const fromHash = h => (Object.entries(HASH).find(([, x]) => x && x === h) || ['home'])[0];
+function syncHash() {
+  if (st.room) return; const want = HASH[st.view] ?? '';
+  if ((location.hash || '') === want) return;
+  try { history.pushState(null, '', want || location.pathname + location.search) } catch { }
+}
+addEventListener('popstate', () => {
+  if (st.room) return; const v = fromHash(location.hash);
+  st.view = v === 'play' && !st.deck.length ? 'home' : v; closeModal(); render(true);
+});
 function render(moveFocus) {
+  syncHash();
   const v = qs('#view');
   if (st.view === 'almanac' && !libraryLoaded) loadLibrary();
   v.innerHTML = st.view === 'home' ? home() : st.view === 'atlas' ? atlas() : st.view === 'almanac' ? almanac() : st.view === 'record' ? record() : play();
@@ -629,6 +642,6 @@ if (PUBLIC) TUTOR_REMOTE = '/api/tutor';
 if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }
-if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else render();
+if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else { const v = fromHash(location.hash); if (v !== 'play') st.view = v; render() }
 if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records }; // test hook (offline file only)
 })();
