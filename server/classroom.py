@@ -221,9 +221,10 @@ class Store:
         only for decisions that class has already revealed. Returns (locked, allowed ids). Cached for 2 s."""
         now = time.time(); hit = getattr(self, '_lock', None)
         if hit and now - hit[0] < 2: return hit[1]
-        rows = self.db().execute('SELECT s.revealed FROM sessions s WHERE s.touched > ? AND EXISTS (SELECT 1 FROM participants p WHERE p.code = s.code)', (now - CLASS_LOCK_HOURS * 3600,)).fetchall()
-        allowed = set()
-        for (rv,) in rows: allowed |= set(json.loads(rv))
+        rows = self.db().execute("SELECT s.revealed FROM sessions s WHERE s.touched > ? AND (s.phase IN ('open', 'closed') OR EXISTS (SELECT 1 FROM participants p WHERE p.code = s.code))", (now - CLASS_LOCK_HOURS * 3600,)).fetchall()
+        # With several classes, a decision is released only once every running class has revealed it.
+        sets = [set(json.loads(rv)) for (rv,) in rows]
+        allowed = set.intersection(*sets) if sets else set()
         val = (bool(rows), allowed); self._lock = (now, val); return val
 
     def open_challenges(self) -> set:
@@ -263,6 +264,10 @@ def public_challenge(c: dict) -> dict:
     if c['format'] == 'forecast': out['forecast'] = {'claim': c['forecast']['claim']}
     if c['format'] == 'allocate': out['allocate'] = {k: v for k, v in c['allocate'].items() if k not in ('values', 'valueLabels', 'pass')}
     if c['format'] == 'delegate': out['delegate'] = {'choices': c['delegate']['choices'], 'tasks': [{'text': t['text']} for t in c['delegate']['tasks']]}
+    if 'dag' in c:  # the written explanation and the masked label state the answer; edge styles mark the questioned link
+        d = c['dag']; out['dag'] = {k: v for k, v in d.items() if k not in ('alt', 'nodes', 'edges')}
+        out['dag']['nodes'] = [{k: v for k, v in n.items() if k != 'label'} | {'label': '?'} if n.get('mask') else n for n in d['nodes']]
+        out['dag']['edges'] = [e[:2] for e in d['edges']]
     if c['format'] == 'multi': out['pick'] = len(c['multiAnswers'])
     if c['format'] == 'rank': out['nRank'] = len(c['rankAnswer'])
     return out

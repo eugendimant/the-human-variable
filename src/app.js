@@ -33,13 +33,18 @@ const store = {
 };
 async function ensureFull(id) {
   const c = BY_ID[id]; if (!PUBLIC || !c || c.answerTitle) return true;
-  try { const r = await fetch('/api/reveal/' + encodeURIComponent(id), { headers: { 'X-Client-Id': clientId() } }); const d = await r.json(); if (!r.ok) { notice(d.error || 'The evidence could not be loaded.'); return false } Object.assign(c, d); return true }
+  try { const r = await fetch('/api/reveal/' + encodeURIComponent(id), { headers: { 'X-Client-Id': clientId() } }); const d = await r.json(); if (!r.ok) { notice(d.error || 'The evidence could not be loaded.'); return false } mergeFull(c, d); return true }
   catch { notice('The evidence could not be loaded. Check your connection and lock again.'); return false }
+}
+// Source takeaways and notes state findings, so the server sends them with the evidence.
+function mergeFull(c, d) {
+  const notes = d.sourceNotes || {}; delete d.sourceNotes; Object.assign(c, d);
+  for (const [sid, n] of Object.entries(notes)) if (SOURCE[sid]) { const { note, ...rest } = n; Object.assign(SOURCE[sid], rest); if (note) SOURCE[sid].verification = { ...SOURCE[sid].verification, note } }
 }
 let libraryLoaded = !PUBLIC;
 async function loadLibrary() {
   if (libraryLoaded) return; libraryLoaded = true;
-  try { const r = await fetch('/api/library', { headers: { 'X-Client-Id': clientId() } }); const d = await r.json(); for (const x of d.challenges || []) if (BY_ID[x.id]) Object.assign(BY_ID[x.id], x); render() } catch { libraryLoaded = false }
+  try { const r = await fetch('/api/library', { headers: { 'X-Client-Id': clientId() } }); const d = await r.json(); for (const x of d.challenges || []) if (BY_ID[x.id]) mergeFull(BY_ID[x.id], x); if (d.themes && d.themes.length) BANK.themes = d.themes; render() } catch { libraryLoaded = false }
 }
 function cite(id) { const s = SOURCE[id]; return s ? `${s.authors} (${s.year})` : id }
 function srcStatus(s) { const v = s.verification || {}; return v.status === 'verified_full_text' ? ['Checked against full text', ''] : ['Checked against published abstract', 'abstract'] }
@@ -164,7 +169,7 @@ function home() {
     ${heroTry()}</div></section>
   <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
-    <div class="paths">${paths.map(p => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}">${p.case ? '<em class="path-flag">Start here</em>' : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
+    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}">${pi === 0 ? '<em class="path-flag">Start here</em>' : p.case ? '<em class="path-flag">Multi-step case</em>' : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
   </section>
   ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p>How the shape of a norm, the visibility of peers and political identity change what people do at work and in society.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
     <ul class="paper-list">${dimant.slice(0, 6).map(s => `<li><button data-source="${esc(s.id)}"><strong>${esc(s.title)}</strong><small>${esc(s.venue)}, ${s.year}</small></button></li>`).join('')}</ul></div></section>` : ''}`;
@@ -207,15 +212,20 @@ function instrument(c) {
   return '';
 }
 
+// Before the reveal, the accessible description lists boxes and arrows only; the written explanation (d.alt) states the answer.
+function dagAlt(d) {
+  const lab = n => n.mask ? 'an unknown factor' : n.label, by = Object.fromEntries(d.nodes.map(n => [n.id, n]));
+  return `Causal diagram. Boxes: ${d.nodes.map(lab).join(', ')}. Arrows: ${d.edges.map(([a, b]) => lab(by[a]) + ' to ' + lab(by[b])).join('; ')}.`;
+}
 function dag(d, rev) {
   const W = 520, H = d.height || 200;
   const node = Object.fromEntries(d.nodes.map(n => [n.id, n]));
   const edge = ([a, b, style0]) => { const style = rev ? style0 : ''; const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 72; return `<line x1="${A.x + ux * pad}" y1="${A.y + uy * pad * .45}" x2="${B.x - ux * pad}" y2="${B.y - uy * pad * .45}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
-  return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(d.alt)}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n0 => { const n = !rev && n0.mask ? { ...n0, label: '?', hidden: true } : n0; return `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="17" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>` }).join('')}</svg>`;
+  return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(rev ? d.alt : dagAlt(d))}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n0 => { const n = !rev && n0.mask ? { ...n0, label: '?', hidden: true } : n0; return `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="17" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>` }).join('')}</svg>`;
 }
 
 // The gap: player's call (blue) and the evidence (amber) on one axis.
-function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id = 'g', fmt = x => x + unit }) {
+function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id = 'g', fmt = x => x + unit, evText = null }) {
   const narrow = innerWidth < 640, W = narrow ? 360 : 640, fs = narrow ? 14 : 19, L = 18, R = W - 18, y = 52, sx = v => L + (v - min) / (max - min) * (R - L);
   const has = v => v !== null && v !== undefined;
   const anchor = x => x < L + (narrow ? 40 : 60) ? 'start' : x > R - (narrow ? 40 : 60) ? 'end' : 'middle';
@@ -225,18 +235,22 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
     ${has(band) && has(ev) ? `<rect x="${sx(Math.max(min, ev - band))}" y="${y - 9}" width="${sx(Math.min(max, ev + band)) - sx(Math.max(min, ev - band))}" height="18" rx="4" fill="#fbefd2" stroke="#e0a01c" stroke-width="1.2"/>` : ''}
     ${has(you) && has(ev) ? `<line x1="${sx(you)}" y1="${y}" x2="${sx(ev)}" y2="${y}" stroke="#14203a" stroke-width="2.5" stroke-dasharray="3 4"/>` : ''}
     ${has(you) ? `<circle cx="${sx(you)}" cy="${y}" r="12" fill="#2f54eb" stroke="#fff" stroke-width="3"/>${lab(sx(you), 'You ' + fmt(you), '#1f3cc2', true)}` : ''}
-    ${has(ev) ? `<g class="ev-mark" id="${id}-ev" data-from="${has(you) ? sx(you) - sx(ev) : 0}"><circle cx="${sx(ev)}" cy="${y}" r="12" fill="#e0a01c" stroke="#fff" stroke-width="3"/>${lab(sx(ev), evLabel + ' ' + fmt(ev), '#7d5200', false)}</g>` : ''}
+    ${has(ev) ? `<g class="ev-mark" id="${id}-ev" data-from="${has(you) ? sx(you) - sx(ev) : 0}"><circle cx="${sx(ev)}" cy="${y}" r="12" fill="#e0a01c" stroke="#fff" stroke-width="3"/>${lab(sx(ev), evText ?? evLabel + ' ' + fmt(ev), '#7d5200', false)}</g>` : ''}
     <text x="${L}" y="114" font-size="${narrow ? 12 : 14}" fill="#56617a" font-family="Schibsted Grotesk,system-ui">${esc(fmt(min))}</text><text x="${R}" y="114" font-size="${narrow ? 12 : 14}" fill="#56617a" text-anchor="end" font-family="Schibsted Grotesk,system-ui">${esc(fmt(max))}</text></svg>`;
 }
 
 function gapFigure(c, rec) {
   const r = rec.response; let body = '', cap = '';
   if (c.format === 'estimate') { const e = c.estimate; body = gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); const u = (e.unit ?? '%') === '%' ? ' points' : e.unit; cap = `Shaded band: within ${e.tolerance}${u} of the study value counts as a hit. You were ${rec.detail.gap}${u} away.` }
-  else if (c.format === 'forecast') { body = gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evLabel: c.forecast.truth ? 'True' : 'False', fmt: x => x + '%' }); cap = `Brier score ${rec.detail.brier.toFixed(2)} (0 is perfect, 0.25 is saying 50%, 1 is confidently wrong). Score = 100 − 200 × Brier, so a confident miss goes below zero.` }
+  else if (c.format === 'forecast') { body = `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = `Brier score ${rec.detail.brier.toFixed(2)} (0 is perfect, 0.25 is saying 50%, 1 is confidently wrong). Score = 100 − 200 × Brier, so a confident miss goes below zero.` }
   else if (c.format === 'rank') {
-    const truth = c.rankAnswer;
-    body = `<ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li><span class="rc-name">${esc(c.options[oi])}${c.rankValues ? `<small>${esc(c.rankValues[oi])}</small>` : ''}</span><span class="rc-badge ev" title="Measured rank">${t + 1}</span><span class="rc-badge you ${k === t ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol><div class="rc-head"><span>Measured order, top first</span><span><i class="dot dot-ev"></i>Study <i class="dot dot-you"></i>You</span></div>`;
-    cap = `${rec.detail.agree} of ${rec.detail.total} pairs in the measured order.`
+    const truth = c.rankAnswer, ties = c.rankTies || [];
+    const tied = (a, b) => ties.some(t => t.includes(a) && t.includes(b));
+    // Items the study did not separate share a rank, shown as "2=".
+    const lab = []; truth.forEach((oi, t) => { lab[t] = t > 0 && tied(truth[t - 1], oi) ? lab[t - 1] : { n: t + 1, eq: false }; if (t > 0 && lab[t] === lab[t - 1]) lab[t].eq = true });
+    const group = t => truth.map((_, u) => u).filter(u => lab[u] === lab[t]);
+    body = `<ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li><span class="rc-name">${esc(c.options[oi])}${c.rankValues ? `<small>${esc(c.rankValues[oi])}</small>` : ''}</span><span class="rc-badge ev" title="Measured rank">${lab[t].n}${lab[t].eq ? '=' : ''}</span><span class="rc-badge you ${group(t).includes(k) ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol><div class="rc-head"><span>Measured order, top first</span><span><i class="dot dot-ev"></i>Study <i class="dot dot-you"></i>You</span></div>`;
+    cap = `${rec.detail.agree} of ${rec.detail.total} scored pairs in the measured order.${ties.length ? ' Items marked = were not separated by the study, so their order is not scored.' : ''}`
   }
   else if (c.format === 'allocate') {
     const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, mx = Math.max(...a.values);
@@ -246,7 +260,7 @@ function gapFigure(c, rec) {
   else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${r[k] === t.answer ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${r[k] === t.answer ? '' : `<span class="chip ev">${esc(c.delegate.choices[t.answer])}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
   else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
   else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
-  return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption><div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
+  return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<div class="gap-legend" aria-hidden="true"><span>Study results</span><span><i class="dot dot-ev"></i>The answer</span></div>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
 }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {
@@ -299,14 +313,15 @@ function play() {
     <div class="actionbar"><div class="actionbar-in"><span class="kicker">${st.room ? `Live class ${esc(st.room.code)}. Your instructor opens the next decision.` : `${st.session.filter(r => r.correct).length} of ${st.session.length} called right so far`}</span>${st.room ? '' : `<button class="btn btn-solid btn-lg" data-act="next" id="next-btn">${nextLabel}</button>`}</div></div></section>`;
 }
 // ----- tutor -----
-let TUTOR_REMOTE = null; // set when a protected server endpoint answers /api/tutor/status
+let TUTOR_REMOTE = null; // the server endpoint, when the page is served
+let TUTOR_AI = false;   // true only when the server reports a configured model
 function tutorPanel(c) {
   const t = st.tutor;
   return `<div class="tutor" aria-labelledby="tutor-h"><h2 id="tutor-h">Ask your own question</h2>
     <form class="tutor-line" data-form="tutor"><label class="sr-only" for="tutor-in">Your question about this study</label><input id="tutor-in" maxlength="300" placeholder="For example: would this hold in a sales team?" autocomplete="off"><button class="btn btn-quiet" ${t.busy ? 'disabled' : ''}>${t.busy ? 'Thinking' : 'Ask'}</button></form>
     <div class="tutor-chips">${['How big is this effect in practice?', 'Would this hold with AI tools today?', 'How would I test this in my company?'].map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>
     ${t.text ? `<div class="tutor-answer" aria-live="polite">${esc(t.text)}${t.cites.length ? '\n\n' + t.cites.map(x => `<cite>${esc(x)}</cite>`).join(' ') : ''}</div>` : ''}
-    <p class="small">${TUTOR_REMOTE ? 'AI answers use only the lab’s checked sources. Check details in the source.' : 'Answers come from the lab’s checked summaries.'}</p></div>`;
+    <p class="small">${TUTOR_AI ? 'AI answers use only the lab’s checked sources. Check details in the source.' : 'Answers come from the lab’s checked summaries.'}</p></div>`;
 }
 function curated(q, c) {
   const stop = new Set('what which where when does that this with from about have should would there their these they them then into could work study research finding found people your thing much more make'.split(' '));
@@ -345,10 +360,10 @@ function atlas() {
   const m = ALL.filter(c => (st.atlasTrack === 'All' || c.track === st.atlasTrack) && (st.atlasFormat === 'All' || FORMAT_NAME[c.format] === st.atlasFormat) && (!q || [c.title, c.scene, c.question, c.concept, c.explain, cite(c.sources[0]), SOURCE[c.sources[0]].title].join(' ').toLowerCase().includes(q)));
   return `<section class="atlas-head wrap">${libHead()}
     <div class="atlas-tools"><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Search</span><input id="atlas-q" type="search" value="${esc(st.atlasQuery)}" placeholder="Try defaults, Dimant, algorithm, norms" autocomplete="off"></label>
-    <label class="sr-only" for="atlas-track">Area</label><select id="atlas-track" class="seg">${['All', ...TRACKS].map(t => `<option ${st.atlasTrack === t ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select>
-    <label class="sr-only" for="atlas-format">Format</label><select id="atlas-format" class="seg">${['All', ...new Set(Object.values(FORMAT_NAME))].map(t => `<option ${st.atlasFormat === t ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></div>
+    <label class="sr-only" for="atlas-track">Area</label><select id="atlas-track" class="seg">${['All', ...TRACKS].map(t => `<option value="${esc(t)}" ${st.atlasTrack === t ? 'selected' : ''}>${t === 'All' ? 'All areas' : esc(t)}</option>`).join('')}</select>
+    <label class="sr-only" for="atlas-format">Format</label><select id="atlas-format" class="seg">${['All', ...new Set(Object.values(FORMAT_NAME))].map(t => `<option value="${esc(t)}" ${st.atlasFormat === t ? 'selected' : ''}>${t === 'All' ? 'All formats' : esc(t)}</option>`).join('')}</select></div>
     <p class="kicker" aria-live="polite" id="atlas-count">${m.length} of ${ALL.length} decisions</p></section>
-    <section class="wrap"><div class="atlas-grid" id="atlas-grid">${m.length ? m.map(c => { const best = records.filter(r => r.id === c.id).reduce((a, r) => Math.max(a, r.score), -1); return `<button class="entry" data-play="${esc(c.id)}"><span class="meta"><span class="tag">${esc(c.track)}</span><span class="tag">${FORMAT_NAME[c.format]}</span>${best >= 0 ? `<span class="tag tag-ev">Played, best ${pct(best)}</span>` : ''}</span><h3>${esc(c.title)}</h3><p>${esc(c.question)}</p><span class="cite">${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}</span></button>` }).join('') : `<div class="empty">No decision matches “${esc(st.atlasQuery)}”. Clear the search or try an author’s name.</div>`}</div></section>`;
+    <section class="wrap"><div class="atlas-grid" id="atlas-grid">${m.length ? m.map(c => { const best = records.filter(r => r.id === c.id).reduce((a, r) => Math.max(a, r.score), -1); return `<button class="entry" data-play="${esc(c.id)}"><span class="meta"><span class="tag">${esc(c.track)}</span><span class="tag">${FORMAT_NAME[c.format]}</span>${best >= 0 ? `<span class="tag tag-ev">Played, best ${pct(best)}</span>` : ''}</span><span class="entry-title">${esc(c.title)}</span><p>${esc(c.question)}</p><span class="cite">${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}</span></button>` }).join('') : `<div class="empty-state">No decision matches “${esc(st.atlasQuery)}”. Clear the search or try an author’s name.</div>`}</div></section>`;
 }
 
 
@@ -360,7 +375,7 @@ function almanac() {
   const themes = BANK.themes || [];
   return `<section class="atlas-head wrap">${libHead()}
     <nav class="theme-index" aria-label="Themes">${themes.map(t => `<a href="#theme-${esc(t.id)}">${esc(t.title)}</a>`).join('')}</nav></section>
-    <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; return `<article class="theme panel" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p>${esc(t.principle)}</p></div>
+    <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; return `<article class="theme panel" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p>${(t.principle ? esc(t.principle) : libraryLoaded ? 'Held back while a live class is running on this server.' : 'Loading…')}</p></div>
       <details class="theme-more"><summary>The ${cs.length} findings behind it</summary><ul class="findings">${cs.map(c => `<li><div><strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small></div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
       <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play these ${cs.length}</button></article>` }).join('')}</section>`;
 }
@@ -383,7 +398,7 @@ function record() {
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
     <div class="score-strip"><div class="score-big"><b class="num">${sess ?? meanScore ?? '–'}</b><span>${sess !== null ? 'score this round' : 'average score'}, out of 100</span></div>
-      <dl class="score-meta"><div><dt>Brier score</dt><dd class="num">${cal.brier === null ? '–' : cal.brier.toFixed(2)}</dd></div><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
+      <dl class="score-meta"><div><dt>Calibration score (Brier, lower is better)</dt><dd class="num">${cal.brier === null ? '–' : cal.brier.toFixed(2)}</dd></div><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">
       <div class="panel rec-panel"><h2>Calibration</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>
@@ -416,7 +431,7 @@ function closeModal() { if (!qs('#overlay').innerHTML) return; qs('#overlay').in
 function sourceModal(id) {
   const s = SOURCE[id]; if (!s) return; const v = s.verification || {}; const used = ALL.filter(c => c.sources.includes(id));
   modal(`<span class="kicker">Peer-reviewed source</span><h2>${esc(s.title)}</h2><p><strong>${esc(s.authors)}</strong> (${s.year}). <i>${esc(s.venue)}</i>${s.volume ? `, ${esc(s.volume)}` : ''}${s.pages ? `, ${esc(s.pages)}` : ''}.</p>
-    <p><strong>What the lab uses.</strong> ${esc(s.takeaway)}</p>
+    ${s.takeaway ? `<p><strong>What the lab uses.</strong> ${esc(s.takeaway)}</p>` : '<p>The finding appears once you play a decision built on this paper.</p>'}
     <p><strong>How it was checked.</strong> ${esc(srcStatus(s)[0])}${v.checked ? ' on ' + esc(v.checked) : ''}. Metadata matched against the DOI registry.${v.note ? ' ' + esc(v.note) : ''}</p>
     ${used.length ? `<p><strong>Decisions built on it:</strong> ${used.map(c => `<button class="link-btn" data-play="${esc(c.id)}">${esc(c.title)}</button>`).join(', ')}.</p>` : ''}
     <p><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article (DOI ${esc(s.doi)})</a></p>`, 'Source details');
@@ -541,7 +556,7 @@ function render(moveFocus) {
   qa('.nav button').forEach(b => b.setAttribute('aria-current', (b.dataset.nav === st.view || (b.dataset.nav === 'almanac' && st.view === 'atlas')) ? 'page' : 'false'));
   qs('.nav').classList.toggle('open', st.menu);
   const c = card();
-  document.title = (st.view === 'play' && c ? (st.phase === 'reveal' ? c.answerTitle : c.title) + ' · ' : st.view === 'atlas' ? 'Studies · ' : st.view === 'almanac' ? 'Playbook · ' : st.view === 'record' ? 'Your record · ' : '') + 'The Human Variable';
+  document.title = (st.view === 'play' && c ? (st.phase === 'reveal' ? c.answerTitle : c.title) + ' · ' : st.view === 'atlas' ? 'Library: all decisions · ' : st.view === 'almanac' ? 'Library: principles · ' : st.view === 'record' ? 'Your record · ' : '') + 'The Human Variable';
   if (moveFocus && (st.phase === 'reveal' || st.hero.done)) animateReveal();
   if (moveFocus) { scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' }); const h = qs('#view h1'); if (h) { if (!h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }) } }
 }
@@ -640,7 +655,7 @@ if (!location.protocol.startsWith('http')) qa('[data-act="join"], a[href="classr
 qs('#brand-glyph').outerHTML = glyph;
 if (PUBLIC) TUTOR_REMOTE = '/api/tutor';
 if (location.protocol.startsWith('http')) {
-  fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
+  fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; TUTOR_AI = true; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }
 if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else { const v = fromHash(location.hash); if (v !== 'play') st.view = v; render() }
 if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records }; // test hook (offline file only)

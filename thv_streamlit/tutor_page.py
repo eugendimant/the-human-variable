@@ -24,7 +24,7 @@ def run():
     q = typed or q
     if q:
         with st.chat_message('user'): st.write(q)
-        r = T.ask(q, cid, ss.client, exclude={i for i in cl.CHALLENGES if locked and i not in allowed})
+        r = T.ask(q, cid, ss.client, exclude=(lambda i: i not in allowed) if locked else None)
         with st.chat_message('assistant'):
             st.write(r['answer'])
             if r.get('citations'): st.caption('Sources: ' + '; '.join(x['label'] for x in r['citations']))

@@ -79,3 +79,13 @@ def test_public_challenge_hides_answers():
             elif isinstance(o, list): [walk(v) for v in o]
         walk(cl.public_challenge(c))
         assert not keys & {'answer', 'multiAnswers', 'rankAnswer', 'target', 'truth', 'values', 'valueLabels', 'why', 'explain', 'answerTitle', 'implication', 'boundary', 'follow', 'chart', 'tolerance'}, c['id']
+
+def test_class_lock_with_two_classes(tmp_path):
+    """Review 3, minor 13: a decision revealed in one class stays locked for another class that has not revealed it."""
+    s = cl.Store(tmp_path / 'two.sqlite3'); ids = list(cl.CHALLENGES)[:2]
+    a = s.create('A'); b = s.create('B')
+    for x in (a, b): s.join(x['code'])
+    s.control(a['code'], a['secret'], 'open', ids[0]); s.control(a['code'], a['secret'], 'reveal'); s._lock = None
+    locked, allowed = s.class_lock(); assert locked and ids[0] not in allowed
+    s.control(b['code'], b['secret'], 'open', ids[0]); s.control(b['code'], b['secret'], 'reveal'); s._lock = None
+    assert ids[0] in s.class_lock()[1]

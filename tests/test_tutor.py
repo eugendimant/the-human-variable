@@ -87,3 +87,18 @@ def test_concurrency_cap(monkeypatch, tmp_path):
 def test_retrieval_puts_current_decision_first():
     for cid in list(CHALLENGES)[:10]:
         assert T.retrieve('anything at all', cid, 3)[0]['id'] == cid
+
+def test_lock_excludes_sources_cache_and_accepts_sets(tmp_path):
+    """Review 3, M3/M4: source records of locked decisions stay out; the cache is bypassed; a set works as exclude."""
+    from server import tutor as tu
+    from server.classroom import CHALLENGES
+    allowed = {'bz11'}; ex = lambda i: i not in allowed
+    docs = tu.retrieve('How much less time did professionals take with ChatGPT writing', None, 6, ex)
+    for d in docs:
+        if d['kind'] == 'decision': assert d['id'] in allowed
+        else: assert all(c in allowed for c in tu.SRC_USERS.get(d['id'], []))
+    T = tu.Tutor(str(tmp_path / 'c.sqlite3'))
+    r = T.ask('what about bribery reporting norms', None, 'x', exclude={c for c in CHALLENGES if c not in allowed})
+    assert r['answer'] and r['mode'] in ('curated', 'ai')
+    r = T.ask('How big is this effect in practice?', 'ai01', 'x', exclude=ex)
+    assert r['mode'] == 'locked'

@@ -6,6 +6,7 @@ import pytest
 pw = pytest.importorskip('playwright.sync_api')
 ROOT = Path(__file__).resolve().parents[1]
 BANK = json.loads((ROOT / 'src/bank.json').read_text())
+BY = {c['id']: c for c in BANK['challenges']}
 LIVE = [c for c in BANK['challenges'] if all(BANK['sources'][s]['verification']['status'] != 'quarantined' for s in c['sources'])]
 URL = (ROOT / 'index.html').as_uri()
 AXE = (ROOT / 'tests/vendor/axe.min.js')
@@ -48,6 +49,7 @@ def one_of_each():
 def test_every_format_plays_and_reveals(browser, w, h):
     for c in one_of_each():
         pg = page(browser, w, h); pg.goto(URL + '?play=' + c['id'])
+        assert not pg.evaluate('document.documentElement.scrollWidth > innerWidth + 1'), ('predict', c['id'], w)
         answer(pg, c)
         assert pg.is_enabled('#lock-btn'), c['id']
         pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
@@ -155,6 +157,11 @@ def test_served_solo_round_fetches_evidence_after_lock(browser, tmp_path):
             answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h', timeout=10000)
             assert pg.text_content('#r-h').strip() == c['answerTitle'], c['id']
             assert not pg.errors, (c['id'], pg.errors); pg.close()
+        # Source takeaways and principles arrive with the evidence, not in the page.
+        pg = page(browser); pg.goto(base + '/?play=ai01'); answer(pg, BY['ai01']); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+        assert pg.evaluate("BANK.sources.noy23.takeaway") == cl.BANK['sources']['noy23']['takeaway']
+        pg.goto(base + '/#library'); pg.wait_for_timeout(800)
+        assert cl.BANK['themes'][0]['principle'][:40] in pg.content(); assert not pg.errors, pg.errors; pg.close()
     finally:
         srv.shutdown()
 

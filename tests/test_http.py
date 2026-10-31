@@ -94,6 +94,16 @@ def test_served_pages_carry_no_answers(base):
             elif isinstance(o, list): [walk(v) for v in o]
         walk(bank['challenges'])
         assert not keys & {'answer', 'multiAnswers', 'rankAnswer', 'target', 'truth', 'values', 'explain', 'answerTitle', 'why'}, p
+        # Review 3, B1/M1: no answer-bearing text anywhere in the page bytes (sources, themes, diagrams included).
+        text = body.decode('utf-8'); leaks = []
+        for c in cl.BANK['challenges']:
+            if c['id'] not in cl.CHALLENGES: continue
+            probes = [c['answerTitle'], c['explain'], c['implication']] + [f['a'] for f in c['follow']]
+            probes += [cl.BANK['sources'][s]['takeaway'] for s in c['sources'] if cl.BANK['sources'][s].get('takeaway')]
+            if 'dag' in c: probes += [c['dag']['alt']] + [n['label'] for n in c['dag']['nodes'] if n.get('mask')]
+            leaks += [(c['id'], x[:50]) for x in probes if x and json.dumps(x, ensure_ascii=False)[1:-1].replace('</', '<\\/') in text]
+        leaks += [('theme', t['id']) for t in cl.BANK.get('themes', []) if json.dumps(t['principle'], ensure_ascii=False)[1:-1] in text]
+        assert not leaks, (p, leaks[:8])
 
 def test_class_lock_holds_evidence_until_revealed(base, tmp_path, monkeypatch):
     monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 'lock.sqlite3'))

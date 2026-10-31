@@ -128,3 +128,28 @@ def test_titles_do_not_state_the_finding():
 def test_doc_counts_current():
     sys.path.insert(0, str(ROOT / 'tools')); import sync_doc_counts
     assert not sync_doc_counts.apply(check=True), 'run python tools/sync_doc_counts.py'
+
+def _js_score(c, r):
+    out = subprocess.run(['node', '-e', f"const S=require('./src/scoring.js');console.log(JSON.stringify(S.score({json.dumps(c)},{json.dumps(r)})))"], cwd=ROOT, capture_output=True, text=True)
+    return json.loads(out.stdout)['score']
+
+def test_midpoint_guess_scores_at_most_half():
+    """Review 3, M5: the untouched middle of an estimate axis must not be a winning strategy."""
+    from server import scoring
+    bad = [(c['id'], round(scoring.score(c, (c['estimate']['min'] + c['estimate']['max']) / 2)['score'], 2)) for c in LIVE if c['format'] == 'estimate'
+           if scoring.score(c, (c['estimate']['min'] + c['estimate']['max']) / 2)['score'] > 0.5]
+    assert not bad, bad
+
+def test_bank_order_does_not_carry_the_answer():
+    """Review 3, M2: answer indices spread across positions; no rank item is stored in answer order."""
+    from collections import Counter
+    ch = [c['answer'] for c in LIVE if c['format'] in ('choice', 'causal')]
+    top = Counter(ch).most_common(1)[0][1]; assert top <= 0.45 * len(ch), Counter(ch)
+    assert not [c['id'] for c in LIVE if c['format'] == 'rank' and c['rankAnswer'] == list(range(len(c['options'])))]
+    assert sum(1 for c in LIVE if c['format'] == 'multi' and c['multiAnswers'] == [0, 1]) <= 0.4 * sum(1 for c in LIVE if c['format'] == 'multi')
+
+NEG_SCOPE = re.compile(r"\b(were|was) not (tested|studied)\b", re.I)
+def test_boundaries_state_scope_positively():
+    """Review 3, minor 4 and CONTENT_GUIDE: a boundary says what the study covers."""
+    assert not [c['id'] for c in LIVE if NEG_SCOPE.search(c['boundary'])]
+    assert NEG_SCOPE.search('long-run use was not studied')

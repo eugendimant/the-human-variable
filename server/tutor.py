@@ -41,6 +41,9 @@ def build_kb() -> list[dict]:
     return docs
 
 KB = build_kb()
+SRC_USERS = {}  # source id -> decisions built on it; a source is held back while any of them is locked
+for _c in CHALLENGES.values():
+    for _s in _c['sources']: SRC_USERS.setdefault(_s, []).append(_c['id'])
 _DF = Counter(t for d in KB for t in set(tokens(d['body'])))
 _LEN = {d['id']: len(tokens(d['body'])) for d in KB}
 _AVG = sum(_LEN.values()) / max(1, len(_LEN))
@@ -48,7 +51,7 @@ _AVG = sum(_LEN.values()) / max(1, len(_LEN))
 def retrieve(question: str, challenge_id: str | None, k: int = 5, exclude=None) -> list[dict]:
     q = tokens(question); N = len(KB); out = []
     for d in KB:
-        if exclude and d['kind'] == 'decision' and exclude(d['id']): continue
+        if exclude and (exclude(d['id']) if d['kind'] == 'decision' else any(exclude(c) for c in SRC_USERS.get(d['id'], ()))): continue
         tf = Counter(tokens(d['body'])); s = 0.0
         for t in q:
             if t in tf:
@@ -175,6 +178,10 @@ class Tutor:
             self.db.execute('INSERT OR REPLACE INTO tutor_cache VALUES(?,?,?)', (k, json.dumps(v), time.time())); self.db.commit()
 
     def ask(self, question: str, challenge_id: str | None, client: str = 'anon', ip: str = '', exclude=None) -> dict:
+        """exclude: callable(decision id) -> True while that decision is locked by a live class. Collections are accepted too."""
+        if exclude is not None and not callable(exclude): exclude = set(exclude).__contains__
+        if exclude and challenge_id and exclude(challenge_id):
+            return {'answer': 'The tutor opens for this decision after your instructor reveals it.', 'citations': [], 'mode': 'locked'}
         question = re.sub(r'[\x00-\x1f\x7f]', ' ', str(question or '')).strip()[:300]
         if len(question) < 4: return {'answer': 'Type a question of at least four characters.', 'citations': [], 'mode': 'error'}
         if challenge_id and challenge_id not in CHALLENGES: challenge_id = None
@@ -182,7 +189,7 @@ class Tutor:
         if question in PRESETS.values() or not self.enabled:
             self.calls['curated'] += 1; return curated(question, challenge_id, exclude)
         k = f"{challenge_id}|{self.norm(question)}"
-        hit = self._cache_get(k)
+        hit = None if exclude else self._cache_get(k)   # cached answers may predate a class lock
         if hit: self.calls['cache'] += 1; hit = dict(hit); hit['mode'] = 'cache'; return hit
         reason = self.budget.check(client, ip)
         if reason:
@@ -200,7 +207,8 @@ class Tutor:
             self.budget.sem.release()
         if res is None:
             self.budget.refund(client, ip); out = curated(question, challenge_id, exclude); out['note'] = 'The AI tutor did not answer in time. This answer comes from the lab’s checked summaries.'; return out
-        self._cache_put(k, res); self.calls['model'] += 1
+        if not exclude: self._cache_put(k, res)
+        self.calls['model'] += 1
         return res
 
     def _model(self, question: str, challenge_id: str | None, exclude=None):

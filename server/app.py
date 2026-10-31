@@ -5,12 +5,12 @@ In a container: HOST=0.0.0.0 PORT=8080 python -m server.app
 Environment: see docs/DEPLOYMENT.md.
 """
 from __future__ import annotations
-import json, os, re, threading, time, urllib.parse
+import hmac, json, os, re, threading, time, urllib.parse
 from collections import defaultdict
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from .classroom import BANK, CHALLENGES, ClassroomError, Forbidden, Conflict, NotFound, Store, public_challenge, ROOT
-from .tutor import Tutor
+from .tutor import PRESETS, Tutor
 
 DATA = Path(os.environ.get('THV_DATA_DIR', str(ROOT / 'server' / 'data')))
 DATA.mkdir(parents=True, exist_ok=True)
@@ -22,10 +22,21 @@ FRAME_ANCESTORS = os.environ.get('THV_FRAME_ANCESTORS', "'self'")
 STATIC = {'/': 'index.html', '/index.html': 'index.html', '/classroom': 'classroom.html', '/classroom.html': 'classroom.html'}
 LOOPBACK = os.environ.get('HOST', '127.0.0.1') in ('127.0.0.1', 'localhost', '::1')
 
+SOURCE_PRIVATE = ('takeaway', 'flags')
+def public_source(s: dict) -> dict:
+    """Bibliographic record only: takeaways and notes state findings, so they travel with the evidence."""
+    out = {k: v for k, v in s.items() if k not in SOURCE_PRIVATE}
+    out['verification'] = {k: v for k, v in s.get('verification', {}).items() if k in ('status', 'checked', 'metadata', 'text_read')}
+    return out
+def with_sources(c: dict) -> dict:
+    """A full decision plus the private fields of its sources, for /api/reveal and /api/library."""
+    return c | {'sourceNotes': {sid: {k: BANK['sources'][sid][k] for k in ('takeaway', 'flags') if k in BANK['sources'][sid]} | (
+        {'note': BANK['sources'][sid]['verification']['note']} if BANK['sources'][sid].get('verification', {}).get('note') else {}) for sid in c['sources'] if sid in BANK['sources']}}
 def public_bank() -> dict:
-    """The bank as served to browsers: questions and sources, no answers. Evidence is fetched after a call is locked."""
-    return {k: v for k, v in BANK.items() if k not in ('challenges', 'retired', 'unused_sources')} | {
-        'public': True, 'challenges': [public_challenge(c) | {'sources': c['sources'], 'theme': c.get('theme')} for c in BANK['challenges'] if c['id'] in CHALLENGES]}
+    """The bank as served to browsers: questions and bibliographic records, no answers. Evidence is fetched after a call is locked."""
+    return {k: v for k, v in BANK.items() if k not in ('challenges', 'retired', 'unused_sources', 'sources', 'themes')} | {
+        'public': True, 'sources': {sid: public_source(s) for sid, s in BANK['sources'].items()},
+        'themes': [{k: t[k] for k in t if k != 'principle'} for t in BANK.get('themes', [])], 'challenges': [public_challenge(c) | {'sources': c['sources'], 'theme': c.get('theme')} for c in BANK['challenges'] if c['id'] in CHALLENGES]}
 
 def _public_page(name: str) -> bytes:
     html = (ROOT / name).read_text(encoding='utf-8')
@@ -118,9 +129,11 @@ class Handler(BaseHTTPRequestHandler):
                 cid = urllib.parse.unquote(p.rsplit('/', 1)[1])
                 if cid not in CHALLENGES: return self.json(404, {'error': 'Unknown decision'})
                 if blocked(cid): return self.json(409, {'error': 'A live class is running on this server. Practice mode returns when it ends, and revealed decisions stay open.', 'class_lock': True})
-                return self.json(200, CHALLENGES[cid])
+                return self.json(200, with_sources(CHALLENGES[cid]))
             if p == '/api/library':
-                return self.json(200, {'challenges': [c for c in CHALLENGES.values() if not blocked(c['id'])], 'class_lock': STORE.class_lock()[0]})
+                locked = STORE.class_lock()[0]
+                return self.json(200, {'challenges': [with_sources(c) for c in CHALLENGES.values() if not blocked(c['id'])], 'class_lock': locked,
+                                       'themes': [] if locked else BANK.get('themes', [])})
             if p == '/api/instructor/bank':
                 code = (qs.get('code') or [''])[0].upper()
                 if not STORE.is_admin(code, self.key()): return self.json(403, {'error': 'Instructor key required'})
@@ -153,14 +166,16 @@ class Handler(BaseHTTPRequestHandler):
             d = self.body()
             if p == '/api/tutor':
                 if not LIMIT.allow(self.ip() + '|' + self.client(), 'tutor'): return self.json(429, {'error': 'Ask again in a few seconds.'}, {'Retry-After': '3'})
-                if not LIMIT.allow(self.ip(), 'ip_tutor'): return self.json(429, {'error': 'The tutor is busy on this network. Ask again in a moment.'}, {'Retry-After': '5'})
+                q = str(d.get('question', ''))
+                cheap = not TUTOR.enabled or q.strip() in PRESETS.values()  # curated answers cost nothing upstream
+                if not cheap and not LIMIT.allow(self.ip(), 'ip_tutor'): return self.json(429, {'error': 'The tutor is busy on this network. Ask again in a moment.'}, {'Retry-After': '5'})
                 cid = d.get('challenge')
                 if cid and blocked(cid): return self.json(200, {'answer': 'The tutor opens for this decision after your instructor reveals it.', 'citations': [], 'mode': 'locked'})
-                return self.json(200, TUTOR.ask(d.get('question', ''), cid, str(d.get('client', ''))[:40] or self.ip(), ip=self.ip(), exclude=blocked))
+                return self.json(200, TUTOR.ask(q, cid, str(d.get('client', ''))[:40] or self.ip(), ip=self.ip(), exclude=blocked if STORE.class_lock()[0] else None))
             if p == '/api/rooms':
                 if not LIMIT.allow(self.ip(), 'create'): return self.json(429, {'error': 'Too many sessions created from this network. Try again later.'})
                 if not PASSCODE and not LOOPBACK: return self.json(403, {'error': 'This server has no instructor passcode set. Set THV_INSTRUCTOR_PASSCODE before creating sessions.'})
-                if PASSCODE and str(d.get('passcode', '')) != PASSCODE: return self.json(403, {'error': 'Instructor passcode required'})
+                if PASSCODE and not hmac.compare_digest(str(d.get('passcode', '')).encode(), PASSCODE.encode()): return self.json(403, {'error': 'Instructor passcode required'})
                 return self.json(201, STORE.create(d.get('title', '')))
             if not self.allowed('write'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
             m = CODE_RE.match(p)

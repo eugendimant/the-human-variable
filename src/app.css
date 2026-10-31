@@ -239,7 +239,7 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .atlas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;padding-bottom:64px}
 .entry{text-align:left;padding:18px;border-radius:var(--r-panel);border:1px solid var(--rule);background:var(--surface);display:flex;flex-direction:column;gap:10px;min-height:190px}
 .entry:hover{border-color:var(--rule-strong)}
-.entry h3{margin:0;font-size:18px;line-height:1.2;letter-spacing:-.015em}
+.entry .entry-title{display:block;margin:0;font-weight:750;font-size:18px;line-height:1.2;letter-spacing:-.015em}
 .entry p{margin:0;color:var(--ink-2);font-size:var(--t6);line-height:1.45;flex:1}
 .entry .meta{display:flex;gap:6px;flex-wrap:wrap}
 .entry .cite{font-size:var(--t7);color:var(--muted)}
@@ -277,7 +277,7 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .foot nav{display:flex;gap:16px;flex-wrap:wrap}
 .foot button{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
-.empty{padding:40px;text-align:center;color:var(--muted)}
+.empty-state{padding:40px;text-align:center;color:var(--muted)}
 
 /* Responsive */
 @media (max-width:1080px){
@@ -318,7 +318,9 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .room-wait .q{max-width:none}
 
 /* Paths, summary, playbook */
-.paths{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:980px){.paths{grid-template-columns:repeat(2,minmax(0,1fr))}.paths .path:last-child:nth-child(even){grid-column:span 2}}
+@media (max-width:560px){.paths{grid-template-columns:1fr}.paths .path:last-child:nth-child(even){grid-column:auto}}
 .path{text-align:left;padding:20px;border-radius:var(--r-panel);background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:8px;min-height:170px;transition:transform .15s}
 .path:hover{transform:translateY(-2px)}
 .path strong{font-size:20px;letter-spacing:-.02em;line-height:1.15}
@@ -495,3 +497,5 @@ body.in-play{background:var(--paper)}
 .grow{animation:grow .8s cubic-bezier(.2,.8,.2,1) both}
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .alloc-cmp .hb-row{grid-template-columns:minmax(0,1fr) 100px}
+
+.gap-claim{font-family:var(--serif);font-size:18px;line-height:1.4;margin:0 0 6px;color:var(--ink-2)}
