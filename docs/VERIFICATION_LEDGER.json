@@ -1,0 +1,198 @@
+[
+  {
+    "id": "noy23",
+    "title": "Experimental evidence on the productivity effects of generative artificial intelligence",
+    "doi": "10.1126/science.adh2586",
+    "url": "https://doi.org/10.1126/science.adh2586",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "bry25",
+    "title": "Generative AI at Work",
+    "doi": "10.1093/qje/qjae044",
+    "url": "https://doi.org/10.1093/qje/qjae044",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "dell26",
+    "title": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality",
+    "doi": "10.1287/orsc.2025.21838",
+    "url": "https://doi.org/10.1287/orsc.2025.21838",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "doshi24",
+    "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+    "doi": "10.1126/sciadv.adn5290",
+    "url": "https://doi.org/10.1126/sciadv.adn5290",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "diet15",
+    "title": "Algorithm aversion: People erroneously avoid algorithms after seeing them err",
+    "doi": "10.1037/xge0000033",
+    "url": "https://doi.org/10.1037/xge0000033",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "logg19",
+    "title": "Algorithm appreciation: People prefer algorithmic to human judgment",
+    "doi": "10.1016/j.obhdp.2018.12.005",
+    "url": "https://doi.org/10.1016/j.obhdp.2018.12.005",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "cast19",
+    "title": "Task-dependent algorithm aversion",
+    "doi": "10.1177/0022243719851788",
+    "url": "https://doi.org/10.1177/0022243719851788",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "long19",
+    "title": "Resistance to Medical Artificial Intelligence",
+    "doi": "10.1093/jcr/ucz013",
+    "url": "https://doi.org/10.1093/jcr/ucz013",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "frame81",
+    "title": "The framing of decisions and the psychology of choice",
+    "doi": "10.1126/science.7455683",
+    "url": "https://doi.org/10.1126/science.7455683",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "anchor74",
+    "title": "Judgment under Uncertainty: Heuristics and Biases",
+    "doi": "10.1126/science.185.4157.1124",
+    "url": "https://doi.org/10.1126/science.185.4157.1124",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "defaults01",
+    "title": "The Power of Suggestion: Inertia in 401(k) Participation and Savings Behavior",
+    "doi": "10.1162/003355301753265543",
+    "url": "https://doi.org/10.1162/003355301753265543",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "hotel08",
+    "title": "A Room with a Viewpoint: Using Social Norms to Motivate Environmental Conservation in Hotels",
+    "doi": "10.1086/586910",
+    "url": "https://doi.org/10.1086/586910",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "energy07",
+    "title": "The Constructive, Destructive, and Reconstructive Power of Social Norms",
+    "doi": "10.1111/j.1467-9280.2007.01917.x",
+    "url": "https://doi.org/10.1111/j.1467-9280.2007.01917.x",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "norms24",
+    "title": "Strategic Behavior with Tight, Loose, and Polarized Norms",
+    "doi": "10.1287/mnsc.2023.01022",
+    "url": "https://doi.org/10.1287/mnsc.2023.01022",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "plural24",
+    "title": "Measuring norm pluralism and perceived polarization in US politics",
+    "doi": "10.1093/pnasnexus/pgae413",
+    "url": "https://doi.org/10.1093/pnasnexus/pgae413",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "resume04",
+    "title": "Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination",
+    "doi": "10.1257/0002828042002561",
+    "url": "https://doi.org/10.1257/0002828042002561",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "blind00",
+    "title": "Orchestrating Impartiality: The Impact of Blind Auditions on Female Musicians",
+    "doi": "10.1257/aer.90.4.715",
+    "url": "https://doi.org/10.1257/aer.90.4.715",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "cent10",
+    "title": "The Spread of Behavior in an Online Social Network Experiment",
+    "doi": "10.1126/science.1185231",
+    "url": "https://doi.org/10.1126/science.1185231",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "team10",
+    "title": "Evidence for a Collective Intelligence Factor in the Performance of Human Groups",
+    "doi": "10.1126/science.1193147",
+    "url": "https://doi.org/10.1126/science.1193147",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "subtract21",
+    "title": "People systematically overlook subtractive changes",
+    "doi": "10.1038/s41586-021-03380-y",
+    "url": "https://doi.org/10.1038/s41586-021-03380-y",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "plural93",
+    "title": "Pluralistic ignorance and alcohol use on campus: Some consequences of misperceiving the social norm",
+    "doi": "10.1037/0022-3514.64.2.243",
+    "url": "https://doi.org/10.1037/0022-3514.64.2.243",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "loss79",
+    "title": "Prospect Theory: An Analysis of Decision under Risk",
+    "doi": "10.2307/1914185",
+    "url": "https://doi.org/10.2307/1914185",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "loss15",
+    "title": "How to make loss aversion disappear and reverse: Tests of the decision by sampling origin of loss aversion",
+    "doi": "10.1037/xge0000039",
+    "url": "https://doi.org/10.1037/xge0000039",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "avoid03",
+    "title": "The psychology of doing nothing: Forms of decision avoidance result from reason and emotion",
+    "doi": "10.1037/0033-2909.129.1.139",
+    "url": "https://doi.org/10.1037/0033-2909.129.1.139",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "contact05",
+    "title": "Intergroup contact and pluralistic ignorance",
+    "doi": "10.1037/0022-3514.88.1.91",
+    "url": "https://doi.org/10.1037/0022-3514.88.1.91",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "hate23",
+    "title": "Hate Trumps Love: The Impact of Political Polarization on Social Preferences",
+    "doi": "10.1287/mnsc.2023.4701",
+    "url": "https://doi.org/10.1287/mnsc.2023.4701",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "contagion19",
+    "title": "Contagion of pro- and anti-social behavior among peers and the role of social proximity",
+    "doi": "10.1016/j.joep.2019.04.009",
+    "url": "https://doi.org/10.1016/j.joep.2019.04.009",
+    "status": "pending_independent_primary_source_review"
+  },
+  {
+    "id": "measure23",
+    "title": "Beyond average: A method for measuring the tightness, looseness, and polarization of social norms",
+    "doi": "10.1016/j.econlet.2023.111417",
+    "url": "https://doi.org/10.1016/j.econlet.2023.111417",
+    "status": "pending_independent_primary_source_review"
+  }
+]

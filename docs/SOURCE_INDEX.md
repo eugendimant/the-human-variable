@@ -1,0 +1,30 @@
+# Source index (metadata extracted from current build; not independently reverified)
+
+- Noy & Zhang (2023). *Experimental evidence on the productivity effects of generative artificial intelligence*. Science. https://doi.org/10.1126/science.adh2586
+- Brynjolfsson, Li & Raymond (2025). *Generative AI at Work*. Quarterly Journal of Economics. https://doi.org/10.1093/qje/qjae044
+- Dell’Acqua et al. (2026). *Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality*. Organization Science. https://doi.org/10.1287/orsc.2025.21838
+- Doshi & Hauser (2024). *Generative AI enhances individual creativity but reduces the collective diversity of novel content*. Science Advances. https://doi.org/10.1126/sciadv.adn5290
+- Dietvorst, Simmons & Massey (2015). *Algorithm aversion: People erroneously avoid algorithms after seeing them err*. Journal of Experimental Psychology: General. https://doi.org/10.1037/xge0000033
+- Logg, Minson & Moore (2019). *Algorithm appreciation: People prefer algorithmic to human judgment*. Organizational Behavior and Human Decision Processes. https://doi.org/10.1016/j.obhdp.2018.12.005
+- Castelo, Bos & Lehmann (2019). *Task-dependent algorithm aversion*. Journal of Marketing Research. https://doi.org/10.1177/0022243719851788
+- Longoni, Bonezzi & Morewedge (2019). *Resistance to Medical Artificial Intelligence*. Journal of Consumer Research. https://doi.org/10.1093/jcr/ucz013
+- Tversky & Kahneman (1981). *The framing of decisions and the psychology of choice*. Science. https://doi.org/10.1126/science.7455683
+- Tversky & Kahneman (1974). *Judgment under Uncertainty: Heuristics and Biases*. Science. https://doi.org/10.1126/science.185.4157.1124
+- Madrian & Shea (2001). *The Power of Suggestion: Inertia in 401(k) Participation and Savings Behavior*. Quarterly Journal of Economics. https://doi.org/10.1162/003355301753265543
+- Goldstein, Cialdini & Griskevicius (2008). *A Room with a Viewpoint: Using Social Norms to Motivate Environmental Conservation in Hotels*. Journal of Consumer Research. https://doi.org/10.1086/586910
+- Schultz et al. (2007). *The Constructive, Destructive, and Reconstructive Power of Social Norms*. Psychological Science. https://doi.org/10.1111/j.1467-9280.2007.01917.x
+- Dimant, Gelfand, Hochleitner & Sonderegger (2024). *Strategic Behavior with Tight, Loose, and Polarized Norms*. Management Science. https://doi.org/10.1287/mnsc.2023.01022
+- Panizza, Dimant, Kimbrough & Vostroknutov (2024). *Measuring norm pluralism and perceived polarization in US politics*. PNAS Nexus. https://doi.org/10.1093/pnasnexus/pgae413
+- Bertrand & Mullainathan (2004). *Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination*. American Economic Review. https://doi.org/10.1257/0002828042002561
+- Goldin & Rouse (2000). *Orchestrating Impartiality: The Impact of Blind Auditions on Female Musicians*. American Economic Review. https://doi.org/10.1257/aer.90.4.715
+- Centola (2010). *The Spread of Behavior in an Online Social Network Experiment*. Science. https://doi.org/10.1126/science.1185231
+- Woolley et al. (2010). *Evidence for a Collective Intelligence Factor in the Performance of Human Groups*. Science. https://doi.org/10.1126/science.1193147
+- Adams et al. (2021). *People systematically overlook subtractive changes*. Nature. https://doi.org/10.1038/s41586-021-03380-y
+- Prentice & Miller (1993). *Pluralistic ignorance and alcohol use on campus: Some consequences of misperceiving the social norm*. Journal of Personality and Social Psychology. https://doi.org/10.1037/0022-3514.64.2.243
+- Kahneman & Tversky (1979). *Prospect Theory: An Analysis of Decision under Risk*. Econometrica. https://doi.org/10.2307/1914185
+- Walasek & Stewart (2015). *How to make loss aversion disappear and reverse: Tests of the decision by sampling origin of loss aversion*. Journal of Experimental Psychology: General. https://doi.org/10.1037/xge0000039
+- Anderson (2003). *The psychology of doing nothing: Forms of decision avoidance result from reason and emotion*. Psychological Bulletin. https://doi.org/10.1037/0033-2909.129.1.139
+- Shelton & Richeson (2005). *Intergroup contact and pluralistic ignorance*. Journal of Personality and Social Psychology. https://doi.org/10.1037/0022-3514.88.1.91
+- Dimant (2023). *Hate Trumps Love: The Impact of Political Polarization on Social Preferences*. Management Science. https://doi.org/10.1287/mnsc.2023.4701
+- Dimant (2019). *Contagion of pro- and anti-social behavior among peers and the role of social proximity*. Journal of Economic Psychology. https://doi.org/10.1016/j.joep.2019.04.009
+- Dimant (2023). *Beyond average: A method for measuring the tightness, looseness, and polarization of social norms*. Economics Letters. https://doi.org/10.1016/j.econlet.2023.111417
