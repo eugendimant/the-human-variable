@@ -91,6 +91,10 @@ def names(question: str, cid: str) -> bool:
     q = words(question)   # whole surnames, unstemmed: "bill" must not match "Biller-Andorno"
     return any(words(SOURCES[s]['authors']) - {'with', 'others'} & q for s in CHALLENGES[cid]['sources'] if s in SOURCES)
 
+def _papers(c: dict) -> str:
+    """Authors, year and journal of a decision's sources (titles stay with the evidence, as on the page)."""
+    return '; '.join(f"{SOURCES[s]['authors']} ({SOURCES[s]['year']}), {SOURCES[s]['venue']}" for s in c['sources'] if s in SOURCES)
+
 def _norm(s: str) -> str: return ' '.join(re.findall(r'[a-z0-9]+', s.lower()))
 
 def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
@@ -123,6 +127,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         for name, rx in R['routes']:
             if not re.search(rx, ql): continue
             if name == 'offtopic': return off
+            if name == 'authors': return out(f"{_papers(c)}. Design: {st.get('design', 'see the paper')}.", c)
+            if name == 'voluntary': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" Setting: {c.get('scene', '')} What the study covers: {c['boundary']}", c)
             if name == 'stakes': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
             if name == 'population': return out(f"What the study covers: {c['boundary']}" + (f" Sample: {st['n']}." if st.get('n') else '') + " Whether it holds elsewhere is a question to test locally.", c)
             if name == 'action': return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)

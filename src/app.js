@@ -395,6 +395,8 @@ function curated(q, c) {
   for (const [name, rx] of TR.routes) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
     if (name === 'offtopic') return off;
+    if (name === 'authors') return { text: `${c.sources.map(id => SOURCE[id] ? `${SOURCE[id].authors} (${SOURCE[id].year}), ${SOURCE[id].venue}` : '').filter(Boolean).join('; ')}. Design: ${st0.design || 'see the paper'}.`, cites: cs(c) };
+    if (name === 'voluntary') return { text: `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\nSetting: ${c.scene}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
     if (name === 'stakes') return { text: `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
     if (name === 'population') return { text: `What the study covers: ${c.boundary}${st0.n ? ` Sample: ${st0.n}.` : ''} Whether it holds elsewhere is a question to test locally.`, cites: cs(c) };
     if (name === 'action') return { text: `${c.implication}\n\nWhy: ${c.explain}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };

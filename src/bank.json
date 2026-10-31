@@ -8968,6 +8968,14 @@
     "\\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\\b"
    ],
    [
+    "authors",
+    "\\b(who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\\b"
+   ],
+   [
+    "voluntary",
+    "\\b(voluntary|volunteer\\w*|randomly assigned|chose to|opt(ed)? in|self[- ]selected|vignette|real (bribe|money|job|firm|company)|real world|in the field|lab or field)\\b"
+   ],
+   [
     "stakes",
     "\\b(real money|paid|incentiv\\w*|hypothetical|just a survey|for real|stakes)\\b"
    ],
