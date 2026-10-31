@@ -254,7 +254,7 @@ def test_causal_labels_do_not_name_the_answer():
         if ans & vis: bad.append((c['id'], sorted(ans & vis)))
     assert not bad, bad
 
-WORDS = {'eighty-five': 85, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10, 'half': 50, 'third': 33}
+WORDS = {'four hundred fifty-seven': 457, 'eighty-five': 85, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10, 'half': 50, 'third': 33}
 def _quote_has(n, qnums, qtext):
     v = float(n); d = len(n.split('.')[1]) if '.' in n else 0
     for q in qnums:
@@ -269,7 +269,8 @@ def test_every_explained_number_is_quoted():
     for c in LIVE:
         qtext = ' '.join(q.get('quote', q.get('printed', '')) for q in ev.get(c['id'], [])).lower().replace(',', '')   # prose quotes and values as printed
         qnums = [float(x) for x in re.findall(r'(?<![\w.])-?\.?\d+(?:\.\d+)?', qtext) if x not in ('-', '.')]
-        txt = ' '.join([c['explain'], c['answerTitle']] + [f['a'] for f in c.get('follow', [])] + [str(v) for v in c.get('chart', {}).get('values', [])]).replace(',', '')   # review 11: follow-ups too; charts too
+        txt = ' '.join([c['explain'], c['answerTitle'], c.get('scene', ''), c['boundary']] + [f['a'] for f in c.get('follow', [])] + [str(v) for v in c.get('chart', {}).get('values', [])]).replace(',', '')   # follow-ups (review 11), charts, scenes and scope lines (review 17)
+        txt = re.sub(r'401\(k\)|\bweeks? \d+', ' ', txt)
         txt = re.sub(r'\b(Stud(y|ies)|Experiments?|GPT|DALL-E|Midjourney v|Fortune|Firefly|Imagen)[- ]?\d+[a-z]?(\s*(to|and|-)\s*\d+[a-z]?)?', ' ', txt)  # names, not results
         for n in re.findall(r'(?<![\w.-])\d+(?:\.\d+)?', txt):
             if re.fullmatch(r'(19|20)\d\d', n): continue
@@ -342,3 +343,12 @@ def test_forecast_wording_does_not_predict_truth():
             s = sum(1 - 2 * ((pn if N.search(c['forecast']['claim']) else pp) / 100 - (1 if c['forecast']['truth'] else 0)) ** 2 for c in F) / len(F)
             best = max(best, s)
     assert best <= 0.55, round(best, 3)   # 0.5 is guessing
+
+
+def test_paths_mix_true_and_false_forecasts():
+    """Review 17, minor 5: inside a path with two or more forecasts, 'always true' must not be a strategy."""
+    C = {c['id']: c for c in LIVE}; bad = []
+    for p in BANK['paths']:
+        t = [C[i]['forecast']['truth'] for i in p['ids'] if i in C and C[i]['format'] == 'forecast']
+        if len(t) >= 2 and len(set(t)) < 2: bad.append((p['id'], t))
+    assert not bad, bad

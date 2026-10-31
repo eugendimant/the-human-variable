@@ -470,6 +470,11 @@
    "source": "dell26",
    "quote": "The preregistered experiment involved 758 knowledge workers.",
    "location": "Abstract, Organization Science, version of record (Crossref)"
+  },
+  {
+   "source": "dell26",
+   "quote": "For each one of a set of 18 realistic knowledge tasks within the frontier of AI capabilities",
+   "location": "Abstract, Organization Science, version of record (Crossref)"
   }
  ],
  "rollout1": [
@@ -608,6 +613,11 @@
    "source": "bastani25",
    "quote": "they did not perceive that they performed worse or learned less",
    "location": "Results"
+  },
+  {
+   "source": "bastani25",
+   "quote": "We conducted four 90-min sessions for about fifty 9th, 10th, and 11th-grade classes, comprising nearly 1,000 students.",
+   "location": "Methods, PNAS, Europe PMC full text, version of record"
   }
  ],
  "bz01": [
@@ -1319,6 +1329,11 @@
    "source": "cohn19",
    "quote": "a combination of altruistic concerns and an aversion to viewing oneself as a thief",
    "location": "Abstract (PubMed 31221770, Science version of record)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "rising from 40% in the NoMoney condition to 51% in the Money condition",
+   "location": "Science 365(6448), published article"
   }
  ],
  "truth-telling-gains": [
@@ -2181,6 +2196,21 @@
    "source": "enforcers23",
    "quote": "Likewise, we also repeat our observation from the behavioral experiment in that, overall, the chosen average punishment for opportunistic behavior is higher if it creates INEQUITY rather than EQUITY (77.8% vs. 62.3%; P<0.001).",
    "location": "Results, applied (whistle-blowing) experiment paragraph, Europe PMC fullTextXML (PMC10360164), version of record"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "information about the majority of participants in a previous study objecting to bribe acceptance",
+   "location": "Study 2, Europe PMC full text, version of record"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "They could choose among different actions (submitting varying amounts of evidence)",
+   "location": "Study 2, Europe PMC full text, version of record"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "The Punisher Experiment featured n=1,240 subjects.",
+   "location": "Methods, Europe PMC full text, version of record"
   }
  ],
  "dimant-observability-choice": [
@@ -2968,6 +2998,11 @@
    "source": "norms24",
    "quote": "in tight environments (low variance), participants choose contribution levels that are tightly centered around the mean of the shown distribution (σ2 = 1.26). In loose environments (high variance), by contrast, we see a much larger variation in behavior (σ2 = 1.65).",
    "location": "Management Science 71(3), pp. 2253-2254, Section 4.2"
+  },
+  {
+   "source": "norms24",
+   "quote": "through the lens of a well-powered (n = 1,203) and preregistered study.",
+   "location": "Introduction, Management Science 71(3), published article as hosted by the coauthor; \"=\" restored from a replacement character"
   }
  ],
  "social04": [
@@ -4080,6 +4115,11 @@
    "source": "jabbour23",
    "quote": "Participant diagnostic accuracy was 81.1% (95% CI, 76.9%-85.4%) when shown a clinical consultation with perfect accuracy ... The final vignette included a clinical consultation, a short narrative provided by a hypothetical trusted colleague",
    "location": "Results; Methods (jamanetwork.com full text, excerpt)"
+  },
+  {
+   "source": "jabbour23",
+   "quote": "Four hundred fifty-seven clinicians were randomized and completed at least 1 vignette,",
+   "location": "Abstract, JAMA (Europe PMC record)"
   }
  ],
  "axf06": [

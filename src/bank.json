@@ -2581,8 +2581,8 @@
     "note": "Logg, Minson & Moore (2019), Experiment 1A, weight on advice."
    },
    "forecast": {
-    "claim": "People moved further toward identical advice when it was labeled as an algorithm’s rather than other people’s.",
-    "truth": true
+    "claim": "People moved further toward identical advice when it was labeled as other people’s rather than an algorithm’s.",
+    "truth": false
    }
   },
   {
@@ -3043,7 +3043,7 @@
    "theme": "choice",
    "study": {
     "design": "Eight experiments",
-    "n": "Eight experiments"
+    "n": ""
    },
    "forecast": {
     "claim": "People juggling other tasks were more likely to find improvements that remove something.",
@@ -3493,8 +3493,8 @@
    },
    "permuted": true,
    "options": [
-    "Unfavorable to women, with tight estimates",
-    "Clear gains, precisely estimated across rounds",
+    "Favorable to women, precisely estimated",
+    "Mixed by round, precisely estimated",
     "Unfavorable to women, mostly in early rounds",
     "Favorable to women, with imprecise estimates"
    ],
@@ -4536,7 +4536,7 @@
    },
    "concept": "Targeted rollout",
    "title": "Who gets the assistant first?",
-   "scene": "You run a 400-agent support center and can license a generative-AI reply assistant for 100 agents this quarter. Your goal is the largest gain in issues resolved.",
+   "scene": "A firm rolled out a generative-AI reply assistant to its customer-support agents in waves. You decide which agents get the first licenses.",
    "question": "Which agents should get the first licenses?",
    "options": [
     "A random sample across tenure",
@@ -4879,7 +4879,7 @@
    "answerTitle": "Fewer than one in three finished on time",
    "explain": "Only 29.7% finished by their best-guess date, against an average prediction of 33.9 days, and fewer than half (48.7%) finished by their worst-case date.",
    "implication": "Set project deadlines from how long similar past projects actually took, not from the team's step-by-step plan.",
-   "boundary": "Study 1 tracked 37 psychology honors students on their theses; one task type, one university.",
+   "boundary": "Study 1 tracked psychology honors students on their theses; one task type, one university.",
    "sources": [
     "buehler94"
    ],
@@ -5613,7 +5613,7 @@
    "track": "Culture & Society",
    "concept": "Truth-telling",
    "title": "How much do people lie?",
-   "scene": "Across 90 experiments, people privately rolled a die or flipped a coin and reported the result. Higher reports paid more, and nobody could check.",
+   "scene": "Across many experiments, people privately rolled a die or flipped a coin and reported the result. Higher reports paid more, and nobody could check.",
    "question": "What share of the possible gains from lying did people leave on the table?",
    "estimate": {
     "target": 75,
@@ -6465,7 +6465,7 @@
    ],
    "study": {
     "design": "Incentivized lying experiment",
-    "n": "Participants in an incentivized experiment"
+    "n": ""
    },
    "theme": "honesty",
    "permuted": true,
@@ -6501,7 +6501,7 @@
    },
    "answerTitle": "Donations fell about 20% with visibility alone",
    "explain": "With observation alone, participants took an additional 21.9 ECUs and donations fell by about 20% compared with no observation. People copied bad examples but ignored good ones.",
-   "implication": "Before publishing peer compliance dashboards, build real shared identity in the team, or bad examples will spread faster than good ones.",
+   "implication": "Before publishing peer compliance dashboards, add even a minimal shared-identity cue among peers; without one, bad examples spread faster than good ones.",
    "boundary": "Repeated giving game with Penn students; proximity was a minimal shared-identity cue.",
    "sources": [
     "prox22"
@@ -6655,11 +6655,11 @@
    "track": "Business",
    "concept": "Whistle-blowing",
    "title": "Who gets reported for bribery?",
-   "scene": "US adults read about a coworker accepting a bribe and chose how likely they were to report it. The bribe either created inequity or restored equity; half also saw norm information.",
+   "scene": "US adults read about a coworker accepting a bribe and chose how much evidence to submit, which set how likely the coworker was to be punished. The bribe either created inequity or restored equity; half also learned what most previous participants thought of taking bribes.",
    "question": "How likely is it that the study found this?",
-   "answerTitle": "Norm information raised reporting of unfair bribes",
-   "explain": "Norm information raised reporting from 73.3% to 82.8% when the bribe created inequity (P < 0.005), and from 57.9% to 67.2% when it restored equity (marginal, P = 0.074). Inequity-creating bribes drew more reporting overall (77.8% vs 62.3%, P < 0.001).",
-   "implication": "When you build a speak-up channel, tell staff that most colleagues object to bribes and back reporting; it raises reporting most for deals that create unfair advantages.",
+   "answerTitle": "Norm information raised punishment of unfair bribes",
+   "explain": "Norm information raised the chosen probability of punishment from 73.3% to 82.8% when the bribe created inequity (P < 0.005), and from 57.9% to 67.2% when it restored equity (marginal, P = 0.074). Inequity-creating bribes drew more punishment overall (77.8% vs 62.3%, P < 0.001).",
+   "implication": "When you build a speak-up channel, tell staff that most colleagues object to taking bribes; in the study this raised willingness to act most for deals that create unfair advantages.",
    "boundary": "Bribery vignette with 225 US adults, alongside a main behavioral study with 1,240 punishers from a representative US sample.",
    "sources": [
     "enforcers23"
@@ -6684,7 +6684,7 @@
    },
    "theme": "honesty",
    "forecast": {
-    "claim": "Telling people that most others report bribery raised reporting of bribes that created inequity.",
+    "claim": "Telling people that most others object to taking bribes raised the punishment they chose for bribes that created inequity.",
     "truth": true
    },
    "chart": {
@@ -6702,7 +6702,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Share who reported the bribe, Study 2."
+    "note": "Average chosen probability that the coworker is punished, Study 2 vignette."
    }
   },
   {
@@ -8968,7 +8968,7 @@
    ],
    [
     "subgroup",
-    "\\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup)"
+    "\\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b"
    ],
    [
     "design",

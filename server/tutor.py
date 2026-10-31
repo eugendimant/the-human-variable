@@ -135,11 +135,12 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'summary': return out(f"{c['answerTitle']}. {c['explain']} What a manager does with it: {c['implication']}", c)
             if name == 'duration':
                 fl = [f for f in fol if re.search(r'\b(long|last|later|weeks?|months?|years?|fade|persist|after)\b', f['q'] + ' ' + f['a'], re.I)]
-                return out(fl[0]['a'] if fl else f"{c['explain']} What the study covers: {c['boundary']}", c)
+                return out(fl[0]['a'] if fl else f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
             if name == 'ethics': return out(f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", c)
             if name == 'subgroup':
                 fh = [f for f in fol if re.search(R['subgroupFollow'], f['q'], re.I)]
                 if fh: return out(fh[0]['a'], c)
+                return out(f"The lab's summary of this study does not break results down that way. What it covers: {c['boundary']}", c)
             if name == 'design' and not re.search(r'\b(my|our)\b', ql): return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" {c['explain']}", c)
             if name == 'pilot': return out(f"Run a small randomized pilot: give the change to some teams or customers and not to others, fix one outcome metric in advance, and compare after a set period. For this finding: {c['implication']} What the study measured: {c['explain']}", c)
             if name == 'size': return out(f"{c['explain']} In practice: {c['implication']}", c)

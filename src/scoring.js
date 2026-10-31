@@ -145,7 +145,8 @@
       case 'multi': { const k = (c.multiAnswers || []).length || c.pick || 2; return k / c.options.length }
       case 'delegate': return 1 / c.delegate.choices.length;
       case 'allocate': { const n = c.options.length, nb = (c.allocate && c.allocate.best && c.allocate.best.length) || 1; return 1 - 1 / nb + 1 / n }   // an even split
-      default: return 0;   // estimates: the midpoint and constant guesses are capped by content gates
+      case 'estimate': { const e = c.estimate; if (!e || e.target === undefined) return 0; let s = 0; for (let k = 0; k <= 100; k++) s += estimate(c, e.min + (e.max - e.min) * k / 100).score; return s / 101 }   // a random slider position
+      default: return 0;
     }
   }
   function skill(c, raw) { const b = baseline(c); return b >= 1 ? 0 : (raw - b) / (1 - b) }

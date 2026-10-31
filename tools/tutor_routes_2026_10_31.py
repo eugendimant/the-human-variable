@@ -17,7 +17,7 @@ bank['tutorRoutes'] = {
   ['catch', r'\b(catch|backfire|downside|drawback|limit\w*|risk|caveat|fail\w*|weakness|criticis\w*|question(ed)? this|later work)\b'],
   ['summary', r'\b(summar\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line)\b'],
   ['duration', r'\b(how long|last(ed)?|persist\w*|fade\w*|long[- ]term|over time|stick)\b'],
-  ['subgroup', r'\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup)'],
+  ['subgroup', r'\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\b'],
   ['design', r'\b(how (was|were|did)|design|method|ran|sample|participants|conducted|setup|set up|randomi[sz]\w*|control group)\b'],
   ['pilot', r'\b(test (this|it)|pilot|in (my|our) (company|team|firm|organi[sz]ation)|roll ?out|measure (it|this))\b'],
   ['size', r'\b(big|size|large|how much|practice|magnitude)\b'],
