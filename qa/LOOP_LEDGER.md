@@ -507,6 +507,6 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 - Projector delegate shows the evidence route under each task; the stat row is a fixed four-column grid.
 - "Start playing" opens the featured path; rank hint says where first place goes; a rank card that starts on the answer is reshuffled; the sparkline label sits away from the data; the All-decisions list shows forecast claims; a phone refreshes the room count right after its answer lands.
 
-**Gates:** build check, 243 tests, audit doc, counts and screenshots regenerated.
+**Gates:** build check, 240 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 0 Major. Next: independent review 21.
