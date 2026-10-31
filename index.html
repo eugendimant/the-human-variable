@@ -466,6 +466,10 @@ body.in-play{background:var(--paper)}
 .tool-links{display:flex;gap:18px;flex-wrap:wrap}
 .link-quiet{text-align:left;font-weight:650;color:var(--ink)}
 .link-quiet:hover{text-decoration:underline}
+
+.theme-more{margin:0 0 16px}
+.theme-more summary{cursor:pointer;font-weight:650;padding:10px 0;color:var(--you-ink)}
+@media (max-width:820px){.theme-index{flex-wrap:nowrap;overflow-x:auto;margin:16px calc(-1*var(--gut)) 0;padding:0 var(--gut) 6px;scrollbar-width:none}.theme-index a{white-space:nowrap}}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="./" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -920,8 +924,8 @@ function almanac() {
   return `<section class="atlas-head wrap">${libHead()}
     <nav class="theme-index" aria-label="Themes">${themes.map(t => `<a href="#theme-${esc(t.id)}">${esc(t.title)}</a>`).join('')}</nav></section>
     <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; return `<article class="theme panel" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p>${esc(t.principle)}</p></div>
-      <ul class="findings">${cs.map(c => `<li><div><strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small></div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul>
-      <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play all ${cs.length}</button></article>` }).join('')}</section>`;
+      <details class="theme-more"><summary>The ${cs.length} findings behind it</summary><ul class="findings">${cs.map(c => `<li><div><strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small></div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
+      <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play these ${cs.length}</button></article>` }).join('')}</section>`;
 }
 
 // ----- record -----

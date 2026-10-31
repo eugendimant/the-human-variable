@@ -317,8 +317,8 @@ function almanac() {
   return `<section class="atlas-head wrap">${libHead()}
     <nav class="theme-index" aria-label="Themes">${themes.map(t => `<a href="#theme-${esc(t.id)}">${esc(t.title)}</a>`).join('')}</nav></section>
     <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; return `<article class="theme panel" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p>${esc(t.principle)}</p></div>
-      <ul class="findings">${cs.map(c => `<li><div><strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small></div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul>
-      <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play all ${cs.length}</button></article>` }).join('')}</section>`;
+      <details class="theme-more"><summary>The ${cs.length} findings behind it</summary><ul class="findings">${cs.map(c => `<li><div><strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small></div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
+      <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play these ${cs.length}</button></article>` }).join('')}</section>`;
 }
 
 // ----- record -----
