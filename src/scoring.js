@@ -31,8 +31,9 @@
     const prob = clamp(Number(p) / 100, 0, 1);
     const truth = c.forecast.truth ? 1 : 0;
     const brier = (prob - truth) ** 2;
-    // Brier skill against always saying 50%: hedging earns 0, a confident correct call earns up to 100.
-    return { score: clamp(1 - brier / 0.25, 0, 1), correct: (prob > 0.5) === (truth === 1) && prob !== 0.5, detail: { brier: Math.round(brier * 1000) / 1000 } };
+    // Proper rule (a linear transform of Brier): 100 for a confident correct call, 50 for saying 50%,
+    // and down to -100 for a confident wrong call. Unclamped, so reporting your true belief is always best.
+    return { score: 1 - 2 * brier, correct: (prob > 0.5) === (truth === 1) && prob !== 0.5, detail: { brier: Math.round(brier * 1000) / 1000 } };
   }
 
   // Ranking: share of item pairs placed in the evidence order (Kendall agreement).

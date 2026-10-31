@@ -16,6 +16,7 @@ CHALLENGES = {c['id']: c for c in BANK['challenges'] if all(s in LIVE_SOURCES fo
 
 RETENTION_HOURS = float(os.environ.get('THV_RETENTION_HOURS', '48'))
 MAX_PARTICIPANTS = int(os.environ.get('THV_MAX_PARTICIPANTS', '120'))
+CLASS_LOCK_HOURS = float(os.environ.get('THV_CLASS_LOCK_HOURS', '3'))
 CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'  # no 0/O/1/I
 
 class ClassroomError(Exception):
@@ -29,6 +30,21 @@ class Conflict(ClassroomError):
 
 def _h(token: str) -> str: return hashlib.sha256(token.encode()).hexdigest()
 
+def answer_text(c, a):
+    """Readable answer for the CSV export."""
+    f, o = c.get('format'), c.get('options') or []
+    try:
+        if f in ('choice', 'causal'): return o[a]
+        if f == 'multi': return ' + '.join(o[i] for i in a)
+        if f == 'rank': return ' > '.join(o[i] for i in a)
+        if f == 'allocate': return '; '.join(f'{o[i]}: {v}' for i, v in enumerate(a))
+        if f == 'delegate':
+            ch = c['delegate']['choices']; return '; '.join(f"{t['text']}: {ch[v]}" for t, v in zip(c['delegate']['tasks'], a))
+        if f == 'forecast': return f'{a}% true'
+        if f == 'estimate': return f"{a}{c['estimate'].get('unit', '')}"
+    except (IndexError, KeyError, TypeError): pass
+    return ''
+
 class Store:
     def __init__(self, path: str | Path):
         self.path = str(path); self._local = threading.local(); self.lock = threading.Lock()
@@ -41,6 +57,9 @@ class Store:
         CREATE TABLE IF NOT EXISTS responses(code TEXT, num INTEGER, challenge TEXT, answer TEXT, confidence INTEGER, score REAL, correct INTEGER, created REAL, PRIMARY KEY(code, num, challenge));
         CREATE INDEX IF NOT EXISTS r_cc ON responses(code, challenge);
         ''')
+        cols = {r[1] for r in db.execute('PRAGMA table_info(sessions)')}
+        if 'revealed' not in cols: db.execute("ALTER TABLE sessions ADD COLUMN revealed TEXT NOT NULL DEFAULT '[]'")
+        if 'joining' not in cols: db.execute("ALTER TABLE sessions ADD COLUMN joining INTEGER NOT NULL DEFAULT 1")
         db.commit()
 
     def db(self) -> sqlite3.Connection:
@@ -91,7 +110,11 @@ class Store:
             sql, args = 'UPDATE sessions SET phase=?', ['closed']
         elif action == 'reveal':
             if phase not in ('open', 'closed'): raise Conflict('Open a decision first')
-            sql, args = 'UPDATE sessions SET phase=?', ['revealed']
+            rev = json.loads(self.db().execute('SELECT revealed FROM sessions WHERE code=?', (code,)).fetchone()[0])
+            if r[3] not in rev: rev.append(r[3])
+            sql, args = 'UPDATE sessions SET phase=?, revealed=?', ['revealed', json.dumps(rev)]
+        elif action in ('lockjoin', 'unlockjoin'):
+            sql, args = 'UPDATE sessions SET joining=?', [0 if action == 'lockjoin' else 1]
         elif action == 'lobby':
             sql, args = 'UPDATE sessions SET phase=?', ['lobby']
         elif action == 'end':
@@ -100,7 +123,7 @@ class Store:
             raise ClassroomError('Unknown action')
         with self.lock:
             db = self.db(); db.execute(sql + ', version=version+1, touched=? WHERE code=?', (*args, time.time(), code)); db.commit()
-            self.cache.pop(code, None); self._open = None
+            self.cache.pop(code, None); self._open = None; self._lock = None
         return self.state(code, admin=True)
 
     def delete(self, code: str, secret: str):
@@ -118,6 +141,7 @@ class Store:
             db = self.db()
             n = db.execute('SELECT COUNT(*) FROM participants WHERE code=?', (code,)).fetchone()[0]
             if n >= MAX_PARTICIPANTS: raise Conflict('This session is full')
+            if not db.execute('SELECT joining FROM sessions WHERE code=?', (code,)).fetchone()[0]: raise Conflict('The instructor has closed joining for this session')
             token = secrets.token_urlsafe(18)
             db.execute('INSERT INTO participants VALUES(?,?,?,?)', (code, _h(token), n + 1, time.time()))
             db.execute('UPDATE sessions SET touched=? WHERE code=?', (time.time(), code)); db.commit()
@@ -156,7 +180,8 @@ class Store:
             r = self._row(code); db = self.db()
             n_part = db.execute('SELECT COUNT(*) FROM participants WHERE code=?', (code,)).fetchone()[0]
             n_resp = db.execute('SELECT COUNT(*) FROM responses WHERE code=? AND challenge=?', (code, r[3])).fetchone()[0] if r[3] else 0
-            hit = {'_t': time.time(), 'code': r[0], 'title': r[2], 'challenge': r[3], 'phase': r[4], 'version': r[5], 'participants': n_part, 'responses': n_resp}
+            joining = db.execute('SELECT joining FROM sessions WHERE code=?', (code,)).fetchone()[0]
+            hit = {'_t': time.time(), 'code': r[0], 'title': r[2], 'challenge': r[3], 'phase': r[4], 'version': r[5], 'participants': n_part, 'responses': n_resp, 'joining': bool(joining)}
             if r[4] == 'revealed' and r[3]: hit['aggregate'] = self.aggregate(code, r[3])
             self.cache[code] = hit
         out = {k: v for k, v in hit.items() if not k.startswith('_')}
@@ -191,6 +216,16 @@ class Store:
             out['taskCounts'] = [[sum(1 for a in ans if a[t] == m) for m in range(len(c['delegate']['choices']))] for t in range(len(c['delegate']['tasks']))]
         return out
 
+    def class_lock(self) -> tuple[bool, set]:
+        """While any class with participants has been active in the last CLASS_LOCK_HOURS, evidence is released
+        only for decisions that class has already revealed. Returns (locked, allowed ids). Cached for 2 s."""
+        now = time.time(); hit = getattr(self, '_lock', None)
+        if hit and now - hit[0] < 2: return hit[1]
+        rows = self.db().execute('SELECT s.revealed FROM sessions s WHERE s.touched > ? AND EXISTS (SELECT 1 FROM participants p WHERE p.code = s.code)', (now - CLASS_LOCK_HOURS * 3600,)).fetchall()
+        allowed = set()
+        for (rv,) in rows: allowed |= set(json.loads(rv))
+        val = (bool(rows), allowed); self._lock = (now, val); return val
+
     def open_challenges(self) -> set:
         """Decisions currently open or closed-but-unrevealed in a session active in the last six hours (cached for 2 s)."""
         now = time.time(); hit = getattr(self, '_open', None)
@@ -198,15 +233,16 @@ class Store:
         rows = self.db().execute("SELECT challenge FROM sessions WHERE phase IN ('open','closed') AND touched > ?", (now - 6 * 3600,)).fetchall()
         val = {r[0] for r in rows if r[0]}; self._open = (now, val); return val
 
+    # score: 0 to 100 for most formats; forecasts run from -100 (confident miss) to 100.
     def export_csv(self, code: str, secret: str) -> str:
         self.require_admin(code, secret)
         rows = self.db().execute('SELECT num, challenge, answer, confidence, score, correct, created FROM responses WHERE code=? ORDER BY challenge, num', (code,)).fetchall()
         buf = io.StringIO(); w = csv.writer(buf)
-        w.writerow(['participant', 'decision_id', 'decision_title', 'format', 'answer', 'confidence', 'score_0_100', 'correct', 'utc_time'])
+        w.writerow(['participant', 'decision_id', 'decision_title', 'format', 'answer', 'answer_text', 'confidence', 'score', 'correct', 'utc_time'])
+        safe = lambda x: "'" + x if x[:1] in '=+-@' else x
         for num, cid, a, conf, sc, ok, t in rows:
-            c = CHALLENGES.get(cid, {}); title = str(c.get('title', ''))
-            if title[:1] in '=+-@': title = "'" + title
-            w.writerow([f'P{num:03d}', cid, title, c.get('format', ''), a, '' if conf is None else conf, round(100 * sc), ok, time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(t))])
+            c = CHALLENGES.get(cid, {})
+            w.writerow([f'P{num:03d}', cid, safe(str(c.get('title', ''))), c.get('format', ''), a, safe(answer_text(c, json.loads(a))), '' if conf is None else conf, round(100 * sc), ok, time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(t))])
         return buf.getvalue()
 
     def purge(self):

@@ -1,0 +1,373 @@
+{
+ "axb02": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Dietvorst, Simmons, Massey, Mgmt Sci 64(3):1155-1170, 2018-03",
+   "core.ac.uk deposit (cover cites MS 64(3)): Study 2 N=816; can't-change 47% vs adjust-by-10/5/2 71%/71%/68%; task = percentiles of high-school seniors on standardized math test",
+   "Accuracy gain for modifiers in Studies 1-2; satisfaction/subsequent use measured in Study 3 and stated in abstract"
+  ]
+ },
+ "dimant-opioid-forecast": {
+  "verdict": "OK",
+  "issues": [
+   "'Two' cards and randomization are not in the journal abstract; confirmed only by the OES project page.",
+   "Dimant understatement (minor): explain gives no magnitudes; study.n says N not confirmed."
+  ],
+  "fixes": {
+   "optional_explain_addition": "If OES figures are acceptable as a source: 'Returns rose from 24.8% to about 31.8% of patients (OES summary); cost per pill fell from $15.66 to $12.57.' Otherwise leave as is.",
+   "optional_boundary": "Add 'post-surgery patients at VA facilities' (OES: cards given at dispensing and mailed a week after surgery)."
+  },
+  "evidence": [
+   "Crossref: Toma, Burnett, Debroy, Dimant, Liu, Safran, Saya, Schultz; Health Econ 35(7):1023-1032, online 2026-03-16",
+   "Europe PMC abstract (PMID 41834481): cards increase likelihood of return and number of pills; reduce cost per pill and per returning participant; reminders, implementation intention prompts, loss framing",
+   "OES project page (oes.gsa.gov/projects/opioid-buyback): two cards (at dispensing; mailed ~1 week post-surgery); surgery weeks randomly assigned within 2-week blocks; return 24.8% -> +7.0 pp (p=0.043); cost per pill $15.66 -> $12.57"
+  ]
+ },
+ "rollout1": {
+  "verdict": "CORRECTABLE",
+  "issues": [
+   "follow[2] is an internal production note shown to players ('Subgroup percentages were not in the journal text we could read...').",
+   "sources.bry25.authors_full is null."
+  ],
+  "fixes": {
+   "follow[2]": {
+    "q": "Which problems gained most?",
+    "a": "Gains were largest for moderately rare problems, where agents had less experience but the system still had enough training data."
+   },
+   "sources.bry25.authors_full": "Erik Brynjolfsson, Danielle Li, Lindsey Raymond"
+  },
+  "evidence": [
+   "Crossref: Brynjolfsson, Li, Raymond, QJE 140(2):889-942 (online 2025-02-04)",
+   "Abstract: 5,172 agents; +15% issues resolved/hour; less experienced/lower-skilled improve speed and quality; most experienced/highest-skilled small speed gains, small quality declines"
+  ]
+ },
+ "dimant-masks-forecast": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Dimant, Clemente, Pieper, Dreber, Gelfand, Behavioral Science Units Consortium, Hallsworth, Holzwarth, Tantia; Sci Rep 12:7575, online 2022-05-09",
+   "Sci Rep full text: 'there was no evidence that 7 nudge interventions were effective...'; N=4931; 1034 forecasters (714 lay, 199 academics, 121 practitioners); pooled z=4.40 p<0.001, Dem z=4.84, Rep z=1.67 p=0.09; Dem r(28)=-0.63 p=0.0003; laypeople higher error than academics and practitioners"
+  ]
+ },
+ "bz01": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Gordon, Zettelmeyer, Bhargava, Chapsky; Mktg Sci 38(2):193-225, 2019-03",
+   "Kellogg PDF: Study 4 ATT lift 73% [49%,103%]; naive exposed-vs-unexposed 316%; exact matching age+gender 222%; 15 experiments, 500M user-experiment obs, 1.6B impressions; 'off by a factor of three' in half; some methods significantly underestimate (e.g., Study 15)"
+  ]
+ },
+ "axb06": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Hoffman, Kahn, Li; QJE 133(2):765-800, print 2018-05-01",
+   "Abstract (claimed quotes consistent with published abstract): 15 firms, low-skilled service; managers hiring against test recommendations end up with worse average hires; overrule because biased or mistaken"
+  ]
+ },
+ "rollout4": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: PNAS 122(26) e2422633122, online 2025-06-25",
+   "PMC12232635: four 90-min sessions; nearly 1,000 students, Turkey; practice +48% Base, +127% Tutor; exam -17% Base; Tutor exam ~-0.004, indistinguishable; most common message 'What is the answer?'; Base students did not perceive worse performance; Tutor prompt gave hints, teacher-provided solutions"
+  ]
+ },
+ "genai1": {
+  "verdict": "CORRECTABLE",
+  "issues": [
+   "follow[0] states 'Peak content novelty rose' without noting it is only marginally significant.",
+   "follow[2] gives the productivity size although the source flag says items avoid it; abstract (25%) and body (50%) conflict, so any figure invites challenge."
+  ],
+  "fixes": {
+   "follow[0].a": "Peak content novelty rose slightly (marginally significant), and AI-assisted artists who explored more novel ideas earned better peer evaluations, regardless of prior originality.",
+   "follow[2].a": "Yes, output rose substantially after adoption; the paper's own figures differ (25% in the abstract, 50% at adoption in the Results), so treat the size as uncertain."
+  },
+  "evidence": [
+   "Crossref: Zhou & Lee, PNAS Nexus 3(3) pgae052, 2024",
+   "PMC10914360: 53,000+ artists, 5,800 known adopters; favorites/view 2% -> 3%; average Content Novelty and average/peak Visual Novelty decline; 'maximum Content Novelty is increasing and marginally statistically significantly'; body 'a 50% increase in productivity on average, which then doubles in the subsequent month' vs abstract 25%"
+  ]
+ },
+ "axe05": {
+  "verdict": "CORRECTABLE",
+  "issues": [
+   "follow[1] says 'median of 52 words ... 211'; the paper labels these as mean (IQR).",
+   "sources.ayers23.pages '589' incomplete."
+  ],
+  "fixes": {
+   "follow[1].a": "Yes. Physician answers averaged 52 words, chatbot answers 211, and the authors note length may have inflated empathy ratings.",
+   "sources.ayers23.pages": "589-596"
+  },
+  "evidence": [
+   "Crossref: Ayers et al., JAMA Intern Med 183(6), page start 589; article page: 2023;183(6):589-596",
+   "Full text: 78.6% (95% CI 75.0-81.8) of 585 evaluations; good/very good 78.5% vs 22.1%; empathetic 45.1% vs 4.6%; '52 [17-62] words vs 211 [168-245]' labeled Mean (IQR); responses generated Dec 22-23, 2022, GPT-3.5"
+  ]
+ },
+ "bz12": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Card, Mas, Moretti, Saez; AER 102(6):2981-3003, 2012-10",
+   "Abstract (econpapers): random subset of UC employees informed of website; all surveyed; below-median report lower pay and job satisfaction and increased job search; 'Above-median earners are unaffected.'; 'Differences in pay rank matter more than differences in pay levels.'"
+  ]
+ },
+ "axe11": {
+  "verdict": "OK",
+  "issues": [
+   "rankTies [2,3] scores the 0.92 vs 0.89 pair as tied although P=0.0032; acceptable given authors call it small."
+  ],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Spitale, Biller-Andorno, Germani; Sci Adv 9(26) eadh1850, 2023",
+   "PMC10306283: 697 responses analyzed; recognition organic true 0.72, synthetic true 0.84 (P<0.0001), organic false 0.92, synthetic false 0.89 (P=0.0032); source identification ~0.5; times 29.14 s organic true, 21.02 synthetic true, 19.87 synthetic false"
+  ]
+ },
+ "axe13": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Matz, Teeny, Vaid, Peters, Harari, Cerf; Sci Rep 14:4692, 2024",
+   "PMC10897294 Study 4: 297 retained; Rome weekend getaway and Nike sneakers; 'personalized ads increased people's willingness to spend by $117' (p=0.037); getaway ad rated more effective (p=0.008); sneakers directional, n.s.; 33/30/20 (61%); profiles Big Five, regulatory focus, ideology, moral foundations; domains consumer, exercise, climate"
+  ]
+ },
+ "axb05": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Obermeyer, Powers, Vogeli, Mullainathan; Science 366(6464):447-453, 2019-10-25",
+   "Abstract: cost as proxy for need; less spent on Black patients; remedying raises share from 17.7 to 46.5%; bias reduces Black patients identified by more than half; reformulating removes bias"
+  ]
+ },
+ "axb08": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Salvi, Horta Ribeiro, Gallotti, West; Nat Hum Behav 9(8):1645-1653, online 2025-05-19",
+   "Accepted-version PDF: N=900; 10-min debates; personalized GPT-4 +81.2% [+26.0,+160.7], P<0.01; Human-AI +21.9% P=0.30; Human-Human personalized -15.7% P=0.38; 64.4%; AI identified ~3 in 4; human 52.0% P=0.42; profile = gender, age, ethnicity, education, employment, political affiliation"
+  ]
+ },
+ "axe07": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Dietvorst & Bharti, Psych Sci 31(10):1302-1314, online 2020-09-11",
+   "OpenAlex abstract: nine studies N=4,820; (a) diminishing sensitivity, (b) less use of best algorithm in more unpredictable domains, (c) choose on perceived likelihood of near-perfect answer, (d) prefer higher variance"
+  ]
+ },
+ "axe08": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Hui, Reshef, Zhou; Org Sci 35(6):1977-1989, 2024-11",
+   "Abstract: ChatGPT, DALL-E 2, Midjourney; reductions in employment and earnings; 'similar effects studying the release of other image-based generative AI models'; past performance does not moderate; 'suggestive evidence that top freelancers are disproportionately affected'"
+  ]
+ },
+ "dimant-observability-choice": {
+  "verdict": "OK",
+  "issues": [
+   "Scene matches the working-paper design; published-version sample size not confirmed (study.n says so)."
+  ],
+  "fixes": {
+   "optional_study.n": "Working-paper version: 423 lab participants plus 1,650 online participants (verify against published version before using)."
+  },
+  "evidence": [
+   "Crossref: Bolton, Dimant, Schmidt; JEBO 191:946-964, 2021-11; title 'Observability and social image: On the robustness and fragility of reciprocity'",
+   "Abstract (IDEAS): '(i) observability alone has very little positive effect and can even backfire; (ii) inequality aversion drives...; (iii) increasing the salience of norms can mitigate...'",
+   "CeDEx DP 2019-03 (earlier version): give-or-take dictator game with a charity; passive third-party observer (SocSig) vs observer with payoff consequences (Reputation); lab 423 subjects, MTurk 1,650 Player As"
+  ]
+ },
+ "dimant-notalie-causal": {
+  "verdict": "OK",
+  "issues": [
+   "Scene is a workplace transposition (sales team survey) of a lab design; acceptable as framing. Sample size not checked (full text paywalled)."
+  ],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Bicchieri, Dimant, Sonderegger; GEB 138:321-354, 2023-03",
+   "Abstract (IDEAS): monetary reward for lying; empirical and normative beliefs; 'consistent with the predictions of a dual-self model in which conditional norm-followers strategically distort their beliefs'; 'widespread honest behavior is a strong indicator of disapproval of lying ..., but the opposite does not hold'"
+  ]
+ },
+ "axb14": {
+  "verdict": "CORRECTABLE",
+  "issues": [
+   "sources.dell26.authors_full is null.",
+   "Minor: 25.1% is the pooled abstract figure; arm-level timing gains differ (about 22.5% and 27.6%). Tolerance 6 covers both."
+  ],
+  "fixes": {
+   "sources.dell26.authors_full": "Fabrizio Dell'Acqua, Edward McFowland III, Ethan Mollick, Hila Lifshitz, Katherine C. Kellogg, Saran Rajendran, Lisa Krayer, François Candelon, Karim R. Lakhani"
+  },
+  "evidence": [
+   "Crossref: Dell'Acqua, McFowland, Mollick, Lifshitz, Kellogg, Rajendran, Krayer, Candelon, Lakhani; Org Sci 37(2):403-423, 2026-03",
+   "Abstract: 758 knowledge workers; 18 tasks; 12.2% more tasks, 25.1% more quickly; outside frontier 19% less likely correct",
+   "AiA PDF: quality +33.9% (GPT+overview), +29.9% (GPT only); outside frontier ~84.5% control vs 60% (GPT+overview) and 70.6% (GPT only); arm-level speed gains ~22.5% and 27.6%"
+  ]
+ },
+ "lies-in-disguise": {
+  "verdict": "OK",
+  "issues": [
+   "study.n 'Swiss university students' not verified from full text (paywalled); harmless."
+  ],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Fischbacher & Föllmi-Heusi, JEEA 11(3):525-547, 2013-06",
+   "Abstract (IDEAS): '39% of the subjects were honest and maximally 22% of them were lying completely'; liars who did not maximize income; 'desire to maintain a favorable self-concept, including honesty and non-greediness'"
+  ]
+ },
+ "axe12": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Reif, Larrick, Soll; PNAS 122(19) e2426766122, 2025",
+   "PMC12088386: four preregistered experiments N=4,439; Study 2 n=1,203; laziness AI 2.50, non-AI 2.16, none 2.02; AI-helped rated less competent; help 'described identically and only the source varied'; Study 1 lower disclosure to managers; Study 3 manager AI-use interaction; Study 4 'penalty was entirely offset for the Digital task'"
+  ]
+ },
+ "axe04": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Goldstein, Chao, Grossman, Stamos, Tomz; PNAS Nexus 3(2) pgae034, 2024",
+   "PMC10878360: N=8,221, Lucid, Dec 2021; 24.4% / 47.4% / 43.5%; 2 of 18 off-thesis, 45.6% after removal; six articles from Iran/Russia campaigns; debrief 'may have contained false information'"
+  ]
+ },
+ "genai3": {
+  "verdict": "OK",
+  "issues": [
+   "follow[2] 'hide AI use' slightly stronger than Reif et al. ('less likely to disclose'). Optional: 'and are less willing to disclose AI use'."
+  ],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Yin, Jia, Wakslak; PNAS 121(14) e2319112121, 2024",
+   "PMC10998586: 2x2 between-subjects; 455 recipients; Bing Chat; feeling heard source AI 5.74 vs human 5.17; label AI 5.13 vs human 5.81; Bing Chat better on 4 of 6 emotions, no difference anger/surprise; very positive attitudes -> no label effect"
+  ]
+ },
+ "overconfidence-hard-task": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Moore & Healy, Psych Rev 115(2):502-517, 2008",
+   "Author PDF: 82 Carnegie Mellon students; 18 rounds of 10-item trivia; distributions over 0-10 own scores and a random prior participant's score; quadratic scoring; average pay $20.23; difficult tasks overestimation + underplacement, easy tasks reverse"
+  ]
+ },
+ "dimant-enforcers-rank": {
+  "verdict": "CORRECTABLE",
+  "issues": [
+   "answerTitle/explain present the equity-case norm effect (P=0.074) as a rise without flagging it as marginal; rankTies already neutralize scoring.",
+   "Dimant understatement: boundary mentions the main study only as 'a main study with monetary punishments', omitting that it used 1,240 punishers from a representative US sample, which is the paper's strongest evidence."
+  ],
+  "fixes": {
+   "explain": "Norm information raised reporting from 73.3% to 82.8% when the bribe created inequity (P < 0.005), and from 57.9% to 67.2% when it restored equity (marginal, P = 0.074). Inequity-creating bribes drew more reporting overall (77.8% vs 62.3%, P < 0.001).",
+   "boundary": "Bribery vignette with 225 US adults, alongside a main behavioral study with 1,240 punishers from a representative US sample."
+  },
+  "evidence": [
+   "Crossref: Dimant & Gesche; PNAS Nexus 2(7) pgad224, 2023",
+   "PMC10360164 Study 2: n=225 in person, 10 US states; inequity 82.8% vs 73.3% (P<0.005); equity 67.2% vs 57.9% (P=0.074); pooled inequity 77.8% vs equity 62.3% (P<0.001)",
+   "Study 1: Liar n=170, Punisher n=1,240 representative US working-age sample; 43.6% vs 52.8% (P<0.001); smallest lie 44.7%, ~+10 pp per step"
+  ]
+ },
+ "bz08": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Gneezy & Rustichini, J Legal Stud 29(1):1-17, 2000-01",
+   "Paper (rady.ucsd.edu PDF, claimed quotes consistent with known text): 10 centers (6 fine, 4 control), 20 weeks, NIS 10 for 10+ min late from week 5, removed week 17; 'After the fine was removed no reduction occurred'; rate settled 'almost twice as large'"
+  ]
+ },
+ "bz04": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Buehler, Griffin, Ross; JPSP 67(3):366-381, 1994-09",
+   "UF-hosted PDF Study 1: 37 honors students, 4 unfinished excluded from means (33 analyzed); predicted 33.9 vs actual 55.5 days; 29.7% (=11/37) by best guess; 48.7% by worst-case"
+  ]
+ },
+ "axb13": {
+  "verdict": "OK",
+  "issues": [
+   "sources.bry25.authors_full null (see rollout1)."
+  ],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Brynjolfsson, Li, Raymond, QJE 140(2):889-942",
+   "Abstract: 5,172 agents, +15%; more polite customers, fewer requests for a manager; learning, English fluency for international agents; better work experience; gains largest for moderately rare problems (per claimed abstract text)"
+  ]
+ },
+ "dimant-polarizednorms-choice": {
+  "verdict": "OK",
+  "issues": [
+   "sources.norms24.authors_full is null.",
+   "Scene 'strategic game' is vague but not wrong; study.n can be made precise."
+  ],
+  "fixes": {
+   "study.n": "1,203 US adults (representative sample, Prolific)",
+   "study.design": "Online experiment, two-player contribution game (6 treatments)",
+   "sources.norms24.authors_full": "Eugen Dimant, Michele Gelfand, Anna Hochleitner, Silvia Sonderegger"
+  },
+  "evidence": [
+   "Crossref: Dimant, Gelfand, Hochleitner, Sonderegger; Mgmt Sci 71(3):2245-2263, 2025-03",
+   "Published PDF/Crossref abstract: 'In polarized environments, most individuals prefer extreme actions, which expose them to considerable strategic risk'; 'Loose norms generate greater behavioral variance'; personal traits matter more in loose/polarized",
+   "Design: two-player contribution (public-goods) game, 0-4 tokens, co-player drawn from shown distribution; 6 treatments (2 means x tight/loose/polarized); N=1,203 Prolific"
+  ]
+ },
+ "dimant-contagion-multi": {
+  "verdict": "OK",
+  "issues": [
+   "sources.contagion19.authors_full null.",
+   "follow[1] 'minimal shared-identity cue' and 'repeated-group study' are not verbatim from the 2022 abstract (it says 'dynamic', 'social proximity', 'group identification'); acceptable but could read 'shared group identity'."
+  ],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Dimant, J Econ Psych 73:66-88, 2019-08; Bicchieri, Dimant, Gächter, Nosenzo, GEB 132:59-72, 2022-03",
+   "Dimant 2019 abstract (IDEAS): anti-social 'generally more contagious'; 'social proximity amplifies the contagion of anti-social behavior more strongly'; anti-social individuals most susceptible",
+   "GEB 2022 abstract: 'dynamic and non-strategic' setting; 'With social proximity, participants conform to both types of observed behaviors, thus halting the erosion of compliance'"
+  ]
+ },
+ "dimant-deviant-choice": {
+  "verdict": "OK",
+  "issues": [],
+  "fixes": {},
+  "evidence": [
+   "Crossref: Bicchieri, Dimant, Xiao; JEBO 188:209-235, 2021-08",
+   "Abstract (IDEAS): trust game; six conditions; neither weak punishment nor norm info alone; normative info + weak punishment raises reciprocity 'only when compliance is relatively cheap'; punishment + empirical info detrimental when costly; perceived unjustified"
+  ]
+ },
+ "bz06": {
+  "verdict": "CORRECTABLE",
+  "issues": [
+   "follow[2] says a later replication found the gap 'returned under their own method'. Wrong for mugs: Isoni et al. confirmed the absence for mugs and found a persistent gap only for lotteries.",
+   "Buyers ($2.87) vs choosers ($3.12): authors stress their 'close similarity'; ranking them against each other is a coin-flip for players.",
+   "sources.plott05.authors_full null; no verification text_url."
+  ],
+  "fixes": {
+   "follow[2].a": "Debated. Plott and Zeiler (2005) made the mug gap disappear with procedures that remove misunderstandings; Isoni, Loomes and Sugden (2011) confirmed that for mugs but found a persistent gap for lotteries under the same procedures.",
+   "rankTies": [
+    [
+     0,
+     2
+    ]
+   ],
+   "sources.plott05.authors_full": "Charles R. Plott, Kathryn Zeiler"
+  },
+  "evidence": [
+   "Crossref: KKT JPE 98(6):1325-1348, 1990-12; Plott & Zeiler AER 95(3):530-545, 2005-06",
+   "KKT PDF Experiment 6: 77 Simon Fraser students; medians sellers $7.12, choosers $3.12, buyers $2.87; '12.5 trades were expected ... only three' (Exp. 6, mugs); buyers/choosers similarity; induced-value markets V/V*~1",
+   "Isoni, Loomes & Sugden (AER 2011, 101(2):991-1011) abstract: confirms no gap for mugs under Plott-Zeiler procedures, but 'a significant and persistent disparity' for lotteries"
+  ]
+ }
+}

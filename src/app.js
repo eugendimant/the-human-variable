@@ -92,11 +92,17 @@ function evenSplit(c) { const k = c.options.length, t = c.allocate.total, step =
 function optionOrder(c) { return shuffle(c.options.map((t, i) => ({ t, i })), rng(hash(c.id + '-' + st.seed))) }
 
 function needsTouch(c) { return ['forecast', 'rank', 'allocate'].includes(c.format) }
+// What "right" means for the confidence question, per format (matches S.score().correct).
+function confQuestion(c) {
+  return ({ choice: 'How sure are you that this is right?', causal: 'How sure are you that this is right?', multi: 'How sure are you that both picks are right?',
+    estimate: `How sure are you that you are within ±${c.estimate ? c.estimate.tolerance : ''} of the true value?`,
+    rank: 'How sure are you of the exact order?', allocate: 'How sure are you that you captured 80% of the best payoff?', delegate: 'How sure are you that every task is routed right?' })[c.format] || 'How sure are you?';
+}
 function lockReady(c) { return S.ready(c, st.resp) && (!needsTouch(c) || st.touched) && (c.format === 'forecast' || st.confTouched) }
 function lockHint(c) {
   if (!S.ready(c, st.resp) || (needsTouch(c) && !st.touched)) return c.format === 'forecast' ? 'Move the slider to state a probability' : c.format === 'rank' ? 'Put the items in your order' : c.format === 'allocate' ? 'Split the budget your way' : 'Make your call';
   if (c.format !== 'forecast' && !st.confTouched) return 'Now say how sure you are';
-  return 'Ready when you are';
+  return '';
 }
 function syncLock() { const c = card(); const b = qs('#lock-btn'); if (!c || !b) return; b.disabled = !lockReady(c); const h = qs('.actionbar .kicker'); if (h) h.textContent = lockHint(c) }
 let locking = false;
@@ -183,7 +189,7 @@ function instrument(c) {
       <div class="axis"><span>${e.min}${e.unit ?? '%'}</span><span>${e.max}${e.unit ?? '%'}</span></div></div>`;
   }
   if (c.format === 'forecast') {
-    return `<div class="meter"><div class="meter-read"><span class="kicker" id="fc-label">Probability the claim is true</span><b class="${st.touched ? '' : 'empty'}" id="fc-read">${st.touched ? r + '%' : '—'}</b></div>
+    return `<div class="meter"><div class="meter-read"><span class="kicker" id="fc-label">Probability the claim is true</span><b class="${st.touched ? '' : 'empty'}" id="fc-read">${st.touched ? r + '%' : '?'}</b></div>
       <input type="range" id="fc" aria-labelledby="fc-label" min="0" max="100" step="5" value="${r}" class="${st.touched ? '' : 'untouched'}" style="--fill:${st.touched ? r : 0}%" ${rev ? 'disabled' : ''}>
       <div class="axis"><span>0%, certainly false</span><span>100%, certainly true</span></div></div>`;
   }
@@ -226,7 +232,7 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
 function gapFigure(c, rec) {
   const r = rec.response; let body = '', cap = '';
   if (c.format === 'estimate') { const e = c.estimate; body = gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); cap = `Shaded band: within ${e.tolerance}${e.unit ?? '%'} of the study value counts as a hit. You were ${rec.detail.gap}${e.unit ?? '%'} away.` }
-  else if (c.format === 'forecast') { body = gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evLabel: c.forecast.truth ? 'True' : 'False', fmt: x => x + '%' }); cap = `Brier score ${rec.detail.brier.toFixed(2)} (0 is perfect, 0.25 is a coin flip at 50%, 1 is confidently wrong).` }
+  else if (c.format === 'forecast') { body = gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evLabel: c.forecast.truth ? 'True' : 'False', fmt: x => x + '%' }); cap = `Brier score ${rec.detail.brier.toFixed(2)} (0 is perfect, 0.25 is saying 50%, 1 is confidently wrong). Score = 100 − 200 × Brier, so a confident miss goes below zero.` }
   else if (c.format === 'rank') {
     const truth = c.rankAnswer;
     body = `<ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li><span class="rc-name">${esc(c.options[oi])}${c.rankValues ? `<small>${esc(c.rankValues[oi])}</small>` : ''}</span><span class="rc-badge ev" title="Measured rank">${t + 1}</span><span class="rc-badge you ${k === t ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol><div class="rc-head"><span>Measured order, top first</span><span><i class="dot dot-ev"></i>Study <i class="dot dot-you"></i>You</span></div>`;
@@ -265,7 +271,7 @@ function play() {
   const label = `<p class="eyebrow-line">${c.case ? `<span class="tag tag-you">${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}</span>` : ''}<span class="fmt">${FORMAT_NAME[c.format]}</span><span class="track">${esc(c.track)}</span></p>`;
   if (!rev) {
     const ready = lockReady(c);
-    const conf = c.format === 'forecast' ? '' : `<div class="conf-row"><label for="conf">How sure are you?</label>${(() => { const mn = c.format === 'choice' || c.format === 'causal' ? Math.round(100 / c.options.length / 5) * 5 : 0; return `<input type="range" id="conf" min="${mn}" max="100" step="5" value="${st.conf}" class="${st.confTouched ? '' : 'untouched'}" style="--fill:${st.confTouched ? (st.conf - mn) / (100 - mn) * 100 : 0}%"><output id="conf-read" class="num ${st.confTouched ? '' : 'empty'}" for="conf">${st.confTouched ? st.conf + '%' : '?'}</output>` })()}</div>`;
+    const conf = c.format === 'forecast' ? '' : `<div class="conf-row"><label for="conf">${confQuestion(c)}</label>${(() => { const mn = c.format === 'choice' || c.format === 'causal' ? Math.round(100 / c.options.length / 5) * 5 : 0; return `<input type="range" id="conf" min="${mn}" max="100" step="5" value="${st.conf}" class="${st.confTouched ? '' : 'untouched'}" style="--fill:${st.confTouched ? (st.conf - mn) / (100 - mn) * 100 : 0}%"><output id="conf-read" class="num ${st.confTouched ? '' : 'empty'}" for="conf">${st.confTouched ? st.conf + '%' : '?'}</output>` })()}</div>`;
     const verb = { estimate: 'estimate', allocate: 'budget', rank: 'ranking', delegate: 'routing', forecast: 'forecast' }[c.format] || 'answer';
     return `<section class="focus">${top}<article class="focus-card" aria-labelledby="q-h">${label}
       <p class="scene">${esc(c.scene)}</p><p class="study-line">${esc(studyLine(c))}</p>
@@ -361,7 +367,8 @@ function almanac() {
 
 // ----- record -----
 function record() {
-  const all = records, last = st.session.length ? st.session : all.slice(-12);
+  // Lifetime figures count the first try at each decision only, so replays with the answer known do not inflate them.
+  const seen = new Set(), all = records.filter(r => BY_ID[r.id] && !seen.has(r.id) && seen.add(r.id)), last = st.session.length ? st.session : records.filter(r => BY_ID[r.id]).slice(-12);
   const cal = S.calibration(all.map(r => S.toCalibrationRecord(BY_ID[r.id], r)));
   const meanScore = all.length ? pct(all.reduce((a, r) => a + r.score, 0) / all.length) : null;
   const sess = st.session.length ? pct(st.session.reduce((a, r) => a + r.score, 0) / st.session.length) : null;
@@ -376,14 +383,14 @@ function record() {
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
     <div class="score-strip"><div class="score-big"><b class="num">${sess ?? meanScore ?? '–'}</b><span>${sess !== null ? 'score this round' : 'average score'}, out of 100</span></div>
-      <dl class="score-meta"><div><dt>Brier score</dt><dd class="num">${cal.brier === null ? '–' : cal.brier.toFixed(2)}</dd></div><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Calls on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
+      <dl class="score-meta"><div><dt>Brier score</dt><dd class="num">${cal.brier === null ? '–' : cal.brier.toFixed(2)}</dd></div><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">
       <div class="panel rec-panel"><h2>Calibration</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>
       <div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><button class="link-quiet" data-play="${esc(r.id)}">${esc(c.title)}</button><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${pct(r.score)}<span class="bar-score"><i style="width:${pct(r.score)}%"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a path to start your record.</span></li>'}</ul></div>
       ${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${sc}<span class="bar-score"><i style="width:${sc}%"></i></span></span></li>`).join('')}</ul></div>` : ''}
     </div>
-    <details class="how"><summary>How scoring works</summary><p>Each decision scores 0 to 100 with partial credit. An estimate inside the shaded band earns 100, and credit falls with distance. Ranks score the share of pairs in the measured order. Budgets score the share of the best possible payoff under the reported effects. Forecasts use the Brier rule, the standard in forecasting tournaments: 0 is perfect, 0.25 is always saying 50%. The calibration plot uses your stated confidence, except for forecasts, where the probability is the statement. This is a learning record, not a validated assessment.</p></details>
+    <details class="how"><summary>How scoring works</summary><p>Decisions score 0 to 100 with partial credit, except forecasts, which run from −100 to 100. An estimate inside the shaded band earns 100, and credit falls with distance. Ranks score the share of pairs in the measured order. Budgets score the share of the best possible payoff under the reported effects. Forecasts use a proper scoring rule built on the Brier score, the standard in forecasting tournaments: a confident correct call earns 100, saying 50% earns 50, and a confident wrong call costs up to 100 points, so stating your true belief always pays best. The calibration plot uses your stated confidence, except for forecasts, where the probability is the statement. This is a learning record, not a validated assessment.</p></details>
     <div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play another round</button><span class="tool-links"><button class="link-btn" data-act="csv">Export CSV</button><button class="link-btn" data-act="json">Export JSON</button><button class="link-btn" data-act="erase">Erase this device’s record</button></span></div></section>`;
 }
 function calPlot(cal) {
@@ -609,7 +616,7 @@ document.addEventListener('keydown', e => {
   if (st.view !== 'play') return; const c = card(); if (!c) return;
   if (st.phase === 'predict') {
     if ((c.format === 'choice' || c.format === 'causal' || c.format === 'multi') && /^[1-9]$/.test(e.key)) { const o = optionOrder(c)[+e.key - 1]; if (o) qs(`[data-choice="${o.i}"]`)?.click(); return }
-    if (e.key === 'Enter' && (!e.target.matches('button') || e.target.matches('.opt,[data-deleg],[data-rank]')) && S.ready(c, st.resp)) { e.preventDefault(); lock(); return }
+    if (e.key === 'Enter' && !e.target.matches('button, a, summary, textarea') && lockReady(c)) { e.preventDefault(); lock(); return }
   } else if ((e.key === 'n' || e.key === 'N') && !st.room) { next() }
 });
 

@@ -45,9 +45,10 @@ _DF = Counter(t for d in KB for t in set(tokens(d['body'])))
 _LEN = {d['id']: len(tokens(d['body'])) for d in KB}
 _AVG = sum(_LEN.values()) / max(1, len(_LEN))
 
-def retrieve(question: str, challenge_id: str | None, k: int = 5) -> list[dict]:
+def retrieve(question: str, challenge_id: str | None, k: int = 5, exclude=None) -> list[dict]:
     q = tokens(question); N = len(KB); out = []
     for d in KB:
+        if exclude and d['kind'] == 'decision' and exclude(d['id']): continue
         tf = Counter(tokens(d['body'])); s = 0.0
         for t in q:
             if t in tf:
@@ -66,7 +67,7 @@ PRESETS = {
     'test': 'How would I test this in my company?',
 }
 
-def curated(question: str, challenge_id: str | None) -> dict:
+def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     c = CHALLENGES.get(challenge_id or '')
     ql = question.lower()
     if c:
@@ -80,7 +81,7 @@ def curated(question: str, challenge_id: str | None) -> dict:
         qt = set(tokens(question)); best = max(c.get('follow', []), key=lambda f: len(qt & set(tokens(f['q'] + ' ' + f['a']))), default=None)
         if best and len(qt & set(tokens(best['q'] + ' ' + best['a']))) >= 1:
             return {'answer': best['a'], 'citations': cites, 'mode': 'curated'}
-    docs = [d for d in retrieve(question, challenge_id, 3) if d['kind'] == 'decision']
+    docs = [d for d in retrieve(question, challenge_id, 3, exclude) if d['kind'] == 'decision']
     if docs:
         d = docs[0]; cc = CHALLENGES[d['id']]
         return {'answer': f"{cc['explain']} {cc['implication']}", 'citations': [{'id': s, 'label': cite_label(s)} for s in cc['sources']], 'mode': 'curated'}
@@ -89,8 +90,8 @@ def curated(question: str, challenge_id: str | None) -> dict:
 # ---------- budgets ----------
 class Budget:
     """Global requests-per-minute and per-day caps, per-client daily caps, and a concurrency cap."""
-    def __init__(self, rpm: int, rpd: int, per_client: int, concurrency: int):
-        self.rpm, self.rpd, self.per_client = rpm, rpd, per_client
+    def __init__(self, rpm: int, rpd: int, per_client: int, concurrency: int, per_ip: int = 300):
+        self.rpm, self.rpd, self.per_client, self.per_ip = rpm, rpd, per_client, per_ip; self.ips = Counter()
         self.sem = threading.BoundedSemaphore(concurrency)
         self.lock = threading.Lock(); self.minute: list[float] = []; self.day_key = ''; self.day_count = 0
         self.clients: Counter = Counter(); self.cooldown_until = 0.0; self.closed_until = 0.0
@@ -98,11 +99,12 @@ class Budget:
     def _roll(self):
         # Gemini daily quotas reset at midnight Pacific time; approximate with UTC-8.
         key = (datetime.now(timezone.utc) - timedelta(hours=8)).strftime('%Y-%m-%d')
-        if key != self.day_key: self.day_key, self.day_count, self.clients = key, 0, Counter()
+        if key != self.day_key: self.day_key, self.day_count, self.clients, self.ips = key, 0, Counter(), Counter()
 
-    def check(self, client: str) -> str | None:
+    def check(self, client: str, ip: str = '') -> str | None:
         with self.lock:
             self._roll(); now = time.time()
+            if ip and self.ips[ip] >= self.per_ip: return 'client_cap'
             if now < self.closed_until: return 'daily_quota'
             if now < self.cooldown_until: return 'cooldown'
             if self.day_count >= self.rpd: return 'daily_cap'
@@ -110,11 +112,13 @@ class Budget:
             self.minute = [t for t in self.minute if now - t < 60]
             if len(self.minute) >= self.rpm: return 'rpm'
             self.minute.append(now); self.day_count += 1; self.clients[client] += 1
+            if ip: self.ips[ip] += 1
             return None
 
-    def refund(self, client: str):
+    def refund(self, client: str, ip: str = ''):
         with self.lock:
             self.day_count = max(0, self.day_count - 1); self.clients[client] = max(0, self.clients[client] - 1)
+            if ip: self.ips[ip] = max(0, self.ips[ip] - 1)
 
     def remaining(self, client: str) -> int:
         with self.lock: self._roll(); return max(0, self.per_client - self.clients[client])
@@ -141,7 +145,7 @@ class Tutor:
         self.timeout = float(os.environ.get('GEMINI_TIMEOUT', '12'))
         self.wait = float(os.environ.get('GEMINI_QUEUE_WAIT', '6'))
         self.budget = Budget(int(os.environ.get('GEMINI_RPM', '12')), int(os.environ.get('GEMINI_RPD', '900')),
-                             int(os.environ.get('TUTOR_PER_CLIENT_DAY', '15')), int(os.environ.get('GEMINI_CONCURRENCY', '4')))
+                             int(os.environ.get('TUTOR_PER_CLIENT_DAY', '15')), int(os.environ.get('GEMINI_CONCURRENCY', '4')), int(os.environ.get('TUTOR_PER_IP_DAY', '300')))
         self.cache_lock = threading.Lock()
         self.db = sqlite3.connect(db_path or ':memory:', check_same_thread=False, timeout=10)
         self.db.execute('CREATE TABLE IF NOT EXISTS tutor_cache(k TEXT PRIMARY KEY, v TEXT, t REAL)'); self.db.commit()
@@ -170,37 +174,37 @@ class Tutor:
         with self.cache_lock:
             self.db.execute('INSERT OR REPLACE INTO tutor_cache VALUES(?,?,?)', (k, json.dumps(v), time.time())); self.db.commit()
 
-    def ask(self, question: str, challenge_id: str | None, client: str = 'anon') -> dict:
+    def ask(self, question: str, challenge_id: str | None, client: str = 'anon', ip: str = '', exclude=None) -> dict:
         question = re.sub(r'[\x00-\x1f\x7f]', ' ', str(question or '')).strip()[:300]
         if len(question) < 4: return {'answer': 'Type a question of at least four characters.', 'citations': [], 'mode': 'error'}
         if challenge_id and challenge_id not in CHALLENGES: challenge_id = None
         client = re.sub(r'[^A-Za-z0-9_-]', '', str(client or 'anon'))[:40] or 'anon'
         if question in PRESETS.values() or not self.enabled:
-            self.calls['curated'] += 1; return curated(question, challenge_id)
+            self.calls['curated'] += 1; return curated(question, challenge_id, exclude)
         k = f"{challenge_id}|{self.norm(question)}"
         hit = self._cache_get(k)
         if hit: self.calls['cache'] += 1; hit = dict(hit); hit['mode'] = 'cache'; return hit
-        reason = self.budget.check(client)
+        reason = self.budget.check(client, ip)
         if reason:
-            self.calls['fallback:' + reason] += 1; out = curated(question, challenge_id)
+            self.calls['fallback:' + reason] += 1; out = curated(question, challenge_id, exclude)
             out['note'] = {'client_cap': 'You have used today’s AI questions. Answers now come from the lab’s checked summaries.',
                            'rpm': 'The AI tutor is busy. This answer comes from the lab’s checked summaries.',
                            'cooldown': 'The AI tutor is busy. This answer comes from the lab’s checked summaries.'}.get(reason, 'The AI tutor is resting for today. This answer comes from the lab’s checked summaries.')
             return out
         if not self.budget.sem.acquire(timeout=self.wait):
-            self.budget.refund(client); self.calls['fallback:queue'] += 1
-            out = curated(question, challenge_id); out['note'] = 'The AI tutor is busy. This answer comes from the lab’s checked summaries.'; return out
+            self.budget.refund(client, ip); self.calls['fallback:queue'] += 1
+            out = curated(question, challenge_id, exclude); out['note'] = 'The AI tutor is busy. This answer comes from the lab’s checked summaries.'; return out
         try:
-            res = self._model(question, challenge_id)
+            res = self._model(question, challenge_id, exclude)
         finally:
             self.budget.sem.release()
         if res is None:
-            self.budget.refund(client); out = curated(question, challenge_id); out['note'] = 'The AI tutor did not answer in time. This answer comes from the lab’s checked summaries.'; return out
+            self.budget.refund(client, ip); out = curated(question, challenge_id, exclude); out['note'] = 'The AI tutor did not answer in time. This answer comes from the lab’s checked summaries.'; return out
         self._cache_put(k, res); self.calls['model'] += 1
         return res
 
-    def _model(self, question: str, challenge_id: str | None):
-        docs = retrieve(question, challenge_id, 6)
+    def _model(self, question: str, challenge_id: str | None, exclude=None):
+        docs = retrieve(question, challenge_id, 6, exclude)
         if not docs: return None
         allowed = {d['id'] for d in docs} | {s for d in docs for s in d['sources']}
         records = '\n'.join(f"[{d['id']}] {d['text']}" for d in docs)

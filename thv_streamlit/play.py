@@ -1,5 +1,5 @@
 import streamlit as st
-from .common import ROOT
+from .common import ROOT, embed, store
 
 @st.cache_data
 def page_html() -> str:
@@ -13,4 +13,7 @@ def run():
       iframe{width:100% !important;height:calc(100vh - 3.5rem) !important;border:0}
       footer{display:none}
     </style>""", unsafe_allow_html=True)
-    st.iframe(page_html(), height=900)
+    if store().class_lock()[0]:
+        st.info('A live class is running on this app. Solo play pauses until it ends, so the evidence stays hidden until your instructor reveals it. Use "Join a class" to take part.')
+        return
+    embed(page_html(), height=900)

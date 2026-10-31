@@ -92,3 +92,35 @@ def test_followups_add_information():
 def test_followup_questions_unique_per_item():
     for c in LIVE:
         qs = [f['q'].lower() for f in c['follow']]; assert len(set(qs)) == len(qs), c['id']
+
+def _correct(c):
+    return set(c['multiAnswers']) if c['format'] == 'multi' else {c['answer']}
+
+def test_correct_option_is_not_usually_the_longest():
+    """Review 2, M9: the longest option should not be a reliable cue (chance is about 1 in 3)."""
+    items = [c for c in LIVE if c['format'] == 'choice']
+    hits = [c['id'] for c in items if max(range(len(c['options'])), key=lambda i: len(c['options'][i])) in _correct(c)]
+    assert len(hits) <= 0.35 * len(items), hits
+    multi = [c for c in LIVE if c['format'] == 'multi']
+    top2 = [c['id'] for c in multi if set(sorted(range(len(c['options'])), key=lambda i: -len(c['options'][i]))[:2]) == _correct(c)]
+    assert not top2, top2
+
+ABSOLUTE = re.compile(r"\b(always|never|only|completely|entirely|nothing)\b", re.I)
+def test_distractors_avoid_absolute_words():
+    """Review 2, M9: absolute words mark a distractor as wrong without thought."""
+    bad = [(c['id'], o) for c in LIVE if c['format'] in ('choice', 'multi', 'causal')
+           for i, o in enumerate(c['options']) if i not in _correct(c) and ABSOLUTE.search(o)]
+    assert not bad, bad
+
+def test_gates_fire():
+    assert ABSOLUTE.search('The algorithm only beat strangers')
+
+def test_titles_do_not_state_the_finding():
+    """Review 2, M8: titles show before play, so they must not contain the answer's key words."""
+    bad = []
+    for c in LIVE:
+        t = set(re.findall(r"[a-z]{5,}", c['title'].lower()))
+        a = set(re.findall(r"[a-z]{5,}", c['answerTitle'].lower()))
+        if t & a & {'backfired', 'surprise', 'wasn', 'worth', 'spared', 'unequal', 'fails', 'failed', 'failure', 'beats', 'doubled', 'halved'}: bad.append(c['id'])
+        if re.search(r"backfire|wasn.t there|not spared|beats|fails", c['title'], re.I): bad.append(c['id'])
+    assert not bad, bad

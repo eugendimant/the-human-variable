@@ -17,7 +17,7 @@ def score(c: dict, r) -> dict:
         return {'score': sc, 'correct': gap <= e['tolerance']}
     if f == 'forecast':
         p = _clamp(float(r) / 100, 0, 1); t = 1 if c['forecast']['truth'] else 0; b = (p - t) ** 2
-        return {'score': _clamp(1 - b / 0.25, 0, 1), 'correct': (p > 0.5) == (t == 1) and p != 0.5}
+        return {'score': 1 - 2 * b, 'correct': (p > 0.5) == (t == 1) and p != 0.5}
     if f == 'rank':
         truth = c['rankAnswer']
         if not isinstance(r, list) or len(r) != len(truth): return {'score': 0.0, 'correct': False}

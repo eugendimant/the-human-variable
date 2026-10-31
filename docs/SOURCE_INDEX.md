@@ -4,7 +4,7 @@
 - Adams et al. (2021). People systematically overlook subtractive changes. *Nature* 592(7853), 258-261. https://doi.org/10.1038/s41586-021-03380-y
 - Allcott, Braghieri, Eichmeyer & Gentzkow (2020). The Welfare Effects of Social Media. *American Economic Review* 110(3), 629-676. https://doi.org/10.1257/aer.20190658
 - Altay & Gilardi (2024). People are skeptical of headlines labeled as AI-generated, even if true or human-made, because they assume full AI automation. *PNAS Nexus* 3(10), pgae403. https://doi.org/10.1093/pnasnexus/pgae403
-- Ayers et al. (2023). Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum. *JAMA Internal Medicine* 183(6), 589. https://doi.org/10.1001/jamainternmed.2023.1838
+- Ayers et al. (2023). Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum. *JAMA Internal Medicine* 183(6), 589-596. https://doi.org/10.1001/jamainternmed.2023.1838
 - Bail et al. (2018). Exposure to opposing views on social media can increase political polarization. *Proceedings of the National Academy of Sciences* 115(37), 9216-9221. https://doi.org/10.1073/pnas.1804840115
 - Bastani et al. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. *Proceedings of the National Academy of Sciences* 122(26), e2422633122. https://doi.org/10.1073/pnas.2422633122
 - Bates & Gupta (2017). Smart groups of smart people: Evidence for IQ as the origin of collective intelligence in the performance of human groups. *Intelligence* 60, 46-56. https://doi.org/10.1016/j.intell.2016.11.004

@@ -40,3 +40,33 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 </style>"""
 
 def style(): st.markdown(STYLE, unsafe_allow_html=True)
+
+# Same option order as the projector console and the phone page (src/classroom.js order()):
+# FNV-1a hash of the decision id and session code seeds a mulberry32 shuffle.
+_M = 0xFFFFFFFF
+def _fnv(s: str) -> int:
+    h = 2166136261
+    for ch in s: h = ((h ^ ord(ch)) * 16777619) & _M
+    return h
+def _imul(a: int, b: int) -> int: return (a * b) & _M
+def _rng(seed: int):
+    x = seed & _M
+    def nxt():
+        nonlocal x
+        x = (x + 0x6D2B79F5) & _M; t = x
+        t = _imul(t ^ (t >> 15), t | 1)
+        t = (t ^ ((t + _imul(t ^ (t >> 7), t | 61)) & _M)) & _M
+        return ((t ^ (t >> 14)) & _M) / 4294967296
+    return nxt
+def option_order(cid: str, n: int, code: str) -> list:
+    """Indices 0..n-1 in the room's shared display order."""
+    a = list(range(n)); r = _rng(_fnv(cid + '-' + str(_fnv(code))))
+    for i in range(n - 1, 0, -1):
+        j = int(r() * (i + 1)); a[i], a[j] = a[j], a[i]
+    return a
+
+def embed(html: str, height: int = 900):
+    """st.iframe on current Streamlit; components.html on older releases."""
+    if hasattr(st, 'iframe'): return st.iframe(html, height=height)
+    import streamlit.components.v1 as components
+    return components.html(html, height=height, scrolling=True)

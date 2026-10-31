@@ -77,7 +77,8 @@ def test_abuse_limits(base):
     codes = [req(base, '/api/health', client='hammer')[0] for _ in range(60)]
     assert 429 in codes  # per-client read bucket
 
-def test_tutor_endpoint_curated(base):
+def test_tutor_endpoint_curated(base, tmp_path, monkeypatch):
+    monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 't.sqlite3'))
     s, r, _ = req(base, '/api/tutor', {'question': 'How would I test this in my company?', 'challenge': next(iter(cl.CHALLENGES)), 'client': 'abc'})
     assert s == 200 and r['answer'] and r['mode'] in ('curated', 'ai', 'cache')
 
@@ -94,18 +95,32 @@ def test_served_pages_carry_no_answers(base):
         walk(bank['challenges'])
         assert not keys & {'answer', 'multiAnswers', 'rankAnswer', 'target', 'truth', 'values', 'explain', 'answerTitle', 'why'}, p
 
-def test_reveal_blocked_while_open_in_a_class(base):
+def test_class_lock_holds_evidence_until_revealed(base, tmp_path, monkeypatch):
+    monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 'lock.sqlite3'))
     c = next(x for x in cl.CHALLENGES.values() if x['format'] == 'forecast')
-    s, full, _ = req(base, '/api/reveal/' + c['id']); assert s == 200 and 'truth' in full['forecast']
+    other = next(x for x in cl.CHALLENGES.values() if x['id'] != c['id'])
+    s, full, _ = req(base, '/api/reveal/' + c['id']); assert s == 200 and 'truth' in full['forecast']   # no class: practice is open
     _, room, _ = req(base, '/api/rooms', {'title': 'block'}, client='inst9'); key = room['secret']
+    req(base, f"/api/rooms/{room['code']}/join", {}, client='stu1')                                     # a class with a participant locks evidence
     req(base, f"/api/rooms/{room['code']}/control", {'action': 'open', 'challenge': c['id']}, key=key, client='inst9')
-    app.STORE._open = None
-    assert req(base, '/api/reveal/' + c['id'], client='peek')[0] == 409
-    assert c['id'] not in {x['id'] for x in req(base, '/api/library', client='peek')[1]['challenges']}
+    for cid in (c['id'], other['id']):
+        assert req(base, '/api/reveal/' + cid, client='peek')[0] == 409, cid                             # nothing leaks, open or not
+    lib = req(base, '/api/library', client='peek')[1]; assert lib['class_lock'] and not lib['challenges']
+    t = req(base, '/api/tutor', {'question': 'How big is this effect in practice?', 'challenge': c['id'], 'client': 'peek'})[1]
+    assert t['mode'] == 'locked' and 'truth' not in json.dumps(t)
     req(base, f"/api/rooms/{room['code']}/control", {'action': 'reveal'}, key=key, client='inst9')
     st = req(base, f"/api/rooms/{room['code']}", client='peek')[1]; assert st['evidence']['id'] == c['id']
-    app.STORE._open = None
-    assert req(base, '/api/reveal/' + c['id'], client='peek')[0] == 200
+    app.STORE._lock = None
+    assert req(base, '/api/reveal/' + c['id'], client='peek')[0] == 200                                  # revealed decisions open up
+    assert req(base, '/api/reveal/' + other['id'], client='peek')[0] == 409
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'end'}, key=key, client='inst9'); app.STORE._lock = None
+    assert req(base, '/api/reveal/' + other['id'], client='peek')[0] == 200                              # class over: practice returns
+
+def test_join_can_be_closed(base, tmp_path, monkeypatch):
+    monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 'j.sqlite3'))
+    _, room, _ = req(base, '/api/rooms', {'title': 'j'}, client='inst6')
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'lockjoin'}, key=room['secret'], client='inst6')
+    assert req(base, f"/api/rooms/{room['code']}/join", {}, client='late')[0] == 409
 
 def test_instructor_bank_needs_key(base):
     _, room, _ = req(base, '/api/rooms', {'title': 'bank'}, client='inst8')

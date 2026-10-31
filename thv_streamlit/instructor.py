@@ -34,11 +34,14 @@ def run():
             c = cl.CHALLENGES[s['challenge']]
             st.caption(f"{c['track']} · {FORMAT_NAME[c['format']]} · {s['phase']}")
             st.subheader(c['question'])
+            if c.get('options') and s['phase'] in ('open', 'closed'):
+                from .common import option_order
+                st.markdown('\n'.join(f"{k + 1}. {c['options'][i]}" for k, i in enumerate(option_order(c['id'], len(c['options']), I['code']))))
             st.metric('Answered', f"{s['responses']} of {s['participants']}")
             b1, b2 = st.columns(2)
             if s['phase'] == 'open' and b1.button('Stop answers'): S.control(I['code'], I['secret'], 'close'); st.rerun()
             if s['phase'] in ('open', 'closed') and b2.button('Reveal to the room', type='primary'): S.control(I['code'], I['secret'], 'reveal'); st.rerun()
             if s['phase'] == 'revealed' and s.get('aggregate'):
                 from .student import show_reveal
-                show_reveal(c, s['aggregate'])
+                show_reveal(c, s['aggregate'], I['code'])
         live()

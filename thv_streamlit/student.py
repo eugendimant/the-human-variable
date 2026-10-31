@@ -1,15 +1,16 @@
 import json
 import streamlit as st
-from .common import FORMAT_NAME, store, style
+from .common import FORMAT_NAME, option_order, store, style
 from server import classroom as cl
 
-def response_widgets(c: dict, key: str):
+def response_widgets(c: dict, key: str, code: str = ''):
     f = c['format']
+    idx = option_order(c['id'], len(c.get('options') or []), code) if code else list(range(len(c.get('options') or [])))
     if f in ('choice', 'causal'):
-        i = st.radio('Your call', range(len(c['options'])), format_func=lambda i: c['options'][i], index=None, key=key + 'r')
+        i = st.radio('Your call', idx, format_func=lambda i: c['options'][i], index=None, key=key + 'r')
         return i
     if f == 'multi':
-        sel = st.multiselect('Choose two', range(len(c['options'])), format_func=lambda i: c['options'][i], max_selections=len(c['multiAnswers']), key=key + 'm')
+        sel = st.multiselect('Choose two', idx, format_func=lambda i: c['options'][i], max_selections=len(c['multiAnswers']), key=key + 'm')
         return sel if len(sel) == len(c['multiAnswers']) else None
     if f == 'estimate':
         e = c['estimate']; return st.number_input(f"{e['label']} ({e['min']} to {e['max']})", min_value=e['min'], max_value=e['max'], value=None, step=e.get('step', 1), key=key + 'e', placeholder='Your estimate')
@@ -18,7 +19,7 @@ def response_widgets(c: dict, key: str):
         return st.slider('Probability the claim is true (%)', 0, 100, 50, step=5, key=key + 'f')
     if f == 'rank':
         st.caption(c['rankLabel'] + '. Pick the top item first.')
-        order = st.multiselect('Your order', range(len(c['options'])), format_func=lambda i: c['options'][i], key=key + 'k')
+        order = st.multiselect('Your order', idx, format_func=lambda i: c['options'][i], key=key + 'k')
         return order if len(order) == len(c['options']) else None
     if f == 'allocate':
         a = c['allocate']; vals = []
@@ -32,12 +33,12 @@ def response_widgets(c: dict, key: str):
             picks.append(st.radio(t['text'], range(len(c['delegate']['choices'])), format_func=lambda m: c['delegate']['choices'][m], index=None, horizontal=True, key=key + f'd{i}'))
         return picks if all(p is not None for p in picks) else None
 
-def show_reveal(c: dict, a: dict):
+def show_reveal(c: dict, a: dict, code: str = ''):
     st.subheader(c['answerTitle'])
     st.write(c['explain'])
     cols = st.columns(3)
     cols[0].metric('Answers', a['n']); cols[1].metric('Matched the evidence', f"{a['shareCorrect'] or 0}%"); cols[2].metric('Average score', a['meanScore'] if a['meanScore'] is not None else '–')
-    if 'counts' in a: st.bar_chart({o[:40]: v for o, v in zip(c['options'], a['counts'])}, horizontal=True)
+    if 'counts' in a: st.bar_chart({c['options'][i][:40]: a['counts'][i] for i in option_order(c['id'], len(c['options']), code)} if code else {o[:40]: v for o, v in zip(c['options'], a['counts'])}, horizontal=True)
     if 'hist' in a: st.bar_chart(a['hist']); st.caption(f"Class median {a['median']}. Evidence: {c['estimate']['target'] if c['format']=='estimate' else ('true' if c['forecast']['truth'] else 'false')}.")
     if 'meanPosition' in a: st.bar_chart({o[:40]: len(c['options']) + 1 - p for o, p in zip(c['options'], a['meanPosition']) if p is not None}, horizontal=True); st.caption('Higher bar = ranked nearer the top by the room. Measured order: ' + ', '.join(c['options'][i] for i in c['rankAnswer']) + '.')
     if 'meanShare' in a: st.bar_chart({o[:40]: v for o, v in zip(c['options'], a['meanShare']) if v is not None}, horizontal=True); st.caption('Average budget share. Reported effects: ' + '; '.join(f"{o} {l}" for o, l in zip(c['options'], c['allocate'].get('valueLabels', c['allocate']['values']))) + '.')
@@ -66,15 +67,15 @@ def run():
             st.subheader('You are in. The first decision appears when your instructor opens it.'); return
         c = cl.CHALLENGES[s['challenge']]; done = ss.get('done', {})
         if s['phase'] == 'revealed' and s.get('aggregate'):
-            show_reveal(c, s['aggregate']); return
+            show_reveal(c, s['aggregate'], R['code']); return
         if c['id'] in done:
             st.subheader(done[c['id']]); st.write('The evidence appears for everyone when your instructor reveals it.'); return
         if s['phase'] == 'closed': st.subheader('Answers are closed. Waiting for the reveal.'); return
         st.caption(f"{c['track']} · {FORMAT_NAME[c['format']]}")
         st.write(c['scene']); st.subheader(c['question'])
         with st.form(key='f' + c['id']):
-            r = response_widgets(c, c['id'])
-            conf = None if c['format'] == 'forecast' else st.number_input('How sure are you? (0 to 100%)', min_value=0, max_value=100, value=None, step=5, placeholder='Your confidence')
+            r = response_widgets(c, c['id'], R['code'])
+            conf = None if c['format'] == 'forecast' else st.number_input('How sure are you that you got it right? (0 to 100%)', min_value=0, max_value=100, value=None, step=5, placeholder='Your confidence')
             if st.form_submit_button('Lock my answer', type='primary'):
                 if r is None or (c['format'] != 'forecast' and conf is None): st.error('Give your answer and your confidence first.')
                 else:

@@ -40,8 +40,9 @@ def page(name: str) -> bytes:
     return PAGES[key]
 
 def blocked(cid: str) -> bool:
-    """A decision that is open in a live class keeps its evidence on the server until the instructor reveals it."""
-    return cid in STORE.open_challenges()
+    """During a live class on this server, evidence is released only for decisions the class has already revealed."""
+    locked, allowed = STORE.class_lock()
+    return locked and cid not in allowed
 CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; "
        f"font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors {FRAME_ANCESTORS}")
 
@@ -50,7 +51,7 @@ class Limiter:
     # Per-client buckets (X-Client-Id, a random id each browser keeps) plus a generous per-IP ceiling,
     # because a whole class often shares one campus NAT address.
     RULES = {'read': (4.0, 20), 'write': (2.0, 12), 'create': (10 / 3600, 10), 'tutor': (0.5, 6),
-             'ip_read': (150.0, 400), 'ip_write': (60.0, 200), 'join': (1.0, 70)}
+             'ip_read': (150.0, 400), 'ip_write': (60.0, 200), 'join': (0.3, 60), 'ip_tutor': (2.0, 30)}
     def __init__(self): self.b = defaultdict(lambda: [0.0, 0.0]); self.lock = threading.Lock()
     def allow(self, ip: str, name: str) -> bool:
         rate, burst = self.RULES[name]; now = time.time()
@@ -64,6 +65,7 @@ CODE_RE = re.compile(r'^/api/rooms/([A-Z2-9]{4,8})(/[a-z.]+)?$')
 
 class Handler(BaseHTTPRequestHandler):
     server_version = 'THV'; sys_version = ''
+    timeout = 15  # drop idle or slow connections (slowloris)
     def log_message(self, fmt, *args):
         if os.environ.get('THV_ACCESS_LOG') == '1': super().log_message(fmt, *args)
 
@@ -115,10 +117,10 @@ class Handler(BaseHTTPRequestHandler):
             if p.startswith('/api/reveal/'):
                 cid = urllib.parse.unquote(p.rsplit('/', 1)[1])
                 if cid not in CHALLENGES: return self.json(404, {'error': 'Unknown decision'})
-                if blocked(cid): return self.json(409, {'error': 'This decision is open in a live class. The evidence appears when the instructor reveals it.'})
+                if blocked(cid): return self.json(409, {'error': 'A live class is running on this server. Practice mode returns when it ends, and revealed decisions stay open.', 'class_lock': True})
                 return self.json(200, CHALLENGES[cid])
             if p == '/api/library':
-                b = STORE.open_challenges(); return self.json(200, {'challenges': [c for c in CHALLENGES.values() if c['id'] not in b]})
+                return self.json(200, {'challenges': [c for c in CHALLENGES.values() if not blocked(c['id'])], 'class_lock': STORE.class_lock()[0]})
             if p == '/api/instructor/bank':
                 code = (qs.get('code') or [''])[0].upper()
                 if not STORE.is_admin(code, self.key()): return self.json(403, {'error': 'Instructor key required'})
@@ -151,7 +153,10 @@ class Handler(BaseHTTPRequestHandler):
             d = self.body()
             if p == '/api/tutor':
                 if not LIMIT.allow(self.ip() + '|' + self.client(), 'tutor'): return self.json(429, {'error': 'Ask again in a few seconds.'}, {'Retry-After': '3'})
-                return self.json(200, TUTOR.ask(d.get('question', ''), d.get('challenge'), str(d.get('client', ''))[:40] or self.ip()))
+                if not LIMIT.allow(self.ip(), 'ip_tutor'): return self.json(429, {'error': 'The tutor is busy on this network. Ask again in a moment.'}, {'Retry-After': '5'})
+                cid = d.get('challenge')
+                if cid and blocked(cid): return self.json(200, {'answer': 'The tutor opens for this decision after your instructor reveals it.', 'citations': [], 'mode': 'locked'})
+                return self.json(200, TUTOR.ask(d.get('question', ''), cid, str(d.get('client', ''))[:40] or self.ip(), ip=self.ip(), exclude=blocked))
             if p == '/api/rooms':
                 if not LIMIT.allow(self.ip(), 'create'): return self.json(429, {'error': 'Too many sessions created from this network. Try again later.'})
                 if not PASSCODE and not LOOPBACK: return self.json(403, {'error': 'This server has no instructor passcode set. Set THV_INSTRUCTOR_PASSCODE before creating sessions.'})

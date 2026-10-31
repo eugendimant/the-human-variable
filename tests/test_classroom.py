@@ -59,6 +59,7 @@ def test_export_is_admin_only_and_safe(store):
     store.submit(code, store.join(code)['token'], 0, 50)
     with pytest.raises(cl.Forbidden): store.export_csv(code, 'nope')
     out = store.export_csv(code, key); assert out.splitlines()[0].startswith('participant,') and 'P001' in out
+    assert 'answer_text' in out.splitlines()[0] and len(out.splitlines()[1].split(',')) >= 10
     assert 'token' not in out.lower()
 
 def test_retention_purge(store, monkeypatch):

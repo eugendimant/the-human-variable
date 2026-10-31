@@ -67,10 +67,10 @@ function stage() {
 
 function reveal(c, a) {
   const f = c.format; let chart = '';
-  const bars = (labels, vals, ev, suffix = '') => { const mx = Math.max(1, ...vals); return `<div class="rv-bars">${labels.map((l, i) => `<div class="rv-row"><span>${esc(l)}</span><span class="rv-track"><i style="width:${vals[i] / mx * 100}%" class="${ev.includes(i) ? 'ev' : ''}"></i></span><b class="num">${vals[i]}${suffix}</b></div>`).join('')}</div>` };
+  const bars = (labels, vals, ev, suffix = '', show = null) => { const mx = Math.max(1, ...vals); return `<div class="rv-bars">${labels.map((l, i) => `<div class="rv-row"><span>${esc(l)}</span><span class="rv-track"><i style="width:${vals[i] / mx * 100}%" class="${ev.includes(i) ? 'ev' : ''}"></i></span><b class="num">${show ? show[i] : vals[i] + suffix}</b></div>`).join('')}</div>` };
   if (a.counts) { const o = order(c); chart = bars(o.map(x => x.t), o.map(x => a.counts[x.i]), o.map((x, k) => (f === 'multi' ? c.multiAnswers.includes(x.i) : x.i === c.answer) ? k : -1).filter(k => k >= 0)) }
   if (a.hist) { const ev = f === 'estimate' ? c.estimate.target : c.forecast.truth ? 100 : 0, w = (a.hi - a.lo) / a.hist.length; chart = bars(a.hist.map((_, i) => `${Math.round(a.lo + i * w)} to ${Math.round(a.lo + (i + 1) * w)}`), a.hist, [Math.min(a.hist.length - 1, Math.floor((ev - a.lo) / w))]) + `<p class="kicker">Class median ${a.median}. Evidence: ${f === 'estimate' ? c.estimate.target + (c.estimate.unit ?? '%') : c.forecast.truth ? 'the claim is true' : 'the claim is false'}.</p>` }
-  if (a.meanPosition) chart = bars(c.options, a.meanPosition, [c.rankAnswer[0]]) + `<p class="kicker">Average rank given by the room (1 = top). Measured order: ${c.rankAnswer.map(i => esc(c.options[i])).join(', ')}.</p>`;
+  if (a.meanPosition) chart = bars(c.options, a.meanPosition.map(p => p == null ? 0 : +(c.options.length + 1 - p).toFixed(2)), [c.rankAnswer[0]], '', a.meanPosition.map(p => p == null ? '–' : '#' + p)) + `<p class="kicker">Longer bar = ranked nearer the top by the room; the number is the average rank (1 = top). Measured order: ${c.rankAnswer.map(i => esc(c.options[i])).join(', ')}.</p>`;
   if (a.meanShare) chart = bars(c.options, a.meanShare, [c.allocate.values.indexOf(Math.max(...c.allocate.values))], '%') + `<p class="kicker">Average share of the budget. Reported effects: ${c.options.map((o, i) => esc(o) + ' ' + esc(c.allocate.valueLabels ? c.allocate.valueLabels[i] : c.allocate.values[i])).join('; ')}.</p>`;
   if (a.taskCounts) chart = bars(c.delegate.tasks.map(t => t.text), c.delegate.tasks.map((t, i) => a.taskCounts[i][t.answer]), c.delegate.tasks.map((_, i) => i)) + `<p class="kicker">How many routed each task the way the evidence suggests.</p>`;
   const s = BANK.sources[c.sources[0]];
@@ -79,10 +79,12 @@ function reveal(c, a) {
     <div class="lessons"><div class="lesson"><h3>Discussion prompt</h3><p>${esc(c.implication)} Where would this fail in your organization?</p></div><div class="lesson"><h3>Where the evidence comes from</h3><p>${esc(c.boundary)}</p></div></div><p class="kicker">${esc(s.authors)} (${s.year}), ${esc(s.venue)}.</p></div>`;
 }
 
+let showPicker = false;
+const live = () => state && (state.phase === 'open' || state.phase === 'closed');
 function console_() {
   return `<section class="wrap" style="padding-top:22px;padding-bottom:64px"><h1 class="sr-only">Live class ${esc(S.code)}</h1>
     <div class="join-banner panel"><div class="join-text"><span class="kicker">Students join at</span><strong class="join-url">${esc(location.host)}</strong><span class="kicker">with code</span><strong class="join-code" aria-label="Session code ${esc(S.code.split('').join(' '))}">${esc(S.code)}</strong>${S.title ? `<span class="kicker">${esc(S.title)}</span>` : ''}</div>${qr(joinURL())}</div>
-    <div class="play-grid" style="margin-top:16px">${stage()}<div class="side" style="top:16px">${picker()}<div class="panel" style="padding:18px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-quiet" data-act="csv">Download answers (CSV)</button><button class="btn btn-quiet" data-act="copy">Copy join link</button><button class="btn btn-quiet" data-act="end">End session and delete data</button></div></div></div></section>`;
+    <div class="play-grid" style="margin-top:16px">${stage()}<div class="side" style="top:16px">${live() && !showPicker ? `<div class="panel" style="padding:18px"><p style="margin:0 0 10px">The decision list is hidden while answers are live, so the projector shows only the question.</p><button class="btn btn-quiet" data-act="picker">Show the decision list</button></div>` : picker()}<div class="panel" style="padding:18px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-quiet" data-act="joining" aria-pressed="${state && state.joining === false ? 'true' : 'false'}">${state && state.joining === false ? 'Reopen joining' : 'Close joining'}</button><button class="btn btn-quiet" data-act="csv">Download answers (CSV)</button><button class="btn btn-quiet" data-act="copy">Copy join link</button><button class="btn btn-quiet" data-act="end">End session and delete data</button></div></div></div></section>`;
 }
 
 function render() { qs('#view').innerHTML = S ? (state ? console_() : '<p class="wrap" style="padding:40px 0">Connecting…</p>') : setup() }
@@ -105,9 +107,11 @@ document.addEventListener('submit', async e => {
 });
 document.addEventListener('click', async e => {
   const b = e.target.closest('button'); if (!b) return;
-  if (b.dataset.open) { await control('open', b.dataset.open); return }
+  if (b.dataset.open) { showPicker = false; await control('open', b.dataset.open); return }
   const a = b.dataset.act;
-  if (a === 'close' || a === 'reveal' || a === 'lobby') { await control(a); return }
+  if (a === 'close' || a === 'reveal' || a === 'lobby') { showPicker = false; await control(a); return }
+  if (a === 'picker') { showPicker = true; rerender(); qs('#f-q')?.focus(); return }
+  if (a === 'joining') { await control(state && state.joining === false ? 'unlockjoin' : 'lockjoin'); toast(state && state.joining === false ? 'Joining closed. Students already in can keep answering.' : 'Joining is open again.'); return }
   if (a === 'copy') { try { await navigator.clipboard.writeText(joinURL()); toast('Join link copied.') } catch { toast(joinURL()) } return }
   if (a === 'csv') { try { const r = await fetch(`/api/rooms/${S.code}/export.csv`, { headers: { 'X-Instructor-Key': S.secret, 'X-Client-Id': cid } }); if (!r.ok) throw Error('Export failed'); const blob = await r.blob(); const u = URL.createObjectURL(blob); const l = document.createElement('a'); l.href = u; l.download = `human-variable-${S.code}.csv`; document.body.append(l); l.click(); l.remove(); setTimeout(() => URL.revokeObjectURL(u), 3000) } catch (err) { toast(err.message) } return }
   if (a === 'end') { if (!confirm('End the session for everyone and delete all answers? Download the CSV first if you need it.')) return; await control('end'); sessionStorage.removeItem('thv:session'); S = null; state = null; clearTimeout(timer); render(); toast('Session ended. All answers deleted.'); return }
