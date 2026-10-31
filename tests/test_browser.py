@@ -140,3 +140,20 @@ def test_causal_diagram_hides_answer_until_reveal(browser):
     assert 'Spending' not in pg.text_content('.dag')
     answer(pg, next(x for x in LIVE if x['id'] == 'axb05')); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
     assert 'Spending' in pg.text_content('.dag')
+
+def test_served_solo_round_fetches_evidence_after_lock(browser, tmp_path):
+    """On the hosted page the bank has no answers; locking fetches the evidence and the reveal still works for every format."""
+    from server import app, classroom as cl
+    app.STORE = cl.Store(tmp_path / 's.sqlite3')
+    srv = app.Server(('127.0.0.1', 0), app.Handler); threading.Thread(target=srv.serve_forever, daemon=True).start()
+    base = f'http://127.0.0.1:{srv.server_address[1]}'
+    try:
+        for c in one_of_each():
+            pg = page(browser); pg.goto(base + '/?play=' + c['id'])
+            assert pg.evaluate('typeof window.THV') == 'undefined'          # no test hook on the hosted page
+            assert '"answerTitle"' not in pg.content().split('const BANK =')[1].split('</script>')[0]
+            answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h', timeout=10000)
+            assert pg.text_content('#r-h').strip() == c['answerTitle'], c['id']
+            assert not pg.errors, (c['id'], pg.errors); pg.close()
+    finally:
+        srv.shutdown()

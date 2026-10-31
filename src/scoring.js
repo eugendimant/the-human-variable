@@ -82,10 +82,10 @@
   function ready(c, r) {
     switch (c.format) {
       case 'choice': case 'causal': return Number.isInteger(r) && r >= 0 && r < c.options.length;
-      case 'multi': return Array.isArray(r) && r.length === c.multiAnswers.length;
+      case 'multi': return Array.isArray(r) && r.length === (c.multiAnswers ? c.multiAnswers.length : c.pick || 2);
       case 'estimate': return typeof r === 'number' && isFinite(r);
       case 'forecast': return typeof r === 'number' && r >= 0 && r <= 100;
-      case 'rank': return Array.isArray(r) && r.length === c.rankAnswer.length && new Set(r).size === r.length;
+      case 'rank': return Array.isArray(r) && r.length === (c.rankAnswer ? c.rankAnswer.length : c.options.length) && new Set(r).size === r.length;
       case 'allocate': return Array.isArray(r) && r.reduce((a, b) => a + b, 0) === c.allocate.total;
       case 'delegate': return Array.isArray(r) && r.length === c.delegate.tasks.length && r.every(x => Number.isInteger(x));
       default: return false;
