@@ -62,7 +62,7 @@ def test_keyboard_round_and_record(browser):
         answer(pg, c); pg.keyboard.press('Enter') if c['format'] not in ('rank',) else pg.click('#lock-btn')
         pg.wait_for_selector('#r-h'); pg.keyboard.press('n')
     pg.wait_for_selector('text=Round complete.')
-    assert pg.locator('.kpi').count() == 4 and not pg.errors
+    assert pg.locator('.score-big').count() == 1 and pg.locator('.score-meta div').count() == 3 and not pg.errors
 
 def test_quarantined_items_never_served(browser):
     pg = page(browser); pg.goto(URL)
