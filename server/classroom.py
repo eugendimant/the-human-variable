@@ -100,7 +100,7 @@ class Store:
             raise ClassroomError('Unknown action')
         with self.lock:
             db = self.db(); db.execute(sql + ', version=version+1, touched=? WHERE code=?', (*args, time.time(), code)); db.commit()
-            self.cache.pop(code, None)
+            self.cache.pop(code, None); self._open = None
         return self.state(code, admin=True)
 
     def delete(self, code: str, secret: str):
@@ -119,7 +119,8 @@ class Store:
             n = db.execute('SELECT COUNT(*) FROM participants WHERE code=?', (code,)).fetchone()[0]
             if n >= MAX_PARTICIPANTS: raise Conflict('This session is full')
             token = secrets.token_urlsafe(18)
-            db.execute('INSERT INTO participants VALUES(?,?,?,?)', (code, _h(token), n + 1, time.time())); db.commit()
+            db.execute('INSERT INTO participants VALUES(?,?,?,?)', (code, _h(token), n + 1, time.time()))
+            db.execute('UPDATE sessions SET touched=? WHERE code=?', (time.time(), code)); db.commit()
             self.cache.pop(code, None)
         return {'code': code, 'token': token, 'number': n + 1}
 
@@ -142,6 +143,7 @@ class Store:
         with self.lock:
             db = self.db()
             cur = db.execute('INSERT OR IGNORE INTO responses VALUES(?,?,?,?,?,?,?,?)', (code, num, c['id'], json.dumps(answer), confidence, s['score'], int(s['correct']), time.time()))
+            db.execute('UPDATE sessions SET touched=? WHERE code=?', (time.time(), code))
             db.commit(); accepted = cur.rowcount == 1
             if accepted: self.cache.pop(code, None)
         return {'accepted': accepted, 'message': 'Recorded' if accepted else 'You already answered this decision'}
@@ -188,6 +190,13 @@ class Store:
         elif f == 'delegate':
             out['taskCounts'] = [[sum(1 for a in ans if a[t] == m) for m in range(len(c['delegate']['choices']))] for t in range(len(c['delegate']['tasks']))]
         return out
+
+    def open_challenges(self) -> set:
+        """Decisions currently open or closed-but-unrevealed in a session active in the last six hours (cached for 2 s)."""
+        now = time.time(); hit = getattr(self, '_open', None)
+        if hit and now - hit[0] < 2: return hit[1]
+        rows = self.db().execute("SELECT challenge FROM sessions WHERE phase IN ('open','closed') AND touched > ?", (now - 6 * 3600,)).fetchall()
+        val = {r[0] for r in rows if r[0]}; self._open = (now, val); return val
 
     def export_csv(self, code: str, secret: str) -> str:
         self.require_admin(code, secret)

@@ -2,6 +2,8 @@
 'use strict';
 // ---------- data ----------
 const S = window.THVScore;
+// Served by the classroom server, the page carries no answers; the evidence arrives after a call is locked.
+const PUBLIC = !!BANK.public;
 const SOURCE = BANK.sources;
 const isLive = s => s && s.verification && s.verification.status !== 'quarantined';
 // Scored play uses only challenges whose every source passed the audit.
@@ -29,6 +31,16 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch { } },
   del(k) { try { localStorage.removeItem(k) } catch { } }
 };
+async function ensureFull(id) {
+  const c = BY_ID[id]; if (!PUBLIC || !c || c.answerTitle) return true;
+  try { const r = await fetch('/api/reveal/' + encodeURIComponent(id), { headers: { 'X-Client-Id': clientId() } }); const d = await r.json(); if (!r.ok) { notice(d.error || 'The evidence could not be loaded.'); return false } Object.assign(c, d); return true }
+  catch { notice('The evidence could not be loaded. Check your connection and lock again.'); return false }
+}
+let libraryLoaded = !PUBLIC;
+async function loadLibrary() {
+  if (libraryLoaded) return; libraryLoaded = true;
+  try { const r = await fetch('/api/library', { headers: { 'X-Client-Id': clientId() } }); const d = await r.json(); for (const x of d.challenges || []) if (BY_ID[x.id]) Object.assign(BY_ID[x.id], x); render() } catch { libraryLoaded = false }
+}
 function cite(id) { const s = SOURCE[id]; return s ? `${s.authors} (${s.year})` : id }
 function srcStatus(s) { const v = s.verification || {}; return v.status === 'verified_full_text' ? ['Checked against full text', ''] : ['Checked against published abstract', 'abstract'] }
 
@@ -74,19 +86,36 @@ function resetCard() {
   st.resp = c.format === 'multi' ? [] : c.format === 'rank' ? shuffle(c.options.map((_, i) => i), rng(hash(c.id + st.seed))) :
     c.format === 'allocate' ? evenSplit(c) : c.format === 'delegate' ? c.delegate.tasks.map(() => null) :
       c.format === 'forecast' ? 50 : c.format === 'estimate' ? null : null;
-  if (c.format === 'rank' && S.score(c, st.resp).correct) st.resp.reverse(); // never start on the answer
+  if (c.format === 'rank' && c.rankAnswer && S.score(c, st.resp).correct) st.resp.reverse(); // never start on the answer
 }
 function evenSplit(c) { const k = c.options.length, t = c.allocate.total, step = c.allocate.step || 10; const base = Math.floor(t / k / step) * step; const a = Array(k).fill(base); let rest = t - base * k; for (let i = 0; rest > 0; i = (i + 1) % k) { a[i] += step; rest -= step } return a }
 function optionOrder(c) { return shuffle(c.options.map((t, i) => ({ t, i })), rng(hash(c.id + '-' + st.seed))) }
 
-function lock() {
-  const c = card(); if (!c || !S.ready(c, st.resp)) return;
-  if (c.format === 'forecast' && !st.touched) { notice('Move the slider to state a probability first.'); return }
-  const res = S.score(c, st.resp);
-  const rec = { id: c.id, format: c.format, score: Math.round(res.score * 1000) / 1000, correct: res.correct, confidence: c.format === 'forecast' ? null : st.conf, response: st.resp, at: new Date().toISOString(), seed: st.seed, detail: res.detail };
-  st.session.push(rec); records.push(rec); records = records.slice(-3000); store.set(REC_KEY, records);
+function needsTouch(c) { return ['forecast', 'rank', 'allocate'].includes(c.format) }
+function lockReady(c) { return S.ready(c, st.resp) && (!needsTouch(c) || st.touched) && (c.format === 'forecast' || st.confTouched) }
+function lockHint(c) {
+  if (!S.ready(c, st.resp) || (needsTouch(c) && !st.touched)) return c.format === 'forecast' ? 'Move the slider to state a probability' : c.format === 'rank' ? 'Put the items in your order' : c.format === 'allocate' ? 'Split the budget your way' : 'Make your call';
+  if (c.format !== 'forecast' && !st.confTouched) return 'Now say how sure you are';
+  return 'Ready when you are';
+}
+function syncLock() { const c = card(); const b = qs('#lock-btn'); if (!c || !b) return; b.disabled = !lockReady(c); const h = qs('.actionbar .kicker'); if (h) h.textContent = lockHint(c) }
+let locking = false;
+async function lock() {
+  const c = card(); if (!c || !lockReady(c) || locking) return;
+  if (st.room) {  // the server holds the evidence until the instructor reveals it
+    st.pending = { response: st.resp, confidence: c.format === 'forecast' ? null : st.conf };
+    st.phase = 'reveal'; render(true); roomSubmit(c, st.pending); return;
+  }
+  locking = true; const okFull = await ensureFull(c.id); locking = false; if (!okFull) return;
+  finalize(c, st.resp, c.format === 'forecast' ? null : st.conf);
   st.phase = 'reveal'; render(true);
-  if (st.room) roomSubmit(c, rec);
+}
+function finalize(c, response, confidence) {
+  const res = S.score(c, response);
+  const rec = { id: c.id, format: c.format, score: Math.round(res.score * 1000) / 1000, correct: res.correct, confidence, response, at: new Date().toISOString(), seed: st.seed, detail: res.detail, title: c.title, answerTitle: c.answerTitle, implication: c.implication };
+  if (c.format === 'forecast') rec.outcome = c.forecast.truth ? 1 : 0;
+  st.session.push(rec); records.push(rec); records = records.slice(-3000); store.set(REC_KEY, records);
+  return rec;
 }
 function next() { if (st.i >= st.deck.length - 1) { st.view = 'record'; st.deck = []; render(true); return } st.i++; resetCard(); render(true) }
 
@@ -139,7 +168,7 @@ function instrument(c) {
   if (c.format === 'choice' || c.format === 'causal' || c.format === 'multi') {
     const isEv = i => c.format === 'multi' ? c.multiAnswers.includes(i) : i === c.answer;
     const picked = i => Array.isArray(r) ? r.includes(i) : r === i;
-    return `${c.format === 'causal' && c.dag ? dag(c.dag) : ''}<div class="opts" role="group" aria-label="Answer options">${optionOrder(c).map((o, j) => `<button class="opt ${rev && isEv(o.i) ? 'is-ev' : ''}" data-choice="${o.i}" aria-pressed="${picked(o.i)}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${j + 1}</span><span>${esc(o.t)}</span>${rev && (isEv(o.i) || picked(o.i)) ? `<span class="mark">${picked(o.i) ? '<span class="dot dot-you"></span>Your call' : ''}${isEv(o.i) ? '<span class="dot dot-ev"></span>Evidence' : ''}</span>` : ''}</button>`).join('')}</div>`;
+    return `${c.format === 'causal' && c.dag ? dag(c.dag, rev) : ''}<div class="opts" role="group" aria-label="Answer options">${optionOrder(c).map((o, j) => `<button class="opt ${rev && isEv(o.i) ? 'is-ev' : ''}" data-choice="${o.i}" aria-pressed="${picked(o.i)}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${j + 1}</span><span>${esc(o.t)}</span>${rev && (isEv(o.i) || picked(o.i)) ? `<span class="mark">${picked(o.i) ? '<span class="dot dot-you"></span>Your call' : ''}${isEv(o.i) ? '<span class="dot dot-ev"></span>Evidence' : ''}</span>` : ''}</button>`).join('')}</div>`;
   }
   if (c.format === 'estimate') {
     const e = c.estimate, v = r ?? Math.round((e.min + e.max) / 2);
@@ -166,11 +195,11 @@ function instrument(c) {
   return '';
 }
 
-function dag(d) {
+function dag(d, rev) {
   const W = 520, H = d.height || 200;
   const node = Object.fromEntries(d.nodes.map(n => [n.id, n]));
-  const edge = ([a, b, style]) => { const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 72; return `<line x1="${A.x + ux * pad}" y1="${A.y + uy * pad * .45}" x2="${B.x - ux * pad}" y2="${B.y - uy * pad * .45}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
-  return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(d.alt)}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n => `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="17" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>`).join('')}</svg>`;
+  const edge = ([a, b, style0]) => { const style = rev ? style0 : ''; const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 72; return `<line x1="${A.x + ux * pad}" y1="${A.y + uy * pad * .45}" x2="${B.x - ux * pad}" y2="${B.y - uy * pad * .45}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
+  return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(d.alt)}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n0 => { const n = !rev && n0.mask ? { ...n0, label: '?', hidden: true } : n0; return `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="17" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>` }).join('')}</svg>`;
 }
 
 // The gap: player's call (blue) and the evidence (amber) on one axis.
@@ -223,19 +252,20 @@ function play() {
   if (st.room && (!c || st.room.challenge !== c.id || st.room.phase === 'lobby')) return roomWait();
   if (!c) { st.view = 'home'; return home() }
   if (st.room && st.phase === 'reveal' && st.room.phase !== 'revealed') return roomLocked(c);
-  const rev = st.phase === 'reveal', rec = st.session[st.session.length - 1];
+  if (st.room && st.room.phase === 'revealed' && !st.session.some(r => r.id === c.id && r.room === st.room.code) && c.answerTitle) { st.phase = 'reveal' }
+  const rev = st.phase === 'reveal', rec = st.session.filter(r => r.id === c.id).slice(-1)[0] || { score: 0, correct: false, confidence: null, response: null, detail: {}, missed: true };
   const steps = st.deck.map((_, k) => `<i class="${k < st.i || (k === st.i && rev) ? 'done' : k === st.i ? 'now' : ''}"></i>`).join('');
   const top = `<div class="focus-top"><button class="x" data-act="leave" aria-label="${st.room ? 'Leave the live class' : 'Leave the round'}"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="steps" aria-hidden="true">${steps}</div><span class="count num" aria-live="polite">${st.i + 1} of ${st.deck.length}</span></div>`;
   const label = `<p class="eyebrow-line">${c.case ? `<span class="tag tag-you">${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}</span>` : ''}<span class="fmt">${FORMAT_NAME[c.format]}</span><span class="track">${esc(c.track)}</span></p>`;
   if (!rev) {
-    const ready = S.ready(c, st.resp) && (c.format !== 'forecast' || st.touched);
-    const conf = c.format === 'forecast' ? '' : `<div class="conf-row"><label for="conf">How sure are you?</label><input type="range" id="conf" min="${c.format === 'choice' || c.format === 'causal' ? Math.round(100 / c.options.length / 5) * 5 : 0}" max="100" step="5" value="${st.conf}" style="--fill:${st.conf}%"><output id="conf-read" class="num" for="conf">${st.conf}%</output></div>`;
+    const ready = lockReady(c);
+    const conf = c.format === 'forecast' ? '' : `<div class="conf-row"><label for="conf">How sure are you?</label>${(() => { const mn = c.format === 'choice' || c.format === 'causal' ? Math.round(100 / c.options.length / 5) * 5 : 0; return `<input type="range" id="conf" min="${mn}" max="100" step="5" value="${st.conf}" class="${st.confTouched ? '' : 'untouched'}" style="--fill:${st.confTouched ? (st.conf - mn) / (100 - mn) * 100 : 0}%"><output id="conf-read" class="num ${st.confTouched ? '' : 'empty'}" for="conf">${st.confTouched ? st.conf + '%' : '?'}</output>` })()}</div>`;
     const verb = { estimate: 'estimate', allocate: 'budget', rank: 'ranking', delegate: 'routing', forecast: 'forecast' }[c.format] || 'answer';
     return `<section class="focus">${top}<article class="focus-card" aria-labelledby="q-h">${label}
       <p class="scene">${esc(c.scene)}</p><p class="study-line">${esc(studyLine(c))}</p>
       ${c.format === 'forecast' ? `<p class="hint fc-ask">How likely is it that the study found this?</p><h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : ''}
       ${instrument(c)}${conf}</article>
-      <div class="actionbar"><div class="actionbar-in"><span class="kicker">${ready ? 'Ready when you are' : c.format === 'forecast' ? 'Move the slider to state a probability' : 'Make your call'}</span><button class="btn btn-you btn-lg" data-act="lock" id="lock-btn" ${ready ? '' : 'disabled'}>Lock my ${verb}</button></div></div></section>`;
+      <div class="actionbar"><div class="actionbar-in"><span class="kicker">${lockHint(c)}</span><button class="btn btn-you btn-lg" data-act="lock" id="lock-btn" ${ready ? '' : 'disabled'}>Lock my ${verb}</button></div></div></section>`;
   }
   const tabs = [['questions', 'Questions'], ['scope', 'Where the evidence comes from'], ['source', 'Source'], ['note', 'Your note']];
   const tab = st.tab || 'questions';
@@ -247,9 +277,9 @@ function play() {
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">${label}
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
-      <p class="verdict"><span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}${rec.confidence !== null ? `, at ${rec.confidence}% confidence` : ''}</span></p>
+      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}${rec.confidence !== null ? `, at ${rec.confidence}% confidence` : ''}</span>`}</p>
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
-      ${gapFigure(c, rec)}
+      ${rec.missed ? '' : gapFigure(c, rec)}
       <p class="reveal-body">${esc(c.explain)}</p>
       <div class="action-note"><h2>What a manager does with this</h2><p>${esc(c.implication)}</p></div>
       <div class="deep"><div class="tabs" role="tablist" aria-label="Go deeper">${tabs.map(([k, l]) => `<button role="tab" id="tab-${k}" aria-selected="${tab === k}" aria-controls="tabpanel" data-tab="${k}" tabindex="${tab === k ? 0 : -1}">${l}</button>`).join('')}</div><div class="tabpanel" id="tabpanel" role="tabpanel" aria-labelledby="tab-${tab}">${panel}</div></div>
@@ -260,7 +290,7 @@ function play() {
 let TUTOR_REMOTE = null; // set when a protected server endpoint answers /api/tutor/status
 function tutorPanel(c) {
   const t = st.tutor;
-  return `<div class="tutor" aria-labelledby="tutor-h"><h3 id="tutor-h">Ask your own question</h3>
+  return `<div class="tutor" aria-labelledby="tutor-h"><h2 id="tutor-h">Ask your own question</h2>
     <form class="tutor-line" data-form="tutor"><label class="sr-only" for="tutor-in">Your question about this study</label><input id="tutor-in" maxlength="300" placeholder="For example: would this hold in a sales team?" autocomplete="off"><button class="btn btn-quiet" ${t.busy ? 'disabled' : ''}>${t.busy ? 'Thinking' : 'Ask'}</button></form>
     <div class="tutor-chips">${['How big is this effect in practice?', 'Would this hold with AI tools today?', 'How would I test this in my company?'].map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>
     ${t.text ? `<div class="tutor-answer" aria-live="polite">${esc(t.text)}${t.cites.length ? '\n\n' + t.cites.map(x => `<cite>${esc(x)}</cite>`).join(' ') : ''}</div>` : ''}
@@ -273,10 +303,12 @@ function curated(q, c) {
   const scoreOf = x => terms.reduce((s, t) => s + (fields(x).includes(t) ? 1 : 0), 0) + (x.id === c.id ? 1.5 : 0);
   const best = ALL.map(x => ({ x, s: scoreOf(x) })).sort((a, b) => b.s - a.s)[0];
   const fq = (c.follow || []).map(f => ({ f, s: terms.filter(t => (f.q + ' ' + f.a).toLowerCase().includes(t)).length })).sort((a, b) => b.s - a.s)[0];
+  const cs = [cite(c.sources[0])];
+  if (/\b(big|size|large|much|practice|magnitude)\b/i.test(q)) return { text: `${c.explain}${c.study && c.study.n && !/not (stated|confirmed)/i.test(c.study.n) ? ' Sample: ' + c.study.n + '.' : ''}\n\nWhere the evidence comes from: ${c.boundary}`, cites: cs };
   if (/test|pilot|company|measure|experiment/i.test(q)) return { text: `Start with a small randomized pilot: assign the change to some teams and not others, fix the outcome metric in advance, and compare. ${c.implication}\n\nThe study itself: ${c.explain}`, cites: [cite(c.sources[0])] };
   if (/today|hold|still|generali|apply|everywhere|always/i.test(q)) return { text: `${c.boundary}\n\n${c.explain}`, cites: [cite(c.sources[0])] };
   if (fq && fq.s >= 1) return { text: fq.f.a, cites: [cite(c.sources[0])] };
-  if (best && best.x.id !== c.id && best.s >= 2) return { text: `A related study in the lab: ${best.x.explain}\n\nWhere it applies: ${best.x.implication}`, cites: [cite(best.x.sources[0])] };
+  if (best && best.x.id !== c.id && best.x.explain && best.s >= 3) return { text: `A related study in the lab: ${best.x.explain}\n\nWhere it applies: ${best.x.implication}`, cites: [cite(best.x.sources[0])] };
   return { text: `${c.explain}\n\n${c.boundary}`, cites: [cite(c.sources[0])] };
 }
 async function ask(q) {
@@ -332,7 +364,7 @@ function record() {
   if (st.session.length) {
     const worst = st.session.reduce((a, r) => r.score < a.score ? r : a), best = st.session.reduce((a, r) => r.score > a.score ? r : a);
     const sc = S.calibration(st.session.map(r => S.toCalibrationRecord(BY_ID[r.id], r)));
-    summary = `<div class="summary">${best.score > worst.score ? `<div class="panel lesson-card"><span class="kicker">Best call</span><h3>${esc(BY_ID[best.id].title)}</h3><p>${esc(BY_ID[best.id].answerTitle)}. Score ${pct(best.score)}.</p></div>` : ''}<div class="panel lesson-card"><span class="kicker">Biggest surprise</span><h3>${esc(BY_ID[worst.id].title)}</h3><p>${esc(BY_ID[worst.id].answerTitle)}. ${esc(BY_ID[worst.id].implication)}</p><button class="link-btn" data-play="${esc(worst.id)}">Play it again</button></div></div>`;
+    summary = `<div class="summary">${best.score > worst.score ? `<div class="panel lesson-card"><span class="kicker">Best call</span><h3>${esc(best.title || BY_ID[best.id].title)}</h3><p>${esc(best.answerTitle || BY_ID[best.id].answerTitle)}. Score ${pct(best.score)}.</p></div>` : ''}<div class="panel lesson-card"><span class="kicker">Biggest surprise</span><h3>${esc(worst.title || BY_ID[worst.id].title)}</h3><p>${esc(worst.answerTitle || BY_ID[worst.id].answerTitle)}. ${esc(worst.implication || BY_ID[worst.id].implication)}</p><button class="link-btn" data-play="${esc(worst.id)}">Play it again</button></div></div>`;
   }
   const played = byTrack.filter(t => t[1]);
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
@@ -343,7 +375,7 @@ function record() {
     <section class="wrap"><div class="rec-grid">
       <div class="panel rec-panel"><h2>Calibration</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>
       <div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><button class="link-quiet" data-play="${esc(r.id)}">${esc(c.title)}</button><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${pct(r.score)}<span class="bar-score"><i style="width:${pct(r.score)}%"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a path to start your record.</span></li>'}</ul></div>
-      ${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} calls</small></span><span class="num">${sc}<span class="bar-score"><i style="width:${sc}%"></i></span></span></li>`).join('')}</ul></div>` : ''}
+      ${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${sc}<span class="bar-score"><i style="width:${sc}%"></i></span></span></li>`).join('')}</ul></div>` : ''}
     </div>
     <details class="how"><summary>How scoring works</summary><p>Each decision scores 0 to 100 with partial credit. An estimate inside the shaded band earns 100, and credit falls with distance. Ranks score the share of pairs in the measured order. Budgets score the share of the best possible payoff under the reported effects. Forecasts use the Brier rule, the standard in forecasting tournaments: 0 is perfect, 0.25 is always saying 50%. The calibration plot uses your stated confidence, except for forecasts, where the probability is the statement. This is a learning record, not a validated assessment.</p></details>
     <div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play another round</button><span class="tool-links"><button class="link-btn" data-act="csv">Export CSV</button><button class="link-btn" data-act="json">Export JSON</button><button class="link-btn" data-act="erase">Erase this device’s record</button></span></div></section>`;
@@ -403,6 +435,7 @@ async function roomJoin(code) {
       const r = await fetch(`/api/rooms/${code}/join`, { method: 'POST', headers: roomHeaders(true), body: '{}' }); const d = await r.json();
       if (!r.ok) throw Error(d.error || 'Could not join'); tok = d.token; sessionStorage.setItem('thv:room:' + code, tok); sessionStorage.setItem('thv:room:' + code + ':n', d.number);
     }
+    st.seed = hash(code) >>> 0;
     st.room = { code, token: tok, number: sessionStorage.getItem('thv:room:' + code + ':n'), phase: 'lobby', challenge: null, etag: '', agg: null, misses: 0 };
     st.view = 'play'; st.deck = []; closeModal(); render(true); roomPoll();
   } catch (e) { notice(e.message) }
@@ -416,8 +449,14 @@ async function roomPoll() {
     if (!d.same) {
       const changed = d.challenge !== R.challenge, phaseChanged = d.phase !== R.phase;
       R.etag = d.etag; R.phase = d.phase; R.agg = d.aggregate || null; R.participants = d.participants; R.responses = d.responses; R.title = d.title;
-      if (changed && d.challenge && BY_ID[d.challenge]) { R.challenge = d.challenge; st.deck = [BY_ID[d.challenge]]; st.i = 0; resetCard(); render(true) }
-      else if (phaseChanged || d.phase === 'revealed') { R.challenge = d.challenge; render(phaseChanged) }
+      if (d.evidence && BY_ID[d.evidence.id]) Object.assign(BY_ID[d.evidence.id], d.evidence);
+      if (changed && d.challenge && BY_ID[d.challenge]) { R.challenge = d.challenge; st.view = 'play'; st.deck = [BY_ID[d.challenge]]; st.i = 0; st.pending = null; resetCard(); render(true) }
+      else if (phaseChanged || d.phase === 'revealed') {
+        R.challenge = d.challenge; st.view = 'play';
+        const c = card();
+        if (d.phase === 'revealed' && c && st.pending && c.answerTitle && !st.session.some(r => r.id === c.id && r.room === R.code)) { const rec = finalize(c, st.pending.response, st.pending.confidence); rec.room = R.code; st.pending = null }
+        render(phaseChanged);
+      }
       else { const live = qs('#room-live'); if (live) live.textContent = roomLine() }
     }
   } catch { R.misses++; const live = qs('#room-live'); if (live) live.textContent = 'Reconnecting…' }
@@ -470,6 +509,7 @@ let toastT;
 function notice(s) { const t = qs('#toast'); t.textContent = s; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3200) }
 function render(moveFocus) {
   const v = qs('#view');
+  if (st.view === 'almanac' && !libraryLoaded) loadLibrary();
   v.innerHTML = st.view === 'home' ? home() : st.view === 'atlas' ? atlas() : st.view === 'almanac' ? almanac() : st.view === 'record' ? record() : play();
   document.body.classList.toggle('in-play', st.view === 'play');
   qa('.nav button').forEach(b => b.setAttribute('aria-current', (b.dataset.nav === st.view || (b.dataset.nav === 'almanac' && st.view === 'atlas')) ? 'page' : 'false'));
@@ -488,6 +528,7 @@ function setRange(el) { el.classList.remove('untouched'); el.style.setProperty('
 
 // ---------- events ----------
 document.addEventListener('click', e => {
+  if (e.target.closest('[data-home]')) { e.preventDefault(); closeModal(); st.view = 'home'; st.room = st.room; render(true); return }
   const t = e.target.closest('button,[data-close]'); if (!t) return;
   if (t.dataset.close && (e.target === t || t.classList.contains('close'))) { closeModal(); return }
   if (t.dataset.nav) { closeModal(); if (st.room && t.dataset.nav === 'home' && st.view === 'play') { if (!confirm('Leave the live class?')) return; clearTimeout(st.room.timer); st.room = null } st.view = t.dataset.nav; st.menu = false; render(true); return }
@@ -502,7 +543,7 @@ document.addEventListener('click', e => {
   if (t.dataset.theme) { st.view = 'almanac'; st.almanacOpen = t.dataset.theme; render(true); qs('#theme-' + t.dataset.theme)?.scrollIntoView(); return }
   if (st.view === 'play' && st.phase === 'predict') {
     const c = card();
-    if (t.dataset.choice !== undefined) { const i = +t.dataset.choice; if (c.format === 'multi') { const r = st.resp.includes(i) ? st.resp.filter(x => x !== i) : [...st.resp, i].slice(-c.multiAnswers.length); st.resp = r } else st.resp = i; render(); qs(`[data-choice="${i}"]`)?.focus(); return }
+    if (t.dataset.choice !== undefined) { const i = +t.dataset.choice; if (c.format === 'multi') { const need = c.pick || (c.multiAnswers || []).length || 2; if (st.resp.includes(i)) st.resp = st.resp.filter(x => x !== i); else if (st.resp.length < need) st.resp = [...st.resp, i]; else { notice(`You can choose ${need}. Tap a choice again to remove it.`); return } } else st.resp = i; render(); qs(`[data-choice="${i}"]`)?.focus(); return }
     if (t.dataset.rank !== undefined) { const k = +t.dataset.rank, d = +t.dataset.dir, r = st.resp, j = k + d; if (j < 0 || j >= r.length) return;[r[k], r[j]] = [r[j], r[k]]; st.touched = true; render(); const sel = qs(`[data-rank="${j}"][data-dir="${d}"]`) || qs(`[data-rank="${j}"][data-dir="${-d}"]`); sel?.focus(); return }
     if (t.dataset.deleg !== undefined) { st.resp[+t.dataset.deleg] = +t.dataset.pick; render(); qs(`[data-deleg="${t.dataset.deleg}"][data-pick="${t.dataset.pick}"]`)?.focus(); return }
   }
@@ -515,7 +556,7 @@ document.addEventListener('click', e => {
   if (a === 'start' || a === 'replay') { st.seed = (Math.random() * 2 ** 32) >>> 0; startTrack(); return }
   if (a === 'start-quick') { st.seed = (Math.random() * 2 ** 32) >>> 0; st.track = 'Mixed'; start(ALL.filter(c => c.id !== 'ai01'), 5); return }
   if (a === 'dimant-round') { st.seed = (Math.random() * 2 ** 32) >>> 0; start(ALL.filter(c => c.sources.some(id => /Dimant/.test(SOURCE[id].authors))), 12); return }
-  if (a === 'hero-lock') { if (st.hero.value === null) return; st.hero.done = true; render(); animateReveal(); qs('[data-act="start-quick"]')?.focus({ preventScroll: true }); return }
+  if (a === 'hero-lock') { if (st.hero.value === null) return; ensureFull('ai01').then(ok => { if (!ok) return; st.hero.done = true; render(); animateReveal(); qs('[data-act="start-quick"]')?.focus({ preventScroll: true }) }); return; st.hero.done = true; render(); animateReveal(); qs('[data-act="start-quick"]')?.focus({ preventScroll: true }); return }
   if (a === 'hero-reset') { st.hero = { value: null, done: false }; render(); qs('#hero-range')?.focus(); return }
   if (a === 'lock') { lock(); return }
   if (a === 'next') { next(); return }
@@ -531,19 +572,19 @@ document.addEventListener('click', e => {
 document.addEventListener('input', e => {
   const el = e.target, c = card();
   if (el.id === 'hero-range') { st.hero.value = +el.value; setRange(el); const hr = qs('#hero-read'); hr.textContent = el.value + '%'; hr.classList.remove('empty'); qs('[data-act="hero-lock"]').disabled = false; return }
-  if (el.id === 'conf') { st.conf = +el.value; st.confTouched = true; setRange(el); qs('#conf-read').textContent = st.conf + '%'; return }
+  if (el.id === 'conf') { st.conf = +el.value; st.confTouched = true; setRange(el); const o = qs('#conf-read'); o.textContent = st.conf + '%'; o.classList.remove('empty'); syncLock(); return }
   if (!c || st.phase !== 'predict') {
     if (el.id === 'atlas-q') { st.atlasQuery = el.value; const tmp = document.createElement('div'); tmp.innerHTML = atlas(); qs('#atlas-grid').replaceWith(tmp.querySelector('#atlas-grid')); qs('#atlas-count').textContent = tmp.querySelector('#atlas-count').textContent }
     return;
   }
-  if (el.id === 'est') { st.resp = +el.value; setRange(el); qs('#est-read').textContent = st.resp + (c.estimate.unit ?? '%'); qs('#est-read').classList.remove('empty'); qs('#lock-btn').disabled = false; qs('.actionbar .kicker').textContent = 'Ready when you are'; return }
-  if (el.id === 'fc') { st.resp = +el.value; st.touched = true; setRange(el); qs('#fc-read').textContent = st.resp + '%'; qs('#fc-read').classList.remove('empty'); qs('#lock-btn').disabled = false; qs('.actionbar .kicker').textContent = 'Ready when you are'; return }
+  if (el.id === 'est') { st.resp = +el.value; setRange(el); qs('#est-read').textContent = st.resp + (c.estimate.unit ?? '%'); qs('#est-read').classList.remove('empty'); syncLock(); return }
+  if (el.id === 'fc') { st.resp = +el.value; st.touched = true; setRange(el); qs('#fc-read').textContent = st.resp + '%'; qs('#fc-read').classList.remove('empty'); syncLock(); return }
   if (el.dataset.alloc !== undefined) {
     const k = +el.dataset.alloc, a = c.allocate; let v = +el.value; const others = st.resp.reduce((x, y, i) => x + (i === k ? 0 : y), 0);
     if (others + v > a.total) { v = a.total - others; el.value = v }
-    st.resp[k] = v; setRange(el); el.nextElementSibling.textContent = (a.prefix || '') + v + (a.suffix || '');
+    st.resp[k] = v; st.touched = true; setRange(el); el.nextElementSibling.textContent = (a.prefix || '') + v + (a.suffix || '');
     const sum = st.resp.reduce((x, y) => x + y, 0), tot = qs('.alloc-total'); tot.classList.toggle('ok', sum === a.total); tot.lastElementChild.textContent = `${a.prefix || ''}${sum}${a.suffix || ''} of ${a.prefix || ''}${a.total}${a.suffix || ''}${sum === a.total ? '' : ', unassigned'}`;
-    qs('#lock-btn').disabled = !S.ready(c, st.resp); return;
+    syncLock(); return;
   }
 });
 document.addEventListener('change', e => {
@@ -563,7 +604,7 @@ document.addEventListener('keydown', e => {
   if (st.phase === 'predict') {
     if ((c.format === 'choice' || c.format === 'causal' || c.format === 'multi') && /^[1-9]$/.test(e.key)) { const o = optionOrder(c)[+e.key - 1]; if (o) qs(`[data-choice="${o.i}"]`)?.click(); return }
     if (e.key === 'Enter' && (!e.target.matches('button') || e.target.matches('.opt,[data-deleg],[data-rank]')) && S.ready(c, st.resp)) { e.preventDefault(); lock(); return }
-  } else if (e.key === 'n' || e.key === 'N') { next() }
+  } else if ((e.key === 'n' || e.key === 'N') && !st.room) { next() }
 });
 
 // ---------- boot ----------
@@ -571,9 +612,10 @@ document.body.insertAdjacentHTML('afterbegin', `<a class="skip" href="#view">Ski
 // Live classes need the Python server; hide their entry points in the offline file and inside Streamlit's frame.
 if (!location.protocol.startsWith('http')) qa('[data-act="join"], a[href="classroom.html"]').forEach(el => el.hidden = true);
 qs('#brand-glyph').outerHTML = glyph;
+if (PUBLIC) TUTOR_REMOTE = '/api/tutor';
 if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }
 if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else render();
-window.THV = { st, ALL, BY_ID, records: () => records }; // test hook
+if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records }; // test hook (offline file only)
 })();

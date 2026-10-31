@@ -2408,5 +2408,709 @@
    "quote": "including university faculty and physicians",
    "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453"
   }
+ ],
+ "axe01": [
+  {
+   "source": "longoni22",
+   "quote": "stems from a lay belief that AI recommenders are more competent than human recommenders in the utilitarian realm",
+   "location": "Abstract"
+  },
+  {
+   "source": "longoni22",
+   "quote": "less competent in the hedonic realm",
+   "location": "Abstract"
+  },
+  {
+   "source": "longoni22",
+   "quote": "reverses for utilitarian goals if a recommendation needs matching a person's unique preferences (Study 5)",
+   "location": "Abstract"
+  },
+  {
+   "source": "longoni22",
+   "quote": "is eliminated in the case of human–AI hybrid decision making (i.e., augmented rather than artificial intelligence; Study 6)",
+   "location": "Abstract"
+  },
+  {
+   "source": "longoni22",
+   "quote": "The word-of-machine effect is robust to complexity, number of options considered, and transaction costs.",
+   "location": "Abstract"
+  },
+  {
+   "source": "longoni22",
+   "quote": "An intervention based on the consider-the-opposite protocol attenuates the word-of-machine effect",
+   "location": "Abstract (Studies 7a-7b)"
+  }
+ ],
+ "axe02": [
+  {
+   "source": "ayers23",
+   "quote": "drafting responses that could be reviewed by clinicians",
+   "location": "Abstract, Conclusions"
+  },
+  {
+   "source": "ayers23",
+   "quote": "evaluators did not independently and specifically assess the physician or chatbot responses for accuracy",
+   "location": "Limitations"
+  },
+  {
+   "source": "ayers23",
+   "quote": "evaluators preferred chatbot responses to physician responses in 78.6% (95% CI, 75.0%-81.8%) of the 585 evaluations",
+   "location": "Results"
+  },
+  {
+   "source": "ayers23",
+   "quote": "randomly draw 195 exchanges from October 2022",
+   "location": "Methods"
+  },
+  {
+   "source": "luo19",
+   "quote": "a disclosure of chatbot identity before the machine–customer conversation reduces purchase rates by more than 79.7%",
+   "location": "Abstract"
+  },
+  {
+   "source": "luo19",
+   "quote": "field experiment data on more than 6,200 customers",
+   "location": "Abstract"
+  },
+  {
+   "source": "luo19",
+   "quote": "undisclosed chatbots are as effective as proficient workers and four times more effective than inexperienced workers",
+   "location": "Abstract"
+  },
+  {
+   "source": "jia24",
+   "quote": "increases employees' creativity in answering customers' questions",
+   "location": "Abstract"
+  },
+  {
+   "source": "jia24",
+   "quote": "Enhanced creativity leads to increased sales",
+   "location": "Abstract"
+  },
+  {
+   "source": "jia24",
+   "quote": "much more pronounced for higher-skilled employees",
+   "location": "Abstract"
+  },
+  {
+   "source": "jia24",
+   "quote": "make limited improvements to scripts",
+   "location": "Abstract (lower-skilled employees; also 'experience negative emotions at work')"
+  },
+  {
+   "source": "cui26",
+   "quote": "our analysis reveals a 26.08% increase (standard error: 10.3%) in completed tasks",
+   "location": "Abstract"
+  },
+  {
+   "source": "cui26",
+   "quote": "when data are combined across three experiments and 4,867 developers",
+   "location": "Abstract"
+  },
+  {
+   "source": "cui26",
+   "quote": "Notably, less experienced developers had higher adoption rates and greater productivity gains.",
+   "location": "Abstract"
+  }
+ ],
+ "axe03": [
+  {
+   "source": "fugener22",
+   "quote": "humans and the AI perform classification tasks",
+   "location": "Abstract"
+  },
+  {
+   "source": "fugener22",
+   "quote": "the combined performance improves only when the AI delegates work to humans but not when humans delegate work to the AI",
+   "location": "Abstract"
+  },
+  {
+   "source": "fugener22",
+   "quote": "humans and AI who work together can outperform the AI that outperforms humans when it works on its own",
+   "location": "Abstract"
+  },
+  {
+   "source": "fugener22",
+   "quote": "human performance suffered as a result of a lack of metaknowledge",
+   "location": "Abstract"
+  },
+  {
+   "source": "fugener22",
+   "quote": "This bad delegation performance cannot be explained with some kind of algorithm aversion.",
+   "location": "Abstract"
+  },
+  {
+   "source": "tong21",
+   "quote": "The adverse disclosure effect is mitigated by employees' tenure in the firm",
+   "location": "Abstract"
+  },
+  {
+   "source": "tong21",
+   "quote": "develop a negative perception once it is disclosed to them",
+   "location": "Abstract"
+  },
+  {
+   "source": "tong21",
+   "quote": "powerful data analytics increase the quality of feedback, which may enhance employee productivity",
+   "location": "Abstract"
+  },
+  {
+   "source": "tong21",
+   "quote": "that is, using AI to provide performance feedback to veteran employees, but using human managers to provide performance feedback to novices",
+   "location": "Abstract (follows \"consider deploying AI in a tiered fashion instead of a uniform fashion\")"
+  },
+  {
+   "source": "tong21",
+   "quote": "strong evidence that both effects coexist",
+   "location": "Abstract"
+  }
+ ],
+ "axe04": [
+  {
+   "source": "goldstein24",
+   "quote": "resulting in a final sample of 8,221",
+   "location": "Methods"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "In December 2021, we interviewed US adults using Lucid",
+   "location": "Methods"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "While only 24.4% of respondents who were not shown an article agreed or strongly agreed with the thesis statement",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "the rate of agreement jumped to 47.4%",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "43.5% of respondents who read a GPT-3-generated article agreed or strongly agreed with the thesis statement",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "We began by identifying six articles",
+   "location": "Methods"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "as part of covert, likely state-aligned propaganda campaigns originating from either Iran or Russia",
+   "location": "Methods"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "Two of the GPT-3 propaganda articles (out of 18 total) did not advance the intended claim.",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "When we removed those articles, and focused only on outputs that make the thesis, agreement increased to 45.6%",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "we informed respondents after they completed the survey that the articles came from propaganda sources",
+   "location": "Methods"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "our experiment estimated the effect of reading a single article",
+   "location": "Discussion"
+  }
+ ],
+ "axe05": [
+  {
+   "source": "ayers23",
+   "quote": "evaluators preferred chatbot responses to physician responses in 78.6% (95% CI, 75.0%-81.8%) of the 585 evaluations",
+   "location": "Results"
+  },
+  {
+   "source": "ayers23",
+   "quote": "a public social media forum (Reddit's r/AskDocs)",
+   "location": "Methods"
+  },
+  {
+   "source": "ayers23",
+   "quote": "randomly draw 195 exchanges from October 2022",
+   "location": "Methods"
+  },
+  {
+   "source": "ayers23",
+   "quote": "evaluated in triplicate by a team of licensed health care professionals",
+   "location": "Methods"
+  },
+  {
+   "source": "ayers23",
+   "quote": "the proportion of responses rated good or very good quality was higher for chatbot than physicians",
+   "location": "Results (chatbot 78.5%; physicians 22.1%)"
+  },
+  {
+   "source": "ayers23",
+   "quote": "The proportion of responses rated empathetic or very empathetic was higher for chatbot than for physicians",
+   "location": "Results (physicians 4.6%; chatbot 45.1%)"
+  },
+  {
+   "source": "ayers23",
+   "quote": "physician responses were significantly shorter than the chatbot responses",
+   "location": "Results (52 vs 211 words)"
+  },
+  {
+   "source": "ayers23",
+   "quote": "the additional length of the chatbot responses could have been erroneously associated with greater empathy",
+   "location": "Limitations"
+  },
+  {
+   "source": "ayers23",
+   "quote": "this study's evaluators despite being blinded to the source of a response and any initial results were also coauthors",
+   "location": "Limitations"
+  },
+  {
+   "source": "ayers23",
+   "quote": "version GPT-3.5, OpenAI",
+   "location": "Methods (generated December 22 and 23, 2022)"
+  }
+ ],
+ "axe06": [
+  {
+   "source": "cui26",
+   "quote": "via randomized controlled trials at Microsoft, Accenture, and an anonymous Fortune 100 company",
+   "location": "Abstract"
+  },
+  {
+   "source": "cui26",
+   "quote": "provided a random subset of developers with access to an AI-based coding assistant",
+   "location": "Abstract"
+  },
+  {
+   "source": "cui26",
+   "quote": "when data are combined across three experiments and 4,867 developers",
+   "location": "Abstract"
+  },
+  {
+   "source": "cui26",
+   "quote": "our analysis reveals a 26.08% increase (standard error: 10.3%) in completed tasks",
+   "location": "Abstract"
+  },
+  {
+   "source": "cui26",
+   "quote": "Although each experiment is noisy and results vary across experiments",
+   "location": "Abstract"
+  },
+  {
+   "source": "cui26",
+   "quote": "Notably, less experienced developers had higher adoption rates and greater productivity gains.",
+   "location": "Abstract"
+  }
+ ],
+ "axe07": [
+  {
+   "source": "dietvorst20",
+   "quote": "In nine studies (N = 4,820), we found that",
+   "location": "Abstract"
+  },
+  {
+   "source": "dietvorst20",
+   "quote": "(b) people are less likely to use the best possible algorithm in domains that are more unpredictable",
+   "location": "Abstract"
+  },
+  {
+   "source": "dietvorst20",
+   "quote": "(c) choose between methods on the basis of the perceived likelihood of those methods producing a near-perfect answer",
+   "location": "Abstract"
+  },
+  {
+   "source": "dietvorst20",
+   "quote": "prefer methods that exhibit higher variance in performance (all else being equal)",
+   "location": "Abstract"
+  },
+  {
+   "source": "dietvorst20",
+   "quote": "We propose that people have diminishing sensitivity to forecasting error.",
+   "location": "Abstract"
+  },
+  {
+   "source": "dietvorst20",
+   "quote": "The answer depends on the uncertainty inherent in the decision domain.",
+   "location": "Abstract"
+  }
+ ],
+ "axe08": [
+  {
+   "source": "hui24",
+   "quote": "recently released generative AI models (ChatGPT, DALL-E 2, and Midjourney)",
+   "location": "Abstract"
+  },
+  {
+   "source": "hui24",
+   "quote": "a large online platform",
+   "location": "Abstract"
+  },
+  {
+   "source": "hui24",
+   "quote": "We find that freelancers in highly affected occupations suffer from the introduction of generative AI",
+   "location": "Abstract"
+  },
+  {
+   "source": "hui24",
+   "quote": "experiencing reductions in both employment and earnings",
+   "location": "Abstract"
+  },
+  {
+   "source": "hui24",
+   "quote": "In fact, we find suggestive evidence that top freelancers are disproportionately affected by AI",
+   "location": "Abstract (described as suggestive evidence)"
+  },
+  {
+   "source": "hui24",
+   "quote": "we do not find evidence that high-quality service, measured by past performance and employment, moderates the adverse effects on employment",
+   "location": "Abstract"
+  }
+ ],
+ "axe09": [
+  {
+   "source": "granulo19",
+   "quote": "people tend to prefer workers to be replaced by other human workers (versus robots)",
+   "location": "Abstract"
+  },
+  {
+   "source": "granulo19",
+   "quote": "this preference reverses when people consider the prospect of their own job loss",
+   "location": "Abstract"
+  },
+  {
+   "source": "granulo19",
+   "quote": "being replaced by machines, robots or software (versus other humans) is associated with reduced self-threat",
+   "location": "Abstract"
+  },
+  {
+   "source": "granulo19",
+   "quote": "being replaced by robots is associated with a greater perceived threat to one's economic future",
+   "location": "Abstract"
+  }
+ ],
+ "axe10": [
+  {
+   "source": "hartmann25",
+   "quote": "create 10,320 synthetic marketing images, using 2,400 real-world, human-made images as input",
+   "location": "Abstract"
+  },
+  {
+   "source": "hartmann25",
+   "quote": "254,400 human evaluations of these images show that AI-generated marketing imagery can surpass human-made images",
+   "location": "Abstract"
+  },
+  {
+   "source": "hartmann25",
+   "quote": "a field study with more than 173,000 impressions",
+   "location": "Abstract"
+  },
+  {
+   "source": "hartmann25",
+   "quote": "achieving an up to 50% higher click-through rate than a human-made image",
+   "location": "Abstract"
+  },
+  {
+   "source": "hartmann25",
+   "quote": "produce marketing content not only faster and orders of magnitude cheaper",
+   "location": "Abstract"
+  },
+  {
+   "source": "hartmann25",
+   "quote": "DALL-E 3, Midjourney v6, Firefly 2, Imagen 2, Imagine, Stable Diffusion XL Turbo, and Realistic Vision",
+   "location": "Abstract (model list as summarized from IDEAS abstract)"
+  }
+ ],
+ "axe11": [
+  {
+   "source": "spitale23",
+   "quote": "a total of 697 responses included in our analysis",
+   "location": "Methods (869 recruited)"
+  },
+  {
+   "source": "spitale23",
+   "quote": "recognized synthetic true tweets correctly more often than organic true tweets (scores 0.84 versus 0.72, respectively; P < 0.0001)",
+   "location": "Results"
+  },
+  {
+   "source": "spitale23",
+   "quote": "recognized organic false tweets with the highest efficiency, better than synthetic false tweets (scores 0.92 versus 0.89, respectively; P = 0.0032)",
+   "location": "Results"
+  },
+  {
+   "source": "spitale23",
+   "quote": "although in this case, the effect is small",
+   "location": "Results"
+  },
+  {
+   "source": "spitale23",
+   "quote": "respondents were unable to distinguish between tweets generated by AI and those posted by real Twitter users",
+   "location": "Results (scores around 0.5)"
+  },
+  {
+   "source": "spitale23",
+   "quote": "required, on average, 29.14 s to determine whether an organic true tweet was accurate",
+   "location": "Results"
+  },
+  {
+   "source": "spitale23",
+   "quote": "synthetic true tweets requiring 21.02 s and synthetic false tweets requiring 19.87 s",
+   "location": "Results"
+  }
+ ],
+ "axe12": [
+  {
+   "source": "reif25",
+   "quote": "four preregistered experiments (N = 4,439)",
+   "location": "Abstract"
+  },
+  {
+   "source": "reif25",
+   "quote": "targets who received help from AI were also rated as less competent, less diligent, less independent, and less self-assured",
+   "location": "Study 2 results"
+  },
+  {
+   "source": "reif25",
+   "quote": "targets described as receiving help from AI were rated as lazier (M = 2.50, SD = 1.32)",
+   "location": "Study 2 results"
+  },
+  {
+   "source": "reif25",
+   "quote": "than employees described as receiving help from non-AI sources (M = 2.16, SD = 1.19",
+   "location": "Study 2 results"
+  },
+  {
+   "source": "reif25",
+   "quote": "or who were not described as receiving any help (M = 2.02, SD = 1.10",
+   "location": "Study 2 results (n = 1,203)"
+  },
+  {
+   "source": "reif25",
+   "quote": "reported that they would be less likely to disclose the use of the tool to their managers",
+   "location": "Study 1 results"
+  },
+  {
+   "source": "reif25",
+   "quote": "manager participants who use AI less frequently themselves favored the candidate that does not use AI at all",
+   "location": "Study 3 results"
+  },
+  {
+   "source": "reif25",
+   "quote": "manager participants who use AI more frequently favored the candidate that uses AI daily",
+   "location": "Study 3 results"
+  },
+  {
+   "source": "reif25",
+   "quote": "this penalty was entirely offset for the Digital task for which AI was described as useful",
+   "location": "Study 4 results"
+  }
+ ],
+ "axe13": [
+  {
+   "source": "matz24",
+   "quote": "In total, we received 303 participants, retaining 297 who passed both attention checks.",
+   "location": "Study 4"
+  },
+  {
+   "source": "matz24",
+   "quote": "prompted ChatGPT to dynamically create a personalized ad for each individual participant",
+   "location": "Study 4"
+  },
+  {
+   "source": "matz24",
+   "quote": "the personalized ads increased people's willingness to spend by $117",
+   "location": "Study 4 results"
+  },
+  {
+   "source": "matz24",
+   "quote": "Although the effects for the sneaker product trended in the expected direction",
+   "location": "Study 4 results (non-significant for rated effectiveness and WTP)"
+  },
+  {
+   "source": "matz24",
+   "quote": "Of the 33 message instantiations we tested, 30 were directionally effective, and 20 were significantly so (61%; Fig. 6).",
+   "location": "General discussion"
+  },
+  {
+   "source": "matz24",
+   "quote": "all our studies relied on very short prompts that supplied ChatGPT with a minimal amount of information",
+   "location": "Limitations"
+  }
+ ],
+ "axe14": [
+  {
+   "source": "luo19",
+   "quote": "field experiment data on more than 6,200 customers",
+   "location": "Abstract"
+  },
+  {
+   "source": "luo19",
+   "quote": "highly structured outbound sales calls",
+   "location": "Abstract"
+  },
+  {
+   "source": "luo19",
+   "quote": "undisclosed chatbots are as effective as proficient workers and four times more effective than inexperienced workers",
+   "location": "Abstract"
+  },
+  {
+   "source": "luo19",
+   "quote": "a disclosure of chatbot identity before the machine–customer conversation reduces purchase rates by more than 79.7%",
+   "location": "Abstract"
+  },
+  {
+   "source": "luo19",
+   "quote": "the chatbot disclosure substantially decreases call length",
+   "location": "Abstract"
+  },
+  {
+   "source": "luo19",
+   "quote": "they perceive the disclosed bot as less knowledgeable and less empathetic",
+   "location": "Abstract"
+  },
+  {
+   "source": "luo19",
+   "quote": "a late disclosure timing strategy and customer prior AI experience",
+   "location": "Abstract"
+  }
+ ],
+ "genai1": [
+  {
+   "source": "zhou24",
+   "quote": "Our analyses of over 53,000 artists and 5,800 known AI adopters",
+   "location": "Introduction"
+  },
+  {
+   "source": "zhou24",
+   "quote": "Utilizing a dataset of over 4 million artworks from more than 50,000 unique users",
+   "location": "Abstract"
+  },
+  {
+   "source": "zhou24",
+   "quote": "one of the largest art-sharing platforms",
+   "location": "Introduction"
+  },
+  {
+   "source": "zhou24",
+   "quote": "jumping from the preadoption average of 2% to a steady 3% rate of earning a favorite per view",
+   "location": "Results"
+  },
+  {
+   "source": "zhou24",
+   "quote": "upon adoption, artists experience a 50% increase in productivity on average",
+   "location": "Results"
+  },
+  {
+   "source": "zhou24",
+   "quote": "average Content Novelty declines, suggesting an expanding but inefficient idea space",
+   "location": "Results"
+  },
+  {
+   "source": "zhou24",
+   "quote": "there is a consistent reduction in both peak and average Visual Novelty",
+   "location": "Results"
+  },
+  {
+   "source": "zhou24",
+   "quote": "maximum Content Novelty is increasing",
+   "location": "Results"
+  },
+  {
+   "source": "zhou24",
+   "quote": "The results suggest that ideation and filtering are likely necessary skills in the text-to-image process",
+   "location": "Conclusion"
+  },
+  {
+   "source": "zhou24",
+   "quote": "may produce artworks that their peers evaluate more favorably",
+   "location": "Results (AI-assisted artists who explore more novel ideas)"
+  },
+  {
+   "source": "zhou24",
+   "quote": "AI-assisted artists who can successfully explore more novel ideas, regardless of their prior originality",
+   "location": "Results"
+  }
+ ],
+ "genai2": [
+  {
+   "source": "goldstein24",
+   "quote": "43.5% of respondents who read a GPT-3-generated article agreed or strongly agreed with the thesis statement",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "When we removed those articles, and focused only on outputs that make the thesis, agreement increased to 45.6%",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "the difference between 46.4 and 47.4% was small and not statistically significant",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "the GPT-3-generated propaganda would be even more persuasive than the original propaganda (52.7% compared to 47.4%)",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "If a propagandist edited the input and selected the best of the three outputs on each topic",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "we provided GPT-3 with the researcher-written thesis statement, rather than an excerpt from the original article",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "we edited the example articles on unrelated topics",
+   "location": "Results"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "resulting in a final sample of 8,221",
+   "location": "Methods"
+  },
+  {
+   "source": "goldstein24",
+   "quote": "While only 24.4% of respondents who were not shown an article agreed or strongly agreed with the thesis statement",
+   "location": "Results"
+  }
+ ],
+ "genai3": [
+  {
+   "source": "yin24",
+   "quote": "a 2 (response source: human vs. AI) × 2 (label: human vs. AI) between-subjects design",
+   "location": "Methods (540 recruited, 455 analyzed)"
+  },
+  {
+   "source": "yin24",
+   "quote": "AI-generated messages made recipients feel more heard than human-generated messages",
+   "location": "Abstract (5.74 vs 5.17; P < 0.001)"
+  },
+  {
+   "source": "yin24",
+   "quote": "recipients felt less heard when they realized that a message came from AI (vs. human)",
+   "location": "Abstract (5.13 vs 5.81; P < 0.001)"
+  },
+  {
+   "source": "yin24",
+   "quote": "Bing Chat was more accurate than human responders in detecting four out of the six basic emotions",
+   "location": "Results"
+  },
+  {
+   "source": "yin24",
+   "quote": "recipients with very positive attitudes did not exhibit any negative AI label effects",
+   "location": "Results"
+  },
+  {
+   "source": "reif25",
+   "quote": "reported that they would be less likely to disclose the use of the tool to their managers",
+   "location": "Study 1 results"
+  }
  ]
 }

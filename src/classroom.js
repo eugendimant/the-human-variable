@@ -4,8 +4,16 @@
 const qs = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const FORMAT_NAME = { choice: 'Call it', causal: 'Find the cause', multi: 'Pick two', estimate: 'Estimate', forecast: 'Forecast', rank: 'Rank', allocate: 'Allocate', delegate: 'Delegate' };
-const LIVE = BANK.challenges.filter(c => c.sources.every(id => BANK.sources[id].verification.status !== 'quarantined'));
+const LIVE = BANK.challenges.filter(c => c.sources.every(id => BANK.sources[id] && BANK.sources[id].verification.status !== 'quarantined'));
 const BY = Object.fromEntries(LIVE.map(c => [c.id, c]));
+function hash(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) h = Math.imul(h ^ str.charCodeAt(i), 16777619); return h >>> 0 }
+function rng(seed) { let x = seed >>> 0; return () => { x += 0x6D2B79F5; let t = x; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296 } }
+function shuffle(a, r) { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1));[a[i], a[j]] = [a[j], a[i]] } return a }
+// Same option order as the students' phones: seeded by the session code and the decision.
+function order(c) { return shuffle(c.options.map((t, i) => ({ t, i })), rng(hash(c.id + '-' + (hash(S.code) >>> 0)))) }
+let fullLoaded = !BANK.public;
+async function loadFull() { if (fullLoaded || !S) return; try { const d = await api('/api/instructor/bank?code=' + S.code); d.challenges.forEach(x => { if (BY[x.id]) Object.assign(BY[x.id], x) }); fullLoaded = true; render() } catch { } }
+let etag = '';
 const cid = (() => { let v = sessionStorage.getItem('thv:inst'); if (!v) { v = 'inst' + Math.random().toString(36).slice(2, 10); sessionStorage.setItem('thv:inst', v) } return v })();
 let S = JSON.parse(sessionStorage.getItem('thv:session') || 'null'); // {code, secret, title}
 let state = null, filter = { q: '', track: 'All', format: 'All' }, timer = null, plan = JSON.parse(sessionStorage.getItem('thv:plan') || '[]');
@@ -20,7 +28,7 @@ function joinURL() { return location.origin + '/?room=' + S.code }
 function qr(text, cell = 6) { const q = qrcode(0, 'M'); q.addData(text); q.make(); const n = q.getModuleCount(); let p = ''; for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) p += `M${c * cell} ${r * cell}h${cell}v${cell}h-${cell}z`; const s = n * cell; return `<svg viewBox="-${cell * 2} -${cell * 2} ${s + cell * 4} ${s + cell * 4}" role="img" aria-label="QR code for the join link" class="qr"><rect x="-${cell * 2}" y="-${cell * 2}" width="${s + cell * 4}" height="${s + cell * 4}" fill="#fff"/><path d="${p}" fill="#14203a"/></svg>` }
 
 function setup() {
-  return `<section class="wrap" style="padding-top:48px;padding-bottom:64px"><div class="section-head"><h2>Run a live class.</h2><p>Students join on their phones with a code. You open one decision at a time, watch answers arrive, then reveal the class picture next to the evidence.</p></div>
+  return `<section class="wrap" style="padding-top:48px;padding-bottom:64px"><div class="section-head"><h1 class="console-h">Run a live class.</h1><p>Students join on their phones with a code. You open one decision at a time, watch answers arrive, then reveal the class picture next to the evidence.</p></div>
   <form class="panel" data-form="create" style="padding:24px;max-width:620px;display:grid;gap:14px">
     <label class="kicker" for="title">Session name (shown to students)</label><input id="title" class="field" maxlength="80" placeholder="For example: Leading with AI, week 3">
     <label class="kicker" for="pass">Instructor passcode (only if your server requires one)</label><input id="pass" class="field" type="password" autocomplete="off">
@@ -47,19 +55,20 @@ function stage() {
     : s.phase === 'closed' ? `<button class="btn btn-solid" data-act="reveal">Reveal to the room</button>`
       : `${nextInCase ? `<button class="btn btn-solid" data-open="${nextInCase.id}">Open case step ${nextInCase.case.step}</button>` : ''}<button class="btn btn-quiet" data-act="lobby">Back to waiting screen</button>`;
   return `<div class="panel card"><div class="case-strip"><span class="tag">${esc(c.track)}</span><span class="tag">${FORMAT_NAME[c.format]}</span>${c.case ? `<span class="tag tag-you">Case step ${c.case.step} of ${c.case.of}</span>` : ''}<span class="tag ${s.phase === 'open' ? 'tag-you' : s.phase === 'revealed' ? 'tag-ev' : ''}">${{ open: 'Answers open', closed: 'Answers stopped', revealed: 'Revealed', lobby: 'Waiting screen' }[s.phase]}</span></div>
-    <p class="scene">${esc(c.scene)}</p><h2 class="q">${esc(c.question)}</h2>
+    <p class="scene">${esc(c.scene)}</p><h2 class="q stage-h" tabindex="-1">${esc(c.question)}</h2>
     ${c.format === 'forecast' ? `<blockquote class="claim">${esc(c.forecast.claim)}</blockquote>` : ''}
-    ${['choice', 'causal', 'multi', 'rank', 'allocate'].includes(c.format) ? `<ol class="present-opts">${c.options.map(o => `<li>${esc(o)}</li>`).join('')}</ol>` : ''}
+    ${['choice', 'causal', 'multi'].includes(c.format) ? `<ol class="present-opts">${order(c).map(o => `<li>${esc(o.t)}</li>`).join('')}</ol>` : ''}
+    ${['rank', 'allocate'].includes(c.format) ? `<ul class="present-opts">${c.options.map(o => `<li>${esc(o)}</li>`).join('')}</ul>` : ''}
     ${c.format === 'delegate' ? `<ol class="present-opts">${c.delegate.tasks.map(t => `<li>${esc(t.text)}</li>`).join('')}</ol>` : ''}
     <div class="count-row"><b class="num" id="resp-count">${s.responses}</b><span>of ${s.participants} participants answered</span><span class="meter-bar"><i style="width:${s.participants ? Math.round(100 * s.responses / s.participants) : 0}%"></i></span></div>
     <div class="next-row">${controls}</div>
-    ${s.phase === 'revealed' && s.aggregate ? reveal(c, s.aggregate) : ''}</div>`;
+    ${s.phase === 'revealed' && s.aggregate ? (c.answerTitle ? reveal(c, s.aggregate) : '<p class="kicker">Loading the evidence…</p>') : ''}</div>`;
 }
 
 function reveal(c, a) {
   const f = c.format; let chart = '';
   const bars = (labels, vals, ev, suffix = '') => { const mx = Math.max(1, ...vals); return `<div class="rv-bars">${labels.map((l, i) => `<div class="rv-row"><span>${esc(l)}</span><span class="rv-track"><i style="width:${vals[i] / mx * 100}%" class="${ev.includes(i) ? 'ev' : ''}"></i></span><b class="num">${vals[i]}${suffix}</b></div>`).join('')}</div>` };
-  if (a.counts) chart = bars(c.options, a.counts, f === 'multi' ? c.multiAnswers : [c.answer]);
+  if (a.counts) { const o = order(c); chart = bars(o.map(x => x.t), o.map(x => a.counts[x.i]), o.map((x, k) => (f === 'multi' ? c.multiAnswers.includes(x.i) : x.i === c.answer) ? k : -1).filter(k => k >= 0)) }
   if (a.hist) { const ev = f === 'estimate' ? c.estimate.target : c.forecast.truth ? 100 : 0, w = (a.hi - a.lo) / a.hist.length; chart = bars(a.hist.map((_, i) => `${Math.round(a.lo + i * w)} to ${Math.round(a.lo + (i + 1) * w)}`), a.hist, [Math.min(a.hist.length - 1, Math.floor((ev - a.lo) / w))]) + `<p class="kicker">Class median ${a.median}. Evidence: ${f === 'estimate' ? c.estimate.target + (c.estimate.unit ?? '%') : c.forecast.truth ? 'the claim is true' : 'the claim is false'}.</p>` }
   if (a.meanPosition) chart = bars(c.options, a.meanPosition, [c.rankAnswer[0]]) + `<p class="kicker">Average rank given by the room (1 = top). Measured order: ${c.rankAnswer.map(i => esc(c.options[i])).join(', ')}.</p>`;
   if (a.meanShare) chart = bars(c.options, a.meanShare, [c.allocate.values.indexOf(Math.max(...c.allocate.values))], '%') + `<p class="kicker">Average share of the budget. Reported effects: ${c.options.map((o, i) => esc(o) + ' ' + esc(c.allocate.valueLabels ? c.allocate.valueLabels[i] : c.allocate.values[i])).join('; ')}.</p>`;
@@ -71,19 +80,24 @@ function reveal(c, a) {
 }
 
 function console_() {
-  return `<section class="wrap" style="padding-top:22px;padding-bottom:64px">
+  return `<section class="wrap" style="padding-top:22px;padding-bottom:64px"><h1 class="sr-only">Live class ${esc(S.code)}</h1>
     <div class="join-banner panel"><div class="join-text"><span class="kicker">Students join at</span><strong class="join-url">${esc(location.host)}</strong><span class="kicker">with code</span><strong class="join-code" aria-label="Session code ${esc(S.code.split('').join(' '))}">${esc(S.code)}</strong>${S.title ? `<span class="kicker">${esc(S.title)}</span>` : ''}</div>${qr(joinURL())}</div>
     <div class="play-grid" style="margin-top:16px">${stage()}<div class="side" style="top:16px">${picker()}<div class="panel" style="padding:18px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-quiet" data-act="csv">Download answers (CSV)</button><button class="btn btn-quiet" data-act="copy">Copy join link</button><button class="btn btn-quiet" data-act="end">End session and delete data</button></div></div></div></section>`;
 }
 
 function render() { qs('#view').innerHTML = S ? (state ? console_() : '<p class="wrap" style="padding:40px 0">Connecting…</p>') : setup() }
+function focusKey(el) { if (!el || el === document.body) return null; if (el.id) return '#' + el.id; for (const k of ['act', 'open']) if (el.dataset && el.dataset[k]) return `[data-${k}="${el.dataset[k]}"]`; return null }
+function rerender() { const key = focusKey(document.activeElement), pos = qs('#pick-list')?.scrollTop, sel = document.activeElement?.selectionStart; render(); if (pos) qs('#pick-list').scrollTop = pos; const el = key && qs(key); if (el) { el.focus({ preventScroll: true }); if (sel !== undefined && el.setSelectionRange) try { el.setSelectionRange(sel, sel) } catch { } } }
 async function poll() {
   if (!S) return;
-  try { state = await api('/api/rooms/' + S.code); const pos = qs('#pick-list')?.scrollTop; const focusId = document.activeElement?.id; render(); if (pos) qs('#pick-list').scrollTop = pos; if (focusId && qs('#' + focusId)) { const el = qs('#' + focusId); el.focus(); if (el.setSelectionRange && el.type === 'search') el.setSelectionRange(el.value.length, el.value.length) } }
+  try {
+    const d = await api('/api/rooms/' + S.code + (etag ? '?v=' + encodeURIComponent(etag) : ''));
+    if (!d.same) { state = d; etag = d.etag || ''; if (d.evidence && BY[d.evidence.id]) Object.assign(BY[d.evidence.id], d.evidence); if (!fullLoaded) loadFull(); rerender() }
+  }
   catch (e) { if (/No session/.test(e.message)) { sessionStorage.removeItem('thv:session'); S = null; state = null; render(); toast('That session no longer exists.'); return } }
   clearTimeout(timer); timer = setTimeout(poll, state && state.phase === 'open' ? 1500 : 3000);
 }
-async function control(action, challenge) { try { state = await api(`/api/rooms/${S.code}/control`, { action, challenge }); render() } catch (e) { toast(e.message) } }
+async function control(action, challenge) { try { state = await api(`/api/rooms/${S.code}/control`, { action, challenge }); etag = ''; rerender(); const h = qs('.stage-h'); if (action === 'open' && h) h.focus() } catch (e) { toast(e.message) } }
 
 document.addEventListener('submit', async e => {
   if (e.target.dataset.form !== 'create') return; e.preventDefault();

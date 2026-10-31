@@ -4,6 +4,7 @@
 - Adams et al. (2021). People systematically overlook subtractive changes. *Nature* 592(7853), 258-261. https://doi.org/10.1038/s41586-021-03380-y
 - Allcott, Braghieri, Eichmeyer & Gentzkow (2020). The Welfare Effects of Social Media. *American Economic Review* 110(3), 629-676. https://doi.org/10.1257/aer.20190658
 - Altay & Gilardi (2024). People are skeptical of headlines labeled as AI-generated, even if true or human-made, because they assume full AI automation. *PNAS Nexus* 3(10), pgae403. https://doi.org/10.1093/pnasnexus/pgae403
+- Ayers et al. (2023). Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum. *JAMA Internal Medicine* 183(6), 589. https://doi.org/10.1001/jamainternmed.2023.1838
 - Bail et al. (2018). Exposure to opposing views on social media can increase political polarization. *Proceedings of the National Academy of Sciences* 115(37), 9216-9221. https://doi.org/10.1073/pnas.1804840115
 - Bastani et al. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. *Proceedings of the National Academy of Sciences* 122(26), e2422633122. https://doi.org/10.1073/pnas.2422633122
 - Benartzi & Thaler (2001). Naive Diversification Strategies in Defined Contribution Saving Plans. *American Economic Review* 91(1), 79-98. https://doi.org/10.1257/aer.91.1.79
@@ -26,7 +27,9 @@
 - Centola (2010). The Spread of Behavior in an Online Social Network Experiment. *Science* 329(5996), 1194-1197. https://doi.org/10.1126/science.1185231
 - Cohn, Maréchal, Tannenbaum & Zünd (2019). Civic honesty around the globe. *Science* 365(6448), 70-73. https://doi.org/10.1126/science.aau8712
 - Costello, Pennycook & Rand (2024). Durably reducing conspiracy beliefs through dialogues with AI. *Science* 385(6714), eadq1814. https://doi.org/10.1126/science.adq1814
+- Cui et al. (2026). The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers. *Management Science* , mnsc.2025.00535 (published online 27 February 2026). https://doi.org/10.1287/mnsc.2025.00535
 - Dell’Acqua et al. (2026). Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality. *Organization Science* 37(2), 403-423. https://doi.org/10.1287/orsc.2025.21838
+- Dietvorst & Bharti (2020). People Reject Algorithms in Uncertain Decision Domains Because They Have Diminishing Sensitivity to Forecasting Error. *Psychological Science* 31(10), 1302-1314. https://doi.org/10.1177/0956797620948841
 - Dietvorst, Simmons & Massey (2015). Algorithm aversion: People erroneously avoid algorithms after seeing them err. *Journal of Experimental Psychology: General* 144(1), 114-126. https://doi.org/10.1037/xge0000033
 - Dietvorst, Simmons & Massey (2018). Overcoming Algorithm Aversion: People Will Use Imperfect Algorithms If They Can (Even Slightly) Modify Them. *Management Science* 64(3), 1155-1170. https://doi.org/10.1287/mnsc.2016.2643
 - Dimant (2019). Contagion of pro- and anti-social behavior among peers and the role of social proximity. *Journal of Economic Psychology* 73, 66-88. https://doi.org/10.1016/j.joep.2019.04.009
@@ -39,16 +42,22 @@
 - Dimant, van Kleef & Shalvi (2020). Requiem for a Nudge: Framing effects in nudging honesty. *Journal of Economic Behavior & Organization* 172, 247-266. https://doi.org/10.1016/j.jebo.2020.02.015
 - Doshi & Hauser (2024). Generative AI enhances individual creativity but reduces the collective diversity of novel content. *Science Advances* 10(28), eadn5290. https://doi.org/10.1126/sciadv.adn5290
 - Fischbacher & Föllmi-Heusi (2013). Lies in Disguise: An Experimental Study on Cheating. *Journal of the European Economic Association* 11(3), 525-547. https://doi.org/10.1111/jeea.12014
+- Fügener, Grahl, Gupta & Ketter (2022). Cognitive Challenges in Human–Artificial Intelligence Collaboration: Investigating the Path Toward Productive Delegation. *Information Systems Research* 33(2), 678-696. https://doi.org/10.1287/isre.2021.1079
 - Gneezy & Rustichini (2000). A Fine is a Price. *The Journal of Legal Studies* 29(1), 1-17. https://doi.org/10.1086/468061
 - Goldin & Rouse (2000). Orchestrating Impartiality: The Impact of "Blind" Auditions on Female Musicians. *American Economic Review* 90(4), 715-741. https://doi.org/10.1257/aer.90.4.715
+- Goldstein, Chao, Grossman, Stamos & Tomz (2024). How persuasive is AI-generated propaganda?. *PNAS Nexus* 3(2), pgae034. https://doi.org/10.1093/pnasnexus/pgae034
 - Goldstein, Cialdini & Griskevicius (2008). A Room with a Viewpoint: Using Social Norms to Motivate Environmental Conservation in Hotels. *Journal of Consumer Research* 35(3), 472-482. https://doi.org/10.1086/586910
 - Gordon et al. (2019). A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook. *Marketing Science* 38(2), 193-225. https://doi.org/10.1287/mksc.2018.1135
+- Granulo, Fuchs & Puntoni (2019). Psychological reactions to human versus robotic job replacement. *Nature Human Behaviour* 3(10), 1062-1069. https://doi.org/10.1038/s41562-019-0670-y
 - Grove et al. (2000). Clinical versus mechanical prediction: A meta-analysis. *Psychological Assessment* 12(1), 19-30. https://doi.org/10.1037/1040-3590.12.1.19
 - Gächter & Schulz (2016). Intrinsic honesty and the prevalence of rule violations across societies. *Nature* 531(7595), 496-499. https://doi.org/10.1038/nature17160
 - Hallsworth, List, Metcalfe & Vlaev (2017). The behavioralist as tax collector: Using natural field experiments to enhance tax compliance. *Journal of Public Economics* 148, 14-31. https://doi.org/10.1016/j.jpubeco.2017.02.003
+- Hartmann, Exner & Domdey (2025). The power of generative marketing: Can generative AI create superhuman visual marketing content?. *International Journal of Research in Marketing* 42(1), 13-31. https://doi.org/10.1016/j.ijresmar.2024.09.002
 - Hoffman, Kahn & Li (2018). Discretion in Hiring. *The Quarterly Journal of Economics* 133(2), 765-800. https://doi.org/10.1093/qje/qjx042
+- Hui, Reshef & Zhou (2024). The Short-Term Effects of Generative Artificial Intelligence on Employment: Evidence from an Online Labor Market. *Organization Science* 35(6), 1977-1989. https://doi.org/10.1287/orsc.2023.18441
 - Iyengar & Lepper (2000). When choice is demotivating: Can one desire too much of a good thing?. *Journal of Personality and Social Psychology* 79(6), 995-1006. https://doi.org/10.1037/0022-3514.79.6.995
 - Jakesch, Hancock & Naaman (2023). Human heuristics for AI-generated language are flawed. *Proceedings of the National Academy of Sciences* 120(11), e2208839120. https://doi.org/10.1073/pnas.2208839120
+- Jia, Luo, Fang & Liao (2024). When and How Artificial Intelligence Augments Employee Creativity. *Academy of Management Journal* 67(1), 5-32. https://doi.org/10.5465/amj.2022.0426
 - Johnson & Goldstein (2004). Defaults and Donation Decisions. *Transplantation* 78(12), 1713-1716. https://doi.org/10.1097/01.TP.0000149788.10382.B2
 - Kahneman & Tversky (1979). Prospect Theory: An Analysis of Decision under Risk. *Econometrica* 47(2), 263-292. https://doi.org/10.2307/1914185
 - Kahneman, Knetsch & Thaler (1990). Experimental Tests of the Endowment Effect and the Coase Theorem. *Journal of Political Economy* 98(6), 1325-1348. https://doi.org/10.1086/261737
@@ -58,8 +67,11 @@
 - Lees & Cikara (2020). Inaccurate group meta-perceptions drive negative out-group attributions in competitive contexts. *Nature Human Behaviour* 4(3), 279-286. https://doi.org/10.1038/s41562-019-0766-4
 - Lewis & Rao (2015). The Unfavorable Economics of Measuring the Returns to Advertising. *The Quarterly Journal of Economics* 130(4), 1941-1973. https://doi.org/10.1093/qje/qjv023
 - Logg, Minson & Moore (2019). Algorithm appreciation: People prefer algorithmic to human judgment. *Organizational Behavior and Human Decision Processes* 151, 90-103. https://doi.org/10.1016/j.obhdp.2018.12.005
+- Longoni & Cian (2022). Artificial Intelligence in Utilitarian vs. Hedonic Contexts: The "Word-of-Machine" Effect. *Journal of Marketing* 86(1), 91-108. https://doi.org/10.1177/0022242920957347
 - Longoni, Bonezzi & Morewedge (2019). Resistance to Medical Artificial Intelligence. *Journal of Consumer Research* 46(4), 629-650. https://doi.org/10.1093/jcr/ucz013
+- Luo, Tong, Fang & Qu (2019). Frontiers: Machines vs. Humans: The Impact of Artificial Intelligence Chatbot Disclosure on Customer Purchases. *Marketing Science* 38(6), 937-947. https://doi.org/10.1287/mksc.2019.1192
 - Madrian & Shea (2001). The Power of Suggestion: Inertia in 401(k) Participation and Savings Behavior. *Quarterly Journal of Economics* 116(4), 1149-1187. https://doi.org/10.1162/003355301753265543
+- Matz et al. (2024). The potential of generative AI for personalized persuasion at scale. *Scientific Reports* 14, 4692. https://doi.org/10.1038/s41598-024-53755-0
 - Mellers et al. (2014). Psychological Strategies for Winning a Geopolitical Forecasting Tournament. *Psychological Science* 25(5), 1106-1115. https://doi.org/10.1177/0956797614524255
 - Moore & Healy (2008). The trouble with overconfidence. *Psychological Review* 115(2), 502-517. https://doi.org/10.1037/0033-295X.115.2.502
 - Noy & Zhang (2023). Experimental evidence on the productivity effects of generative artificial intelligence. *Science* 381(6654), 187-192. https://doi.org/10.1126/science.adh2586
@@ -67,14 +79,17 @@
 - Panizza, Dimant, Kimbrough & Vostroknutov (2024). Measuring norm pluralism and perceived polarization in US politics. *PNAS Nexus* 3(10), pgae413. https://doi.org/10.1093/pnasnexus/pgae413
 - Pennycook et al. (2021). Shifting attention to accuracy can reduce misinformation online. *Nature* 592(7855), 590-595. https://doi.org/10.1038/s41586-021-03344-2
 - Prentice & Miller (1993). Pluralistic ignorance and alcohol use on campus: Some consequences of misperceiving the social norm. *Journal of Personality and Social Psychology* 64(2), 243-256. https://doi.org/10.1037/0022-3514.64.2.243
+- Reif, Larrick & Soll (2025). Evidence of a social evaluation penalty for using AI. *Proceedings of the National Academy of Sciences* 122(19), e2426766122. https://doi.org/10.1073/pnas.2426766122
 - Ren, Dimant & Schweitzer (2023). Beyond belief: How social engagement motives influence the spread of conspiracy theories. *Journal of Experimental Social Psychology* 104, 104421. https://doi.org/10.1016/j.jesp.2022.104421
 - Salvi, Horta Ribeiro, Gallotti & West (2025). On the conversational persuasiveness of GPT-4. *Nature Human Behaviour* 9(8), 1645-1653. https://doi.org/10.1038/s41562-025-02194-6
 - Scheibehenne, Greifeneder & Todd (2010). Can There Ever Be Too Many Options? A Meta-Analytic Review of Choice Overload. *Journal of Consumer Research* 37(3), 409-425. https://doi.org/10.1086/651235
 - Schultz et al. (2007). The Constructive, Destructive, and Reconstructive Power of Social Norms. *Psychological Science* 18(5), 429-434. https://doi.org/10.1111/j.1467-9280.2007.01917.x
 - Shelton & Richeson (2005). Intergroup contact and pluralistic ignorance. *Journal of Personality and Social Psychology* 88(1), 91-107. https://doi.org/10.1037/0022-3514.88.1.91
 - Shu et al. (2012). Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end. *Proceedings of the National Academy of Sciences* 109(38), 15197-15200. https://doi.org/10.1073/pnas.1209746109
+- Spitale, Biller-Andorno & Germani (2023). AI model GPT-3 (dis)informs us better than humans. *Science Advances* 9(26), eadh1850. https://doi.org/10.1126/sciadv.adh1850
 - Thaler & Benartzi (2004). Save More Tomorrow: Using Behavioral Economics to Increase Employee Saving. *Journal of Political Economy* 112(S1), S164-S187. https://doi.org/10.1086/380085
 - Toma et al. (2026). Promoting Safe Opioid Disposal: Experimental Evidence on Behavioral Messaging With Financial Incentives. *Health Economics* 35(7), 1023-1032. https://doi.org/10.1002/hec.70085
+- Tong, Jia, Luo & Fang (2021). The Janus face of artificial intelligence feedback: Deployment versus disclosure effects on employee performance. *Strategic Management Journal* 42(9), 1600-1631. https://doi.org/10.1002/smj.3322
 - Tversky & Kahneman (1974). Judgment under Uncertainty: Heuristics and Biases. *Science* 185(4157), 1124-1131. https://doi.org/10.1126/science.185.4157.1124
 - Tversky & Kahneman (1981). The framing of decisions and the psychology of choice. *Science* 211(4481), 453-458. https://doi.org/10.1126/science.7455683
 - Vaccaro, Almaatouq & Malone (2024). When combinations of humans and AI are useful: A systematic review and meta-analysis. *Nature Human Behaviour* 8(12), 2293-2303. https://doi.org/10.1038/s41562-024-02024-1
@@ -82,3 +97,5 @@
 - Walasek & Stewart (2015). How to make loss aversion disappear and reverse: Tests of the decision by sampling origin of loss aversion. *Journal of Experimental Psychology: General* 144(1), 7-11. https://doi.org/10.1037/xge0000039
 - Woolley et al. (2010). Evidence for a Collective Intelligence Factor in the Performance of Human Groups. *Science* 330(6004), 686-688. https://doi.org/10.1126/science.1193147
 - Yeomans, Shah, Mullainathan & Kleinberg (2019). Making sense of recommendations. *Journal of Behavioral Decision Making* 32(4), 403-414. https://doi.org/10.1002/bdm.2118
+- Yin, Jia & Wakslak (2024). AI can help people feel heard, but an AI label diminishes this impact. *Proceedings of the National Academy of Sciences* 121(14), e2319112121. https://doi.org/10.1073/pnas.2319112121
+- Zhou & Lee (2024). Generative artificial intelligence, human creativity, and art. *PNAS Nexus* 3(3), pgae052. https://doi.org/10.1093/pnasnexus/pgae052

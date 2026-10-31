@@ -1,0 +1,262 @@
+[
+ [
+  "ai07",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "ai09",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "social03",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "ai12",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "social04",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "social10",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "social13",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "social15",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "social20",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "bz01",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "bz12",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "meta-perception-causal",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "dimant-observability-choice",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "dimant-polarizednorms-choice",
+  "options",
+  "Review 1 M8: plausible, length-balanced options"
+ ],
+ [
+  "ai01",
+  "options",
+  "B2: stale field could reveal the answer"
+ ],
+ [
+  "ai01",
+  "answer",
+  "B2: stale field could reveal the answer"
+ ],
+ [
+  "ai02",
+  "options",
+  "B2: stale field could reveal the answer"
+ ],
+ [
+  "ai02",
+  "answer",
+  "B2: stale field could reveal the answer"
+ ],
+ [
+  "ai04",
+  "options",
+  "B2: stale field could reveal the answer"
+ ],
+ [
+  "ai04",
+  "answer",
+  "B2: stale field could reveal the answer"
+ ],
+ [
+  "social12",
+  "options",
+  "B2: stale field could reveal the answer"
+ ],
+ [
+  "social12",
+  "answer",
+  "B2: stale field could reveal the answer"
+ ],
+ [
+  "ai01",
+  "estimate range",
+  "0-70 -> 0-100"
+ ],
+ [
+  "ai02",
+  "estimate range",
+  "0-50 -> 0-100"
+ ],
+ [
+  "ai04",
+  "estimate range",
+  "0-50 -> 0-100"
+ ],
+ [
+  "axb03",
+  "estimate range",
+  "0-60 -> 0-100"
+ ],
+ [
+  "axb04",
+  "estimate range",
+  "0-50 -> 0-100"
+ ],
+ [
+  "axb14",
+  "estimate range",
+  "0-70 -> 0-100"
+ ],
+ [
+  "bz03",
+  "estimate range",
+  "0-25 -> 0-100"
+ ],
+ [
+  "dimant-proximity-estimate",
+  "estimate range",
+  "0-60 -> 0-100"
+ ],
+ [
+  "axb15",
+  "estimate range",
+  "0-60 -> 0-100"
+ ],
+ [
+  "axb08",
+  "values",
+  "M6"
+ ],
+ [
+  "axb02",
+  "rankTies",
+  "M6"
+ ],
+ [
+  "dimant-enforcers-rank",
+  "rankTies",
+  "M6"
+ ],
+ [
+  "axb01",
+  "tasks",
+  "M6: dropped task resting on a non-significant estimate"
+ ],
+ [
+  "axe01",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe02",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe03",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe04",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe05",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe06",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe07",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe08",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe09",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe10",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe11",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe12",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe13",
+  "added",
+  "cluster E"
+ ],
+ [
+  "axe14",
+  "added",
+  "cluster E"
+ ],
+ [
+  "genai1",
+  "added",
+  "cluster E"
+ ],
+ [
+  "genai2",
+  "added",
+  "cluster E"
+ ],
+ [
+  "genai3",
+  "added",
+  "cluster E"
+ ]
+]

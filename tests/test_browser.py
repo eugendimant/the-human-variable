@@ -34,6 +34,10 @@ def answer(pg, c):
     elif f == 'allocate': pass  # starts as an even split that sums to the budget
     elif f == 'delegate':
         for i in range(len(c['delegate']['tasks'])): pg.click(f'[data-deleg="{i}"][data-pick="0"]')
+    if f == 'allocate':  # move one slider so the split is the player's own
+        pg.eval_on_selector('[data-alloc="0"]', "e=>{e.value=+e.value;e.dispatchEvent(new Event('input',{bubbles:true}))}")
+    if f != 'forecast':
+        pg.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}")
 
 def one_of_each():
     seen = {}
@@ -59,7 +63,7 @@ def test_keyboard_round_and_record(browser):
     for _ in range(12):
         if pg.locator('#lock-btn').count() == 0: break
         c = next(x for x in LIVE if x['id'] == pg.evaluate('THV.st.deck[THV.st.i].id'))
-        answer(pg, c); pg.keyboard.press('Enter') if c['format'] not in ('rank',) else pg.click('#lock-btn')
+        answer(pg, c); pg.focus('#q-h'); pg.keyboard.press('Enter')
         pg.wait_for_selector('#r-h'); pg.keyboard.press('n')
     pg.wait_for_selector('text=Round complete.')
     assert pg.locator('.score-big').count() == 1 and pg.locator('.score-meta div').count() == 3 and not pg.errors
@@ -106,7 +110,8 @@ def test_live_classroom_three_phones(browser, tmp_path):
         c = next(x for x in cl.CHALLENGES.values() if x['format'] == 'choice')
         inst.click(f'[data-open="{c["id"]}"]')
         for ph in phones:
-            ph.wait_for_selector('.opt', timeout=10000); ph.locator('.opt').first.click(); ph.click('#lock-btn')
+            ph.wait_for_selector('.opt', timeout=10000); ph.locator('.opt').first.click()
+            ph.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); ph.click('#lock-btn')
         phones[0].wait_for_selector('text=Your answer is in', timeout=10000)
         for _ in range(40):
             if (inst.text_content('#resp-count') or '').strip() == '3': break
@@ -118,3 +123,17 @@ def test_live_classroom_three_phones(browser, tmp_path):
         assert not inst.errors and not any(ph.errors for ph in phones if hasattr(ph, 'errors'))
     finally:
         srv.shutdown()
+
+def test_lock_requires_confidence_and_touch(browser):
+    pg = page(browser); c = next(x for x in LIVE if x['format'] == 'choice'); pg.goto(URL + '?play=' + c['id'])
+    pg.keyboard.press('1'); assert not pg.is_enabled('#lock-btn')
+    pg.eval_on_selector('#conf', "e=>{e.value=80;e.dispatchEvent(new Event('input',{bubbles:true}))}"); assert pg.is_enabled('#lock-btn')
+    r = next(x for x in LIVE if x['format'] == 'rank'); pg.goto(URL + '?play=' + r['id'])
+    pg.eval_on_selector('#conf', "e=>{e.value=80;e.dispatchEvent(new Event('input',{bubbles:true}))}"); assert not pg.is_enabled('#lock-btn')
+    pg.click('[data-rank="0"][data-dir="1"]'); assert pg.is_enabled('#lock-btn')
+
+def test_causal_diagram_hides_answer_until_reveal(browser):
+    pg = page(browser); pg.goto(URL + '?play=axb05')
+    assert 'Spending' not in pg.text_content('.dag')
+    answer(pg, next(x for x in LIVE if x['id'] == 'axb05')); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+    assert 'Spending' in pg.text_content('.dag')

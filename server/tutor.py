@@ -151,6 +151,10 @@ class Tutor:
     @property
     def enabled(self) -> bool: return bool(self.key)
 
+    def purge_cache(self, days: float = 30):
+        with self.cache_lock:
+            self.db.execute('DELETE FROM tutor_cache WHERE t < ?', (time.time() - days * 86400,)); self.db.commit()
+
     def status(self, client: str = '') -> dict:
         return {'enabled': self.enabled, 'remaining': self.budget.remaining(client) if self.enabled else 0, 'presets': list(PRESETS.values())}
 

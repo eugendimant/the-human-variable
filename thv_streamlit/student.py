@@ -12,7 +12,7 @@ def response_widgets(c: dict, key: str):
         sel = st.multiselect('Choose two', range(len(c['options'])), format_func=lambda i: c['options'][i], max_selections=len(c['multiAnswers']), key=key + 'm')
         return sel if len(sel) == len(c['multiAnswers']) else None
     if f == 'estimate':
-        e = c['estimate']; return st.slider(e['label'], e['min'], e['max'], (e['min'] + e['max']) // 2, step=e.get('step', 1), key=key + 'e')
+        e = c['estimate']; return st.number_input(f"{e['label']} ({e['min']} to {e['max']})", min_value=e['min'], max_value=e['max'], value=None, step=e.get('step', 1), key=key + 'e', placeholder='Your estimate')
     if f == 'forecast':
         st.markdown(f"<div class='thv-claim'>{c['forecast']['claim']}</div>", unsafe_allow_html=True)
         return st.slider('Probability the claim is true (%)', 0, 100, 50, step=5, key=key + 'f')
@@ -39,6 +39,10 @@ def show_reveal(c: dict, a: dict):
     cols[0].metric('Answers', a['n']); cols[1].metric('Matched the evidence', f"{a['shareCorrect'] or 0}%"); cols[2].metric('Average score', a['meanScore'] if a['meanScore'] is not None else '–')
     if 'counts' in a: st.bar_chart({o[:40]: v for o, v in zip(c['options'], a['counts'])}, horizontal=True)
     if 'hist' in a: st.bar_chart(a['hist']); st.caption(f"Class median {a['median']}. Evidence: {c['estimate']['target'] if c['format']=='estimate' else ('true' if c['forecast']['truth'] else 'false')}.")
+    if 'meanPosition' in a: st.bar_chart({o[:40]: len(c['options']) + 1 - p for o, p in zip(c['options'], a['meanPosition']) if p is not None}, horizontal=True); st.caption('Higher bar = ranked nearer the top by the room. Measured order: ' + ', '.join(c['options'][i] for i in c['rankAnswer']) + '.')
+    if 'meanShare' in a: st.bar_chart({o[:40]: v for o, v in zip(c['options'], a['meanShare']) if v is not None}, horizontal=True); st.caption('Average budget share. Reported effects: ' + '; '.join(f"{o} {l}" for o, l in zip(c['options'], c['allocate'].get('valueLabels', c['allocate']['values']))) + '.')
+    if 'taskCounts' in a:
+        for t, cnt in zip(c['delegate']['tasks'], a['taskCounts']): st.write(f"**{t['text']}**: {cnt[t['answer']]} of {a['n']} chose {c['delegate']['choices'][t['answer']]}. {t['why']}")
     st.info(f"**What a manager does with this.** {c['implication']}\n\n**Where the evidence comes from.** {c['boundary']}")
 
 def run():
@@ -70,9 +74,9 @@ def run():
         st.write(c['scene']); st.subheader(c['question'])
         with st.form(key='f' + c['id']):
             r = response_widgets(c, c['id'])
-            conf = None if c['format'] == 'forecast' else st.slider('How sure are you? (%)', 0, 100, 60, step=5)
+            conf = None if c['format'] == 'forecast' else st.number_input('How sure are you? (0 to 100%)', min_value=0, max_value=100, value=None, step=5, placeholder='Your confidence')
             if st.form_submit_button('Lock my answer', type='primary'):
-                if r is None: st.error('Complete your answer first.')
+                if r is None or (c['format'] != 'forecast' and conf is None): st.error('Give your answer and your confidence first.')
                 else:
                     try: m = S.submit(R['code'], R['token'], r, conf)['message']
                     except cl.ClassroomError as e: m = str(e)

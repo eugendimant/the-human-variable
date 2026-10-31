@@ -80,3 +80,51 @@ def test_abuse_limits(base):
 def test_tutor_endpoint_curated(base):
     s, r, _ = req(base, '/api/tutor', {'question': 'How would I test this in my company?', 'challenge': next(iter(cl.CHALLENGES)), 'client': 'abc'})
     assert s == 200 and r['answer'] and r['mode'] in ('curated', 'ai', 'cache')
+
+def test_served_pages_carry_no_answers(base):
+    import re
+    for p in ('/', '/classroom'):
+        s, body, _ = req(base, p, raw=True)
+        m = re.search(rb'<script>const BANK = (.*?);</script>', body, re.S); bank = json.loads(m.group(1))
+        assert bank['public'] is True
+        keys = set()
+        def walk(o):
+            if isinstance(o, dict): keys.update(o); [walk(v) for v in o.values()]
+            elif isinstance(o, list): [walk(v) for v in o]
+        walk(bank['challenges'])
+        assert not keys & {'answer', 'multiAnswers', 'rankAnswer', 'target', 'truth', 'values', 'explain', 'answerTitle', 'why'}, p
+
+def test_reveal_blocked_while_open_in_a_class(base):
+    c = next(x for x in cl.CHALLENGES.values() if x['format'] == 'forecast')
+    s, full, _ = req(base, '/api/reveal/' + c['id']); assert s == 200 and 'truth' in full['forecast']
+    _, room, _ = req(base, '/api/rooms', {'title': 'block'}, client='inst9'); key = room['secret']
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'open', 'challenge': c['id']}, key=key, client='inst9')
+    app.STORE._open = None
+    assert req(base, '/api/reveal/' + c['id'], client='peek')[0] == 409
+    assert c['id'] not in {x['id'] for x in req(base, '/api/library', client='peek')[1]['challenges']}
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'reveal'}, key=key, client='inst9')
+    st = req(base, f"/api/rooms/{room['code']}", client='peek')[1]; assert st['evidence']['id'] == c['id']
+    app.STORE._open = None
+    assert req(base, '/api/reveal/' + c['id'], client='peek')[0] == 200
+
+def test_instructor_bank_needs_key(base):
+    _, room, _ = req(base, '/api/rooms', {'title': 'bank'}, client='inst8')
+    assert req(base, f"/api/instructor/bank?code={room['code']}", client='inst8')[0] == 403
+    s, d, _ = req(base, f"/api/instructor/bank?code={room['code']}", key=room['secret'], client='inst8'); assert s == 200 and 'answerTitle' in d['challenges'][0]
+
+def test_public_host_requires_passcode(base, monkeypatch):
+    monkeypatch.setattr(app, 'LOOPBACK', False); monkeypatch.setattr(app, 'PASSCODE', '')
+    assert req(base, '/api/rooms', {'title': 'x'}, client='pub')[0] == 403
+    monkeypatch.setattr(app, 'PASSCODE', 'sesame')
+    assert req(base, '/api/rooms', {'title': 'x', 'passcode': 'nope'}, client='pub')[0] == 403
+    assert req(base, '/api/rooms', {'title': 'x', 'passcode': 'sesame'}, client='pub')[0] == 201
+
+def test_forwarded_for_uses_rightmost(base, monkeypatch):
+    monkeypatch.setattr(app, 'TRUST_PROXY', True)
+    h = app.Handler.__new__(app.Handler); h.headers = {'X-Forwarded-For': 'spoofed, 10.0.0.9'}; h.client_address = ('127.0.0.1', 1)
+    assert h.ip() == '10.0.0.9'
+
+def test_join_flood_limited(base):
+    _, room, _ = req(base, '/api/rooms', {'title': 'flood'}, client='inst7')
+    codes = [req(base, f"/api/rooms/{room['code']}/join", {}, client=f'f{i}')[0] for i in range(110)]
+    assert codes.count(200) <= 75 and 429 in codes

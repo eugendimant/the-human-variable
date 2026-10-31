@@ -1736,6 +1736,366 @@
     "text_read": "abstract (Crossref)",
     "note": "Science published an Editorial Expression of Concern on 11 June 2026 (doi 10.1126/science.aej2383); the authors released a corrected reanalysis reporting the same direction, significance and size (Zenodo record 22754984). Included on 2026-10-31 at Eugen Dimant's instruction that the concern no longer applies."
    }
+  },
+  "luo19": {
+   "id": "luo19",
+   "authors": "Luo, Tong, Fang & Qu",
+   "authors_full": "Xueming Luo, Siliang Tong, Zheng Fang, Zhe Qu",
+   "year": 2019,
+   "title": "Frontiers: Machines vs. Humans: The Impact of Artificial Intelligence Chatbot Disclosure on Customer Purchases",
+   "venue": "Marketing Science",
+   "volume": "38(6)",
+   "pages": "937-947",
+   "doi": "10.1287/mksc.2019.1192",
+   "url": "https://doi.org/10.1287/mksc.2019.1192",
+   "kind": "peer-reviewed",
+   "takeaway": "Undisclosed sales chatbots matched proficient human agents, but disclosing the bot before the call cut purchases by more than 79.7%.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record (volume, issue and pages from RePEc/IDEAS; Crossref lists article number only)",
+    "text_read": "Abstract via INFORMS PDF landing page and IDEAS/RePEc",
+    "text_url": "https://ideas.repec.org/a/inm/ormksc/v38y2019i6p937-947.html"
+   }
+  },
+  "ayers23": {
+   "id": "ayers23",
+   "authors": "Ayers et al.",
+   "authors_full": "John W. Ayers, Adam Poliak, Mark Dredze, Eric C. Leas, Zechariah Zhu, Jessica B. Kelley, Dennis J. Faix, Aaron M. Goodman, Christopher A. Longhurst, Michael Hogarth, Davey M. Smith",
+   "year": 2023,
+   "title": "Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum",
+   "venue": "JAMA Internal Medicine",
+   "volume": "183(6)",
+   "pages": "589",
+   "doi": "10.1001/jamainternmed.2023.1838",
+   "url": "https://doi.org/10.1001/jamainternmed.2023.1838",
+   "kind": "peer-reviewed",
+   "takeaway": "Blinded health professionals preferred ChatGPT's answers to physicians' answers on a public forum in 78.6% of evaluations, rating them higher on quality and empathy.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record (Crossref gives first page 589 only)",
+    "text_read": "Full text (Methods, Results, Discussion, Limitations) on JAMA Network open-access page",
+    "text_url": "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2804309"
+   },
+   "flags": "Evaluators were blinded but were also coauthors; accuracy was not separately assessed and longer chatbot answers may have inflated empathy ratings (authors' own limitations)."
+  },
+  "zhou24": {
+   "id": "zhou24",
+   "authors": "Zhou & Lee",
+   "authors_full": "Eric Zhou, Dokyun Lee",
+   "year": 2024,
+   "title": "Generative artificial intelligence, human creativity, and art",
+   "venue": "PNAS Nexus",
+   "volume": "3(3)",
+   "pages": "pgae052",
+   "doi": "10.1093/pnasnexus/pgae052",
+   "url": "https://doi.org/10.1093/pnasnexus/pgae052",
+   "kind": "peer-reviewed",
+   "takeaway": "Artists who adopted text-to-image AI produced more and earned more favorites per view, while average content novelty and visual novelty fell.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (abstract, results, discussion) on Oxford Academic open-access page",
+    "text_url": "https://academic.oup.com/pnasnexus/article/3/3/pgae052/7618478"
+   },
+   "flags": "Abstract reports a 25% productivity gain while Results describe a 50% rise at adoption; items avoid the productivity size."
+  },
+  "goldstein24": {
+   "id": "goldstein24",
+   "authors": "Goldstein, Chao, Grossman, Stamos & Tomz",
+   "authors_full": "Josh A. Goldstein, Jason Chao, Shelby Grossman, Alex Stamos, Michael Tomz",
+   "year": 2024,
+   "title": "How persuasive is AI-generated propaganda?",
+   "venue": "PNAS Nexus",
+   "volume": "3(2)",
+   "pages": "pgae034",
+   "doi": "10.1093/pnasnexus/pgae034",
+   "url": "https://doi.org/10.1093/pnasnexus/pgae034",
+   "kind": "peer-reviewed",
+   "takeaway": "GPT-3 articles nearly matched real propaganda in persuading US adults, and light human prompt editing plus curation made them more persuasive than the originals.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text via Europe PMC open-access XML",
+    "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10878360/fullTextXML"
+   }
+  },
+  "spitale23": {
+   "id": "spitale23",
+   "authors": "Spitale, Biller-Andorno & Germani",
+   "authors_full": "Giovanni Spitale, Nikola Biller-Andorno, Federico Germani",
+   "year": 2023,
+   "title": "AI model GPT-3 (dis)informs us better than humans",
+   "venue": "Science Advances",
+   "volume": "9(26)",
+   "pages": "eadh1850",
+   "doi": "10.1126/sciadv.adh1850",
+   "url": "https://doi.org/10.1126/sciadv.adh1850",
+   "kind": "peer-reviewed",
+   "takeaway": "Readers judged true GPT-3 tweets correctly more often than true human tweets, and spotted false GPT-3 tweets slightly less often than false human ones.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text via Europe PMC open-access XML",
+    "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10306283/fullTextXML"
+   }
+  },
+  "matz24": {
+   "id": "matz24",
+   "authors": "Matz et al.",
+   "authors_full": "S. C. Matz, J. D. Teeny, S. S. Vaid, H. Peters, G. M. Harari, M. Cerf",
+   "year": 2024,
+   "title": "The potential of generative AI for personalized persuasion at scale",
+   "venue": "Scientific Reports",
+   "volume": "14",
+   "pages": "4692",
+   "doi": "10.1038/s41598-024-53755-0",
+   "url": "https://doi.org/10.1038/s41598-024-53755-0",
+   "kind": "peer-reviewed",
+   "takeaway": "ChatGPT-written messages matched to people's psychological profiles were more persuasive in 20 of 33 tests, but not for every product.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text via Europe PMC open-access XML",
+    "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10897294/fullTextXML"
+   }
+  },
+  "hui24": {
+   "id": "hui24",
+   "authors": "Hui, Reshef & Zhou",
+   "authors_full": "Xiang Hui, Oren Reshef, Luofeng Zhou",
+   "year": 2024,
+   "title": "The Short-Term Effects of Generative Artificial Intelligence on Employment: Evidence from an Online Labor Market",
+   "venue": "Organization Science",
+   "volume": "35(6)",
+   "pages": "1977-1989",
+   "doi": "10.1287/orsc.2023.18441",
+   "url": "https://doi.org/10.1287/orsc.2023.18441",
+   "kind": "peer-reviewed",
+   "takeaway": "After ChatGPT and image generators launched, freelancers in highly affected occupations lost jobs and earnings, with suggestive evidence that top freelancers were hit hardest.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_url": "https://api.openalex.org/works/doi:10.1287/orsc.2023.18441"
+   }
+  },
+  "longoni22": {
+   "id": "longoni22",
+   "authors": "Longoni & Cian",
+   "authors_full": "Chiara Longoni, Luca Cian",
+   "year": 2022,
+   "title": "Artificial Intelligence in Utilitarian vs. Hedonic Contexts: The \"Word-of-Machine\" Effect",
+   "venue": "Journal of Marketing",
+   "volume": "86(1)",
+   "pages": "91-108",
+   "doi": "10.1177/0022242920957347",
+   "url": "https://doi.org/10.1177/0022242920957347",
+   "kind": "peer-reviewed",
+   "takeaway": "Consumers trust AI recommenders for practical (utilitarian) attributes but not for sensory (hedonic) ones; the gap disappears when AI augments a human.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_url": "https://api.openalex.org/works/doi:10.1177/0022242920957347"
+   }
+  },
+  "dietvorst20": {
+   "id": "dietvorst20",
+   "authors": "Dietvorst & Bharti",
+   "authors_full": "Berkeley J. Dietvorst, Soaham Bharti",
+   "year": 2020,
+   "title": "People Reject Algorithms in Uncertain Decision Domains Because They Have Diminishing Sensitivity to Forecasting Error",
+   "venue": "Psychological Science",
+   "volume": "31(10)",
+   "pages": "1302-1314",
+   "doi": "10.1177/0956797620948841",
+   "url": "https://doi.org/10.1177/0956797620948841",
+   "kind": "peer-reviewed",
+   "takeaway": "In unpredictable domains people are less likely to use the best algorithm, because they chase methods with a chance of a near-perfect answer.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_url": "https://api.openalex.org/works/doi:10.1177/0956797620948841"
+   }
+  },
+  "granulo19": {
+   "id": "granulo19",
+   "authors": "Granulo, Fuchs & Puntoni",
+   "authors_full": "Armin Granulo, Christoph Fuchs, Stefano Puntoni",
+   "year": 2019,
+   "title": "Psychological reactions to human versus robotic job replacement",
+   "venue": "Nature Human Behaviour",
+   "volume": "3(10)",
+   "pages": "1062-1069",
+   "doi": "10.1038/s41562-019-0670-y",
+   "url": "https://doi.org/10.1038/s41562-019-0670-y",
+   "kind": "peer-reviewed",
+   "takeaway": "People prefer that others be replaced by humans rather than robots, but reverse that preference for their own jobs, because robot replacement threatens self-worth less.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract on Erasmus University repository page and Nature article page",
+    "text_url": "https://pure.eur.nl/en/publications/41e6a6cd-516e-47c1-94ac-e939a166758f"
+   }
+  },
+  "yin24": {
+   "id": "yin24",
+   "authors": "Yin, Jia & Wakslak",
+   "authors_full": "Yidan Yin, Nan Jia, Cheryl J. Wakslak",
+   "year": 2024,
+   "title": "AI can help people feel heard, but an AI label diminishes this impact",
+   "venue": "Proceedings of the National Academy of Sciences",
+   "volume": "121(14)",
+   "pages": "e2319112121",
+   "doi": "10.1073/pnas.2319112121",
+   "url": "https://doi.org/10.1073/pnas.2319112121",
+   "kind": "peer-reviewed",
+   "takeaway": "AI-written replies made people feel more heard than human replies, but labeling a reply as AI made people feel less heard.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text via Europe PMC open-access XML",
+    "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10998586/fullTextXML"
+   }
+  },
+  "reif25": {
+   "id": "reif25",
+   "authors": "Reif, Larrick & Soll",
+   "authors_full": "Jessica A. Reif, Richard P. Larrick, Jack B. Soll",
+   "year": 2025,
+   "title": "Evidence of a social evaluation penalty for using AI",
+   "venue": "Proceedings of the National Academy of Sciences",
+   "volume": "122(19)",
+   "pages": "e2426766122",
+   "doi": "10.1073/pnas.2426766122",
+   "url": "https://doi.org/10.1073/pnas.2426766122",
+   "kind": "peer-reviewed",
+   "takeaway": "People who get help from AI are rated lazier and less competent than those who get other help, and employees anticipate this and hide AI use.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text via Europe PMC open-access XML",
+    "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12088386/fullTextXML"
+   }
+  },
+  "fugener22": {
+   "id": "fugener22",
+   "authors": "Fügener, Grahl, Gupta & Ketter",
+   "authors_full": "Andreas Fügener, Jörn Grahl, Alok Gupta, Wolfgang Ketter",
+   "year": 2022,
+   "title": "Cognitive Challenges in Human–Artificial Intelligence Collaboration: Investigating the Path Toward Productive Delegation",
+   "venue": "Information Systems Research",
+   "volume": "33(2)",
+   "pages": "678-696",
+   "doi": "10.1287/isre.2021.1079",
+   "url": "https://doi.org/10.1287/isre.2021.1079",
+   "kind": "peer-reviewed",
+   "takeaway": "In classification tasks, human-AI teams improved only when the AI delegated work to humans; humans delegated poorly because they lack metaknowledge.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract on Erasmus University repository page",
+    "text_url": "https://pure.eur.nl/en/publications/7ce28963-ab8a-44f8-a647-b98064150835"
+   }
+  },
+  "tong21": {
+   "id": "tong21",
+   "authors": "Tong, Jia, Luo & Fang",
+   "authors_full": "Siliang Tong, Nan Jia, Xueming Luo, Zheng Fang",
+   "year": 2021,
+   "title": "The Janus face of artificial intelligence feedback: Deployment versus disclosure effects on employee performance",
+   "venue": "Strategic Management Journal",
+   "volume": "42(9)",
+   "pages": "1600-1631",
+   "doi": "10.1002/smj.3322",
+   "url": "https://doi.org/10.1002/smj.3322",
+   "kind": "peer-reviewed",
+   "takeaway": "AI feedback improves employee performance when deployed, but disclosing it triggers negative perceptions, a penalty that shrinks with tenure.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_url": "https://api.openalex.org/works/doi:10.1002/smj.3322"
+   }
+  },
+  "jia24": {
+   "id": "jia24",
+   "authors": "Jia, Luo, Fang & Liao",
+   "authors_full": "Nan Jia, Xueming Luo, Zheng Fang, Chengcheng Liao",
+   "year": 2024,
+   "title": "When and How Artificial Intelligence Augments Employee Creativity",
+   "venue": "Academy of Management Journal",
+   "volume": "67(1)",
+   "pages": "5-32",
+   "doi": "10.5465/amj.2022.0426",
+   "url": "https://doi.org/10.5465/amj.2022.0426",
+   "kind": "peer-reviewed",
+   "takeaway": "When AI handled the first, codified stage of telemarketing, employees became more creative with customers, mainly the higher-skilled ones.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_url": "https://api.openalex.org/works/doi:10.5465/amj.2022.0426"
+   }
+  },
+  "cui26": {
+   "id": "cui26",
+   "authors": "Cui et al.",
+   "authors_full": "Kevin Zheyuan Cui, Mert Demirer, Sonia Jaffe, Leon Musolff, Sida Peng, Tobias Salz",
+   "year": 2026,
+   "title": "The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers",
+   "venue": "Management Science",
+   "volume": "",
+   "pages": "mnsc.2025.00535 (published online 27 February 2026)",
+   "doi": "10.1287/mnsc.2025.00535",
+   "url": "https://doi.org/10.1287/mnsc.2025.00535",
+   "kind": "peer-reviewed",
+   "takeaway": "Across randomized trials with 4,867 developers at three firms, access to an AI coding assistant raised completed tasks by 26.08%, more for less experienced developers.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record (online version of record; volume and issue not yet assigned)",
+    "text_read": "Abstract in Crossref record",
+    "text_url": "https://api.crossref.org/works/10.1287/mnsc.2025.00535"
+   },
+   "flags": "Authors note each experiment is noisy and results vary across experiments (SE 10.3% on the pooled estimate)."
+  },
+  "hartmann25": {
+   "id": "hartmann25",
+   "authors": "Hartmann, Exner & Domdey",
+   "authors_full": "Jochen Hartmann, Yannick Exner, Samuel Domdey",
+   "year": 2025,
+   "title": "The power of generative marketing: Can generative AI create superhuman visual marketing content?",
+   "venue": "International Journal of Research in Marketing",
+   "volume": "42(1)",
+   "pages": "13-31",
+   "doi": "10.1016/j.ijresmar.2024.09.002",
+   "url": "https://doi.org/10.1016/j.ijresmar.2024.09.002",
+   "kind": "peer-reviewed",
+   "takeaway": "AI-generated marketing images can surpass human-made ones in evaluations, and in a field test one reached up to 50% higher click-through.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract on IDEAS/RePEc",
+    "text_url": "https://ideas.repec.org/a/eee/ijrema/v42y2025i1p13-31.html"
+   }
   }
  },
  "challenges": [
@@ -1747,12 +2107,6 @@
    "title": "The 40% surprise",
    "scene": "In an online experiment, 453 professionals complete short occupation-specific writing tasks; half are randomly given access to ChatGPT.",
    "question": "What happened to the time required?",
-   "options": [
-    "It rose about 10%",
-    "It barely changed",
-    "It fell about 40%"
-   ],
-   "answer": 2,
    "answerTitle": "40% less time",
    "explain": "Across 453 professionals, average completion time fell 40%. Output quality also rose 18%.",
    "implication": "Pilot AI on measurable tasks. Track quality as well as speed.",
@@ -1789,7 +2143,7 @@
    "estimate": {
     "target": 40,
     "min": 0,
-    "max": 70,
+    "max": 100,
     "tolerance": 10,
     "label": "Decrease in completion time (%)"
    },
@@ -1805,14 +2159,8 @@
    "concept": "Productivity",
    "tag": "02 / QUALITY",
    "title": "Faster, but worse?",
-   "scene": "The same writing experiment evaluated finished work, not just speed.",
+   "scene": "In an online experiment, 453 professionals did short writing tasks for their occupation, half with ChatGPT. Independent professionals graded the finished work blind.",
    "question": "What happened to average output quality?",
-   "options": [
-    "It declined",
-    "It improved by 18%",
-    "No detectable difference"
-   ],
-   "answer": 1,
    "answerTitle": "Quality improved 18%",
    "explain": "The study found faster completion and higher externally evaluated quality.",
    "implication": "Set up double-outcome tests, with blind quality evaluation.",
@@ -1849,7 +2197,7 @@
    "estimate": {
     "target": 18,
     "min": 0,
-    "max": 50,
+    "max": 100,
     "tolerance": 5,
     "label": "Increase in quality (%)"
    },
@@ -1867,12 +2215,6 @@
    "title": "A real-world baseline",
    "scene": "A company deploys AI in a live customer-support workflow.",
    "question": "How much did issues resolved per hour rise on average?",
-   "options": [
-    "About 2%",
-    "About 15%",
-    "About 70%"
-   ],
-   "answer": 1,
    "answerTitle": "15% on average",
    "explain": "The analysis covered 5,172 agents and measured issues resolved per hour.",
    "implication": "Report AI productivity gains separately for new and experienced staff, since gains concentrated among less experienced workers.",
@@ -1909,7 +2251,7 @@
    "estimate": {
     "target": 15,
     "min": 0,
-    "max": 50,
+    "max": 100,
     "tolerance": 5,
     "label": "Increase in issues per hour (%)"
    },
@@ -1930,7 +2272,8 @@
    "options": [
     "AI-assisted stories were rated more creative",
     "AI-assisted stories were more similar to each other",
-    "Writers universally rejected the AI ideas"
+    "Gains were largest for the most creative writers",
+    "The AI-assisted set was more varied overall"
    ],
    "answerTitle": "A creativity trade-off",
    "explain": "AI-assisted stories scored higher on creativity but became more similar to one another.",
@@ -1979,11 +2322,12 @@
    "tag": "09 / TRUST",
    "title": "One error, lost trust",
    "scene": "A prediction model outperforms a human forecaster but makes visible errors.",
-   "question": "What did participants in algorithm-aversion studies often do?",
+   "question": "After seeing the model err, whom did people choose for paid forecasts?",
    "options": [
-    "Shift away from the model",
-    "Become more trusting of the model",
-    "Ignore the mistake entirely"
+    "Themselves, though the model beat them",
+    "The model, since it beat them",
+    "The model more often than before",
+    "Each about half of the time"
    ],
    "answer": 0,
    "answerTitle": "A visible error can dominate",
@@ -2131,9 +2475,9 @@
    "scene": "A service uses AI for individualized medical recommendations. Consumers are told the system is highly accurate.",
    "question": "What concern can still drive resistance?",
    "options": [
-    "It costs more than a doctor",
-    "It cannot account for my unique case",
-    "It takes longer than a doctor"
+    "It costs more than a human doctor",
+    "It cannot account for my situation",
+    "It takes longer than a human doctor"
    ],
    "answer": 1,
    "answerTitle": "People care about being seen",
@@ -2717,9 +3061,9 @@
    "scene": "Colleagues see highly variable peer behavior rather than a tight shared pattern.",
    "question": "What tends to happen to their own behavior in the studied settings?",
    "options": [
-    "More variation",
-    "No variation",
-    "Identical choices"
+    "Their choices varied more",
+    "Their choices clustered on the average",
+    "Their choices split into two camps"
    ],
    "answer": 0,
    "answerTitle": "Looser norms, wider responses",
@@ -2765,11 +3109,11 @@
    "tag": "30 / TEAM DYNAMICS",
    "title": "Everyone thinks they are alone",
    "scene": "Team members privately question a practice but believe everybody else supports it.",
-   "question": "Which concept best fits?",
+   "question": "Students rated their own comfort with campus drinking and the average student’s. What did they report?",
    "options": [
-    "Pluralistic ignorance",
-    "Loss aversion",
-    "Algorithm aversion"
+    "Peers were more comfortable than they were",
+    "Peers were as comfortable as they were",
+    "Peers were less comfortable than they were"
    ],
    "answer": 0,
    "answerTitle": "Private views and public beliefs diverge",
@@ -2915,11 +3259,12 @@
    "tag": "36 / TEAM IQ",
    "title": "Who gets the floor?",
    "scene": "Two project groups have similar individual talent. One shares discussion evenly; the other is dominated by a few voices.",
-   "question": "Which group feature was associated with collective intelligence?",
+   "question": "Which group feature predicted performance across many different tasks?",
    "options": [
-    "Equal conversational turn-taking",
-    "One speaker dominating",
-    "Only individual test scores"
+    "More equal turn-taking in conversation",
+    "The smartest member’s individual score",
+    "The average intelligence of members",
+    "Group satisfaction and motivation"
    ],
    "answer": 0,
    "answerTitle": "Air time matters",
@@ -2966,12 +3311,6 @@
    "title": "Identical résumé, different name",
    "scene": "In a field experiment, comparable résumés were assigned names signaling different racial identities.",
    "question": "Approximately how much higher was the callback rate for White-sounding names?",
-   "options": [
-    "No difference",
-    "White-sounding names received 50% more callbacks",
-    "Black-sounding names received 50% more"
-   ],
-   "answer": 1,
    "answerTitle": "50% more callbacks",
    "explain": "The field experiment found a large gap in callbacks associated with names, holding résumé content constant.",
    "implication": "Run periodic paired-résumé audits of your own screening, comparing callbacks for identical profiles with different names.",
@@ -3027,9 +3366,9 @@
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
    "question": "What was the weight of the evidence?",
    "options": [
-    "Women became more likely to advance and be hired",
-    "No difference in any estimate",
-    "Women became less likely to advance"
+    "Women more likely to advance and be hired",
+    "No measurable change for women",
+    "Women less likely to advance"
    ],
    "answer": 0,
    "answerTitle": "Screens helped reduce bias",
@@ -3180,9 +3519,9 @@
    "scene": "Across a series of online experiments, Trump supporters and opponents report feeling closer to their own side and also make costly choices toward the other side.",
    "question": "Which distinction emerged across experiments?",
    "options": [
-    "Ingroup love in feelings, outgroup hate in behavior",
-    "Outgroup hate only in private feelings",
-    "Identical in-group and out-group treatment"
+    "Love showed in feelings, hate in behavior",
+    "Hate showed in feelings, love in behavior",
+    "Both showed in feelings, not in behavior"
    ],
    "answer": 0,
    "answerTitle": "The domains diverged",
@@ -3283,7 +3622,7 @@
    "scene": "Two departments report identical average appropriateness ratings. One is unified; the other contains opposing camps.",
    "question": "Two teams give the same average answer on what conduct is acceptable. How do you see whether their norms differ?",
    "options": [
-    "Keep the full distribution of each person’s view",
+    "Keep each person’s view, not just the mean",
     "Compare the two team averages",
     "Ask each manager to describe the norm",
     "Count past policy violations"
@@ -3414,11 +3753,6 @@
       "text": "Classify bird photos: staff are 81% accurate, AI 73%",
       "answer": 0,
       "why": "Here the human-AI team reached 90%, beating both humans and AI alone."
-     },
-     {
-      "text": "Draft open-ended marketing copy",
-      "answer": 0,
-      "why": "Creation tasks showed positive though non-significant synergy (g = 0.19), unlike decision tasks (g = -0.27)."
      }
     ]
    },
@@ -3474,7 +3808,7 @@
     "47%"
    ],
    "answerTitle": "Any control beats none; size barely matters",
-   "explain": "In Study 2, 47% used the unchangeable model versus 68% to 71% when they could adjust it by 2, 5 or 10 percentiles.",
+   "explain": "In Study 2, 47% used the unchangeable model versus 68% to 71% when they could adjust it by 2, 5 or 10 percentiles. The two adjustable groups did not differ meaningfully, so their order is not scored.",
    "implication": "Let staff make small, bounded adjustments to model outputs instead of mandating the outputs unchanged.",
    "boundary": "Online and lab forecasting of student test percentiles with small bonuses; workplace accountability and long-term use were not studied.",
    "sources": [
@@ -3498,7 +3832,13 @@
      "a": "Yes. Being able to modify the model raised satisfaction, belief that the model was superior, and willingness to use algorithms for later forecasts."
     }
    ],
-   "theme": "ai-trust"
+   "theme": "ai-trust",
+   "rankTies": [
+    [
+     0,
+     1
+    ]
+   ]
   },
   {
    "id": "axb03",
@@ -3511,7 +3851,7 @@
    "estimate": {
     "target": 24.7,
     "min": 0,
-    "max": 60,
+    "max": 100,
     "tolerance": 6,
     "label": "Maximum crime reduction at the same jailing rate",
     "unit": "%"
@@ -3554,7 +3894,7 @@
    "estimate": {
     "target": 10,
     "min": 0,
-    "max": 50,
+    "max": 100,
     "tolerance": 4,
     "label": "Average accuracy advantage of formulas over experts",
     "unit": "%"
@@ -3621,7 +3961,8 @@
       "id": "cost",
       "label": "Spending",
       "x": 260,
-      "y": 100
+      "y": 100,
+      "mask": true
      },
      {
       "id": "score",
@@ -3698,7 +4039,7 @@
     "claim": "Managers who hired against test recommendations more often ended up with better average hires.",
     "truth": false
    },
-   "answerTitle": "Overruling the test led to worse hires",
+   "answerTitle": "Overruling the test went with worse hires",
    "explain": "Comparing managers with similar applicant pools, those who appeared to hire against test recommendations ended up with worse average hires.",
    "implication": "Track override rates by manager, compare outcomes of overridden hires, and require a written reason for each override.",
    "boundary": "Low-skilled service jobs at 15 firms adopting job testing; professional and creative roles were not studied.",
@@ -3786,8 +4127,8 @@
     "suffix": "%",
     "values": [
      0,
-     -15.7,
-     21.9,
+     0,
+     0,
      81.2
     ],
     "valueLabels": [
@@ -3796,7 +4137,7 @@
      "+21.9% (n.s.)",
      "+81.2%"
     ],
-    "valueName": "change in odds of higher post-debate agreement vs human-human debates",
+    "valueName": "change in odds of higher post-debate agreement vs human-human debates (non-significant changes count as zero)",
     "pass": 0.8
    },
    "answerTitle": "Personalized GPT-4 was most persuasive",
@@ -4047,7 +4388,7 @@
    "estimate": {
     "target": 25.1,
     "min": 0,
-    "max": 70,
+    "max": 100,
     "tolerance": 6,
     "label": "Speed gain on inside-frontier tasks",
     "unit": "%"
@@ -4295,10 +4636,10 @@
    "scene": "Your agency compares Facebook users who saw your campaign with users who did not. After matching on age and gender, it reports a 222% conversion lift. A randomized holdout ran at the same time.",
    "question": "What lift did the randomized holdout show?",
    "options": [
-    "About 222%: matching removed the bias",
-    "About 73%: matching overstated the lift threefold",
-    "About 316%: matching was too cautious",
-    "No lift: the campaign did nothing"
+    "About 222%",
+    "About 73%",
+    "About 316%",
+    "No measurable lift"
    ],
    "answer": 1,
    "answerTitle": "The experiment found 73%, not 222%",
@@ -4447,7 +4788,7 @@
    "estimate": {
     "target": 13.6,
     "min": 0,
-    "max": 25,
+    "max": 100,
     "tolerance": 2,
     "label": "Average savings rate after four pay raises",
     "unit": "%"
@@ -4837,9 +5178,9 @@
    "scene": "A new website published University of California employees' pay. Researchers told a random subset of staff about the site, then surveyed everyone on job satisfaction and job search.",
    "question": "What did learning about peers' pay do?",
    "options": [
-    "Below-median earners less satisfied, more job search",
-    "Everyone more satisfied with transparency",
-    "Above-median earners became more satisfied",
+    "Below-median earners: less satisfied, job hunting",
+    "Everyone: more satisfied with transparency",
+    "Above-median earners: more satisfied",
     "No change: staff already knew peer pay"
    ],
    "answer": 0,
@@ -5656,10 +5997,10 @@
    "scene": "Democrats and Republicans predicted how the other party would react to their own party's actions. Predictions were too negative, and the most inaccurate saw the other side as obstructionist.",
    "question": "What best shows the inaccuracy itself drives obstructionism beliefs?",
    "options": [
-    "Randomly correcting the beliefs reduced obstructionism ratings",
-    "Strong partisans were both inaccurate and hostile",
-    "The bias also appeared in a national sample",
-    "Inaccuracy tracked heavy political news use"
+    "Randomly correcting beliefs cut obstructionism ratings",
+    "The most inaccurate partisans were also the most hostile",
+    "The same bias appeared in a national sample",
+    "Inaccuracy tracked heavy political news consumption"
    ],
    "answer": 0,
    "dag": {
@@ -6043,7 +6384,7 @@
    "estimate": {
     "target": 20,
     "min": 0,
-    "max": 60,
+    "max": 100,
     "tolerance": 7,
     "label": "Drop in donations vs no visibility",
     "unit": "%"
@@ -6216,7 +6557,17 @@
     "design": "Vignette experiment (Study 2)",
     "n": "225 US adults across 10 states"
    },
-   "theme": "honesty"
+   "theme": "honesty",
+   "rankTies": [
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     2
+    ]
+   ]
   },
   {
    "id": "dimant-observability-choice",
@@ -6228,9 +6579,9 @@
    "question": "What did being watched, with nothing attached, do to giving?",
    "options": [
     "Raised giving sharply",
-    "Little positive effect; it could even backfire",
-    "Raised giving only among the best-paid",
-    "No effect of any kind"
+    "Did little and could backfire",
+    "Raised giving among the best-paid",
+    "Raised giving only at first"
    ],
    "answer": 1,
    "answerTitle": "Watching alone did little and could backfire",
@@ -6436,9 +6787,9 @@
    "question": "In the split, polarized setting, what did most people do?",
    "options": [
     "Chose the safe middle option",
-    "Chose an extreme option despite strategic risk",
+    "Chose an extreme, despite the risk",
     "Copied the average behavior",
-    "Behaved as they did in tight settings"
+    "Acted as in tight settings"
    ],
    "answer": 1,
    "answerTitle": "Most picked extremes, accepting strategic risk",
@@ -6543,7 +6894,7 @@
    "estimate": {
     "target": 20,
     "min": 0,
-    "max": 60,
+    "max": 100,
     "tolerance": 6,
     "label": "Drop in belief in their own conspiracy theory",
     "unit": "%"
@@ -6566,6 +6917,928 @@
      "a": "Each participant described their own theory and evidence, and the model responded to those specific claims rather than giving a generic debunking."
     }
    ]
+  },
+  {
+   "id": "axe01",
+   "track": "AI × Business",
+   "format": "delegate",
+   "concept": "Word-of-machine effect",
+   "title": "Whose recommendation will customers trust?",
+   "scene": "Your retail site can show product picks from an AI engine, a human expert, or an expert using the AI. Eight experiments tested which source consumers prefer.",
+   "question": "For each recommendation, which source should customers see?",
+   "delegate": {
+    "choices": [
+     "AI recommender",
+     "Human recommender",
+     "Human with AI input"
+    ],
+    "tasks": [
+     {
+      "text": "Pick a laptop on battery life and specs",
+      "answer": 0,
+      "why": "For practical attributes, people believe AI recommenders are more competent than humans."
+     },
+     {
+      "text": "Pick a practical product fitted to one buyer's unique tastes",
+      "answer": 1,
+      "why": "The preference for AI reversed for utilitarian goals when the pick had to match a person's unique preferences (Study 5)."
+     },
+     {
+      "text": "Pick a vacation spot for sensory pleasure, keeping your AI engine",
+      "answer": 2,
+      "why": "Resistance to AI in hedonic choices was eliminated when AI augmented a human decision maker (Study 6)."
+     }
+    ]
+   },
+   "answerTitle": "AI for practical picks; humans for taste",
+   "explain": "Across Studies 1 to 7b, people saw AI as more competent for utilitarian attributes and less competent for hedonic ones. Human-AI hybrid recommendations eliminated the effect.",
+   "implication": "Label AI picks for practical product attributes; present taste-based picks as expert recommendations supported by AI.",
+   "boundary": "Consumer experiments on recommendations; the effect concerns perceived competence, not whether the AI picks were actually better.",
+   "sources": [
+    "longoni22"
+   ],
+   "study": {
+    "design": "Series of consumer experiments",
+    "n": "Studies 1-4, 5, 6, 7a-7b"
+   },
+   "follow": [
+    {
+     "q": "Why do people resist AI for taste?",
+     "a": "They hold a lay belief that AI recommenders are more competent than humans in the utilitarian realm and less competent in the hedonic realm."
+    },
+    {
+     "q": "Is the effect fragile?",
+     "a": "It held across product complexity, number of options considered and transaction costs."
+    },
+    {
+     "q": "Can a firm reduce the bias?",
+     "a": "A consider-the-opposite prompt attenuated the effect, and framing the AI as augmenting a human eliminated it."
+    }
+   ],
+   "theme": "ai-trust"
+  },
+  {
+   "id": "axe02",
+   "track": "AI × Business",
+   "format": "delegate",
+   "concept": "Task allocation",
+   "title": "Where does the AI go?",
+   "scene": "You are redesigning four frontline workflows. Field and forum studies from health care, sales and software tested what AI did to output and to customers.",
+   "question": "For each workflow, how should AI and staff split the work?",
+   "delegate": {
+    "choices": [
+     "AI drafts, human checks",
+     "Human alone",
+     "AI does first stage, human finishes"
+    ],
+    "tasks": [
+     {
+      "text": "Replies to patients' medical questions",
+      "answer": 0,
+      "why": "Chatbot answers were rated better and more empathetic, but accuracy was not checked separately; the authors propose drafts reviewed by clinicians."
+     },
+     {
+      "text": "Outbound sales calls where the bot must announce itself first",
+      "answer": 1,
+      "why": "Disclosing the chatbot before the conversation cut purchase rates by more than 79.7%."
+     },
+     {
+      "text": "Telemarketing: find leads, then persuade serious prospects",
+      "answer": 2,
+      "why": "With AI on the first, codified stage, employees answered customers more creatively and sold more."
+     },
+     {
+      "text": "Coding tickets for less experienced developers",
+      "answer": 0,
+      "why": "An AI coding assistant raised completed tasks by 26.08%, with larger gains for less experienced developers."
+     }
+    ]
+   },
+   "answerTitle": "AI drafts or opens; humans close where trust matters",
+   "explain": "Physician-forum answers from ChatGPT won 78.6% of blinded comparisons, yet the authors propose clinician review. Up-front bot disclosure cut sales calls' purchases by more than 79.7%.",
+   "implication": "Map each workflow by stage; put AI on drafting and codified first steps, and keep humans where customers learn who they are talking to.",
+   "boundary": "Four separate settings with different designs; the sales result reflects reactions to disclosure, not weaker bot skill.",
+   "sources": [
+    "ayers23",
+    "luo19",
+    "jia24",
+    "cui26"
+   ],
+   "study": {
+    "design": "Cross-sectional comparison and field experiments",
+    "n": "195 forum questions; 6,200+ customers; 4,867 developers"
+   },
+   "follow": [
+    {
+     "q": "Were undisclosed bots worse sellers?",
+     "a": "No. Undisclosed chatbots were as effective as proficient workers and four times more effective than inexperienced workers."
+    },
+    {
+     "q": "Who gained most from AI in telemarketing?",
+     "a": "Higher-skilled employees. Lower-skilled employees made limited improvements to scripts and reported negative emotions at work."
+    },
+    {
+     "q": "Who gained most among developers?",
+     "a": "Less experienced developers had higher adoption rates and greater productivity gains."
+    }
+   ],
+   "theme": "ai-work"
+  },
+  {
+   "id": "axe03",
+   "track": "AI × Business",
+   "format": "delegate",
+   "concept": "Delegation and feedback",
+   "title": "Who decides, who coaches?",
+   "scene": "Your operations team uses AI to classify incoming cases and to score call agents. You must decide who routes the cases and who delivers coaching feedback.",
+   "question": "For each decision, who should own it?",
+   "delegate": {
+    "choices": [
+     "AI",
+     "Human",
+     "Human, with AI advice"
+    ],
+    "tasks": [
+     {
+      "text": "Decide which classification cases go to staff",
+      "answer": 0,
+      "why": "Team performance improved only when the AI delegated work to humans, not when humans delegated to the AI."
+     },
+     {
+      "text": "Deliver performance feedback to long-tenured agents",
+      "answer": 0,
+      "why": "AI feedback raises feedback quality, and the negative reaction to disclosed AI feedback was weaker for longer-tenured employees."
+     },
+     {
+      "text": "Deliver performance feedback to brand-new agents",
+      "answer": 1,
+      "why": "The authors suggest a tiered approach: AI feedback for veterans, human managers for novices."
+     }
+    ]
+   },
+   "answerTitle": "Let AI route; tier feedback by tenure",
+   "explain": "Humans delegated classification work poorly because they misjudge what they know. In a field experiment, AI feedback's quality gain and a disclosure penalty coexisted; tenure softened the penalty.",
+   "implication": "Let the model choose which cases need a person, and roll out AI coaching first to experienced staff.",
+   "boundary": "One classification setting and one firm's field experiment; abstracts report no effect sizes, so magnitudes are unknown.",
+   "sources": [
+    "fugener22",
+    "tong21"
+   ],
+   "study": {
+    "design": "Classification experiment; field experiment",
+    "n": "Two studies"
+   },
+   "follow": [
+    {
+     "q": "Why did humans delegate badly?",
+     "a": "They lacked metaknowledge, meaning they misjudged which cases they would get right. The authors say this cannot be explained by algorithm aversion."
+    },
+    {
+     "q": "Could humans plus AI beat the AI?",
+     "a": "Yes, humans and AI working together outperformed the AI alone, but only when the AI did the delegating."
+    },
+    {
+     "q": "How should firms disclose AI feedback?",
+     "a": "The authors advise communicating proactively about the AI's objectives, benefits and scope to ease employees' concerns."
+    }
+   ],
+   "theme": "ai-work"
+  },
+  {
+   "id": "axe04",
+   "track": "AI × Business",
+   "format": "allocate",
+   "concept": "AI persuasion",
+   "title": "Can a model out-argue a professional?",
+   "scene": "Researchers showed 8,221 US adults real articles from covert state-aligned propaganda campaigns, GPT-3 articles on the same claims, or no article, and measured agreement.",
+   "question": "Split a message-testing budget by how much each arm persuaded.",
+   "options": [
+    "No article",
+    "Original propaganda article",
+    "GPT-3 article, no human editing"
+   ],
+   "allocate": {
+    "total": 100,
+    "step": 10,
+    "label": "Testing budget",
+    "prefix": "",
+    "suffix": "%",
+    "values": [
+     24.4,
+     47.4,
+     43.5
+    ],
+    "valueLabels": [
+     "24.4%",
+     "47.4%",
+     "43.5%"
+    ],
+    "valueName": "share agreeing or strongly agreeing with the article's claim",
+    "pass": 0.8
+   },
+   "answerTitle": "Unedited GPT-3 nearly matched the propagandists",
+   "explain": "Agreement rose from 24.4% with no article to 47.4% after the original propaganda and 43.5% after an unedited GPT-3 article.",
+   "implication": "Assume cheap AI copy can persuade nearly as well as professionals; budget review for accuracy, not just tone.",
+   "boundary": "One exposure to a single article on six foreign-policy-style claims in 2021, with GPT-3; repeated exposure was not tested.",
+   "sources": [
+    "goldstein24"
+   ],
+   "study": {
+    "design": "Online survey experiment",
+    "n": "8,221 US adults"
+   },
+   "follow": [
+    {
+     "q": "Where did the human articles come from?",
+     "a": "The researchers identified six articles from covert, likely state-aligned propaganda campaigns originating from Iran or Russia."
+    },
+    {
+     "q": "Did every GPT-3 article make the claim?",
+     "a": "No. Two of 18 GPT-3 articles did not advance the intended claim; dropping them raised agreement to 45.6%."
+    },
+    {
+     "q": "Were respondents told afterwards?",
+     "a": "Yes. After the survey, respondents were informed that the articles came from propaganda sources and may have contained false information."
+    }
+   ],
+   "theme": "persuasion"
+  },
+  {
+   "id": "axe05",
+   "track": "AI × Business",
+   "format": "estimate",
+   "concept": "AI empathy",
+   "title": "Doctor or chatbot?",
+   "scene": "Health professionals, blinded to the source, compared physicians' answers to patient questions on Reddit's r/AskDocs with ChatGPT's answers to the same 195 questions.",
+   "question": "In what share of evaluations did raters prefer the chatbot's answer?",
+   "estimate": {
+    "target": 78.6,
+    "min": 0,
+    "max": 100,
+    "tolerance": 8,
+    "label": "Evaluations preferring the chatbot",
+    "unit": "%"
+   },
+   "answerTitle": "Raters preferred the chatbot in 78.6%",
+   "explain": "Across 585 evaluations, raters preferred the chatbot 78.6% of the time. Good or very good quality: 78.5% of chatbot answers versus 22.1% of physicians'.",
+   "implication": "Pilot AI-drafted replies in patient or customer messaging, with staff review before sending.",
+   "boundary": "Public forum answers by volunteer physicians; accuracy was not assessed separately, and raters were coauthors.",
+   "sources": [
+    "ayers23"
+   ],
+   "study": {
+    "design": "Cross-sectional blinded comparison",
+    "n": "195 questions, 585 evaluations"
+   },
+   "follow": [
+    {
+     "q": "How large was the empathy gap?",
+     "a": "45.1% of chatbot answers were rated empathetic or very empathetic, versus 4.6% of physician answers."
+    },
+    {
+     "q": "Were chatbot answers longer?",
+     "a": "Yes. Physician answers had a median of 52 words, chatbot answers 211, and the authors note length may have inflated empathy ratings."
+    },
+    {
+     "q": "Which chatbot was tested?",
+     "a": "ChatGPT running GPT-3.5, with responses generated on December 22 and 23, 2022."
+    }
+   ],
+   "theme": "ai-work"
+  },
+  {
+   "id": "axe06",
+   "track": "AI × Business",
+   "format": "estimate",
+   "concept": "Coding productivity",
+   "title": "What is a coding assistant worth?",
+   "scene": "Microsoft, Accenture and a Fortune 100 firm randomly gave some developers an AI coding assistant. Researchers pooled the three field experiments.",
+   "question": "By how much did completed tasks rise with access to the assistant?",
+   "estimate": {
+    "target": 26.08,
+    "min": 0,
+    "max": 100,
+    "tolerance": 8,
+    "label": "Increase in completed tasks",
+    "unit": "%"
+   },
+   "answerTitle": "Completed tasks rose about 26%",
+   "explain": "Pooling 4,867 developers, access to the assistant raised completed tasks by 26.08% (standard error 10.3%).",
+   "implication": "Prioritize coding-assistant licenses and onboarding for junior developers, and track completed tasks before and after.",
+   "boundary": "Three firms' developers; single experiments were noisy and varied, and completed tasks do not measure code quality.",
+   "sources": [
+    "cui26"
+   ],
+   "study": {
+    "design": "Three randomized field experiments",
+    "n": "4,867 developers"
+   },
+   "follow": [
+    {
+     "q": "Who gained the most?",
+     "a": "Less experienced developers had higher adoption rates and greater productivity gains."
+    },
+    {
+     "q": "Was every experiment clear-cut?",
+     "a": "No. The authors say each experiment is noisy and results vary across experiments; the 26.08% figure pools all three."
+    },
+    {
+     "q": "How were developers assigned?",
+     "a": "A random subset of developers at each company received access to the AI-based coding assistant."
+    }
+   ],
+   "theme": "ai-work"
+  },
+  {
+   "id": "axe07",
+   "track": "AI × Business",
+   "format": "forecast",
+   "concept": "Uncertainty and aversion",
+   "title": "Noisier markets, more model trust?",
+   "scene": "In nine forecasting studies, people chose between the best available algorithm and other methods, including human judgment, across more and less predictable domains.",
+   "question": "Is this what the study found?",
+   "forecast": {
+    "claim": "People were more willing to use the best algorithm in more unpredictable domains.",
+    "truth": false
+   },
+   "answerTitle": "Uncertainty pushed people away from algorithms",
+   "explain": "Across nine studies (N = 4,820), people were less likely to use the best algorithm in more unpredictable domains. They favored methods with a chance of a near-perfect answer.",
+   "implication": "In volatile forecasting, such as demand or markets, report the model's track record against human forecasts, not its average error alone.",
+   "boundary": "Forecasting experiments with study participants; managerial forecasting with accountability and career stakes was not studied.",
+   "sources": [
+    "dietvorst20"
+   ],
+   "study": {
+    "design": "Nine experiments",
+    "n": "4,820 participants"
+   },
+   "follow": [
+    {
+     "q": "What drives the rejection?",
+     "a": "Diminishing sensitivity to error: each extra unit of error matters less as errors grow, so a big miss feels little worse than a moderate one."
+    },
+    {
+     "q": "What do people chase instead?",
+     "a": "They choose methods based on the perceived likelihood of a near-perfect answer and prefer methods with higher variance in performance."
+    },
+    {
+     "q": "How large was the evidence base?",
+     "a": "Nine studies with 4,820 participants in total, all pointing to diminishing sensitivity to forecasting error as the mechanism."
+    }
+   ],
+   "theme": "ai-trust"
+  },
+  {
+   "id": "axe08",
+   "track": "AI × Business",
+   "format": "forecast",
+   "concept": "Freelance displacement",
+   "title": "Are the best freelancers safe?",
+   "scene": "Researchers tracked freelancers on a large online labor platform before and after ChatGPT, DALL-E 2 and Midjourney were released.",
+   "question": "Is this what the study found?",
+   "forecast": {
+    "claim": "Freelancers with strong past performance were shielded from losses in jobs and earnings.",
+    "truth": false
+   },
+   "answerTitle": "Top freelancers were not spared",
+   "explain": "Freelancers in highly affected occupations saw reductions in both employment and earnings, with suggestive evidence that top freelancers were disproportionately affected.",
+   "implication": "Do not assume your strongest contractors keep their rates; review vendor mix and pricing in writing and image work.",
+   "boundary": "Short-term effects on one online platform after 2022 to 2023 model releases; employees inside firms were not studied.",
+   "sources": [
+    "hui24"
+   ],
+   "study": {
+    "design": "Before-after study of model releases",
+    "n": "Freelancers on a large online platform"
+   },
+   "follow": [
+    {
+     "q": "Which tools were studied?",
+     "a": "ChatGPT for writing-related work and the image generators DALL-E 2 and Midjourney; other image-model releases showed similar effects."
+    },
+    {
+     "q": "Did reputation help?",
+     "a": "No. High-quality service, measured by past performance and employment history, did not protect freelancers from the adverse effects."
+    },
+    {
+     "q": "What do the authors conclude?",
+     "a": "Generative AI may change the role of human capital in organizations and reduce overall demand for workers."
+    }
+   ],
+   "theme": "ai-work"
+  },
+  {
+   "id": "axe09",
+   "track": "AI × Business",
+   "format": "forecast",
+   "concept": "Job replacement",
+   "title": "Robot or rival: who replaces you?",
+   "scene": "Experiments asked people how they felt about workers being replaced by another person versus by robots or software, for others' jobs and for their own.",
+   "question": "Is this what the study found?",
+   "forecast": {
+    "claim": "When imagining their own job loss, people preferred being replaced by a robot rather than by another person.",
+    "truth": true
+   },
+   "answerTitle": "For their own job, people preferred the robot",
+   "explain": "People preferred others to be replaced by humans, but this reversed for their own job. Robot replacement threatened self-worth less, though it threatened economic futures more.",
+   "implication": "When automating roles, address economic security directly; do not assume staff will be less upset than with outsourcing to people.",
+   "boundary": "Hypothetical job-loss scenarios in experiments; actual layoffs and union settings were not studied.",
+   "sources": [
+    "granulo19"
+   ],
+   "study": {
+    "design": "Series of experiments",
+    "n": "Multiple online studies"
+   },
+   "follow": [
+    {
+     "q": "Why prefer a robot for your own job?",
+     "a": "Being replaced by machines, robots or software was associated with reduced self-threat compared with being replaced by another person."
+    },
+    {
+     "q": "Is robot replacement less threatening overall?",
+     "a": "No. It was associated with a greater perceived threat to one's economic future."
+    },
+    {
+     "q": "What about other people's jobs?",
+     "a": "As observers, people tended to prefer that workers be replaced by other humans rather than robots."
+    }
+   ],
+   "theme": "ai-work"
+  },
+  {
+   "id": "axe10",
+   "track": "AI × Business",
+   "format": "forecast",
+   "concept": "AI ad creative",
+   "title": "Will AI images win the click?",
+   "scene": "Researchers generated 10,320 marketing images with seven text-to-image models from 2,400 human-made images, then ran a live ad test with over 173,000 impressions.",
+   "question": "Is this what the study found?",
+   "forecast": {
+    "claim": "In the live ad test, an AI-generated image beat the human-made image on click-through rate.",
+    "truth": true
+   },
+   "answerTitle": "Yes: up to 50% higher click-through",
+   "explain": "In the field study, an AI-generated image achieved an up to 50% higher click-through rate than a human-made image, and 254,400 human evaluations showed AI images can surpass human ones.",
+   "implication": "A/B test AI-generated creative against your current images before commissioning new shoots; cost and speed favor the trial.",
+   "boundary": "The 50% figure is an upper bound from one field test; results vary by model and image.",
+   "sources": [
+    "hartmann25"
+   ],
+   "study": {
+    "design": "Image evaluations plus field ad test",
+    "n": "254,400 evaluations; 173,000+ impressions"
+   },
+   "follow": [
+    {
+     "q": "Which models were used?",
+     "a": "Seven text-to-image models, including DALL-E 3, Midjourney v6, Firefly 2, Imagen 2 and Stable Diffusion XL Turbo."
+    },
+    {
+     "q": "Is 50% the average gain?",
+     "a": "No. The abstract says up to 50% higher click-through, an upper bound, not an average across images."
+    },
+    {
+     "q": "What about cost?",
+     "a": "The authors note AI can produce marketing content faster and orders of magnitude cheaper."
+    }
+   ],
+   "theme": "persuasion"
+  },
+  {
+   "id": "axe11",
+   "track": "AI × Business",
+   "format": "rank",
+   "concept": "AI misinformation",
+   "title": "Which tweets fool readers?",
+   "scene": "697 participants judged whether tweets were accurate. Some were real tweets, others written by GPT-3, and each set mixed true and false claims.",
+   "question": "Rank tweet types by how often readers judged accuracy correctly.",
+   "options": [
+    "Human-written, true",
+    "GPT-3-written, true",
+    "Human-written, false",
+    "GPT-3-written, false"
+   ],
+   "rankAnswer": [
+    2,
+    3,
+    1,
+    0
+   ],
+   "rankLabel": "Recognition score (share judged correctly)",
+   "rankValues": [
+    "0.72",
+    "0.84",
+    "0.92",
+    "0.89"
+   ],
+   "answerTitle": "GPT-3 helped truth and slightly shielded falsehood",
+   "explain": "True GPT-3 tweets were recognized more often than true human tweets (0.84 vs 0.72). False GPT-3 tweets were caught slightly less often than false human tweets (0.89 vs 0.92).",
+   "implication": "Fact-check AI-drafted public content as strictly as human drafts; fluent AI text makes errors harder to spot.",
+   "boundary": "Short tweets on a fixed set of topics, written with GPT-3 in an online survey; the false-tweet gap was small.",
+   "sources": [
+    "spitale23"
+   ],
+   "study": {
+    "design": "Online survey experiment",
+    "n": "697 participants"
+   },
+   "follow": [
+    {
+     "q": "Could readers tell AI from human tweets?",
+     "a": "No. Scores for identifying the source hovered around 0.5, close to chance."
+    },
+    {
+     "q": "Were AI tweets judged faster?",
+     "a": "Yes. Readers took 29.14 seconds on average for true human tweets versus 21.02 for true GPT-3 tweets and 19.87 for false GPT-3 tweets."
+    },
+    {
+     "q": "How big was the falsehood gap?",
+     "a": "Small: 0.92 for false human tweets versus 0.89 for false GPT-3 tweets, P = 0.0032; the authors call the effect small."
+    }
+   ],
+   "theme": "persuasion",
+   "rankTies": [
+    [
+     2,
+     3
+    ]
+   ]
+  },
+  {
+   "id": "axe12",
+   "track": "AI × Business",
+   "format": "causal",
+   "concept": "Confounded evaluation",
+   "title": "Is the AI penalty real?",
+   "scene": "An HR audit finds employees who say they use AI get lower peer ratings. A manager concludes AI users simply produce weaker work.",
+   "question": "What does the experimental evidence say about this conclusion?",
+   "options": [
+    "Correct: AI users' work was rated worse",
+    "Raters penalized AI help even with identical descriptions",
+    "Controlled experiments found no penalty for AI use",
+    "Only managers who use AI imposed a penalty"
+   ],
+   "answer": 1,
+   "dag": {
+    "alt": "Using AI may lower work quality, which lowers ratings; that path is questioned. A second path runs from disclosed AI use to perceived laziness to lower ratings, even when the work is held constant.",
+    "height": 200,
+    "nodes": [
+     {
+      "id": "ai",
+      "label": "Uses AI",
+      "x": 70,
+      "y": 100
+     },
+     {
+      "id": "quality",
+      "label": "Work quality",
+      "x": 260,
+      "y": 40,
+      "hidden": true
+     },
+     {
+      "id": "lazy",
+      "label": "Seen as lazy",
+      "x": 260,
+      "y": 160
+     },
+     {
+      "id": "rating",
+      "label": "Rating",
+      "x": 440,
+      "y": 100
+     }
+    ],
+    "edges": [
+     [
+      "ai",
+      "quality",
+      "q"
+     ],
+     [
+      "quality",
+      "rating",
+      "q"
+     ],
+     [
+      "ai",
+      "lazy"
+     ],
+     [
+      "lazy",
+      "rating"
+     ]
+    ]
+   },
+   "chart": {
+    "labels": [
+     "Help from AI",
+     "Non-AI help",
+     "No help mentioned"
+    ],
+    "values": [
+     2.5,
+     2.16,
+     2.02
+    ],
+    "unit": "",
+    "highlight": 0,
+    "note": "Mean laziness ratings of otherwise identical targets. Values reported in Reif, Larrick & Soll 2025, Study 2."
+   },
+   "answerTitle": "AI users were judged lazier for the same work",
+   "explain": "In Study 2 (n = 1,203), targets helped by AI were rated lazier (2.50) than those helped by non-AI sources (2.16) or with no help mentioned (2.02), and less competent.",
+   "implication": "Before reading ratings as performance, train reviewers on AI-use bias and judge output against the same rubric.",
+   "boundary": "Vignette experiments with online participants; real teams with observable output were not studied.",
+   "sources": [
+    "reif25"
+   ],
+   "study": {
+    "design": "Four preregistered experiments",
+    "n": "4,439 participants"
+   },
+   "follow": [
+    {
+     "q": "Do employees expect the penalty?",
+     "a": "Yes. In Study 1, people imagining AI use expected to look lazier and less competent and were less willing to disclose the tool to managers."
+    },
+    {
+     "q": "Did all managers penalize AI users?",
+     "a": "No. Managers who use AI less favored the non-AI candidate; managers who use AI often favored the candidate who uses AI daily."
+    },
+    {
+     "q": "Can the penalty disappear?",
+     "a": "Yes. When AI was described as useful for a digital task, the penalty in perceived task fit was entirely offset."
+    }
+   ],
+   "theme": "ai-work"
+  },
+  {
+   "id": "axe13",
+   "track": "AI × Business",
+   "format": "choice",
+   "concept": "Personalized persuasion",
+   "title": "Does tailored AI copy sell?",
+   "scene": "297 participants saw either a ChatGPT ad personalized to their personality or a generic ad, for a weekend trip to Rome and for sneakers.",
+   "question": "What did personalized ads change?",
+   "options": [
+    "Raised spending intent for both products",
+    "Raised spending intent for the trip, not sneakers",
+    "No effect on either product",
+    "Raised spending intent for sneakers only"
+   ],
+   "answer": 1,
+   "answerTitle": "Trip spending rose $117; sneakers did not move",
+   "explain": "Personalized getaway ads raised willingness to spend by $117 and were rated more effective; sneaker effects trended positive but were not significant.",
+   "implication": "Test AI personalization product by product; start with experiential offers before rolling it out across the catalog.",
+   "boundary": "Short ChatGPT prompts with minimal profile data and stated willingness to pay, not actual purchases.",
+   "sources": [
+    "matz24"
+   ],
+   "study": {
+    "design": "Online experiment (Study 4 of 4)",
+    "n": "297 participants"
+   },
+   "follow": [
+    {
+     "q": "How consistent were effects across studies?",
+     "a": "Of 33 message versions tested across all studies, 30 were directionally effective and 20 were significantly so (61%)."
+    },
+    {
+     "q": "Which profiles were targeted?",
+     "a": "Big Five personality traits, regulatory focus, political ideology and moral foundations, in consumer, climate and exercise messages."
+    },
+    {
+     "q": "How much data did ChatGPT get?",
+     "a": "Very little. All studies used very short prompts with minimal information about each person."
+    }
+   ],
+   "theme": "persuasion"
+  },
+  {
+   "id": "axe14",
+   "track": "AI × Business",
+   "format": "multi",
+   "concept": "Bot disclosure",
+   "title": "Should the sales bot disclose?",
+   "scene": "A company randomly assigned over 6,200 customers to structured outbound sales calls from AI chatbots or human agents, varying whether the bot's identity was disclosed.",
+   "question": "Which two results did the field experiment find?",
+   "options": [
+    "Undisclosed bots sold as well as proficient agents",
+    "Disclosing the bot up front cut purchases sharply",
+    "Disclosure made calls longer",
+    "Disclosed bots seemed more knowledgeable",
+    "Disclosure timing made no difference"
+   ],
+   "multiAnswers": [
+    0,
+    1
+   ],
+   "answerTitle": "Bots sold well until they announced themselves",
+   "explain": "Undisclosed chatbots were as effective as proficient workers; disclosing the bot before the conversation reduced purchase rates by more than 79.7%.",
+   "implication": "Where disclosure is required, test disclosing later in the call and target customers with prior AI experience.",
+   "boundary": "Highly structured outbound sales calls at one company; complex or open-ended sales were not tested.",
+   "sources": [
+    "luo19"
+   ],
+   "study": {
+    "design": "Field experiment",
+    "n": "6,200+ customers"
+   },
+   "follow": [
+    {
+     "q": "Why did disclosure hurt?",
+     "a": "Customers perceived the disclosed bot as less knowledgeable and less empathetic, though its competence had not changed."
+    },
+    {
+     "q": "What softened the penalty?",
+     "a": "A late disclosure timing strategy and customers' prior AI experience mitigated the negative effect."
+    },
+    {
+     "q": "How did bots compare with new hires?",
+     "a": "Undisclosed chatbots were four times more effective than inexperienced workers."
+    }
+   ],
+   "theme": "ai-trust"
+  },
+  {
+   "id": "genai1",
+   "track": "AI × Business",
+   "format": "multi",
+   "case": {
+    "id": "genai-content",
+    "title": "Generative AI in your content team",
+    "step": 1,
+    "of": 3
+   },
+   "concept": "Creativity and sameness",
+   "title": "More output, more sameness?",
+   "scene": "Your creative lead wants text-to-image AI for the design team. A study tracked 53,000+ artists on a major art-sharing platform, 5,800 of whom adopted such tools.",
+   "question": "Which two changes followed artists' adoption of AI?",
+   "options": [
+    "Favorites per view rose",
+    "Visual novelty increased",
+    "Output volume rose",
+    "Average content novelty rose",
+    "Peers rated their work lower"
+   ],
+   "multiAnswers": [
+    0,
+    2
+   ],
+   "chart": {
+    "labels": [
+     "Before adoption",
+     "After adoption"
+    ],
+    "values": [
+     2,
+     3
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Rate of earning a favorite per view. Values reported in Zhou & Lee 2024, Results."
+   },
+   "answerTitle": "More work, more favorites, less visual novelty",
+   "explain": "Adopters produced more and their favorites per view rose from 2% to 3%. Average content novelty and visual novelty both declined.",
+   "implication": "Use AI to raise volume, but assign a reviewer to flag look-alike output and reward novel concepts.",
+   "boundary": "Artists who chose to adopt AI on one platform; favorites measure peer reactions, not sales.",
+   "sources": [
+    "zhou24"
+   ],
+   "study": {
+    "design": "Observational study of AI adoption",
+    "n": "53,000+ artists; 4 million+ artworks"
+   },
+   "follow": [
+    {
+     "q": "Did anyone become more original?",
+     "a": "Peak content novelty rose, and AI-assisted artists who explored more novel ideas earned better peer evaluations, regardless of prior originality."
+    },
+    {
+     "q": "What skills mattered most?",
+     "a": "The authors conclude that ideation and filtering are likely necessary skills in the text-to-image process."
+    },
+    {
+     "q": "Was output volume the big win?",
+     "a": "Output rose sharply: Results report a 50% productivity increase at adoption that then doubled the next month, though the abstract cites 25%."
+    }
+   ],
+   "theme": "ai-work"
+  },
+  {
+   "id": "genai2",
+   "track": "AI × Business",
+   "format": "estimate",
+   "case": {
+    "id": "genai-content",
+    "title": "Generative AI in your content team",
+    "step": 2,
+    "of": 3
+   },
+   "concept": "Human-in-the-loop editing",
+   "title": "How much should editors touch it?",
+   "scene": "Your team will publish persuasive AI-written articles. A survey experiment of 8,221 US adults tested GPT-3 articles with different amounts of human prompt editing and curation.",
+   "question": "With an edited prompt and the best of three drafts, what share agreed with the claim?",
+   "answerTitle": "About 53%, above the original propaganda",
+   "explain": "Editing the prompt and choosing the best of three outputs reached 52.7% agreement, above the 47.4% for the human-written originals and 43.5% for raw GPT-3.",
+   "implication": "Budget editor time for prompt design and picking among several drafts rather than line-editing one draft.",
+   "boundary": "GPT-3 articles on six claims from propaganda campaigns, read once; brand content and newer models were not tested.",
+   "sources": [
+    "goldstein24"
+   ],
+   "study": {
+    "design": "Online survey experiment",
+    "n": "8,221 US adults"
+   },
+   "follow": [
+    {
+     "q": "What did prompt editing involve?",
+     "a": "Researchers gave GPT-3 the researcher-written thesis statement instead of an excerpt and edited the example articles on unrelated topics."
+    },
+    {
+     "q": "Was prompt editing alone enough?",
+     "a": "Nearly. It reached 46.4% versus 47.4% for the originals, a small difference that was not statistically significant."
+    },
+    {
+     "q": "What was the baseline?",
+     "a": "Only 24.4% of respondents who saw no article agreed with the claims."
+    }
+   ],
+   "theme": "persuasion",
+   "estimate": {
+    "target": 52.7,
+    "min": 0,
+    "max": 100,
+    "tolerance": 5,
+    "label": "Share agreeing after reading the curated GPT-3 article",
+    "unit": "%"
+   }
+  },
+  {
+   "id": "genai3",
+   "track": "AI × Business",
+   "format": "choice",
+   "case": {
+    "id": "genai-content",
+    "title": "Generative AI in your content team",
+    "step": 3,
+    "of": 3
+   },
+   "concept": "AI disclosure",
+   "title": "Label the AI-written reply?",
+   "scene": "Your team now drafts replies to customers' personal concerns with AI, and legal wants an \"AI-written\" label. In an experiment, people described a situation and got a reply from Bing Chat or a person.",
+   "question": "What does the experiment predict for labeled AI replies?",
+   "options": [
+    "AI replies feel colder, label or not",
+    "AI replies feel more heard; the label erodes it",
+    "The AI label raises trust and feeling heard",
+    "Source and label make no difference"
+   ],
+   "answer": 1,
+   "chart": {
+    "labels": [
+     "AI-written",
+     "Human-written",
+     "Labeled AI",
+     "Labeled human"
+    ],
+    "values": [
+     5.74,
+     5.17,
+     5.13,
+     5.81
+    ],
+    "unit": "",
+    "highlight": 2,
+    "note": "Feeling heard, 7-point scale; source and label manipulated separately. Values reported in Yin, Jia & Wakslak 2024, Results."
+   },
+   "answerTitle": "AI helps people feel heard; the label undercuts it",
+   "explain": "AI replies made people feel more heard than human replies (5.74 vs 5.17), but an AI label lowered feeling heard (5.13 vs 5.81 for a human label).",
+   "implication": "Keep the label, but expect a dip; measure customers' attitudes toward AI and have staff personalize sensitive replies.",
+   "boundary": "One online experiment with Bing Chat and one-off replies; long customer relationships were not studied.",
+   "sources": [
+    "yin24"
+   ],
+   "study": {
+    "design": "2 x 2 online experiment",
+    "n": "455 participants"
+   },
+   "follow": [
+    {
+     "q": "Was the AI better at reading emotions?",
+     "a": "Yes. Bing Chat was more accurate than human responders at detecting four of six basic emotions, with no difference for anger or surprise."
+    },
+    {
+     "q": "Who did not mind the label?",
+     "a": "Recipients with very positive attitudes toward the AI showed no negative label effect."
+    },
+    {
+     "q": "What about colleagues who use AI?",
+     "a": "A related PNAS study found people helped by AI are rated lazier, and employees expect this and hide AI use (Reif et al. 2025)."
+    }
+   ],
+   "theme": "ai-trust"
   }
  ],
  "editorialRules": [
@@ -6876,7 +8149,25 @@
     "axb14",
     "axb01",
     "ai07",
-    "axb13"
+    "axb13",
+    "axe06",
+    "axe03"
+   ]
+  },
+  {
+   "id": "ai-customers",
+   "title": "AI meets your customers",
+   "case": true,
+   "blurb": "Disclose the bot or not, label AI content, personalize ads, answer patients. What customers do when AI is on the other side.",
+   "ids": [
+    "genai1",
+    "genai2",
+    "genai3",
+    "axe14",
+    "axe05",
+    "axe01",
+    "axe10",
+    "axe13"
    ]
   },
   {
@@ -6891,7 +8182,8 @@
     "axb06",
     "ai10",
     "axb11",
-    "axb10"
+    "axb10",
+    "axe07"
    ]
   },
   {

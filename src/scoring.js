@@ -21,9 +21,8 @@
   function estimate(c, value) {
     const e = c.estimate;
     const gap = Math.abs(value - e.target);
-    const span = Math.max(1e-9, e.max - e.min);
-    // Full credit inside the tolerance band, then linear decay to zero at half the scale.
-    const score = gap <= e.tolerance ? 1 : clamp(1 - (gap - e.tolerance) / (span / 2), 0, 1);
+    // Full credit inside the tolerance band, then linear decay to zero at three tolerances from the target.
+    const score = gap <= e.tolerance ? 1 : clamp(1 - (gap - e.tolerance) / (2 * e.tolerance), 0, 1);
     return { score, correct: gap <= e.tolerance, detail: { gap: Math.round(gap * 10) / 10 } };
   }
 
@@ -32,7 +31,8 @@
     const prob = clamp(Number(p) / 100, 0, 1);
     const truth = c.forecast.truth ? 1 : 0;
     const brier = (prob - truth) ** 2;
-    return { score: 1 - brier, correct: (prob >= 0.5) === (truth === 1) && prob !== 0.5, detail: { brier: Math.round(brier * 1000) / 1000 } };
+    // Brier skill against always saying 50%: hedging earns 0, a confident correct call earns up to 100.
+    return { score: clamp(1 - brier / 0.25, 0, 1), correct: (prob > 0.5) === (truth === 1) && prob !== 0.5, detail: { brier: Math.round(brier * 1000) / 1000 } };
   }
 
   // Ranking: share of item pairs placed in the evidence order (Kendall agreement).
@@ -40,8 +40,11 @@
     const truth = c.rankAnswer;
     if (!Array.isArray(order) || order.length !== truth.length) return { score: 0, correct: false, detail: { pairs: 0 } };
     const pos = new Map(order.map((v, i) => [v, i]));
+    // Pairs the study could not tell apart (rankTies) are not scored.
+    const tied = (a, b) => (c.rankTies || []).some(g => g.includes(a) && g.includes(b));
     let agree = 0, total = 0;
     for (let i = 0; i < truth.length; i++) for (let j = i + 1; j < truth.length; j++) {
+      if (tied(truth[i], truth[j])) continue;
       total++; if (pos.get(truth[i]) < pos.get(truth[j])) agree++;
     }
     const score = total ? agree / total : 0;
@@ -100,23 +103,24 @@
     const rows = Array.from({ length: bins }, (_, i) => ({ lo: i * 100 / bins, hi: (i + 1) * 100 / bins, n: 0, sumP: 0, hits: 0 }));
     let brier = 0;
     for (const r of records) {
+      if (!r) continue;
       const p = clamp(r.p, 0, 100);
       const i = Math.min(bins - 1, Math.floor(p / (100 / bins)));
       rows[i].n++; rows[i].sumP += p; rows[i].hits += r.outcome;
       brier += (p / 100 - r.outcome) ** 2;
     }
     return {
-      n: records.length,
-      brier: records.length ? brier / records.length : null,
+      n: records.filter(Boolean).length,
+      brier: records.filter(Boolean).length ? brier / records.filter(Boolean).length : null,
       bins: rows.map(b => ({ lo: b.lo, hi: b.hi, n: b.n, meanP: b.n ? b.sumP / b.n : null, hitRate: b.n ? 100 * b.hits / b.n : null })),
-      overconfidence: records.length ? (records.reduce((a, r) => a + r.p, 0) / records.length) - 100 * records.reduce((a, r) => a + r.outcome, 0) / records.length : null
+      overconfidence: (rs => rs.length ? rs.reduce((a, r) => a + r.p, 0) / rs.length - 100 * rs.reduce((a, r) => a + r.outcome, 0) / rs.length : null)(records.filter(Boolean))
     };
   }
 
   // A forecast converts to a calibration record about the claim; other formats about the answer.
   function toCalibrationRecord(c, rec) {
-    if (c.format === 'forecast') return { p: rec.response, outcome: c.forecast.truth ? 1 : 0 };
-    return { p: rec.confidence, outcome: rec.correct ? 1 : 0 };
+    if ((c && c.format === 'forecast') || rec.format === 'forecast') return { p: rec.response, outcome: rec.outcome ?? (c.forecast.truth ? 1 : 0) };
+    return rec.confidence === null || rec.confidence === undefined ? null : { p: rec.confidence, outcome: rec.correct ? 1 : 0 };
   }
 
   const api = { score, ready, statedProbability, calibration, toCalibrationRecord, formats: Object.keys(scorers) };

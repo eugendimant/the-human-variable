@@ -12,18 +12,20 @@ def score(c: dict, r) -> dict:
         s = set(r if isinstance(r, list) else []); hits = sum(1 for i in c['multiAnswers'] if i in s)
         return {'score': hits / len(c['multiAnswers']), 'correct': hits == len(c['multiAnswers']) and len(s) == len(c['multiAnswers'])}
     if f == 'estimate':
-        e = c['estimate']; gap = abs(r - e['target']); span = max(1e-9, e['max'] - e['min'])
-        sc = 1.0 if gap <= e['tolerance'] else _clamp(1 - (gap - e['tolerance']) / (span / 2), 0, 1)
+        e = c['estimate']; gap = abs(r - e['target'])
+        sc = 1.0 if gap <= e['tolerance'] else _clamp(1 - (gap - e['tolerance']) / (2 * e['tolerance']), 0, 1)
         return {'score': sc, 'correct': gap <= e['tolerance']}
     if f == 'forecast':
         p = _clamp(float(r) / 100, 0, 1); t = 1 if c['forecast']['truth'] else 0; b = (p - t) ** 2
-        return {'score': 1 - b, 'correct': (p >= 0.5) == (t == 1) and p != 0.5}
+        return {'score': _clamp(1 - b / 0.25, 0, 1), 'correct': (p > 0.5) == (t == 1) and p != 0.5}
     if f == 'rank':
         truth = c['rankAnswer']
         if not isinstance(r, list) or len(r) != len(truth): return {'score': 0.0, 'correct': False}
         pos = {v: i for i, v in enumerate(r)}; agree = total = 0
+        ties = c.get('rankTies') or []
         for i in range(len(truth)):
             for j in range(i + 1, len(truth)):
+                if any(truth[i] in g and truth[j] in g for g in ties): continue
                 total += 1; agree += pos[truth[i]] < pos[truth[j]]
         sc = agree / total if total else 0.0; return {'score': sc, 'correct': sc == 1}
     if f == 'allocate':
