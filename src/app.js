@@ -234,7 +234,7 @@ function gapFigure(c, rec) {
   }
   else if (c.format === 'allocate') {
     const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, mx = Math.max(...a.values);
-    body = `<svg viewBox="0 0 340 ${c.options.length * 58 + 10}" role="img" aria-label="Your allocation compared with reported effects">${c.options.map((o, k) => { const y = 8 + k * 58; return `<text x="0" y="${y + 10}" font-size="12" font-weight="650" fill="#14203a">${esc(short(o, 44))}</text><rect x="0" y="${y + 17}" width="${Math.max(2, r[k] / tot * 250)}" height="10" rx="5" fill="#2f54eb"/><text x="${Math.max(2, r[k] / tot * 250) + 6}" y="${y + 26}" font-size="11" fill="#1f3cc2" font-weight="700">${pct(r[k] / tot)}% of budget</text><rect x="0" y="${y + 32}" width="${Math.max(2, a.values[k] / mx * 250)}" height="10" rx="5" fill="#e0a01c"/><text x="${Math.max(2, a.values[k] / mx * 250) + 6}" y="${y + 41}" font-size="11" fill="#7d5200" font-weight="700">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</text>` }).join('')}</svg>`;
+    body = `<div class="hbars alloc-cmp" role="img" aria-label="Your allocation compared with reported effects">${c.options.map((o, k) => `<div class="hb-row two"><span class="hb-label">${esc(o)}</span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num you">${pct(r[k] / tot)}%</b><span class="hb-track"><i class="grow ev" style="width:${Math.max(1.5, Math.max(0, a.values[k]) / (mx || 1) * 100)}%"></i></span><b class="num ev">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</b></div>`).join('')}</div>`;
     cap = `Blue: your split. Amber: ${esc(a.valueName)}. Score ${pct(rec.score)}: share of the maximum payoff your split captures under the reported effects.`
   }
   else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${r[k] === t.answer ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${r[k] === t.answer ? '' : `<span class="chip ev">${esc(c.delegate.choices[t.answer])}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
@@ -244,8 +244,8 @@ function gapFigure(c, rec) {
 }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {
-  const mx = Math.max(...ch.values) * 1.12;
-  return `<svg viewBox="0 0 340 ${ch.values.length * 46 + 6}" role="img" aria-label="${esc(ch.labels.map((l, i) => l + ' ' + ch.values[i] + (ch.unit || '')).join(', '))}">${ch.values.map((v, i) => { const y = 4 + i * 46, w = v / mx * 280; return `<text x="0" y="${y + 11}" font-size="12" font-weight="650" fill="#14203a">${esc(ch.labels[i])}</text><rect x="0" y="${y + 17}" width="300" height="14" rx="7" fill="#e2e7ed"/><rect class="rv-bar-grow" x="0" y="${y + 17}" width="${w}" height="14" rx="7" fill="${i === ch.highlight ? '#e0a01c' : '#14203a'}"/><text x="${w + 6}" y="${y + 29}" font-size="12" font-weight="800" fill="#14203a">${esc(v + (ch.unit || ''))}</text>` }).join('')}</svg>`;
+  const mx = Math.max(...ch.values.map(Math.abs)) || 1;
+  return `<div class="hbars" role="img" aria-label="${esc(ch.labels.map((l, i) => l + ' ' + ch.values[i] + (ch.unit || '')).join(', '))}">${ch.values.map((v, i) => `<div class="hb-row"><span class="hb-label">${esc(ch.labels[i])}</span><span class="hb-track"><i class="grow ${i === ch.highlight ? 'ev' : ''}" style="width:${Math.max(1.5, Math.abs(v) / mx * 100)}%"></i></span><b class="num">${esc(v + (ch.unit || ''))}</b></div>`).join('')}</div>`;
 }
 
 function studyLine(c) {
@@ -528,7 +528,7 @@ function render(moveFocus) {
 function animateReveal() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   qa('.ev-mark[data-from]').forEach(g => { const d = +g.dataset.from; if (!d) return; g.style.transition = 'none'; g.style.transform = `translateX(${d}px)`; g.style.opacity = '.3'; requestAnimationFrame(() => requestAnimationFrame(() => { g.style.transition = ''; g.style.transform = ''; g.style.opacity = '' })) });
-  qa('.rv-bar-grow').forEach(r => { const w = r.getAttribute('width'); r.setAttribute('width', 0); requestAnimationFrame(() => requestAnimationFrame(() => r.setAttribute('width', w))) });
+
 }
 function setRange(el) { el.classList.remove('untouched'); el.style.setProperty('--fill', (el.value - el.min) / (el.max - el.min) * 100 + '%') }
 

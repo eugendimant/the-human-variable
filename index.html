@@ -477,6 +477,20 @@ body.in-play{background:var(--paper)}
 @keyframes lockpulse{0%{transform:scale(1)}40%{transform:scale(1.025)}100%{transform:scale(1)}}
 .resume{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;padding:12px 16px!important;border-radius:var(--r-panel);background:var(--you-soft);color:var(--you-ink);max-width:calc(var(--max) - 2*var(--gut))}
 :root{color-scheme:light}
+
+.hbars{display:grid;gap:14px;margin:6px 0 4px}
+.hb-row{display:grid;grid-template-columns:minmax(0,1fr) 70px;grid-template-areas:"l l" "t v";gap:4px 12px;align-items:center}
+.hb-label{grid-area:l;font-weight:650;font-size:15px;line-height:1.3}
+.hb-row>.hb-track{grid-area:t}.hb-row>b{grid-area:v;font-size:15px;font-weight:800}
+.hb-track{height:14px;border-radius:7px;background:var(--sunk);position:relative;overflow:hidden}
+.hb-track i{position:absolute;inset:0 auto 0 0;border-radius:7px;background:var(--ink);transform-origin:left}
+.hb-track i.ev{background:var(--ev)}.hb-track i.you{background:var(--you)}
+.hb-row.two{grid-template-areas:"l l" "t1 v1" "t2 v2"}
+.hb-row.two>.hb-track:nth-of-type(2){grid-area:t1}.hb-row.two>b.you{grid-area:v1;color:var(--you-ink)}
+.hb-row.two>.hb-track:nth-of-type(3){grid-area:t2}.hb-row.two>b.ev{grid-area:v2;color:var(--ev-ink);font-size:13px}
+.grow{animation:grow .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.alloc-cmp .hb-row{grid-template-columns:minmax(0,1fr) 100px}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="#" data-home="1" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -852,7 +866,7 @@ function gapFigure(c, rec) {
   }
   else if (c.format === 'allocate') {
     const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, mx = Math.max(...a.values);
-    body = `<svg viewBox="0 0 340 ${c.options.length * 58 + 10}" role="img" aria-label="Your allocation compared with reported effects">${c.options.map((o, k) => { const y = 8 + k * 58; return `<text x="0" y="${y + 10}" font-size="12" font-weight="650" fill="#14203a">${esc(short(o, 44))}</text><rect x="0" y="${y + 17}" width="${Math.max(2, r[k] / tot * 250)}" height="10" rx="5" fill="#2f54eb"/><text x="${Math.max(2, r[k] / tot * 250) + 6}" y="${y + 26}" font-size="11" fill="#1f3cc2" font-weight="700">${pct(r[k] / tot)}% of budget</text><rect x="0" y="${y + 32}" width="${Math.max(2, a.values[k] / mx * 250)}" height="10" rx="5" fill="#e0a01c"/><text x="${Math.max(2, a.values[k] / mx * 250) + 6}" y="${y + 41}" font-size="11" fill="#7d5200" font-weight="700">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</text>` }).join('')}</svg>`;
+    body = `<div class="hbars alloc-cmp" role="img" aria-label="Your allocation compared with reported effects">${c.options.map((o, k) => `<div class="hb-row two"><span class="hb-label">${esc(o)}</span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num you">${pct(r[k] / tot)}%</b><span class="hb-track"><i class="grow ev" style="width:${Math.max(1.5, Math.max(0, a.values[k]) / (mx || 1) * 100)}%"></i></span><b class="num ev">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</b></div>`).join('')}</div>`;
     cap = `Blue: your split. Amber: ${esc(a.valueName)}. Score ${pct(rec.score)}: share of the maximum payoff your split captures under the reported effects.`
   }
   else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${r[k] === t.answer ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${r[k] === t.answer ? '' : `<span class="chip ev">${esc(c.delegate.choices[t.answer])}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
@@ -862,8 +876,8 @@ function gapFigure(c, rec) {
 }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {
-  const mx = Math.max(...ch.values) * 1.12;
-  return `<svg viewBox="0 0 340 ${ch.values.length * 46 + 6}" role="img" aria-label="${esc(ch.labels.map((l, i) => l + ' ' + ch.values[i] + (ch.unit || '')).join(', '))}">${ch.values.map((v, i) => { const y = 4 + i * 46, w = v / mx * 280; return `<text x="0" y="${y + 11}" font-size="12" font-weight="650" fill="#14203a">${esc(ch.labels[i])}</text><rect x="0" y="${y + 17}" width="300" height="14" rx="7" fill="#e2e7ed"/><rect class="rv-bar-grow" x="0" y="${y + 17}" width="${w}" height="14" rx="7" fill="${i === ch.highlight ? '#e0a01c' : '#14203a'}"/><text x="${w + 6}" y="${y + 29}" font-size="12" font-weight="800" fill="#14203a">${esc(v + (ch.unit || ''))}</text>` }).join('')}</svg>`;
+  const mx = Math.max(...ch.values.map(Math.abs)) || 1;
+  return `<div class="hbars" role="img" aria-label="${esc(ch.labels.map((l, i) => l + ' ' + ch.values[i] + (ch.unit || '')).join(', '))}">${ch.values.map((v, i) => `<div class="hb-row"><span class="hb-label">${esc(ch.labels[i])}</span><span class="hb-track"><i class="grow ${i === ch.highlight ? 'ev' : ''}" style="width:${Math.max(1.5, Math.abs(v) / mx * 100)}%"></i></span><b class="num">${esc(v + (ch.unit || ''))}</b></div>`).join('')}</div>`;
 }
 
 function studyLine(c) {
@@ -1146,7 +1160,7 @@ function render(moveFocus) {
 function animateReveal() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   qa('.ev-mark[data-from]').forEach(g => { const d = +g.dataset.from; if (!d) return; g.style.transition = 'none'; g.style.transform = `translateX(${d}px)`; g.style.opacity = '.3'; requestAnimationFrame(() => requestAnimationFrame(() => { g.style.transition = ''; g.style.transform = ''; g.style.opacity = '' })) });
-  qa('.rv-bar-grow').forEach(r => { const w = r.getAttribute('width'); r.setAttribute('width', 0); requestAnimationFrame(() => requestAnimationFrame(() => r.setAttribute('width', w))) });
+
 }
 function setRange(el) { el.classList.remove('untouched'); el.style.setProperty('--fill', (el.value - el.min) / (el.max - el.min) * 100 + '%') }
 
