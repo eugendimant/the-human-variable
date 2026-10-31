@@ -272,7 +272,7 @@ class Store:
 
 def public_challenge(c: dict) -> dict:
     """Everything a participant needs to answer, nothing that reveals the answer."""
-    keep = ('id', 'track', 'concept', 'title', 'scene', 'question', 'options', 'format', 'rankLabel', 'dag', 'case', 'study')
+    keep = ('id', 'track', 'title', 'scene', 'question', 'options', 'format', 'rankLabel', 'dag', 'case', 'study')  # concept can name the result
     out = {k: c[k] for k in keep if k in c}
     if c['format'] == 'estimate': out['estimate'] = {k: c['estimate'][k] for k in ('min', 'max', 'label', 'unit', 'step') if k in c['estimate']}
     if c['format'] == 'forecast': out['forecast'] = {'claim': c['forecast']['claim']}
@@ -280,8 +280,9 @@ def public_challenge(c: dict) -> dict:
     if c['format'] == 'delegate': out['delegate'] = {'choices': c['delegate']['choices'], 'tasks': [{'text': t['text']} for t in c['delegate']['tasks']]}
     if 'dag' in c:  # the written explanation and the masked label state the answer; edge styles mark the questioned link
         d = c['dag']; out['dag'] = {k: v for k, v in d.items() if k not in ('alt', 'nodes', 'edges')}
-        out['dag']['nodes'] = [{k: v for k, v in n.items() if k != 'label'} | {'label': '?'} if n.get('mask') else n for n in d['nodes']]
-        out['dag']['edges'] = [e[:2] for e in d['edges']]
+        ren = {n['id']: f'n{i}' for i, n in enumerate(d['nodes'])}   # neutral ids: a masked node's id must not name it
+        out['dag']['nodes'] = [{k: v for k, v in n.items() if k not in ('label', 'id')} | {'id': ren[n['id']], 'label': '?' if n.get('mask') else n['label']} for n in d['nodes']]
+        out['dag']['edges'] = [[ren[e[0]], ren[e[1]]] for e in d['edges']]
     if c['format'] == 'multi': out['pick'] = len(c['multiAnswers'])
     if c['format'] == 'rank': out['nRank'] = len(c['rankAnswer'])
     return out

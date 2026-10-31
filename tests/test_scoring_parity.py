@@ -51,3 +51,13 @@ def test_forecast_calibration_is_folded():
     js = "const S=require('./src/scoring.js');const r=[{format:'forecast',response:10,outcome:0},{format:'forecast',response:90,outcome:1}].map(x=>S.toCalibrationRecord(null,x));console.log(JSON.stringify([r,S.calibration(r).overconfidence]))"
     out = json.loads(subprocess.run(['node', '-e', js], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
     assert out[0] == [{'p': 90, 'outcome': 1}, {'p': 90, 'outcome': 1}] and out[1] <= 0
+
+def test_no_information_strategies_have_no_skill():
+    """Review 9, M2: hedging, random order and even splits earn zero skill in every format."""
+    js = """const S=require('./src/scoring.js');const B=require('./src/bank.json');const out=[];
+for(const c of B.challenges){let r=null;
+ if(c.format==='forecast')r=50; else if(c.format==='allocate'){const n=c.options.length,t=c.allocate.total;r=Array.from({length:n},(_, i)=>i<n-1?Math.floor(t/n):t-Math.floor(t/n)*(n-1))}
+ if(r!==null)out.push([c.id,S.skill(c,S.score(c,r).score)])}
+console.log(JSON.stringify(out))"""
+    out = json.loads(subprocess.run(['node', '-e', js], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+    assert out and all(abs(v) < 0.05 for _, v in out), [x for x in out if abs(x[1]) >= 0.05]

@@ -22,6 +22,11 @@
   },
   {
    "source": "vaccaro24",
+   "quote": "g = -0.54",
+   "location": "Results, moderators (values as printed)"
+  },
+  {
+   "source": "vaccaro24",
    "quote": "the AI alone achieved an accuracy of 73%, the human alone achieved an accuracy of 55%",
    "location": "Discussion (fake hotel reviews, citing Cabrera et al.)"
   },
@@ -37,6 +42,11 @@
   },
   {
    "source": "vaccaro24",
+   "quote": "bird images; AI alone 73%",
+   "location": "Discussion (values as printed)"
+  },
+  {
+   "source": "vaccaro24",
    "quote": "the human-AI system achieved an accuracy of 90%",
    "location": "Discussion (bird images)"
   },
@@ -49,6 +59,11 @@
    "source": "vaccaro24",
    "quote": "performed significantly better than humans alone",
    "location": "Results (g = 0.64)"
+  },
+  {
+   "source": "vaccaro24",
+   "quote": "g = 0.64",
+   "location": "Results (values as printed)"
   }
  ],
  "axb02": [
@@ -300,6 +315,11 @@
    "source": "altay24",
    "quote": "we recruited 1,976 participants in the United States via Prolific ... we recruited 3,003 participants in the United States and United Kingdom",
    "location": "Methods, Studies 1 and 2 (N = 4,976 in abstract)"
+  },
+  {
+   "source": "altay24",
+   "quote": "N = 4,976 in abstract",
+   "location": "Methods, Studies 1 and 2 (values as printed)"
   }
  ],
  "axb10": [
@@ -571,6 +591,11 @@
   },
   {
    "source": "bastani25",
+   "quote": "GPT Tutor exam, estimate -0.004",
+   "location": "Results (values as printed)"
+  },
+  {
+   "source": "bastani25",
    "quote": "nearly a thousand high school math students",
    "location": "Abstract"
   },
@@ -640,6 +665,11 @@
    "source": "gordon19",
    "quote": "Using data from 15 U.S. advertising experiments at Facebook comprising 500 million user-experiment observations and 1.6 billion ad impressions, we contrast the experimental results to those obtained from multiple observational models. The observational methods often fail to produce the same effects as the randomized experiments, even after conditioning on extensive demographic and behavioral variables.",
    "location": "Marketing Science 38(2) published abstract (publisher-supplied abstract as indexed at ideas.repec.org/a/inm/ormksc/v38y2019i2p193-225.html; the Crossref record carries only a one-line summary)"
+  },
+  {
+   "source": "gordon19",
+   "quote": "publisher-supplied abstract as indexed at ideas.repec.org/a/inm/ormksc/v38y2019i2p193-225.html; the Crossref record carries only a one-line summary",
+   "location": "Marketing Science 38(2) published abstract (values as printed)"
   }
  ],
  "bz02": [
@@ -986,8 +1016,18 @@
   },
   {
    "source": "iyengar00",
+   "quote": "104",
+   "location": "p. 997, extensive-choice condition; limited: 40% (values as printed)"
+  },
+  {
+   "source": "iyengar00",
    "quote": "only 3% (4) of the consumers in the extensive-choice condition did so",
    "location": "p. 997; limited-choice condition about 30% (31)"
+  },
+  {
+   "source": "iyengar00",
+   "quote": "31",
+   "location": "p. 997; limited-choice condition about 30% (values as printed)"
   },
   {
    "source": "scheib10",
@@ -1038,6 +1078,11 @@
   },
   {
    "source": "kristal20",
+   "quote": "PMC7132248, Europe PMC full text",
+   "location": "Abstract, PNAS 117(13), published article (values as printed)"
+  },
+  {
+   "source": "kristal20",
    "quote": "Given the policy applications of this result, it is important to update the scientific record regarding the veracity of these results.",
    "location": "Abstract, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
   },
@@ -1045,6 +1090,11 @@
    "source": "kristal20",
    "quote": "Study 6. A sample of 1,235 adults was recruited across four laboratory sites",
    "location": "Methods, Study 6, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
+  },
+  {
+   "source": "kristal20",
+   "quote": "PMC7132248, Europe PMC full text",
+   "location": "Methods, Study 6, PNAS 117(13), published article (values as printed)"
   },
   {
    "source": "shu12",
@@ -1337,8 +1387,18 @@
   },
   {
    "source": "cohn19",
+   "quote": "continues: \"and topped out at 72% in the BigMoney condition\"",
+   "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io) (values as printed)"
+  },
+  {
+   "source": "cohn19",
    "quote": "a combination of altruistic concerns and an aversion to viewing oneself as a thief",
    "location": "Abstract (PubMed 31221770, Science version of record)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "PubMed 31221770, Science version of record",
+   "location": "Abstract (values as printed)"
   }
  ],
  "truth-telling-gains": [
@@ -1487,8 +1547,18 @@
   },
   {
    "source": "bail18",
+   "quote": "PMC6140520, Europe PMC full text",
+   "location": "Results, PNAS 115(37), published article (values as printed)"
+  },
+  {
+   "source": "bail18",
    "quote": "“Respondents Assigned to Treatment” describes the ITT effect for Democrats (ITT = −0.02, t = −0.76, p = 0.45, n = 416) and Republicans (ITT = 0.12, t = 2.68, p = 0.008, n = 316).",
    "location": "Fig. 3 legend, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+  },
+  {
+   "source": "bail18",
+   "quote": "PMC6140520, Europe PMC full text",
+   "location": "Fig. 3 legend, PNAS 115(37), published article (values as printed)"
   },
   {
    "source": "bail18",
@@ -1499,6 +1569,11 @@
    "source": "bail18",
    "quote": "We received 1,652 responses to our pretreatment survey (901 Democrats and 751 Republicans).",
    "location": "Research Design, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+  },
+  {
+   "source": "bail18",
+   "quote": "PMC6140520, Europe PMC full text",
+   "location": "Research Design, PNAS 115(37), published article (values as printed)"
   },
   {
    "source": "bail18",
@@ -1519,6 +1594,11 @@
    "source": "bail18",
    "quote": "Perhaps the most important limitation of our study is that we were unable to identify the precise mechanism that created the backfire effect among Republican respondents reported above.",
    "location": "Discussion, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+  },
+  {
+   "source": "bail18",
+   "quote": "PMC6140520, Europe PMC full text",
+   "location": "Discussion, PNAS 115(37), published article (values as printed)"
   },
   {
    "source": "bail18",
@@ -2098,6 +2178,11 @@
   },
   {
    "source": "prox22",
+   "quote": "Observation, p < 0.001",
+   "location": "Published version of record, Table 2 discussion (values as printed)"
+  },
+  {
+   "source": "prox22",
    "quote": "Table 1: initial takers NoObservation 45%, Observation 44%, ObservationSP 42%; Kruskal-Wallis p = 0.703",
    "location": "Published version of record, Table 1 (published version; table values as printed)"
   },
@@ -2214,6 +2299,11 @@
   },
   {
    "source": "enforcers23",
+   "quote": "P < 0.001",
+   "location": "Published version of record, Study 1 results (values as printed)"
+  },
+  {
+   "source": "enforcers23",
    "quote": "the smallest possible lie (size = 1) is only assigned a share of punishment of 44.7% ... increases by about 10 percentage points",
    "location": "Published version of record, Study 1 results"
   },
@@ -2221,6 +2311,11 @@
    "source": "enforcers23",
    "quote": "We find that norm perceptions are malleable and norm-nudges are most effective when preexisting norms are ambiguous.",
    "location": "Published abstract"
+  },
+  {
+   "source": "enforcers23",
+   "quote": "77.8% vs 62.3%, P < 0.001",
+   "location": "PNAS Nexus, Results, inequity-creating vs equity-restoring bribes (Europe PMC full text; values as printed)"
   }
  ],
  "dimant-observability-choice": [
@@ -2478,12 +2573,22 @@
    "source": "norms24",
    "quote": "participants choose contribution levels that are tightly centered around the mean of the shown distribution (σ2 = 1.26)",
    "location": "Management Science 71(3), pp. 2253-2254"
+  },
+  {
+   "source": "norms24",
+   "quote": "1,203 participants",
+   "location": "Management Science 71(3), Section 4 (published version; values as printed)"
   }
  ],
  "ai01": [
   {
    "source": "noy23",
    "quote": "The average time taken decreased by 40% and output quality rose by 18%.",
+   "location": "Science abstract (version of record)"
+  },
+  {
+   "source": "noy23",
+   "quote": "we assigned occupation-specific, incentivized writing tasks to 453 college-educated professionals",
    "location": "Science abstract (version of record)"
   }
  ],
@@ -2497,24 +2602,6 @@
    "source": "noy23",
    "quote": "The average time taken decreased by 40% and output quality rose by 18%. Inequality between workers decreased",
    "location": "Science abstract (version of record)"
-  }
- ],
- "ai04": [
-  {
-   "quote": "staggered rollout of a generative AI conversational assistant to 5,172 customer-support agents (paraphrase)",
-   "location": "QJE abstract, Crossref api.crossref.org/works/10.1093/qje/qjae044"
-  },
-  {
-   "quote": "Less experienced and lower-skilled agents improved both speed and quality; most experienced saw small speed gains and slight quality declines (paraphrase)",
-   "location": "QJE abstract, Crossref api.crossref.org/works/10.1093/qje/qjae044"
-  },
-  {
-   "quote": "customers became more polite and were less likely to ask for a manager (paraphrase)",
-   "location": "QJE abstract, Crossref api.crossref.org/works/10.1093/qje/qjae044"
-  },
-  {
-   "quote": "Gains were largest for moderately rare problems (paraphrase)",
-   "location": "QJE abstract, Crossref api.crossref.org/works/10.1093/qje/qjae044"
   }
  ],
  "ai07": [
@@ -2676,6 +2763,11 @@
    "source": "logg19",
    "quote": "Participants showed an appreciation of algorithms, relying more on the same advice when they thought it came from an algorithm (M = 0.45, SD = 0.37), than when they thought it came from other people (M = 0.30, SD = 0.35), F (1, 200) = 8.86, p = .003, d = 0.42; see Fig. 1.",
    "location": "OBHDP 151, p. 93, Section 2.2.1 Results (Experiment 1A)"
+  },
+  {
+   "source": "logg19",
+   "quote": "Experiment 1A",
+   "location": "OBHDP 151, p. 93, Section 2.2.1 Results (values as printed)"
   }
  ],
  "ai11": [
@@ -2756,36 +2848,6 @@
   }
  ],
  "biz01": [
-  {
-   "source": "cribb20",
-   "quote": "with 86% of employees enrolled in the 401(k) after 3–15 months",
-   "location": "Introduction"
-  },
-  {
-   "source": "cribb20",
-   "quote": "compared with only 37% of those who were not subject to automatic enrolment",
-   "location": "Introduction"
-  },
-  {
-   "source": "cribb20",
-   "quote": "with 86% of employees enrolled in the 401(k) after 3–15 months",
-   "location": "Introduction"
-  },
-  {
-   "source": "cribb20",
-   "quote": "compared with only 37% of those who were not subject to automatic enrolment",
-   "location": "Introduction"
-  },
-  {
-   "source": "cribb20",
-   "quote": "with 86% of employees enrolled in the 401(k) after 3–15 months",
-   "location": "Introduction"
-  },
-  {
-   "source": "cribb20",
-   "quote": "compared with only 37% of those who were not subject to automatic enrolment",
-   "location": "Introduction"
-  },
   {
    "source": "cribb20",
    "quote": "with 86% of employees enrolled in the 401(k) after 3–15 months",
@@ -2882,6 +2944,11 @@
   },
   {
    "source": "energy07",
+   "quote": "extracted text shows '=' as '5'",
+   "location": "Psychological Science 18(5), Results (values as printed)"
+  },
+  {
+   "source": "energy07",
    "quote": "the combined injunctive-plus-descriptive message produced no change from baseline for low-consuming households (longer-term M = 10.14, SE = 0.37 vs. baseline M = 10.04, SE = 0.35; n = 70)",
    "location": "Psychological Science 18(5), Results"
   },
@@ -2921,61 +2988,6 @@
    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
   }
  ],
- "biz06": [
-  {
-   "quote": "the researcher drew a happy face",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results, Intervention"
-  },
-  {
-   "quote": "the researcher drew a sad face",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results, Intervention"
-  },
-  {
-   "source": "energy07",
-   "quote": "the descriptive-norm-only message produced an increase in energy consumption from baseline (M = 11.27, SE = 0.46 vs. baseline M = 10.38, SE = 0.33; n = 79)",
-   "location": "Psychological Science 18(5), Results, short term"
-  },
-  {
-   "source": "energy07",
-   "quote": "households that were consuming less energy than average continued to consume at the desirable low rate (M = 10.58, SE = 0.38 vs. baseline M = 10.34, SE = 0.33; n = 81)",
-   "location": "Psychological Science 18(5), Results, short term, descriptive plus injunctive"
-  },
-  {
-   "source": "energy07",
-   "quote": "Participants were 290 households in San Marcos, CA, with visible energy meters.",
-   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 430"
-  },
-  {
-   "source": "energy07",
-   "quote": "If the household had consumed less than the average for the neighborhood, the researcher drew a happy face ( ); if the household had consumed more than the average, the researcher drew a sad face ( ).",
-   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), pp. 430-431, Intervention (sentence broken by footnote 1)"
-  },
-  {
-   "source": "energy07",
-   "quote": "When the injunctive message was added to the descriptive normative feedback, households that were consuming less energy than average continued to consume at the desirable low rate (M = 10.58, SE = 0.38 vs. baseline M = 10.34, SE = 0.33; n = 81), t(80) = 1.04, n.s.",
-   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), pp. 431-432, Results, Short-Term Change (sentence broken by Figure 1)"
-  },
-  {
-   "source": "energy07",
-   "quote": "However, the combined injunctive-plus-descriptive message produced no change from baseline for low-consuming households (longer-term M = 10.14, SE = 0.37 vs. baseline M = 10.04, SE = 0.35; n = 70), t(69) = 0.64, n.s.",
-   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
-  },
-  {
-   "source": "energy07",
-   "quote": "in the short term, the reduction in energy usage for high-consuming households was 1.72 kWh/day in the descriptive-plus-injunctive condition, compared with 1.22 kWh/day in the descriptive-only condition.",
-   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 433, Discussion"
-  },
-  {
-   "source": "energy07",
-   "quote": "Finally, for households that initially consumed more energy than the neighborhood average, the combined descriptive-plus-injunctive feedback continued to produce a significant decrease in energy consumption relative to the baseline (baseline M = 20.62, SE = 0.64 vs. longer-term M = 19.39, SE = 0.62; n = 56), t(55) = 2.13, prep = .93, d = 0.58.",
-   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
-  },
-  {
-   "source": "energy07",
-   "quote": "We took a final meter reading 3 weeks after the distribution of the second feedback message.",
-   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Procedure"
-  }
- ],
  "biz07": [
   {
    "source": "subtract21",
@@ -3011,12 +3023,22 @@
    "source": "subtract21",
    "quote": "Participants could stabilize the top platform of the Lego structure so it could hold a masonry brick above the head of the action figure by adding new supports to reinforce the single corner block or by removing the corner block and letting the platform sit flush on the layer below.",
    "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 2 legend (experiment 1)"
+  },
+  {
+   "source": "subtract21",
+   "quote": "experiment 1",
+   "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 2 legend (values as printed)"
   }
  ],
  "biz08": [
   {
    "quote": "when they had only one opportunity (versus several)",
    "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)"
+  },
+  {
+   "source": null,
+   "quote": "DOI:10.1038/s41586-021-03380-y",
+   "location": "Nature abstract via Europe PMC (values as printed)"
   },
   {
    "quote": "under a higher (versus lower) cognitive load",
@@ -3071,6 +3093,11 @@
   },
   {
    "source": "anchor74",
+   "quote": "OCR garbles '5' as 'S' in the first product; restored",
+   "location": "Science 185, p. 1128 (values as printed)"
+  },
+  {
+   "source": "anchor74",
    "quote": "The median estimate for the ascending sequence was 512, while the median estimate for the descending sequence was 2,250. The correct answer is 40,320.",
    "location": "Science 185, p. 1128"
   },
@@ -3106,38 +3133,6 @@
    "source": "norms24",
    "quote": "in tight environments (low variance), participants choose contribution levels that are tightly centered around the mean of the shown distribution (σ2 = 1.26). In loose environments (high variance), by contrast, we see a much larger variation in behavior (σ2 = 1.65).",
    "location": "Management Science 71(3), pp. 2253-2254, Section 4.2"
-  }
- ],
- "social03": [
-  {
-   "quote": "the contribution of their co-player for Part II will be randomly drawn from this distribution",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2251"
-  },
-  {
-   "quote": "Looser descriptive norms lead to a larger variance in contributions.",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2255"
-  },
-  {
-   "quote": "Personal traits (sucker aversion, free-riding aversion, and personal values) matter more when participants",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2255"
-  },
-  {
-   "quote": "Individuals contribute significantly more when the descriptive norm has a higher mean.",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2255"
-  },
-  {
-   "quote": "seems to be even larger in the polarized condition",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2255"
-  },
-  {
-   "source": "norms24",
-   "quote": "through the lens of a well-powered (n = 1,203) and preregistered study",
-   "location": "Management Science 71(3), Introduction"
-  },
-  {
-   "source": "norms24",
-   "quote": "In loose environments (high variance), by contrast, we see a much larger variation in behavior (σ2 = 1.65).",
-   "location": "Management Science 71(3), p. 2254, Section 4.2"
   }
  ],
  "social04": [
@@ -3316,8 +3311,18 @@
    "location": "Abstract, Princeton research portal and data.zhenzhi.com record (Study 6)"
   },
   {
+   "source": null,
+   "quote": "Study 6",
+   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (values as printed)"
+  },
+  {
    "quote": "applied theoretical work on the extended contact hypothesis to explore a means to reduce this self-other bias",
    "location": "Abstract, Princeton research portal and data.zhenzhi.com record (Study 7)"
+  },
+  {
+   "source": null,
+   "quote": "Study 7",
+   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (values as printed)"
   },
   {
    "quote": "Seven studies (count from abstract record)",
@@ -3327,6 +3332,11 @@
    "source": "contact05",
    "quote": "Studies 1 and 2 demonstrate that Whites and Blacks would like to have more contact with the out-group but believe the out-group does not want to have contact with them.",
    "location": "JPSP abstract (PubMed 15631577)"
+  },
+  {
+   "source": "contact05",
+   "quote": "PubMed 15631577",
+   "location": "JPSP abstract (values as printed)"
   },
   {
    "source": "contact05",
@@ -3344,6 +3354,11 @@
    "location": "Abstract, Europe PMC (DOI:10.1037/xge0000039)"
   },
   {
+   "source": null,
+   "quote": "DOI:10.1037/xge0000039",
+   "location": "Abstract, Europe PMC (values as printed)"
+  },
+  {
    "quote": "358 participants were recruited on Amazon Mechanical Turk (323 analyzed); 423 (382); 429 (401) (paraphrase)",
    "location": "Full text, Europe PMC PMC4312134"
   },
@@ -3354,6 +3369,11 @@
   {
    "quote": "a series of hypothetical lotteries",
    "location": "Full text, Europe PMC PMC4312134 (Exps 1a, 1b, 2)"
+  },
+  {
+   "source": null,
+   "quote": "Exps 1a, 1b, 2",
+   "location": "Full text, Europe PMC PMC4312134 (values as printed)"
   },
   {
    "quote": "Exp 1a lambda: gains to 40/losses to 20 = 1.79; gains to 20/losses to 40 = 0.88 (paraphrase)",
@@ -3394,6 +3414,11 @@
    "location": "Abstract, ideas.repec.org (Economics Letters 233, 111417)"
   },
   {
+   "source": null,
+   "quote": "Economics Letters 233, 111417",
+   "location": "Abstract, ideas.repec.org (values as printed)"
+  },
+  {
    "quote": "the distribution of norm-related beliefs at the individual level in an incentive-compatible way",
    "location": "Abstract, ideas.repec.org (Economics Letters 233, 111417)"
   },
@@ -3424,6 +3449,11 @@
    "source": "frame81",
    "quote": "Problem 1 [N = 152]: Imagine that the U.S. is preparing for the outbreak of an unusual Asian disease, which is expected to kill 600 people. [...] If Program A is adopted, 200 people will be saved. [72 percent] If Program B is adopted, there is 1/3 probability that 600 people will be saved, and 2/3 probability that no people will be saved. [28 percent]",
    "location": "Science 211, p. 453 (OCR renders '152]' as '1521' and '1/3' as '113'; restored)"
+  },
+  {
+   "source": "frame81",
+   "quote": "OCR renders '152]' as '1521' and '1/3' as '113'; restored",
+   "location": "Science 211, p. 453 (values as printed)"
   },
   {
    "source": "frame81",
@@ -3471,130 +3501,11 @@
    "source": "longoni22",
    "quote": "An intervention based on the consider-the-opposite protocol attenuates the word-of-machine effect",
    "location": "Abstract (Studies 7a-7b)"
-  }
- ],
- "axe02": [
-  {
-   "source": "ayers23",
-   "quote": "drafting responses that could be reviewed by clinicians",
-   "location": "Abstract, Conclusions"
   },
   {
-   "source": "ayers23",
-   "quote": "evaluators did not independently and specifically assess the physician or chatbot responses for accuracy",
-   "location": "Limitations"
-  },
-  {
-   "source": "ayers23",
-   "quote": "evaluators preferred chatbot responses to physician responses in 78.6% (95% CI, 75.0%-81.8%) of the 585 evaluations",
-   "location": "Results"
-  },
-  {
-   "source": "ayers23",
-   "quote": "randomly draw 195 exchanges from October 2022",
-   "location": "Methods"
-  },
-  {
-   "source": "luo19",
-   "quote": "a disclosure of chatbot identity before the machine–customer conversation reduces purchase rates by more than 79.7%",
-   "location": "Abstract"
-  },
-  {
-   "source": "luo19",
-   "quote": "field experiment data on more than 6,200 customers",
-   "location": "Abstract"
-  },
-  {
-   "source": "luo19",
-   "quote": "undisclosed chatbots are as effective as proficient workers and four times more effective than inexperienced workers",
-   "location": "Abstract"
-  },
-  {
-   "source": "jia24",
-   "quote": "increases employees' creativity in answering customers' questions",
-   "location": "Abstract"
-  },
-  {
-   "source": "jia24",
-   "quote": "Enhanced creativity leads to increased sales",
-   "location": "Abstract"
-  },
-  {
-   "source": "jia24",
-   "quote": "much more pronounced for higher-skilled employees",
-   "location": "Abstract"
-  },
-  {
-   "source": "jia24",
-   "quote": "make limited improvements to scripts",
-   "location": "Abstract (lower-skilled employees; also 'experience negative emotions at work')"
-  },
-  {
-   "source": "cui26",
-   "quote": "our analysis reveals a 26.08% increase (standard error: 10.3%) in completed tasks",
-   "location": "Abstract"
-  },
-  {
-   "source": "cui26",
-   "quote": "when data are combined across three experiments and 4,867 developers",
-   "location": "Abstract"
-  },
-  {
-   "source": "cui26",
-   "quote": "Notably, less experienced developers had higher adoption rates and greater productivity gains.",
-   "location": "Abstract"
-  }
- ],
- "axe03": [
-  {
-   "source": "fugener22",
-   "quote": "humans and the AI perform classification tasks",
-   "location": "Abstract"
-  },
-  {
-   "source": "fugener22",
-   "quote": "the combined performance improves only when the AI delegates work to humans but not when humans delegate work to the AI",
-   "location": "Abstract"
-  },
-  {
-   "source": "fugener22",
-   "quote": "humans and AI who work together can outperform the AI that outperforms humans when it works on its own",
-   "location": "Abstract"
-  },
-  {
-   "source": "fugener22",
-   "quote": "human performance suffered as a result of a lack of metaknowledge",
-   "location": "Abstract"
-  },
-  {
-   "source": "fugener22",
-   "quote": "This bad delegation performance cannot be explained with some kind of algorithm aversion.",
-   "location": "Abstract"
-  },
-  {
-   "source": "tong21",
-   "quote": "The adverse disclosure effect is mitigated by employees' tenure in the firm",
-   "location": "Abstract"
-  },
-  {
-   "source": "tong21",
-   "quote": "develop a negative perception once it is disclosed to them",
-   "location": "Abstract"
-  },
-  {
-   "source": "tong21",
-   "quote": "powerful data analytics increase the quality of feedback, which may enhance employee productivity",
-   "location": "Abstract"
-  },
-  {
-   "source": "tong21",
-   "quote": "that is, using AI to provide performance feedback to veteran employees, but using human managers to provide performance feedback to novices",
-   "location": "Abstract (follows \"consider deploying AI in a tiered fashion instead of a uniform fashion\")"
-  },
-  {
-   "source": "tong21",
-   "quote": "strong evidence that both effects coexist",
-   "location": "Abstract"
+   "source": "longoni22",
+   "quote": "Studies 7a-7b",
+   "location": "Abstract (values as printed)"
   }
  ],
  "axe04": [
@@ -3682,13 +3593,28 @@
   },
   {
    "source": "ayers23",
+   "quote": "chatbot 78.5%; physicians 22.1%",
+   "location": "Results (values as printed)"
+  },
+  {
+   "source": "ayers23",
    "quote": "The proportion of responses rated empathetic or very empathetic was higher for chatbot than for physicians",
    "location": "Results (physicians 4.6%; chatbot 45.1%)"
   },
   {
    "source": "ayers23",
+   "quote": "physicians 4.6%; chatbot 45.1%",
+   "location": "Results (values as printed)"
+  },
+  {
+   "source": "ayers23",
    "quote": "physician responses were significantly shorter than the chatbot responses",
    "location": "Results (52 vs 211 words)"
+  },
+  {
+   "source": "ayers23",
+   "quote": "52 vs 211 words",
+   "location": "Results (values as printed)"
   },
   {
    "source": "ayers23",
@@ -3704,6 +3630,11 @@
    "source": "ayers23",
    "quote": "version GPT-3.5, OpenAI",
    "location": "Methods (generated December 22 and 23, 2022)"
+  },
+  {
+   "source": "ayers23",
+   "quote": "generated December 22 and 23, 2022",
+   "location": "Methods (values as printed)"
   }
  ],
  "axe06": [
@@ -3840,6 +3771,11 @@
   },
   {
    "source": "granulo19",
+   "quote": "PubMed 31384025",
+   "location": "Nature Human Behaviour abstract (values as printed)"
+  },
+  {
+   "source": "granulo19",
    "quote": "being replaced by machines, robots or software (versus other humans) is associated with reduced self-threat. In contrast, being replaced by robots is associated with a greater perceived threat to one's economic future.",
    "location": "Nature Human Behaviour abstract"
   }
@@ -3879,6 +3815,11 @@
   },
   {
    "source": "spitale23",
+   "quote": "869 recruited",
+   "location": "Methods (values as printed)"
+  },
+  {
+   "source": "spitale23",
    "quote": "recognized synthetic true tweets correctly more often than organic true tweets (scores 0.84 versus 0.72, respectively; P < 0.0001)",
    "location": "Results"
   },
@@ -3896,6 +3837,11 @@
    "source": "spitale23",
    "quote": "respondents were unable to distinguish between tweets generated by AI and those posted by real Twitter users",
    "location": "Results (scores around 0.5)"
+  },
+  {
+   "source": "spitale23",
+   "quote": "scores around 0.5",
+   "location": "Results (values as printed)"
   },
   {
    "source": "spitale23",
@@ -3933,6 +3879,11 @@
    "source": "reif25",
    "quote": "or who were not described as receiving any help (M = 2.02, SD = 1.10",
    "location": "Study 2 results (n = 1,203)"
+  },
+  {
+   "source": "reif25",
+   "quote": "n = 1,203",
+   "location": "Study 2 results (values as printed)"
   },
   {
    "source": "reif25",
@@ -4136,13 +4087,28 @@
   },
   {
    "source": "yin24",
+   "quote": "540 recruited, 455 analyzed",
+   "location": "Methods (values as printed)"
+  },
+  {
+   "source": "yin24",
    "quote": "AI-generated messages made recipients feel more heard than human-generated messages",
    "location": "Abstract (5.74 vs 5.17; P < 0.001)"
   },
   {
    "source": "yin24",
+   "quote": "5.74 vs 5.17; P < 0.001",
+   "location": "Abstract (values as printed)"
+  },
+  {
+   "source": "yin24",
    "quote": "recipients felt less heard when they realized that a message came from AI (vs. human)",
    "location": "Abstract (5.13 vs 5.81; P < 0.001)"
+  },
+  {
+   "source": "yin24",
+   "quote": "5.13 vs 5.81; P < 0.001",
+   "location": "Abstract (values as printed)"
   },
   {
    "source": "yin24",
@@ -4318,6 +4284,35 @@
    "source": "goh24",
    "quote": "Participants were given access to the chatbot without explicit training in prompt engineering techniques that could have improved the quality of their interactions with the system; however, this is consistent with current integrations ... Training clinicians in best prompting practices may improve physician performance with LLMs. Alternatively, organizations could invest in predefined prompting for diagnostic decision support integrated into clinical workflows",
    "location": "Discussion; Limitations"
+  }
+ ],
+ "judg09": [
+  {
+   "source": "loss79",
+   "quote": "PROBLEM 3: Choose between A: (4,000, .80), or B: (3,000). N = 95 [20] [80]*",
+   "location": "Econometrica 47(2), p. 266, Table I (values as printed)"
+  },
+  {
+   "source": "loss79",
+   "quote": "PROBLEM 3': Choose between A: (-4,000, .80), or B: (-3,000). N = 95 [92]* [8]",
+   "location": "Econometrica 47(2), p. 268, Table I (values as printed)"
+  }
+ ],
+ "axb15": [
+  {
+   "source": "costello24",
+   "quote": "engaged 2044 conspiracy believers in personalized evidence-based dialogues with GPT-4 Turbo",
+   "location": "Abstract (Crossref record of the Science article)"
+  },
+  {
+   "source": "costello24",
+   "quote": "The intervention reduced conspiracy belief by ~20%.",
+   "location": "Abstract (Crossref record of the Science article)"
+  },
+  {
+   "source": "costello24",
+   "quote": "The effect remained 2 months later",
+   "location": "Abstract (Crossref record of the Science article)"
   }
  ]
 }

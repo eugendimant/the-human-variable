@@ -135,6 +135,21 @@
     return rec.confidence === null || rec.confidence === undefined ? null : { p: rec.confidence, outcome: rec.correct ? 1 : 0 };
   }
 
-  const api = { score, ready, statedProbability, calibration, toCalibrationRecord, formats: Object.keys(scorers) };
+  // Skill above guessing: 0 for what a no-information strategy earns on this format, 1 for a perfect call.
+  // Makes scores comparable across formats (hedging a forecast at 50% earns 0.5 raw but 0 skill).
+  function baseline(c) {
+    switch (c.format) {
+      case 'forecast': return 0.5;
+      case 'rank': return 0.5;
+      case 'choice': case 'causal': return 1 / c.options.length;
+      case 'multi': { const k = (c.multiAnswers || []).length || c.pick || 2; return k / c.options.length }
+      case 'delegate': return 1 / c.delegate.choices.length;
+      case 'allocate': { const n = c.options.length, nb = (c.allocate && c.allocate.best && c.allocate.best.length) || 1; return 1 - 1 / nb + 1 / n }   // an even split
+      default: return 0;   // estimates: the midpoint and constant guesses are capped by content gates
+    }
+  }
+  function skill(c, raw) { const b = baseline(c); return b >= 1 ? 0 : (raw - b) / (1 - b) }
+
+  const api = { score, ready, baseline, skill, statedProbability, calibration, toCalibrationRecord, formats: Object.keys(scorers) };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.THVScore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

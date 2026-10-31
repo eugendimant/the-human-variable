@@ -93,8 +93,10 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         if ov < len(qt) / 2 or (len(qt) < 3 and ov <= len(qt) / 2): continue   # at least half the question's words
         if d['kind'] == 'decision': docs.append(d)
         else:  # a source record (authors, title): answer with the first decision built on it
-            for cid in SRC_USERS.get(d['id'], []):
-                if not (exclude and exclude(cid)): docs.append({'id': cid, 'kind': 'decision', 'body': d['body']}); break
+            cands = [cid for cid in SRC_USERS.get(d['id'], []) if not (exclude and exclude(cid))]
+            # several decisions on one paper: pick the one whose text best matches the question's topic words
+            body = lambda cid: ' '.join([CHALLENGES[cid]['answerTitle'], CHALLENGES[cid]['explain'], CHALLENGES[cid]['question']])
+            if cands: docs.append({'id': max(cands, key=lambda cid: len(qt & set(tokens(body(cid))))), 'kind': 'decision', 'body': d['body']})
     if docs:
         d = docs[0]; cc = CHALLENGES[d['id']]
         return {'answer': f"{cc['explain']} {cc['implication']}", 'citations': [{'id': s, 'label': cite_label(s)} for s in cc['sources']], 'mode': 'curated'}

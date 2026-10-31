@@ -98,7 +98,7 @@ def _correct(c):
 
 def test_correct_option_is_not_usually_the_longest():
     """Review 2, M9: the longest option should not be a reliable cue (chance is about 1 in 3)."""
-    items = [c for c in LIVE if c['format'] == 'choice']
+    items = [c for c in LIVE if c['format'] in ('choice', 'causal')]
     hits = [c['id'] for c in items if max(range(len(c['options'])), key=lambda i: len(c['options'][i])) in _correct(c)]
     assert len(hits) <= 0.35 * len(items), hits
     multi = [c for c in LIVE if c['format'] == 'multi']
@@ -252,4 +252,27 @@ def test_causal_labels_do_not_name_the_answer():
         ans = {w for w in re.findall(r'[a-z]{5,}', c['options'][c['answer']].lower())} - stop
         vis = {w for n in c['dag']['nodes'] if not n.get('mask') for w in re.findall(r'[a-z]{5,}', n['label'].lower())}
         if ans & vis: bad.append((c['id'], sorted(ans & vis)))
+    assert not bad, bad
+
+WORDS = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10, 'half': 50, 'third': 33}
+def _quote_has(n, qnums, qtext):
+    v = float(n); d = len(n.split('.')[1]) if '.' in n else 0
+    for q in qnums:
+        q = abs(q)
+        if round(q, d) == v or round(q * 100, d) == v or round(q / 100, d) == v or round(q, 0) == v: return True
+    return any(w in qtext and WORDS[w] == v for w in WORDS)
+
+def test_every_explained_number_is_quoted():
+    """Review 9, M1: numbers in explanations and answer titles appear in that decision's evidence quotes
+    (allowing rounding, percent versus share, and number words)."""
+    ev = json.loads((ROOT / 'src/evidence.json').read_text()); bad = []
+    for c in LIVE:
+        qtext = ' '.join(q['quote'] for q in ev.get(c['id'], [])).lower().replace(',', '')
+        qnums = [float(x) for x in re.findall(r'(?<![\w.])-?\.?\d+(?:\.\d+)?', qtext) if x not in ('-', '.')]
+        txt = (c['explain'] + ' ' + c['answerTitle']).replace(',', '')
+        txt = re.sub(r'\b(Stud(y|ies)|Experiments?|GPT|DALL-E|Midjourney v)[- ]?\d+[a-z]?(\s*(to|and|-)\s*\d+[a-z]?)?', ' ', txt)  # names, not results
+        for n in re.findall(r'(?<![\w.-])\d+(?:\.\d+)?', txt):
+            if re.fullmatch(r'(19|20)\d\d', n): continue
+            if not _quote_has(n, qnums, qtext): bad.append((c['id'], n))
+    assert not [c['id'] for c in LIVE if not ev.get(c['id'])]
     assert not bad, bad

@@ -126,7 +126,8 @@ async function lock() {
   locking = true; const b = qs('#lock-btn'); if (b) { b.disabled = true; b.textContent = PUBLIC ? 'Checking the evidence' : 'Locked' }
   qs('.focus-card')?.classList.add('is-locked');
   const okFull = await ensureFull(c.id);
-  if (!okFull) { locking = false; syncLock(); if (b) b.textContent = CLASS_LOCK ? 'Results open after the class reveal' : 'Try again'; qs('.focus-card')?.classList.remove('is-locked'); return }
+  if (!okFull) { locking = false; syncLock(); if (b) b.textContent = CLASS_LOCK ? 'Results open after the class reveal' : 'Try again';
+    if (CLASS_LOCK && !qs('#skip-locked')) b?.insertAdjacentHTML('beforebegin', '<button class="btn btn-quiet" id="skip-locked" data-act="skip-locked">Next decision</button>'); qs('.focus-card')?.classList.remove('is-locked'); return }
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) await new Promise(z => setTimeout(z, 420));
   locking = false;
   finalize(c, st.resp, noConf(c) ? null : st.conf);
@@ -287,7 +288,7 @@ function gapFigure(c, rec) {
   else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
   else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
   else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
-  return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<div class="gap-legend" aria-hidden="true"><span>Study results</span><span><i class="dot dot-ev"></i>The result the question asks about</span></div>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
+  return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.format === 'allocate' ? '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your points</span><span><span class="tag tag-ev">Worked best</span> marks the study’s answer</span></div>' : c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<div class="gap-legend" aria-hidden="true"><span>Study results</span><span><i class="dot dot-ev"></i>The result the question asks about</span></div>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
 }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {
@@ -414,9 +415,11 @@ function record() {
   // Lifetime figures count the first try at each decision only, so replays with the answer known do not inflate them.
   const seen = new Set(), all = records.filter(r => BY_ID[r.id] && !seen.has(r.id) && seen.add(r.id)), last = st.session.length ? st.session : records.filter(r => BY_ID[r.id]).slice(-12);
   const cal = S.calibration(all.map(r => S.toCalibrationRecord(BY_ID[r.id], r)));
-  const meanScore = all.length ? pct(all.reduce((a, r) => a + r.score, 0) / all.length) : null;
-  const sess = st.session.length ? pct(st.session.reduce((a, r) => a + r.score, 0) / st.session.length) : null;
-  const byTrack = TRACKS.map(t => { const x = all.filter(r => BY_ID[r.id].track === t); return [t, x.length, x.length ? pct(x.reduce((a, r) => a + r.score, 0) / x.length) : null] });
+  // Headline figures are skill above guessing, so formats with different chance levels compare fairly.
+  const sk = r => S.skill(BY_ID[r.id], r.score), avg = xs => xs.length ? pct(xs.reduce((a, r) => a + sk(r), 0) / xs.length) : null;
+  const meanScore = avg(all);
+  const sess = st.session.length ? avg(st.session.filter(r => BY_ID[r.id])) : null;
+  const byTrack = TRACKS.map(t => { const x = all.filter(r => BY_ID[r.id].track === t); return [t, x.length, avg(x)] });
   let summary = '';
   if (st.session.length) {
     const worst = st.session.reduce((a, r) => r.score < a.score ? r : a), best = st.session.reduce((a, r) => r.score > a.score ? r : a);
@@ -426,7 +429,7 @@ function record() {
   const played = byTrack.filter(t => t[1]);
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
-    <div class="score-strip"><div class="score-big"><b class="num">${sess ?? meanScore ?? '–'}</b><span>${sess !== null ? 'score this round' : 'average score'}, out of 100</span></div>
+    <div class="score-strip"><div class="score-big"><b class="num">${sess ?? meanScore ?? '–'}</b><span>${sess !== null ? 'skill this round' : 'average skill'}: 0 is guessing, 100 is perfect</span></div>
       <dl class="score-meta"><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">
@@ -434,7 +437,7 @@ function record() {
       <div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><button class="link-quiet" data-play="${esc(r.id)}">${esc(c.title)}</button><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${pct(r.score)}<span class="bar-score"><i style="width:${pct(r.score)}%"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a path to start your record.</span></li>'}</ul></div>
       ${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${sc}<span class="bar-score"><i style="width:${sc}%"></i></span></span></li>`).join('')}</ul></div>` : ''}
     </div>
-    <details class="how"><summary>How scoring works</summary><p>Decisions score 0 to 100 with partial credit, except forecasts, which run from −100 to 100. An estimate inside the shaded band earns 100, and credit falls to zero at twice the band's half-width. Ranks score the share of pairs in the measured order. Point splits use the same proper rule as forecasts: all points on the option that worked best earn 100, and spreading points pays when you are unsure. Forecasts use a proper scoring rule built on the Brier score, the standard in forecasting tournaments: a confident correct call earns 100, saying 50% earns 50, and a confident wrong call costs up to 100 points, so stating your true belief always pays best. The calibration plot uses your stated confidence, except for forecasts, where the probability is the statement. This is a learning record, not a validated assessment.</p></details>
+    <details class="how"><summary>How scoring works</summary><p>The headline is skill above guessing: each score is rescaled so that what a no-information strategy earns on that format (a 50% forecast, a random order, an even split, a random pick) counts as 0 and a perfect call as 100. Below it, each decision's own score works as follows. Decisions score 0 to 100 with partial credit, except forecasts, which run from −100 to 100. An estimate inside the shaded band earns 100, and credit falls to zero at twice the band's half-width. Ranks score the share of pairs in the measured order. Point splits use the same proper rule as forecasts: all points on the option that worked best earn 100, and spreading points pays when you are unsure. Forecasts use a proper scoring rule built on the Brier score, the standard in forecasting tournaments: a confident correct call earns 100, saying 50% earns 50, and a confident wrong call costs up to 100 points, so stating your true belief always pays best. The calibration plot uses your stated confidence, except for forecasts, where the probability is the statement. This is a learning record, not a validated assessment.</p></details>
     <div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play another round</button><span class="tool-links"><button class="link-btn" data-act="csv">Export CSV</button><button class="link-btn" data-act="json">Export JSON</button><button class="link-btn" data-act="erase">Erase this device’s record</button></span></div></section>`;
 }
 function calPlot(cal) {
@@ -623,6 +626,7 @@ document.addEventListener('click', e => {
   }
   const a = t.dataset.act;
   if (!a) return;
+  if (a === 'skip-locked') { next(); return }
   if (a === 'leave') { if (st.room) { if (!confirm('Leave the live class?')) return; clearTimeout(st.room.timer); st.room = null } st.view = 'home'; render(true); return }
   if (a === 'toggle-custom') { st.custom = !st.custom; render(); qs('[data-act="toggle-custom"]')?.focus(); return }
   if (a === 'menu') { st.menu = !st.menu; t.setAttribute('aria-expanded', st.menu); qs('.nav').classList.toggle('open', st.menu); return }

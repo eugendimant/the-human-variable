@@ -13,7 +13,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 ## Summary
 
 - Decisions in scored play: 112 (formats: forecast 30, choice 28, estimate 25, multi 10, rank 7, causal 6, delegate 4, allocate 2).
-- Sources: 108 (59 checked against the published full text, 4 against the authors' accepted manuscript, 44 against the published abstract, 1 quarantined).
+- Sources: 108 (60 checked against the published full text, 4 against the authors' accepted manuscript, 43 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
 - Decisions retired with reasons: 34 (listed below).
 - Track balance: AI × Business 46, Culture & Society 30, Business 29, Judgment 7.
@@ -94,7 +94,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Lambrecht & Tucker (2019). *Algorithmic Bias? An Empirical Study of Apparent Gender-Based Discrimination in the Display of STEM Career Ads*. [doi:10.1287/mnsc.2018.3093](https://doi.org/10.1287/mnsc.2018.3093) | Management Science 65(7) 2966-2981 | Abstract | axb12 |  |
 | Lees & Cikara (2020). *Inaccurate group meta-perceptions drive negative out-group attributions in competitive contexts*. [doi:10.1038/s41562-019-0766-4](https://doi.org/10.1038/s41562-019-0766-4) | Nature Human Behaviour 4(3) 279-286 | Accepted manuscript | meta-perception-causal | ["Crossref API returned an error; bibliographic data taken from the Springer Nature page (online 11 Nov 2019, issue March 2020). Experiment-level numbers come from the DASH manuscript, not the typeset article."] |
 | Lewis & Rao (2015). *The Unfavorable Economics of Measuring the Returns to Advertising*. [doi:10.1093/qje/qjv023](https://doi.org/10.1093/qje/qjv023) | The Quarterly Journal of Economics 130(4) 1941-1973 | Abstract | bz02 |  |
-| Logg, Minson & Moore (2019). *Algorithm appreciation: People prefer algorithmic to human judgment*. [doi:10.1016/j.obhdp.2018.12.005](https://doi.org/10.1016/j.obhdp.2018.12.005) | Organizational Behavior and Human Decision Processes 151 90-103 | Abstract | ai10 |  |
+| Logg, Minson & Moore (2019). *Algorithm appreciation: People prefer algorithmic to human judgment*. [doi:10.1016/j.obhdp.2018.12.005](https://doi.org/10.1016/j.obhdp.2018.12.005) | Organizational Behavior and Human Decision Processes 151 90-103 | Full text | ai10 |  |
 | Longoni & Cian (2022). *Artificial Intelligence in Utilitarian vs. Hedonic Contexts: The "Word-of-Machine" Effect*. [doi:10.1177/0022242920957347](https://doi.org/10.1177/0022242920957347) | Journal of Marketing 86(1) 91-108 | Abstract | axe01 |  |
 | Longoni, Bonezzi & Morewedge (2019). *Resistance to Medical Artificial Intelligence*. [doi:10.1093/jcr/ucz013](https://doi.org/10.1093/jcr/ucz013) | Journal of Consumer Research 46(4) 629-650 | Abstract | ai12 |  |
 | Luo, Tong, Fang & Qu (2019). *Frontiers: Machines vs. Humans: The Impact of Artificial Intelligence Chatbot Disclosure on Customer Purchases*. [doi:10.1287/mksc.2019.1192](https://doi.org/10.1287/mksc.2019.1192) | Marketing Science 38(6) 937-947 | Abstract | axe14 |  |

@@ -119,10 +119,10 @@
    "volume": "151",
    "pages": "90-103",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract only (RePEc/IDEAS)",
+    "text_read": "OBHDP article, published version (PDF), Experiment 1A results p. 93",
     "text_url": "https://ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html"
    }
   },
@@ -2955,7 +2955,7 @@
    "question": "Which kind of fix do people tend to miss?",
    "options": [
     "Adding a review step",
-    "Assigning a new owner to the process",
+    "Automating an existing step",
     "Removing an existing step"
    ],
    "answer": 2,
@@ -3119,7 +3119,7 @@
     "People ignored the norm and played their own strategy",
     "Loose norms generated more behavioral variation",
     "Tight norms produced the most extreme choices",
-    "The spread of others’ behavior shaped choices, not just its mean"
+    "The spread of behavior shaped choices"
    ],
    "answerTitle": "The distribution matters",
    "explain": "Dimant, Gelfand, Hochleitner and Sonderegger showed about 1,200 Americans co-player behavior with the same mean but different spreads. Choices tracked the spread: contribution variance was 1.26 after a tight norm and 1.65 after a loose one.",
@@ -3169,7 +3169,7 @@
    "tag": "30 / TEAM DYNAMICS",
    "title": "Comfort with campus drinking",
    "scene": "Students rated their own comfort with campus drinking and the comfort of the average student at their university.",
-   "question": "Students rated their own comfort with campus drinking and the average student’s. What did they report?",
+   "question": "What did students report?",
    "options": [
     "Peers were as comfortable as they were",
     "Peers were less comfortable with drinking than they were",
@@ -3587,7 +3587,7 @@
    ],
    "answer": 1,
    "answerTitle": "The domains diverged",
-   "explain": "In Dimant's experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a neutral group-mate (about 39%), yet gave allies no more money (14.9% versus 13.5%). From opponents, they took 22.9%.",
+   "explain": "In Dimant’s experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a group-mate who shared only a painting preference (about 39%), yet gave allies no more money (14.97% versus 13.54%). From opponents, they took 22.9%.",
    "implication": "When teams distrust each other, share evidence of the other side's actual cooperation.",
    "boundary": "Incentivized behavioral experiments with US Trump supporters and opponents, plus a sports-identity comparison.",
    "sources": [
@@ -3685,12 +3685,12 @@
    "tag": "54 / MEASUREMENT",
    "title": "Same average, two teams",
    "scene": "Two departments report the same average rating of how acceptable a practice is. You suspect their norms still differ.",
-   "question": "Two teams give the same average answer on what conduct is acceptable. How do you see whether their norms differ?",
+   "question": "How do you check whether their norms differ?",
    "options": [
     "Ask each team’s manager to describe the norm",
-    "Collect each person’s view and look at the spread",
+    "Ask each person what they think colleagues believe",
     "Compare how often each team breaks the rule",
-    "Survey a larger sample and compare averages again"
+    "Survey a larger sample and compare averages"
    ],
    "answer": 1,
    "answerTitle": "Keep the whole distribution",
@@ -4465,7 +4465,7 @@
     "unit": "%"
    },
    "answerTitle": "25.1% faster, with more tasks done",
-   "explain": "Consultants with GPT-4 completed 12.2% more tasks and worked 25.1% faster. Graded quality rose 29.9% with GPT-4 alone and 33.9% with prompt training.",
+   "explain": "Consultants with GPT-4 completed 12.2% more tasks and worked 25.1% faster, and graded quality rose 33.9% with GPT-4 alone.",
    "implication": "Pilot AI on drafting and ideation first, and measure speed, completion and blind-graded quality together.",
    "boundary": "One firm's consultants on designed tasks for a fictional company; on a task outside the frontier, AI users were less often correct.",
    "sources": [
@@ -4894,7 +4894,7 @@
     "unit": "%"
    },
    "answerTitle": "Fewer than one in three finished on time",
-   "explain": "Only 29.7% finished by their best-guess date. On average they predicted 33.9 days and took 55.5 days.",
+   "explain": "Only 29.7% finished by their best-guess date, against an average prediction of 33.9 days, and fewer than half (48.7%) finished by their worst-case date.",
    "implication": "Set project deadlines from how long similar past projects actually took, not from the team's step-by-step plan.",
    "boundary": "Study 1 tracked 37 psychology honors students on their theses; one task type, one university.",
    "sources": [
@@ -6692,7 +6692,7 @@
    "scene": "Before a game where lying paid, US online participants chose whose information to see: a peer reporting more lenient behavior or views on lying, or a stricter one. No political labels were shown.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "They tilted toward lenient peers: about 55%",
-   "explain": "Without identity cues, the share of lenient (above-median) information chosen was 54.61% for peers' behavior and 54.53% for peers' views, a self-serving bias in source selection.",
+   "explain": "Without identity cues, people chose lenient (above-median) peers’ information 54.61% of the time, a self-serving tilt in which sources they consulted.",
    "implication": "When employees pick their own benchmarks or peer examples, default them to representative norm data instead.",
    "boundary": "US participants choosing information sources before an undetectable lying game, with and without partisan identity cues.",
    "sources": [
@@ -6953,12 +6953,12 @@
    "theme": "persuasion",
    "format": "estimate",
    "title": "Can a chatbot talk people out of it?",
-   "scene": "2,190 people who believed a conspiracy theory described it in their own words. GPT-4 Turbo then answered their specific claims with evidence over three rounds of conversation.",
+   "scene": "2,044 people who believed a conspiracy theory described it in their own words. GPT-4 Turbo then answered their specific claims with evidence over three rounds of conversation.",
    "question": "By how much did belief in their own conspiracy theory fall?",
    "answerTitle": "About 20%, and it held for two months",
    "explain": "Belief in the chosen conspiracy fell by about 20% after three rounds of tailored, evidence-based dialogue, and the drop persisted two months later.",
    "implication": "To correct persistent false beliefs among customers or staff, answer each person’s specific claim with evidence. A tailored AI dialogue can do this at scale.",
-   "boundary": "Online experiments with 2,190 US adults who endorsed at least one conspiracy theory, in conversations with GPT-4 Turbo.",
+   "boundary": "Online experiments with 2,044 conspiracy believers, in conversations with GPT-4 Turbo.",
    "sources": [
     "costello24"
    ],
@@ -6972,7 +6972,7 @@
    },
    "study": {
     "design": "Online experiments",
-    "n": "2,190 conspiracy believers"
+    "n": "2,044 conspiracy believers"
    },
    "follow": [
     {
@@ -7414,13 +7414,13 @@
    "format": "causal",
    "concept": "Confounded evaluation",
    "title": "Is the AI penalty real?",
-   "scene": "An HR audit finds employees who say they use AI get lower peer ratings. A manager concludes AI users simply produce weaker work.",
-   "question": "What does the experimental evidence say about this conclusion?",
+   "scene": "An HR audit finds employees who say they use AI get lower peer ratings. Experiments then held the work itself constant.",
+   "question": "What explains the lower ratings?",
    "options": [
-    "Correct: AI users' work was rated worse",
+    "AI users’ work was simply weaker",
     "The penalty came mainly from managers who use AI",
-    "Raters penalized AI help even with identical descriptions",
-    "Controlled experiments found no penalty for AI use"
+    "AI use was penalized even for identical work",
+    "Raters could tell which work used AI"
    ],
    "answer": 2,
    "dag": {

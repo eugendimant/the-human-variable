@@ -322,3 +322,20 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 205 tests, audit doc and counts regenerated.
 
 **Count:** 0 Blocking + 4 Major found and addressed. Next: independent review 9.
+
+## Iteration 14 (2026-10-31)
+
+**Verified first:** iteration-13 fixes, by independent review 9 (snapshot `snap_r9`): folded forecast calibration, midpoint and fixed-position gates, ties unscored, lock follows the instructor, 120 joins from one IP, no arrowheads before reveal, allocate rebalancing, tutor locked and off-topic handling; no answer text on any route at open or closed stages.
+
+**Independent score:** 79/100 (review 9, `qa/reviews/review9.md`). 0 Blocking, 3 Major.
+
+**Fixes:**
+- **M1.** Every number in an explanation or answer title now appears in a quote for that decision (`tools/evidence_numbers_2026_10_31.py`; table and figure values read from published texts are their own entries, marked as printed). judg09 and axb15 have quotes; axb15's sample is the 2,044 believers in the version-of-record abstract (was 2,190 from another passage). Four explanations trimmed to quoted numbers (social15, axb14, bz04, dimant-motivated). Duplicates and retired ids removed from the evidence file; ai10's source recorded as read in full. Gates: every live decision has evidence; every explained number is quoted (allowing rounding, percent versus share, number words).
+- **M2.** The record's headline and area bars show skill above guessing: each score is rescaled so a no-information strategy for that format (50% forecast, random order, even split, random pick) is 0 and a perfect call 100. Per-decision scores keep their proper rules. Test: hedges and even splits have zero skill.
+- **M3.** Masked diagram nodes are served with neutral ids (n0, n1...), and the unshown `concept` field is no longer served.
+- **Minors.** Tutor picks the sibling that matches the question's topic; social20's keyed option is the paper's belief-elicitation method and both long questions shortened; axe12 rewritten without the "Correct:" cue or a manager's conclusion; social01 option shortened; biz07 strawman replaced; length-cue gate covers causal items; solo play during a lock offers "Next decision"; projector exit button moved; allocate legend; record grid.
+- **Visual.** On wide screens the reveal reads in two columns, the finding beside the evidence figure, which stays in view.
+
+**Gates:** build check, 207 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 3 Major found and addressed. Next: independent review 10.

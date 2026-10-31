@@ -12,15 +12,15 @@ bank['sources']['costello24'] = {
 }
 item = {'id': 'axb15', 'track': 'AI × Business', 'concept': 'AI and belief change', 'theme': 'persuasion', 'format': 'estimate',
  'title': 'Can a chatbot talk people out of it?',
- 'scene': '2,190 people who believed a conspiracy theory described it in their own words. GPT-4 Turbo then answered their specific claims with evidence over three rounds of conversation.',
+ 'scene': '2,044 people who believed a conspiracy theory described it in their own words. GPT-4 Turbo then answered their specific claims with evidence over three rounds of conversation.',
  'question': 'By how much did belief in their own conspiracy theory fall?',
  'answerTitle': 'About 20%, and it held for two months',
  'explain': 'Belief in the chosen conspiracy fell by about 20% after three rounds of tailored, evidence-based dialogue, and the drop persisted two months later.',
  'implication': 'To correct persistent false beliefs among customers or staff, answer each person’s specific claim with evidence. A tailored AI dialogue can do this at scale.',
- 'boundary': 'Online experiments with 2,190 conspiracy believers in three-round conversations with GPT-4 Turbo.',
+ 'boundary': 'Online experiments with 2,044 conspiracy believers in three-round conversations with GPT-4 Turbo.',
  'sources': ['costello24'],
  'estimate': {'target': 20, 'min': 0, 'max': 60, 'tolerance': 6, 'label': 'Drop in belief in their own conspiracy theory', 'unit': '%'},
- 'study': {'design': 'Online experiments', 'n': '2,190 conspiracy believers'},
+ 'study': {'design': 'Online experiments', 'n': '2,044 conspiracy believers'},
  'follow': [{'q': 'Did the effect fade?', 'a': 'No. The reduction in belief persisted at the two-month follow-up.'},
             {'q': 'Did it change other beliefs too?', 'a': 'Yes. The dialogues also reduced belief in conspiracy theories the participants had not discussed with the AI.'},
             {'q': 'Why tailor the conversation?', 'a': 'Each participant described their own theory and evidence, and the model responded to those specific claims rather than giving a generic debunking.'}]}
