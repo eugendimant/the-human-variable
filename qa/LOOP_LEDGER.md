@@ -199,3 +199,5 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Count:** 2 Blocking + 15 Major found and addressed. Next: independent review 3.
 
 **Update (2026-10-31, Eugen Dimant):** the expression of concern on Costello et al. (2024) has been officially removed. Every mention was removed from the bank, the Source tab and the docs (`tools/content_costello_notice_2026_10_31.py`); review 2's M6 is superseded.
+
+**Content addition (2026-10-31).** Five new decisions from five newly checked peer-reviewed sources (`tools/merge_allocate_2026_10_31.py`, draft and quotes in `docs/audit/draft_allocate_2026_10_31.json`): axf01 allocate (Köbis et al. 2025, Nature, delegation and dishonesty), axf02 forecast (Milkman et al. 2022, PNAS, scientists' predictions r = 0.03), axf04 delegate (Garvey, Kim & Duhachek 2023, J. Marketing), axf05 rank with ties (Jabbour et al. 2023, JAMA), axf06 allocate with an n.s. arm at zero (Goh et al. 2024, JAMA Netw Open). Dropped: an AMIE item (overlap, untested key comparison) and two follow-ups that rested on partial web excerpts. Played in Chromium at 1440 and 390 px with no errors or overflow; 185 tests pass.

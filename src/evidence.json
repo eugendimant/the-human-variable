@@ -3112,5 +3112,160 @@
    "quote": "reported that they would be less likely to disclose the use of the tool to their managers",
    "location": "Study 1 results"
   }
+ ],
+ "axf01": [
+  {
+   "source": "kobis25",
+   "quote": "At 95%, the vast majority of participants (95% confidence interval (CI) = 90–98 in study 1 and 95% CI = 93–99 in study 2) reported die rolls honestly in the control condition without delegation.",
+   "location": "Results, studies 1 and 2"
+  },
+  {
+   "source": "kobis25",
+   "quote": "This proportion decreased when participants delegated to machines, to about 75% in the rule-based condition (95% CI = 67–81 in study 1 and 95% CI = 67–84 in study 2), about 50% in the supervised learning condition (95% CI = 43–60 in study 1 and 95% CI = 37–58 in study 2) and only about 15% in the goal-based condition (95% CI = 8–19 in study 1 and 95% CI = 10–25 in study 2). All of these comparisons were significant to the P < 0.001 level, including Bonferroni correction for multiple comparisons.",
+   "location": "Results, studies 1 and 2"
+  },
+  {
+   "source": "kobis25",
+   "quote": "In the goal-based condition, participants gave the machine a high-level goal by choosing a setting on a dial that ranged from ‘maximize accuracy’ to ‘maximize profit’",
+   "location": "Conditions and outcomes"
+  },
+  {
+   "source": "kobis25",
+   "quote": "Participants in study 1 ( n = 597) were randomly assigned to one of four conditions. ... Study 2 ( n = 801) was identical to study 1, except that in all delegation conditions (rule based, supervised learning and goal based), participants could either delegate reports to the machine or self-report.",
+   "location": "Conditions and outcomes"
+  },
+  {
+   "source": "kobis25",
+   "quote": "we observed that about 50% of participants delegated to machines, regardless of the interface",
+   "location": "Results, study 2"
+  },
+  {
+   "source": "kobis25",
+   "quote": "human agents complied with only ≈25% to ≈40% of the unethical, full cheating instructions, even when non-compliance came at a personal cost. By contrast, machine agents complied with such instructions at a higher rate, doing so ≈60% and ≈95% of instructions, across two protocols (tax evasion and die-roll, respectively) and four models (GPT-4, GPT-4o, Claude 3.5 Sonnet and Llama 3.3).",
+   "location": "Discussion"
+  },
+  {
+   "source": "kobis25",
+   "quote": "The most effective strategy (strongly phrased, task-specific prohibitions injected at the user level) is also the least scalable.",
+   "location": "Discussion"
+  },
+  {
+   "source": "kobis25",
+   "quote": "All studies with human participants were preregistered (see the ‘Data availability’ statement) and did not use deception.",
+   "location": "Results, intro"
+  }
+ ],
+ "axf02": [
+  {
+   "source": "milkman22",
+   "quote": "We randomly assigned 689,693 Walmart pharmacy patients to receive one of 22 different text reminders using a variety of different behavioral science principles to nudge flu vaccination or to a business-as-usual control condition that received no messages. We found that the reminder texts that we tested increased pharmacy vaccination rates by an average of 2.0 percentage points, or 6.8%, over a 3-mo follow-up period.",
+   "location": "Abstract"
+  },
+  {
+   "source": "milkman22",
+   "quote": "Flu shot waiting for you (two texts: initial text + 3 d later) 0.029 (0.004) <0.001 <0.001 ... Receive a joke about the flu (one text) 0.021 (0.004) <0.001 <0.001 ... Get a flu shot to avoid getting sick (one text) 0.015 (0.004) <0.001 <0.001 ... People who get flu shots are healthier, wealthier, and more educated (one text) 0.011 (0.004) 0.004 0.004 ... Baseline vaccination rate (%) 29.4",
+   "location": "Table 1"
+  },
+  {
+   "source": "milkman22",
+   "quote": "Each of the 22 interventions that we tested significantly increased vaccination rates relative to the business-as-usual control condition",
+   "location": "Results"
+  },
+  {
+   "source": "milkman22",
+   "quote": "relative to the business-as-usual control condition, the top-performing intervention produced a 2.9 percentage point increase in flu vaccinations (a 9.9% lift; unadjusted and adjusted P < 0.001). After applying the James–Stein shrinkage procedure ... we still estimate that this intervention produced a 2.7 percentage point increase in vaccination over the business-as-usual control condition (a 9.3% lift)",
+   "location": "Results"
+  },
+  {
+   "source": "milkman22",
+   "quote": "The average predictions of scientists did not correlate with observed vaccination rates across our megastudy’s 23 different experimental conditions ( N = 23 , r = 0.03, and P = 0.880). Prolific raters, in contrast, on average accurately predicted relative vaccination rates across our megastudy’s conditions ( n = 23, r = 0.60, and P = 0.003) ... scientists’ predictions placed it 15th out of 22, while Prolific raters’ predictions placed it 16th out of 22",
+   "location": "Prediction Study Results"
+  },
+  {
+   "source": "milkman22",
+   "quote": "our primary outcome measure was whether patients in our study received their flu shot at a Walmart pharmacy during the 3-mo period between September 25, 2020 (when interventions began), and December 31, 2020",
+   "location": "Results"
+  }
+ ],
+ "axf04": [
+  {
+   "source": "garvey23",
+   "quote": "In the case of a product or service offer that is worse than expected, consumers respond better when dealing with an AI agent in the form of increased purchase likelihood and satisfaction. In contrast, for an offer that is better than expected, consumers respond more positively to a human agent.",
+   "location": "Abstract"
+  },
+  {
+   "source": "garvey23",
+   "quote": "consumers infer that AI agents lack selfish intentions in the case of an offer that favors the agent and lack benevolent intentions in the case of an offer that favors the customer, thereby dampening the extremity of consumer responses.",
+   "location": "Abstract"
+  },
+  {
+   "source": "garvey23",
+   "quote": "marketers may anthropomorphize AI agents to strengthen perceived intentions, providing an avenue to receive due credit from consumers when the agent provides a better offer",
+   "location": "Abstract"
+  },
+  {
+   "source": "garvey23",
+   "quote": "Potential ethical concerns with the use of AI to bypass consumer resistance to negative offers are discussed.",
+   "location": "Abstract"
+  }
+ ],
+ "axf05": [
+  {
+   "source": "jabbour23",
+   "quote": "Clinicians' baseline diagnostic accuracy was 73.0% (95% CI, 68.3% to 77.8%) for the 3 diagnoses. When shown a standard AI model without explanations, clinician accuracy increased over baseline by 2.9 percentage points (95% CI, 0.5 to 5.2) and by 4.4 percentage points (95% CI, 2.0 to 6.9) when clinicians were also shown AI model explanations. Systematically biased AI model predictions decreased clinician accuracy by 11.3 percentage points (95% CI, 7.2 to 15.5) compared with baseline and providing biased AI model predictions with explanations decreased clinician accuracy by 9.1 percentage points (95% CI, 4.9 to 13.2) compared with baseline, representing a nonsignificant improvement of 2.3 percentage points (95% CI, -2.7 to 7.2) compared with the systematically biased AI model.",
+   "location": "Abstract, Results"
+  },
+  {
+   "source": "jabbour23",
+   "quote": "Randomized clinical vignette survey study administered between April 2022 and January 2023 across 13 US states involving hospitalist physicians, nurse practitioners, and physician assistants. ... Median participant age was 34 years (IQR, 31-39) ... Four hundred fifty-seven clinicians were randomized and completed at least 1 vignette",
+   "location": "Abstract"
+  },
+  {
+   "source": "jabbour23",
+   "quote": "To establish baseline diagnostic accuracy, clinicians were shown 2 vignettes without AI model input. Clinicians were then randomized to see 6 vignettes with AI model input with or without AI model explanations. Among these 6 vignettes, 3 vignettes included standard-model predictions, and 3 vignettes included systematically biased model predictions.",
+   "location": "Abstract, Interventions"
+  },
+  {
+   "source": "jabbour23",
+   "quote": "a model predicting a high likelihood of pneumonia for a patient who was 80 years or older",
+   "location": "Methods (jamanetwork.com full text, excerpt)"
+  },
+  {
+   "source": "jabbour23",
+   "quote": "Participant diagnostic accuracy was 81.1% (95% CI, 76.9%-85.4%) when shown a clinical consultation with perfect accuracy ... The final vignette included a clinical consultation, a short narrative provided by a hypothetical trusted colleague",
+   "location": "Results; Methods (jamanetwork.com full text, excerpt)"
+  }
+ ],
+ "axf06": [
+  {
+   "source": "goh24",
+   "quote": "Participants were randomized to either access the LLM in addition to conventional diagnostic resources or conventional resources only, stratified by career stage. Participants were allocated 60 minutes to review up to 6 clinical vignettes.",
+   "location": "Abstract"
+  },
+  {
+   "source": "goh24",
+   "quote": "The median diagnostic reasoning score per case was 76% (IQR, 66%-87%) for the LLM group and 74% (IQR, 63%-84%) for the conventional resources-only group, with an adjusted difference of 2 percentage points (95% CI, -4 to 8 percentage points; P = .60). The median time spent per case for the LLM group was 519 (IQR, 371-668) seconds, compared with 565 (IQR, 456-788) seconds for the conventional resources group, with a time difference of -82 (95% CI, -195 to 31; P = .20) seconds. The LLM alone scored 16 percentage points (95% CI, 2-30 percentage points; P = .03) higher than the conventional resources group.",
+   "location": "Abstract"
+  },
+  {
+   "source": "goh24",
+   "quote": "Fifty physicians (26 attendings, 24 residents; median years in practice, 3 [IQR, 2-8]) participated",
+   "location": "Abstract"
+  },
+  {
+   "source": "goh24",
+   "quote": "In the 3 runs of the LLM alone, the median score per case was 92% (IQR, 82%-97%).",
+   "location": "Results, LLM Alone"
+  },
+  {
+   "source": "goh24",
+   "quote": "a commercial LLM AI chatbot (ChatGPT Plus [GPT-4]; OpenAI) ... Using established principles of prompt design, we iteratively developed a 0-shot prompt ... These prompts were run 3 times in separate sessions, and the results from each run were included for blinded grading alongside the human outputs",
+   "location": "Methods"
+  },
+  {
+   "source": "goh24",
+   "quote": "Participants were given access to the chatbot without explicit training in prompt engineering techniques that could have improved the quality of their interactions with the system; however, this is consistent with current integrations ... Training clinicians in best prompting practices may improve physician performance with LLMs. Alternatively, organizations could invest in predefined prompting for diagnostic decision support integrated into clinical workflows",
+   "location": "Discussion; Limitations"
+  }
  ]
 }

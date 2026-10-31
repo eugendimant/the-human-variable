@@ -45,7 +45,9 @@
 - Doshi & Hauser (2024). Generative AI enhances individual creativity but reduces the collective diversity of novel content. *Science Advances* 10(28), eadn5290. https://doi.org/10.1126/sciadv.adn5290
 - Fischbacher & Föllmi-Heusi (2013). Lies in Disguise: An Experimental Study on Cheating. *Journal of the European Economic Association* 11(3), 525-547. https://doi.org/10.1111/jeea.12014
 - Fügener, Grahl, Gupta & Ketter (2022). Cognitive Challenges in Human–Artificial Intelligence Collaboration: Investigating the Path Toward Productive Delegation. *Information Systems Research* 33(2), 678-696. https://doi.org/10.1287/isre.2021.1079
+- Garvey, Kim & Duhachek (2023). Bad News? Send an AI. Good News? Send a Human. *Journal of Marketing* 87(1), 10-25. https://doi.org/10.1177/00222429211066972
 - Gneezy & Rustichini (2000). A Fine is a Price. *The Journal of Legal Studies* 29(1), 1-17. https://doi.org/10.1086/468061
+- Goh et al. (2024). Large Language Model Influence on Diagnostic Reasoning. *JAMA Network Open* 7(10), e2440969. https://doi.org/10.1001/jamanetworkopen.2024.40969
 - Goldin & Rouse (2000). Orchestrating Impartiality: The Impact of "Blind" Auditions on Female Musicians. *American Economic Review* 90(4), 715-741. https://doi.org/10.1257/aer.90.4.715
 - Goldstein, Chao, Grossman, Stamos & Tomz (2024). How persuasive is AI-generated propaganda?. *PNAS Nexus* 3(2), pgae034. https://doi.org/10.1093/pnasnexus/pgae034
 - Goldstein, Cialdini & Griskevicius (2008). A Room with a Viewpoint: Using Social Norms to Motivate Environmental Conservation in Hotels. *Journal of Consumer Research* 35(3), 472-482. https://doi.org/10.1086/586910
@@ -58,6 +60,7 @@
 - Hoffman, Kahn & Li (2018). Discretion in Hiring. *The Quarterly Journal of Economics* 133(2), 765-800. https://doi.org/10.1093/qje/qjx042
 - Hui, Reshef & Zhou (2024). The Short-Term Effects of Generative Artificial Intelligence on Employment: Evidence from an Online Labor Market. *Organization Science* 35(6), 1977-1989. https://doi.org/10.1287/orsc.2023.18441
 - Iyengar & Lepper (2000). When choice is demotivating: Can one desire too much of a good thing?. *Journal of Personality and Social Psychology* 79(6), 995-1006. https://doi.org/10.1037/0022-3514.79.6.995
+- Jabbour et al. (2023). Measuring the Impact of AI in the Diagnosis of Hospitalized Patients. *JAMA* 330(23), 2275-2284. https://doi.org/10.1001/jama.2023.22295
 - Jakesch, Hancock & Naaman (2023). Human heuristics for AI-generated language are flawed. *Proceedings of the National Academy of Sciences* 120(11), e2208839120. https://doi.org/10.1073/pnas.2208839120
 - Jia, Luo, Fang & Liao (2024). When and How Artificial Intelligence Augments Employee Creativity. *Academy of Management Journal* 67(1), 5-32. https://doi.org/10.5465/amj.2022.0426
 - Johnson & Goldstein (2004). Defaults and Donation Decisions. *Transplantation* 78(12), 1713-1716. https://doi.org/10.1097/01.TP.0000149788.10382.B2
@@ -65,6 +68,7 @@
 - Kahneman, Knetsch & Thaler (1990). Experimental Tests of the Endowment Effect and the Coase Theorem. *Journal of Political Economy* 98(6), 1325-1348. https://doi.org/10.1086/261737
 - Kleinberg et al. (2018). Human Decisions and Machine Predictions. *The Quarterly Journal of Economics* 133(1), 237-293. https://doi.org/10.1093/qje/qjx032
 - Kristal et al. (2020). Signing at the beginning versus at the end does not decrease dishonesty. *Proceedings of the National Academy of Sciences* 117(13), 7103-7107. https://doi.org/10.1073/pnas.1911695117
+- Köbis et al. (2025). Delegation to artificial intelligence can increase dishonest behaviour. *Nature* 646(8083), 126-134. https://doi.org/10.1038/s41586-025-09505-x
 - Lambrecht & Tucker (2019). Algorithmic Bias? An Empirical Study of Apparent Gender-Based Discrimination in the Display of STEM Career Ads. *Management Science* 65(7), 2966-2981. https://doi.org/10.1287/mnsc.2018.3093
 - Lees & Cikara (2020). Inaccurate group meta-perceptions drive negative out-group attributions in competitive contexts. *Nature Human Behaviour* 4(3), 279-286. https://doi.org/10.1038/s41562-019-0766-4
 - Lewis & Rao (2015). The Unfavorable Economics of Measuring the Returns to Advertising. *The Quarterly Journal of Economics* 130(4), 1941-1973. https://doi.org/10.1093/qje/qjv023
@@ -75,6 +79,7 @@
 - Madrian & Shea (2001). The Power of Suggestion: Inertia in 401(k) Participation and Savings Behavior. *Quarterly Journal of Economics* 116(4), 1149-1187. https://doi.org/10.1162/003355301753265543
 - Matz et al. (2024). The potential of generative AI for personalized persuasion at scale. *Scientific Reports* 14, 4692. https://doi.org/10.1038/s41598-024-53755-0
 - Mellers et al. (2014). Psychological Strategies for Winning a Geopolitical Forecasting Tournament. *Psychological Science* 25(5), 1106-1115. https://doi.org/10.1177/0956797614524255
+- Milkman et al. (2022). A 680,000-person megastudy of nudges to encourage vaccination in pharmacies. *Proceedings of the National Academy of Sciences* 119(6), e2115126119. https://doi.org/10.1073/pnas.2115126119
 - Moore & Healy (2008). The trouble with overconfidence. *Psychological Review* 115(2), 502-517. https://doi.org/10.1037/0033-295X.115.2.502
 - Nisa, Varum & Botelho (2017). Promoting sustainable hotel guest behavior: A systematic review and meta-analysis. *Cornell Hospitality Quarterly* 58(4), 354-363. https://doi.org/10.1177/1938965517704371
 - Noy & Zhang (2023). Experimental evidence on the productivity effects of generative artificial intelligence. *Science* 381(6654), 187-192. https://doi.org/10.1126/science.adh2586
