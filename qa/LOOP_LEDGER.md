@@ -456,6 +456,6 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 - **M1.** dimant-enforcers-rank now says what Dimant and Gesche (2023) did: participants learned that most previous participants objected to taking bribes, and chose how much evidence to submit, which set the probability that the coworker is punished. Scene, claim, title, explanation, action and figure note rewritten; the two defining sentences quoted from the full text.
 - **Minors.** Title punctuation on the phone wait screen; repeated study lines removed; tutor answers subgroup questions it cannot answer with "the lab's summary does not break results down that way", and duration questions with design and sample; the estimate baseline in "skill above guessing" is a random slider position (copy updated); ai10's claim resolves false so every path mixes true and false forecasts, with a gate; numbers in scenes and scope lines are quoted (six quotes added from the papers, two scenes reworded, one invented scenario removed from rollout1) and the number gate covers scenes and scope lines; sparkline label, diagram margin; projector allocate caption reads "(baseline)" and "not significant"; social13 rivals; dimant-proximity action says even a minimal shared-identity cue helped.
 
-**Gates:** build check, 234 tests, audit doc, counts and screenshots regenerated.
+**Gates:** build check, 233 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 18.
