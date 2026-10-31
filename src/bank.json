@@ -1728,7 +1728,8 @@
     "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract (Crossref)"
+    "text_read": "abstract (Crossref)",
+    "erratum": "Erratum, Science 22 Oct 2026 (doi:10.1126/science.aem1178): the corrected abstract gives 2190 participants; the erratum body could not be read."
    }
   },
   "luo19": {
@@ -2522,7 +2523,7 @@
     "Each about half of the time"
    ],
    "answer": 0,
-   "answerTitle": "A visible error can dominate",
+   "answerTitle": "Seeing the model err drove people away from it",
    "explain": "In Dietvorst, Simmons and Massey's Study 1, 65% of participants who saw no forecasts bet on the model. After seeing both the model's and their own forecasts, only 23% did, although people made 15 to 29% more error than the model.",
    "implication": "Communicate expected error rates and compare human and model performance symmetrically.",
    "boundary": "Incentivized forecasts of MBA students' performance and US states' airline-passenger ranks, by lab and online participants.",
@@ -2647,14 +2648,15 @@
    "concept": "Trust in AI",
    "tag": "11 / FIT",
    "title": "Two jobs for an algorithm",
-   "scene": "In online lab and field studies, people decided whether to rely on an algorithm for tasks that seemed objective and measurable, or subjective and a matter of personal taste.",
+   "scene": "In online lab and field studies, people decided whether to rely on an algorithm or a person for different tasks, from recommending a product for its practical use to judging an aesthetic preference.",
    "question": "For which task were people more reluctant to rely on an algorithm?",
    "options": [
     "Judging a personal aesthetic preference",
-    "Recommending a product for its practical use"
+    "Recommending a product for its practical use",
+    "Reliance was about the same for both"
    ],
    "answer": 0,
-   "answerTitle": "Subjectivity changes acceptance",
+   "answerTitle": "People relied on algorithms less for matters of taste",
    "explain": "Castelo, Bos and Lehmann ran four online lab studies with over 1,400 participants and two field studies with over 56,000. People trusted and used algorithms less for tasks that seem subjective; making a task seem more objective raised reliance.",
    "implication": "For taste-based recommendations, explain the measurable inputs the algorithm uses, which makes the task seem more objective.",
    "boundary": "Online lab and field studies of consumers' reliance on algorithms for tasks seen as subjective or objective.",
@@ -2818,10 +2820,10 @@
    "options": [
     "Inertia, and the default read as advice",
     "The employer match required the default rate",
-    "Few employees knew they could change it"
+    "Few employees knew they could change it, and few asked"
    ],
    "answer": 0,
-   "answerTitle": "Defaults communicate advice",
+   "answerTitle": "People took the default as advice",
    "explain": "Madrian and Shea found that many employees hired under automatic enrollment kept both the default contribution rate and the default fund, a pairing few earlier hires chose. They trace this to inertia and to employees reading the default as investment advice.",
    "implication": "Set default contribution rates at the level you would recommend, since most enrollees keep whatever rate you choose.",
    "boundary": "Contribution rates and fund choices of new hires at one US firm, measured in their first months of tenure.",
@@ -2933,7 +2935,7 @@
    "question": "Which two results did the study find?",
    "options": [
     "Some already-efficient households raised usage",
-    "Above-average households raised their electricity use",
+    "The smiley made above-average households use more",
     "Descriptive feedback alone kept low users steady",
     "A smiley face kept efficient homes steady"
    ],
@@ -3181,7 +3183,7 @@
    "options": [
     "Loose norms generated more behavioral variation",
     "The spread of behavior shaped choices",
-    "People ignored the norm and played their own strategy",
+    "The average of what others did explained choices",
     "Tight norms produced the most extreme choices"
    ],
    "answerTitle": "The spread of others’ behavior changed choices",
@@ -3580,7 +3582,7 @@
    "options": [
     "Own side fears rejection; other lacks interest",
     "Each side said it feared open conflict",
-    "Both sides said they mainly feared being rejected"
+    "Both sides feared rejection; neither lacked interest"
    ],
    "answer": 0,
    "answerTitle": "The misreading can be mutual",
@@ -3759,7 +3761,7 @@
     "The norm nudge worked; the default did not"
    ],
    "answerTitle": "General improvement, persistent gap",
-   "explain": "With a default nudge, Dimant shows that taking from political opponents fell from about 20% of the endowment to essentially 0%, and giving to allies rose from about 10-15% to 25-35%. The ally-opponent difference stayed highly significant (p < 0.001).",
+   "explain": "With a default nudge, Dimant shows that taking from political opponents fell from about 20% of the endowment to essentially 0%, and giving to allies rose from about 10–15% to 25–35%. The ally-opponent difference stayed highly significant (p < 0.001).",
    "implication": "Track between-group gaps as a separate metric when testing interventions, since average cooperation can rise while the gap stays.",
    "boundary": "Default and norm nudges tested in incentivized giving and cooperation games with US Trump supporters and opponents.",
    "sources": [
@@ -3944,7 +3946,7 @@
     ]
    },
    "answerTitle": "Combine only where humans beat the AI",
-   "explain": "Across 370 effect sizes, human-AI teams did worse than the best performer alone (g = -0.23). They gained when humans beat the AI (g = 0.46) and lost when the AI was better (g = -0.54).",
+   "explain": "Across 370 effect sizes, human-AI teams did worse than the best performer alone (g = −0.23). They gained when humans beat the AI (g = 0.46) and lost when the AI was better (g = −0.54).",
    "implication": "Benchmark humans and AI separately before adding a human review layer; skip that layer where the AI alone is clearly stronger.",
    "boundary": "Covers experiments published January 2020 to June 2023 across very different tasks; the averages describe that range of tasks.",
    "sources": [
@@ -3961,7 +3963,7 @@
     },
     {
      "q": "Which task types lost most?",
-     "a": "Decision tasks, where people choose from a fixed set of options, showed losses (g = -0.27). Creation tasks trended positive (g = 0.19, not significant)."
+     "a": "Decision tasks, where people choose from a fixed set of options, showed losses (g = −0.27). Creation tasks trended positive (g = 0.19, not significant)."
     },
     {
      "q": "Where do the review and bird numbers come from?",
@@ -3979,7 +3981,7 @@
    "scene": "In an incentivized task, people forecast students' math percentiles. They may use an imperfect model that outperforms human forecasts, but each group gets different rules for adjusting it.",
    "question": "Which group chose to use the model least often?",
    "options": [
-    "Could adjust each forecast by up to 2",
+    "Could adjust each forecast, though by up to 2",
     "Could not change the model at all",
     "Could adjust each forecast by up to 10"
    ],
@@ -4329,7 +4331,7 @@
     },
     {
      "q": "Did humans use the profile well?",
-     "a": "No. Humans given the same demographic details were not significantly more persuasive (-15.7%, P = 0.38)."
+     "a": "No. Humans given the same demographic details were not significantly more persuasive (−15.7%, P = 0.38)."
     }
    ],
    "theme": "persuasion",
@@ -5046,12 +5048,12 @@
    ],
    "follow": [
     {
-     "q": "Did it reduce trading?",
+     "q": "Did the gap reduce trading in the 1990 markets?",
      "a": "Yes. While 12.5 trades were expected between buyers and sellers, only three took place."
     },
     {
-     "q": "Is it just reluctance to pay?",
-     "a": "No. Buyers and choosers gave similar values, so the gap reflects reluctance to give up the mug, not reluctance to spend."
+     "q": "What did the 1990 study conclude?",
+     "a": "Buyers and choosers gave similar values, so Kahneman, Knetsch and Thaler read the gap as reluctance to give up the mug, not reluctance to spend."
     },
     {
      "q": "Is the gap just a quirk of the procedure?",
@@ -5497,7 +5499,7 @@
    "options": [
     "Neutral (must choose, no default)",
     "Opt-out (default: donor)",
-    "Opt-in (default: not a donor)"
+    "Opt-in (default: non-donor)"
    ],
    "answerTitle": "Opt-out and active choice both beat opt-in",
    "explain": "Consent was about twice as high under opt-out as under opt-in, and opt-out did not differ significantly from the neutral form (79%).",
@@ -5896,7 +5898,7 @@
     },
     {
      "q": "What happened to Democrats?",
-     "a": "They became slightly more liberal, but the intent-to-treat effect (-0.02 points on the seven-point scale) was not statistically significant."
+     "a": "They became slightly more liberal, but the intent-to-treat effect (−0.02 points on the seven-point scale) was not statistically significant."
     },
     {
      "q": "Why did Republicans move right?",
@@ -6432,7 +6434,7 @@
     },
     {
      "q": "Did forecasters at least rank the messages correctly?",
-     "a": "Not for Democrats. Predicted and observed effects for Democrats were negatively correlated (r = -0.63, p = 0.0003)."
+     "a": "Not for Democrats. Predicted and observed effects for Democrats were negatively correlated (r = −0.63, p = 0.0003)."
     }
    ],
    "study": {
@@ -7019,7 +7021,7 @@
     "Genuine unwillingness to cooperate with opponents",
     "Too little information about the other side",
     "Stronger love for one's own side",
-    "Expecting the other side not to cooperate"
+    "Low expectations of the other side’s cooperation"
    ],
    "answer": 3,
    "answerTitle": "Expectations, more than unwillingness, drove the gap",
@@ -7186,12 +7188,12 @@
    "theme": "persuasion",
    "format": "estimate",
    "title": "Can a chatbot talk people out of it?",
-   "scene": "2,044 people who believed a conspiracy theory described it in their own words. GPT-4 Turbo then answered their specific claims with evidence over three rounds of conversation.",
+   "scene": "2,190 people who believed a conspiracy theory described it in their own words. GPT-4 Turbo then answered their specific claims with evidence over three rounds of conversation.",
    "question": "By how much did belief in their own conspiracy theory fall?",
    "answerTitle": "About 20%, and it held for two months",
    "explain": "Belief in the chosen conspiracy fell by about 20% after three rounds of tailored, evidence-based dialogue, and the drop persisted two months later.",
    "implication": "To correct persistent false beliefs among customers or staff, answer each person’s specific claim with evidence. A tailored AI dialogue can do this at scale.",
-   "boundary": "Online experiments with 2,044 conspiracy believers, in conversations with GPT-4 Turbo.",
+   "boundary": "Online experiments with 2,190 conspiracy believers, in conversations with GPT-4 Turbo.",
    "sources": [
     "costello24"
    ],
@@ -7205,7 +7207,7 @@
    },
    "study": {
     "design": "Online experiments",
-    "n": "2,044 conspiracy believers"
+    "n": "2,190 conspiracy believers"
    },
    "follow": [
     {
@@ -7953,7 +7955,7 @@
    "question": "What does the experiment predict for labeled AI replies?",
    "options": [
     "Labeling replies as AI raises trust and feeling heard",
-    "Human replies feel more heard, whatever the label",
+    "Human replies feel more heard; the label matters little",
     "AI replies feel more heard; the label erodes it",
     "AI replies feel colder, with or without a label"
    ],
@@ -8202,10 +8204,10 @@
    "rankLabel": "Clinician diagnostic accuracy",
    "rankValues": [
     "+2.9 pp",
-    "-11.3 pp",
+    "−11.3 pp",
     "+4.4 pp",
     "73.0%",
-    "-9.1 pp"
+    "−9.1 pp"
    ],
    "answerTitle": "Explanations did not rescue the biased model",
    "explain": "From a 73.0% baseline, standard AI added 2.9 points, or 4.4 with explanations. Biased AI cut accuracy by 11.3 points; explanations recovered a non-significant 2.3, so pairs within each model type are not scored.",
@@ -8257,7 +8259,7 @@
    "follow": [
     {
      "q": "Did GPT-4 save time?",
-     "a": "Not significantly. Median time per case was 519 seconds with GPT-4 and 565 without (difference -82 seconds, P = .20)."
+     "a": "Not significantly. Median time per case was 519 seconds with GPT-4 and 565 without (difference −82 seconds, P = .20)."
     },
     {
      "q": "Were physicians trained to prompt?",
@@ -9117,7 +9119,8 @@
    "experienc skill": "junior senior novic newer newcom veteran tenur rooki junio senio",
    "less": "reduct reduc decreas fell lower cut drop",
    "rose": "increas rais higher grew improv",
-   "ai": "bot chatbot"
+   "ai": "bot chatbot",
+   "alon": "itself"
   },
   "routes": [
    [
@@ -9150,7 +9153,7 @@
    ],
    [
     "voluntary",
-    "\\b(voluntary|volunteer\\w*|randomly assigned|chose to|opt(ed)? in|self[- ]selected|vignette|real (bribe|money|job|firm|company)|real world|in the field|lab or field)\\b"
+    "\\b(voluntary|volunteer\\w*|randomly assigned|chose to|opt(ed)? in|self[- ]selected|vignette|real (bribe|job|firm|company)|real world|in the field|lab or field)\\b"
    ],
    [
     "stakes",
@@ -9194,7 +9197,7 @@
    ],
    [
     "meaning",
-    "\\b(what does (the )?(word |term )?[\\'\\\"]?(\\w+)[\\'\\\"]? mean|what is meant by|what do (they|you) mean by)\\b"
+    "\\b(what does (the )?(word |term )?[\\'\\\"]?(\\w+)[\\'\\\"]? mean|what is meant by|what do (they|you) mean by)\\b|^what(.s| is) (an? |the )?\\w+\\??$"
    ],
    [
     "why",

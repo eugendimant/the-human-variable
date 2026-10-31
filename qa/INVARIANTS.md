@@ -18,6 +18,8 @@ Every past Major is restated as an invariant with the test that enforces it. A c
 | I10 | Reviewer phrasings that once failed keep passing | REVIEW20 to REVIEW23 lists in tests/test_tutor.py | reviews 20 to 23 |
 | I11 | Options are unique; a reorder never changes which text is keyed or which options exist; content scripts edit options by text, never by index | test_options_unique_and_keyed_texts_pinned (tests/keyed_options.json) | regression audit 28, B1 |
 | I12 | A chart with negative values draws a zero line and losses run left; numbers use a true minus sign; printed decimals are kept | design lint R29 and R13 on every decision; `decimals` in charts | regression audit 28, M1 |
+| I13 | On the hosted page (public bank, no answers), every view renders from stored records after a reload, for every format and for records saved by older versions; anything a view needs from the answers is stored on the record when it is made | test_served_views_survive_a_reload_after_every_format (fails on the old code, passes on the fix) | review 24, B1 |
+| I14 | Option form carries no clue: picking the only two-part option gains at most 1.5 expected correct answers over chance across the bank | test_option_form_is_not_a_clue | review 24, minor 6 |
 
 ## History of the protocol
 
@@ -33,5 +35,5 @@ Every past Major is restated as an invariant with the test that enforces it. A c
 
 1. **Name the invariants a fix touches** before making it, in the ledger entry.
 2. **Run the complete gates**, never a sample: the full test suite, which includes the design lint over every decision.
-3. **Regression audit before every external review.** A fresh agent that did not make the changes receives the diff since the last reviewed snapshot and this register, and attacks only what changed: each changed rule, item or function is checked against every invariant and at both widths. Any Major it finds is fixed, a test is added to this register, and the audit repeats until it finds none. Only then does the external review run.
+3. **Regression audit before every external review.** A fresh agent that did not make the changes receives the diff since the last reviewed snapshot and this register, and attacks only what changed: each changed rule, item or function is checked against every invariant, at both widths, on both the offline file and the hosted page, including a reload of every view after play (review 24's Blocking slipped past an audit that never reloaded the hosted page). The audit prompt is `qa/AUDIT_PROMPT.md`. Any Major it finds is fixed, a test is added to this register, and the audit repeats until it finds none. Only then does the external review run.
 4. **New Majors become invariants.** Whatever a review finds that is Major gets a row here and a test, so the same class cannot return.

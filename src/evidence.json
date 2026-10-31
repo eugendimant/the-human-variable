@@ -54,6 +54,11 @@
    "source": "vaccaro24",
    "quote": "The human–AI systems performed significantly better than humans alone, and this pooled effect size was positive (g = 0.64; t98 = 11.87; two-tailed P = 0.000; 95% CI, 0.53 to 0.74) and medium to large21.",
    "location": "Results (human augmentation; note the paper uses thin spaces U+2009 around '='), Europe PMC fullTextXML (PMC11659167), version of record; 't98' is t with subscript 98, and the trailing '21' is superscript reference 21, both flattened from the XML"
+  },
+  {
+   "source": "vaccaro24",
+   "quote": "But when the AI alone outperformed the human alone, performance losses occurred in the combined system relative to the AI alone, with a negative effect size for human–AI synergy of g = −0.54",
+   "location": "Results, moderators; Nature Human Behaviour, published article (Europe PMC full text, PMC11659167)"
   }
  ],
  "axb02": [
@@ -4509,18 +4514,18 @@
  "axb15": [
   {
    "source": "costello24",
-   "quote": "engaged 2044 conspiracy believers in personalized evidence-based dialogues with GPT-4 Turbo",
-   "location": "Abstract (Crossref record of the Science article)"
+   "quote": "engaged 2190 conspiracy believers in personalized evidence-based dialogues with GPT-4 Turbo",
+   "location": "Abstract as corrected by the erratum (Science, 22 Oct 2026, doi:10.1126/science.aem1178); Europe PMC record of PMID 39264999"
   },
   {
    "source": "costello24",
    "quote": "The intervention reduced conspiracy belief by ~20%.",
-   "location": "Abstract (Crossref record of the Science article)"
+   "location": "Abstract, corrected version (Europe PMC record of PMID 39264999)"
   },
   {
    "source": "costello24",
    "quote": "The effect remained 2 months later",
-   "location": "Abstract (Crossref record of the Science article)"
+   "location": "Abstract, corrected version (Europe PMC record of PMID 39264999)"
   }
  ],
  "manylabs-anchoring": [

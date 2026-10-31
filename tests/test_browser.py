@@ -200,9 +200,9 @@ def test_offline_tutor_matches_server_rules(browser):
     bad2 = pg.evaluate("""qs => { const out = []; for (const c of THV.ALL) for (const q of qs) { const r = THV.curated(q, c); if (/outside what this lab/.test(r.text) || !r.cites.length) out.push([c.id, q]) } return out }""", phr)
     assert not bad2, (len(bad2), bad2[:10])   # review 15, M1: natural phrasings stay on the decision
     r = pg.evaluate("THV.curated('What is the capital of France?', THV.ALL[0]).text"); assert 'outside' in r
-    from tests.test_tutor import REVIEW20, REVIEW21, REVIEW22, REVIEW23
+    from tests.test_tutor import REVIEW20, REVIEW21, REVIEW22, REVIEW23, REVIEW24
     from server import tutor as _T
-    for q, cid, _ in REVIEW20 + REVIEW21 + REVIEW22 + REVIEW23 + [('Should I believe a lab game?', 'ai01', 0), ('Does the norm nudge work?', 'social16', 0)]:   # review 20: page and server agree
+    for q, cid, _ in REVIEW20 + REVIEW21 + REVIEW22 + REVIEW23 + REVIEW24 + [('Should I believe a lab game?', 'ai01', 0), ('Does the norm nudge work?', 'social16', 0)]:   # review 20: page and server agree
         pt = pg.evaluate("([q, id]) => THV.curated(q, THV.ALL.find(c => c.id === id)).text", [q, cid])
         assert pt.replace('\n\n', ' ').split()[:12] == _T.curated(q, cid)['answer'].split()[:12], (q, pt[:80])
     assert not pg.errors, pg.errors; pg.close()
@@ -237,3 +237,26 @@ def test_axe_every_format_reveal(browser, width):
         res = pg.evaluate("axe.run(document,{runOnly:['wcag2a','wcag2aa','wcag21aa']}).then(r=>r.violations.filter(v=>['serious','critical'].includes(v.impact)).map(v=>v.id+': '+v.nodes.slice(0,2).map(n=>n.target.join(' ')).join(', ')))")
         bad += [(f, v) for v in res]; pg.close()
     assert not bad, bad
+
+
+def test_served_views_survive_a_reload_after_every_format(browser, tmp_path):
+    """Invariant I13 (review 24, B1): on the hosted page the bank has no answers, so every view must render from stored records
+    after a reload, for records of every format, including records saved by older versions."""
+    from server import app, classroom as cl
+    app.STORE = cl.Store(tmp_path / 'r.sqlite3'); app.LIMIT = app.Limiter()
+    srv = app.Server(('127.0.0.1', 0), app.Handler); threading.Thread(target=srv.serve_forever, daemon=True).start()
+    base = f'http://127.0.0.1:{srv.server_address[1]}'
+    try:
+        ctx = browser.new_context(viewport={'width': 1440, 'height': 900}); pg = ctx.new_page(); errs = []
+        pg.on('pageerror', lambda e: errs.append(str(e)))
+        for c in one_of_each():
+            pg.goto(base + '/?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h', timeout=10000)
+        # a record from before topBest existed
+        pg.evaluate("""() => { const k = 'thv:v2:records', r = JSON.parse(localStorage.getItem(k) || '[]'); const a = r.find(x => x.format === 'allocate'); if (a) { const o = Object.assign({}, a); delete o.topBest; r.push(o) } localStorage.setItem(k, JSON.stringify(r)) }""")
+        for view in ('/#record', '/#library', '/#studies', '/'):
+            pg.goto(base + view); pg.reload(); pg.wait_for_timeout(700)
+            assert len(pg.inner_text('main').strip()) > 200, view
+        assert not errs, errs
+        ctx.close()
+    finally:
+        srv.shutdown()

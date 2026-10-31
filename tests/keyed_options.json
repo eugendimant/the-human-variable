@@ -28,7 +28,8 @@
   ],
   "options": [
    "Judging a personal aesthetic preference",
-   "Recommending a product for its practical use"
+   "Recommending a product for its practical use",
+   "Reliance was about the same for both"
   ]
  },
  "ai12": {
@@ -46,7 +47,7 @@
    "Inertia, and the default read as advice"
   ],
   "options": [
-   "Few employees knew they could change it",
+   "Few employees knew they could change it, and few asked",
    "Inertia, and the default read as advice",
    "The employer match required the default rate"
   ]
@@ -58,9 +59,9 @@
   ],
   "options": [
    "A smiley face kept efficient homes steady",
-   "Above-average households raised their electricity use",
    "Descriptive feedback alone kept low users steady",
-   "Some already-efficient households raised usage"
+   "Some already-efficient households raised usage",
+   "The smiley made above-average households use more"
   ]
  },
  "biz07": {
@@ -80,7 +81,7 @@
   ],
   "options": [
    "Loose norms generated more behavioral variation",
-   "People ignored the norm and played their own strategy",
+   "The average of what others did explained choices",
    "The spread of behavior shaped choices",
    "Tight norms produced the most extreme choices"
   ]
@@ -121,7 +122,7 @@
    "Own side fears rejection; other lacks interest"
   ],
   "options": [
-   "Both sides said they mainly feared being rejected",
+   "Both sides feared rejection; neither lacked interest",
    "Each side said it feared open conflict",
    "Own side fears rejection; other lacks interest"
   ]
@@ -176,7 +177,7 @@
   ],
   "options": [
    "Could adjust each forecast by up to 10",
-   "Could adjust each forecast by up to 2",
+   "Could adjust each forecast, though by up to 2",
    "Could not change the model at all"
   ]
  },
@@ -280,11 +281,11 @@
  },
  "bz15": {
   "keyed": [
-   "Opt-in (default: not a donor)"
+   "Opt-in (default: non-donor)"
   ],
   "options": [
    "Neutral (must choose, no default)",
-   "Opt-in (default: not a donor)",
+   "Opt-in (default: non-donor)",
    "Opt-out (default: donor)"
   ]
  },
@@ -414,11 +415,11 @@
  },
  "dimant-hate-choice": {
   "keyed": [
-   "Expecting the other side not to cooperate"
+   "Low expectations of the other side’s cooperation"
   ],
   "options": [
-   "Expecting the other side not to cooperate",
    "Genuine unwillingness to cooperate with opponents",
+   "Low expectations of the other side’s cooperation",
    "Stronger love for one's own side",
    "Too little information about the other side"
   ]
@@ -501,7 +502,7 @@
   "options": [
    "AI replies feel colder, with or without a label",
    "AI replies feel more heard; the label erodes it",
-   "Human replies feel more heard, whatever the label",
+   "Human replies feel more heard; the label matters little",
    "Labeling replies as AI raises trust and feeling heard"
   ]
  }

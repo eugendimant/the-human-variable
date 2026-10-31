@@ -248,3 +248,16 @@ AUDIT28 = [('What did participants have to do?', 'social15', 'rated how close'),
 def test_offline_tutor_audit28(q, cid, want):
     """Regression audit 28b: the task route answers before 'who'; a single why-follow-up that explains a miss still answers."""
     a = T.curated(q, cid)['answer']; assert want in a, a[:120]
+
+
+REVIEW24 = [('should my call center put humans on top of the chatbot or not?', 'axb01', 'skip that layer'),
+            ('what was GPT-4 score by itself?', 'axf06', '92%'),
+            ('what is an ECU?', 'dimant-proximity-estimate', 'ECUs'),
+            ('was this done with real money?', 'ai09', '$'),
+            ('human+AI accuracy on the hotel reviews?', 'axb01', '69%')]
+
+
+@pytest.mark.parametrize('q,cid,want', REVIEW24)
+def test_offline_tutor_review24(q, cid, want):
+    """Review 24, minor 2: recommendations go to the action, numbers to the follow-up that holds them, money to the incentive answer."""
+    a = T.curated(q, cid)['answer']; assert want in a and not a.startswith('Yes. With'), a[:120]

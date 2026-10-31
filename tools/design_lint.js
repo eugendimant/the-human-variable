@@ -23,7 +23,7 @@
     if (/repeating-/.test(s.backgroundImage)) push('R08', name(e), 'stripe fill');
     if (/gradient/.test(s.backgroundImage) && s.backgroundSize && !/^(auto|auto auto|100% 100%)$/.test(s.backgroundSize)) push('R08', name(e), 'patterned background ' + s.backgroundSize);
     if (t.length > 60 && r.width < 150 && r.width > 0) push('R18', name(e), 'squeezed text, ' + Math.round(r.width) + 'px wide');
-    if (!t && !e.children.length && r.width >= 4 && r.width <= 14 && Math.abs(r.width - r.height) < 1 && parseFloat(s.borderRadius) >= r.width / 2 - .5 && !['INPUT', 'BUTTON'].includes(e.tagName) && s.backgroundColor !== 'rgba(0, 0, 0, 0)') push('R09', name(e), 'dot');
+    if (!t && !e.children.length && !e.closest('.hbars') && r.width >= 4 && r.width <= 14 && Math.abs(r.width - r.height) < 1 && parseFloat(s.borderRadius) >= r.width / 2 - .5 && !['INPUT', 'BUTTON'].includes(e.tagName) && s.backgroundColor !== 'rgba(0, 0, 0, 0)') push('R09', name(e), 'dot');
     for (const pe of ['::before', '::after']) {
       const ps = getComputedStyle(e, pe); if (!ps.content || ps.content === 'none' || ps.content === 'normal') continue;
       const w = parseFloat(ps.width), h = parseFloat(ps.height);

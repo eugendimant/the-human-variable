@@ -268,7 +268,9 @@ def test_every_explained_number_is_quoted():
     ev = json.loads((ROOT / 'src/evidence.json').read_text()); bad = []
     for c in LIVE:
         qtext = ' '.join(q.get('quote', q.get('printed', '')) for q in ev.get(c['id'], [])).lower().replace(',', '')   # prose quotes and values as printed
+        qtext = qtext.replace('\u2212', '-')
         qnums = [float(x) for x in re.findall(r'(?<![\w.])-?\.?\d+(?:\.\d+)?', qtext) if x not in ('-', '.')]
+        qnums += [abs(x) for x in qnums]   # a value written with a true minus sign in the text is checked by its magnitude (review 24)
         txt = ' '.join([c['explain'], c['answerTitle'], c.get('scene', ''), c['boundary']] + [f['a'] for f in c.get('follow', [])] + [str(v) for v in c.get('chart', {}).get('values', [])]).replace(',', '')   # follow-ups (review 11), charts, scenes and scope lines (review 17)
         txt = re.sub(r'401\(k\)|\bweeks? \d+', ' ', txt)
         txt = re.sub(r'\b(Stud(y|ies)|Experiments?|GPT|DALL-E|Midjourney v|Fortune|Firefly|Imagen)[- ]?\d+[a-z]?(\s*(to|and|-)\s*\d+[a-z]?)?', ' ', txt)  # names, not results
@@ -466,3 +468,21 @@ def test_options_unique_and_keyed_texts_pinned():
         if p is None: bad.append((c['id'], 'not pinned'))
         elif p['keyed'] != keyed or p['options'] != sorted(c['options']): bad.append((c['id'], 'keyed text or option set changed'))
     assert not bad, bad
+
+
+def test_option_form_is_not_a_clue():
+    """Review 24, minor 6: picking the only option written in two parts (", and", ";", ", but", "not") gains little over chance."""
+    two = lambda o: bool(re.search(r', and |; |\bnot\b|, but ', o))
+    exp = chance = 0
+    for c in LIVE:
+        if c['format'] not in ('choice', 'causal'): continue
+        T = [i for i, o in enumerate(c['options']) if two(o)]; pool = T or list(range(len(c['options'])))
+        exp += (c['answer'] in pool) / len(pool); chance += 1 / len(c['options'])
+    assert exp - chance <= 1.5, (round(exp, 1), round(chance, 1))
+
+
+def test_page_scripts_parse():
+    """Every page script parses, so a syntax slip fails here in a second instead of as a wall of browser timeouts (iteration 29)."""
+    for f in sorted((ROOT / 'src').glob('*.js')):
+        r = subprocess.run(['node', '--check', str(f)], capture_output=True, text=True)
+        assert r.returncode == 0, (f.name, r.stderr[-400:])

@@ -107,6 +107,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     locked = {'answer': 'That study opens after your instructor reveals it in class.', 'citations': [], 'mode': 'locked'}
     off = {'answer': 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', 'citations': [], 'mode': 'curated'}
     # a question that names a study by an author's surname goes to that study
+    if c and re.search(r"\bshould (my|our|we|i)\b.*\b(put|use|add|keep|have|let|deploy|adopt|rely|trust|hire|switch|roll)\b", ql):
+        return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
     if c:
         fol = c.get('follow', [])   # the item's own follow-up, asked word for word, else the nearest one above 0.6 overlap
         exact = [f for f in fol if _norm(f['q']) == _norm(question)]
@@ -126,10 +128,10 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         fol = c.get('follow', [])
         st = c.get('study', {})
         rare = topic - COMMON
-        if c.get('delegate') and re.search(r'\bwhy\b', ql):   # "why did X do worse on Y": the task's own reason
+        if c.get('delegate'):   # a question about one task ("why did X do worse on Y", "accuracy on the hotel reviews"): that task's evidence
             ov = lambda tk: len(qt & set(tokens(tk['text'])))
             tk = max(c['delegate']['tasks'], key=ov)
-            if ov(tk) >= 1 and tk.get('why'): return out(tk['why'], c)
+            if tk.get('why') and (ov(tk) >= 2 or (ov(tk) >= 1 and re.search(r'\bwhy\b', ql))): return out(tk['why'], c)
         for name, rx in R['routes']:
             if not re.search(rx, ql): continue
             if name == 'offtopic': return off
@@ -144,10 +146,13 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'signif': return out(f"{c['explain']}", c)   # the main contrast first, before any secondary measure
             if name == 'task': return out(f"{c.get('scene', '')} Design: {st.get('design', 'see the paper')}.", c)
             if name == 'meaning':
-                w = re.search(r"mean(?:t)? by ['\"]?(\w+)|does (?:the )?(?:word |term )?['\"]?(\w+)['\"]? mean", ql); w = next((g for g in (w.groups() if w else ()) if g), '')
-                fm = [f for f in fol if w and stem(w) in tokens(f['q'] + ' ' + f['a'])]
+                w = re.search(r"mean(?:t)? by ['\"]?(\w+)|does (?:the )?(?:word |term )?['\"]?(\w+)['\"]? mean|^what(?:.s| is) (?:an? |the )?(\w+)\??$", ql); w = next((g for g in (w.groups() if w else ()) if g), '')
+                pre = lambda s: bool(w) and any(x.startswith(stem(w)) for x in tokens(s))   # ECU matches ECUs
+                fm = [f for f in fol if pre(f['q'])]
                 if fm: return out(fm[0]['a'], c)
-                if w and stem(w) in tokens(c['explain'] + ' ' + c.get('scene', '')): return out(f"In this study: {c.get('scene', '')} {c['explain']}", c)
+                if pre(c['answerTitle'] + ' ' + c['explain'] + ' ' + c.get('scene', '')): return out(f"In this study: {c.get('scene', '')} {c['answerTitle']}. {c['explain']}", c)
+                fa2 = [f for f in fol if pre(f['a'])]
+                if fa2: return out(fa2[0]['a'], c)
                 continue
             if name == 'contest':   # both sides of a contested finding, as the explanation states them
                 fd = [f for f in fol if re.search(r'\b(design|differ|contrast|both)', f['q'] + ' ' + f['a'], re.I)]
@@ -160,6 +165,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 continue
             if name == 'authors': return out(f"{_papers(c)}. Design: {st.get('design', 'see the paper')}.", c)
             if name == 'voluntary': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" Setting: {c.get('scene', '')} What the study covers: {c['boundary']}", c)
+            if name == 'stakes' and [f for f in fol if re.search(r'(\$|\bmoney\b|\bpaid\b|\bbonus|\bincentiv)', f['q'] + ' ' + f['a'], re.I)]: return out([f for f in fol if re.search(r'(\$|\bmoney\b|\bpaid\b|\bbonus|\bincentiv)', f['q'] + ' ' + f['a'], re.I)][0]['a'], c)
             if name == 'stakes': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
             if name == 'population': return out(f"What the study covers: {c['boundary']}" + (f" Sample: {st['n']}." if st.get('n') else '') + " Whether it holds elsewhere is a question to test locally.", c)
             if name == 'action': return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
@@ -185,12 +191,13 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'size': return out(f"{c['explain']} In practice: {c['implication']}", c)
             if name == 'transfer': return out(f"{c['boundary']} The study itself: {c['explain']}", c)
         fq = [f for f in fol if rare & set(tokens(f['q']))]   # no route: a distinctive word the question shares with one follow-up question picks it
-        if fq: return out(max(fq, key=lambda f: len(rare & set(tokens(f['q']))))['a'], c)
+        if fq: return out(max(fq, key=lambda f: (len(rare & set(tokens(f['q']))), len(qt & set(tokens(f['q'])))))['a'], c)   # ties go to the follow-up sharing more words
         own = set(tokens(' '.join([c['answerTitle'], c['explain']])))
         fa = [f for f in fol if (rare - own) & set(tokens(f['a']))]   # a distinctive word found only in a follow-up answer
         if fa: return out(max(fa, key=lambda f: len((rare - own) & set(tokens(f['a']))))['a'], c)
         if fol:
-            f0 = max(fol, key=lambda f: len(qt & set(tokens(f['q'] + ' ' + f['a']))))
+            sc = lambda f: 2 * len(qt & set(tokens(f['q']))) + len(qt & set(tokens(f['a'])))   # the follow-up's own question weighs double
+            f0 = max(fol, key=sc)
             if len(qt & set(tokens(f0['q'] + ' ' + f0['a']))) >= 2: return out(f0['a'], c)
         # no study named and no route: answer about the decision on screen, never about another study on word overlap
         if rare: return out(f"The lab's summary of this study does not cover that detail. What it does cover: {c['answerTitle']}. {c['explain']}", c)   # say so, rather than pass the summary off as an answer

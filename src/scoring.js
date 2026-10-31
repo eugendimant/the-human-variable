@@ -133,7 +133,9 @@
     }
     // An allocation states the chance that the top-weighted option is the best one.
     if (rec.format === 'allocate' && Array.isArray(rec.response)) {   // the event is "my top-weighted option is a best one", not the verdict's stricter rule
-      const al = c && c.allocate, top = Math.max(...rec.response), best = al ? (al.best || [al.values.indexOf(Math.max(...al.values))]) : null;
+      // The outcome is stored on the record when it is made (topBest), because the served bank carries no answers after a reload.
+      if (typeof rec.topBest === 'boolean') return { p: statedProbability({ format: 'allocate' }, rec.response), outcome: rec.topBest ? 1 : 0 };
+      const al = c && c.allocate, top = Math.max(...rec.response), best = al && (al.best || (Array.isArray(al.values) ? [al.values.indexOf(Math.max(...al.values))] : null));
       return { p: statedProbability({ format: 'allocate' }, rec.response), outcome: best ? (rec.response.every((x, i) => x !== top || best.includes(i)) ? 1 : 0) : (rec.correct ? 1 : 0) };
     }
     return rec.confidence === null || rec.confidence === undefined ? null : { p: rec.confidence, outcome: rec.correct ? 1 : 0 };
