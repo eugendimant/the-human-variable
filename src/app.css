@@ -320,8 +320,8 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .path{text-align:left;padding:20px;border-radius:var(--r-panel);background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:8px;min-height:170px;transition:transform .15s}
 .path:hover{transform:translateY(-2px)}
 .path strong{font-size:20px;letter-spacing:-.02em;line-height:1.15}
-.path span{font-family:var(--serif);font-size:16px;line-height:1.45;color:#d8deea;flex:1}
-.path small{color:#aeb9cc;font-size:var(--t7)}
+.path span{font-family:var(--serif);font-size:16px;line-height:1.45;color:rgba(255,255,255,.9);flex:1}
+.path small{color:rgba(255,255,255,.86);font-size:var(--t7)}
 .path:nth-child(3n+2){background:#1f3cc2}.path:nth-child(3n+3){background:#3a4560}
 .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:0 0 26px}
 .lesson-card{padding:18px}
@@ -360,3 +360,79 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .deleg-opts button:disabled[aria-pressed="true"],.deleg-opts button:disabled.is-ev{opacity:1}
 .opt:disabled .k{opacity:1}
 .findings .btn{font-family:var(--sans)}
+
+/* ===== Focus mode (one decision per screen, Duolingo-style action bar) ===== */
+body.in-play .bar, body.in-play .foot{display:none}
+body.in-play{background:var(--paper)}
+.focus{max-width:820px;margin:0 auto;padding:0 var(--gut) 140px}
+.focus-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;padding:16px 0;background:var(--paper)}
+.x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--ink-2);flex:none}
+.x:hover{background:var(--sunk)}
+.focus-top .steps{flex:1}
+.focus-top .count{font-size:var(--t6);font-weight:650;color:var(--muted);flex:none}
+.focus-card{padding:clamp(8px,2vw,16px) 0 0}
+.eyebrow-line{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0 14px;font-size:var(--t6);color:var(--muted)}
+.eyebrow-line .fmt{font-weight:750;color:var(--you-ink)}
+.focus .scene{margin:0 0 6px;font-size:clamp(19px,1.7vw,22px)}
+.study-line{margin:0 0 26px;font-size:var(--t7);color:var(--muted)}
+.focus .q{font-size:clamp(26px,3.2vw,40px);max-width:24ch;margin:0 0 26px}
+.conf-row{display:grid;grid-template-columns:auto 1fr 52px;gap:16px;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--rule)}
+.conf-row label{font-weight:650;font-size:var(--t6)}
+.conf-row output{font-weight:800;color:var(--you-ink);text-align:right}
+.actionbar{position:fixed;left:0;right:0;bottom:0;z-index:25;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(8px);border-top:1px solid var(--rule)}
+.actionbar-in{max-width:820px;margin:0 auto;padding:14px var(--gut) calc(14px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:16px}
+.btn-lg{min-height:54px;padding:0 30px;font-size:16px}
+.focus .opt{min-height:62px;font-size:17px}
+/* Reveal */
+.reveal .verdict{display:flex;align-items:center;gap:12px;margin:0 0 10px;font-size:var(--t6);font-weight:650;color:var(--ink-2)}
+.reveal .reveal-title{font-size:clamp(32px,4.4vw,56px);max-width:16ch;margin:0 0 24px}
+.gap{margin:0 0 26px;padding:22px;border-radius:18px;background:var(--surface);border:1px solid var(--rule)}
+.gap .gap-legend{margin:0 0 6px}
+.gap .opts{margin-top:6px}
+.opts-recap{margin-top:16px}
+.reveal .reveal-body{font-size:clamp(19px,1.7vw,22px)}
+.action-note{border-left:4px solid var(--you);padding:4px 0 4px 18px;margin:0 0 34px}
+.action-note h2{font-size:var(--t6);margin:0 0 4px;color:var(--you-ink)}
+.action-note p{margin:0;font-family:var(--serif);font-size:19px;line-height:1.5}
+.deep{border-top:1px solid var(--rule);padding-top:8px}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -4px 8px;padding:4px}
+.tabs button{white-space:nowrap;padding:9px 14px;border-radius:999px;font-weight:650;font-size:var(--t6);color:var(--ink-2)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+.tabs button:hover:not([aria-selected="true"]){background:var(--sunk)}
+.tabpanel{min-height:120px}
+.deep-text{font-family:var(--serif);font-size:18px;line-height:1.55;color:var(--ink-2);margin:10px 0}
+.src-title{font-family:var(--serif);font-size:19px;line-height:1.4;margin:10px 0 4px}
+.src p{margin:0 0 8px;font-size:var(--t6);color:var(--ink-2)}
+.src .row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.tutor{margin-top:18px;padding:18px;border-radius:var(--r-panel);background:var(--sunk)}
+.tutor h3{margin:0 0 10px;font-size:var(--t5)}
+.tutor .tutor-chips button{background:var(--surface)}
+.note-box label{display:block;font-family:var(--serif);font-size:17px;margin:10px 0}
+.note-box .btn{margin-top:10px}
+/* Home declutter */
+.hero{min-height:calc(88vh - 64px);display:flex;align-items:center}
+.hero-grid{width:100%}
+.hero-actions{align-items:center;gap:18px}
+.row-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.row-head h2{font-size:var(--t2);letter-spacing:-.035em;margin:0;line-height:1}
+.custom{padding:18px;margin-bottom:16px;display:grid;gap:12px}
+.custom-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.custom-row .kicker{width:60px}
+.seg small{color:inherit;opacity:.65;font-weight:600}
+.path{position:relative;overflow:hidden}
+.path-bar{position:absolute;left:0;bottom:0;height:4px;width:var(--p);background:var(--ev)}
+.dimant-band{padding-top:0}
+.dimant h2{font-size:var(--t3)}
+.lib-tabs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--sunk);margin-top:6px}
+.lib-tabs button{padding:9px 16px;border-radius:999px;font-weight:650;font-size:var(--t6)}
+.lib-tabs button[aria-selected="true"]{background:var(--surface);box-shadow:0 1px 3px rgba(20,32,58,.15)}
+.nav .nav-join{border:1px solid var(--rule);margin-left:8px}
+@media (max-width:820px){
+  .hero{min-height:0}
+  .conf-row{grid-template-columns:1fr 52px}.conf-row label{grid-column:1/-1}
+  .actionbar-in .kicker{display:none}.actionbar-in .btn{flex:1}
+}
+
+.axis-svg{width:100%;height:auto;display:block}
+.fc-ask{margin:0 0 8px}
+.q-claim{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;max-width:30ch;line-height:1.2}
