@@ -2591,7 +2591,7 @@
    "concept": "Trust in AI",
    "tag": "11 / FIT",
    "title": "Two jobs for an algorithm",
-   "scene": "In experiments, people chose between an algorithm and a person, either to recommend a practical product or to judge a highly personal aesthetic preference.",
+   "scene": "In online lab and field studies, people decided whether to rely on an algorithm for tasks that seemed objective and measurable, or subjective and a matter of personal taste.",
    "question": "For which task were people more reluctant to rely on an algorithm?",
    "options": [
     "Judging a personal aesthetic preference",
@@ -2641,7 +2641,7 @@
    "concept": "Trust in AI",
    "tag": "12 / PERSONALIZATION",
    "title": "Medical advice from AI",
-   "scene": "A service uses AI for individualized medical recommendations. Consumers are told the system is highly accurate.",
+   "scene": "Consumers choose between medical care, such as diagnoses and recommendations, from an AI provider or from a human provider.",
    "question": "What mainly drove consumers’ resistance?",
    "options": [
     "It feels less accountable when it errs",
@@ -2906,7 +2906,7 @@
     },
     {
      "q": "Did heavy users keep saving?",
-     "a": "Above-average households given only the average cut 1.22 kWh per day in the first week. Over the next three weeks their use went from 22.32 to 21.29 kWh per day, a drop that was not statistically significant."
+     "a": "Above-average households given only the average cut 1.22 kWh per day in the first week. Over the longer term their use was 21.29 kWh per day against a 22.32 baseline, a drop that was not statistically significant."
     }
    ],
    "format": "multi",
@@ -3061,7 +3061,7 @@
    "answerTitle": "25%, pulled down by a random number",
    "explain": "Median estimates were 25% after the wheel showed 10 and 45% after it showed 65, though everyone could see the number was random.",
    "implication": "In negotiations and forecasts, write down your own estimate before you see anyone else’s number.",
-   "boundary": "Students estimating general-knowledge quantities after seeing a visibly random number; paying for accuracy did not reduce the effect.",
+   "boundary": "People estimating percentages after watching a wheel produce a visibly random number; paying for accuracy did not reduce the effect.",
    "sources": [
     "anchor74"
    ],
@@ -3120,7 +3120,7 @@
    "concept": "Norm distributions",
    "tag": "27 / CULTURE",
    "title": "Same average, different culture",
-   "scene": "Two teams have the same average cooperation. One is consistent; the other is split between very high and low behavior.",
+   "scene": "Two teams have the same average cooperation. In one, behavior is tightly clustered around the average; in the other, it is widely spread out.",
    "question": "Which two results did the experiments find?",
    "options": [
     "People ignored the norm and played their own strategy",
@@ -3248,7 +3248,7 @@
    ],
    "answer": 0,
    "answerTitle": "Groups are less monolithic",
-   "explain": "Among 996 US respondents, Panizza, Dimant, Kimbrough and Vostroknutov recovered several views within each party. Agreement ranged from 95% of Democrats naming the same top view on same-sex rights to only 50% of Republicans on gun policy.",
+   "explain": "Among 996 US respondents, Panizza, Dimant, Kimbrough and Vostroknutov recovered several views within each party. Agreement ranged from 95% of Democrats including the same view on same-sex rights in their drawings to only 50% of Republicans on gun policy.",
    "implication": "Before engaging a stakeholder group, map the distinct views inside it and estimate each view's share.",
    "boundary": "One incentivized online survey of 996 US respondents on seven political issues, compared with a standard single-norm measure.",
    "sources": [
@@ -3473,7 +3473,7 @@
    "follow": [
     {
      "q": "How precise were the estimates?",
-     "a": "Not very. The authors note large standard errors for several estimates, so the direction favors women while many individual effects fall short of statistical significance."
+     "a": "Mixed. The authors note that some estimates have large standard errors and one effect persistently runs against women; they judge that the weight of the evidence favors women."
     },
     {
      "q": "What did the authors conclude?",
@@ -3611,7 +3611,7 @@
    "concept": "Polarization",
    "tag": "49 / IDENTITY",
    "title": "Hate or love?",
-   "scene": "Across 15 experiments, Trump supporters and opponents rated how close they felt to each side and made costly choices that helped or hurt members of each side.",
+   "scene": "Across 15 experiments, Trump supporters and opponents rated how close they felt to each side, then chose whether to give money to, or take money from, members of each side.",
    "question": "Where did in-group love and out-group hate show up?",
    "options": [
     "Hate showed in feelings, love in behavior",
@@ -5915,7 +5915,7 @@
    "follow": [
     {
      "q": "How was the Twitter test run?",
-     "a": "In Study 7, 5,379 Twitter users who had recently shared news links got a private message asking them to rate the accuracy of one non-political headline; the researchers then tracked what they shared."
+     "a": "In Study 7, 5,379 Twitter users who had recently shared links to misleading, hyperpartisan sites got a private message asking them to rate one non-political headline's accuracy; the researchers then tracked what they shared."
     },
     {
      "q": "Why would people share news they doubt?",
@@ -6025,7 +6025,7 @@
    "track": "Culture & Society",
    "concept": "Correcting norms",
    "title": "From belief to job applications",
-   "scene": "Saudi husbands who underestimated peers' support for women working outside the home were shown the true figure. Months later, researchers checked whether their wives had applied for outside jobs.",
+   "scene": "Half of a group of married Saudi men were randomly shown the true share of their session peers who privately supported women working outside the home. Months later, researchers checked whether their wives had applied for outside jobs.",
    "question": "What happened to wives' job applications three to five months later?",
    "options": [
     "Fell, because of social backlash",
@@ -6393,7 +6393,7 @@
    "track": "Business",
    "concept": "Motivated beliefs",
    "title": "\"Everyone does it,\" they say",
-   "scene": "In an incentivized experiment, people could misreport for money. Those who misreported were also the most likely to say that most others misreport.",
+   "scene": "In an incentivized experiment, people could misreport for money. Those who learned of this chance before stating what others do more often said most people lie, and more often reported winning.",
    "question": "What best explains the link between this belief and misreporting?",
    "options": [
     "Temptation distorts the belief to justify lying",
@@ -6443,7 +6443,7 @@
     ]
    },
    "answerTitle": "Temptation reshapes beliefs to excuse lying",
-   "explain": "Bicchieri, Dimant and Sonderegger show belief distortion: when people knew a chance to lie was coming, the share believing that most people lie rose from 38.1% to 62.7%, and winning reports rose from 21.4% to 40.5%.",
+   "explain": "Bicchieri, Dimant and Sonderegger show belief distortion: among people asked what others do, knowing a chance to lie was coming raised the share believing most people lie from 38.1% to 62.7%, and winning reports from 21.4% to 40.5%.",
    "implication": "Do not treat \"everyone games it\" survey answers as facts; check them against actual compliance data and publish what peers really do.",
    "boundary": "Incentivized experiment in which lying paid money and beliefs concerned the other participants.",
    "sources": [
@@ -6570,7 +6570,7 @@
     },
     {
      "q": "Does the 2022 proximity study say the same?",
-     "a": "It fits. Here closeness meant being near the observed peer, and close peers’ bad choices spread most. In Bicchieri, Dimant, Gächter and Nosenzo (2022), a minimal shared-identity cue made people copy good examples as well as bad ones, which halted the erosion of compliance."
+     "a": "It fits. Here closeness meant answering personal questions more like the observed peer, and close peers' bad choices spread most. In Bicchieri, Dimant, Gächter and Nosenzo (2022), a minimal shared-identity cue made people copy good examples as well as bad ones, which halted the erosion of compliance."
     }
    ],
    "study": {
@@ -6716,7 +6716,7 @@
    "answerTitle": "Watching alone did little and could backfire",
    "explain": "Bolton, Dimant and Schmidt show, with 1,650 online participants, that being watched alone backfired: the charity account shrank 28.3% under observation against 18.4% unobserved. Asking people first about others' behavior turned this into a 9.3% gain.",
    "implication": "Do not rely on visibility alone in giving or compliance drives; pair it with a clear statement of what is expected.",
-   "boundary": "Charity-giving experiments in which participants observed each other’s choices.",
+   "boundary": "Give-or-take charity games in the lab and online (n = 1,650), where a decision maker chose with or without a passive observer watching.",
    "sources": [
     "observ21"
    ],

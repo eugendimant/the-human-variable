@@ -1,0 +1,128 @@
+[
+ {
+  "id": "misperceived-norms-action",
+  "field": "scene",
+  "current_text": "Saudi husbands who underestimated peers' support for women working outside the home were shown the true figure. Months later, researchers checked whether their wives had applied for outside jobs.",
+  "problem": "Misstates who was treated. The information treatment was randomly assigned to half of all participants, not only to husbands who underestimated peer support; the 5.8% vs 16.2% application result compares wives of all treated men with wives of all control men. Underestimation mattered only in the heterogeneity analysis of the sign-up outcome.",
+  "evidence": "Evidence entry: \"The percentage of wives who applied for a job outside the home during the time frame of interest goes up from 5.8 percent to 16.2 percent\" (AER p. 3012, treatment vs control, no subgroup). J-PAL summary of the study: \"Half of the participants were randomly assigned to receive information about the other participants' responses\"; the sign-up effect was concentrated among men who underestimated support.",
+  "proposed_text": "Half of a group of married Saudi men were randomly shown the true share of their session peers who privately supported women working outside the home. Months later, researchers checked whether their wives had applied for outside jobs.",
+  "confidence": "high"
+ },
+ {
+  "id": "dimant-observability-choice",
+  "field": "boundary",
+  "current_text": "Charity-giving experiments in which participants observed each other’s choices.",
+  "problem": "Misdescribes the design. Participants did not observe each other's choices: a decision maker gave to or took from a charity while a separate passive observer (online) or a reciprocating or passive observer (lab) watched. The study also has a lab arm (Kiel, n = 423) not described.",
+  "evidence": "Evidence entry: \"SocSig leads to a significant backfiring effect overall with respect to money remaining in the charity account (−28.3% vs. −18.4%)\". CeDEx DP 2019-03 (working-paper version): in SocSig \"Player C observed Player A's decision\" and was \"a passive observer with no decisions and no effect on payoffs\"; lab game was a give-or-take dictator game toward a charity with SelfSig (no observer), Reputation and SocSig conditions.",
+  "proposed_text": "Give-or-take charity games in a Kiel lab (n = 423) and online (n = 1,650), where a decision maker chose with or without a passive observer watching.",
+  "confidence": "high"
+ },
+ {
+  "id": "social07",
+  "field": "explain",
+  "current_text": "Among 996 US respondents, Panizza, Dimant, Kimbrough and Vostroknutov recovered several views within each party. Agreement ranged from 95% of Democrats naming the same top view on same-sex rights to only 50% of Republicans on gun policy.",
+  "problem": "Misreads the outcome measure. In the norm-drawing task respondents draw several views; the 95% and 50% figures are the shares of respondents whose drawings included the most commonly reported view, not shares naming the same 'top' view.",
+  "evidence": "\"the most commonly reported view (that same-sex couples should have the right to both date and marry) was reported by 95% of respondents, with a mean share (the proportion of members believed to hold that view) of 76%\" ... \"the most frequently reported view (that all proposed policies to reduce gun violence are appropriate) was reported by only 50% of respondents and had a mean share of 13%\" (PNAS Nexus 3(10), Results, PMC11475397).",
+  "proposed_text": "Among 996 US respondents, Panizza, Dimant, Kimbrough and Vostroknutov recovered several views within each party. Agreement ranged from 95% of Democrats including the same view on same-sex rights in their drawings to only 50% of Republicans on gun policy.",
+  "confidence": "high"
+ },
+ {
+  "id": "social01",
+  "field": "scene",
+  "current_text": "Two teams have the same average cooperation. One is consistent; the other is split between very high and low behavior.",
+  "problem": "Scene describes a polarized (two-camp) distribution, but the answer key, explanation and chart are about tight versus loose norms (variance 1.26 vs 1.65). The polarized result (variance 2.68) is a different treatment covered by dimant-polarizednorms-choice.",
+  "evidence": "\"in tight environments (low variance), participants choose contribution levels that are tightly centered around the mean of the shown distribution (σ2 = 1.26). In loose environments (high variance), by contrast, we see a much larger variation in behavior (σ2 = 1.65).\" (Management Science 71(3), Section 4.2)",
+  "proposed_text": "Two teams have the same average cooperation. In one, behavior is tightly clustered around the average; in the other, it is widely spread out.",
+  "confidence": "medium"
+ },
+ {
+  "id": "social15",
+  "field": "scene",
+  "current_text": "Across 15 experiments, Trump supporters and opponents rated how close they felt to each side and made costly choices that helped or hurt members of each side.",
+  "problem": "Mislabels the behavioral measure. The give-or-take dictator game lets participants give money (costly) or take money (profitable) from the partner; harming opponents by taking was not costly.",
+  "evidence": "Evidence entry: \"a significant proportion of participants exhibiting a propensity for inflicting harm (−22.9%, red bar bottom-left panel)\" alongside giving rates of 14.97% and 13.54% (Management Science, p. 10). PsyPost summary of the design: \"The dictator can give some or all of their money to the recipient, or take some or all of the recipient's money.\"",
+  "proposed_text": "Across 15 experiments, Trump supporters and opponents rated how close they felt to each side, then chose whether to give money to, or take money from, members of each side.",
+  "confidence": "medium"
+ },
+ {
+  "id": "dimant-notalie-causal",
+  "field": "scene",
+  "current_text": "In an incentivized experiment, people could misreport for money. Those who misreported were also the most likely to say that most others misreport.",
+  "problem": "The scene asserts an individual-level correlation (misreporters most likely to say most others misreport) that the evidence does not report. The paper's evidence is a between-condition manipulation: knowing about the lying opportunity before stating beliefs raised both the belief that most lie and winning reports.",
+  "evidence": "\"the belief that 'the majority lies' increases considerably as we move from the Unknown to the Known condition (38.1% versus 62.7%...)\"; \"belief distortion resulted in a greater incidence of winning reports in the Known compared to the Unknown condition (40.5% versus 21.4%...)\" (GEB 138, p. 329).",
+  "proposed_text": "In an incentivized die-roll experiment, people could misreport for money. Those who learned of this chance before stating what others do more often said most people lie, and more often reported winning.",
+  "confidence": "medium"
+ },
+ {
+  "id": "dimant-notalie-causal",
+  "field": "explain",
+  "current_text": "Bicchieri, Dimant and Sonderegger show belief distortion: when people knew a chance to lie was coming, the share believing that most people lie rose from 38.1% to 62.7%, and winning reports rose from 21.4% to 40.5%.",
+  "problem": "Overgeneralizes the behavioral result. The 21.4% to 40.5% rise in winning reports is for participants asked about others' behavior (empirical beliefs); for participants asked what others approve of, winning reports barely differed between Known and Unknown (40.2% vs 38.0% in the working-paper version).",
+  "evidence": "\"belief distortion resulted in a greater incidence of winning reports in the Known compared to the Unknown condition (40.5% versus 21.4%, EPT, p<0.001)\" (GEB 138, p. 329). Working-paper version (CeDEx DP 2019-07): \"Empirical CPK 40.5% vs Empirical CPU 21.4%; Normative CPK 40.2% vs Normative CPU 38.0%.\"",
+  "proposed_text": "Bicchieri, Dimant and Sonderegger show belief distortion: among people asked what others do, knowing a chance to lie was coming raised the share believing most people lie from 38.1% to 62.7%, and winning reports from 21.4% to 40.5%.",
+  "confidence": "medium"
+ },
+ {
+  "id": "dimant-contagion-multi",
+  "field": "follow[3].a",
+  "current_text": "It fits. Here closeness meant being near the observed peer, and close peers’ bad choices spread most. In Bicchieri, Dimant, Gächter and Nosenzo (2022), a minimal shared-identity cue made people copy good examples as well as bad ones, which halted the erosion of compliance.",
+  "problem": "Misdescribes the proximity manipulation as being 'near' the peer. Social proximity was induced by telling participants whether the observed peer had answered 25 personal yes/no questions more or less similarly to them than another peer.",
+  "evidence": "Evidence entry: \"social proximity amplifies the contagion of anti-social behavior more strongly than the contagion of pro-social behavior.\" CESifo WP 8263 (working-paper version): participants answered 25 binary questions from a dating website; in High proximity they were told the observed peer was closer to them than the unobserved peer, in Low proximity less close.",
+  "proposed_text": "It fits. Here closeness meant answering personal questions more like the observed peer, and close peers' bad choices spread most. In Bicchieri, Dimant, Gächter and Nosenzo (2022), a minimal shared-identity cue made people copy good examples as well as bad ones, which halted the erosion of compliance.",
+  "confidence": "medium"
+ },
+ {
+  "id": "biz05",
+  "field": "follow[2].a",
+  "current_text": "Above-average households given only the average cut 1.22 kWh per day in the first week. Over the next three weeks their use went from 22.32 to 21.29 kWh per day, a drop that was not statistically significant.",
+  "problem": "Misstates the comparison. 22.32 is the baseline and 21.29 the longer-term reading; the text implies use went from 22.32 to 21.29 during the three weeks after the first week.",
+  "evidence": "\"the descriptive-norm-only message continued to produce the (constructive) decrease in energy consumption, although the difference was not conventionally significant (baseline M = 22.32, SE = 1.05 vs. longer-term M = 21.29, SE = 0.92; n = 52), t(51) = 1.45, n.s.\" (Psychological Science 18(5), p. 432)",
+  "proposed_text": "Above-average households given only the average cut 1.22 kWh per day in the first week. Over the longer term their use was 21.29 kWh per day against a 22.32 baseline, a drop that was not statistically significant.",
+  "confidence": "medium"
+ },
+ {
+  "id": "social13",
+  "field": "follow[0].a",
+  "current_text": "Not very. The authors note large standard errors for several estimates, so the direction favors women while many individual effects fall short of statistical significance.",
+  "problem": "Stronger than the source. The authors say some estimates have large standard errors and one effect persistently runs the other way; they do not say many individual effects fall short of significance.",
+  "evidence": "\"Although some of our estimates have large standard errors and there is one persistent effect in the opposite direction, the weight of the evidence suggests that the blind audition procedure fostered impartiality in hiring\" (AER 90(4), abstract).",
+  "proposed_text": "Mixed. The authors note that some estimates have large standard errors and one effect persistently runs against women; they judge that the weight of the evidence favors women.",
+  "confidence": "medium"
+ },
+ {
+  "id": "biz11",
+  "field": "boundary",
+  "current_text": "Students estimating general-knowledge quantities after seeing a visibly random number; paying for accuracy did not reduce the effect.",
+  "problem": "Adds a population not in the source. Tversky and Kahneman describe the wheel-of-fortune participants only as 'subjects'; students appear only in the separate high-school multiplication demonstration. (study.design 'Classroom experiment' has the same problem.)",
+  "evidence": "\"subjects were asked to estimate various quantities, stated in percentages ... a number between 0 and 100 was determined by spinning a wheel of fortune in the subjects' presence\" ... \"Payoffs for accuracy did not reduce the anchoring effect.\" (Science 185, p. 1128)",
+  "proposed_text": "People estimating percentages after watching a wheel produce a visibly random number; paying for accuracy did not reduce the effect.",
+  "confidence": "medium"
+ },
+ {
+  "id": "ai11",
+  "field": "scene",
+  "current_text": "In experiments, people chose between an algorithm and a person, either to recommend a practical product or to judge a highly personal aesthetic preference.",
+  "problem": "Adds task details not in the evidence. The studies contrast tasks that seem subjective versus objective; nothing in the evidence describes a practical-product recommendation versus a personal aesthetic judgment.",
+  "evidence": "\"They find that algorithms are trusted and relied on less for tasks that seem subjective (vs. objective) in nature.\" (JMR abstract)",
+  "proposed_text": "In online lab and field studies, people decided whether to rely on an algorithm for tasks that seemed objective and measurable, or subjective and a matter of personal taste.",
+  "confidence": "medium"
+ },
+ {
+  "id": "ai12",
+  "field": "scene",
+  "current_text": "A service uses AI for individualized medical recommendations. Consumers are told the system is highly accurate.",
+  "problem": "Adds a detail not in the evidence: nothing in the quoted abstract says consumers were told the AI was highly accurate. The studies compare AI with human providers in real and hypothetical choices.",
+  "evidence": "\"Consumers are reluctant to utilize healthcare provided by AI in real and hypothetical choices, separate and joint evaluations.\" (JCR abstract)",
+  "proposed_text": "Consumers choose between medical care, such as diagnoses and recommendations, from an AI provider or from a human provider.",
+  "confidence": "medium"
+ },
+ {
+  "id": "accuracy-prompt",
+  "field": "follow[0].a",
+  "current_text": "In Study 7, 5,379 Twitter users who had recently shared news links got a private message asking them to rate the accuracy of one non-political headline; the researchers then tracked what they shared.",
+  "problem": "Misdescribes the population. Study 7 targeted users who had recently shared links to sites that regularly publish misleading and hyperpartisan content, not news sharers in general (the boundary field states this correctly).",
+  "evidence": "\"In Study 7, we conducted an experiment on the Twitter platform involving n = 5,379 users who had recently shared links to websites that regularly produce misleading and hyperpartisan content.\" (Nature 592, Fig. 4 legend)",
+  "proposed_text": "In Study 7, 5,379 Twitter users who had recently shared links to misleading, hyperpartisan sites got a private message asking them to rate one non-political headline's accuracy; the researchers then tracked what they shared.",
+  "confidence": "medium"
+ }
+]
