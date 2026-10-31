@@ -182,6 +182,6 @@ def test_allocate_rebalances_and_needs_a_real_change(browser):
     pg.eval_on_selector('[data-alloc="0"]', "e=>{e.value=+e.value;e.dispatchEvent(new Event('input',{bubbles:true}))}")
     assert not pg.is_enabled('#lock-btn')
     pg.eval_on_selector('[data-alloc="0"]', "e=>{e.value=80;e.dispatchEvent(new Event('input',{bubbles:true}))}")
-    vals = pg.eval_on_selector_all('[data-alloc]', 'els => els.map(e => +e.value)')
+    vals = [v for _, v in sorted(pg.eval_on_selector_all('[data-alloc]', 'els => els.map(e => [+e.dataset.alloc, +e.value])'))]   # displayed in shuffled order
     assert vals[0] == 80 and sum(vals) == c['allocate']['total'] and pg.is_enabled('#lock-btn'), vals
     assert not pg.errors, pg.errors; pg.close()

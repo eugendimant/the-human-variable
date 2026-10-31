@@ -22,7 +22,7 @@ House rules that apply to anything you write for Eugen:
 
 | Area | State |
 |---|---|
-| Content | <!--n:decisions-->112<!--/n--> decisions and <!--n:sources-->107<!--/n--> peer-reviewed sources, each checked against Crossref and against the text the checker read (full text or abstract, recorded per source). Corrections, retirements and replication decisions are logged in `docs/audit/`. <!--n:dimant_decisions-->18<!--/n--> decisions draw on <!--n:dimant_papers-->15<!--/n--> of Eugen Dimant's published papers. |
+| Content | <!--n:decisions-->111<!--/n--> decisions and <!--n:sources-->107<!--/n--> peer-reviewed sources, each checked against Crossref and against the text the checker read (full text or abstract, recorded per source). Corrections, retirements and replication decisions are logged in `docs/audit/`. <!--n:dimant_decisions-->18<!--/n--> decisions draw on <!--n:dimant_papers-->15<!--/n--> of Eugen Dimant's published papers. |
 | Formats | choice, causal (DAG, mediator masked until reveal), multi (pick two), estimate, forecast (1 − 2 × Brier, unclamped), rank (with `rankTies`), allocate (points spread over which option worked best, scored with the same proper rule), delegate. Two multi-step cases. |
 | Structure | <!--n:paths-->8<!--/n--> curated paths, Library (<!--n:principles-->10<!--/n--> principles plus all decisions), personal record with calibration, live classes. |
 | UX | Focus mode during play with a fixed action bar. Reveal: verdict, gap figure, finding, one manager action, and tabs for Questions, Scope, Source and Note. |

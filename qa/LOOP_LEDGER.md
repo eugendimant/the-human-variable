@@ -372,3 +372,17 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 218 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 4 Major found and addressed. Next: independent review 12.
+
+## Iteration 17 (2026-10-31)
+
+**Verified first:** iteration-16 fixes, by independent review 12 (snapshot `snap_r12`): M1 to M3 held; M4 mostly held (two imprecise tutor answers).
+
+**Independent score:** 84/100 (review 12, `qa/reviews/review12.md`). 0 Blocking, 1 Major.
+
+**Fixes:**
+- **M1.** biz03 retired: it keyed the original towel-sign effect with an unconditional action, while biz04 (same source) teaches the failed German replication. Contested findings enter only as items about the contest.
+- **Minors.** Absolute and null distractors replaced with rival claims in 11 items, with a gate (at most 3 left across choice and causal items); every call with stated confidence now shows a confidence score on the forecast rule, explained in "How scoring works"; sibling spoilers removed (civic-wallet-experts, misperceived-norms-support); allocate options shuffle with the seed (phones and console agree), steps allow a true even split, remainders follow the display order; axe11 is a pick-two over the two tested contrasts (both significant per the paper's quotes); duplicate and mirror distractors removed (bz14, dimant-contagion-multi); social20's keyed option names the spread of views; eight scenes rewritten to the real designs; two estimate targets moved to 0.40 to 0.41 of their axes (the per-item midpoint gate keeps targets 1.5 tolerances off centre); record puts areas under calibration, shows area skill after 3 calls and gives the headline its call count; evidence entries all name a source of their decision, processing notes removed, gate added; a failed class join shows a message that stays; Streamlit student page lists the causal factors before the call and the links after; tutor answers subgroup questions from the item's who-gained follow-up, and a clear follow-up match beats generic routes.
+
+**Gates:** build check, 219 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 13.

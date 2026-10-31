@@ -6,6 +6,8 @@ from server import classroom as cl
 def response_widgets(c: dict, key: str, code: str = ''):
     f = c['format']
     idx = option_order(c['id'], len(c.get('options') or []), code) if code else list(range(len(c.get('options') or [])))
+    if f == 'causal' and c.get('dag'):   # as in the game: the factors in play, the asked-about one masked; links arrive with the reveal
+        st.caption('Factors in play: ' + ', '.join('?' if n.get('mask') else n['label'] for n in c['dag']['nodes']) + '. The reveal shows how they connect.')
     if f in ('choice', 'causal'):
         i = st.radio('Your call', idx, format_func=lambda i: c['options'][i], index=None, key=key + 'r')
         return i
@@ -36,6 +38,9 @@ def response_widgets(c: dict, key: str, code: str = ''):
 def show_reveal(c: dict, a: dict, code: str = ''):
     st.subheader(c['answerTitle'])
     st.write(c['explain'])
+    if c.get('dag'):
+        lab = {n['id']: n['label'] for n in c['dag']['nodes']}
+        st.caption('How they connect: ' + '; '.join(f"{lab[e[0]]} → {lab[e[1]]}" for e in c['dag']['edges']) + '.')
     cols = st.columns(3)
     cols[0].metric('Answers', a['n']); cols[1].metric('Matched the evidence', f"{a['shareCorrect'] or 0}%"); cols[2].metric('Average score', a['meanScore'] if a['meanScore'] is not None else '–')
     if 'counts' in a: st.bar_chart({c['options'][i][:40]: a['counts'][i] for i in option_order(c['id'], len(c['options']), code)} if code else {o[:40]: v for o, v in zip(c['options'], a['counts'])}, horizontal=True)

@@ -2571,7 +2571,7 @@
    "concept": "Trust in AI",
    "tag": "11 / FIT",
    "title": "Two jobs for an algorithm",
-   "scene": "A retailer considers algorithms to recommend a practical product versus judge a highly personal aesthetic preference.",
+   "scene": "In experiments, people chose between an algorithm and a person, either to recommend a practical product or to judge a highly personal aesthetic preference.",
    "question": "For which task were people more reluctant to rely on an algorithm?",
    "options": [
     "Judging a personal aesthetic preference",
@@ -2779,57 +2779,6 @@
    "study": {
     "design": "Natural experiment in one firm",
     "n": "New hires and earlier cohorts at one Fortune 500 firm"
-   },
-   "permuted": true
-  },
-  {
-   "id": "biz03",
-   "track": "Business",
-   "concept": "Social proof",
-   "tag": "15 / MARKETING",
-   "title": "The hotel-room note",
-   "scene": "A hotel asks guests to reuse towels. One sign cites conservation; another cites what other guests do.",
-   "question": "Which sign got more towels reused?",
-   "options": [
-    "Both signs worked about equally",
-    "The standard conservation sign",
-    "The “most guests reuse” sign"
-   ],
-   "answer": 2,
-   "answerTitle": "Behavioral evidence beat a generic appeal",
-   "explain": "In Goldstein, Cialdini and Griskevicius's first hotel experiment, 44.1% of guests reused towels under the \"most guests reuse\" sign, against 35.1% under the standard environmental sign.",
-   "implication": "In customer prompts, replace purely environmental or civic appeals with an accurate statement of what most peers do.",
-   "boundary": "Field studies in one US hotel; later replications found smaller effects, with the norm sign sometimes matching a plain environmental sign.",
-   "sources": [
-    "hotel08"
-   ],
-   "visual": "bars",
-   "values": [],
-   "labels": [
-    "Alternative",
-    "Observed pattern"
-   ],
-   "unit": "",
-   "follow": [
-    {
-     "q": "How big was the difference?",
-     "a": "In the first experiment, 44.1% of guests reused towels with the descriptive-norm sign, against 35.1% with the environmental sign."
-    },
-    {
-     "q": "How was reuse measured?",
-     "a": "Room attendants recorded whether guests reused at least one towel, counting each guest's first eligible day."
-    },
-    {
-     "q": "Where was the study run?",
-     "a": "A midsized, midpriced hotel in the US Southwest belonging to a national chain, over 80 days in the first experiment."
-    }
-   ],
-   "format": "choice",
-   "weight": 1,
-   "theme": "choice",
-   "study": {
-    "design": "Two field experiments in one hotel",
-    "n": "1,058 and 1,595 recorded towel-reuse opportunities"
    },
    "permuted": true
   },
@@ -3454,7 +3403,7 @@
    "permuted": true,
    "options": [
     "Large gains, mostly in final rounds",
-    "No effect, though estimates were noisy",
+    "Large gains, concentrated in early rounds",
     "Unfavorable to women, mostly in early rounds",
     "Favorable to women, with imprecise estimates"
    ],
@@ -3469,7 +3418,7 @@
    "scene": "White and Black participants were asked how interested they were in contact with the other group, and why each side might hold back.",
    "question": "How did each group explain the hesitation?",
    "options": [
-    "Neither side wanted more contact with the other",
+    "Each side said it feared open conflict",
     "Own side fears rejection; other lacks interest",
     "Both sides said they mainly feared being rejected"
    ],
@@ -3576,7 +3525,7 @@
    "options": [
     "Hate showed in feelings, love in behavior",
     "Love showed in feelings, hate in behavior",
-    "Both showed up in feelings, neither in behavior"
+    "Love and hate showed mainly in feelings"
    ],
    "answer": 1,
    "answerTitle": "The domains diverged",
@@ -3681,7 +3630,7 @@
    "question": "How do you check whether their norms differ?",
    "options": [
     "Ask each team’s manager to describe the norm",
-    "Ask each person what they think colleagues believe",
+    "Ask each person how views are spread across colleagues",
     "Compare how often each team breaks the rule",
     "Survey a larger sample and compare averages"
    ],
@@ -4209,7 +4158,7 @@
    "permuted": true,
    "allocate": {
     "total": 100,
-    "step": 10,
+    "step": 5,
     "label": "Points placed",
     "prefix": "",
     "suffix": "",
@@ -4237,7 +4186,7 @@
    "format": "forecast",
    "concept": "AI disclosure",
    "title": "The cost of an AI label",
-   "scene": "A news site plans to tag headlines 'AI-generated' whenever AI was involved, including true headlines its staff wrote and checked.",
+   "scene": "In experiments, people rated true and false headlines. Some carried an \"AI-generated\" label, including true headlines written by people.",
    "question": "Is this what the study found?",
    "answerTitle": "Less believed and less shared",
    "explain": "Across 4,976 participants, the label cut perceived accuracy and sharing whether headlines were true or false, human- or AI-made. The effect was three times smaller than a 'false' label.",
@@ -4279,7 +4228,7 @@
    "scene": "People make decisions with help from an AI that is usually right but sometimes wrong. Designers test different ways of presenting its advice.",
    "question": "Which design best cut agreement with wrong AI advice?",
    "options": [
-    "No design changed agreement with wrong advice",
+    "Showing the AI's confidence with each suggestion",
     "Plain explanations with each suggestion",
     "Making users answer before seeing the AI"
    ],
@@ -4408,7 +4357,7 @@
    "format": "forecast",
    "concept": "Customer spillovers",
    "title": "Do customers notice the AI?",
-   "scene": "A firm rolls out a generative-AI assistant that suggests replies to its customer-support agents, in stages across 5,172 agents. The support director predicts calmer customers.",
+   "scene": "A firm rolled out a generative-AI assistant that suggests replies to its customer-support agents, in stages across 5,172 agents. A common expectation is calmer customers.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "After agents got AI assistance, customers became less likely to ask for a manager.",
@@ -4545,7 +4494,7 @@
    },
    "concept": "Expert spillback",
    "title": "Will your stars get better too?",
-   "scene": "Licenses now extend to your most experienced, highest-skilled agents. A director predicts the assistant will lift their work just as it did for newer agents.",
+   "scene": "In a staggered rollout of an AI assistant to 5,172 customer-support agents, the assistant also reached the most experienced, highest-skilled agents. A common expectation is that it lifts their work as much as newer agents’.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "For the most experienced, highest-skilled agents, AI assistance improved both speed and quality.",
@@ -4702,7 +4651,7 @@
    "options": [
     "They matched the randomized lift",
     "They often missed the randomized lift",
-    "They understated the lift every time",
+    "They understated the lift by a steady margin",
     "They matched once enough data were added"
    ],
    "answer": 1,
@@ -4838,7 +4787,7 @@
    "estimate": {
     "target": 13.6,
     "min": 0,
-    "max": 20,
+    "max": 34,
     "tolerance": 2,
     "label": "Average savings rate after four pay raises",
     "unit": "%"
@@ -5229,7 +5178,7 @@
     "Above-median earners: more satisfied",
     "Above-median earners: happier, job hunting less",
     "Below-median earners: less satisfied, job hunting",
-    "No change: staff already knew peer pay"
+    "Below-median earners: more motivated to catch up"
    ],
    "answer": 2,
    "answerTitle": "Below-median earners grew unhappy and started looking",
@@ -5368,12 +5317,10 @@
    "scene": "Evaluators chose workers for a task and were paid on the chosen worker's future performance. Some saw candidates one at a time; others compared candidates side by side.",
    "question": "Which procedure made evaluators rely more on individual performance?",
    "options": [
-    "Separate review, judged on more information",
     "Comparing candidates side by side",
-    "Neither: both leaned on interview impressions",
     "Seeing candidates one at a time"
    ],
-   "answer": 1,
+   "answer": 0,
    "answerTitle": "Side-by-side review focused choices on performance",
    "explain": "In Bohnet, van Geen and Bazerman's incentivized experiment, evaluators who compared candidates side by side relied more on individual performance, while those judging one at a time leaned more on gender stereotypes, so joint evaluation paid evaluators the most.",
    "implication": "Compare shortlisted candidates side by side on the same criteria instead of scoring each one in isolation.",
@@ -5562,7 +5509,7 @@
     "truth": false
    },
    "answerTitle": "Only 29% of economists predicted the increase",
-   "explain": "Among 279 economists, 49% predicted a decrease and 29% an increase; among 299 laypeople only 18% predicted the increase that actually occurred.",
+   "explain": "Among 279 economists, 49% predicted a decrease and 29% an increase; among 299 laypeople, 18% predicted an increase.",
    "implication": "Pilot honesty controls before scaling them; expert intuition about how people respond to temptation got the direction wrong here.",
    "boundary": "Predictions were for US return rates; actual behavior came from the 40-country field experiment with wallets handed to counter staff.",
    "sources": [
@@ -5642,7 +5589,7 @@
    "estimate": {
     "target": 39,
     "min": 0,
-    "max": 100,
+    "max": 95,
     "tolerance": 5,
     "label": "Estimated share of honest participants",
     "unit": "%"
@@ -5974,7 +5921,7 @@
     },
     {
      "q": "Is this pattern seen elsewhere?",
-     "a": "Yes. Prentice and Miller (1993) found students believed they were more uncomfortable with campus drinking than the average student."
+     "a": "Yes. Gaps between private views and what people assume their peers think have been documented in many settings, which is why measuring the actual share matters."
     },
     {
      "q": "What does this mean for a manager?",
@@ -5997,7 +5944,7 @@
    "question": "What happened to wives' job applications three to five months later?",
    "options": [
     "Fell, because of social backlash",
-    "No change: beliefs moved, behavior did not",
+    "Fell slightly as husbands pushed back",
     "Rose from about 6% to about 16%",
     "Rose from about 6% to about 8%, within noise"
    ],
@@ -6201,12 +6148,11 @@
    "scene": "Before forecasting geopolitical events, tournament volunteers were randomly given about 45 minutes of probability training, scenario training, or no training.",
    "question": "Which training produced the more accurate forecasts?",
    "options": [
-    "Both worked equally well",
     "Neither beat no training",
     "Scenario training",
     "Probability training"
    ],
-   "answer": 3,
+   "answer": 2,
    "answerTitle": "Probability training beat scenario training",
    "explain": "Probability training was more effective than scenario training, t(1053) = 2.23, p = .026, and training was one of three interventions that raised accuracy.",
    "implication": "Give forecasting and planning staff short training in probabilistic reasoning, and check its value with scored forecasts.",
@@ -6496,9 +6442,9 @@
    "question": "Which two findings did the study report?",
    "options": [
     "Anti-social behavior was more contagious than pro-social",
-    "Anti-social individuals resisted their anti-social peers most",
+    "Pro-social individuals were the most easily swayed by their peers",
     "Closeness amplified bad behavior's spread more than good",
-    "Distant peers’ bad behavior spread most"
+    "Closeness made people copy good and bad choices equally"
    ],
    "multiAnswers": [
     0,
@@ -6745,7 +6691,7 @@
    "track": "Business",
    "concept": "Incentive follow-through",
    "title": "Cards on top of cash",
-   "scene": "A program paid US veterans cash to return unused opioid pills. Researchers randomly added two reminder cards built on timely reminders, planning prompts and loss framing. The program director expects the cards to pay for themselves.",
+   "scene": "A program paid US veterans cash to return unused opioid pills. Researchers randomly added two reminder cards built on timely reminders, planning prompts and loss framing. A common expectation is that such cards pay for themselves.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "Adding the reminder cards lowered the program's cost per pill returned.",
@@ -7272,7 +7218,7 @@
    "format": "forecast",
    "concept": "AI ad creative",
    "title": "Will AI images win the click?",
-   "scene": "Researchers generated 10,320 marketing images with seven text-to-image models from 2,400 human-made images, then ran a live ad test with over 173,000 impressions. The creative team predicts a machine-made image can win.",
+   "scene": "Researchers generated 10,320 marketing images with seven text-to-image models from 2,400 human-made images, then ran a live ad test with over 173,000 impressions. Many marketers expect a machine-made image can win.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "In the live ad test, an AI-generated image beat the human-made image on click-through rate.",
@@ -7308,29 +7254,16 @@
   {
    "id": "axe11",
    "track": "AI × Business",
-   "format": "rank",
+   "format": "multi",
    "concept": "AI misinformation",
    "title": "Which tweets fool readers?",
    "scene": "697 participants judged whether tweets were accurate. Some were real tweets, others written by GPT-3, and each set mixed true and false claims.",
-   "question": "Rank tweet types by how often readers judged accuracy correctly.",
+   "question": "Which two statements match what readers did?",
    "options": [
-    "GPT-3-written, true",
-    "GPT-3-written, false",
-    "Human-written, true",
-    "Human-written, false"
-   ],
-   "rankAnswer": [
-    3,
-    1,
-    0,
-    2
-   ],
-   "rankLabel": "Recognition score (share judged correctly)",
-   "rankValues": [
-    "0.84",
-    "0.89",
-    "0.72",
-    "0.92"
+    "True tweets by GPT-3 were judged correctly more often",
+    "False tweets by GPT-3 slipped past readers slightly more often",
+    "Readers took longer to judge GPT-3 tweets than human tweets",
+    "Readers could tell which tweets GPT-3 had written"
    ],
    "answerTitle": "GPT-3 helped true claims and slightly shielded false ones",
    "explain": "True GPT-3 tweets were recognized more often than true human tweets (0.84 vs 0.72). False GPT-3 tweets were caught slightly less often than false human tweets (0.89 vs 0.92).",
@@ -7358,24 +7291,9 @@
     }
    ],
    "theme": "persuasion",
-   "permuted": true,
-   "rankTies": [
-    [
-     0,
-     1
-    ],
-    [
-     2,
-     3
-    ],
-    [
-     0,
-     3
-    ],
-    [
-     1,
-     2
-    ]
+   "multiAnswers": [
+    0,
+    1
    ]
   },
   {
@@ -7384,7 +7302,7 @@
    "format": "causal",
    "concept": "Confounded evaluation",
    "title": "Is the AI penalty real?",
-   "scene": "An HR audit finds employees who say they use AI get lower peer ratings. Experiments then held the work itself constant.",
+   "scene": "In a series of experiments, people evaluated workers who had done the same work, some of them described as getting help from AI.",
    "question": "What explains the lower ratings?",
    "options": [
     "AI users’ work was simply weaker",
@@ -7497,7 +7415,7 @@
    "scene": "297 participants saw either a ChatGPT ad personalized to their personality or a generic ad, for a weekend trip to Rome and for sneakers.",
    "question": "What did personalized ads change?",
    "options": [
-    "No effect on either product",
+    "Lowered spending intent for both products",
     "Raised spending intent for both products",
     "Raised spending intent for the sneakers, not the trip",
     "Raised spending intent for the trip, not sneakers"
@@ -7701,11 +7619,11 @@
    },
    "concept": "AI disclosure",
    "title": "Label the AI-written reply?",
-   "scene": "Your team now drafts replies to customers' personal concerns with AI, and legal wants an \"AI-written\" label. In an experiment, people described a situation and got a reply from Bing Chat or a person.",
+   "scene": "In an experiment, people described a personal situation and got a reply from Bing Chat or from a person. Some replies were labeled as AI-written, others as human.",
    "question": "What does the experiment predict for labeled AI replies?",
    "options": [
     "Labeling replies as AI raises trust and feeling heard",
-    "Source and label make no difference",
+    "Human replies feel more heard, whatever the label",
     "AI replies feel colder, with or without a label",
     "AI replies feel more heard; the label erodes it"
    ],
@@ -7770,7 +7688,7 @@
    ],
    "allocate": {
     "total": 100,
-    "step": 10,
+    "step": 1,
     "label": "Points placed",
     "prefix": "",
     "suffix": "",
@@ -8303,6 +8221,14 @@
     "energy07"
    ],
    "reason": "Review 8: repeats biz05 (same paper, same smiley-face result)."
+  },
+  {
+   "id": "biz03",
+   "title": "The hotel-room note",
+   "sources": [
+    "hotel08"
+   ],
+   "reason": "Review 12: keyed the original towel-sign effect that biz04 shows failed to replicate; contested findings enter only as items about the contest."
   }
  ],
  "themes": [
@@ -8452,7 +8378,6 @@
     "judg05",
     "bz03",
     "bz16",
-    "biz03",
     "biz05",
     "biz11"
    ]

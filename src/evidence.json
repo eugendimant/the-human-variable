@@ -2179,11 +2179,6 @@
    "location": "Published abstract"
   },
   {
-   "source": "prox22",
-   "quote": "With social proximity, participants conform to both types of observed behaviors, thus halting the erosion of compliance.",
-   "location": "Published version of record (GEB 2022, OA), abstract"
-  },
-  {
    "source": "contagion19",
    "quote": "We obtained behavioral data for 185 participants through 9 sessions",
    "location": "J. Economic Psychology 73, Section 3 (published version, author-hosted)"
@@ -2577,31 +2572,38 @@
  "ai07": [
   {
    "quote": "we recruited a group of N = 293 participants",
-   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)"
+   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)",
+   "source": "doshi24"
   },
   {
    "quote": "a separate group of N = 600 participants",
-   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)"
+   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)",
+   "source": "doshi24"
   },
   {
    "quote": "must be exactly eight sentences long",
-   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)"
+   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)",
+   "source": "doshi24"
   },
   {
    "quote": "show an increase in novelty of 8.1%",
-   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)"
+   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)",
+   "source": "doshi24"
   },
   {
    "quote": "increases usefulness by 9.0%",
-   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)"
+   "location": "Full text, Europe PMC PMC11244532 (Methods and Results)",
+   "source": "doshi24"
   },
   {
    "quote": "yields improvements of 10.7%",
-   "location": "Full text, Europe PMC PMC11244532 (Methods and Results) (low-creativity writers, novelty, up to five ideas)"
+   "location": "Full text, Europe PMC PMC11244532 (Methods and Results) (low-creativity writers, novelty, up to five ideas)",
+   "source": "doshi24"
   },
   {
    "quote": "there is little effect of having access to generative AI ideas on the creativity of their stories",
-   "location": "Full text, Europe PMC PMC11244532 (Methods and Results) (highly creative writers)"
+   "location": "Full text, Europe PMC PMC11244532 (Methods and Results) (highly creative writers)",
+   "source": "doshi24"
   },
   {
    "source": "doshi24",
@@ -2622,23 +2624,28 @@
  "ai09": [
   {
    "quote": "We conducted Studies 1, 2, and 4 in the Wharton School's Behavioral Lab.",
-   "location": "Full text, Wharton author PDF, p. 115"
+   "location": "Full text, Wharton author PDF, p. 115",
+   "source": "diet15"
   },
   {
    "quote": "the human forecasters produced 15-29% more error than the model in the MBA student forecasting task",
-   "location": "Full text, Wharton author PDF, p. 118"
+   "location": "Full text, Wharton author PDF, p. 118",
+   "source": "diet15"
   },
   {
    "quote": "90-97% more error than the model in the airline passenger forecasting task",
-   "location": "Full text, Wharton author PDF, p. 118"
+   "location": "Full text, Wharton author PDF, p. 118",
+   "source": "diet15"
   },
   {
    "quote": "they could earn up to an additional $10 for accurate forecasting performance",
-   "location": "Full text, Wharton author PDF, p. 115"
+   "location": "Full text, Wharton author PDF, p. 115",
+   "source": "diet15"
   },
   {
    "quote": "earning an extra $1 each time the forecast they used was within 5 percentiles",
-   "location": "Full text, Wharton author PDF, p. 116"
+   "location": "Full text, Wharton author PDF, p. 116",
+   "source": "diet15"
   },
   {
    "source": "diet15",
@@ -2694,15 +2701,18 @@
  "ai10": [
   {
    "quote": "results from six experiments show that lay people adhere more to advice",
-   "location": "Abstract, ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html"
+   "location": "Abstract, ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html",
+   "source": "logg19"
   },
   {
    "quote": "experienced professionals, who make forecasts on a regular basis, relied less on algorithmic advice than lay people did",
-   "location": "Abstract, ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html"
+   "location": "Abstract, ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html",
+   "source": "logg19"
   },
   {
    "quote": "waned when: people chose between an algorithm's estimate and their own",
-   "location": "Abstract, ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html"
+   "location": "Abstract, ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html",
+   "source": "logg19"
   },
   {
    "source": "logg19",
@@ -2743,7 +2753,8 @@
  "ai11": [
   {
    "quote": "algorithms are trusted and relied on less for tasks that seem subjective",
-   "location": "JMR abstract, Crossref api.crossref.org/works/10.1177/0022243719851788"
+   "location": "JMR abstract, Crossref api.crossref.org/works/10.1177/0022243719851788",
+   "source": "cast19"
   },
   {
    "source": "cast19",
@@ -2774,7 +2785,8 @@
  "ai12": [
   {
    "quote": "Consumers are reluctant to utilize healthcare provided by AI in real and hypothetical choices",
-   "location": "JCR abstract, Crossref api.crossref.org/works/10.1093/jcr/ucz013"
+   "location": "JCR abstract, Crossref api.crossref.org/works/10.1093/jcr/ucz013",
+   "source": "long19"
   },
   {
    "source": "long19",
@@ -2841,41 +2853,6 @@
    "location": "QJE abstract"
   }
  ],
- "biz03": [
-  {
-   "quote": "a midsized, midpriced hotel in the Southwest that was part of a national hotel chain",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Exp. 1 Method"
-  },
-  {
-   "quote": "room attendants simply recorded whether guests reused at least one towel",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Results"
-  },
-  {
-   "source": "hotel08",
-   "quote": "a significantly higher towel reuse rate (44.1%) than the environmental protection condition (35.1%",
-   "location": "JCR 35(3), Experiment 1 Results (published version, Carlson School author copy; Carlson School author copy of the published article)"
-  },
-  {
-   "source": "hotel08",
-   "quote": "Over an 80-day span, we collected data on 1,058 instances of potential towel reuse in 190 rooms in a midsized, midpriced hotel in the Southwest that was part of a national hotel chain.",
-   "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 473, Experiment 1, Method, Participants"
-  },
-  {
-   "source": "hotel08",
-   "quote": "we analyzed only the towel reuse data from guests’ first eligible day of participation so that no guest would participate in the study more than once. The dependent variable was dichotomous; room attendants simply recorded whether guests reused at least one towel.",
-   "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 474, Experiment 1, Results"
-  },
-  {
-   "source": "hotel08",
-   "quote": "a chi-square test revealed that the descriptive norm condition yielded a significantly higher towel reuse rate (44.1%) than the environmental protection condition (35.1%; χ2 (1, N = 433) = 3.72, p = .05, φ = .09; see fig. 2).",
-   "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 474, Experiment 1, Results (the PDF's font renders '=' as 'p')"
-  },
-  {
-   "source": "hotel08",
-   "quote": "Over a 53-day span, we collected data on 1,595 instances of potential towel reuse at the same hotel used in experiment 1.",
-   "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 476, Experiment 2, Method"
-  }
- ],
  "biz04": [
   {
    "source": "bohner14",
@@ -2901,21 +2878,18 @@
  "biz05": [
   {
    "quote": "Participants were 290 households in San Marcos, CA, with visible energy meters.",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results"
+   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results",
+   "source": "energy07"
   },
   {
    "quote": "3 weeks after the distribution of the second feedback message",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results, Procedure"
+   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results, Procedure",
+   "source": "energy07"
   },
   {
    "source": "energy07",
    "quote": "the descriptive-norm-only condition produced a significant increase in electricity usage (longer-term M = 11.13, SE = 0.44 vs. baseline M = 10.15, SE = 0.34; n = 68)",
    "location": "Psychological Science 18(5), Results (extracted text shows '=' as '5')"
-  },
-  {
-   "source": "energy07",
-   "quote": "extracted text shows '=' as '5'",
-   "location": "Psychological Science 18(5), Results (values as printed)"
   },
   {
    "source": "energy07",
@@ -3003,16 +2977,18 @@
  "biz08": [
   {
    "quote": "when they had only one opportunity (versus several)",
-   "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)"
+   "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)",
+   "source": "subtract21"
   },
   {
-   "source": null,
+   "source": "subtract21",
    "quote": "DOI:10.1038/s41586-021-03380-y",
    "location": "Nature abstract via Europe PMC (values as printed)"
   },
   {
    "quote": "under a higher (versus lower) cognitive load",
-   "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)"
+   "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)",
+   "source": "subtract21"
   },
   {
    "source": "subtract21",
@@ -3028,23 +3004,28 @@
  "biz11": [
   {
    "quote": "a number between 0 and 100 was determined by spinning a wheel of fortune in the subjects' presence",
-   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128"
+   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128",
+   "source": "anchor74"
   },
   {
    "quote": "indicate whether that number was higher or lower than the value of the quantity",
-   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128"
+   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128",
+   "source": "anchor74"
   },
   {
    "quote": "Two groups of high school students estimated, within 5 seconds, a numerical expression",
-   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128"
+   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128",
+   "source": "anchor74"
   },
   {
    "quote": "Experienced researchers are also prone to the same biases-when they think intuitively.",
-   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1130"
+   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1130",
+   "source": "anchor74"
   },
   {
    "quote": "Payoffs for accuracy did not reduce the anchoring effect.",
-   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128"
+   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128",
+   "source": "anchor74"
   },
   {
    "source": "anchor74",
@@ -3080,19 +3061,23 @@
  "social01": [
   {
    "quote": "we recruited a sample of about 1,200U.S. participants who are representative in terms of age, gender, and ethnicity",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2252"
+   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2252",
+   "source": "norms24"
   },
   {
    "quote": "each participant can contribute up to four tokens",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2251"
+   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2251",
+   "source": "norms24"
   },
   {
    "quote": "Tokens invested in the public good are multiplied by 1.4 and shared between both participants",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2251"
+   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2251",
+   "source": "norms24"
   },
   {
    "quote": "In polarized environments, most individuals prefer extreme actions, which expose them to considerable strategic risk",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2245"
+   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2245",
+   "source": "norms24"
   },
   {
    "source": "norms24",
@@ -3108,23 +3093,28 @@
  "social04": [
   {
    "quote": "Four studies examined the relation between college students' own attitudes",
-   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)"
+   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)",
+   "source": "plural93"
   },
   {
    "quote": "Study 3 tracked attitudes toward drinking over the course of a semester.",
-   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)"
+   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)",
+   "source": "plural93"
   },
   {
    "quote": "Male students shifted their attitudes over time in the direction of what they mistakenly believed to be the norm",
-   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)"
+   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)",
+   "source": "plural93"
   },
   {
    "quote": "female students showed no such attitude change",
-   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)"
+   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)",
+   "source": "plural93"
   },
   {
    "quote": "students' perceived deviance correlated with various measures of campus alienation",
-   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)"
+   "location": "Abstract, Princeton research portal (collaborate.princeton.edu)",
+   "source": "plural93"
   },
   {
    "source": "plural93",
@@ -3135,23 +3125,28 @@
  "social07": [
   {
    "quote": "Participants were recruited on the online platform Prolific",
-   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)"
+   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)",
+   "source": "plural24"
   },
   {
    "quote": "abortion, same-sex rights, marijuana legalization, federal spending, gun violence, immigration, and energy investments.",
-   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)"
+   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)",
+   "source": "plural24"
   },
   {
    "quote": "Respondents are asked to draw a set of views that might be held by different subgroups",
-   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)"
+   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)",
+   "source": "plural24"
   },
   {
    "quote": "Respondents' payments depend on how closely their own guess corresponds",
-   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)"
+   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)",
+   "source": "plural24"
   },
   {
    "quote": "Democrats are more likely to agree on what the most common views are within their group than Republicans are",
-   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)"
+   "location": "Full text, PNAS Nexus pgae413 (academic.oup.com)",
+   "source": "plural24"
   },
   {
    "source": "plural24",
@@ -3177,19 +3172,23 @@
  "social08": [
   {
    "quote": "containing 1528 participants recruited from health-interest World Wide Web sites",
-   "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)"
+   "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)",
+   "source": "cent10"
   },
   {
    "quote": "the behavior reached 53.77% of the clustered networks",
-   "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)"
+   "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)",
+   "source": "cent10"
   },
   {
    "quote": "only 38.26% of the population adopted in the random networks",
-   "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)"
+   "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)",
+   "source": "cent10"
   },
   {
    "quote": "was more than four times faster than that of the random condition",
-   "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)"
+   "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)",
+   "source": "cent10"
   },
   {
    "source": "cent10",
@@ -3220,7 +3219,8 @@
  "social10": [
   {
    "quote": "In two studies with 699 people, working in groups of two to five",
-   "location": "Abstract, PubMed 20929725"
+   "location": "Abstract, PubMed 20929725",
+   "source": "team10"
   }
  ],
  "social12": [
@@ -3270,33 +3270,38 @@
  "social14": [
   {
    "quote": "Whites and Blacks would like to have more contact with the out-group",
-   "location": "Abstract, Princeton research portal and data.zhenzhi.com record"
+   "location": "Abstract, Princeton research portal and data.zhenzhi.com record",
+   "source": "contact05"
   },
   {
    "quote": "believe the out-group does not want to have contact with them",
-   "location": "Abstract, Princeton research portal and data.zhenzhi.com record"
+   "location": "Abstract, Princeton research portal and data.zhenzhi.com record",
+   "source": "contact05"
   },
   {
    "quote": "examined the behavioral consequences of this self-other bias",
-   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (Study 6)"
+   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (Study 6)",
+   "source": "contact05"
   },
   {
-   "source": null,
+   "source": "contact05",
    "quote": "Study 6",
    "location": "Abstract, Princeton research portal and data.zhenzhi.com record (values as printed)"
   },
   {
    "quote": "applied theoretical work on the extended contact hypothesis to explore a means to reduce this self-other bias",
-   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (Study 7)"
+   "location": "Abstract, Princeton research portal and data.zhenzhi.com record (Study 7)",
+   "source": "contact05"
   },
   {
-   "source": null,
+   "source": "contact05",
    "quote": "Study 7",
    "location": "Abstract, Princeton research portal and data.zhenzhi.com record (values as printed)"
   },
   {
    "quote": "Seven studies (count from abstract record)",
-   "location": "Abstract, Princeton research portal and data.zhenzhi.com record"
+   "location": "Abstract, Princeton research portal and data.zhenzhi.com record",
+   "source": "contact05"
   },
   {
    "source": "contact05",
@@ -3317,41 +3322,48 @@
  "judg02": [
   {
    "quote": "people are presented 50/50 gambles offering a monetary gain and a loss",
-   "location": "Walasek & Stewart reply, core.ac.uk/download/363147362.pdf, p. 3"
+   "location": "Walasek & Stewart reply, core.ac.uk/download/363147362.pdf, p. 3",
+   "source": "loss15"
   },
   {
    "quote": "manipulating the range of gains and losses that individuals saw",
-   "location": "Abstract, Europe PMC (DOI:10.1037/xge0000039)"
+   "location": "Abstract, Europe PMC (DOI:10.1037/xge0000039)",
+   "source": "loss15"
   },
   {
-   "source": null,
+   "source": "loss15",
    "quote": "DOI:10.1037/xge0000039",
    "location": "Abstract, Europe PMC (values as printed)"
   },
   {
    "quote": "358 participants were recruited on Amazon Mechanical Turk (323 analyzed); 423 (382); 429 (401) (paraphrase)",
-   "location": "Full text, Europe PMC PMC4312134"
+   "location": "Full text, Europe PMC PMC4312134",
+   "source": "loss15"
   },
   {
    "quote": "Eighty-eight individuals from the University of Warwick participant pool (82 analyzed)",
-   "location": "Full text, Europe PMC PMC4312134"
+   "location": "Full text, Europe PMC PMC4312134",
+   "source": "loss15"
   },
   {
    "quote": "a series of hypothetical lotteries",
-   "location": "Full text, Europe PMC PMC4312134 (Exps 1a, 1b, 2)"
+   "location": "Full text, Europe PMC PMC4312134 (Exps 1a, 1b, 2)",
+   "source": "loss15"
   },
   {
-   "source": null,
+   "source": "loss15",
    "quote": "Exps 1a, 1b, 2",
    "location": "Full text, Europe PMC PMC4312134 (values as printed)"
   },
   {
    "quote": "Exp 1a lambda: gains to 40/losses to 20 = 1.79; gains to 20/losses to 40 = 0.88 (paraphrase)",
-   "location": "Full text, Europe PMC PMC4312134"
+   "location": "Full text, Europe PMC PMC4312134",
+   "source": "loss15"
   },
   {
    "quote": "analyzing only the subset of lotteries that are common across conditions eliminates the pattern of results",
-   "location": "Andre & de Langhe (2021) abstract, merit.url.edu record"
+   "location": "Andre & de Langhe (2021) abstract, merit.url.edu record",
+   "source": "loss15"
   }
  ],
  "social15": [
@@ -3391,34 +3403,40 @@
  "social20": [
   {
    "quote": "Existing methods focus on measuring norms in the form of what the average or most frequent behavior/opinion is",
-   "location": "Abstract, ideas.repec.org (Economics Letters 233, 111417)"
+   "location": "Abstract, ideas.repec.org (Economics Letters 233, 111417)",
+   "source": "measure23"
   },
   {
-   "source": null,
+   "source": "measure23",
    "quote": "Economics Letters 233, 111417",
    "location": "Abstract, ideas.repec.org (values as printed)"
   },
   {
    "quote": "the distribution of norm-related beliefs at the individual level in an incentive-compatible way",
-   "location": "Abstract, ideas.repec.org (Economics Letters 233, 111417)"
+   "location": "Abstract, ideas.repec.org (Economics Letters 233, 111417)",
+   "source": "measure23"
   },
   {
    "quote": "This paper is accompanied by ready-made Qualtrics software",
-   "location": "Abstract, ideas.repec.org (Economics Letters 233, 111417)"
+   "location": "Abstract, ideas.repec.org (Economics Letters 233, 111417)",
+   "source": "measure23"
   }
  ],
  "judg05": [
   {
    "quote": "The majority choice in this problem is risk averse",
-   "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453"
+   "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453",
+   "source": "frame81"
   },
   {
    "quote": "The majority choice in problem 2 is risk taking",
-   "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453"
+   "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453",
+   "source": "frame81"
   },
   {
    "quote": "including university faculty and physicians",
-   "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453"
+   "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453",
+   "source": "frame81"
   },
   {
    "source": "frame81",
@@ -4104,11 +4122,6 @@
    "source": "yin24",
    "quote": "recipients with very positive attitudes did not exhibit any negative AI label effects",
    "location": "Results"
-  },
-  {
-   "source": "reif25",
-   "quote": "reported that they would be less likely to disclose the use of the tool to their managers",
-   "location": "Study 1 results"
   }
  ],
  "axf01": [

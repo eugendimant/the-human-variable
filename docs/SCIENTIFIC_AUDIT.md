@@ -12,11 +12,11 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 112 (formats: forecast 31, choice 28, estimate 25, multi 10, rank 6, causal 6, delegate 4, allocate 2).
+- Decisions in scored play: 111 (formats: forecast 31, choice 27, estimate 25, multi 11, causal 6, rank 5, delegate 4, allocate 2).
 - Sources: 108 (60 checked against the published full text, 4 against the authors' accepted manuscript, 43 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
-- Decisions retired with reasons: 34 (listed below).
-- Track balance: AI × Business 46, Culture & Society 30, Business 29, Judgment 7.
+- Decisions retired with reasons: 35 (listed below).
+- Track balance: AI × Business 46, Culture & Society 30, Business 28, Judgment 7.
 
 ## Sources
 
@@ -72,7 +72,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Goh et al. (2024). *Large Language Model Influence on Diagnostic Reasoning*. [doi:10.1001/jamanetworkopen.2024.40969](https://doi.org/10.1001/jamanetworkopen.2024.40969) | JAMA Network Open 7(10) e2440969 | Full text | axf06 | ["The GPT-4-alone comparison is a secondary exploratory analysis. No retraction found."] |
 | Goldin & Rouse (2000). *Orchestrating Impartiality: The Impact of "Blind" Auditions on Female Musicians*. [doi:10.1257/aer.90.4.715](https://doi.org/10.1257/aer.90.4.715) | American Economic Review 90(4) 715-741 | Full text | social13 |  |
 | Goldstein, Chao, Grossman, Stamos & Tomz (2024). *How persuasive is AI-generated propaganda?*. [doi:10.1093/pnasnexus/pgae034](https://doi.org/10.1093/pnasnexus/pgae034) | PNAS Nexus 3(2) pgae034 | Full text | axe04, genai2 |  |
-| Goldstein, Cialdini & Griskevicius (2008). *A Room with a Viewpoint: Using Social Norms to Motivate Environmental Conservation in Hotels*. [doi:10.1086/586910](https://doi.org/10.1086/586910) | Journal of Consumer Research 35(3) 472-482 | Full text | biz03, biz04 |  |
+| Goldstein, Cialdini & Griskevicius (2008). *A Room with a Viewpoint: Using Social Norms to Motivate Environmental Conservation in Hotels*. [doi:10.1086/586910](https://doi.org/10.1086/586910) | Journal of Consumer Research 35(3) 472-482 | Full text | biz04 |  |
 | Gordon et al. (2019). *A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook*. [doi:10.1287/mksc.2018.1135](https://doi.org/10.1287/mksc.2018.1135) | Marketing Science 38(2) 193-225 | Full text | bz01 | ["Articles-in-Advance pagination differs from print; print 38(2):193-225 per Crossref."] |
 | Granulo, Fuchs & Puntoni (2019). *Psychological reactions to human versus robotic job replacement*. [doi:10.1038/s41562-019-0670-y](https://doi.org/10.1038/s41562-019-0670-y) | Nature Human Behaviour 3(10) 1062-1069 | Abstract | axe09 |  |
 | Grove et al. (2000). *Clinical versus mechanical prediction: A meta-analysis*. [doi:10.1037/1040-3590.12.1.19](https://doi.org/10.1037/1040-3590.12.1.19) | Psychological Assessment 12(1) 19-30 | Full text | axb04 |  |
@@ -195,6 +195,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 - axe02 (Where does the AI go?): Review 5: its routings were not compared against each other in the cited studies.
 - ai04 (A real-world baseline): Review 7: repeats rollout1’s headline number from the same paper.
 - biz06 (Two types of social feedback): Review 8: repeats biz05 (same paper, same smiley-face result).
+- biz03 (The hotel-room note): Review 12: keyed the original towel-sign effect that biz04 shows failed to replicate; contested findings enter only as items about the contest.
 
 ## Not verified
 

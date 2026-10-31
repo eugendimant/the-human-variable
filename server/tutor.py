@@ -23,7 +23,7 @@ def tokens(s: str) -> list[str]:
     import unicodedata   # Köbis and Kobis, Zünd and Zund match
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
     out = [stem(t) for t in TOK.findall(s.lower()) if t not in STOP and (len(t) > 2 or t.isdigit())]
-    return out + [SYN[t] for t in out if t in SYN]
+    return out + [s for t in out for s in SYN.get(t, ())]
 
 def stem(t: str) -> str:
     """Light suffix stripping, so improve/improved/improvement and reduce/reduction meet."""
@@ -32,8 +32,8 @@ def stem(t: str) -> str:
     return t
 
 # words students use for what the papers call experience or skill
-SYN = {w: 'experienc' for w in ('junior', 'senior', 'novic', 'newer', 'newcom', 'veteran', 'tenur', 'rooki', 'junio', 'senio')}
-SYN |= {w: 'less' for w in ('reduct', 'reduc', 'decreas', 'fell', 'lower', 'cut', 'drop')} | {w: 'rose' for w in ('increas', 'rais', 'higher', 'grew', 'improv')}
+SYN = {w: ('experienc', 'skill') for w in ('junior', 'senior', 'novic', 'newer', 'newcom', 'veteran', 'tenur', 'rooki', 'junio', 'senio')}
+SYN |= {w: ('less',) for w in ('reduct', 'reduc', 'decreas', 'fell', 'lower', 'cut', 'drop')} | {w: ('rose',) for w in ('increas', 'rais', 'higher', 'grew', 'improv')}
 
 def cite_label(sid: str) -> str:
     s = SOURCES[sid]; return f"{s['authors']} ({s['year']})"
@@ -97,6 +97,12 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             return {'answer': f"Run a small randomized pilot: give the change to some teams or customers and not to others, fix one outcome metric in advance, and compare after a set period. For this finding: {c['implication']} What the study measured: {c['explain']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)', ql):
             return {'answer': f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", 'citations': cites, 'mode': 'curated'}
+        if re.search(r'\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff)|subgroup)', ql):
+            fh = [f for f in c.get('follow', []) if re.search(r'\b(who|which)\b.*\b(most|gain|benefit|affected)', f['q'], re.I)]
+            if fh: return {'answer': fh[0]['a'], 'citations': cites, 'mode': 'curated'}   # who gained: the item's own heterogeneity result
+        qt0 = set(tokens(question)); f0 = max(c.get('follow', []), key=lambda f: len(qt0 & set(tokens(f['q'] + ' ' + f['a']))), default=None)
+        if f0 and len(qt0 & set(tokens(f0['q'] + ' ' + f0['a']))) >= 2:   # a follow-up that clearly matches beats a generic route
+            return {'answer': f0['a'], 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|always|everywhere|replicat)', ql):
             return {'answer': f"{c['boundary']} The study itself: {c['explain']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|setup|set up)\b', ql) and not re.search(r'\b(my|our)\b', ql):

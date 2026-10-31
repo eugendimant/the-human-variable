@@ -301,3 +301,18 @@ def test_page_code_states_no_finding():
             if n not in ('0', '50', '100') and re.search(r'(?<![\d.])' + re.escape(n) + r'%', js): bad.append((c['id'], n))
         bad += [(c['id'], c['answerTitle']) for _ in [0] if c['answerTitle'] in js]
     assert not bad, bad
+
+
+def test_absolute_words_are_not_a_free_tell():
+    """Review 12: keyed options rarely use absolute or null wording, so such distractors stay few."""
+    R = re.compile(r'\b(all|always|never|every|none|equally|neither|no)\b', re.I)
+    bad = [(c['id'], o) for c in LIVE if c['format'] in ('choice', 'causal') for i, o in enumerate(c['options']) if i != c['answer'] and R.search(o)]
+    assert len(bad) <= 3, bad
+
+def test_evidence_entries_are_clean():
+    """Review 12: every quote names one of its decision's sources, and no processing note poses as a quote."""
+    ev = json.loads((ROOT / 'src/evidence.json').read_text()); C = {c['id']: c for c in LIVE}; bad = []
+    for k, qs in ev.items():
+        if not isinstance(qs, list) or k not in C: continue
+        bad += [(k, q['quote'][:40]) for q in qs if q.get('source') not in C[k]['sources'] or re.search(r'extracted text|rendered as|values below', q['quote'], re.I)]
+    assert not bad, bad
