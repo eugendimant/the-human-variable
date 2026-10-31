@@ -12,7 +12,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 117 (formats: choice 28, forecast 28, estimate 27, multi 11, rank 7, delegate 6, causal 6, allocate 4).
+- Decisions in scored play: 117 (formats: forecast 31, choice 29, estimate 24, multi 11, rank 7, delegate 6, causal 6, allocate 3).
 - Sources: 109 (48 checked against full text, 60 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
 - Decisions retired with reasons: 29 (listed below).

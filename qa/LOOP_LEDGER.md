@@ -201,3 +201,25 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Update (2026-10-31, Eugen Dimant):** the expression of concern on Costello et al. (2024) has been officially removed. Every mention was removed from the bank, the Source tab and the docs (`tools/content_costello_notice_2026_10_31.py`); review 2's M6 is superseded.
 
 **Content addition (2026-10-31).** Five new decisions from five newly checked peer-reviewed sources (`tools/merge_allocate_2026_10_31.py`, draft and quotes in `docs/audit/draft_allocate_2026_10_31.json`): axf01 allocate (Köbis et al. 2025, Nature, delegation and dishonesty), axf02 forecast (Milkman et al. 2022, PNAS, scientists' predictions r = 0.03), axf04 delegate (Garvey, Kim & Duhachek 2023, J. Marketing), axf05 rank with ties (Jabbour et al. 2023, JAMA), axf06 allocate with an n.s. arm at zero (Goh et al. 2024, JAMA Netw Open). Dropped: an AMIE item (overlap, untested key comparison) and two follow-ups that rested on partial web excerpts. Played in Chromium at 1440 and 390 px with no errors or overflow; 185 tests pass.
+
+## Iteration 8 (2026-10-31)
+
+**Verified first:** iteration-7 fixes, by independent review 3 (fresh agent, snapshot `snap_r3`): Enter-select, lock rules, class lock on reveal/library/tutor, phone and projector order, console rank chart, forecast parity, join lock and CSV key all held. Partial: the class lock leaked through source takeaways, diagram alt text and bank order; the 390 px overflow persisted before confidence was touched.
+
+**Independent score:** 70/100 (review 3, `qa/reviews/review3.md`). 1 Blocking, 7 Major.
+
+**Fixes:**
+- **B1 answers in served sources.** The served bank carries bibliographic records only; takeaways, flags, notes and theme principles travel with the evidence (`/api/reveal`, `/api/library`, both under the class lock). The leak test now walks every decision and fails if any answer title, explanation, implication, follow-up answer, source takeaway, diagram text, masked label or principle appears in the page bytes; it was live-fired by restoring the takeaway and failed as intended.
+- **M1 diagram.** The public diagram has no written explanation and no masked label; before the reveal the accessible description lists boxes and arrows only.
+- **M2 order.** Option order in the bank was shuffled per item with every index remapped (`tools/permute_options_2026_10_31.py`); the console lists rank items in the phones' starting order. Gate: no position holds more than 45% of answers, no rank item is stored in answer order.
+- **M3/M4 tutor.** `exclude` accepts a callable or a set; source records of locked decisions are left out of retrieval; the cache is neither read nor written while a class is locked; a locked decision returns a locked message. Tests added.
+- **M5 midpoint.** Six estimates fixed (tolerances, axis ranges, one question flipped to the other anchor group, three converted to forecasts). Gate: the axis midpoint scores at most 50 on every estimate.
+- **M6 allocate.** axe04 asks where the budget buys most agreement; axb08 is now a choice item with a chart of all four arms.
+- **M7 ties and titles.** The rank reveal marks rows the study did not separate and says those pairs are not scored; two answer titles narrowed; one title neutralized.
+- **Minors.** Overflow root cause (a generic `.empty` class added 40 px padding) fixed and tested in the predict state; percentage-point wording; chart legend for study charts; 16 scope lines rewritten positively with a gate; forecast reveal restates the claim and labels the end "Claim true/false"; Brier labelled as a calibration score; one "Start here" flag and a path grid without orphans; Record layout; five distractors and one cross-item leak fixed; tutor label tied to a configured model; free preset answers skip the per-network tutor limit; class lock engages when a decision is open and requires every running class to reveal; Library filter labels, heading order and page titles; constant-time passcode check; Streamlit tutor crash, instructor QR code and join link, prefilled code, join lock.
+- **Visual.** A small drawing per principle in the game's blue/amber code (frontier, error, gap, norm shape, default path, and so on) on every path card and principle card.
+- **Content.** Five new decisions (see the content addition above).
+
+**Gates:** build check, 190 tests, audit doc and doc counts regenerated.
+
+**Count:** 1 Blocking + 7 Major found and addressed. Next: independent review 4.
