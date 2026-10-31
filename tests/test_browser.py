@@ -103,6 +103,9 @@ def test_live_classroom_three_phones(browser, tmp_path):
     try:
         inst = page(browser); inst.goto(base + '/classroom'); inst.fill('#title', 'Test class'); inst.click('text=Create the session')
         code = inst.text_content('.join-code').strip()
+        inst.add_script_tag(path=str(AXE))
+        res = inst.evaluate("axe.run(document,{runOnly:['wcag2a','wcag2aa','wcag21aa']}).then(r=>r.violations.filter(v=>v.impact==='serious'||v.impact==='critical').map(v=>v.id))")
+        assert not res, res
         phones = []
         for i in range(3):
             ctx = browser.new_context(viewport={'width': 390, 'height': 844}); ph = ctx.new_page(); ph.goto(base + '/?room=' + code); phones.append(ph)
