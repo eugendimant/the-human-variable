@@ -2106,7 +2106,7 @@
    "tag": "01 / WORK",
    "title": "The 40% surprise",
    "scene": "In an online experiment, 453 professionals complete short occupation-specific writing tasks; half are randomly given access to ChatGPT.",
-   "question": "What happened to the time required?",
+   "question": "How much less time did the ChatGPT group take?",
    "answerTitle": "40% less time",
    "explain": "Across 453 professionals, average completion time fell 40%. Output quality also rose 18%.",
    "implication": "Pilot AI on measurable tasks. Track quality as well as speed.",
@@ -2160,7 +2160,7 @@
    "tag": "02 / QUALITY",
    "title": "Faster, but worse?",
    "scene": "In an online experiment, 453 professionals did short writing tasks for their occupation, half with ChatGPT. Independent professionals graded the finished work blind.",
-   "question": "What happened to average output quality?",
+   "question": "By how much did graded quality change with ChatGPT?",
    "answerTitle": "Quality improved 18%",
    "explain": "The study found faster completion and higher externally evaluated quality.",
    "implication": "Set up double-outcome tests, with blind quality evaluation.",
@@ -2268,7 +2268,7 @@
    "tag": "07 / IDEAS",
    "title": "Better ideas, closer together",
    "scene": "Writers receive ideas from a generative AI system before producing stories.",
-   "question": "Which TWO findings occurred in the study?",
+   "question": "Which two results did the study find?",
    "options": [
     "AI-assisted stories were rated more creative",
     "AI-assisted stories were more similar to each other",
@@ -2438,11 +2438,11 @@
    "tag": "11 / FIT",
    "title": "A model for taste?",
    "scene": "A retailer considers algorithms to recommend a practical product versus judge a highly personal aesthetic preference.",
-   "question": "Where is algorithm aversion more likely?",
+   "question": "For which task were people more reluctant to rely on an algorithm?",
    "options": [
-    "The subjective judgment",
-    "The objective judgment",
-    "Both equally in every setting"
+    "Judging a personal aesthetic preference",
+    "Recommending a practical product",
+    "Equally reluctant for both"
    ],
    "answer": 0,
    "answerTitle": "Subjectivity changes acceptance",
@@ -2488,7 +2488,7 @@
    "tag": "12 / PERSONALIZATION",
    "title": "The uniqueness concern",
    "scene": "A service uses AI for individualized medical recommendations. Consumers are told the system is highly accurate.",
-   "question": "What concern can still drive resistance?",
+   "question": "What mainly drove consumers’ resistance?",
    "options": [
     "It costs more than a human doctor",
     "It cannot account for my situation",
@@ -2602,12 +2602,12 @@
    "concept": "Defaults",
    "tag": "14 / FRICTION",
    "title": "The sticky default",
-   "scene": "New hires stay enrolled, but rarely change the contribution rate.",
-   "question": "Which mechanism best fits the evidence?",
+   "scene": "After automatic enrollment, a large share of new hires kept both the default contribution rate and the default fund, a combination few earlier hires had chosen.",
+   "question": "Why did so many keep the default?",
    "options": [
-    "Active deliberate optimization",
-    "Inertia and endorsement from the default",
-    "A legal requirement to keep the rate"
+    "They had each worked out it was best",
+    "Inertia, and the default read as advice",
+    "Changing the default was not allowed"
    ],
    "answer": 1,
    "answerTitle": "Defaults communicate advice",
@@ -2653,11 +2653,11 @@
    "tag": "15 / MARKETING",
    "title": "The hotel-room note",
    "scene": "A hotel asks guests to reuse towels. One sign cites conservation; another cites what other guests do.",
-   "question": "Which appeal performed better in the field studies?",
+   "question": "Which sign got more towels reused?",
    "options": [
-    "Environmental appeal",
-    "Descriptive norm appeal",
-    "Both were equally ineffective"
+    "The conservation sign",
+    "The “most guests reuse” sign",
+    "Neither changed reuse"
    ],
    "answer": 1,
    "answerTitle": "Behavioral evidence beat a generic appeal",
@@ -2703,11 +2703,11 @@
    "tag": "16 / CONTEXT",
    "title": "The most persuasive neighbor",
    "scene": "A hotel can refer to guests across the hotel or guests who stayed in the same room.",
-   "question": "Which comparison was particularly effective?",
+   "question": "Which comparison raised reuse most?",
    "options": [
-    "All hotel guests",
-    "Same-room guests",
-    "No comparison group"
+    "Guests across the whole hotel",
+    "Guests who stayed in this same room",
+    "Neither beat the conservation sign"
    ],
    "answer": 1,
    "answerTitle": "Local norms can carry more weight",
@@ -2753,7 +2753,7 @@
    "tag": "17 / BACKFIRE",
    "title": "The energy bill that backfired",
    "scene": "A household already uses less electricity than its neighbors. It receives feedback showing the higher neighborhood average.",
-   "question": "Which TWO patterns appeared in the energy study?",
+   "question": "Which two results did the study find?",
    "options": [
     "Some already-efficient households raised usage",
     "Injunctive feedback counteracted the boomerang effect",
@@ -2854,11 +2854,11 @@
    "tag": "19 / PROCESS",
    "title": "Delete before you add",
    "scene": "A team has a slow approval process. Asked to improve it, members suggest new steps and dashboards.",
-   "question": "What type of solution do people systematically overlook?",
+   "question": "Which kind of fix do people tend to miss?",
    "options": [
-    "Adding checks",
-    "Removing steps",
-    "Renaming teams"
+    "Adding a review step",
+    "Removing an existing step",
+    "Assigning a new owner"
    ],
    "answer": 1,
    "answerTitle": "Subtraction is often missed",
@@ -3017,7 +3017,7 @@
    "tag": "27 / CULTURE",
    "title": "Same average, different culture",
    "scene": "Two teams have the same average cooperation. One is consistent; the other is split between very high and low behavior.",
-   "question": "Which TWO conclusions follow from the norm-distribution experiments?",
+   "question": "Which two results did the experiments find?",
    "options": [
     "Averages do not describe every norm environment",
     "Loose norms generated more behavioral variation",
@@ -3170,11 +3170,11 @@
    "tag": "33 / COALITIONS",
    "title": "The supposedly united group",
    "scene": "Members of a political group agree on its headline position. A richer measure asks about views within that group.",
-   "question": "What did the published norm-drawing study reveal?",
+   "question": "What did drawing each party’s norm reveal?",
    "options": [
-    "Uniformity everywhere",
-    "Considerable within-group diversity",
-    "No differences across political groups"
+    "Near-uniform views within each party",
+    "Several coexisting views within each party",
+    "Identical views across parties"
    ],
    "answer": 1,
    "answerTitle": "Groups are less monolithic",
@@ -3373,7 +3373,7 @@
    "tag": "39 / HIRING",
    "title": "Remove the signal",
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
-   "question": "What was the weight of the evidence?",
+   "question": "What happened to women’s chances once screens were used?",
    "options": [
     "Women more likely to advance and be hired",
     "No measurable change for women",
@@ -3422,12 +3422,12 @@
    "concept": "Bias",
    "tag": "40 / CONTACT",
    "title": "Why did they stay away?",
-   "scene": "Two colleagues from different groups both want more contact but each reads the other’s hesitation as disinterest.",
-   "question": "What did intergroup-contact studies observe?",
+   "scene": "White and Black students were asked how interested they were in contact with the other group, and why each side might hold back.",
+   "question": "How did each group explain the hesitation?",
    "options": [
-    "Mutual misinterpretation",
-    "Reliable knowledge of the other’s motives",
-    "Interest disappears with time"
+    "Own side fears rejection; the other side is not interested",
+    "Both sides fear rejection",
+    "Neither side wants more contact"
    ],
    "answer": 0,
    "answerTitle": "The misreading can be mutual",
@@ -3525,8 +3525,8 @@
    "concept": "Polarization",
    "tag": "49 / IDENTITY",
    "title": "Hate or love?",
-   "scene": "Across a series of online experiments, Trump supporters and opponents report feeling closer to their own side and also make costly choices toward the other side.",
-   "question": "Which distinction emerged across experiments?",
+   "scene": "Across 15 experiments, Trump supporters and opponents rated how close they felt to each side and made costly choices that helped or hurt members of each side.",
+   "question": "Where did in-group love and out-group hate show up?",
    "options": [
     "Love showed in feelings, hate in behavior",
     "Hate showed in feelings, love in behavior",
@@ -3576,7 +3576,7 @@
    "tag": "50 / INTERVENTIONS",
    "title": "When a nudge is not enough",
    "scene": "A leader offers prosocial defaults and normative messages to participants divided by political identity.",
-   "question": "Which TWO observations characterize the tested interventions?",
+   "question": "Which two results did the nudges produce?",
    "options": [
     "The interventions improved prosociality",
     "Measured polarization gaps persisted",
