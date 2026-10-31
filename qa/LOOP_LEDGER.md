@@ -126,3 +126,55 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 - In forecasts the claim is now the headline. The "Close" label applies only when the score is 75 or higher.
 
 **Count:** 0 Blocking + 4 Major. Iterate.
+
+## Iteration 6: first independent review (fresh agent; did not build the product)
+
+**Verify previous:** all 146 tests passed before the review started. The reviewer ran its own browser rounds, axe and server probes on a snapshot.
+
+**Independent score: 62/100.** Reviewer findings, verbatim severity: 2 Blocking, 15 Major, 14 Minor. Full report: `qa/reviews/review1.md`.
+
+**Blocking:**
+- B1: in a live class, pressing N stranded the student on the record page.
+- B2: the answer key shipped to every browser, including live-class phones. Estimate items also carried stale options that stated the answer.
+
+**Major:**
+- Calibration was computed on a default confidence the player never set.
+- Midpoint guesses scored about 80, and a 50% forecast scored 75.
+- "Close" appeared on wrong-side forecasts.
+- The preset tutor question returned an unrelated retracted study.
+- The home page overstated full-text checks.
+- Non-significant differences were scored as evidence.
+- The causal diagram drew the answer.
+- Strawman distractors, and the correct option was often the longest.
+- The projector and the phones numbered options differently.
+- The instructor console stole focus.
+- A join flood was possible, with a spoofable X-Forwarded-For.
+- The 48-hour deletion never ran.
+- The logo broke the offline file.
+- Rank and allocate could be locked without being touched.
+- On phones, the gap chart sat below the Next button. This was already fixed in iteration 5.
+
+**Fixes (each verified by a test or a re-run):**
+- **Answer-free served pages.** The server rewrites the embedded bank to public fields only. Evidence comes from `/api/reveal/<id>` after a call is locked, and is refused (409) while that decision is open in any live class. Live-class phones get the evidence only in the revealed state. The instructor console loads the full bank with its key. `window.THV` exists only in the offline file. New tests: `test_served_pages_carry_no_answers`, `test_reveal_blocked_while_open_in_a_class`, `test_instructor_bank_needs_key`.
+- **Room mode.** N is ignored in a room, and the poll returns the student to play on every new decision. The option order is seeded by the session code, so phones and projector match. The score is finalized from the server's evidence at reveal.
+- **Confidence is required before locking** for every format except forecasts. Rank and allocate must be touched. New test: `test_lock_requires_confidence_and_touch`.
+- **Scoring.** Estimates reach zero at three tolerances. Percentage ranges were standardized to 0–100 (42 items). Forecasts use the Brier skill against 50%, so hedging scores 0. "Close" never applies to forecasts. Rank ties (`rankTies`) cover differences the studies did not separate. Allocation payoffs set non-significant arms to zero. The parity test (JS against Python) passed.
+- **Content.**
+  - 15 option sets rewritten to be plausible and length-balanced.
+  - The causal mediator is masked until the reveal (`test_causal_diagram_hides_answer_until_reveal`).
+  - Stale options were removed from estimate and forecast items.
+  - The ai02 scene now stands alone.
+  - axb06 wording now matches its observational design.
+  - axb01 dropped a task that rested on g = 0.19 (n.s.).
+- **Tutor.** The client curated answer gained a size branch scoped to the current item, and no longer borrows unrelated items.
+- **Server.**
+  - Right-most X-Forwarded-For.
+  - Join rate limit per IP per room.
+  - A passcode is required for session creation off loopback.
+  - Background purge every 10 minutes, with `touched` refreshed on join and submit.
+  - Tutor cache purge after 30 days.
+- **Console.** Polling uses the etag, re-renders only on change, restores focus and selection, and has page headings.
+- **Streamlit.** Charts for every format. Estimate and confidence inputs start empty and are required.
+- **Cluster E merged.** 17 AI × Business items from 17 newly checked sources (7 read in full), including the 3-step case "Generative AI in your content team". genai2 was converted from an allocation to an estimate so that small gaps are not scored as evidence.
+
+**Count:** 2 Blocking + 15 Major found. Iterate.
