@@ -80,6 +80,7 @@ Pages:
 - The disk is ephemeral. Classroom data is lost when the app sleeps, restarts or redeploys. Download the CSV at the end of each class.
 - Each student holds a websocket session. Streamlit reruns cost more than the container's polling API, so for 40 to 50 students Option B is the safer choice.
 - Students join through the **Join a class** page with the code. The embedded game hides its join button because it cannot reach the API from inside Streamlit's frame.
+- **Play** embeds the self-study file, which carries its answers. When `THV_INSTRUCTOR_PASSCODE` is set (a deployment for classes), Play shows a pointer to **Join a class** instead, unless you set `THV_STREAMLIT_SOLO=1`. During a live class Play is paused either way.
 
 ## Local classroom (one laptop, same network)
 

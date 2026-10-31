@@ -122,7 +122,7 @@ def test_live_classroom_three_phones(browser, tmp_path):
             if (inst.text_content('#resp-count') or '').strip() == '3': break
             inst.wait_for_timeout(250)
         assert inst.text_content('#resp-count').strip() == '3'
-        inst.click('text=Reveal to the room'); inst.wait_for_selector('.rv')
+        inst.click("text=Reveal to the room"); inst.wait_for_selector(".rv"); assert "Cannot" not in (inst.text_content("#toast") or "") and not inst.errors, inst.errors
         phones[1].wait_for_selector('#class-h', timeout=10000)
         assert '3 answers' in phones[1].text_content('#class-h')
         assert not inst.errors and not any(ph.errors for ph in phones if hasattr(ph, 'errors'))

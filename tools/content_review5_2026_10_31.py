@@ -78,3 +78,10 @@ if b15['format'] == 'multi':
 bank = json.loads((ROOT / 'src/bank.json').read_text()); C = {c['id']: c for c in bank['challenges']}
 C['dimant-notalie-causal']['scene'] = 'In an incentivized experiment, people could misreport for money. Those who misreported were also the most likely to say that most others misreport.'
 (ROOT / 'src/bank.json').write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('scene ok')
+# --- review 6, M3: tolerance about a fifth of the target, so a constant "typical effect" guess does not pay
+bank = json.loads((ROOT / 'src/bank.json').read_text()); S = bank['sources']
+KEEP = {'axe06', 'social12', 'bz02'}   # axe06: the study's SE is 10.3; social12 and bz02 use wide axes
+for c in bank['challenges']:
+    if c['format'] == 'estimate' and c['id'] not in KEEP:
+        e = c['estimate']; e['tolerance'] = min(e['tolerance'], max(2, round(0.2 * abs(e['target']))))
+(ROOT / 'src/bank.json').write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('tolerances')

@@ -79,10 +79,10 @@
    "volume": "10(28)",
    "pages": "eadn5290",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract only (Crossref record)",
+    "text_read": "Science Advances article, open access (PMC)",
     "text_url": "https://api.crossref.org/works/10.1126/sciadv.adn5290"
    }
   },
@@ -238,10 +238,10 @@
    "volume": "35(3)",
    "pages": "472-482",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract only (Crossref abstract)",
+    "text_read": "Journal of Consumer Research article, published version (author-hosted PDF)",
     "text_url": "https://api.crossref.org/works/10.1086/586910"
    }
   },
@@ -258,10 +258,10 @@
    "volume": "18(5)",
    "pages": "429-434",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract only (Crossref abstract); design details (door hangers, ~300 San Marcos CA households, smiley/frowny emoticons) from secondary source only (Salganik, Bit by Bit)",
+    "text_read": "Psychological Science article, published version (author-hosted PDF)",
     "text_url": "https://api.crossref.org/works/10.1111/j.1467-9280.2007.01917.x"
    }
   },
@@ -339,10 +339,10 @@
    "volume": "90(4)",
    "pages": "715-741",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract only (Crossref)",
+    "text_read": "AER article, published version (journal PDF)",
     "text_url": "https://api.crossref.org/works/10.1257/aer.90.4.715"
    }
   },
@@ -479,10 +479,10 @@
    "volume": "70(1)",
    "pages": "1-31",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract only (Crossref abstract)",
+    "text_read": "Management Science article (Articles in Advance), published version (author-hosted PDF)",
     "text_url": "https://api.crossref.org/works/10.1287/mnsc.2023.4701"
    }
   },
@@ -499,10 +499,10 @@
    "volume": "73",
    "pages": "66-88",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract (EconPapers, VoR) + full text of working-paper version (CESifo WP 8263, April 2020); VoR full text not read",
+    "text_read": "Journal of Economic Psychology article, published version (author-hosted PDF); numbers identical to the accepted manuscript",
     "text_url": "https://www.ifo.de/DocDL/cesifo1_wp8263.pdf"
    },
    "authors_full": "Eugen Dimant"
@@ -584,10 +584,10 @@
    "kind": "peer-reviewed",
    "takeaway": "People are far more willing to use an imperfect algorithm when they may adjust its output, even slightly, and the size of the allowed adjustment barely matters.",
    "verification": {
-    "status": "verified_full_text",
+    "status": "verified_accepted_manuscript",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Crossref abstract plus full text of the UPenn ScholarlyCommons deposit whose cover page cites Management Science 64(3):1155-1170 (accepted-manuscript layout)",
+    "text_read": "accepted manuscript of the Management Science article (UPenn deposit)",
     "text_url": "https://core.ac.uk/download/219378607.pdf"
    },
    "flags": "An earlier manuscript on a Wharton site (marketing.wharton.upenn.edu) has a different Study 2 (state rankings, N = 1,040, 47/75/77%); do not use those numbers. Numbers here follow the deposit tied to the published version (Study 2, N = 816)."
@@ -1104,10 +1104,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Learning peers' pay lowered satisfaction and raised job search among below-median earners; above-median earners were unaffected.",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Abstract (Crossref and EconPapers records)",
+    "text_read": "AER article, published version (author-hosted PDF)",
     "text_url": "https://econpapers.repec.org/RePEc:aea:aecrev:v:102:y:2012:i:6:p:2981-3003"
    }
   },
@@ -1257,10 +1257,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Students from societies with more corruption, tax evasion and political fraud bent the rules more in a private die task, but were no more likely to cheat maximally.",
    "verification": {
-    "status": "verified_full_text",
+    "status": "verified_accepted_manuscript",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Full text of the Europe PMC author manuscript (not the typeset version) plus Crossref metadata",
+    "text_read": "Europe PMC author manuscript of the Nature article",
     "text_url": "https://theigc.org/wp-content/uploads/2016/02/Gaechter-Schulz_Nature2016.pdf"
    },
    "flags": [
@@ -1344,10 +1344,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Four weeks off Facebook reduced polarization and news knowledge and raised subjective well-being.",
    "verification": {
-    "status": "verified_full_text",
+    "status": "verified_accepted_manuscript",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "AEA abstract of the published article plus full text of the authors' final manuscript dated 8 Nov 2019 (no journal header)",
+    "text_read": "authors' final accepted manuscript of the AER article",
     "text_url": "https://web.stanford.edu/~gentzkow/research/facebook.pdf"
    },
    "flags": [
@@ -1434,10 +1434,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Partisans overestimate how negatively the other side views their group's actions; correcting this reduced attributions of obstructionism.",
    "verification": {
-    "status": "verified_full_text",
+    "status": "verified_accepted_manuscript",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Journal abstract (Springer page) plus full text of the Harvard DASH manuscript version; Crossref API request failed, metadata matched on the publisher page",
+    "text_read": "Harvard DASH accepted manuscript of the Nature Human Behaviour article",
     "text_url": "https://dash.harvard.edu/server/api/core/bitstreams/fda14585-409f-44d1-8955-82808aeac786/content"
    },
    "flags": [
@@ -1524,10 +1524,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Four truthful honesty norm-nudges, empirical or normative and positively or negatively framed, did not reduce cheating because they did not shift perceived norms.",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Published abstract (RePEc/IDEAS listing of the JEBO article). Publisher full text paywalled; working-paper numbers deliberately not used.",
+    "text_read": "JEBO article, published version (author-hosted PDF)",
     "text_url": "https://ideas.repec.org/a/eee/jeborg/v172y2020icp247-266.html"
    }
   },
@@ -1545,10 +1545,10 @@
    "kind": "peer-reviewed",
    "takeaway": "People tempted to lie for money strategically distort their beliefs about honesty norms to justify it; widespread honesty signals disapproval of lying, but widespread lying does not signal approval.",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Published abstract (RePEc/IDEAS listing of the GEB article). Publisher full text paywalled; working-paper numbers deliberately not used.",
+    "text_read": "GEB article, published version (author-hosted PDF)",
     "text_url": "https://ideas.repec.org/a/eee/gamebe/v138y2023icp321-354.html"
    }
   },
@@ -1587,10 +1587,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Weak punishment raised reciprocity only when paired with normative information and cheap compliance; with costly compliance, punishment plus empirical information could backfire.",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Published abstract (RePEc/IDEAS listing of the JEBO article). Publisher full text paywalled; working-paper numbers deliberately not used.",
+    "text_read": "JEBO article, published version (author-hosted PDF)",
     "text_url": "https://ideas.repec.org/a/eee/jeborg/v188y2021icp209-235.html"
    }
   },
@@ -1629,10 +1629,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Being observed alone does little for pro-social behavior and can backfire through inequality aversion; making norms salient fixes it.",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Published abstract (RePEc/IDEAS listing of the JEBO article). Publisher full text paywalled; working-paper numbers deliberately not used.",
+    "text_read": "JEBO article, published version (author-hosted PDF)",
     "text_url": "https://ideas.repec.org/a/eee/jeborg/v191y2021icp946-964.html"
    }
   },
@@ -1671,10 +1671,10 @@
    "kind": "peer-reviewed",
    "takeaway": "People knowingly share conspiracy theories they believe are false when they expect, or receive, more social engagement for them.",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Published abstract and highlights (ScienceDirect abstract page). Full text paywalled; SSRN sample size and Psychology Today figures deliberately not used.",
+    "text_read": "JESP article, published version (author-hosted PDF)",
     "text_url": "https://www.sciencedirect.com/science/article/abs/pii/S0022103122001408"
    }
   },
@@ -1692,10 +1692,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Adding low-cost behavioral reminder cards to a cash buyback raised opioid pill returns and lowered cost per pill returned.",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Published abstract (Crossref record and Europe PMC record, PMID 41834481). Article is CC BY but Wiley full text could not be fetched; OES project-page numbers deliberately not used.",
+    "text_read": "Health Economics article, open-access published PDF",
     "text_url": "https://doi.org/10.1002/hec.70085"
    }
   },
@@ -2049,10 +2049,10 @@
    "kind": "peer-reviewed",
    "takeaway": "In two German hotels, both a descriptive-norm sign and a standard environmental sign raised towel reuse compared with no sign, and the norm sign did no better than the standard one.",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract (Crossref or publisher)"
+    "text_read": "PLoS ONE article, open access"
    }
   },
   "bates17": {
@@ -2219,10 +2219,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Standard AI raised clinician diagnostic accuracy a little; a systematically biased model cut it by 11.3 points, and image-based explanations did not significantly mitigate the harm.",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract (PMC10731487 Key Points and abstract); selected Results sentences read on jamanetwork.com full text",
+    "text_read": "JAMA article, publisher full text (excerpts)",
     "text_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10731487/"
    },
    "flags": [
@@ -2395,7 +2395,7 @@
     "target": 18,
     "min": 0,
     "max": 100,
-    "tolerance": 5,
+    "tolerance": 4,
     "label": "Increase in quality (%)"
    },
    "theme": "ai-work",
@@ -2413,7 +2413,7 @@
    "scene": "A company deploys AI in a live customer-support workflow.",
    "question": "How much did issues resolved per hour rise on average?",
    "answerTitle": "15% on average",
-   "explain": "The analysis covered 5,172 agents and measured issues resolved per hour.",
+   "explain": "Across 5,172 customer-support agents, access to a generative AI assistant raised issues resolved per hour by 15% on average.",
    "implication": "Report AI productivity gains separately for new and experienced staff, since gains concentrated among less experienced workers.",
    "boundary": "5,172 customer-support agents given a generative AI conversational assistant in a staggered rollout.",
    "sources": [
@@ -2449,7 +2449,7 @@
     "target": 15,
     "min": 0,
     "max": 100,
-    "tolerance": 5,
+    "tolerance": 3,
     "label": "Increase in issues per hour (%)"
    },
    "theme": "ai-work",
@@ -2469,7 +2469,7 @@
    "options": [
     "AI-assisted stories were more similar to each other",
     "AI-assisted stories were rated more creative",
-    "The AI-assisted set was more varied overall",
+    "AI help made stories less enjoyable to read",
     "Gains were largest for the most creative writers"
    ],
    "answerTitle": "A creativity trade-off",
@@ -2687,8 +2687,8 @@
    "question": "What mainly drove consumers’ resistance?",
    "options": [
     "It costs more than a human doctor",
-    "It is less accurate than a doctor",
-    "It cannot account for my situation"
+    "Its handling of health data feels unsafe",
+    "It cannot account for each patient’s uniqueness"
    ],
    "answer": 2,
    "answerTitle": "People care about being seen",
@@ -2804,7 +2804,7 @@
    "question": "Why did so many keep the default?",
    "options": [
     "Inertia, and the default read as advice",
-    "They had each worked out that it was the best plan",
+    "The employer match required the default rate",
     "The default had the best expected returns"
    ],
    "answer": 0,
@@ -3084,7 +3084,7 @@
     },
     {
      "q": "How many people took part?",
-     "a": "1,153 participants across eight experiments."
+     "a": "Hundreds of participants across eight experiments, each solving a different improvement problem."
     },
     {
      "q": "What helped people spot subtractions?",
@@ -3096,7 +3096,7 @@
    "theme": "choice",
    "study": {
     "design": "Eight experiments",
-    "n": "312 participants in experiments 2 and 3; 369 in experiment 4"
+    "n": "Eight experiments"
    },
    "permuted": true
   },
@@ -3133,7 +3133,7 @@
     },
     {
      "q": "Was this a single study?",
-     "a": "No. It was one of eight experiments, with 1,153 participants in total, that all pointed to a default toward adding."
+     "a": "No. It was one of eight experiments that all pointed to a default toward adding."
     }
    ],
    "format": "forecast",
@@ -3191,7 +3191,7 @@
     "target": 25,
     "min": 0,
     "max": 100,
-    "tolerance": 7,
+    "tolerance": 5,
     "label": "Median estimate after seeing 10",
     "unit": "%"
    },
@@ -3274,7 +3274,7 @@
    "concept": "Pluralistic ignorance",
    "tag": "30 / TEAM DYNAMICS",
    "title": "Comfort with campus drinking",
-   "scene": "Team members privately question a practice but believe everybody else supports it.",
+   "scene": "Students rated their own comfort with campus drinking and the comfort of the average student at their university.",
    "question": "Students rated their own comfort with campus drinking and the average student’s. What did they report?",
    "options": [
     "Peers were as comfortable as they were",
@@ -3325,7 +3325,7 @@
    "concept": "Norm pluralism",
    "tag": "33 / COALITIONS",
    "title": "Drawing a party’s norm",
-   "scene": "Members of a political group agree on its headline position. A richer measure asks about views within that group.",
+   "scene": "Members of a political party agree on its headline position. Researchers asked members to draw how views are spread within their party.",
    "question": "What did drawing each party’s norm reveal?",
    "options": [
     "Several coexisting views within each party",
@@ -3427,7 +3427,7 @@
    "scene": "A 2010 Science paper reported a general “collective intelligence” factor in groups, linked to members’ social sensitivity and to equal turn-taking in conversation. Independent researchers ran their own groups.",
    "question": "Is this what the independent replication found?",
    "answerTitle": "Turn-taking did not predict it; members’ IQ did",
-   "explain": "In the replication, members’ individual IQ accounted for about 80% of differences in group performance, and the turn-taking and share-of-women effects were not supported.",
+   "explain": "In the independent replication, members’ individual IQ largely accounted for differences in group performance, and the turn-taking and share-of-women effects were not supported.",
    "implication": "Treat team-composition recipes from single studies as hypotheses. Track your own teams’ results before redesigning how meetings run.",
    "boundary": "Lab groups on standardized tasks. The original team’s later meta-analysis of 22 studies supports a collective intelligence factor, so the debate continues.",
    "sources": [
@@ -3449,7 +3449,7 @@
     },
     {
      "q": "Is the whole idea dead?",
-     "a": "No. The original team’s 2021 meta-analysis of 22 studies supports the factor and points to social perceptiveness, while independent analyses find it weaker or explained by members’ IQ."
+     "a": "No. The original team’s 2021 meta-analysis supports the factor and points to social perceptiveness, while independent analyses find it weaker or explained by members’ IQ."
     },
     {
      "q": "Why does replication matter here?",
@@ -4026,7 +4026,7 @@
     "target": 24.7,
     "min": 0,
     "max": 100,
-    "tolerance": 6,
+    "tolerance": 5,
     "label": "Maximum crime reduction at the same jailing rate",
     "unit": "%"
    },
@@ -4069,7 +4069,7 @@
     "target": 10,
     "min": 0,
     "max": 100,
-    "tolerance": 4,
+    "tolerance": 2,
     "label": "Average accuracy advantage of formulas over experts",
     "unit": "%"
    },
@@ -4385,12 +4385,12 @@
    "format": "choice",
    "concept": "Overreliance",
    "title": "Designing AI advice",
-   "scene": "People make decisions with help from an AI that is usually right but sometimes wrong. Designers compare plain AI explanations with designs that force users to engage before relying on the AI.",
+   "scene": "People make decisions with help from an AI that is usually right but sometimes wrong. Designers test different ways of presenting its advice.",
    "question": "Which design best cut agreement with wrong AI advice?",
    "options": [
-    "Neither design made a difference",
+    "No design changed agreement with wrong advice",
     "Plain explanations with each suggestion",
-    "Forcing users to engage before relying"
+    "Making users answer before seeing the AI"
    ],
    "answer": 2,
    "answerTitle": "Forcing functions worked, but users disliked them",
@@ -4562,7 +4562,7 @@
     "target": 25.1,
     "min": 0,
     "max": 100,
-    "tolerance": 6,
+    "tolerance": 5,
     "label": "Speed gain on inside-frontier tasks",
     "unit": "%"
    },
@@ -4769,7 +4769,7 @@
     "target": -17,
     "min": -50,
     "max": 50,
-    "tolerance": 6,
+    "tolerance": 3,
     "label": "Change in exam grades vs students without AI",
     "unit": "%"
    },
@@ -5006,7 +5006,7 @@
     "target": 29.7,
     "min": 0,
     "max": 100,
-    "tolerance": 8,
+    "tolerance": 6,
     "label": "Share finishing by their best-guess date",
     "unit": "%"
    },
@@ -5049,7 +5049,7 @@
     "target": 13,
     "min": -30,
     "max": 40,
-    "tolerance": 4,
+    "tolerance": 3,
     "label": "Change in performance when working from home",
     "unit": "%"
    },
@@ -5267,7 +5267,7 @@
    "format": "forecast",
    "concept": "Choice overload",
    "title": "More options on the shelf",
-   "scene": "A famous grocery study found about 30% of shoppers bought jam after a 6-flavor display versus 3% after a 24-flavor display. Your team proposes cutting your product range.",
+   "scene": "A famous grocery study found about 30% of shoppers who stopped at the display bought jam after a 6-flavor display versus 3% after a 24-flavor display. Your team proposes cutting your product range.",
    "question": "Does choice overload hold on average across studies?",
    "forecast": {
     "claim": "Across 50 experiments, more options reduced choice or satisfaction on average.",
@@ -5655,7 +5655,7 @@
    "follow": [
     {
      "q": "Did the key in the wallet matter?",
-     "a": "Yes. In the US, UK and Poland, wallets with a key were 9.2 percentage points more likely to be reported, which the authors read as concern for the owner."
+     "a": "Yes. Wallets with a key, useful only to the owner, were more likely to be reported, which the authors read as concern for the owner."
     },
     {
      "q": "Did this hold in every country?",
@@ -5960,7 +5960,7 @@
     ],
     "unit": " SD",
     "highlight": 0,
-    "note": "Values reported in Allcott et al. (2020), introduction (authors' final manuscript); effects in standard deviations, treatment minus control."
+    "note": "Values reported in Allcott et al. (2020, AER), read in the authors' accepted manuscript; effects in standard deviations, treatment minus control."
    },
    "sources": [
     "allcott20"
@@ -6085,7 +6085,7 @@
     "unit": "%"
    },
    "answerTitle": "87% agreed, but guessed only 63% of peers did",
-   "explain": "87% agreed, yet on average they guessed that 63% of other session participants agreed; 72% underestimated support, by 24 points on average.",
+   "explain": "87% of participants agreed that women should be able to work outside the home, yet on average they guessed that only 63% of the other men in their session agreed.",
    "implication": "Before assuming a change lacks support, poll private views anonymously and share the actual numbers with the group.",
    "boundary": "500 married men aged 18 to 35 in Riyadh, in sessions of about 30; beliefs concerned other men in the same session.",
    "sources": [
@@ -6094,16 +6094,16 @@
    ],
    "follow": [
     {
-     "q": "Were men just telling researchers what they wanted?",
-     "a": "Unlikely. A list experiment in a national survey found 80% support versus 82% by direct question, suggesting little social desirability bias."
-    },
-    {
      "q": "What happened when men learned the true figure?",
      "a": "In the control group 23.5% chose to sign their wives up for a job-matching service; with the information, 32.0% did."
     },
     {
      "q": "Is this pattern seen elsewhere?",
      "a": "Yes. Prentice and Miller (1993) found students believed they were more uncomfortable with campus drinking than the average student."
+    },
+    {
+     "q": "What does this mean for a manager?",
+     "a": "Private support can be far higher than people assume; sharing the measured share can free people to make choices they thought their peers opposed."
     }
    ],
    "study": {
@@ -6162,12 +6162,12 @@
     },
     {
      "q": "How wrong were the original beliefs?",
-     "a": "72% of men underestimated peers' support, by 24 percentage points on average."
+     "a": "On average men guessed that 63% of their peers supported women working outside the home, when 87% did."
     }
    ],
    "study": {
     "design": "Field experiment with follow-up",
-    "n": "500 married Saudi men"
+    "n": "Married Saudi men from the original sessions"
    },
    "theme": "norms",
    "permuted": true
@@ -6411,7 +6411,7 @@
    "scene": "Researchers tested seven messages (moral frames, mortality, scientific evidence, the economy) to raise mask-wearing among 4,931 US Republicans and Democrats. Beforehand, 1,034 forecasters predicted each message's effect.",
    "question": "Is this what the study found?",
    "forecast": {
-    "claim": "One of the seven messages increased mask-wearing among Democrats or Republicans.",
+    "claim": "At least one of the seven messages increased mask-wearing among Democrats or Republicans.",
     "truth": false
    },
    "answerTitle": "No message worked; forecasters still overestimated effects",
@@ -6454,7 +6454,7 @@
     "truth": true
    },
    "answerTitle": "None of the four messages changed behavior",
-   "explain": "Dimant, van Kleef and Shalvi show that among 1,200 MTurk participants, winning reports held at about 30% under every message, against 16.67% expected from honest reporting. A follow-up shows the messages left perceived norms unchanged.",
+   "explain": "Among 1,200 MTurk participants, misreporting (winning reports above the 16.67% that honest reporting would produce) hovered around 30 percentage points under every message, with null effects and tight confidence intervals.",
    "implication": "Before adding an honesty statement to expense or reporting forms, test whether it actually shifts employees' beliefs about the norm.",
    "boundary": "One-line messages before a die-reporting game with undetectable lies, in a high-powered preregistered study.",
    "sources": [
@@ -6490,9 +6490,9 @@
    "question": "What best explains the link between this belief and misreporting?",
    "options": [
     "Temptation distorts the belief to justify lying",
-    "Honest employees hold this belief most strongly",
+    "Seeing others lie taught both the belief and the habit",
     "The belief is accurate information that drives lying",
-    "The belief and lying are unrelated"
+    "The belief reflects general cynicism, not the task"
    ],
    "answer": 0,
    "dag": {
@@ -6574,7 +6574,7 @@
     "target": 20,
     "min": 0,
     "max": 100,
-    "tolerance": 7,
+    "tolerance": 4,
     "label": "Drop in donations vs no visibility",
     "unit": "%"
    },
@@ -6617,8 +6617,7 @@
     "Anti-social behavior was more contagious than pro-social",
     "Anti-social individuals resisted their anti-social peers most",
     "Closeness amplified bad behavior's spread more than good",
-    "Closeness spread good behavior more than bad",
-    "Pro-social behavior was the more contagious"
+    "Distant peers’ bad behavior spread most"
    ],
    "multiAnswers": [
     0,
@@ -6845,13 +6844,13 @@
    "track": "Culture & Society",
    "concept": "Engagement incentives",
    "title": "Sharing what you don't believe",
-   "scene": "In a multi-round sharing task, participants chose whether to share factual news or conspiracy theories, including ones they knew were false. The social feedback each kind of post earned varied.",
+   "scene": "In a multi-round sharing task, participants chose whether to share factual news or conspiracy theories, including ones they did not believe. The social feedback each kind of post earned varied.",
    "question": "What drove sharing of conspiracy theories people knew were false?",
    "options": [
     "Expected and received social engagement",
-    "Inattention: they missed that the content was false",
+    "Habit: they shared whatever appeared first",
     "Low digital literacy among sharers",
-    "Belief: people shared what they thought was true"
+    "Novelty: conspiracy posts felt more original"
    ],
    "answer": 0,
    "answerTitle": "Expected engagement drove sharing of known falsehoods",
@@ -7083,7 +7082,7 @@
     "target": 20,
     "min": 0,
     "max": 100,
-    "tolerance": 6,
+    "tolerance": 4,
     "label": "Drop in belief in their own conspiracy theory",
     "unit": "%"
    },
@@ -7197,7 +7196,11 @@
      "24.4%",
      "47.4%"
     ],
-    "valueName": "share agreeing or strongly agreeing with the article's claim"
+    "valueName": "share agreeing with the claim; the paper reports no test of the 3.9-point gap between the original and GPT-3, so both count as best",
+    "best": [
+     2,
+     0
+    ]
    },
    "answerTitle": "Unedited GPT-3 nearly matched the propagandists",
    "explain": "Agreement rose from 24.4% with no article to 47.4% after the original propaganda and 43.5% after an unedited GPT-3 article.",
@@ -7496,7 +7499,7 @@
     "0.72",
     "0.92"
    ],
-   "answerTitle": "GPT-3 tweets helped true claims; false ones were a toss-up",
+   "answerTitle": "GPT-3 helped true claims and slightly shielded false ones",
    "explain": "True GPT-3 tweets were recognized more often than true human tweets (0.84 vs 0.72). False GPT-3 tweets were caught slightly less often than false human tweets (0.89 vs 0.92).",
    "implication": "Fact-check AI-drafted public content as strictly as human drafts; fluent AI text makes errors harder to spot.",
    "boundary": "Short tweets on a fixed set of topics, written with GPT-3 in an online survey; the false-tweet gap was small.",
@@ -7522,12 +7525,6 @@
     }
    ],
    "theme": "persuasion",
-   "rankTies": [
-    [
-     1,
-     3
-    ]
-   ],
    "permuted": true
   },
   {

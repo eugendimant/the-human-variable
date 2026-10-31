@@ -21,8 +21,8 @@
   function estimate(c, value) {
     const e = c.estimate;
     const gap = Math.abs(value - e.target);
-    // Full credit inside the tolerance band, then linear decay to zero at three tolerances from the target.
-    const score = gap <= e.tolerance ? 1 : clamp(1 - (gap - e.tolerance) / (2 * e.tolerance), 0, 1);
+    // Full credit inside the tolerance band, then linear decay to zero at two tolerances from the target.
+    const score = gap <= e.tolerance ? 1 : clamp(1 - (gap - e.tolerance) / e.tolerance, 0, 1);
     return { score, correct: gap <= e.tolerance, detail: { gap: Math.round(gap * 10) / 10 } };
   }
 
@@ -56,13 +56,13 @@
   // Target: equal shares on the best arm(s); score = 1 - sum of squared gaps, from -1 (all on a wrong arm) to 1.
   // Spreading points is the best strategy when you are unsure, and all-in pays only when you are sure.
   function allocate(c, shares) {
-    const v = c.allocate.values, hi = Math.max(...v), best = v.map(x => x === hi ? 1 : 0), nb = best.reduce((a, b) => a + b, 0);
+    const v = c.allocate.values, hi = Math.max(...v), best = v.map((x, i) => (c.allocate.best ? c.allocate.best.includes(i) : x === hi) ? 1 : 0), nb = best.reduce((a, b) => a + b, 0);  // allocate.best: arms the study did not separate
     const total = (shares || []).reduce((a, b) => a + Number(b || 0), 0);
     if (!total) return { score: 0, correct: false, detail: {} };
     const p = shares.map(s => Number(s || 0) / total);
     const score = 1 - p.reduce((a, x, i) => a + (x - best[i] / nb) ** 2, 0);
     const top = Math.max(...p);
-    return { score, correct: p.filter(x => x === top).length === 1 && p.some((x, i) => best[i] && x === top), detail: { onBest: Math.round(100 * p.reduce((a, x, i) => a + (best[i] ? x : 0), 0)) } };
+    return { score, correct: p.every((x, i) => x !== top || best[i]), /* every top-weighted option is a best one */ detail: { onBest: Math.round(100 * p.reduce((a, x, i) => a + (best[i] ? x : 0), 0)) } };
   }
 
   // Delegation: one routing decision per task; score = share routed as the evidence suggests.

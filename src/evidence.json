@@ -806,11 +806,6 @@
    "source": "bertrand10",
    "quote": "demand strongly increases with longer deadlines",
    "location": "Abstract"
-  },
-  {
-   "source": "bertrand10",
-   "quote": "J-PAL project page: South Africa; consumer lender offering small, short-term, uncollateralized credit",
-   "location": "https://www.povertyactionlab.org/node/1421 (secondary, setting only)"
   }
  ],
  "bz10": [
@@ -1005,11 +1000,6 @@
   },
   {
    "source": "cohn19",
-   "quote": "Recipients were 9.2 percentage points more likely to report wallets that included a key (P = 0.0001, pooled)",
-   "location": "Main text, Money-NoKey condition; fetch-tool paraphrase"
-  },
-  {
-   "source": "cohn19",
    "quote": "17,303 wallets ... 355 cities in 40 countries; banks, cultural venues, post offices, hotels, and police stations, courts, or other public offices",
    "location": "Main text, design"
   }
@@ -1068,11 +1058,6 @@
    "source": "fischbacher13",
    "quote": "the abstract reports that some participants lied without maximizing their income, and that additional experiments point to a desire to keep a favorable self-image, including honesty and not being greedy",
    "location": "Abstract (JEEA, via IDEAS); paraphrase"
-  },
-  {
-   "source": "fischbacher13",
-   "quote": "Students from the University of Zurich and ETH Zurich, recruited via ORSEE",
-   "location": "Working-paper version (TWI RPS 40, 2008), design section; used only for the subject pool"
   }
  ],
  "rule-violations-honesty": [
@@ -1137,11 +1122,6 @@
    "source": "hallsworth17",
    "quote": "The field experiments accelerated the collection of tax revenue at little cost.",
    "location": "Abstract"
-  },
-  {
-   "source": "hallsworth17",
-   "quote": "Self Assessment taxpayers who had not paid by July 31, 2011",
-   "location": "Deposited author version, Experiment 1 design; fetch-tool paraphrase"
   }
  ],
  "opposing-views-bot": [
@@ -1169,11 +1149,6 @@
    "source": "bail18",
    "quote": "Bot-following lasted 1 month ... from a mid-October 2017 survey",
    "location": "Methods; fetch-tool rendering"
-  },
-  {
-   "source": "bail18",
-   "quote": "The authors could not identify the mechanism behind the Republican backfire effect",
-   "location": "Discussion/limitations; fetch-tool paraphrase"
   }
  ],
  "facebook-deactivation": [
@@ -1290,18 +1265,8 @@
   },
   {
    "source": "bursztyn20",
-   "quote": "72% of participants strictly underestimated support, with an average wedge of 24 percentage points",
-   "location": "Section on main experiment; fetch-tool paraphrase"
-  },
-  {
-   "source": "bursztyn20",
    "quote": "500 Saudi males between the ages of 18 and 35, living across Riyadh ... 17 sessions of about 30 participants each",
    "location": "Experimental design"
-  },
-  {
-   "source": "bursztyn20",
-   "quote": "a share of 80% using the list method, close to the 82% from direct questioning",
-   "location": "National survey robustness; fetch-tool paraphrase"
   },
   {
    "source": "bursztyn20",
@@ -1329,11 +1294,6 @@
    "source": "bursztyn20",
    "quote": "In the control condition, 23.5 percent of participants prefer to sign up their wives ... 32.0%",
    "location": "Results"
-  },
-  {
-   "source": "bursztyn20",
-   "quote": "72% of participants strictly underestimated support, with an average wedge of 24 percentage points",
-   "location": "Main experiment; fetch-tool paraphrase"
   }
  ],
  "meta-perception-causal": [
@@ -1947,16 +1907,9 @@
  ],
  "ai01": [
   {
-   "quote": "453 college-educated professionals ... occupation-specific writing tasks; half randomly given ChatGPT (paraphrase)",
-   "location": "Science abstract, Crossref api.crossref.org/works/10.1126/science.adh2586"
-  },
-  {
-   "quote": "participants with weaker skills benefited the most from the use of ChatGPT",
-   "location": "AAAS press release, eurekalert.org/news-releases/995024"
-  },
-  {
-   "quote": "about twice as likely to report using it at their jobs two weeks later; about 1.6 times two months later (paraphrase of abstract)",
-   "location": "Science abstract, Crossref api.crossref.org/works/10.1126/science.adh2586"
+   "source": "noy23",
+   "quote": "The average time taken decreased by 40% and output quality rose by 18%.",
+   "location": "Science abstract (version of record)"
   }
  ],
  "ai02": [
@@ -2131,10 +2084,6 @@
    "location": "JCR abstract, Crossref api.crossref.org/works/10.1093/jcr/ucz013"
   },
   {
-   "quote": "People actually did prefer the AI provider so long as it outperformed the human provider.",
-   "location": "Pezzo & Beckstead (2020), Judgment and Decision Making 15(3), commentary, cambridge.org core-reader"
-  },
-  {
    "source": "long19",
    "quote": "Uniqueness neglect, a concern that AI providers are less able than human providers to account for consumers' unique characteristics and circumstances, drives consumer resistance to medical AI.",
    "location": "JCR abstract (version of record)"
@@ -2307,18 +2256,6 @@
  ],
  "biz07": [
   {
-   "quote": "the study involved 1,153 participants performing eight improvement problem experiments",
-   "location": "University of Mississippi news release (libarts.olemiss.edu/?p=37866)"
-  },
-  {
-   "quote": "stabilize a Lego structure; improve a miniature golf course; transform a digital grid pattern (paraphrase)",
-   "location": "University of Mississippi news release (libarts.olemiss.edu/?p=37866)"
-  },
-  {
-   "quote": "most people in their study defaulted to adding a block at each corner, rather than removing the existing block",
-   "location": "sciencecodex.com news item, image caption"
-  },
-  {
    "quote": "less likely to identify subtractive changes when not cued, with one (vs several) opportunity, under higher cognitive load (paraphrase)",
    "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)"
   },
@@ -2345,10 +2282,6 @@
   {
    "quote": "may explain overburdened schedules, institutional red tape, and environmental damage (paraphrase)",
    "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)"
-  },
-  {
-   "quote": "the study involved 1,153 participants performing eight improvement problem experiments",
-   "location": "University of Mississippi news release (libarts.olemiss.edu/?p=37866)"
   },
   {
    "source": "subtract21",
@@ -2537,22 +2470,6 @@
   {
    "quote": "In two studies with 699 people, working in groups of two to five",
    "location": "Abstract, PubMed 20929725"
-  },
-  {
-   "quote": "solving visual puzzles, brainstorming, making collective moral judgments, and negotiating over limited resources",
-   "location": "Full text, annotated copy (students.cs.byu.edu CollectiveIntelligence_annotated.pdf)"
-  },
-  {
-   "quote": "not significantly correlated with c (r = .19, ns; r = .27, ns, respectively)",
-   "location": "Full text, annotated copy (students.cs.byu.edu CollectiveIntelligence_annotated.pdf)"
-  },
-  {
-   "quote": "appears to be largely mediated by social sensitivity",
-   "location": "Full text, annotated copy (students.cs.byu.edu CollectiveIntelligence_annotated.pdf)"
-  },
-  {
-   "quote": "by the sociometric badges worn by a subset of the groups",
-   "location": "Full text, annotated copy (students.cs.byu.edu CollectiveIntelligence_annotated.pdf)"
   }
  ],
  "social12": [

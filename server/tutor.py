@@ -89,6 +89,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     if docs:
         d = docs[0]; cc = CHALLENGES[d['id']]
         return {'answer': f"{cc['explain']} {cc['implication']}", 'citations': [{'id': s, 'label': cite_label(s)} for s in cc['sources']], 'mode': 'curated'}
+    if exclude and [d for d in retrieve(question, challenge_id, 3) if d['kind'] == 'decision' and len(qt & set(tokens(d['body']))) > len(qt) / 2]:
+        return {'answer': 'That study opens after your instructor reveals it in class.', 'citations': [], 'mode': 'locked'}
     return {'answer': 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', 'citations': [], 'mode': 'curated'}
 
 # ---------- budgets ----------

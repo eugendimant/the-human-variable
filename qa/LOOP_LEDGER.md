@@ -263,3 +263,24 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 198 tests, audit doc, counts and reference screenshots regenerated.
 
 **Count:** 0 Blocking + 7 Major found and addressed. Next: independent review 6.
+
+## Iteration 11 (2026-10-31)
+
+**Verified first:** iteration-10 fixes, by independent review 6 (snapshot `snap_r6`): student joins cannot keep the lock alive, allocate rebalancing and real-change rule, no arrowheads before the reveal, ties unscored, no answers served, tutor declines off-topic and injection. Partly held: negation gate (dimant-contagion-multi). Not held: projector polish, Streamlit double navigation.
+
+**Independent score:** 79/100 (review 6, `qa/reviews/review6.md`). 0 Blocking, 7 Major.
+
+**Fixes:**
+- **M1.** dimant-requiem-forecast states the paper's own measure: misreporting around 30 percentage points above the 16.67% honest rate.
+- **M2.** Verification records now match what was read: 15 sources read in the published article are recorded as such; four read in authors' accepted manuscripts carry a new status, `verified_accepted_manuscript`, shown to players; quotes from news releases, project pages, annotated copies and working papers were removed, and the content that rested on them was rewritten (civic-wallet-rank, misperceived-norms items, biz07, biz08, social10).
+- **M3.** Estimate credit now reaches zero at twice the band; tolerances are about a fifth of each target (with stated exceptions). Gate: the best constant guess across all estimates averages at most 0.35 (was 0.44).
+- **M4.** Scenes no longer state the mechanism (social04, dimant-conspiracy-choice, social07, axb10); strawman and negation distractors replaced with rival mechanisms (dimant-notalie-causal, ai12, biz02, ai07, dimant-contagion-multi).
+- **M5.** Allocate supports arms the study did not separate (`allocate.best`); axe04 treats the original and GPT-3 as tied best; splitting evenly across tied best arms counts as a hit.
+- **M6.** On a deployment set up for classes (passcode configured), the Streamlit Play page points to Join a class unless `THV_STREAMLIT_SOLO=1`; documented.
+- **M7.** Console null-scroll bug fixed; the class test fails on any error toast.
+- **Minors.** ai04 explanation states the 15%; bz10 scene wording; axe11 no longer ties a significant pair; tutor says a study opens after the reveal during a lock; projector lists delegate routing choices; live-class phones show the class code instead of "1 of 1"; calibration plot margins; delegate buttons name their task for screen readers.
+- **Visual.** Tighter home rhythm, path colour now encodes AI-first paths (blue) versus behavior and business (ink), larger theme drawings, and the Dimant band states 17 decisions from 14 published papers with a sticky heading.
+
+**Gates:** build check, 200 tests, audit doc and counts regenerated.
+
+**Count:** 0 Blocking + 7 Major found and addressed. Next: independent review 7.

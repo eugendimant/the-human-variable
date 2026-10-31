@@ -99,7 +99,7 @@ def test_lock_excludes_sources_cache_and_accepts_sets(tmp_path):
         else: assert all(c in allowed for c in tu.SRC_USERS.get(d['id'], []))
     T = tu.Tutor(str(tmp_path / 'c.sqlite3'))
     r = T.ask('what about bribery reporting norms', None, 'x', exclude={c for c in CHALLENGES if c not in allowed})
-    assert r['answer'] and r['mode'] in ('curated', 'ai')
+    assert r['answer'] and r['mode'] in ('curated', 'ai', 'locked')
     r = T.ask('How big is this effect in practice?', 'ai01', 'x', exclude=ex)
     assert r['mode'] == 'locked'
 
@@ -110,3 +110,9 @@ def test_curated_declines_off_topic():
     assert 'outside what this lab covers' in r['answer']
     r = tu.curated('How big is this effect in practice?', 'ai01')
     assert 'In practice' in r['answer']
+
+def test_curated_says_locked_not_off_topic():
+    from server import tutor as tu
+    q = 'Did the anchoring wheel of fortune change estimates of African countries in the UN?'
+    assert 'outside' not in tu.curated(q, None)['answer']
+    assert 'opens after' in tu.curated(q, None, exclude=lambda i: True)['answer']

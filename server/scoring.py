@@ -13,7 +13,7 @@ def score(c: dict, r) -> dict:
         return {'score': hits / len(c['multiAnswers']), 'correct': hits == len(c['multiAnswers']) and len(s) == len(c['multiAnswers'])}
     if f == 'estimate':
         e = c['estimate']; gap = abs(r - e['target'])
-        sc = 1.0 if gap <= e['tolerance'] else _clamp(1 - (gap - e['tolerance']) / (2 * e['tolerance']), 0, 1)
+        sc = 1.0 if gap <= e['tolerance'] else _clamp(1 - (gap - e['tolerance']) / e['tolerance'], 0, 1)
         return {'score': sc, 'correct': gap <= e['tolerance']}
     if f == 'forecast':
         p = _clamp(float(r) / 100, 0, 1); t = 1 if c['forecast']['truth'] else 0; b = (p - t) ** 2
@@ -31,9 +31,9 @@ def score(c: dict, r) -> dict:
     if f == 'allocate':
         v = c['allocate']['values']; tot = sum(r or [])
         if not tot: return {'score': 0.0, 'correct': False}
-        hi = max(v); best = [1 if x == hi else 0 for x in v]; nb = sum(best); p = [s / tot for s in r]
+        hi = max(v); bs = c['allocate'].get('best'); best = [1 if (i in bs if bs else x == hi) else 0 for i, x in enumerate(v)]; nb = sum(best); p = [s / tot for s in r]
         sc = 1 - sum((x - best[i] / nb) ** 2 for i, x in enumerate(p)); top = max(p)
-        return {'score': sc, 'correct': p.count(top) == 1 and any(best[i] and x == top for i, x in enumerate(p))}
+        return {'score': sc, 'correct': all(best[i] or x != top for i, x in enumerate(p))}
     if f == 'delegate':
         tasks = c['delegate']['tasks']; right = sum(1 for i, t in enumerate(tasks) if isinstance(r, list) and i < len(r) and (r[i] == t['answer'] or r[i] in t.get('also', [])))
         return {'score': right / len(tasks), 'correct': right == len(tasks)}

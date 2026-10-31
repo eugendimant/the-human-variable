@@ -37,7 +37,11 @@ def test_answers_score_full():
         f = c['format']
         r = {'choice': c.get('answer'), 'causal': c.get('answer'), 'multi': c.get('multiAnswers'), 'estimate': c.get('estimate', {}).get('target'),
              'forecast': 100 if c.get('forecast', {}).get('truth') else 0, 'rank': c.get('rankAnswer')}.get(f)
-        if f == 'allocate': v = c['allocate']['values']; r = [c['allocate']['total'] if i == v.index(max(v)) else 0 for i in range(len(v))]
+        if f == 'allocate':
+            v = c['allocate']['values']; best = c['allocate'].get('best') or [v.index(max(v))]; t = c['allocate']['total']
+            if len(best) > 1 and t % len(best): continue
+            r = [t // len(best) if i in best else 0 for i in range(len(v))]
+            res = scoring.score(c, r); assert abs(res['score'] - 1) < 1e-9, c['id']; continue
         if f == 'delegate': r = [t['answer'] for t in c['delegate']['tasks']]
         res = scoring.score(c, r); assert res['score'] == 1 and res['correct'], c['id']
         assert scoring.valid(c, r), c['id']

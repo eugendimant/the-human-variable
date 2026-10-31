@@ -56,7 +56,7 @@ def test_sources_verified_and_referenced():
         assert s['kind'] in ('peer-reviewed', 'scholarly-book'), sid
         assert re.match(r'^10\.\d{4,9}/\S+$', s['doi']) or s['kind'] == 'scholarly-book', sid
         assert s['url'].startswith('https://'), sid
-        v = s['verification']; assert v['status'] in ('verified_full_text', 'verified_abstract', 'quarantined') and v['checked'], sid
+        v = s['verification']; assert v['status'] in ('verified_full_text', 'verified_accepted_manuscript', 'verified_abstract', 'quarantined') and v['checked'], sid
         assert s.get('year') and s.get('venue') and s.get('takeaway'), sid
     assert not (set(S) - used), f'unused sources: {set(S) - used}'
 
@@ -182,7 +182,7 @@ def test_evidence_comes_from_versions_of_record():
     assert not bad, bad[:5]
 
 # Explanations without a number: full text not readable, so the abstract-level statement stands (docs/audit/explain_rewrites_2026_10_31.json).
-NO_NUMBER = {'ai12', 'biz02', 'biz08', 'social04', 'social14', 'social20', 'axb11', 'axb12', 'bz14', 'bz16', 'axe08', 'axe09', 'axf04'}
+NO_NUMBER = {'social10', 'ai12', 'biz02', 'biz08', 'social04', 'social14', 'social20', 'axb11', 'axb12', 'bz14', 'bz16', 'axe08', 'axe09', 'axf04'}
 GENERIC = re.compile(r"\b(research (highlights|documents|shows)|experiments link|the study found|studies show)\b", re.I)
 def test_explanations_carry_the_key_number():
     """Review 4, M7: the main teaching sentence states the result with its number, in plain words."""
@@ -198,3 +198,10 @@ def test_forecast_claims_are_neutral():
 def test_pick_two_has_four_options():
     """Review 5, minor 1: with three options one correct pick forces the other."""
     assert not [c['id'] for c in LIVE if c['format'] == 'multi' and len(c['options']) < 4]
+
+def test_no_constant_guess_pays_across_estimates():
+    """Review 6, M3: one 'typical effect' guess on every estimate must not earn a good average."""
+    from server import scoring
+    E = [c for c in LIVE if c['format'] == 'estimate']
+    best = max(sum(scoring.score(c, min(max(x, c['estimate']['min']), c['estimate']['max']))['score'] for c in E) / len(E) for x in range(-50, 501))
+    assert best <= 0.35, best
