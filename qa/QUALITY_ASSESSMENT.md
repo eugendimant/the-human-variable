@@ -46,4 +46,4 @@ The target is 95 from an independent reviewer. It has not been reached yet; the 
 - No live Gemini call has been made from this environment.
 - No classroom pilot with real students has been run.
 - The Docker image was not built here (no container daemon).
-- Thirteen explanations rest on published abstracts because the full texts were not readable; they are listed in `tests/test_bank.py` (`NO_NUMBER`).
+- Fourteen explanations rest on published abstracts because the full texts were not readable; they are listed in `tests/test_bank.py` (`NO_NUMBER`).
