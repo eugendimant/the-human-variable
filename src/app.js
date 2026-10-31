@@ -276,10 +276,10 @@ function play() {
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">${label}
-      ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
       <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}${rec.confidence !== null ? `, at ${rec.confidence}% confidence` : ''}</span>`}</p>
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
       ${rec.missed ? '' : gapFigure(c, rec)}
+      ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
       <p class="reveal-body">${esc(c.explain)}</p>
       <div class="action-note"><h2>What a manager does with this</h2><p>${esc(c.implication)}</p></div>
       <div class="deep"><div class="tabs" role="tablist" aria-label="Go deeper">${tabs.map(([k, l]) => `<button role="tab" id="tab-${k}" aria-selected="${tab === k}" aria-controls="tabpanel" data-tab="${k}" tabindex="${tab === k ? 0 : -1}">${l}</button>`).join('')}</div><div class="tabpanel" id="tabpanel" role="tabpanel" aria-labelledby="tab-${tab}">${panel}</div></div>
@@ -492,7 +492,7 @@ function roomLocked(c) {
 function classPanel(c, a) {
   const f = c.format; let body = '';
   const hbars = (labels, vals, ev) => { const mx = Math.max(1, ...vals); return `<svg viewBox="0 0 340 ${labels.length * 40 + 4}" role="img" aria-label="Class answers">${labels.map((l, i) => { const y = 2 + i * 40, w = vals[i] / mx * 230; return `<text x="0" y="${y + 12}" font-size="11.5" font-weight="650" fill="#14203a">${esc(short(l, 50))}</text><rect x="0" y="${y + 18}" width="${Math.max(2, w)}" height="12" rx="6" fill="${ev && ev.includes(i) ? '#e0a01c' : '#2f54eb'}"/><text x="${Math.max(2, w) + 6}" y="${y + 28}" font-size="11.5" font-weight="800" fill="#14203a">${vals[i]}</text>` }).join('')}</svg>` };
-  if (a.counts) body = hbars(c.options, a.counts, f === 'multi' ? c.multiAnswers : [c.answer]);
+  if (a.counts) { const o = optionOrder(c); body = hbars(o.map(x => x.t), o.map(x => a.counts[x.i]), o.map((x, k) => (f === 'multi' ? c.multiAnswers.includes(x.i) : x.i === c.answer) ? k : -1).filter(k => k >= 0)) }
   else if (a.hist) { const lo = a.lo, hi = a.hi, w = (hi - lo) / a.hist.length, mx = Math.max(1, ...a.hist), ev = f === 'estimate' ? c.estimate.target : (c.forecast.truth ? 100 : 0); body = `<svg viewBox="0 0 340 130" role="img" aria-label="Class distribution, median ${a.median}">${a.hist.map((h, i) => `<rect x="${10 + i * 32}" y="${100 - h / mx * 80}" width="28" height="${h / mx * 80}" rx="3" fill="#2f54eb" fill-opacity=".8"/>`).join('')}<line x1="${10 + (ev - lo) / (hi - lo) * 320}" y1="10" x2="${10 + (ev - lo) / (hi - lo) * 320}" y2="104" stroke="#e0a01c" stroke-width="3"/><text x="10" y="122" font-size="11" fill="#56617a">${lo}</text><text x="330" y="122" font-size="11" fill="#56617a" text-anchor="end">${hi}</text><text x="${Math.min(300, 14 + (ev - lo) / (hi - lo) * 320)}" y="20" font-size="11" font-weight="700" fill="#7d5200">Evidence</text></svg><p class="gap-caption">Class median ${a.median}${f === 'estimate' ? (c.estimate.unit ?? '%') : '%'}.</p>` }
   else if (a.meanPosition) body = hbars(c.options.map((o, i) => o + ' (avg. rank ' + a.meanPosition[i] + ')'), a.meanPosition.map(p => +(c.options.length + 1 - p).toFixed(2)), [c.rankAnswer[0]]);
   else if (a.meanShare) body = hbars(c.options.map((o, i) => o + ' (' + a.meanShare[i] + '%)'), a.meanShare, [c.allocate.values.indexOf(Math.max(...c.allocate.values))]);
