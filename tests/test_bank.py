@@ -358,14 +358,16 @@ def test_paths_mix_true_and_false_forecasts():
     assert not bad, bad
 
 
-def test_estimate_guess_fraction_is_current():
-    """Review 20, minor 1: the skill headline's estimate baseline is the best fixed slider position, so a no-information player shows no skill."""
+def test_estimate_baseline_is_current():
+    """Reviews 20 and 23: the estimate skill baseline is the best bank-wide average of any no-information strategy
+    (one constant value, one slider position, a random position), so no blind strategy earns skill and every correct answer earns full credit."""
     from server import scoring
     E = [c for c in LIVE if c['format'] == 'estimate']
-    best = max(range(101), key=lambda f: sum(scoring.score(c, c['estimate']['min'] + f / 100 * (c['estimate']['max'] - c['estimate']['min']))['score'] for c in E))
-    js = (ROOT / 'src/scoring.js').read_text(); frac = float(re.search(r'GUESS_FRAC = ([\d.]+)', js).group(1))
-    at = lambda f: sum(scoring.score(c, c['estimate']['min'] + f * (c['estimate']['max'] - c['estimate']['min']))['score'] for c in E) / len(E)
-    assert at(best / 100) - at(frac) <= 0.02, (best, frac)
+    sc = lambda c, x: scoring.score(c, min(max(x, c['estimate']['min']), c['estimate']['max']))['score']
+    fixed = max(sum(sc(c, c['estimate']['min'] + f / 100 * (c['estimate']['max'] - c['estimate']['min'])) for c in E) / len(E) for f in range(101))
+    const = max(sum(sc(c, v) for c in E) / len(E) for v in range(-50, 501))
+    base = float(re.search(r'EST_BASE = ([\d.]+)', (ROOT / 'src/scoring.js').read_text()).group(1))
+    assert max(fixed, const) <= base + 0.005 and base - max(fixed, const) <= 0.03, (fixed, const, base)
 
 
 def test_streamlit_tutor_holds_siblings():
@@ -411,3 +413,42 @@ def test_claim_length_does_not_predict_truth():
     rate = lambda xs: sum(c['forecast']['truth'] for c in xs) / len(xs)
     lo = [c for c in F if len(c['forecast']['claim']) <= m]; hi = [c for c in F if len(c['forecast']['claim']) > m]
     assert abs(rate(lo) - rate(hi)) <= 0.2, (rate(lo), rate(hi))
+
+
+def test_no_item_baseline_swallows_correct_answers():
+    """Review 23, M1: a baseline at or near 1 would give a correct answer zero skill."""
+    import subprocess, json as _j
+    js = "const S=require('./src/scoring.js'),B=require('./src/bank.json');console.log(JSON.stringify(B.challenges.filter(c=>!c.retired).map(c=>[c.id,S.baseline(c)]).filter(x=>x[1]>=0.9)))"
+    assert _j.loads(subprocess.run(['node', '-e', js], cwd=ROOT, capture_output=True, text=True, check=True).stdout) == []
+
+
+def test_no_stock_phrasing_in_any_content_string():
+    """Review 23, minor 2 and rule 24: no stock phrasing anywhere in the bank's text, whichever decision a lint run happens to sample."""
+    rx = re.compile(r"\b(not just|isn['’]t just|more than just|unlock|seamless|elevate|dive into|game[- ]changer|empower|supercharge|revolutioni[sz]e|cutting[- ]edge|harness the power)\b", re.I)
+    def walk(x, path):
+        if isinstance(x, str): return [(path, x[:60])] if rx.search(x) else []
+        if isinstance(x, dict): return [h for k, v in x.items() for h in walk(v, path + '.' + k)]
+        if isinstance(x, list): return [h for i, v in enumerate(x) for h in walk(v, path + f'[{i}]')]
+        return []
+    hits = walk([c for c in LIVE], 'bank') + walk(BANK.get('themes', []), 'themes') + walk(BANK.get('paths', []), 'paths')
+    assert not hits, hits[:10]
+
+
+def _css_duplicate_selectors(path):
+    css = re.sub(r'/\*.*?\*/', '', path.read_text(), flags=re.S); depth = 0; buf = ''; top = []
+    for ch in css:
+        if ch == '{':
+            if depth == 0: top.append(buf.strip())
+            depth += 1; buf = ''
+        elif ch == '}': depth -= 1; buf = ''
+        elif depth == 0: buf += ch
+    from collections import Counter
+    n = Counter(re.sub(r'\s+', ' ', x.strip()) for s in top if s and not s.startswith('@') for x in s.split(','))
+    return {k: v for k, v in n.items() if v > 1}
+
+
+def test_css_overrides_do_not_grow():
+    """Invariant I3 (review 22, M1): a fix edits a component's one rule; it never stacks a new override block.
+    The count of selectors defined in more than one top-level rule may only go down (ratchet)."""
+    dup = _css_duplicate_selectors(ROOT / 'src/app.css')
+    assert len(dup) <= 40, sorted(dup)

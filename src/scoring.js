@@ -149,13 +149,16 @@
       case 'multi': { const k = (c.multiAnswers || []).length || c.pick || 2; return k / c.options.length }
       case 'delegate': { const T = c.delegate.tasks; return Math.max(1 / c.delegate.choices.length, ...c.delegate.choices.map((_, j) => T.filter(t => t.answer === j || (t.also || []).includes(j)).length / T.length)) }   // the best constant routing
       case 'allocate': { const n = c.options.length, nb = (c.allocate && c.allocate.best && c.allocate.best.length) || 1; return 1 - 1 / nb + 1 / n }   // an even split
-      case 'estimate': { const e = c.estimate; if (!e || e.target === undefined) return 0; return estimate(c, e.min + (e.max - e.min) * GUESS_FRAC).score }   // the best fixed slider position across the bank (tests keep GUESS_FRAC current)
+      case 'estimate': return EST_BASE;   // one baseline for the format: the best bank-wide average of any no-information strategy (tests keep it current)
       default: return 0;
     }
   }
-  const GUESS_FRAC = 0.36;   // no-information estimate strategy: the same slider position every time
+  // Best bank-wide average raw score of a no-information estimate strategy: one constant value everywhere (0.348), the same
+  // slider position everywhere (0.302) or a random position (0.176). A format constant, like 0.5 for a forecast, so every
+  // correct estimate earns full credit and no blind strategy earns skill on average.
+  const EST_BASE = 0.35;
   function skill(c, raw) { const b = baseline(c); return b >= 1 ? 0 : (raw - b) / (1 - b) }
 
-  const api = { score, ready, baseline, skill, GUESS_FRAC, statedProbability, calibration, toCalibrationRecord, formats: Object.keys(scorers) };
+  const api = { score, ready, baseline, skill, EST_BASE, statedProbability, calibration, toCalibrationRecord, formats: Object.keys(scorers) };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.THVScore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

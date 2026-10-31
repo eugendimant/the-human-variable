@@ -225,3 +225,16 @@ REVIEW22 = [('could they tell they were talking to a bot', 'axb08', 'identified 
 def test_offline_tutor_review22(q, cid, want):
     """Review 22, minor 9: bot means AI, auditing your own model is a pilot, cost goes to the figures, contests give both sides."""
     a = T.curated(q, cid)['answer']; assert want in a and 'does not cover' not in a, a[:120]
+
+
+REVIEW23 = [('why didnt the nudges work', 'dimant-requiem-forecast', 'did not change norm perceptions'),
+            ('was the difference significant', 'axf06', 'P = .60'),
+            ('what should my analytics team do with this?', 'ai09', 'error rates'),
+            ('what was the die task exactly', 'lies-in-disguise', 'rolled a die'),
+            ('what does proxy mean here', 'axb05', 'proxy')]
+
+
+@pytest.mark.parametrize('q,cid,want', REVIEW23)
+def test_offline_tutor_review23(q, cid, want):
+    """Review 23, minor 10: why-not questions, significance, a team's next step, the task itself, and a term's meaning."""
+    a = T.curated(q, cid)['answer']; assert want in a and 'does not cover' not in a, a[:120]

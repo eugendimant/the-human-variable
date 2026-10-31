@@ -137,11 +137,25 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 fp = [f for f in fol if re.search(r'\b(predict\w*|expect\w*|forecast\w*|experts?|anticipat\w*)', f['q'] + ' ' + f['a'], re.I)]
                 if fp: return out(fp[0]['a'], c)
                 continue
+            if name == 'detect':
+                fd = [f for f in fol if re.search(r'\b(tell|detect\w*|spot\w*|notic\w*|identif\w*|recogni\w*)', f['q'] + ' ' + f['a'], re.I)]
+                if fd: return out(fd[0]['a'], c)
+                continue
+            if name == 'signif': return out(f"{c['explain']}", c)   # the main contrast first, before any secondary measure
+            if name == 'task': return out(f"{c.get('scene', '')} Design: {st.get('design', 'see the paper')}.", c)
+            if name == 'meaning':
+                w = re.search(r"mean(?:t)? by ['\"]?(\w+)|does (?:the )?(?:word |term )?['\"]?(\w+)['\"]? mean", ql); w = next((g for g in (w.groups() if w else ()) if g), '')
+                fm = [f for f in fol if w and stem(w) in tokens(f['q'] + ' ' + f['a'])]
+                if fm: return out(fm[0]['a'], c)
+                if w and stem(w) in tokens(c['explain'] + ' ' + c.get('scene', '')): return out(f"In this study: {c.get('scene', '')} {c['explain']}", c)
+                continue
             if name == 'contest':   # both sides of a contested finding, as the explanation states them
                 fd = [f for f in fol if re.search(r'\b(design|differ|contrast|both)', f['q'] + ' ' + f['a'], re.I)]
                 return out(f"{c['explain']}" + (f" {fd[0]['a']}" if fd else '') + f" {c['implication']}", c)
             if name == 'why':   # a reason: the follow-up that gives one, else the finding itself
-                fw = [f for f in fol if f['q'].lower().startswith('why') and (rare & set(tokens(f['q'] + ' ' + f['a'])))] or [f for f in fol if re.search(r'\b(because|read (this|it)? ?as|reason|motive|concern|suggest)', f['a'], re.I) and (rare & set(tokens(f['a'])))]
+                whys = [f for f in fol if f['q'].lower().startswith('why')]
+                fw = [f for f in whys if rare & set(tokens(f['q'] + ' ' + f['a']))] or (whys if len(whys) == 1 and re.search(r"\b(didn.?t|did not|fail|work)", ql) else [])
+                fw = fw or [f for f in fol if re.search(r'\b(because|read (this|it)? ?as|reason|motive|concern|suggest)', f['a'], re.I) and (rare & set(tokens(f['a'])))]
                 if fw: return out(fw[0]['a'], c)
                 continue
             if name == 'authors': return out(f"{_papers(c)}. Design: {st.get('design', 'see the paper')}.", c)

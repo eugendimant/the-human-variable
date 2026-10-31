@@ -15,7 +15,7 @@
 .meter-bar i{position:absolute;inset:0 auto 0 0;background:var(--you);transition:width .4s}
 .rv{margin-top:24px;border-top:1px solid var(--rule);padding-top:20px}
 .rv-head{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-bottom:18px}
-.rv-chip{display:block;font-style:normal;font-size:12.5px;color:var(--ev,#2f7d5b);margin-top:2px}
+.rv-chip{display:block;font-style:normal;font-size:15px;font-weight:650;color:var(--ink,#14203a);margin-top:2px}
 .rv-head div{display:grid}
 .rv-head b{font-size:38px;letter-spacing:-.03em;line-height:1.05}
 .rv-bars{display:grid;gap:10px}

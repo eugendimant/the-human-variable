@@ -12,11 +12,11 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 111 (formats: forecast 34, choice 29, estimate 23, multi 11, causal 5, delegate 4, rank 3, allocate 2).
-- Sources: 109 (60 checked against the published full text, 3 against the authors' accepted manuscript, 1 against the publisher's abstract and figure legends, 44 against the published abstract, 1 quarantined).
+- Decisions in scored play: 112 (formats: forecast 35, choice 29, estimate 23, multi 11, causal 5, delegate 4, rank 3, allocate 2).
+- Sources: 110 (61 checked against the published full text, 3 against the authors' accepted manuscript, 1 against the publisher's abstract and figure legends, 44 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
 - Decisions retired with reasons: 35 (listed below).
-- Track balance: AI × Business 46, Culture & Society 30, Business 28, Judgment 7.
+- Track balance: AI × Business 46, Culture & Society 30, Business 29, Judgment 7.
 
 ## Sources
 
@@ -89,6 +89,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Johnson & Goldstein (2004). *Defaults and Donation Decisions*. [doi:10.1097/01.TP.0000149788.10382.B2](https://doi.org/10.1097/01.TP.0000149788.10382.B2) | Transplantation 78(12) 1713-1716 | Full text | bz15 | ["Cited instead of Johnson & Goldstein (2003) Science 302:1338-1339 because the Science text could not be accessed; exact opt-in/opt-out percentages appear only in a figure and are not used."] |
 | Kahneman & Tversky (1979). *Prospect Theory: An Analysis of Decision under Risk*. [doi:10.2307/1914185](https://doi.org/10.2307/1914185) | Econometrica 47(2) 263-292 | Full text | judg09 |  |
 | Kahneman, Knetsch & Thaler (1990). *Experimental Tests of the Endowment Effect and the Coase Theorem*. [doi:10.1086/261737](https://doi.org/10.1086/261737) | Journal of Political Economy 98(6) 1325-1348 | Full text | bz06 |  |
+| Klein et al. (2014). *Investigating variation in replicability: A “Many Labs” replication project*. [doi:10.1027/1864-9335/a000178](https://doi.org/10.1027/1864-9335/a000178) | Social Psychology 45(3) 142-152 | Full text | manylabs-anchoring |  |
 | Kleinberg et al. (2018). *Human Decisions and Machine Predictions*. [doi:10.1093/qje/qjx032](https://doi.org/10.1093/qje/qjx032) | The Quarterly Journal of Economics 133(1) 237-293 | Abstract | axb03 |  |
 | Kristal et al. (2020). *Signing at the beginning versus at the end does not decrease dishonesty*. [doi:10.1073/pnas.1911695117](https://doi.org/10.1073/pnas.1911695117) | Proceedings of the National Academy of Sciences 117(13) 7103-7107 | Abstract | bz11 | ["Crossref lists a correction notice (doi:10.1073/pnas.2610441123, 29 June 2026); its body text could not be read, so what it changes is unknown."] |
 | Köbis et al. (2025). *Delegation to artificial intelligence can increase dishonest behaviour*. [doi:10.1038/s41586-025-09505-x](https://doi.org/10.1038/s41586-025-09505-x) | Nature 646(8083) 126-134 | Full text | axf01 | ["No retraction or expression of concern found (Crossref update-to empty; OpenAlex is_retracted false). Crossref lists an OSF preprint; numbers here come from the Nature version only."] |

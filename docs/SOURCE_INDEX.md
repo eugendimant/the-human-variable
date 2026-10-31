@@ -67,6 +67,7 @@
 - Johnson & Goldstein (2004). Defaults and Donation Decisions. *Transplantation* 78(12), 1713-1716. https://doi.org/10.1097/01.TP.0000149788.10382.B2
 - Kahneman & Tversky (1979). Prospect Theory: An Analysis of Decision under Risk. *Econometrica* 47(2), 263-292. https://doi.org/10.2307/1914185
 - Kahneman, Knetsch & Thaler (1990). Experimental Tests of the Endowment Effect and the Coase Theorem. *Journal of Political Economy* 98(6), 1325-1348. https://doi.org/10.1086/261737
+- Klein et al. (2014). Investigating variation in replicability: A “Many Labs” replication project. *Social Psychology* 45(3), 142-152. https://doi.org/10.1027/1864-9335/a000178
 - Kleinberg et al. (2018). Human Decisions and Machine Predictions. *The Quarterly Journal of Economics* 133(1), 237-293. https://doi.org/10.1093/qje/qjx032
 - Kristal et al. (2020). Signing at the beginning versus at the end does not decrease dishonesty. *Proceedings of the National Academy of Sciences* 117(13), 7103-7107. https://doi.org/10.1073/pnas.1911695117
 - Köbis et al. (2025). Delegation to artificial intelligence can increase dishonest behaviour. *Nature* 646(8083), 126-134. https://doi.org/10.1038/s41586-025-09505-x

@@ -248,7 +248,7 @@ class Store:
         rows = self.db().execute("SELECT challenge FROM sessions WHERE phase IN ('open','closed') AND beat > ?", (now - 6 * 3600,)).fetchall()   # instructor activity only, as for the lock
         val = {r[0] for r in rows if r[0]}; self._open = (now, val); return val
 
-    # score: 0 to 100 for most formats; forecasts run from -100 (confident miss) to 100.
+    # score: 0 to 100 for most formats; forecasts and point splits run from -100 (confident miss, or all points on a wrong option) to 100.
     def export_csv(self, code: str, secret: str) -> str:
         self.require_admin(code, secret)
         rows = self.db().execute('SELECT num, challenge, answer, confidence, score, correct, created FROM responses WHERE code=? ORDER BY challenge, num', (code,)).fetchall()

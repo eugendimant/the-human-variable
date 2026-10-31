@@ -4522,5 +4522,32 @@
    "quote": "The effect remained 2 months later",
    "location": "Abstract (Crossref record of the Science article)"
   }
+ ],
+ "manylabs-anchoring": [
+  {
+   "source": "manylabs14",
+   "quote": "In the aggregate, 10 effects replicated consistently.",
+   "location": "Abstract, Social Psychology 45(3), p. 142"
+  },
+  {
+   "source": "manylabs14",
+   "quote": "across 36 independent samples totaling 6,344 participants.",
+   "location": "Abstract, p. 142"
+  },
+  {
+   "source": "manylabs14",
+   "quote": "And two effects – flag priming influencing conservatism and currency priming influencing system justification – did not replicate.",
+   "location": "Abstract, p. 142"
+  },
+  {
+   "source": "manylabs14",
+   "quote": "One effect – imagined contact reducing prejudice – showed weak support for replicability.",
+   "location": "Abstract, p. 142"
+  },
+  {
+   "source": "manylabs14",
+   "printed": "Original study ES 0.93 for each anchoring item; replication ES (unweighted): babies born 2.60, Mt. Everest 2.45, Chicago 2.05, distance to NYC 1.27",
+   "location": "Table 2, p. 147"
+  }
  ]
 }

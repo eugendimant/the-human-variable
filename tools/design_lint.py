@@ -6,19 +6,18 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tests')); from test_browser import answer, BANK
 JS = (ROOT / 'tools/design_lint.js').read_text()
-URL = (ROOT / 'index.html').as_uri(); LIVE = [c for c in BANK['challenges'] if not c.get('retired')]
+URL = (ROOT / 'index.html').as_uri(); LIVE = [c for c in BANK['challenges'] if not c.get('retired') and all(BANK['sources'][s]['verification']['status'] != 'quarantined' for s in c['sources'])]   # quarantined items are not played
 ONE = {}
 for c in LIVE: ONE.setdefault(c['format'], c['id'])
 
-def states():
+def states(every=False):
     yield 'home', URL, None
     yield 'library', URL + '#library', None
     yield 'all-decisions', URL + '#atlas', None
     yield 'record-empty', URL + '#record', None
-    for f, cid in ONE.items():
-        c = next(x for x in LIVE if x['id'] == cid)
-        yield f'predict-{f}', URL + '?play=' + cid, None
-        yield f'reveal-{f}', URL + '?play=' + cid, c
+    for c in (LIVE if every else [next(x for x in LIVE if x['id'] == cid) for cid in ONE.values()]):   # every decision at desktop width (review 23)
+        yield f"predict-{c['id']}", URL + '?play=' + c['id'], None
+        yield f"reveal-{c['id']}", URL + '?play=' + c['id'], c
     yield 'record', URL, 'record'
 
 def live(errors):
@@ -55,7 +54,8 @@ def run():
     with sync_playwright() as p:
         b = p.chromium.launch()
         for w, h in ((1440, 900), (390, 844)):
-            for name, url, act in states():
+            every_state = (w == 1440)
+            for name, url, act in states(every=every_state):
                 pg = b.new_page(viewport={'width': w, 'height': h}); pg.on('pageerror', lambda e: errors.append((name, str(e))))
                 pg.goto(url); pg.wait_for_timeout(250)
                 if act == 'record':
@@ -63,10 +63,9 @@ def run():
                         pg.goto(URL + '?play=' + cid); pg.wait_for_timeout(200); answer(pg, next(x for x in LIVE if x['id'] == cid)); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
                     pg.goto(URL + '#record'); pg.wait_for_timeout(300)
                 elif act:
-                    answer(pg, act); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
-                    for tab in ('Scope', 'Source', 'Questions'):
-                        pass
-                pg.wait_for_timeout(1300)
+                    try: answer(pg, act); pg.click('#lock-btn', timeout=5000); pg.wait_for_selector('#r-h', timeout=5000)
+                    except Exception as e: errors.append((name, 'could not play to the reveal: ' + str(e).splitlines()[0])); pg.close(); continue
+                pg.wait_for_timeout(600 if every_state else 1300)
                 for r, where, d in pg.evaluate(JS): hits.append((r, f'{name}@{w}', where, d))
                 pg.close()
         b.close()

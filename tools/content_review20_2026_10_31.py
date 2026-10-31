@@ -115,3 +115,71 @@ NEW = {
 }
 for k, v in NEW.items(): C[k]['forecast']['claim'] = v
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 23, M2: evidence figures from numbers the explanations already quote; headline-style answer titles (Burn-Murdoch)
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+CH = {
+ 'ai07': {'labels': ['More novel', 'More useful', 'More similar to each other'], 'values': [8.1, 9.0, 8.9], 'unit': '%', 'highlight': 2,
+          'note': 'Stories by writers with access to up to five AI ideas, against writers without; similarity as a share of its range.'},
+ 'social07': {'labels': ['Democrats on same-sex rights', 'Republicans on gun policy'], 'values': [95, 50], 'unit': '%', 'highlight': 1,
+              'note': 'Share of a party including the same view in their drawing, the highest and the lowest issue.'},
+ 'social15': {'labels': ['Gave to allies', 'Gave to a painting group-mate', 'Took from opponents'], 'values': [14.97, 13.54, 22.9], 'unit': '%', 'highlight': 0,
+              'note': 'Share of the endowment given or taken.'},
+ 'social16': {'labels': ['Taking from opponents, no default', 'Taking from opponents, default nudge'], 'values': [20, 0], 'unit': '%', 'highlight': 1,
+              'note': 'Share of the endowment taken from political opponents (about 20% without the nudge).'},
+ 'opposing-views-bot': {'labels': ['Republicans, intent to treat', 'Republicans, full compliers'], 'values': [0.12, 0.60], 'unit': '', 'highlight': 1,
+                        'note': 'Shift toward conservatism on a seven-point scale.'},
+ 'dimant-observability-choice': {'labels': ['Unobserved', 'Observed', 'Observed, asked first about others'], 'values': [-18.4, -28.3, 9.3], 'unit': '%', 'highlight': 1,
+                                 'note': 'Change in the charity account.'},
+}
+for k, v in CH.items(): C[k]['chart'] = v
+C['ai07']['explain'] = C['ai07']['explain'].replace('when given five AI ideas', 'with access to up to five AI ideas')
+C['social15']['answerTitle'] = 'Closer to allies, but no more generous to them'
+C['social07']['answerTitle'] = 'Each party holds several distinct views'
+C['social01']['answerTitle'] = 'The spread of others’ behavior changed choices'
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 23, minor 13: the stored option order carries no positional cue (the served JSON keeps bank order; the page shuffles)
+b = json.loads(bp.read_text())
+PAIRS = [(0, 2), (1, 3), (0, 3), (1, 2), (2, 3), (0, 1)]
+for fmt in ('choice', 'causal', 'multi'):
+    items = sorted((c for c in b['challenges'] if c['format'] == fmt and not c.get('retired')), key=lambda c: c['id'])
+    for k, c in enumerate(items):
+        n = len(c['options']); keyed = sorted(c['multiAnswers']) if fmt == 'multi' else [c['answer']]
+        want = list(PAIRS[k % len(PAIRS)]) if fmt == 'multi' and n == 4 else [k % n] if fmt != 'multi' else keyed
+        others = [i for i in range(n) if i not in keyed]
+        order = [None] * n
+        for pos, i in zip(want, keyed): order[pos] = i
+        it = iter(others)
+        order = [i if i is not None else next(it) for i in order]
+        c['options'] = [c['options'][i] for i in order]
+        if fmt == 'multi': c['multiAnswers'] = sorted(order.index(i) for i in keyed)
+        else: c['answer'] = order.index(keyed[0])
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 23: banned stock phrasing, a baseline splice, an overclaimed null, contest titles that cue the answer, hate23 game difference
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['biz04']['implication'] = 'Before rolling out a famous nudge, test it against the plain message you would otherwise use as well as against doing nothing.'
+C['misperceived-norms-action']['implication'] = 'Share accurate peer-support data to move stalled behavior, then track actual outcomes for months alongside stated intentions.'
+for f in C['axb06']['follow']:
+    f['a'] = f['a'].replace('so differences in overrides were not just differences in who applied.', 'so differences in overrides did not come from differences in who applied.')
+for f in C['dimant-polarizednorms-choice']['follow']:
+    f['a'] = f['a'].replace('the whole distribution of peer behavior, not just its mean, shapes reactions.', 'the whole distribution of peer behavior shapes reactions, beyond its mean.')
+C['dimant-proximity-estimate']['explain'] = C['dimant-proximity-estimate']['explain'].replace(
+    'With observation alone, participants took an additional 21.9 ECUs and donations fell by about 20% compared with no observation.',
+    'With observation alone, participants took 21.9 ECUs more than in the earlier part of the experiment, and donations fell by about 20% against no observation.')
+C['axe13']['answerTitle'] = 'Trip spending rose $117; the sneaker effect was not significant'
+C['bz06']['title'] = 'Mugs, sellers and buyers'
+C['bz16']['title'] = 'Fund menus and real plans'
+q = {'q': 'Which games were these?', 'a': 'Giving and taking games, in which one person moved money to or from another; a public goods game in the same project measured cooperation separately.'}
+if not any(f['q'] == q['q'] for f in C['social15']['follow']): C['social15']['follow'].append(q)
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 23, minor 17: one forecast prompt everywhere; the notalie diagram's last node inside the frame at phone width
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+for c in b['challenges']:
+    if c['format'] == 'forecast': c['question'] = 'How likely is it that the study found this?'
+for n in C['dimant-notalie-causal']['dag']['nodes']:
+    if n['id'] == 'lie': n['x'] = 430
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 23, minor 8: the measure as the title, a simulation labelled as one, the source only once
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['axb05']['chart']['labels'] = ['Current algorithm', 'If the spending gap were removed (simulated)']
+C['axb05']['chart']['note'] = 'Share of Black patients flagged for extra help.'
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')

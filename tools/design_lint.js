@@ -40,6 +40,11 @@
     if (/^H[1-3]$/.test(e.tagName) && !/balance|pretty/.test(wrap)) push('R19', name(e), 'heading wrap ' + wrap);
     if (e.tagName === 'P' && t.length > 160 && !/pretty|balance/.test(wrap)) push('R19', name(e), 'paragraph wrap ' + wrap);
   }
+  for (const tx of document.querySelectorAll('svg text')) {   // rule 9 for SVG text, at its rendered size
+    const sv = tx.ownerSVGElement, r = sv && sv.getBoundingClientRect(); if (!r || !r.width || !vis(sv) || !tx.textContent.trim()) continue;
+    const vb = sv.viewBox && sv.viewBox.baseVal, k = vb && vb.width ? r.width / vb.width : 1, px = parseFloat(getComputedStyle(tx).fontSize) * k;
+    if (px < 11.5) push('R16', name(sv) + ' text', px.toFixed(1) + 'px ' + tx.textContent.trim());
+  }
   const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n;
   while ((n = tw.nextNode())) {
     const p = n.parentElement, x = n.textContent; if (!p || p.closest('script,style,svg,.sr-only') || !vis(p) || !x.trim()) continue;

@@ -546,3 +546,18 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 258 tests (design lint 0 hits on every page state including console, projector and phone; new detectors live-fired), audit doc, counts and screenshots (phone home now full page) regenerated.
 
 **Count:** 2 Major found and fixed. Next: independent review 23.
+
+## Iteration 28 (2026-10-31)
+
+**Verified first:** iteration-27 fixes, by independent review 23 (snapshot `snap_r23`).
+
+**Independent score:** 84/100 (review 23, `qa/reviews/review23.md`). 0 Blocking, 2 Major, 17 Minor.
+
+**Owner's instruction:** stop introducing new Majors while fixing old ones. Diagnosis: three of the four Majors in reviews 22 and 23 were regressions of earlier fixes (stacked CSS overrides, a tolerance narrowed without checking what it scored, a baseline changed on one reviewer's advice that the next reviewer's finding contradicted). Response: `qa/INVARIANTS.md`, a regression register (10 invariants, each with its test), a settled-decisions list, and a change protocol. Every fix names the invariants it touches; the complete gates run (the design lint now covers every decision); a fresh agent audits the diff since the last reviewed snapshot against the register before any external review; every new Major becomes an invariant with a test. A CSS ratchet stops override blocks from growing.
+
+**Fixes (invariants touched in brackets):**
+- **M1** [I5]. Estimate skill baseline is one format constant (0.35), the best bank-wide average of any blind strategy (constant value 0.348, fixed position 0.302, random 0.176), so every correct estimate earns full credit and no blind strategy earns skill; gates for baseline currency and for no item baseline at 0.9 or above.
+- **M2** [I2]. Evidence figures added from numbers the explanations already quote: ai07, social07, social15, social16, opposing-views-bot, dimant-observability-choice; forecast reveals show the paper's figure under the claim.
+- **Minors** [I2, I6, I7, I8, I9]. Projector delegate route in ink at body size; design lint over every decision; allocate figure titled by its measure, effects on their own axis with a zero line; calibration label placed away from the dots; SVG text 12 px or more (and a detector for SVG text at its rendered size); blue end dot for the player, ink verdict; rank badges without the unexplained ring; axb05 chart titled by its measure, the simulation labelled as one; console lessons flattened; tutor routes for why-not, significance, a team's next step, the task, a term's meaning, and detection (bot); a contest item that held up (Many Labs 1, anchoring, from the published article) and neutral contest titles; keyed options balanced across stored positions; scoring explainer and CSV note on allocate's range; dimant-proximity baseline wording; axe13 "not significant"; a social15 follow-up on which games these were; headline-style titles for social15, social07, social01; "up to five" in ai07; one forecast prompt; true minus signs; Library filter pills removed; notalie node inside the frame; Streamlit claim without a side stripe; a class-ended dialog; the study line under the question.
+
+**Gates:** build check, 267 tests (design lint over every decision at 1440, one per format at 390, console, projector and phone: 0 hits), audit doc and counts regenerated.

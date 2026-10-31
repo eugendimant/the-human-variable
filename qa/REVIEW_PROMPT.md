@@ -11,7 +11,7 @@ OWNER DECISIONS YOU MUST NOT FLAG: Costello, Pennycook & Rand (2024, Science) is
 
 REVIEW ONLY THIS SNAPSHOT: <SNAPSHOT_PATH> . Do not read or modify /home/claude/thv, earlier snapshots or earlier review folders. Work in a copy. Publish nothing; use the web only to read papers for fact checks. Use free ports; kill only your own processes by PID (never pkill -f with a pattern that could match your own shell).
 
-READ FIRST: qa/DESIGN_RULES.md (30 rules against AI-made looks, with detectors), qa/TUFTE_PASS.md, README.md, docs/HANDOVER_FOR_CLAUDE.md, docs/CONTENT_GUIDE.md, qa/LOOP_LEDGER.md, qa/reviews/, qa/QUALITY_ASSESSMENT.md (verify claimed fixes rather than trusting them), src/bank.json, src/evidence.json, src/app.js, src/scoring.js, server/*.py, thv_streamlit/.
+READ FIRST: qa/INVARIANTS.md (regression register and settled decisions; check every invariant still holds), qa/DESIGN_RULES.md (30 rules against AI-made looks, with detectors), qa/TUFTE_PASS.md, README.md, docs/HANDOVER_FOR_CLAUDE.md, docs/CONTENT_GUIDE.md, qa/LOOP_LEDGER.md, qa/reviews/, qa/QUALITY_ASSESSMENT.md (verify claimed fixes rather than trusting them), src/bank.json, src/evidence.json, src/app.js, src/scoring.js, server/*.py, thv_streamlit/.
 
 DO ALL OF THESE, with evidence:
 1. `python -m pytest -q`. Report counts.
