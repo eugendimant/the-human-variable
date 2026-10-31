@@ -18,7 +18,7 @@ RETENTION_HOURS = float(os.environ.get('THV_RETENTION_HOURS', '48'))
 MAX_PARTICIPANTS = int(os.environ.get('THV_MAX_PARTICIPANTS', '120'))
 CLASS_LOCK_HOURS = float(os.environ.get('THV_CLASS_LOCK_HOURS', '3'))
 # A class holds the lock only while its instructor is active: the open console refreshes it, students joining do not.
-CLASS_LOCK_IDLE_MIN = float(os.environ.get('THV_CLASS_LOCK_IDLE_MIN', '5'))  # measured from instructor activity only
+CLASS_LOCK_IDLE_MIN = float(os.environ.get('THV_CLASS_LOCK_IDLE_MIN', '20'))  # measured from instructor activity only
 CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'  # no 0/O/1/I
 
 class ClassroomError(Exception):
@@ -274,7 +274,7 @@ def public_challenge(c: dict) -> dict:
     """Everything a participant needs to answer, nothing that reveals the answer."""
     keep = ('id', 'track', 'title', 'scene', 'question', 'options', 'format', 'rankLabel', 'dag', 'case', 'study')  # concept can name the result
     out = {k: c[k] for k in keep if k in c}
-    if c['format'] == 'estimate': out['estimate'] = {k: c['estimate'][k] for k in ('min', 'max', 'label', 'unit', 'step') if k in c['estimate']}
+    if c['format'] == 'estimate': out['estimate'] = {k: c['estimate'][k] for k in ('min', 'max', 'label', 'unit', 'step', 'tolerance') if k in c['estimate']}
     if c['format'] == 'forecast': out['forecast'] = {'claim': c['forecast']['claim']}
     if c['format'] == 'allocate': out['allocate'] = {k: c['allocate'][k] for k in ('total', 'step', 'label', 'prefix', 'suffix') if k in c['allocate']}  # allow-list: nothing that names the best arm
     if c['format'] == 'delegate': out['delegate'] = {'choices': c['delegate']['choices'], 'tasks': [{'text': t['text']} for t in c['delegate']['tasks']]}

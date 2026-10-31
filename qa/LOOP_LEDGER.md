@@ -431,3 +431,17 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 229 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 16.
+
+## Iteration 21 (2026-10-31)
+
+**Verified first:** iteration-20 fixes, by independent review 16 (snapshot `snap_r16`): tutor grounding (216 of 216 own-source answers), evidence figures, class leak probes, lock, load, Streamlit. New regression found: estimate prompt on the served page.
+
+**Independent score:** 83/100 (review 16, `qa/reviews/review16.md`). 0 Blocking, 1 Major.
+
+**Fixes:**
+- **M1.** The public bank serves the estimate tolerance (it defines a hit and says nothing about the target); the Streamlit student prompt names the band. Tests: the served bank carries a tolerance for every estimate, and a browser test on the served page finds no "undefined", "null" or "NaN" in any format's play screen.
+- **Minors.** Three forecasts reworded so claim wording no longer predicts truth, with a gate (a wording-only rule cannot beat 0.55); axe10 title; dimant-hate-choice "dropped by a similar amount"; tutor declines a wider set of off-topic requests, answers "what should I do" with the action, matches follow-ups whose words all appear in the question (fix ~ fixed), and uses only who-gained follow-ups for subgroup questions; biz07, biz08 and overconfidence-hard-task scenes describe the real tasks; axe12 scene no longer restates the answer and the keyed option names the mechanism; genai3 follow-up no longer states axe12's answer; ai09 says how its design differs from algorithm-appreciation studies; axb02 and bz15 are plain calls instead of ranks that scored one or two pairs; bz09 action adds a consumer-protection caveat; verdict says "Close" from a score of 50; class lock idle window 20 minutes; verdict set as a statement; projector stat labels do not wrap.
+
+**Gates:** build check, 232 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 17.

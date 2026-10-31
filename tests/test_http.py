@@ -201,3 +201,12 @@ def test_open_question_stays_held_when_the_console_goes_quiet(base, tmp_path, mo
     assert app.STORE.class_lock()[0] is False                                                          # the console went quiet
     assert req(base, '/api/reveal/' + c['id'], client='peek7')[0] == 409
     req(base, f"/api/rooms/{room['code']}/control", {'action': 'end'}, key=key, client='inst7')
+
+
+def test_served_prompts_have_no_undefined(base):
+    """Review 16, M1: the served page must give every format the fields its prompts need (no 'undefined' or 'null' in copy)."""
+    import re
+    s, body, _ = req(base, '/', raw=True)
+    bank = json.loads(re.search(rb'<script>const BANK = (.*?);</script>', body, re.S).group(1))
+    est = [c for c in bank['challenges'] if c['format'] == 'estimate']
+    assert est and all(isinstance(c['estimate'].get('tolerance'), (int, float)) for c in est)

@@ -2492,6 +2492,10 @@
     {
      "q": "Was real money at stake?",
      "a": "Yes. Lab participants could earn up to $10 extra for accurate forecasts. In Study 1 they earned $1 each time the forecast they relied on was within 5 percentiles."
+    },
+    {
+     "q": "Why do other studies find people prefer algorithms?",
+     "a": "Designs differ. Here people watched the model make errors before choosing; in Logg, Minson and Moore (2019) people weighed advice labeled as an algorithm’s without seeing it fail, and leaned on it more."
     }
    ],
    "format": "choice",
@@ -2941,7 +2945,7 @@
    "concept": "Innovation",
    "tag": "19 / PROCESS",
    "title": "Fixing a slow process",
-   "scene": "A team has a slow approval process and is asked how to improve it.",
+   "scene": "In experiments, people were asked to improve things such as a Lego structure, a mini-golf hole or a written essay, and could change them by adding or by removing elements.",
    "question": "Which kind of fix do people tend to miss?",
    "options": [
     "Adding a review step",
@@ -3004,7 +3008,7 @@
    "concept": "Innovation",
    "tag": "20 / COGNITIVE LOAD",
    "title": "Under pressure",
-   "scene": "An operations team must solve a complex process problem while juggling other tasks.",
+   "scene": "In one experiment, people improved a pattern on a grid; some did it while keeping track of a second task at the same time.",
    "question": "Is this what the study found?",
    "answerTitle": "Pressure favors additions",
    "explain": "Across eight experiments, Adams, Converse, Hales and Klotz found people were less likely to spot helpful subtractive changes under higher cognitive load, and also when nothing cued subtraction or when they had only one chance to notice it.",
@@ -3324,8 +3328,8 @@
     "n": "1,528 participants"
    },
    "forecast": {
-    "claim": "The behavior spread farther through networks with random long ties than through clustered networks with redundant ties.",
-    "truth": false
+    "claim": "The behavior spread farther through clustered networks with redundant ties than through networks with random long ties.",
+    "truth": true
    },
    "chart": {
     "labels": [
@@ -3490,7 +3494,7 @@
    "permuted": true,
    "options": [
     "Unfavorable to women, with tight estimates",
-    "Clear gains, precisely estimated in every round",
+    "Clear gains, precisely estimated across rounds",
     "Unfavorable to women, mostly in early rounds",
     "Favorable to women, with imprecise estimates"
    ],
@@ -3881,26 +3885,15 @@
   {
    "id": "axb02",
    "track": "AI × Business",
-   "format": "rank",
+   "format": "choice",
    "concept": "Algorithm aversion",
    "title": "Control over the model",
    "scene": "In an incentivized task, people forecast students' math percentiles. They may use an imperfect model that outperforms human forecasts, but each group gets different rules for adjusting it.",
-   "question": "Rank the groups by share who chose to use the model.",
+   "question": "Which group chose to use the model least often?",
    "options": [
     "Could adjust each forecast by up to 2",
     "Could adjust each forecast by up to 10",
     "Could not change the model at all"
-   ],
-   "rankAnswer": [
-    1,
-    0,
-    2
-   ],
-   "rankLabel": "Share choosing the model",
-   "rankValues": [
-    "68%",
-    "71%",
-    "47%"
    ],
    "answerTitle": "Any control beats none; size barely matters",
    "explain": "In Study 2, 47% used the unchangeable model versus 68% to 71% when they could adjust it by 2, 5 or 10 percentiles. The two adjustable groups did not differ meaningfully, so their order is not scored.",
@@ -3928,13 +3921,6 @@
     }
    ],
    "theme": "ai-trust",
-   "rankTies": [
-    [
-     0,
-     1
-    ]
-   ],
-   "permuted": true,
    "chart": {
     "labels": [
      "Could not change the model",
@@ -3951,7 +3937,8 @@
     "unit": "%",
     "highlight": 1,
     "note": "Share who chose to use the model, Study 2."
-   }
+   },
+   "answer": 2
   },
   {
    "id": "axb03",
@@ -4150,8 +4137,8 @@
    "scene": "Fifteen firms hiring low-skilled service workers introduce a job test that scores applicants. Managers can still hire against its recommendations.",
    "question": "Is this what the study found?",
    "forecast": {
-    "claim": "Managers who hired against test recommendations more often ended up with better average hires.",
-    "truth": false
+    "claim": "Hires made against the test’s recommendation more often turned out worse.",
+    "truth": true
    },
    "answerTitle": "Overruling the test went with worse hires",
    "explain": "Across 15 firms that introduced job testing for low-skilled service workers, Hoffman, Kahn and Li found that managers facing similar applicant pools who hired against test recommendations ended up with worse average hires.",
@@ -5130,7 +5117,7 @@
    },
    "answerTitle": "The photo matched a 25% rate cut",
    "explain": "Showing fewer example loans, not suggesting a particular use, or including a photo of an attractive woman each raised demand about as much as a 25% interest-rate reduction.",
-   "implication": "Test creative content against price in randomized offers before giving up margin on discounts.",
+   "implication": "Test creative content against price in randomized offers before giving up margin on discounts, and review creative for fairness: in consumer credit, imagery that sways borrowers raises consumer-protection questions.",
    "boundary": "Direct-mail offers of short-term consumer credit in South Africa; one lender's former clients.",
    "sources": [
     "bertrand10"
@@ -5421,11 +5408,11 @@
   {
    "id": "bz15",
    "track": "Business",
-   "format": "rank",
+   "format": "choice",
    "concept": "Default consent",
    "title": "Organ donor forms",
    "scene": "An online survey asked 161 people whether they would be organ donors. The question was framed as opt-in, opt-out, or a neutral form requiring a choice with no default.",
-   "question": "Rank the three forms by the share who agreed to be donors.",
+   "question": "Which form produced the fewest donors?",
    "options": [
     "Opt-in (default: not a donor)",
     "Neutral (must choose, no default)",
@@ -5457,19 +5444,7 @@
     "n": "161 online respondents"
    },
    "theme": "choice",
-   "permuted": true,
-   "rankAnswer": [
-    2,
-    1,
-    0
-   ],
-   "rankTies": [
-    [
-     1,
-     2
-    ]
-   ],
-   "rankLabel": "Highest share consenting to be a donor"
+   "answer": 0
   },
   {
    "id": "bz16",
@@ -6297,7 +6272,7 @@
    "track": "Judgment",
    "concept": "Overconfidence",
    "title": "After the hard exam",
-   "scene": "Your team just took a very hard certification exam. Before scores come out, each person estimates their own score and their rank among peers.",
+   "scene": "In a lab study, 82 students took a hard trivia quiz. Before scores came out, each estimated their own score and their rank among the others.",
    "question": "What pattern does the evidence predict on a hard task?",
    "options": [
     "Overestimate own score, and think they beat peers",
@@ -6819,7 +6794,7 @@
    "options": [
     "Expected and received social engagement",
     "Habit: they shared whatever appeared first",
-    "A hunch that the posts might be true after all",
+    "A hunch that the posts might be true",
     "Novelty: conspiracy posts felt more original"
    ],
    "answer": 0,
@@ -6936,7 +6911,7 @@
    ],
    "answer": 2,
    "answerTitle": "Pessimistic expectations, not unwillingness, drove the gap",
-   "explain": "In Dimant's public goods games, the share of conditional cooperators dropped no more for a Trump opponent (72.8% to 59.0%) than for a painting-preference outgroup (73.2% to 62.4%). Expectations differed: people predicted opponents would contribute less.",
+   "explain": "In Dimant's public goods games, the share of conditional cooperators dropped by a similar amount for a Trump opponent (72.8% to 59.0%) and for a painting-preference outgroup (73.2% to 62.4%). Expectations differed: people predicted opponents would contribute less.",
    "implication": "In politically mixed teams, share evidence that colleagues on the other side do cooperate before launching joint projects.",
    "boundary": "Incentivized experiments on US polarization around Donald Trump, compared with other social identities.",
    "sources": [
@@ -7331,8 +7306,8 @@
    "scene": "In nine forecasting studies, people chose between the best available algorithm and other methods, including human judgment, across more and less predictable domains.",
    "question": "Is this what the study found?",
    "forecast": {
-    "claim": "People were more willing to use the best algorithm in more unpredictable domains.",
-    "truth": false
+    "claim": "People were more willing to use the best algorithm in more predictable domains.",
+    "truth": true
    },
    "answerTitle": "Uncertainty pushed people away from algorithms",
    "explain": "Across nine studies (N = 4,820), people were less likely to use the best algorithm in more unpredictable domains. They favored methods with a chance of a near-perfect answer.",
@@ -7450,7 +7425,7 @@
     "claim": "In the live ad test, the human-made image beat the AI-generated images on click-through rate.",
     "truth": false
    },
-   "answerTitle": "Yes: up to 50% higher click-through",
+   "answerTitle": "No: AI images won by up to 50%",
    "explain": "In the field study, an AI-generated image achieved an up to 50% higher click-through rate than a human-made image, and 254,400 human evaluations showed AI images can surpass human ones.",
    "implication": "A/B test AI-generated creative against your current images before commissioning new shoots; cost and speed favor the trial.",
    "boundary": "The 50% figure is an upper bound from one field test; results vary by model and image.",
@@ -7545,12 +7520,12 @@
    "format": "causal",
    "concept": "Confounded evaluation",
    "title": "Is the AI penalty real?",
-   "scene": "In a series of experiments, people evaluated workers who had done the same work, some of them described as getting help from AI.",
+   "scene": "In a series of experiments, people evaluated workers, some of them described as getting help from AI.",
    "question": "What explains the lower ratings?",
    "options": [
     "AI users’ work was simply weaker",
     "The penalty came mainly from managers who use AI",
-    "AI use was penalized even for identical work",
+    "Raters saw AI users as lazier",
     "Raters could tell which work used AI"
    ],
    "answer": 2,
@@ -7910,7 +7885,7 @@
     },
     {
      "q": "What about colleagues who use AI?",
-     "a": "A related PNAS study found people helped by AI are rated lazier, and employees expect this and hide AI use (Reif et al. 2025)."
+     "a": "How colleagues judge people who use AI is a separate decision in the lab (Reif et al. 2025)."
     }
    ],
    "theme": "ai-trust",
@@ -8961,7 +8936,11 @@
   "routes": [
    [
     "offtopic",
-    "\\b(poem|joke|weather|recipe|capital of|song|lyrics|horoscope|stock tip|write (me )?(code|python|an essay)|translate)\\b"
+    "\\b(poem|haiku|limerick|joke|weather|recipe|capital of|song|lyrics|horoscope|stock (tip|price)|share price|world cup|super bowl|tax return|homework|movie|write (me )?(code|python|javascript|an essay)|translate|bitcoin)\\b"
+   ],
+   [
+    "action",
+    "\\b(what should (i|we) do|what do (i|we) do|next steps?|monday( morning)?|what would you do|how (do|should|can) (i|we) (use|apply|act on) (this|it))\\b"
    ],
    [
     "ethics",
@@ -9008,6 +8987,6 @@
     "\\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\\w*)"
    ]
   ],
-  "subgroupFollow": "^(who\\b|which (workers|agents|employees|people|consultants|staff|groups?)\\b)"
+  "subgroupFollow": "^(who\\b.*\\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\\b)"
  }
 }

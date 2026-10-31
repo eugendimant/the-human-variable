@@ -53,3 +53,4 @@ body.projector .play-grid>.card:not(:has(.rv)) .count-row{grid-column:2;grid-row
 body.projector .play-grid>.card:not(:has(.rv)) .count-row b{font-size:clamp(96px,10vw,168px);line-height:.9;letter-spacing:-.04em;color:#1f3cc2}
 body.projector .play-grid>.card:not(:has(.rv)) .count-row span{font-size:clamp(18px,1.6vw,26px)}
 body.projector .play-grid>.card:not(:has(.rv)) .count-row .meter-bar{width:70%}
+.rv-head>div>span{white-space:nowrap}

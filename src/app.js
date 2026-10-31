@@ -339,7 +339,7 @@ function play() {
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">${label}
-      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}</span>`}</p>${!rec.missed && rec.confidence !== null ? `<p class="conf-line">Confidence score ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))}, where a 50% hedge scores 50. You were ${rec.confidence}% sure and ${rec.correct ? 'right' : 'missed'}.</p>` : ''}
+      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .5 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}</span>`}</p>${!rec.missed && rec.confidence !== null ? `<p class="conf-line">Confidence score ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))}, where a 50% hedge scores 50. You were ${rec.confidence}% sure and ${rec.correct ? 'right' : 'missed'}.</p>` : ''}
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
       ${rec.missed ? '' : gapFigure(c, rec)}
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
@@ -380,12 +380,14 @@ function curated(q, c) {
   const exact = fol.find(f => trNorm(f.q) === trNorm(q)); if (exact) return { text: exact.a, cites: cs(c) };
   const jac = f => { const ft = new Set(trTokens(f.q)); const inter = [...ft].filter(w => qt.has(w)).length; return inter / Math.max(1, new Set([...ft, ...qt]).size) };
   const near = fol.slice().sort((a, b) => jac(b) - jac(a))[0]; if (near && jac(near) >= 0.6) return { text: near.a, cites: cs(c) };
+  const has = w => [...qt].some(x => w === x || (Math.min(w.length, x.length) >= 3 && (w.startsWith(x) || x.startsWith(w)))); const sub = fol.filter(f => { const ft = trTokens(f.q); return ft.length && ft.every(has) }).sort((a, b) => trTokens(b.q).length - trTokens(a.q).length)[0]; if (sub) return { text: sub.a, cites: cs(c) };
   const named = trNames(q, c) ? [] : ALL.filter(x => x.explain && !x.sources.some(s => c.sources.includes(s)) && trNames(q, x));
   if (named.length) { const ov = x => topic.filter(w => trTokens([x.answerTitle, x.explain, x.question].join(' ')).includes(w)).length; const b = named.sort((a, z) => ov(z) - ov(a))[0]; return { text: `${b.explain}\n\n${b.implication}`, cites: cs(b) } }
   const st0 = c.study || {};
   for (const [name, rx] of TR.routes) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
     if (name === 'offtopic') return off;
+    if (name === 'action') return { text: `${c.implication}\n\nWhy: ${c.explain}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
     if (name === 'models') { const fm = fol.find(f => /\b(GPT|Claude|Llama|Gemini|ChatGPT|Bing|DALL|Midjourney)/.test(f.a)) || fol.find(f => /\b(models?|tools?)\b/i.test(f.q)); if (fm) return { text: fm.a, cites: cs(c) }; continue }
     if (name === 'who') return { text: `Who was studied: ${st0.n || 'see the paper'}. Design: ${st0.design || 'see the paper'}.\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
     if (name === 'catch') { const fd = fol.find(f => /\b(downside|backfire|risk|cost|worse|harm|limit|fail)/i.test(f.q + ' ' + f.a)); return { text: `What the study covers: ${c.boundary}${fd ? '\n\n' + fd.a : ''}\n\nThe finding itself: ${c.explain}`, cites: cs(c) } }
@@ -643,6 +645,10 @@ function render(moveFocus) {
 }
 function animateReveal() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // the study's number counts up from the player's call: the one orchestrated moment of the reveal
+  qa('.gap-head').forEach(h => { const ev = h.querySelector('.gh-ev'), you = h.querySelector('.gh-you'); if (!ev || !you) return; const m = ev.textContent.match(/^(-?\d+(?:\.\d+)?)(.*)$/), a = parseFloat(you.textContent); if (!m || isNaN(a)) return;
+    const to = parseFloat(m[1]), dec = (m[1].split('.')[1] || '').length, t0 = performance.now(), D = 900;
+    const step = now => { const k = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - k, 3); ev.textContent = (a + (to - a) * e).toFixed(dec) + m[2]; if (k < 1) requestAnimationFrame(step) }; requestAnimationFrame(step) });
   qa('.ev-mark[data-from]').forEach(g => { const d = +g.dataset.from; if (!d) return; g.style.transition = 'none'; g.style.transform = `translateX(${d}px)`; g.style.opacity = '.3'; requestAnimationFrame(() => requestAnimationFrame(() => { g.style.transition = ''; g.style.transform = ''; g.style.opacity = '' })) });
 
 }

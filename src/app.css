@@ -621,3 +621,8 @@ body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:con
 .theme-meter i{display:block;height:100%;background:var(--ev);border-radius:3px}
 .theme-count{display:block;font-family:var(--sans);font-style:normal;font-size:var(--t7);color:var(--muted)}
 .theme{padding:clamp(18px,2.4vw,26px)}
+.gap .hb-row:nth-child(2) .grow{animation-delay:.12s}.gap .hb-row:nth-child(3) .grow{animation-delay:.24s}.gap .hb-row:nth-child(4) .grow{animation-delay:.36s}
+/* verdict: the first thing read after the call, set as a statement rather than a pill */
+.verdict .tag{font-size:15px;font-weight:800;padding:6px 14px;border-radius:999px;background:var(--ink);color:#fff;letter-spacing:-.005em}
+.verdict .tag.tag-ev{background:var(--ev);color:var(--ink)}
+.verdict .num{font-size:15px;font-weight:750}

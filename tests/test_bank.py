@@ -330,3 +330,15 @@ def test_random_slider_guess_earns_little():
         m = sum(scoring.score(c, x)['score'] for x in xs) / len(xs)
         if m > 0.3: bad.append((c['id'], round(m, 2)))
     assert not bad, bad
+
+
+def test_forecast_wording_does_not_predict_truth():
+    """Review 16, minor 1: a rule like 'negative wording means true' must not beat guessing."""
+    N = re.compile(r'\b(no|not|none|fewer|less|lower|missed|cut|reduced|failed|without|never)\b', re.I)
+    F = [c for c in LIVE if c['format'] == 'forecast']
+    best = 0
+    for pn in range(0, 101, 5):
+        for pp in range(0, 101, 5):
+            s = sum(1 - 2 * ((pn if N.search(c['forecast']['claim']) else pp) / 100 - (1 if c['forecast']['truth'] else 0)) ** 2 for c in F) / len(F)
+            best = max(best, s)
+    assert best <= 0.55, round(best, 3)   # 0.5 is guessing

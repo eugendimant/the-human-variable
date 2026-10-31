@@ -1,6 +1,6 @@
 """Real-browser checks: every format plays and reveals, keyboard play, no overflow at phone width, axe accessibility,
 and a live-classroom round with three phones. Skipped when Playwright or Chromium is unavailable."""
-import json, threading
+import json, re, threading
 from pathlib import Path
 import pytest
 pw = pytest.importorskip('playwright.sync_api')
@@ -201,3 +201,20 @@ def test_offline_tutor_matches_server_rules(browser):
     assert not bad2, (len(bad2), bad2[:10])   # review 15, M1: natural phrasings stay on the decision
     r = pg.evaluate("THV.curated('What is the capital of France?', THV.ALL[0]).text"); assert 'outside' in r
     assert not pg.errors, pg.errors; pg.close()
+
+
+def test_served_confidence_prompts_read_cleanly(browser, tmp_path):
+    """Review 16, M1: with the public bank (no answers), every format's confidence prompt is complete."""
+    import subprocess, sys, socket, time, os
+    s = socket.socket(); s.bind(('127.0.0.1', 0)); port = s.getsockname()[1]; s.close()
+    env = dict(os.environ, PORT=str(port), THV_DATA_DIR=str(tmp_path))
+    proc = subprocess.Popen([sys.executable, 'start_classroom.py'], cwd=str(Path(__file__).resolve().parents[1]), env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    try:
+        time.sleep(1.5); pg = page(browser); bad = []
+        for fmt in ('choice', 'causal', 'multi', 'estimate', 'rank', 'delegate'):
+            c = next(x for x in LIVE if x['format'] == fmt)
+            pg.goto(f'http://127.0.0.1:{port}/?play={c["id"]}'); pg.wait_for_timeout(400)
+            txt = pg.inner_text('#view')
+            if re.search(r'\b(undefined|null|NaN)\b', txt): bad.append((c['id'], fmt))
+        assert not bad, bad; pg.close()
+    finally: proc.kill()

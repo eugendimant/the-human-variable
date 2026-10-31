@@ -78,7 +78,7 @@ def test_public_challenge_hides_answers():
             if isinstance(o, dict): keys.update(o); [walk(v) for v in o.values()]
             elif isinstance(o, list): [walk(v) for v in o]
         walk(cl.public_challenge(c))
-        assert not keys & {'answer', 'multiAnswers', 'rankAnswer', 'target', 'truth', 'values', 'valueLabels', 'why', 'explain', 'answerTitle', 'implication', 'boundary', 'follow', 'chart', 'tolerance'}, c['id']
+        assert not keys & {'answer', 'multiAnswers', 'rankAnswer', 'target', 'truth', 'values', 'valueLabels', 'why', 'explain', 'answerTitle', 'implication', 'boundary', 'follow', 'chart'}, c['id']   # tolerance is served: the band defines a hit in the confidence prompt and says nothing about the target
 
 def test_class_lock_with_two_classes(tmp_path):
     """Review 3, minor 13: a decision revealed in one class stays locked for another class that has not revealed it."""
@@ -104,7 +104,7 @@ def test_lock_lapses_when_class_idle_and_reopen_unreleases(tmp_path, monkeypatch
 def test_student_join_does_not_revive_the_lock(tmp_path):
     """Review 5, M4: only instructor activity keeps a class locking evidence."""
     s = cl.Store(tmp_path / 'grief.sqlite3'); a = s.create('A'); s.join(a['code'])
-    db = s.db(); db.execute('UPDATE sessions SET beat=?', (cl.time.time() - 10 * 60,)); db.commit(); s._lock = None
+    db = s.db(); db.execute('UPDATE sessions SET beat=?', (cl.time.time() - 30 * 60,)); db.commit(); s._lock = None
     assert s.class_lock()[0] is False
     s.join(a['code']); s._lock = None
     assert s.class_lock()[0] is False

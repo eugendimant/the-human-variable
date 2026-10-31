@@ -80,7 +80,7 @@ def run():
         st.write(c['scene']); st.subheader(c['question'])
         with st.form(key='f' + c['id']):
             r = response_widgets(c, c['id'], R['code'])
-            conf = None if c['format'] in ('forecast', 'allocate') else st.number_input('How sure are you that you got it right? (0 to 100%)', min_value=0, max_value=100, value=None, step=5, placeholder='Your confidence')
+            conf = None if c['format'] in ('forecast', 'allocate') else st.number_input((f"How sure are you that you land within {c['estimate']['tolerance']}{' points' if c['estimate'].get('unit', '%') == '%' else c['estimate'].get('unit', '')} of the study value? (0 to 100%)" if c['format'] == 'estimate' else 'How sure are you that you got it right? (0 to 100%)'), min_value=0, max_value=100, value=None, step=5, placeholder='Your confidence')
             if st.form_submit_button('Lock my answer', type='primary'):
                 if r is None or (c['format'] not in ('forecast', 'allocate') and conf is None): st.error('Give your answer and your confidence first.')
                 else:

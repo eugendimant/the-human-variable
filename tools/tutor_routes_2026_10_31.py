@@ -9,7 +9,8 @@ bank['tutorRoutes'] = {
  'suffixes': ['ations', 'ation', 'ments', 'ment', 'ions', 'ion', 'ing', 'ers', 'ed', 'es', 'er', 'e', 's', 'ly'],
  'syn': {'experienc skill': 'junior senior novic newer newcom veteran tenur rooki junio senio', 'less': 'reduct reduc decreas fell lower cut drop', 'rose': 'increas rais higher grew improv'},
  'routes': [
-  ['offtopic', r'\b(poem|joke|weather|recipe|capital of|song|lyrics|horoscope|stock tip|write (me )?(code|python|an essay)|translate)\b'],
+  ['offtopic', r'\b(poem|haiku|limerick|joke|weather|recipe|capital of|song|lyrics|horoscope|stock (tip|price)|share price|world cup|super bowl|tax return|homework|movie|write (me )?(code|python|javascript|an essay)|translate|bitcoin)\b'],
+  ['action', r'\b(what should (i|we) do|what do (i|we) do|next steps?|monday( morning)?|what would you do|how (do|should|can) (i|we) (use|apply|act on) (this|it))\b'],
   ['ethics', r'\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)'],
   ['models', r'\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\b'],
   ['who', r'\b(who (was|were) (studied|in it|tested|the participants)|participants?|how many (people|participants|subjects|workers|agents)|sample size|who took part|population)\b'],
@@ -21,6 +22,6 @@ bank['tutorRoutes'] = {
   ['pilot', r'\b(test (this|it)|pilot|in (my|our) (company|team|firm|organi[sz]ation)|roll ?out|measure (it|this))\b'],
   ['size', r'\b(big|size|large|how much|practice|magnitude)\b'],
   ['transfer', r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\w*)']],
- 'subgroupFollow': r'^(who\b|which (workers|agents|employees|people|consultants|staff|groups?)\b)',
+ 'subgroupFollow': r'^(who\b.*\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\b)',
 }
 p.write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('routes')

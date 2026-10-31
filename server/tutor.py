@@ -108,6 +108,9 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         if exact: return out(exact[0]['a'], c)
         jac = lambda f: len(set(tokens(f['q'])) & qt) / max(1, len(set(tokens(f['q'])) | qt))
         if fol and jac(max(fol, key=jac)) >= 0.6: return out(max(fol, key=jac)['a'], c)
+        has = lambda w: any(w == x or (min(len(w), len(x)) >= 3 and (w.startswith(x) or x.startswith(w))) for x in qt)
+        sub = [f for f in fol if set(tokens(f['q'])) and all(has(w) for w in tokens(f['q']))]   # every content word of a follow-up appears in the question (fix ~ fixed)
+        if sub: return out(max(sub, key=lambda f: len(set(tokens(f['q']))))['a'], c)
     named = [] if c and names(question, c['id']) else [cid for cid in CHALLENGES if (not c or not set(CHALLENGES[cid]['sources']) & set(c['sources'])) and names(question, cid)]
     if named:
         open_ = [x for x in named if not (exclude and exclude(x))]
@@ -120,6 +123,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         for name, rx in R['routes']:
             if not re.search(rx, ql): continue
             if name == 'offtopic': return off
+            if name == 'action': return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
             if name == 'models':
                 fm = [f for f in fol if re.search(r'\b(GPT|Claude|Llama|Gemini|ChatGPT|Bing|DALL|Midjourney)', f['a'])] or [f for f in fol if re.search(r'\b(models?|tools?)\b', f['q'], re.I)]
                 if fm: return out(fm[0]['a'], c)
