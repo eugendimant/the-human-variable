@@ -245,7 +245,7 @@ function dagAlt(d) {
 const DAG_DRAWN = new WeakSet();   // the arrows animate once per reveal, not on every re-render
 function dag(d, rev) {
   const fresh = rev && !DAG_DRAWN.has(d); if (rev) DAG_DRAWN.add(d);
-  const W = 520, H = Math.min(d.height || 200, Math.max(...d.nodes.map(n => n.y)) + 34);  // no empty band under the lowest box
+  const W = 520, H = Math.min(d.height || 200, Math.max(...d.nodes.map(n => n.y)) + Math.max(34, Math.min(...d.nodes.map(n => n.y))));  // as much room under the lowest box as above the highest
   const node = Object.fromEntries(d.nodes.map(n => [n.id, n]));
   const edge = ([a, b, style0], i) => { const style = rev ? style0 : ''; const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 72; const x1 = A.x + ux * pad, y1 = A.y + uy * pad * .45, x2 = B.x - ux * pad, y2 = B.y - uy * pad * .45;
     // Before the reveal the diagram shows which factors are in play, not which way the arrows run.

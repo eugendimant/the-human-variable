@@ -42,3 +42,6 @@ bank = json.loads((ROOT / 'src/bank.json').read_text()); C = {c['id']: c for c i
 C['social13']['options'] = [{'Clear gains, precisely estimated in every round': 'Clear gains, precisely estimated across rounds'}.get(o, o) for o in C['social13']['options']]
 C['dimant-conspiracy-choice']['options'] = [{'A hunch that the posts might be true after all': 'A hunch that the posts might be true'}.get(o, o) for o in C['dimant-conspiracy-choice']['options']]
 (ROOT / 'src/bank.json').write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('ok2')
+bank = json.loads((ROOT / 'src/bank.json').read_text()); C = {c['id']: c for c in bank['challenges']}
+for n in C['axe12']['dag']['nodes']: n['y'] = 70   # centred in its box now that the diagram has one row
+(ROOT / 'src/bank.json').write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('ok3')

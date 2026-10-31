@@ -463,13 +463,13 @@
   },
   {
    "source": "dell26",
-   "quote": "Preregistered field experiment with 758 BCG consultants",
-   "location": "Design (journal PDF)"
+   "quote": "GPT + overview leads to a 1.48 increase in scores over the control mean of 4.37, representing a 33.9% increase, with GPT only producing a 1.31 (or 29.9%) increase.",
+   "location": "Section 4.1, Inside the frontier"
   },
   {
    "source": "dell26",
-   "quote": "GPT + overview leads to a 1.48 increase in scores over the control mean of 4.37, representing a 33.9% increase, with GPT only producing a 1.31 (or 29.9%) increase.",
-   "location": "Section 4.1, Inside the frontier"
+   "quote": "The preregistered experiment involved 758 knowledge workers.",
+   "location": "Abstract, Organization Science, version of record (Crossref)"
   }
  ],
  "rollout1": [
@@ -559,8 +559,8 @@
   },
   {
    "source": "dell26",
-   "quote": "Preregistered field experiment with 758 BCG consultants",
-   "location": "Design (journal PDF)"
+   "quote": "The preregistered experiment involved 758 knowledge workers.",
+   "location": "Abstract, Organization Science, version of record (Crossref)"
   }
  ],
  "rollout4": [
@@ -3101,6 +3101,16 @@
    "quote": "In two studies with 699 people, working in groups of two to five",
    "location": "Abstract, PubMed 20929725",
    "source": "team10"
+  },
+  {
+   "source": "riedl21",
+   "quote": "We find strong support for a general factor of CI using meta-analytic methods in a dataset comprising 22 studies,",
+   "location": "Abstract, PNAS 118(21), version of record (Crossref)"
+  },
+  {
+   "source": "riedl21",
+   "quote": "The proportion of women in a group is a significant predictor of group performance, mediated by social perceptiveness.",
+   "location": "Abstract, PNAS 118(21), version of record (Crossref)"
   }
  ],
  "social12": [

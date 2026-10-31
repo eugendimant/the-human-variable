@@ -7537,20 +7537,20 @@
       "id": "ai",
       "label": "Uses AI",
       "x": 70,
-      "y": 100
+      "y": 70
      },
      {
       "id": "lazy",
       "label": "Seen as lazy",
       "x": 260,
-      "y": 100,
+      "y": 70,
       "mask": true
      },
      {
       "id": "rating",
       "label": "Rating",
       "x": 440,
-      "y": 100
+      "y": 70
      }
     ],
     "edges": [
