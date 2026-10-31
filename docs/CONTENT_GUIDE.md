@@ -28,7 +28,11 @@ Use `docs/audit/SCHEMA.md` for the fields. Use the format the evidence supports:
 - Rank only when every value is reported.
 - Allocate only when each option has a comparable reported effect.
 - Delegate for task routing grounded in measured performance.
-- Causal when the lesson is about identification.
+- Causal when the lesson is about identification. Before the call the diagram shows only the factors in play (the asked-about one masked); the links arrive with the reveal, because links narrow the options.
+
+Decision ids are permanent keys. When an item changes format (for example `dimant-enforcers-rank` became a forecast), the id stays, so players' records, shared `?play=` links and class CSVs keep working.
+
+Two decisions on one paper must not give opposing manager actions. When two papers seem to disagree, each item carries a follow-up that says how the designs differ.
 
 ## Making a change
 

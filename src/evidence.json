@@ -448,11 +448,6 @@
   },
   {
    "source": "dell26",
-   "quote": "representing a 33.9% increase, with GPT only producing",
-   "location": "Results (p. 6; GPT-only 29.9% in same passage)"
-  },
-  {
-   "source": "dell26",
    "quote": "Propose at least 10 ideas for a new shoe targeting an underserved market or sport.",
    "location": "Task description (p. 6)"
   },
@@ -480,6 +475,11 @@
    "source": "dell26",
    "quote": "Preregistered field experiment with 758 BCG consultants",
    "location": "Design (journal PDF)"
+  },
+  {
+   "source": "dell26",
+   "quote": "GPT + overview leads to a 1.48 increase in scores over the control mean of 4.37, representing a 33.9% increase, with GPT only producing a 1.31 (or 29.9%) increase.",
+   "location": "Section 4.1, Inside the frontier"
   }
  ],
  "rollout1": [
@@ -566,6 +566,11 @@
    "source": "dell26",
    "quote": "Draft a press release marketing copy for your product.",
    "location": "Inside-frontier tasks (p. 6)"
+  },
+  {
+   "source": "dell26",
+   "quote": "Preregistered field experiment with 758 BCG consultants",
+   "location": "Design (journal PDF)"
   }
  ],
  "rollout4": [
@@ -1873,6 +1878,11 @@
    "source": "mellers14",
    "quote": "This score measures individual accuracy; 0 is the best score, and 2 is the worst score.",
    "location": "p. 1108, Questions and measures, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "Year 1 began with 2,246 participants",
+   "location": "Method"
   }
  ],
  "forecast-training": [
@@ -2140,11 +2150,6 @@
    "source": "prox22",
    "quote": "the effects of examples of violation are significantly larger than the effects of examples of compliance",
    "location": "Published version of record, Table 2 discussion (Observation, p < 0.001)"
-  },
-  {
-   "source": "prox22",
-   "quote": "Observation, p < 0.001",
-   "location": "Published version of record, Table 2 discussion (values as printed)"
   },
   {
    "source": "prox22",
@@ -3364,6 +3369,11 @@
    "source": "hate23",
    "quote": "with a significant proportion of participants exhibiting a propensity for inflicting harm (−22.9%, red bar bottom-left panel)",
    "location": "Management Science, p. 10"
+  },
+  {
+   "source": "hate23",
+   "quote": "comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.",
+   "location": "Abstract"
   }
  ],
  "social16": [
@@ -3371,6 +3381,11 @@
    "source": "hate23",
    "quote": "the default indeed increases altruism at the aggregate level: antisocial (taking) behavior toward the outgroup is reduced from about 20% to essentially 0% of the initial endowment and prosocial (giving) behavior to the ingroup increased from about 10%–15% to about 25%–35% of the initial endowment. The difference in behavior toward one's political ingroup and outgroup remains highly statistically significant (p < 0.001).",
    "location": "Management Science, Articles in Advance, p. 11, Section 3.1.5.1"
+  },
+  {
+   "source": "hate23",
+   "quote": "comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.",
+   "location": "Abstract"
   }
  ],
  "social20": [
@@ -3995,6 +4010,11 @@
    "source": "zhou24",
    "quote": "AI-assisted artists who can successfully explore more novel ideas, regardless of their prior originality",
    "location": "Results"
+  },
+  {
+   "source": "zhou24",
+   "quote": "our research shows that over time, text-to-image AI significantly enhances human creative productivity by 25%",
+   "location": "Abstract"
   }
  ],
  "genai2": [

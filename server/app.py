@@ -28,9 +28,14 @@ def public_source(s: dict) -> dict:
     out = {k: v for k, v in s.items() if k not in SOURCE_PRIVATE}
     out['verification'] = {k: v for k, v in s.get('verification', {}).items() if k in ('status', 'checked', 'metadata', 'text_read')}
     return out
-def with_sources(c: dict) -> dict:
-    """A full decision plus the private fields of its sources, for /api/reveal and /api/library."""
-    return c | {'sourceNotes': {sid: {k: BANK['sources'][sid][k] for k in ('takeaway', 'flags') if k in BANK['sources'][sid]} | (
+SRC_DECISIONS = {}
+for _c in BANK['challenges']:
+    for _s in _c['sources']: SRC_DECISIONS.setdefault(_s, []).append(_c['id'])
+def with_sources(c: dict, hide=None) -> dict:
+    """A full decision plus the private fields of its sources, for /api/reveal and /api/library.
+    A source's takeaway can state a sibling decision's answer, so during a class it travels only once every decision on that source is open."""
+    keys = lambda sid: ('flags',) if hide and any(hide(x) for x in SRC_DECISIONS.get(sid, []) if x in CHALLENGES) else ('takeaway', 'flags')
+    return c | {'sourceNotes': {sid: {k: BANK['sources'][sid][k] for k in keys(sid) if k in BANK['sources'][sid]} | (
         {'note': BANK['sources'][sid]['verification']['note']} if BANK['sources'][sid].get('verification', {}).get('note') else {}) for sid in c['sources'] if sid in BANK['sources']}}
 def public_bank() -> dict:
     """The bank as served to browsers: questions and bibliographic records, no answers. Evidence is fetched after a call is locked."""
@@ -53,7 +58,8 @@ def page(name: str) -> bytes:
 def blocked(cid: str) -> bool:
     """During a live class on this server, evidence is released only for decisions the class has already revealed."""
     locked, allowed = STORE.class_lock()
-    return locked and cid not in allowed
+    # a decision open or closed-but-unrevealed in any class stays held even if the instructor's console went quiet
+    return (locked and cid not in allowed) or cid in STORE.open_challenges()
 CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; "
        f"font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors {FRAME_ANCESTORS}")
 
@@ -140,10 +146,10 @@ class Handler(BaseHTTPRequestHandler):
                 cid = urllib.parse.unquote(p.rsplit('/', 1)[1])
                 if cid not in CHALLENGES: return self.json(404, {'error': 'Unknown decision'})
                 if blocked(cid): return self.json(409, {'error': 'A live class is running on this server. Practice mode returns when it ends, and revealed decisions stay open.', 'class_lock': True})
-                return self.json(200, with_sources(CHALLENGES[cid]))
+                return self.json(200, with_sources(CHALLENGES[cid], blocked))
             if p == '/api/library':
                 locked = STORE.class_lock()[0]
-                return self.json(200, {'challenges': [with_sources(c) for c in CHALLENGES.values() if not blocked(c['id'])], 'class_lock': locked,
+                return self.json(200, {'challenges': [with_sources(c, blocked) for c in CHALLENGES.values() if not blocked(c['id'])], 'class_lock': locked,
                                        'themes': [] if locked else BANK.get('themes', [])})
             if p == '/api/instructor/bank':
                 code = (qs.get('code') or [''])[0].upper()
@@ -183,7 +189,7 @@ class Handler(BaseHTTPRequestHandler):
                 if not cheap and not LIMIT.allow(self.ip(), 'ip_tutor'): return self.json(429, {'error': 'The tutor is busy on this network. Ask again in a moment.'}, {'Retry-After': '5'})
                 cid = d.get('challenge')
                 if cid and blocked(cid): return self.json(200, {'answer': 'The tutor opens for this decision after your instructor reveals it.', 'citations': [], 'mode': 'locked'})
-                return self.json(200, TUTOR.ask(q, cid, str(d.get('client', ''))[:40] or self.ip(), ip=self.ip(), exclude=blocked if STORE.class_lock()[0] else None))
+                return self.json(200, TUTOR.ask(q, cid, str(d.get('client', ''))[:40] or self.ip(), ip=self.ip(), exclude=blocked if (STORE.class_lock()[0] or STORE.open_challenges()) else None))
             if p == '/api/rooms':
                 if not LIMIT.allow(self.ip(), 'create'): return self.json(429, {'error': 'Too many sessions created from this network. Try again later.'})
                 if not PASSCODE and not LOOPBACK: return self.json(403, {'error': 'This server has no instructor passcode set. Set THV_INSTRUCTOR_PASSCODE before creating sessions.'})

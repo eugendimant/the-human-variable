@@ -22,11 +22,18 @@ TOK = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
 def tokens(s: str) -> list[str]:
     import unicodedata   # Köbis and Kobis, Zünd and Zund match
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
-    out = [t for t in TOK.findall(s.lower()) if t not in STOP and len(t) > 2]
+    out = [stem(t) for t in TOK.findall(s.lower()) if t not in STOP and (len(t) > 2 or t.isdigit())]
     return out + [SYN[t] for t in out if t in SYN]
 
+def stem(t: str) -> str:
+    """Light suffix stripping, so improve/improved/improvement and reduce/reduction meet."""
+    for suf in ('ations', 'ation', 'ments', 'ment', 'ions', 'ion', 'ing', 'ers', 'ed', 'es', 'er', 'e', 's', 'ly'):
+        if t.endswith(suf) and len(t) - len(suf) >= 4: return t[:-len(suf)]
+    return t
+
 # words students use for what the papers call experience or skill
-SYN = {w: 'experienced' for w in ('junior', 'juniors', 'senior', 'seniors', 'novice', 'novices', 'newer', 'newcomers', 'veterans', 'tenure', 'rookies')}
+SYN = {w: 'experienc' for w in ('junior', 'senior', 'novic', 'newer', 'newcom', 'veteran', 'tenur', 'rooki', 'junio', 'senio')}
+SYN |= {w: 'less' for w in ('reduct', 'reduc', 'decreas', 'fell', 'lower', 'cut', 'drop')} | {w: 'rose' for w in ('increas', 'rais', 'higher', 'grew', 'improv')}
 
 def cite_label(sid: str) -> str:
     s = SOURCES[sid]; return f"{s['authors']} ({s['year']})"
@@ -88,6 +95,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         cites = [{'id': s, 'label': cite_label(s)} for s in c['sources']]
         if re.search(r'\b(test|pilot|measure|company|my team|roll ?out)\b', ql):
             return {'answer': f"Run a small randomized pilot: give the change to some teams or customers and not to others, fix one outcome metric in advance, and compare after a set period. For this finding: {c['implication']} What the study measured: {c['explain']}", 'citations': cites, 'mode': 'curated'}
+        if re.search(r'\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)', ql):
+            return {'answer': f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|always|everywhere|replicat)', ql):
             return {'answer': f"{c['boundary']} The study itself: {c['explain']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|setup|set up)\b', ql) and not re.search(r'\b(my|our)\b', ql):
@@ -96,7 +105,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         if re.search(r'\b(big|size|large|much|practice|magnitude)\b', ql):
             return {'answer': f"{c['explain']} {c.get('study', {}).get('n', '') and 'Sample: ' + c['study']['n'] + '.'} In practice: {c['implication']}".strip(), 'citations': cites, 'mode': 'curated'}
         qt = set(tokens(question)); best = max(c.get('follow', []), key=lambda f: len(qt & set(tokens(f['q'] + ' ' + f['a']))), default=None)
-        if best and len(qt & set(tokens(best['q'] + ' ' + best['a']))) >= 1:
+        if best and len(qt & set(tokens(best['q'] + ' ' + best['a']))) >= min(2, len(qt)):
             return {'answer': best['a'], 'citations': cites, 'mode': 'curated'}
     qt = set(tokens(question))
     docs = []
@@ -109,13 +118,14 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             # several decisions on one paper: pick the one whose text best matches the question's topic words
             body = lambda cid: ' '.join([CHALLENGES[cid]['answerTitle'], CHALLENGES[cid]['explain'], CHALLENGES[cid]['question']])
             if cands: docs.append({'id': max(cands, key=lambda cid: len(qt & set(tokens(body(cid))))), 'kind': 'decision', 'body': d['body']})
-    if docs and c and docs[0]['id'] != c['id'] and not names(question, docs[0]['id']):
+    if docs and c and docs[0]['id'] != c['id'] and not names(question, docs[0]['id']) and not set(CHALLENGES[docs[0]['id']]['sources']) & set(c['sources']):
         # a decision is on screen: answer about it, not a neighbour, unless the question names the other study
         if len(qt & set(tokens(' '.join([c['question'], c['answerTitle'], c['explain'], c.get('implication', '')])))) >= max(1, len(qt) / 3): docs = [{'id': c['id']}]
     if docs:
         d = docs[0]; cc = CHALLENGES[d['id']]
         return {'answer': f"{cc['explain']} {cc['implication']}", 'citations': [{'id': s, 'label': cite_label(s)} for s in cc['sources']], 'mode': 'curated'}
-    if exclude and [d for d in retrieve(question, challenge_id, 3) if d['kind'] == 'decision' and len(qt & set(tokens(d['body']))) > len(qt) / 2]:
+    named_src = [sid for sid, s in SOURCES.items() if set(tokens(s['authors'])) - {'and'} & qt and SRC_USERS.get(sid)]
+    if exclude and (any(all(exclude(x) for x in SRC_USERS[sid]) for sid in named_src) or [d for d in retrieve(question, challenge_id, 3) if d['kind'] == 'decision' and len(qt & set(tokens(d['body']))) > len(qt) / 2]):
         return {'answer': 'That study opens after your instructor reveals it in class.', 'citations': [], 'mode': 'locked'}
     return {'answer': 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', 'citations': [], 'mode': 'curated'}
 

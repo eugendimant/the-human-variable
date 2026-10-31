@@ -167,3 +167,36 @@ def test_tutor_serves_a_class_behind_one_address(base, tmp_path, monkeypatch):
         try: codes.append(urllib.request.urlopen(r).status)
         except urllib.error.HTTPError as e: codes.append(e.code)
     assert codes.count(200) == 30, codes
+
+
+def test_source_takeaway_waits_for_every_sibling(base, tmp_path, monkeypatch):
+    """Review 11, M3: a revealed decision's source note must not state an unrevealed sibling's answer."""
+    monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 'sib.sqlite3'))
+    monkeypatch.setattr(app, 'LIMIT', app.Limiter())
+    users = {}
+    for c in cl.CHALLENGES.values():
+        for s in c['sources']: users.setdefault(s, []).append(c['id'])
+    sid, (a, b, *_) = next((s, u) for s, u in users.items() if len(u) > 1 and cl.BANK['sources'][s].get('takeaway'))
+    _, room, _ = req(base, '/api/rooms', {'title': 'sib'}, client='inst8'); key = room['secret']
+    req(base, f"/api/rooms/{room['code']}/join", {}, client='stu8')
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'open', 'challenge': a}, key=key, client='inst8')
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'reveal'}, key=key, client='inst8'); app.STORE._lock = None; app.STORE._open = None
+    s, full, _ = req(base, '/api/reveal/' + a, client='peek8'); assert s == 200
+    assert 'takeaway' not in full['sourceNotes'][sid], sid                                              # sibling b is still locked
+    lib = req(base, '/api/library', client='peek8')[1]
+    assert all('takeaway' not in x['sourceNotes'].get(sid, {}) for x in lib['challenges'])
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'end'}, key=key, client='inst8'); app.STORE._lock = None
+
+
+def test_open_question_stays_held_when_the_console_goes_quiet(base, tmp_path, monkeypatch):
+    """Review 11, minor 6: if the instructor's laptop sleeps, the open question must not open up."""
+    monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 'quiet.sqlite3'))
+    monkeypatch.setattr(app, 'LIMIT', app.Limiter())
+    c = next(iter(cl.CHALLENGES.values()))
+    _, room, _ = req(base, '/api/rooms', {'title': 'quiet'}, client='inst7'); key = room['secret']
+    req(base, f"/api/rooms/{room['code']}/join", {}, client='stu7')
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'open', 'challenge': c['id']}, key=key, client='inst7')
+    monkeypatch.setattr(cl, 'CLASS_LOCK_IDLE_MIN', 0); app.STORE._lock = None; app.STORE._open = None
+    assert app.STORE.class_lock()[0] is False                                                          # the console went quiet
+    assert req(base, '/api/reveal/' + c['id'], client='peek7')[0] == 409
+    req(base, f"/api/rooms/{room['code']}/control", {'action': 'end'}, key=key, client='inst7')

@@ -3,7 +3,7 @@ The text_read line keeps saying which version was read; the DOI stays the refere
 import json, re
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]; p = ROOT / 'src/bank.json'; bank = json.loads(p.read_text())
-REHOST = r'gwern\.net|rivista\.ai|scispace\.com|hods\.org|mattalldian\.com|cesifo1_wp|/wp\d|workingpaper'
+REHOST = r'gwern\.net|rivista\.ai|scispace\.com|hods\.org|mattalldian\.com|econreadinggroup|cesifo1_wp|/wp\d|workingpaper'
 n = 0
 for s in bank['sources'].values():
     v = s.get('verification', {})

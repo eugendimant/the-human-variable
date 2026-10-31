@@ -354,3 +354,21 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 209 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 2 Major found and addressed. Next: independent review 11.
+
+## Iteration 16 (2026-10-31)
+
+**Verified first:** iteration-15 fixes, by independent review 11 (snapshot `snap_r11`): pooled skill headline, tutor header, enforcers forecast, axe01 routes, projector delegate and allocate scaling, record layout and empty state, unknown play link, numeric reveal head. Not held: choice and multi projector bars; offline tutor misrouting.
+
+**Independent score:** 81/100 (review 11, `qa/reviews/review11.md`). 0 Blocking, 4 Major.
+
+**Fixes:**
+- **M1.** dimant-contagion-multi cites only the 2019 contagion paper; its action now says close peers copy more and bad conduct most. Both Dimant items carry a follow-up that reconciles the 2019 and 2022 designs (closeness to the observed peer versus a shared-identity cue that made good examples spread too). Rule recorded in the content guide.
+- **M2.** axb14 says 33.9% with GPT-4 and a prompt-engineering overview, 29.9% with GPT-4 alone, quoting the full sentence. The quoted-numbers gate now covers follow-up answers (14 numbers fixed: six quotes added from the papers, six follow-ups rewritten, names excluded), and a new gate fails quotes that stop mid-sentence.
+- **M3.** The home card no longer states ai02's answer; a gate fails any page code that hard-codes a decision's result. A source's takeaway travels only when every decision on that source is open (class) or played (solo dialog). Test: revealing one sibling does not release the paper's takeaway.
+- **M4.** Offline tutor (server and page): light stemming and number tokens, follow-ups need two shared words, ethics and "should we" questions get scope and action, siblings on the same paper are fair answers, a named author whose decisions are all locked returns "locked". Regression tests for the reviewer's questions.
+- **Minors.** Library principles and findings open only after a call on that theme; forecasts with true-resolving predictions and a famous result that held (axb13, opioid, axe10, bz08); causal diagrams show only the factors before the call and draw the links one by one at the reveal; distractors in biz05, genai1, judg02, social13; choice, multi and histogram projector bars scale to the room; an open or closed-unrevealed question stays held even if the console goes quiet (test); share bars on a 0 to 100 scale; provenance labels (plural24 rechecked verbatim, OpenAlex abstracts, one more re-host link); padding quote removed; study line reads as sentences; Streamlit navigation moved to the sidebar so the game's own header is the only top bar; ids kept as permanent keys (content guide).
+- **Visual.** On wide screens the questions, scope and tutor sit under the finding, beside the sticky evidence figure, so the reveal has no dead column.
+
+**Gates:** build check, 218 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 4 Major found and addressed. Next: independent review 12.

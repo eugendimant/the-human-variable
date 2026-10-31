@@ -15,4 +15,4 @@ pages = [
     st.Page(instructor.run, title='Run a class', url_path='teach'),
     st.Page(tutor_page.run, title='Ask the tutor', url_path='tutor'),
 ]
-st.navigation(pages, position='top').run()
+st.navigation(pages, position='sidebar').run()   # the game has its own top navigation; class pages sit in the sidebar

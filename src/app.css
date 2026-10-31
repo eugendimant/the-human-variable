@@ -551,9 +551,9 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
   .focus:has(.reveal) .focus-top{max-width:none}
   .reveal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
   .reveal>*{grid-column:1}
-  .reveal>figure.gap{grid-column:2;grid-row:1/span 6;position:sticky;top:24px;margin-top:0}
+  .reveal>figure.gap{grid-column:2;grid-row:1/span 20;position:sticky;top:24px;margin-top:0}
   .reveal>section.gap{grid-column:2}
-  .reveal>.deep{grid-column:1/-1}
+  .reveal>.deep{grid-column:1}   /* the questions sit under the finding, beside the evidence */
   .reveal .reveal-title{max-width:16ch}
   .focus:has(.reveal) .actionbar-in{max-width:1240px}
 }
@@ -566,3 +566,8 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
 .gh-gap{margin:0;justify-self:end;font-weight:700;font-size:var(--t4);color:var(--ink)}
 .gap:has(.gap-head) .gap-legend{display:none}
 @media (max-width:520px){.gap-head{grid-template-columns:1fr 1fr}.gh-gap{grid-column:1/-1;justify-self:start}}
+
+/* causal reveal: the links arrive one at a time */
+@keyframes edIn{from{opacity:0}to{opacity:1}}
+.dag .ed{opacity:0;animation:edIn .45s ease forwards}
+@media (prefers-reduced-motion:reduce){.dag .ed{opacity:1;animation:none}}

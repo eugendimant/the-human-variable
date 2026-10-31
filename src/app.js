@@ -157,7 +157,7 @@ function heroTry() {
     <label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
     <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">
     <div class="axis"><span>${e.min}%</span><span>${e.max}%</span></div>`}
-    <p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time, and graders rated the work 18% better. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} points off.`}` : ''}</p>
+    <p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} points off.`}` : ''}</p>
     <div class="try-foot">${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}<span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
   </section>`;
 }
@@ -210,7 +210,7 @@ function instrument(c) {
   if (c.format === 'choice' || c.format === 'causal' || c.format === 'multi') {
     const isEv = i => c.format === 'multi' ? c.multiAnswers.includes(i) : i === c.answer;
     const picked = i => Array.isArray(r) ? r.includes(i) : r === i;
-    return `${c.format === 'causal' && c.dag ? dag(c.dag, rev) + (rev ? '' : '<p class="hint dag-hint">Dotted lines link factors that may be connected. The reveal shows which way each arrow runs.</p>') : ''}<div class="opts" role="group" aria-label="Answer options">${optionOrder(c).map((o, j) => `<button class="opt ${rev && isEv(o.i) ? 'is-ev' : ''}" data-choice="${o.i}" aria-pressed="${picked(o.i)}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${j + 1}</span><span>${esc(o.t)}</span>${rev && (isEv(o.i) || picked(o.i)) ? `<span class="mark">${picked(o.i) ? '<span class="dot dot-you"></span>Your call' : ''}${isEv(o.i) ? '<span class="dot dot-ev"></span>Evidence' : ''}</span>` : ''}</button>`).join('')}</div>`;
+    return `${c.format === 'causal' && c.dag ? dag(c.dag, rev) + (rev ? '' : '<p class="hint dag-hint">The factors in play. The reveal draws the links the study found.</p>') : ''}<div class="opts" role="group" aria-label="Answer options">${optionOrder(c).map((o, j) => `<button class="opt ${rev && isEv(o.i) ? 'is-ev' : ''}" data-choice="${o.i}" aria-pressed="${picked(o.i)}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${j + 1}</span><span>${esc(o.t)}</span>${rev && (isEv(o.i) || picked(o.i)) ? `<span class="mark">${picked(o.i) ? '<span class="dot dot-you"></span>Your call' : ''}${isEv(o.i) ? '<span class="dot dot-ev"></span>Evidence' : ''}</span>` : ''}</button>`).join('')}</div>`;
   }
   if (c.format === 'estimate') {
     const e = c.estimate, v = r ?? Math.round((e.min + e.max) / 2);
@@ -240,15 +240,18 @@ function instrument(c) {
 // Before the reveal, the accessible description lists boxes and arrows only; the written explanation (d.alt) states the answer.
 function dagAlt(d) {
   const lab = n => n.mask ? 'an unknown factor' : n.label, by = Object.fromEntries(d.nodes.map(n => [n.id, n]));
-  return `Causal diagram. Factors: ${d.nodes.map(lab).join(', ')}. Possible links, direction not shown: ${d.edges.map(([a, b]) => lab(by[a]) + ' and ' + lab(by[b])).join('; ')}.`;
+  return `Causal diagram. Factors in play: ${d.nodes.map(lab).join(', ')}. The links appear after your call.`;
 }
+const DAG_DRAWN = new WeakSet();   // the arrows animate once per reveal, not on every re-render
 function dag(d, rev) {
+  const fresh = rev && !DAG_DRAWN.has(d); if (rev) DAG_DRAWN.add(d);
   const W = 520, H = Math.min(d.height || 200, Math.max(...d.nodes.map(n => n.y)) + 34);  // no empty band under the lowest box
   const node = Object.fromEntries(d.nodes.map(n => [n.id, n]));
-  const edge = ([a, b, style0]) => { const style = rev ? style0 : ''; const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 72; const x1 = A.x + ux * pad, y1 = A.y + uy * pad * .45, x2 = B.x - ux * pad, y2 = B.y - uy * pad * .45;
+  const edge = ([a, b, style0], i) => { const style = rev ? style0 : ''; const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 72; const x1 = A.x + ux * pad, y1 = A.y + uy * pad * .45, x2 = B.x - ux * pad, y2 = B.y - uy * pad * .45;
     // Before the reveal the diagram shows which factors are in play, not which way the arrows run.
-    if (!rev) return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#9aa6b6" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>`;
-    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
+    // Before the reveal the diagram shows only the factors in play; links would narrow the options. The reveal draws them one by one.
+    if (!rev) return '';
+    return `<line ${fresh ? `class="ed" style="animation-delay:${0.25 + i * 0.35}s"` : ''} x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
   return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(rev ? d.alt : dagAlt(d))}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n0 => { const n = !rev && n0.mask ? { ...n0, label: '?', hidden: true } : n0; return `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="17" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>` }).join('')}</svg>`;
 }
 
@@ -296,14 +299,15 @@ function gapHead(you, ev, gap, youLab = 'Your call', evLab = 'The study') {
 }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {
-  const mx = Math.max(...ch.values.map(Math.abs)) || 1;
+  const share = ch.unit === '%' && ch.values.every(v => v >= 0 && v <= 100) && Math.max(...ch.values) >= 20;   // shares read on a 0 to 100 scale
+  const mx = share ? 100 : Math.max(...ch.values.map(Math.abs)) || 1;
   return `<div class="hbars" role="img" aria-label="${esc(ch.labels.map((l, i) => l + ' ' + ch.values[i] + (ch.unit || '')).join(', '))}">${ch.values.map((v, i) => `<div class="hb-row"><span class="hb-label">${esc(ch.labels[i])}</span><span class="hb-track"><i class="grow ${i === ch.highlight ? 'ev' : ''}" style="width:${Math.max(1.5, Math.abs(v) / mx * 100)}%"></i></span><b class="num">${esc(v + (ch.unit || ''))}</b></div>`).join('')}</div>`;
 }
 
 function studyLine(c) {
   const src = SOURCE[c.sources[0]]; const d = c.study || {};
   const who = d.n && !/not (stated|confirmed)/i.test(d.n) ? d.n : '';
-  return [d.design, who].filter(Boolean).join(', ') + (d.design || who ? '. ' : '') + `${src.venue}, ${src.year}.`;
+  return [d.design, who].filter(Boolean).map(x => x.replace(/\.$/, '')).join('. ') + (d.design || who ? '. ' : '') + `${src.venue}, ${src.year}.`;
 }
 function play() {
   const c = card();
@@ -357,8 +361,9 @@ function tutorPanel(c) {
 }
 function curated(q, c) {
   const stop = new Set('what which where when does that this with from about have should would there their these they them then into could work study research finding found people your thing much more make'.split(' '));
-  let terms = (q.toLowerCase().match(/[a-z]{4,}/g) || []).filter(w => !stop.has(w));
-  if (terms.some(w => /^(juniors?|seniors?|novices?|newer|newcomers|veterans|tenure|rookies)$/.test(w))) terms = terms.concat('experienced');   // the papers' word for it
+  const stem = w => { for (const s of ['ations', 'ation', 'ments', 'ment', 'ions', 'ion', 'ing', 'ers', 'ed', 'es', 'er', 'e', 's', 'ly']) if (w.endsWith(s) && w.length - s.length >= 4) return w.slice(0, -s.length); return w };   // as in server/tutor.py
+  let terms = (q.toLowerCase().match(/[a-z]{4,}|\d+/g) || []).filter(w => !stop.has(w)).map(stem);
+  if (terms.some(w => /^(junior|senior|novic|newer|newcom|veteran|tenur|rooki)/.test(w))) terms = terms.concat('experienc');   // the papers' word for it
   const fields = x => [x.concept, x.title, x.explain, x.boundary, x.implication, x.scene, ...(x.follow || []).map(f => f.q + ' ' + f.a)].join(' ').toLowerCase();
   const scoreOf = x => terms.reduce((s, t) => s + (fields(x).includes(t) ? 1 : 0), 0) + (x.id === c.id ? 1.5 : 0);
   const best = ALL.map(x => ({ x, s: scoreOf(x) })).sort((a, b) => b.s - a.s)[0];
@@ -368,7 +373,8 @@ function curated(q, c) {
   if (/\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|set ?up)\b/i.test(q) && !/\b(my|our)\b/i.test(q) && c.study) return { text: `Design: ${c.study.design}; sample: ${c.study.n}.\n\n${c.explain}`, cites: cs };
   if (/\b(test|pilot|company|measure)\b/i.test(q)) return { text: `Start with a small randomized pilot: assign the change to some teams and not others, fix the outcome metric in advance, and compare. ${c.implication}\n\nThe study itself: ${c.explain}`, cites: [cite(c.sources[0])] };
   if (/today|hold|still|generali|apply|transfer|everywhere|always/i.test(q)) return { text: `${c.boundary}\n\n${c.explain}`, cites: [cite(c.sources[0])] };
-  if (fq && fq.s >= 1) return { text: fq.f.a, cites: [cite(c.sources[0])] };
+  if (/\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)/i.test(q)) return { text: `The study measures what happened, not what is right; that call is yours. What it covers: ${c.boundary}\n\nWhat a manager can do with it: ${c.implication}`, cites: cs };
+  if (fq && fq.s >= Math.min(2, terms.length)) return { text: fq.f.a, cites: [cite(c.sources[0])] };
   const named = x => x.sources.some(id => SOURCE[id] && (SOURCE[id].authors.toLowerCase().match(/[a-z]{4,}/g) || []).some(a => terms.includes(a)));
   if (best && best.x.id !== c.id && best.x.explain && best.s >= 3 && (named(best.x) || !terms.some(t => fields(c).includes(t)))) return { text: `A related study in the lab: ${best.x.explain}\n\nWhere it applies: ${best.x.implication}`, cites: [cite(best.x.sources[0])] };
   const topical = terms.some(t => fields(c).includes(t)) || (best && best.s - (best.x.id === c.id ? 1.5 : 0) >= 1);
@@ -409,11 +415,14 @@ function libHead() {
   return `<h1>Library</h1><div class="lib-tabs" role="tablist" aria-label="Library"><button role="tab" aria-selected="${st.view === 'almanac'}" data-nav="almanac">Principles</button><button role="tab" aria-selected="${st.view === 'atlas'}" data-nav="atlas">All decisions</button></div>`;
 }
 function almanac() {
-  const themes = BANK.themes || [];
+  const themes = BANK.themes || [], played = new Set(records.map(r => r.id));
   return `<section class="atlas-head wrap">${libHead()}
     <nav class="theme-index" aria-label="Themes">${themes.map(t => `<a href="#theme-${esc(t.id)}">${esc(t.title)}</a>`).join('')}</nav></section>
-    <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; return `<article class="theme panel" id="theme-${esc(t.id)}">${art(t.id)}<div class="theme-head"><h2>${esc(t.title)}</h2><p>${(t.principle ? esc(t.principle) : libraryLoaded ? 'Held back while a live class is running on this server.' : 'Loading…')}</p></div>
-      <details class="theme-more"><summary>The ${cs.length} findings behind it</summary><ul class="findings">${cs.map(c => `<li><div><strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small></div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
+    <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; const seen = cs.filter(c => played.has(c.id)).length;
+      // predict first: a principle and its findings open once the player has made calls on them
+      const line = !t.principle ? (libraryLoaded ? 'Held back while a live class is running on this server.' : 'Loading…') : seen ? esc(t.principle) : `Make a call on any of these ${cs.length} studies to open the principle.`;
+      return `<article class="theme panel" id="theme-${esc(t.id)}">${art(t.id)}<div class="theme-head"><h2>${esc(t.title)}</h2><p>${line}</p></div>
+      <details class="theme-more"><summary>The ${cs.length} findings behind it${seen && seen < cs.length ? `, ${seen} opened` : ''}</summary><ul class="findings">${cs.map(c => `<li><div>${played.has(c.id) && c.explain ? `<strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small>` : `<strong>${esc(c.title)}</strong><br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. The finding opens after your call.</small>`}</div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
       <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play these ${cs.length}</button></article>` }).join('')}</section>`;
 }
 
@@ -472,7 +481,7 @@ function closeModal() { if (!qs('#overlay').innerHTML) return; qs('#overlay').in
 function sourceModal(id) {
   const s = SOURCE[id]; if (!s) return; const v = s.verification || {}; const used = ALL.filter(c => c.sources.includes(id));
   modal(`<span class="kicker">Peer-reviewed source</span><h2>${esc(s.title)}</h2><p><strong>${esc(s.authors)}</strong> (${s.year}). <i>${esc(s.venue)}</i>${s.volume ? `, ${esc(s.volume)}` : ''}${s.pages ? `, ${esc(s.pages)}` : ''}.</p>
-    ${s.takeaway ? `<p><strong>What the lab uses.</strong> ${esc(s.takeaway)}</p>` : '<p>The finding appears once you play a decision built on this paper.</p>'}
+    ${s.takeaway && used.every(c => records.some(r => r.id === c.id)) ? `<p><strong>What the lab uses.</strong> ${esc(s.takeaway)}</p>` : `<p>The paper’s finding appears here once you have played ${used.length > 1 ? 'every decision' : 'the decision'} built on it.</p>`}
     <p><strong>How it was checked.</strong> ${esc(srcStatus(s)[0])}${v.checked ? ' on ' + esc(v.checked) : ''}. Metadata matched against the DOI registry.${v.note ? ' ' + esc(v.note) : ''}</p>
     ${used.length ? `<p><strong>Decisions built on it:</strong> ${used.map(c => `<button class="link-btn" data-play="${esc(c.id)}">${esc(c.title)}</button>`).join(', ')}.</p>` : ''}
     <p><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article (DOI ${esc(s.doi)})</a></p>`, 'Source details');

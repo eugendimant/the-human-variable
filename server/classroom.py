@@ -282,7 +282,7 @@ def public_challenge(c: dict) -> dict:
         d = c['dag']; out['dag'] = {k: v for k, v in d.items() if k not in ('alt', 'nodes', 'edges')}
         ren = {n['id']: f'n{i}' for i, n in enumerate(d['nodes'])}   # neutral ids: a masked node's id must not name it
         out['dag']['nodes'] = [{k: v for k, v in n.items() if k not in ('label', 'id')} | {'id': ren[n['id']], 'label': '?' if n.get('mask') else n['label']} for n in d['nodes']]
-        out['dag']['edges'] = [[ren[e[0]], ren[e[1]]] for e in d['edges']]
+        out['dag']['edges'] = []   # links narrow the options; they arrive with the evidence
     if c['format'] == 'multi': out['pick'] = len(c['multiAnswers'])
     if c['format'] == 'rank': out['nRank'] = len(c['rankAnswer'])
     return out

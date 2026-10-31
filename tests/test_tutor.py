@@ -121,3 +121,18 @@ def test_curated_answers_by_author_name():
     from server import tutor as tu
     r = tu.curated('What did Salvi find about GPT-4 persuasion?', None)
     assert 'outside' not in r['answer'] and r['citations']
+
+
+@pytest.mark.parametrize('q,cid,bad', [
+    ('Is this ethical to use in sales?', 'axb08', 'No. Humans'),
+    ('Which study shows a 40% time reduction?', None, 'outside what this lab covers'),
+    ('How was the experiment run?', 'axe01', 'towel'),
+    ('Should juniors or seniors get AI first?', None, 'outside what this lab covers'),
+])
+def test_offline_tutor_regressions(q, cid, bad):
+    """Review 10 and 11, M4: one shared word is not a match; ethics questions get scope and action; design questions get the design."""
+    r = T.curated(q, cid); assert bad not in r['answer'], (q, r['answer'][:120])
+
+def test_offline_tutor_names_a_locked_study():
+    r = T.curated('What did Cohn find about lost wallets?', None, exclude=lambda x: True)
+    assert r['mode'] == 'locked'

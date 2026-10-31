@@ -300,7 +300,7 @@
     "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "full text (OUP HTML, read via fetch summarizer; short quotes)",
+    "text_read": "Full text (OUP HTML version of record); quoted sentences rechecked verbatim on 2026-10-31",
     "text_url": "https://academic.oup.com/pnasnexus/article/3/10/pgae413/7822208"
    }
   },
@@ -1233,8 +1233,7 @@
     "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Full text (published Econometrica version with journal header) plus Econometric Society abstract",
-    "text_url": "https://econreadinggroup.github.io/assets/Abeler%20et%20al.%20(2019,%20ECTA).pdf"
+    "text_read": "Full text (published Econometrica version with journal header) plus Econometric Society abstract"
    }
   },
   "gachter16": {
@@ -1878,7 +1877,7 @@
     "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_read": "Published abstract, as indexed word by word in the OpenAlex record of the Organization Science article",
     "text_url": "https://api.openalex.org/works/doi:10.1287/orsc.2023.18441"
    }
   },
@@ -1899,7 +1898,7 @@
     "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_read": "Published abstract, as indexed word by word in its OpenAlex record",
     "text_url": "https://api.openalex.org/works/doi:10.1177/0022242920957347"
    }
   },
@@ -1920,7 +1919,7 @@
     "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_read": "Published abstract, as indexed word by word in its OpenAlex record",
     "text_url": "https://api.openalex.org/works/doi:10.1177/0956797620948841"
    }
   },
@@ -2326,7 +2325,7 @@
     },
     {
      "q": "Did people keep using it?",
-     "a": "Yes. Two weeks later, people who had ChatGPT access were about twice as likely to report using it in their real jobs, and about 1.6 times as likely two months later."
+     "a": "Yes. Two weeks and two months later, people who had ChatGPT access were more likely to report using it in their real jobs."
     }
    ],
    "format": "estimate",
@@ -2895,7 +2894,7 @@
    "options": [
     "Above-average households raised their electricity use",
     "Some already-efficient households raised usage",
-    "Heavy users raised their use after feedback",
+    "Descriptive feedback alone kept low users steady",
     "A smiley face kept efficient homes steady"
    ],
    "answerTitle": "A norm message can backfire",
@@ -3457,7 +3456,7 @@
     "Large gains, mostly in final rounds",
     "No effect, though estimates were noisy",
     "Unfavorable to women, mostly in early rounds",
-    "Favorable to women, some with large standard errors"
+    "Favorable to women, with imprecise estimates"
    ],
    "answer": 3
   },
@@ -3521,7 +3520,7 @@
    "scene": "A workshop leader says: “Losses always hurt more than equal gains feel good.”",
    "question": "Which two statements fit the loss-aversion evidence?",
    "options": [
-    "Every loss must hurt twice as much as a matching gain",
+    "Loss aversion held steady when gamble ranges changed",
     "Loss aversion can reverse in experiments",
     "The distributions of outcomes can matter"
    ],
@@ -4199,7 +4198,7 @@
     },
     {
      "q": "Could people tell they faced an AI?",
-     "a": "Often. Participants identified AI opponents in about three of four cases; for human opponents, identification was near chance (52.0%)."
+     "a": "Often. Participants identified AI opponents in about three of four cases; for human opponents, identification was near chance."
     },
     {
      "q": "Did humans use the profile well?",
@@ -4409,7 +4408,7 @@
    "format": "forecast",
    "concept": "Customer spillovers",
    "title": "Do customers notice the AI?",
-   "scene": "A firm rolls out a generative-AI assistant that suggests replies to its customer-support agents, in stages across 5,172 agents.",
+   "scene": "A firm rolls out a generative-AI assistant that suggests replies to its customer-support agents, in stages across 5,172 agents. The support director predicts calmer customers.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "After agents got AI assistance, customers became less likely to ask for a manager.",
@@ -4459,7 +4458,7 @@
     "unit": "%"
    },
    "answerTitle": "25.1% faster, with more tasks done",
-   "explain": "Consultants with GPT-4 completed 12.2% more tasks and worked 25.1% faster, and graded quality rose 33.9% with GPT-4 alone.",
+   "explain": "Consultants with GPT-4 completed 12.2% more tasks and worked 25.1% faster. Graded quality rose 33.9% with GPT-4 and a prompt-engineering overview, and 29.9% with GPT-4 alone.",
    "implication": "Pilot AI on drafting and ideation first, and measure speed, completion and blind-graded quality together.",
    "boundary": "One firm's consultants on designed tasks for a fictional company; on a task outside the frontier, AI users were less often correct.",
    "sources": [
@@ -4811,7 +4810,7 @@
    "follow": [
     {
      "q": "How much spending was tested?",
-     "a": "The 25 experiments represented $2.8 million in digital advertising expenditure."
+     "a": "The experiments represented $2.8 million in digital advertising expenditure."
     },
     {
      "q": "How big would a decisive test be?",
@@ -4901,7 +4900,7 @@
     },
     {
      "q": "How far off was the average?",
-     "a": "Students predicted 33.9 days on average; actual completion averaged 55.5 days."
+     "a": "Students predicted 33.9 days on average; actual completion took about three weeks longer."
     },
     {
      "q": "Why do people underestimate?",
@@ -5066,7 +5065,7 @@
    "format": "forecast",
    "concept": "Fines as prices",
    "title": "Fines for late pickup",
-   "scene": "Ten Israeli day-care centers tracked late pickups for 20 weeks. In week 5, six centers began fining parents NIS 10 for arriving 10+ minutes late. In week 17 the fine was dropped.",
+   "scene": "In a famous field experiment, ten Israeli day-care centers tracked late pickups for 20 weeks. In week 5, six centers began fining parents NIS 10 for arriving 10+ minutes late. In week 17 the fine was dropped.",
    "question": "What happened to late pickups after the fine ended?",
    "forecast": {
     "claim": "After the fine was removed, late pickups stayed at the higher level.",
@@ -5205,7 +5204,7 @@
     },
     {
      "q": "When was the original retracted?",
-     "a": "PNAS published the retraction notice on 13 September 2021."
+     "a": "PNAS retracted the original paper in 2021."
     },
     {
      "q": "Why did a failed replication matter so much?",
@@ -5623,7 +5622,7 @@
     },
     {
      "q": "How large is the evidence base?",
-     "a": "90 experimental studies from economics, psychology and sociology, covering 270,616 decisions by 44,390 subjects."
+     "a": "Experimental studies from economics, psychology and sociology, covering 270,616 decisions by 44,390 subjects."
     }
    ],
    "study": {
@@ -6179,7 +6178,7 @@
     },
     {
      "q": "How big was the tournament?",
-     "a": "Year 1 began with 2,246 participants; of 199 questions posted, 85 (Year 1) and 114 (Year 2) closed and were scored."
+     "a": "Year 1 began with 2,246 participants; of 199 questions posted, eighty-five (Year 1) and 114 (Year 2) closed and were scored."
     },
     {
      "q": "How is accuracy scored?",
@@ -6475,6 +6474,10 @@
     {
      "q": "Were the groups different at the start?",
      "a": "No. Initial takers were 45%, 44% and 42% across conditions (p = 0.703), so the gap emerged from watching peers."
+    },
+    {
+     "q": "Does this match Dimant’s 2019 contagion study?",
+     "a": "Yes. Both find that people copy bad examples more readily than good ones. Here a minimal shared-identity cue made good examples spread too; in the 2019 study, closeness to the observed peer amplified the spread of bad choices."
     }
    ],
    "study": {
@@ -6503,11 +6506,10 @@
    ],
    "answerTitle": "Bad behavior spreads more, especially among close peers",
    "explain": "Dimant shows, with 185 lab participants, that seeing an anti-social peer prompted people to revise their choice 33.7% of the time, against 19.4% for a pro-social peer. Under high social proximity the gap widened to 88.2% versus 34.8%.",
-   "implication": "Address visible misconduct inside tight-knit teams quickly; close peers copy it more readily than they copy good conduct.",
+   "implication": "In tight-knit teams people copy what close peers do, and bad conduct most of all: act on visible misconduct quickly and make good conduct just as visible.",
    "boundary": "Experiment with pro- and anti-social choices and peers who varied in social proximity.",
    "sources": [
-    "contagion19",
-    "prox22"
+    "contagion19"
    ],
    "follow": [
     {
@@ -6521,6 +6523,10 @@
     {
      "q": "What is the finding meant to inform?",
      "a": "Norm-based interventions: the paper argues its results help design policies that encourage pro-social and reduce anti-social behavior."
+    },
+    {
+     "q": "Does the 2022 proximity study say the same?",
+     "a": "It fits. Here closeness meant being near the observed peer, and close peers’ bad choices spread most. In Bicchieri, Dimant, Gächter and Nosenzo (2022), a minimal shared-identity cue made people copy good examples as well as bad ones, which halted the erosion of compliance."
     }
    ],
    "study": {
@@ -6739,7 +6745,7 @@
    "track": "Business",
    "concept": "Incentive follow-through",
    "title": "Cards on top of cash",
-   "scene": "A program paid US veterans cash to return unused opioid pills. Researchers randomly added two reminder cards built on timely reminders, planning prompts and loss framing.",
+   "scene": "A program paid US veterans cash to return unused opioid pills. Researchers randomly added two reminder cards built on timely reminders, planning prompts and loss framing. The program director expects the cards to pay for themselves.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "Adding the reminder cards lowered the program's cost per pill returned.",
@@ -7266,7 +7272,7 @@
    "format": "forecast",
    "concept": "AI ad creative",
    "title": "Will AI images win the click?",
-   "scene": "Researchers generated 10,320 marketing images with seven text-to-image models from 2,400 human-made images, then ran a live ad test with over 173,000 impressions.",
+   "scene": "Researchers generated 10,320 marketing images with seven text-to-image models from 2,400 human-made images, then ran a live ad test with over 173,000 impressions. The creative team predicts a machine-made image can win.",
    "question": "Is this what the study found?",
    "forecast": {
     "claim": "In the live ad test, an AI-generated image beat the human-made image on click-through rate.",
@@ -7589,7 +7595,7 @@
    "options": [
     "Average content novelty rose",
     "Favorites per view rose",
-    "Peers rated their work lower",
+    "Prior originality decided who gained",
     "Output volume rose",
     "Visual novelty increased"
    ],
@@ -8541,7 +8547,7 @@
     "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_read": "Published abstract, as indexed word by word in its OpenAlex record",
     "text_url": "https://api.openalex.org/works/doi:10.1002/smj.3322"
    }
   },
@@ -8562,7 +8568,7 @@
     "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Abstract reconstructed from OpenAlex record",
+    "text_read": "Published abstract, as indexed word by word in its OpenAlex record",
     "text_url": "https://api.openalex.org/works/doi:10.5465/amj.2022.0426"
    }
   }

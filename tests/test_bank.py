@@ -254,7 +254,7 @@ def test_causal_labels_do_not_name_the_answer():
         if ans & vis: bad.append((c['id'], sorted(ans & vis)))
     assert not bad, bad
 
-WORDS = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10, 'half': 50, 'third': 33}
+WORDS = {'eighty-five': 85, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10, 'half': 50, 'third': 33}
 def _quote_has(n, qnums, qtext):
     v = float(n); d = len(n.split('.')[1]) if '.' in n else 0
     for q in qnums:
@@ -269,8 +269,8 @@ def test_every_explained_number_is_quoted():
     for c in LIVE:
         qtext = ' '.join(q['quote'] for q in ev.get(c['id'], [])).lower().replace(',', '')
         qnums = [float(x) for x in re.findall(r'(?<![\w.])-?\.?\d+(?:\.\d+)?', qtext) if x not in ('-', '.')]
-        txt = (c['explain'] + ' ' + c['answerTitle']).replace(',', '')
-        txt = re.sub(r'\b(Stud(y|ies)|Experiments?|GPT|DALL-E|Midjourney v)[- ]?\d+[a-z]?(\s*(to|and|-)\s*\d+[a-z]?)?', ' ', txt)  # names, not results
+        txt = ' '.join([c['explain'], c['answerTitle']] + [f['a'] for f in c.get('follow', [])]).replace(',', '')   # review 11: follow-ups too
+        txt = re.sub(r'\b(Stud(y|ies)|Experiments?|GPT|DALL-E|Midjourney v|Fortune|Firefly|Imagen)[- ]?\d+[a-z]?(\s*(to|and|-)\s*\d+[a-z]?)?', ' ', txt)  # names, not results
         for n in re.findall(r'(?<![\w.-])\d+(?:\.\d+)?', txt):
             if re.fullmatch(r'(19|20)\d\d', n): continue
             if not _quote_has(n, qnums, qtext): bad.append((c['id'], n))
@@ -281,5 +281,23 @@ def test_every_explained_number_is_quoted():
 def test_no_rehosted_or_working_paper_links_in_provenance():
     """Provenance links point to publishers, authors, institutions or indexes, never to third-party re-hosts or working papers."""
     import re
-    bad = [k for k, s in BANK['sources'].items() if re.search(r'gwern\.net|rivista\.ai|scispace\.com|hods\.org|mattalldian\.com|cesifo1_wp|/wp\d|workingpaper', s.get('verification', {}).get('text_url', ''), re.I)]
+    bad = [k for k, s in BANK['sources'].items() if re.search(r'gwern\.net|rivista\.ai|scispace\.com|hods\.org|mattalldian\.com|econreadinggroup|cesifo1_wp|/wp\d|workingpaper', s.get('verification', {}).get('text_url', ''), re.I)]
+    assert not bad, bad
+
+
+def test_quotes_do_not_stop_mid_sentence():
+    """Review 11, M2: a quote cut off before the number it should support (", with GPT only producing") passes a number gate but misleads."""
+    ev = json.loads((ROOT / 'src/evidence.json').read_text())
+    bad = [(k, q['quote'][-40:]) for k, qs in ev.items() if isinstance(qs, list) for q in qs
+           if re.search(r'\b(with|the|a|an|of|and|by|for|producing|than|was|were)$', q['quote'].strip().rstrip(',;:').lower())]
+    assert not bad, bad
+
+
+def test_page_code_states_no_finding():
+    """Review 11, M3: page code must not hard-code a decision's result (the home card once said 'graders rated the work 18% better')."""
+    js = (ROOT / 'src/app.js').read_text() + (ROOT / 'src/classroom.js').read_text(); bad = []
+    for c in LIVE:
+        for n in re.findall(r'(\d+(?:\.\d+)?)%', c['explain'] + ' ' + c['answerTitle']):
+            if n not in ('0', '50', '100') and re.search(r'(?<![\d.])' + re.escape(n) + r'%', js): bad.append((c['id'], n))
+        bad += [(c['id'], c['answerTitle']) for _ in [0] if c['answerTitle'] in js]
     assert not bad, bad
