@@ -106,7 +106,12 @@ async function lock() {
     st.pending = { response: st.resp, confidence: c.format === 'forecast' ? null : st.conf };
     st.phase = 'reveal'; render(true); roomSubmit(c, st.pending); return;
   }
-  locking = true; const okFull = await ensureFull(c.id); locking = false; if (!okFull) return;
+  locking = true; const b = qs('#lock-btn'); if (b) { b.disabled = true; b.textContent = PUBLIC ? 'Checking the evidence' : 'Locked' }
+  qs('.focus-card')?.classList.add('is-locked');
+  const okFull = await ensureFull(c.id);
+  if (!okFull) { locking = false; syncLock(); if (b) b.textContent = 'Try again'; qs('.focus-card')?.classList.remove('is-locked'); return }
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) await new Promise(z => setTimeout(z, 420));
+  locking = false;
   finalize(c, st.resp, c.format === 'forecast' ? null : st.conf);
   st.phase = 'reveal'; render(true);
 }
@@ -144,7 +149,8 @@ function home() {
   const dimant = Object.values(SOURCE).filter(s => isLive(s) && /Dimant/.test(s.authors));
   const paths = (BANK.paths || []).map(p => ({ ...p, items: p.ids.filter(id => ALL.some(c => c.id === id)) })).filter(p => p.items.length);
   const done = new Set(records.map(r => r.id));
-  return `<section class="hero wrap"><div class="hero-grid">
+  const resume = paths.find(p => { const n = p.items.filter(id => done.has(id)).length; return n > 0 && n < p.items.length });
+  return `${resume ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button></div>` : ''}<section class="hero wrap"><div class="hero-grid">
     <div><h1>Predict what people do. Then see the evidence.</h1>
     <p class="hero-lede">Bet on the outcome of a real experiment on AI, work and human behavior. Then see how far your call landed from the result, and what a manager should do about it.</p>
     <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button>${location.protocol.startsWith('http') ? '<button class="link-btn" data-act="join">Join a live class</button>' : ''}</div>
@@ -539,7 +545,7 @@ document.addEventListener('click', e => {
   if (t.dataset.play) { closeModal(); const c = ALL.find(x => x.id === t.dataset.play); if (c) { st.seed = (Math.random() * 2 ** 32) >>> 0; start(c.case ? ALL.filter(x => x.case && x.case.id === c.case.id) : [c], c.case ? c.case.of : 1) } return }
   if (t.dataset.ask) { ask(t.dataset.ask); return }
   if (t.dataset.tab) { st.tab = t.dataset.tab; const y = scrollY; render(); scrollTo(0, y); qs(`[data-tab="${st.tab}"]`)?.focus(); return }
-  if (t.dataset.path) { const p = BANK.paths.find(x => x.id === t.dataset.path); const list = p.ids.map(id => ALL.find(c => c.id === id)).filter(Boolean); st.deck = list; st.i = 0; st.session = []; st.view = 'play'; resetCard(); render(true); return }
+  if (t.dataset.path) { const p = BANK.paths.find(x => x.id === t.dataset.path); const played = new Set(records.map(r => r.id)); let list = p.ids.map(id => ALL.find(c => c.id === id)).filter(Boolean); if (t.dataset.resume) { const rest = list.filter(c => !played.has(c.id)); if (rest.length) list = rest } st.deck = list; st.i = 0; st.session = []; st.view = 'play'; resetCard(); render(true); return }
   if (t.dataset.theme) { st.view = 'almanac'; st.almanacOpen = t.dataset.theme; render(true); qs('#theme-' + t.dataset.theme)?.scrollIntoView(); return }
   if (st.view === 'play' && st.phase === 'predict') {
     const c = card();
