@@ -1,0 +1,240 @@
+{
+ "sources": {
+  "loss79": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "authors_full": "Daniel Kahneman, Amos Tversky",
+    "volume_issue_pages": "47(2), 263-292 (Crossref gives start page 263 only; 263-292 from Econometric Society page)"
+   },
+   "text_read": "abstract only (Econometric Society and CAS abstract pages); Crossref metadata",
+   "text_url": "https://www.econometricsociety.org/publications/econometrica/1979/03/01/prospect-theory-analysis-decision-under-risk",
+   "key_findings": [
+    "\"value is assigned to gains and losses rather than to final assets\" (abstract)",
+    "value function \"is generally steeper for losses than for gains\" (abstract)",
+    "\"people underweight outcomes that are merely probable in comparison with outcomes that are obtained with certainty\" (abstract)",
+    "\"Decision weights are generally lower than the corresponding probabilities, except in the range of low probabilities\" (abstract)"
+   ],
+   "status": "verified"
+  },
+  "loss15": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "authors_full": "Lukasz Walasek, Neil Stewart",
+    "volume_issue_pages": "144(1), 7-11",
+    "online_date": "2014-12-08 (issue year 2015 is correct)"
+   },
+   "text_read": "abstract only (PubMed)",
+   "text_url": "https://pubmed.ncbi.nlm.nih.gov/?term=10.1037%2Fxge0000039",
+   "key_findings": [
+    "\"In 4 experiments, we tested this proposition by manipulating the range of gains and losses that individuals saw during the process of eliciting their loss aversion.\"",
+    "\"We were able to find loss aversion, loss neutrality, and even the reverse of loss aversion.\"",
+    "CONTESTED: André & de Langhe (2021), JEP:General 150(12), 2659-2665, doi:10.1037/xge0001052: estimates \"are computed on different lotteries in different conditions\"; \"the experimental paradigm violates measurement invariance, and is invalid\"; \"analyzing only the subset of lotteries that are common across conditions eliminates the pattern of results.\" (abstract, merit.url.edu record)"
+   ],
+   "status": "verified_with_corrections"
+  },
+  "avoid03": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "authors_full": "Christopher J. Anderson",
+    "volume_issue_pages": "129(1), 139-167"
+   },
+   "text_read": "abstract only (PubMed)",
+   "text_url": "https://pubmed.ncbi.nlm.nih.gov/?term=10.1037%2F0033-2909.129.1.139",
+   "key_findings": [
+    "\"This review relates findings across several different disciplines and uncovers 4 decision avoidance effects ... choice deferral, status quo bias, omission bias, and inaction inertia.\"",
+    "\"Prominent components of the model include cost-benefit calculations, anticipated regret, and selection difficulty.\""
+   ],
+   "status": "verified"
+  },
+  "contact05": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "authors_full": "J. Nicole Shelton, Jennifer A. Richeson",
+    "volume_issue_pages": "88(1), 91-107"
+   },
+   "text_read": "abstract only (Princeton research portal record)",
+   "text_url": "https://collaborate.princeton.edu/en/publications/intergroup-contact-and-pluralistic-ignorance/",
+   "key_findings": [
+    "Studies 1-2: \"Whites and Blacks would like to have more contact with the out-group\" but \"believe the out-group does not want to have contact with them\"",
+    "Studies 3-5: participants \"explained their own inaction in terms of their fear of being rejected because of their race\" but \"attributed the out-group members' inaction to their lack of interest\""
+   ],
+   "status": "verified"
+  },
+  "hate23": {
+   "metadata_ok": false,
+   "metadata_corrections": {
+    "year": "2024 (version of record: Management Science 70(1), 1-31, January 2024; online/articles-in-advance 2023). Keep 2023 only if citing online-first; DOI string contains 2023.",
+    "authors": "Eugen Dimant (sole author) - confirmed solo",
+    "title": "Hate Trumps Love: The Impact of Political Polarization on Social Preferences - confirmed exact",
+    "venue": "Management Science - confirmed"
+   },
+   "text_read": "abstract only (Crossref abstract)",
+   "text_url": "https://api.crossref.org/works/10.1287/mnsc.2023.4701",
+   "key_findings": [
+    "\"five preregistered studies in the context of Donald J. Trump\" \"comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.\"",
+    "\"ingroup-love occurs in the perceptional domain (how close one feels toward others)\" \"whereas outgroup-hate occurs in the behavioral domain\"",
+    "\"which can be attributed to one's grim expectations regarding cooperativeness of the opposing faction\"",
+    "\"popular behavioral interventions (defaults and norm-nudges) can reduce the detrimental impact of polarization\"",
+    "\"The tested interventions improve prosociality but are ineffective in closing the polarization gap.\""
+   ],
+   "status": "verified_with_corrections"
+  },
+  "contagion19": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "authors": "Eugen Dimant (sole author) - confirmed",
+    "volume_pages": "73, 66-88 (August 2019)"
+   },
+   "text_read": "abstract (EconPapers, VoR) + full text of working-paper version (CESifo WP 8263, April 2020); VoR full text not read",
+   "text_url": "https://www.ifo.de/DocDL/cesifo1_wp8263.pdf",
+   "key_findings": [
+    "\"we find that anti-social behavior is generally more contagious than pro-social behavior.\" (abstract)",
+    "\"social proximity amplifies the contagion of anti-social behavior more strongly than the contagion of pro-social behavior.\" (abstract)",
+    "\"Anti-social individuals are also most susceptible to the behavioral contagion of other anti-social peers.\" (abstract)",
+    "WP design: 185 active participants, 9 lab sessions, BaER-Lab Paderborn; give-or-take game with a charity (EUR 15); proximity = peer described as more vs less similar (25 dating-site questions); unknown/high/low treatments",
+    "WP: frequency of contagion 33.7% after anti-social vs 19.4% after pro-social observation (p=0.027); in non-high proximity conditions contagion \"is less frequent and not significantly different between the types of observed behavior\" (Sec. 3.3) [numbers from WP via fetch summary, re-check against VoR before quoting]"
+   ],
+   "status": "verified"
+  },
+  "measure23": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "authors": "Eugen Dimant (sole author) - confirmed; NOT coauthored. (The coauthored Dimant, Gelfand, Hochleitner & Sonderegger paper 'Strategic Behavior with Tight, Loose and Polarized Norms' is a different paper, CESifo WP 10233 / Management Science 2025.)",
+    "venue": "Economics Letters - confirmed",
+    "volume_article": "233, 111417 (December 2023)"
+   },
+   "text_read": "abstract only (IDEAS/RePEc); ScienceDirect not accessible",
+   "text_url": "https://ideas.repec.org/a/eee/ecolet/v233y2023ics0165176523004433.html",
+   "key_findings": [
+    "\"Existing methods focus on measuring norms in the form of what the average or most frequent behavior/opinion is in a given context.\"",
+    "\"The complementary method presented here offers the ability to measure the distribution of norm-related beliefs at the individual level in an incentive-compatible way,\"",
+    "\"This approach intuitively captures the tightness and looseness of norms, addressing scenarios where mean or modal outcomes may conceal underlying variations.\"",
+    "\"This paper is accompanied by ready-made Qualtrics software\""
+   ],
+   "status": "verified"
+  }
+ },
+ "challenges": {
+  "biz13": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Boundary (rational delay) is consistent with the review's cost-benefit component but not quoted from it; abstract only."
+   ],
+   "corrections": {},
+   "evidence": "Anderson 2003 abstract: \"uncovers 4 decision avoidance effects ... choice deferral, status quo bias, omission bias, and inaction inertia.\""
+  },
+  "biz14": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Anderson 2003 abstract: individuals avoid decisions by \"postponing them, failing to act, or accepting the status quo\"; status quo bias is one of the 4 effects."
+  },
+  "judg08": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Anderson 2003 abstract lists choice deferral among the 4 decision-avoidance effects."
+  },
+  "social14": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Minor: the feared rejection was race-based; groups were White and Black participants."
+   ],
+   "corrections": {
+    "explain": "Participants attributed their own avoidance to fear of being rejected because of their race, but the other group's avoidance to lack of interest."
+   },
+   "evidence": "Shelton & Richeson 2005 abstract: \"explained their own inaction in terms of their fear of being rejected because of their race\" but \"attributed the out-group members' inaction to their lack of interest\""
+  },
+  "judg01": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "K&T 1979 abstract: \"value is assigned to gains and losses rather than to final assets\""
+  },
+  "judg07": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Boundary correct: the fixed ~2:1 (2.25) coefficient comes from Tversky & Kahneman 1992, not the 1979 paper."
+   ],
+   "corrections": {},
+   "evidence": "K&T 1979 abstract: \"value is assigned to gains and losses rather than to final assets\"; value function \"is generally steeper for losses than for gains\""
+  },
+  "judg02": {
+   "verdict": "CORRECTABLE",
+   "issues": [
+    "Option 0 ('Loss aversion can reverse in experiments') rests on a contested result: André & de Langhe (2021, JEP:General 150(12), 2659-2665) argue the reversal is a measurement artifact (different lotteries per condition) and vanishes when only common lotteries are analyzed. The answer key presents it as settled.",
+    "Original abstract claim itself is accurately paraphrased."
+   ],
+   "corrections": {
+    "options[0]": "Measured loss aversion shifted with the range of gains and losses shown",
+    "explain": "Walasek & Stewart (2015) reported that measured loss aversion disappeared or reversed when the range of gains and losses changed; a reanalysis (André & de Langhe, 2021) argued this reflects different lotteries across conditions, so the reversal is contested.",
+    "boundary": "This does not imply that loss aversion is never observed, and the reversal finding itself has been challenged."
+   },
+   "evidence": "W&S 2015 abstract: \"We were able to find loss aversion, loss neutrality, and even the reverse of loss aversion.\" André & de Langhe 2021 abstract: \"analyzing only the subset of lotteries that are common across conditions eliminates the pattern of results.\""
+  },
+  "social15": {
+   "verdict": "CORRECTABLE",
+   "issues": [
+    "Scene misdescribes the design: not a workplace collaboration study; five preregistered studies (15 behavioral experiments, >8,600 participants) on Trump supporters vs opponents."
+   ],
+   "corrections": {
+    "scene": "Across a series of online experiments, Trump supporters and opponents report feeling closer to their own side and also make costly choices toward the other side."
+   },
+   "evidence": "Dimant (Management Science) abstract: \"ingroup-love occurs in the perceptional domain (how close one feels toward others)\" \"whereas outgroup-hate occurs in the behavioral domain\""
+  },
+  "social16": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Scene's 'leader' is a framing device; interventions were experimenter-implemented defaults and norm-nudges."
+   ],
+   "corrections": {},
+   "evidence": "Abstract: \"The tested interventions improve prosociality but are ineffective in closing the polarization gap.\""
+  },
+  "social17": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Abstract: outgroup hate \"can be attributed to one's grim expectations regarding cooperativeness of the opposing faction\""
+  },
+  "social18": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Scene says 'employees'; study was a lab experiment (185 active participants, Paderborn) with a give-or-take charity game. Boundary already hedges."
+   ],
+   "corrections": {},
+   "evidence": "Abstract: \"anti-social behavior is generally more contagious than pro-social behavior.\""
+  },
+  "social19": {
+   "verdict": "CORRECTABLE",
+   "issues": [
+    "Scene contrasts a close colleague with 'a stranger'; the design contrasted an anonymous peer described as more vs less similar (high vs low proximity), with an unknown-proximity control. All peers were anonymous."
+   ],
+   "corrections": {
+    "scene": "A team member sees an antisocial act by a colleague they know is similar to them rather than one who is dissimilar."
+   },
+   "evidence": "Abstract: \"social proximity amplifies the contagion of anti-social behavior more strongly than the contagion of pro-social behavior.\" WP 8263: high/low treatments told participants whether the observed peer was more or less similar than a second peer."
+  },
+  "social20": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Abstract: method measures \"the distribution of norm-related beliefs at the individual level\", \"addressing scenarios where mean or modal outcomes may conceal underlying variations\"; title names polarization."
+  },
+  "social21": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Option 0 wording ('How many different normative positions') slightly mischaracterizes the method, which elicits the shape/spread of the belief distribution, not a count. Suggested tweak only."
+   ],
+   "corrections": {
+    "options[0]": "How spread out (tight, loose or polarized) do they perceive views to be?"
+   },
+   "evidence": "Abstract: \"This approach intuitively captures the tightness and looseness of norms\""
+  },
+  "ai17": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Abstract: \"mean or modal outcomes may conceal underlying variations\"; boundary correctly flags AI application as extrapolation."
+  }
+ }
+}

@@ -1,0 +1,246 @@
+{
+ "sources": {
+  "long19": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "note": "Matches Crossref: Longoni, Bonezzi, Morewedge; JCR 46(4):629-650; online May 2019, print Dec 2019."
+   },
+   "text_read": "abstract only (Crossref abstract)",
+   "text_url": "https://api.crossref.org/works/10.1093/jcr/ucz013",
+   "key_findings": [
+    "\"Consumers are reluctant to utilize healthcare provided by AI in real and hypothetical choices, separate and joint evaluations.\"",
+    "\"Uniqueness neglect, a concern that AI providers are less able than human providers to account for consumers' unique characteristics and circumstances, drives consumer resistance to medical AI.\"",
+    "\"...is eliminated when AI provides care (a) that is framed as personalized (study 7), (b) to consumers other than the self (study 8), or (c) that only supports, rather than replaces, a decision made by a human healthcare provider (study 9).\""
+   ],
+   "status": "abstract_only"
+  },
+  "frame81": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "note": "Matches Crossref: Science 211(4481):453-458, 1981."
+   },
+   "text_read": "abstract only (Crossref abstract)",
+   "text_url": "https://api.crossref.org/works/10.1126/science.7455683",
+   "key_findings": [
+    "\"The psychological principles that govern the perception of decision problems and the evaluation of probabilities and outcomes produce predictable shifts of preference when the same problem is framed in different ways.\"",
+    "\"Reversals of preference are demonstrated in choices regarding monetary outcomes, both hypothetical and real, and in questions pertaining to the loss of human lives.\""
+   ],
+   "status": "abstract_only"
+  },
+  "anchor74": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "note": "Matches Crossref: Science 185(4157):1124-1131, 1974."
+   },
+   "text_read": "full text (OCR scan of the Science article hosted on a UW course site)",
+   "text_url": "https://sites.stat.washington.edu/peter/498.Sp16/Tversky.pdf",
+   "key_findings": [
+    "\"the median estimates of the percentage of African countries in the United Nations were 25 and 45\" (for starting values 10 and 65)",
+    "\"Payoffs for accuracy did not reduce the anchoring effect.\"",
+    "Availability: people \"assess the frequency of a class or the probability of an event by the ease with which instances\" ... come to mind",
+    "Base rates: \"the group from which the descriptions had been drawn consisted of 70 engineers and 30 lawyers.\" (insensitivity to prior probability under representativeness)",
+    "\"Experienced researchers are also prone to the same biases-when they think intuitively.\""
+   ],
+   "status": "verified"
+  },
+  "defaults01": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "note": "Matches Crossref: QJE 116(4):1149-1187, 2001."
+   },
+   "text_read": "abstract only (NBER WP 7682 abstract; Crossref has no abstract)",
+   "text_url": "https://www.nber.org/papers/w7682",
+   "key_findings": [
+    "\"First, 401(k) participation is significantly higher under automatic enrollment.\"",
+    "\"this switch to automatic enrollment dramatically changed the savings behavior of employees.\"",
+    "\"A substantial fraction of 401(k) participants hired under automatic enrollment exhibit what we call 'default' behavior--sticking to both the default contribution rate and the default fund allocation\"",
+    "\"This 'default' behavior appears to result both from participant inertia and from many employees taking the default as investment advice on the part of the company.\""
+   ],
+   "status": "abstract_only"
+  },
+  "hotel08": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "note": "Matches Crossref: JCR 35(3):472-482; online March 2008, print issue October 2008."
+   },
+   "text_read": "abstract only (Crossref abstract)",
+   "text_url": "https://api.crossref.org/works/10.1086/586910",
+   "key_findings": [
+    "\"Two field experiments examined the effectiveness of signs requesting hotel guests' participation in an environmental conservation program.\"",
+    "\"Appeals employing descriptive norms (e.g., 'the majority of guests reuse their towels') proved superior to a traditional appeal widely used by hotels that focused solely on environmental protection.\"",
+    "\"normative appeals were most effective when describing group behavior that occurred in the setting that most closely matched individuals' immediate situational circumstances (e.g., 'the majority of guests in this room reuse their towels')\""
+   ],
+   "status": "abstract_only"
+  },
+  "energy07": {
+   "metadata_ok": true,
+   "metadata_corrections": {
+    "note": "Matches Crossref: Schultz, Nolan, Cialdini, Goldstein, Griskevicius; Psychological Science 18(5):429-434, 2007."
+   },
+   "text_read": "abstract only (Crossref abstract); design details (door hangers, ~300 San Marcos CA households, smiley/frowny emoticons) from secondary source only (Salganik, Bit by Bit)",
+   "text_url": "https://api.crossref.org/works/10.1111/j.1467-9280.2007.01917.x",
+   "key_findings": [
+    "\"a descriptive normative message detailing average neighborhood usage produced either desirable energy savings or the undesirable boomerang effect, depending on whether households were already consuming at a low or high rate.\"",
+    "\"adding an injunctive message (conveying social approval or disapproval) eliminated the boomerang effect.\"",
+    "Secondary (Bit by Bit): doorhangers on \"300 households in San Marcos, California\"; researchers read meters; injunctive cue was a smiley/frown emoticon."
+   ],
+   "status": "abstract_only"
+  },
+  "norms24": {
+   "metadata_ok": false,
+   "metadata_corrections": {
+    "year": "2025 (version of record: Management Science 71(3):2245-2263, March 2025; published online/Articles in Advance in 2024, NHH news item dated 14 June 2024)",
+    "volume_issue_pages": "71(3):2245-2263",
+    "authors": "OK (Dimant, Gelfand, Hochleitner, Sonderegger)"
+   },
+   "text_read": "full text (author-hosted PDF on michelegelfand.com) plus Crossref abstract",
+   "text_url": "https://www.michelegelfand.com/_files/ugd/6df109_20edd4d076c5479b8c7221bf8a8b7552.pdf",
+   "key_findings": [
+    "\"Loose norms generate greater behavioral variance and polarization generates polarized responses.\"",
+    "\"In polarized environments, most individuals prefer extreme actions, which expose them to considerable strategic risk, to intermediate actions that minimize such risk.\"",
+    "\"Furthermore, in polarized and loose environments, personal traits and values play a larger role in determining actual behavior.\"",
+    "Design (full text): two-player public goods game, contributions 0-4 tokens; mean (low 1.6 / high 2.4) crossed with shape (tight/loose/polarized), shapes share \"the same average behavior\"; ~1,200 U.S. representative Prolific sample, ~200 per treatment."
+   ],
+   "status": "verified_with_corrections"
+  }
+ },
+ "challenges": {
+  "ai12": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Scene's 'told the system is highly accurate' is a generic paraphrase; abstract does not give accuracy wording, but studies 3A-3C show resistance persists despite provider performance information. Boundary is appropriately scoped."
+   ],
+   "corrections": {},
+   "evidence": "Abstract: \"Uniqueness neglect, a concern that AI providers are less able than human providers to account for consumers' unique characteristics and circumstances, drives consumer resistance to medical AI.\""
+  },
+  "biz01": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "NBER abstract: \"401(k) participation is significantly higher under automatic enrollment\"; \"dramatically changed the savings behavior\"; substantial fraction stick to default rate and allocation."
+  },
+  "biz02": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "NBER abstract: \"This 'default' behavior appears to result both from participant inertia and from many employees taking the default as investment advice on the part of the company.\""
+  },
+  "biz03": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Abstract: descriptive-norm appeals \"proved superior to a traditional appeal widely used by hotels that focused solely on environmental protection.\""
+  },
+  "biz04": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Pairwise significance of same-room vs. general-guest norm not checked (abstract only); abstract's 'most effective' claim covers the answer."
+   ],
+   "corrections": {},
+   "evidence": "Abstract: \"normative appeals were most effective when describing group behavior that occurred in the setting that most closely matched individuals' immediate situational circumstances (e.g., 'the majority of guests in this room reuse their towels')\""
+  },
+  "biz05": {
+   "verdict": "CORRECTABLE",
+   "issues": [
+    "Minor design misdescription: feedback was delivered on researcher-placed door hangers (with meter readings), not on a bill (secondary source). Findings and the two-answer key [0,1] are correct."
+   ],
+   "corrections": {
+    "scene": "A household already uses less electricity than its neighbors. A door-hanger feedback note shows it the higher neighborhood average."
+   },
+   "evidence": "Abstract: descriptive message \"produced either desirable energy savings or the undesirable boomerang effect, depending on whether households were already consuming at a low or high rate\"; \"adding an injunctive message ... eliminated the boomerang effect.\" Door-hanger delivery: Salganik, Bit by Bit (secondary)."
+  },
+  "biz06": {
+   "verdict": "CORRECTABLE",
+   "issues": [
+    "Minor: the study was run by researchers (door hangers, San Marcos CA), not by a utility; the approval cue was a smiley (below average) / frowny (above average) emoticon (secondary source). Abstract says 'eliminated', so 'counteracted' is accurate/conservative."
+   ],
+   "corrections": {
+    "scene": "Researchers add an approval cue (a smiley face for below-average users) to neighborhood comparison feedback."
+   },
+   "evidence": "Abstract: \"adding an injunctive message (conveying social approval or disapproval) eliminated the boomerang effect.\""
+  },
+  "biz09": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Abstract: \"Reversals of preference are demonstrated ... in questions pertaining to the loss of human lives.\""
+  },
+  "biz10": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Answer is an inference: the paper documents framing effects but does not test presenting both frames as a debiasing remedy. Explain text itself is supported; consider wording question as 'Which intervention follows from the finding?'."
+   ],
+   "corrections": {},
+   "evidence": "Abstract: \"The dependence of preferences on the formulation of decision problems is a significant concern for the theory of rational choice.\""
+  },
+  "biz11": {
+   "verdict": "CORRECTABLE",
+   "issues": [
+    "Boundary/follow answer says anchor effects depend on incentives; the cited paper reports the opposite for incentives. It also states experienced researchers are prone to the same biases when thinking intuitively, so 'expertise' as a moderator is not from this source."
+   ],
+   "corrections": {
+    "boundary": "Anchor effects vary with context, and a relevant anchor can carry real information; in the original study, paying for accuracy did not remove the effect.",
+    "follow[1].a": "Anchor effects vary with context, and a relevant anchor can carry real information; in the original study, paying for accuracy did not remove the effect."
+   },
+   "evidence": "Full text: \"Payoffs for accuracy did not reduce the anchoring effect.\" Wheel-of-fortune: \"the median estimates of the percentage of African countries in the United Nations were 25 and 45\" for starting values 10 and 65."
+  },
+  "biz12": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Full text: availability = assessing \"the frequency of a class or the probability of an event by the ease with which instances\" come to mind."
+  },
+  "social01": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Scene matches design: public goods game (cooperation), shapes with identical means (1.6 or 2.4). Answer key [0,1] correct; option 2 clearly false."
+   ],
+   "corrections": {},
+   "evidence": "Abstract: \"not only averages but also the shape of the whole distribution of behavior can play a crucial role\"; \"Loose norms generate greater behavioral variance and polarization generates polarized responses.\""
+  },
+  "social02": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Explain says 'many'; paper says 'most' (understatement, optional fix)."
+   ],
+   "corrections": {
+    "explain": "In the experiments, most individuals in polarized environments chose extreme actions over intermediate actions that would have minimized strategic risk."
+   },
+   "evidence": "Abstract: \"In polarized environments, most individuals prefer extreme actions, which expose them to considerable strategic risk, to intermediate actions that minimize such risk.\""
+  },
+  "social03": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Abstract/full text: \"Loose norms generate greater behavioral variance\"."
+  },
+  "judg03": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Full text: insensitivity to prior probability under representativeness, engineer/lawyer problem (\"70 engineers and 30 lawyers\")."
+  },
+  "judg04": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Safeguard is an inference, not tested in the paper; finding it rests on (insufficient adjustment from starting values) is supported."
+   ],
+   "corrections": {},
+   "evidence": "Full text: different starting values yield different estimates (medians 25 vs 45 for anchors 10 vs 65)."
+  },
+  "judg05": {
+   "verdict": "SUPPORTED",
+   "issues": [
+    "Market-share scenario is an application; boundary correctly notes the paper does not predict which frame wins in a new venture."
+   ],
+   "corrections": {},
+   "evidence": "Abstract: \"predictable shifts of preference when the same problem is framed in different ways.\""
+  },
+  "judg06": {
+   "verdict": "SUPPORTED",
+   "issues": [],
+   "corrections": {},
+   "evidence": "Full text availability definition (see biz12)."
+  }
+ }
+}

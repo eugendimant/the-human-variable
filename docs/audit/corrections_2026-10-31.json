@@ -1,0 +1,177 @@
+[
+ {
+  "challenge": "ai01",
+  "field": "scene",
+  "old": "A firm gives professionals an AI assistant for short writing assignments. The tasks remain the same.",
+  "new": "In an online experiment, 453 professionals complete short occupation-specific writing tasks; half are randomly given access to ChatGPT.",
+  "reason": "Scene says 'A firm gives professionals an AI assistant'; the study was a preregistered online experiment with randomized ChatGPT access, not a firm deployment. Numbers (453, 40%, 18%) are correct."
+ },
+ {
+  "challenge": "ai06",
+  "field": "title",
+  "old": "When expertise backfires",
+  "new": "When AI help backfires",
+  "reason": "Title 'When expertise backfires' is loose: the paper shows AI use backfiring outside the frontier, not human expertise backfiring. Consider 'When AI help backfires'."
+ },
+ {
+  "challenge": "ai09",
+  "field": "scene",
+  "old": "A prediction model outperforms a human expert but makes one visible error.",
+  "new": "A prediction model outperforms a human forecaster but makes visible errors.",
+  "reason": "Scene says the model outperforms 'a human expert'; in the studies the human forecaster was the participant herself or another anonymous participant, not an expert."
+ },
+ {
+  "challenge": "biz11",
+  "field": "boundary",
+  "old": "Anchor effects depend on expertise, incentives, and context.",
+  "new": "Anchor effects vary with context, and a relevant anchor can carry real information; in the original study, paying for accuracy did not remove the effect.",
+  "reason": "Boundary/follow answer says anchor effects depend on incentives; the cited paper reports the opposite for incentives. It also states experienced researchers are prone to the same biases when thinking intuitively, so 'expertise' as a moderator is not from this source."
+ },
+ {
+  "challenge": "biz11",
+  "field": "follow[1]",
+  "old": "Anchor effects depend on expertise, incentives, and context.",
+  "new": "Anchor effects vary with context, and a relevant anchor can carry real information; in the original study, paying for accuracy did not remove the effect.",
+  "reason": "Boundary/follow answer says anchor effects depend on incentives; the cited paper reports the opposite for incentives. It also states experienced researchers are prone to the same biases when thinking intuitively, so 'expertise' as a moderator is not from this source."
+ },
+ {
+  "challenge": "social02",
+  "field": "explain",
+  "old": "In the experiments, many chose extreme actions even where intermediate actions limited strategic risk.",
+  "new": "In the experiments, most individuals in polarized environments chose extreme actions over intermediate actions that would have minimized strategic risk.",
+  "reason": "Explain says 'many'; paper says 'most' (understatement, optional fix)."
+ },
+ {
+  "challenge": "biz08",
+  "field": "question",
+  "old": "How does higher cognitive load affect overlooked subtraction?",
+  "new": "How does higher cognitive load affect whether people find subtractive improvements?",
+  "reason": "Question wording is ambiguous: 'affect overlooked subtraction' reads as asking about overlooking, which load INCREASES; a reader could pick 'more likely'. Suggest rewording.; Text read: abstract only; load manipulation in the scene ('juggling other tasks') not checked against the method."
+ },
+ {
+  "challenge": "social04",
+  "field": "follow[2]",
+  "old": "Students misperceived peer attitudes about alcohol, with consequences for individual behavior.",
+  "new": "Students thought peers were more comfortable with campus drinking than they themselves were; men's attitudes later shifted toward that mistaken norm, and feeling deviant was linked to alienation.",
+  "reason": "follow[2] answer (source takeaway) says 'consequences for individual behavior'; abstract reports consequences for attitudes (men shifted toward perceived norm) and campus alienation, not drinking behavior.; Text read: abstract only."
+ },
+ {
+  "challenge": "social05",
+  "field": "follow[2]",
+  "old": "Students misperceived peer attitudes about alcohol, with consequences for individual behavior.",
+  "new": "Students thought peers were more comfortable with campus drinking than they themselves were; men's attitudes later shifted toward that mistaken norm, and feeling deviant was linked to alienation.",
+  "reason": "Same follow[2] overstatement ('consequences for individual behavior') as social04.; Answer key fine: study measured own attitudes and estimates of average student's attitudes (both levels). Boundary about correction is not from this paper (a reasonable caveat, not a finding).; Text read: abstract only."
+ },
+ {
+  "challenge": "social07",
+  "field": "explain",
+  "old": "The study recovered divergence between parties and substantial heterogeneity within each party.",
+  "new": "The study recovered divergence between parties and multiple co-existing views within each party, more so among Republicans than Democrats on most issues.",
+  "reason": "Minor: 'substantial heterogeneity within each party' slightly overstates for Democrats; Fig. 4 caption: \"Democrats tend to agree much more than Republicans on all issues, except for immigration policy.\" Consider softening.; Scene ('agree on its headline position') is a framing device, not the study design (norm-drawing across seven issues, N=996)."
+ },
+ {
+  "challenge": "social12",
+  "field": "explain",
+  "old": "The audit experiment found a large gap in callbacks associated with names, holding résumé content constant.",
+  "new": "The field experiment found a large gap in callbacks associated with names, holding résumé content constant.",
+  "reason": "Estimate target 50 (tolerance 10) and index chart 100 vs 150 match ratio 1.50.; Minor terminology: 'audit experiment' in explain; design is a correspondence (resume) field experiment. 'Comparable résumés' acceptable: names randomly assigned to resumes of varied quality."
+ },
+ {
+  "challenge": "social14",
+  "field": "explain",
+  "old": "Participants attributed their own avoidance to fear of rejection but others’ avoidance to lack of interest.",
+  "new": "Participants attributed their own avoidance to fear of being rejected because of their race, but the other group's avoidance to lack of interest.",
+  "reason": "Minor: the feared rejection was race-based; groups were White and Black participants."
+ },
+ {
+  "challenge": "social15",
+  "field": "scene",
+  "old": "A workplace collaboration study observes that people feel closer to their own side and also make costly decisions across identity lines.",
+  "new": "Across a series of online experiments, Trump supporters and opponents report feeling closer to their own side and also make costly choices toward the other side.",
+  "reason": "Scene misdescribes the design: not a workplace collaboration study; five preregistered studies (15 behavioral experiments, >8,600 participants) on Trump supporters vs opponents."
+ },
+ {
+  "challenge": "social19",
+  "field": "scene",
+  "old": "A team member sees an antisocial act committed by a socially close colleague rather than a stranger.",
+  "new": "A team member sees an antisocial act by a colleague they know is similar to them rather than one who is dissimilar.",
+  "reason": "Scene contrasts a close colleague with 'a stranger'; the design contrasted an anonymous peer described as more vs less similar (high vs low proximity), with an unknown-proximity control. All peers were anonymous."
+ },
+ {
+  "challenge": "social21",
+  "field": "options[0]",
+  "old": "How many different normative positions do they perceive?",
+  "new": "How spread out (tight, loose or polarized) do they perceive views to be?",
+  "reason": "Option 0 wording ('How many different normative positions') slightly mischaracterizes the method, which elicits the shape/spread of the belief distribution, not a count. Suggested tweak only."
+ },
+ {
+  "challenge": "biz05",
+  "field": "scene",
+  "old": "A household already uses less electricity than its neighbors. Its bill highlights the higher neighborhood average.",
+  "new": "A household already uses less electricity than its neighbors. It receives feedback showing the higher neighborhood average.",
+  "reason": "Delivery details (door hangers) rest on a secondary source; neutral wording keeps only what the abstract states."
+ },
+ {
+  "challenge": "biz06",
+  "field": "scene",
+  "old": "A utility adds an approval cue to neighborhood comparison messages.",
+  "new": "Researchers add an approval cue (a smiley face for households using less than average) to neighborhood comparison feedback.",
+  "reason": "Approval cue described as in the published abstract; not a utility bill."
+ },
+ {
+  "challenge": "social04",
+  "field": "follow[2]",
+  "old": "Students thought peers were more comfortable with campus drinking than they themselves were; men's attitudes later shifted toward that mistaken norm, and feeling deviant was linked to alienation.",
+  "new": "Students thought peers were more comfortable with campus drinking than they themselves were. Men's attitudes later shifted toward that mistaken norm, and feeling out of step was linked to alienation from campus.",
+  "reason": "Abstract reports attitude change and alienation, not drinking behavior."
+ },
+ {
+  "challenge": "social05",
+  "field": "follow[2]",
+  "old": "Students thought peers were more comfortable with campus drinking than they themselves were; men's attitudes later shifted toward that mistaken norm, and feeling deviant was linked to alienation.",
+  "new": "Students thought peers were more comfortable with campus drinking than they themselves were. Men's attitudes later shifted toward that mistaken norm, and feeling out of step was linked to alienation from campus.",
+  "reason": "Abstract reports attitude change and alienation, not drinking behavior."
+ },
+ {
+  "source": "hate23",
+  "field": "year",
+  "old": 2023,
+  "new": 2024,
+  "reason": "Version of record: Management Science 70(1), 1-31, January 2024 (online 2023)."
+ },
+ {
+  "source": "norms24",
+  "field": "year",
+  "old": 2024,
+  "new": 2025,
+  "reason": "Version of record: Management Science 71(3), 2245-2263, March 2025 (online 2024)."
+ },
+ {
+  "source": "cast19",
+  "field": "title",
+  "old": "Task-dependent algorithm aversion",
+  "new": "Task-Dependent Algorithm Aversion",
+  "reason": "Crossref title case."
+ },
+ {
+  "source": "blind00",
+  "field": "title",
+  "old": "Orchestrating Impartiality: The Impact of Blind Auditions on Female Musicians",
+  "new": "Orchestrating Impartiality: The Impact of \"Blind\" Auditions on Female Musicians",
+  "reason": "Crossref title has quotation marks."
+ },
+ {
+  "source": "plural93",
+  "field": "takeaway",
+  "old": "Students misperceived peer attitudes about alcohol, with consequences for individual behavior.",
+  "new": "Students thought peers were more comfortable with campus drinking than they themselves were. Men's attitudes later shifted toward that mistaken norm, and feeling out of step was linked to alienation from campus.",
+  "reason": "Abstract reports attitudes and alienation, not behavior."
+ },
+ {
+  "source": "loss15",
+  "field": "verification.status",
+  "old": null,
+  "new": "quarantined",
+  "reason": "Contested reversal; challenge judg02 removed from scored play."
+ }
+]
