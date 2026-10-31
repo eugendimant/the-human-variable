@@ -396,3 +396,18 @@ def test_review21_baselines_and_calibration_events():
     alloc = out.pop('alloc')
     for cid, (base, best) in out.items(): assert abs(base - best) < 1e-9, (cid, base, best)
     assert alloc[0] == 1, alloc   # top weight on the best option counts as a hit for calibration even when the verdict wants half the points
+
+
+def test_estimates_never_score_a_null_contrast():
+    """Review 22, M2: an estimate whose finding is a non-significant difference teaches false precision; such items are forecasts."""
+    bad = [c['id'] for c in LIVE if c['format'] == 'estimate' and re.search(r'not (statistically )?significant|no (clear|significant) (gain|difference|effect)|P = \.[1-9]', c['explain'] + ' ' + c['answerTitle'])]
+    assert not bad, bad
+
+
+def test_claim_length_does_not_predict_truth():
+    """Review 22, minor 11: claims above and below the median length are true at similar rates."""
+    import statistics
+    F = [c for c in LIVE if c['format'] == 'forecast']; m = statistics.median(len(c['forecast']['claim']) for c in F)
+    rate = lambda xs: sum(c['forecast']['truth'] for c in xs) / len(xs)
+    lo = [c for c in F if len(c['forecast']['claim']) <= m]; hi = [c for c in F if len(c['forecast']['claim']) > m]
+    assert abs(rate(lo) - rate(hi)) <= 0.2, (rate(lo), rate(hi))

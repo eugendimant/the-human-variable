@@ -212,3 +212,16 @@ REVIEW21 = [('Did the people who were already good writers get anything out of i
 def test_offline_tutor_review21(q, cid, want):
     """Review 21, minor 2: skill-level, delegate-why and location questions get their answer; an uncovered detail is named as such."""
     assert want in T.curated(q, cid)['answer'], T.curated(q, cid)['answer'][:120]
+
+
+REVIEW22 = [('could they tell they were talking to a bot', 'axb08', 'identified AI'),
+            ('how can I check my own hiring model for this', 'axb05', 'pilot'),
+            ('how much did the cards cost per veteran', 'dimant-opioid-forecast', '$15.66'),
+            ('what is algorithm aversion in one sentence', 'ai09', ''),
+            ('who is right, Benartzi or Huberman?', 'bz16', 'Huberman')]
+
+
+@pytest.mark.parametrize('q,cid,want', REVIEW22)
+def test_offline_tutor_review22(q, cid, want):
+    """Review 22, minor 9: bot means AI, auditing your own model is a pilot, cost goes to the figures, contests give both sides."""
+    a = T.curated(q, cid)['answer']; assert want in a and 'does not cover' not in a, a[:120]

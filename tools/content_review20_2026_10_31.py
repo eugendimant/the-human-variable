@@ -6,7 +6,7 @@ bp, ep = R / 'src/bank.json', R / 'src/evidence.json'
 b = json.loads(bp.read_text()); ev = json.loads(ep.read_text())
 C = {c['id']: c for c in b['challenges']}
 # minor 2: the scene's control (74) must not land inside the target band (76)
-C['axf06']['estimate']['tolerance'] = 1
+if 'estimate' in C['axf06']: C['axf06']['estimate']['tolerance'] = 1
 # minor 3: no impossible negative half on the axis
 for i in ('axb03', 'axb14'):
     C[i]['estimate'].update(min=0, max=40, tolerance=3)
@@ -64,4 +64,54 @@ bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
 # review 21, minor 14: titles that describe the item and are not near twins
 C['dimant-requiem-forecast']['title'] = 'Four honesty messages'
 C['social01']['title'] = 'Tight, loose or split'
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 22, M2: axf06's 76 vs 74 was not significant (P = .60), so it is a forecast about the gain, not a point estimate
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+x = C['axf06']
+if x['format'] == 'estimate':
+    x['format'] = 'forecast'; x.pop('estimate', None)
+    x['question'] = 'How likely is it that the study found this?'
+    x['scene'] = 'Fifty physicians had 60 minutes for up to six hard clinical vignettes, randomized to GPT-4 plus usual resources or usual resources only. Researchers also had GPT-4 answer the cases alone.'
+    x['forecast'] = {'claim': 'Physicians given GPT-4 reached clearly higher diagnostic reasoning scores than physicians with usual resources only.', 'truth': False}
+    x['chart'] = {'labels': ['Physicians, usual resources', 'Physicians with GPT-4', 'GPT-4 alone'], 'values': [74, 76, 92], 'unit': '%', 'highlight': 1,
+                  'note': 'Median diagnostic reasoning score per case; the physicians’ 2-point difference was not significant (P = .60).'}
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['axf06']['forecast']['claim'] = 'Physicians given GPT-4 reached significantly higher diagnostic reasoning scores than physicians with usual resources only.'
+C['bz07']['estimate']['tolerance'] = 6   # keeps the constant-guess cap after axf06 left the estimates
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 22, m5 and m8: units, a marginal contrast drawn as such, and a headline the chart supports
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['biz05']['chart']['note'] = 'Daily electricity use of below-average homes, kWh per day.'
+en = C['dimant-enforcers-rank']['chart']; en['ns'] = [2, 3]
+en['note'] = 'Average chosen probability that the coworker is punished, Study 2 vignette. Outlined: the equalizing-bribe difference (P = 0.074).'
+h = C['dimant-hate-choice']
+h['answerTitle'] = 'Expectations, more than unwillingness, drove the gap'
+h['chart']['note'] = 'Share who cooperate when they expect the partner to; the drop is about as large for a painting-taste outgroup.'
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 22, m12: the scene states the manipulation, not the result, and the strawman option becomes a real rival (projection)
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+n = C['dimant-notalie-causal']
+n['scene'] = ('In an incentivized experiment, people could misreport a private outcome for money and were asked what most others do. '
+              'Researchers varied whether people learned of the chance to misreport before or after stating that belief.')
+n['question'] = 'What best explains the link between believing most people lie and misreporting?'
+n['options'][1] = 'People who planned to lie projected their own choice onto others'
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 22, m15: scope states what this study covers, with nothing unsourced
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['judg09']['boundary'] = 'Hypothetical choices by 95 respondents per problem.'
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# review 22, m11: claim length must not predict truth (shorter false claims, longer true ones; same meaning)
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+NEW = {
+ 'bz02': 'The median experiment’s ROI confidence interval was under 50 percentage points wide.',
+ 'axf06': 'Physicians with GPT-4 scored significantly higher than physicians without it.',
+ 'bz16': 'In real plans, more equity funds on the menu meant more money in equity.',
+ 'biz04': 'In the German hotels, the norm sign beat the standard environmental sign.',
+ 'social08': 'Behavior spread farther through random long ties than through clustered ties.',
+ 'bz08': 'After the fine was removed, late pickups stayed at the higher level they had reached while the fine applied.',
+ 'dimant-opioid-forecast': 'Adding the reminder cards to the cash incentive lowered the program’s cost per pill of medication returned.',
+ 'accuracy-prompt': 'A single prompt to think about accuracy raised the average quality of the news sources that users shared.',
+}
+for k, v in NEW.items(): C[k]['forecast']['claim'] = v
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')

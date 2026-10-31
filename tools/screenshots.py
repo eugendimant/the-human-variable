@@ -20,7 +20,7 @@ def play(cid, lock=True):
 with sync_playwright() as p:
     b = p.chromium.launch()
     for tag, w, h in (('desktop', 1440, 900), ('phone', 390, 844)):
-        shoot(b, f'{tag}-home', w, h, URL)
+        shoot(b, f'{tag}-home', w, h, URL, full=(tag == 'phone'))   # the phone home in full: the path list sits below the fold
         shoot(b, f'{tag}-predict-causal', w, h, URL + '?play=dimant-notalie-causal', play('dimant-notalie-causal', False))
         shoot(b, f'{tag}-reveal-estimate', w, h, URL + '?play=bz07', play('bz07'))
         shoot(b, f'{tag}-reveal-allocate', w, h, URL + '?play=' + next(c['id'] for c in BANK['challenges'] if c['format'] == 'allocate'),

@@ -530,3 +530,19 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 251 tests (including `tests/test_design.py`: 0 design-lint hits on every page state, detectors live-fired), audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 0 Major. Next: independent review 22, which now runs the design lint and the Tufte question on every page.
+
+## Iteration 27 (2026-10-31)
+
+**Verified first:** iteration-26 fixes, by independent review 22 (snapshot `snap_r22`), the first review to run the design lint and ask the Tufte question on every page.
+
+**Independent score:** 86/100 (review 22, `qa/reviews/review22.md`). 0 Blocking, 2 Major, 15 Minor.
+
+**Fixes:**
+- **M1.** The path styles were twelve layers of overrides; they are now one block (featured path as the dark surface, the rest an index; one column below 640 px). The start flag moved into the count line ("Start here. 11 decisions, with a multi-step case"). The phone home screenshot is now full page. New detectors: squeezed text (a long string in a column under 150 px), patterned backgrounds, and labels above any headline-styled title, not only h1 to h3; all three live-fired.
+- **M2.** axf06 is a forecast ("Physicians with GPT-4 scored significantly higher than physicians without it", false), with a chart of 74, 76 and GPT-4 alone at 92, its note stating P = .60. New gate: no estimate's finding may be a non-significant contrast. bz07 tolerance 6 keeps the constant-guess cap.
+- **Minors.** Plain surface behind causal diagrams; the Library is an index with rules between principles, no drawings, progress as the same word-sized strip; rank reveal with column heads "Study" and "You" over the numbers and rows as rules; currency before the number; biz05 in kWh per day; the enforcers chart outlines the marginal equity contrast and says P = 0.074; outlined bars for non-significant values in any chart; in-bar labels keep a backing so they stay legible; format and area moved into the study line on predict, and the console states its phase as a sentence; page titles without middle dots; dimant-hate-choice reads "Expectations, more than unwillingness, drove the gap"; tutor routes for bot (AI), auditing your own model (pilot), definitions, contests (both sides), and why-questions, with one-word follow-ups no longer matched on a single shared word (server and page agree, tests); the scoring explainer says confidence does not change a score; eight claims reworded so claim length no longer predicts truth (39% vs 56% true), with a gate; the notalie scene states the manipulation and the projection rival replaces the strawman; the allocate reveal follows the order played; a negative record reads "below guessing"; judg09 scope states only what the study covers.
+- **Optional taken.** The projector's revealed view leads with the finding.
+
+**Gates:** build check, 258 tests (design lint 0 hits on every page state including console, projector and phone; new detectors live-fired), audit doc, counts and screenshots (phone home now full page) regenerated.
+
+**Count:** 2 Major found and fixed. Next: independent review 23.

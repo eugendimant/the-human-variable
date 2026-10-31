@@ -2868,7 +2868,7 @@
     "n": "Guests of two German hotels"
    },
    "forecast": {
-    "claim": "In the German hotels, the “most guests reuse” sign raised reuse more than a standard environmental sign.",
+    "claim": "In the German hotels, the norm sign beat the standard environmental sign.",
     "truth": false
    },
    "chart": {
@@ -2956,7 +2956,7 @@
     ],
     "unit": "",
     "highlight": 1,
-    "note": "Daily electricity use of below-average homes."
+    "note": "Daily electricity use of below-average homes, kWh per day."
    }
   },
   {
@@ -3348,7 +3348,7 @@
     "n": "1,528 participants"
    },
    "forecast": {
-    "claim": "The behavior spread farther through networks with random long ties than through clustered networks with redundant ties.",
+    "claim": "Behavior spread farther through random long ties than through clustered ties.",
     "truth": false
    },
    "chart": {
@@ -4826,7 +4826,7 @@
    },
    "theme": "evidence",
    "forecast": {
-    "claim": "In the median experiment, the confidence interval on return on investment was narrower than 50 percentage points.",
+    "claim": "The median experiment’s ROI confidence interval was under 50 percentage points wide.",
     "truth": false
    }
   },
@@ -5042,7 +5042,7 @@
     "target": 33,
     "min": 0,
     "max": 90,
-    "tolerance": 7,
+    "tolerance": 6,
     "label": "Reduction in quit rate with two home days a week",
     "unit": "%"
    },
@@ -5071,7 +5071,7 @@
    "scene": "In a famous field experiment, ten Israeli day-care centers tracked late pickups for 20 weeks. In week 5, six centers began fining parents NIS 10 for arriving 10+ minutes late. In week 17 the fine was dropped.",
    "question": "What happened to late pickups after the fine ended?",
    "forecast": {
-    "claim": "After the fine was removed, late pickups stayed at the higher level.",
+    "claim": "After the fine was removed, late pickups stayed at the higher level they had reached while the fine applied.",
     "truth": true
    },
    "answerTitle": "Lateness nearly doubled and stayed high",
@@ -5495,7 +5495,7 @@
    },
    "theme": "choice",
    "forecast": {
-    "claim": "In the real-plan records, the share of equity funds on the menu was a strong predictor of how much participants put into equity.",
+    "claim": "In real plans, more equity funds on the menu meant more money in equity.",
     "truth": false
    }
   },
@@ -5913,7 +5913,7 @@
    "scene": "Researchers sent 5,379 Twitter users a private message asking them to rate the accuracy of a single non-political headline, then tracked the news they shared.",
    "question": "Did one accuracy question improve what people shared?",
    "forecast": {
-    "claim": "The single accuracy prompt raised the average quality of news users shared.",
+    "claim": "A single prompt to think about accuracy raised the average quality of the news sources that users shared.",
     "truth": true
    },
    "answerTitle": "A small but real lift in quality",
@@ -6404,11 +6404,11 @@
    "track": "Business",
    "concept": "Motivated beliefs",
    "title": "\"Everyone does it,\" they say",
-   "scene": "In an incentivized experiment, people could misreport for money. Those who learned of this chance before stating what others do more often said most people lie, and more often reported winning.",
-   "question": "What best explains the link between this belief and misreporting?",
+   "scene": "In an incentivized experiment, people could misreport a private outcome for money and were asked what most others do. Researchers varied whether people learned of the chance to misreport before or after stating that belief.",
+   "question": "What best explains the link between believing most people lie and misreporting?",
    "options": [
     "Temptation distorts the belief to justify lying",
-    "Seeing others lie taught both the belief and the habit",
+    "People who planned to lie projected their own choice onto others",
     "A taste for risk drives both the belief and lying",
     "The belief reflects general cynicism, not the task"
    ],
@@ -6713,7 +6713,11 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Average chosen probability that the coworker is punished, Study 2 vignette."
+    "note": "Average chosen probability that the coworker is punished, Study 2 vignette. Outlined: the equalizing-bribe difference (P = 0.074).",
+    "ns": [
+     2,
+     3
+    ]
    }
   },
   {
@@ -6863,7 +6867,7 @@
    "scene": "A program paid US veterans cash to return unused opioid pills. Researchers randomly added two reminder cards built on timely reminders, planning prompts and loss framing.",
    "question": "Is this what the study found?",
    "forecast": {
-    "claim": "Adding the reminder cards lowered the program's cost per pill returned.",
+    "claim": "Adding the reminder cards to the cash incentive lowered the program’s cost per pill of medication returned.",
     "truth": true
    },
    "answerTitle": "Cards raised returns and lowered cost per pill",
@@ -6921,7 +6925,7 @@
     "Stronger love for one's own side"
    ],
    "answer": 2,
-   "answerTitle": "Pessimistic expectations, not unwillingness, drove the gap",
+   "answerTitle": "Expectations, more than unwillingness, drove the gap",
    "explain": "In Dimant's public goods games, the share of conditional cooperators dropped by a similar amount for a Trump opponent (72.8% to 59.0%) and for a painting-preference outgroup (73.2% to 62.4%). Expectations differed: people predicted opponents would contribute less.",
    "implication": "In politically mixed teams, share evidence that colleagues on the other side do cooperate before launching joint projects.",
    "boundary": "Incentivized experiments on US polarization around Donald Trump, compared with other social identities.",
@@ -6963,7 +6967,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Share who cooperate when they expect the partner to."
+    "note": "Share who cooperate when they expect the partner to; the drop is about as large for a painting-taste outgroup."
    }
   },
   {
@@ -7034,7 +7038,7 @@
    "answerTitle": "92% gambled to avoid a sure loss",
    "explain": "With gains, 80% chose the sure $3,000. With the same amounts as losses, 92% chose the gamble. People avoid risk for gains and seek it to escape a sure loss.",
    "implication": "Expect teams behind on a target to take bigger risks. Review risky catch-up plans with the reference point in view.",
-   "boundary": "Hypothetical choices by 95 respondents per problem; real-stakes studies show the same pattern with varying size.",
+   "boundary": "Hypothetical choices by 95 respondents per problem.",
    "sources": [
     "loss79"
    ],
@@ -8137,11 +8141,11 @@
   {
    "id": "axf06",
    "track": "AI × Business",
-   "format": "estimate",
+   "format": "forecast",
    "concept": "AI assistance gap",
    "title": "Does the chatbot help the doctor?",
-   "scene": "Fifty physicians had 60 minutes for up to six hard clinical vignettes, randomized to GPT-4 plus usual resources or usual resources only. Researchers also had GPT-4 answer the cases alone. Physicians with usual resources only scored a median 74%.",
-   "question": "What median score did physicians with GPT-4 reach?",
+   "scene": "Fifty physicians had 60 minutes for up to six hard clinical vignettes, randomized to GPT-4 plus usual resources or usual resources only. Researchers also had GPT-4 answer the cases alone.",
+   "question": "How likely is it that the study found this?",
    "answerTitle": "76% versus 74%: no clear gain for physicians",
    "explain": "Physicians scored a median 76% with GPT-4 and 74% with usual resources only, a difference that was not statistically significant (P = .60).",
    "implication": "Before judging an AI tool by staff results, train staff to use it or build structured prompts into the workflow.",
@@ -8169,13 +8173,24 @@
    ],
    "theme": "ai-work",
    "permuted": true,
-   "estimate": {
-    "target": 76,
-    "min": 40,
-    "max": 100,
-    "tolerance": 1,
-    "label": "Median diagnostic reasoning score with GPT-4",
-    "unit": "%"
+   "forecast": {
+    "claim": "Physicians with GPT-4 scored significantly higher than physicians without it.",
+    "truth": false
+   },
+   "chart": {
+    "labels": [
+     "Physicians, usual resources",
+     "Physicians with GPT-4",
+     "GPT-4 alone"
+    ],
+    "values": [
+     74,
+     76,
+     92
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Median diagnostic reasoning score per case; the physicians’ 2-point difference was not significant (P = .60)."
    }
   }
  ],
@@ -8944,7 +8959,8 @@
   "syn": {
    "experienc skill": "junior senior novic newer newcom veteran tenur rooki junio senio",
    "less": "reduct reduc decreas fell lower cut drop",
-   "rose": "increas rais higher grew improv"
+   "rose": "increas rais higher grew improv",
+   "ai": "bot chatbot"
   },
   "routes": [
    [
@@ -8962,6 +8978,10 @@
    [
     "models",
     "\\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\\b"
+   ],
+   [
+    "contest",
+    "\\b(who is right|who.?s right|who is correct|which (one|side|study|paper) is right|who wins|(do|did) they (disagree|contradict))\\b"
    ],
    [
     "authors",
@@ -8993,7 +9013,7 @@
    ],
    [
     "summary",
-    "\\b(summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|(does|did|do) (it|this|that|the [\\w ]{1,30}) work(?=\\W*$)|did it work|what (did|was) (it|they) find|what was found)\\b"
+    "\\b(summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|in (one|a) sentence|one[- ]liner|define|definition of|(does|did|do) (it|this|that|the [\\w ]{1,30}) work(?=\\W*$)|did it work|what (did|was) (it|they) find|what was found)\\b"
    ],
    [
     "duration",
@@ -9004,12 +9024,16 @@
     "\\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\\w*|good writers|junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b"
    ],
    [
+    "why",
+    "(^why\\b|\\bwhy (would|does|did|do|is|are|was|were)\\b)"
+   ],
+   [
     "design",
     "\\b(how (was|were|did)|design|method|ran|sample|participants|conducted|setup|set up|randomi[sz]\\w*|control group)\\b"
    ],
    [
     "pilot",
-    "\\b(test (this|it)|pilot|in (my|our) (company|team|firm|organi[sz]ation)|roll ?out|measure (it|this))\\b"
+    "\\b((check|test|audit|evaluate|assess) (my|our)( own)?|my own|our own|test (this|it)|pilot|in (my|our) (company|team|firm|organi[sz]ation)|roll ?out|measure (it|this))\\b"
    ],
    [
     "size",

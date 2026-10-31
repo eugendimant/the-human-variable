@@ -31,9 +31,13 @@ def test_design_detectors_fire_on_injected_tells():
       <p style="font-size:10px">tiny</p><p style="letter-spacing:-.08em">crushed</p>
       <p class="gap-caption">Blue marks your call, amber the evidence.</p><div class="gap-legend">legend</div><p class="plate-h">What the study measured</p>
       <figure class="gap"><div class="hbars"><i class="ev">a</i><i class="ev">b</i></div></figure>
+      <div style="width:300px;height:60px;background-image:radial-gradient(circle,#000 1px,transparent 1px);background-size:18px 18px">dots</div>
+      <p style="width:90px">This sentence is far too long to sit in a column this narrow without breaking apart.</p>
+      <div><em>Start here</em><strong style="font-size:24px;font-weight:800;display:block">Leading with AI today</strong></div>
     </body></html>"""
     with sync_playwright() as p:
         b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900}); pg.set_content(html)
         rules = {r for r, *_ in pg.evaluate(design_lint.JS)}; b.close()
     want = {'R01', 'R03', 'R04', 'R05', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R19', 'R20', 'R26', 'R27', 'R28'}
+    assert {'R08', 'R18'} <= rules   # patterned backgrounds and squeezed text (review 22)
     assert want <= rules, sorted(want - rules)

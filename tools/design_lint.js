@@ -6,7 +6,7 @@
   const own = e => [...e.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
   const rgb = c => (c.match(/[\d.]+/g) || []).map(Number);
   const grey = c => { const [r, g, b, a = 1] = rgb(c); return a === 0 || Math.max(r, g, b) - Math.min(r, g, b) < 28 };
-  const all = [...document.querySelectorAll('body *')].filter(e => !e.closest('svg,script,style,template,.sr-only') && vis(e));
+  const all = [...document.querySelectorAll('body *')].filter(e => !(e.closest('svg') && e.tagName.toLowerCase() !== 'svg') && !e.closest('script,style,template,.sr-only') && vis(e));
   for (const e of all) {
     const s = getComputedStyle(e), t = own(e), r = e.getBoundingClientRect(), fs = parseFloat(s.fontSize);
     if (t && /[a-z]/i.test(t) && s.textTransform === 'uppercase') push('R03', name(e), t);
@@ -21,6 +21,8 @@
     const bl = parseFloat(s.borderLeftWidth);
     if (bl >= 3 && s.borderLeftStyle !== 'none' && parseFloat(s.borderRightWidth) < bl && r.height > 20) push('R07', name(e), 'left stripe ' + s.borderLeftColor);
     if (/repeating-/.test(s.backgroundImage)) push('R08', name(e), 'stripe fill');
+    if (/gradient/.test(s.backgroundImage) && s.backgroundSize && !/^(auto|auto auto|100% 100%)$/.test(s.backgroundSize)) push('R08', name(e), 'patterned background ' + s.backgroundSize);
+    if (t.length > 60 && r.width < 150 && r.width > 0) push('R18', name(e), 'squeezed text, ' + Math.round(r.width) + 'px wide');
     if (!t && !e.children.length && r.width >= 4 && r.width <= 14 && Math.abs(r.width - r.height) < 1 && parseFloat(s.borderRadius) >= r.width / 2 - .5 && !['INPUT', 'BUTTON'].includes(e.tagName) && s.backgroundColor !== 'rgba(0, 0, 0, 0)') push('R09', name(e), 'dot');
     for (const pe of ['::before', '::after']) {
       const ps = getComputedStyle(e, pe); if (!ps.content || ps.content === 'none' || ps.content === 'normal') continue;
@@ -48,7 +50,8 @@
     if (/\b(not just|isn['’]t just|more than just|unlock|seamless|elevate|dive into|game[- ]changer|empower|supercharge|revolutioni[sz]e|cutting[- ]edge|harness the power)\b/i.test(x)) push('R14', name(p), x.trim());
     if (/^\s*0\d\s*$/.test(x)) push('R15', name(p), x.trim());
   }
-  for (const h of document.querySelectorAll('h1,h2,h3')) {
+  const headish = [...document.querySelectorAll('h1,h2,h3')].concat(all.filter(e => !/^H[1-6]$/.test(e.tagName) && !e.matches('.num, .num *') && /\S\s+\S/.test(own(e)) && own(e).length > 3 && parseFloat(getComputedStyle(e).fontSize) >= 20 && +getComputedStyle(e).fontWeight >= 650));
+  for (const h of headish) {
     if (!vis(h) || h.closest('.sr-only')) continue; const pv = h.previousElementSibling;
     if (pv && vis(pv) && !pv.matches('h1,h2,h3,h4,button,a,nav,img,svg,input,label,form,ol,ul,figure,section,div.art,.rev-art') && pv.textContent.trim() && pv.textContent.trim().length < 60 && pv.getBoundingClientRect().height < 40)
       push(pv.matches('.tag,.badge,.pill,.verdict') || pv.querySelector('.tag,.badge,.pill') ? 'R02' : 'R01', name(pv) + ' above ' + h.tagName.toLowerCase(), pv.textContent.trim());

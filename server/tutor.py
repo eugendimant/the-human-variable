@@ -23,7 +23,7 @@ TOK = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
 def tokens(s: str) -> list[str]:
     import unicodedata   # Köbis and Kobis, Zünd and Zund match
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
-    out = [stem(t) for t in TOK.findall(s.lower()) if t not in STOP and (len(t) > 2 or t.isdigit())]
+    out = [stem(t) for t in TOK.findall(s.lower()) if t not in STOP and (len(t) > 2 or t.isdigit() or t == 'ai')]
     return out + [s for t in out for s in SYN.get(t, ())]
 
 def stem(t: str) -> str:
@@ -114,7 +114,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         jac = lambda f: len(set(tokens(f['q'])) & qt) / max(1, len(set(tokens(f['q'])) | qt))
         if fol and jac(max(fol, key=jac)) >= 0.6: return out(max(fol, key=jac)['a'], c)
         has = lambda w: any(w == x or (min(len(w), len(x)) >= 3 and (w.startswith(x) or x.startswith(w))) for x in qt)
-        sub = [f for f in fol if set(tokens(f['q'])) and all(has(w) for w in tokens(f['q']))]   # every content word of a follow-up appears in the question (fix ~ fixed)
+        sub = [f for f in fol if len(set(tokens(f['q']))) >= 2 and all(has(w) for w in tokens(f['q']))]   # every content word of a follow-up appears in the question (fix ~ fixed)
         if sub: return out(max(sub, key=lambda f: len(set(tokens(f['q']))))['a'], c)
     named = [] if c and names(question, c['id']) else [cid for cid in CHALLENGES if (not c or not set(CHALLENGES[cid]['sources']) & set(c['sources'])) and names(question, cid)]
     if named:
@@ -136,6 +136,13 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'foresight':
                 fp = [f for f in fol if re.search(r'\b(predict\w*|expect\w*|forecast\w*|experts?|anticipat\w*)', f['q'] + ' ' + f['a'], re.I)]
                 if fp: return out(fp[0]['a'], c)
+                continue
+            if name == 'contest':   # both sides of a contested finding, as the explanation states them
+                fd = [f for f in fol if re.search(r'\b(design|differ|contrast|both)', f['q'] + ' ' + f['a'], re.I)]
+                return out(f"{c['explain']}" + (f" {fd[0]['a']}" if fd else '') + f" {c['implication']}", c)
+            if name == 'why':   # a reason: the follow-up that gives one, else the finding itself
+                fw = [f for f in fol if f['q'].lower().startswith('why') and (rare & set(tokens(f['q'] + ' ' + f['a'])))] or [f for f in fol if re.search(r'\b(because|read (this|it)? ?as|reason|motive|concern|suggest)', f['a'], re.I) and (rare & set(tokens(f['a'])))]
+                if fw: return out(fw[0]['a'], c)
                 continue
             if name == 'authors': return out(f"{_papers(c)}. Design: {st.get('design', 'see the paper')}.", c)
             if name == 'voluntary': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" Setting: {c.get('scene', '')} What the study covers: {c['boundary']}", c)
