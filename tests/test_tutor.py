@@ -181,3 +181,22 @@ def test_natural_phrasings_answer_from_the_decision():
 @pytest.mark.parametrize('q', ['What is the capital of France?', 'Write me a poem about cats', 'Tell me a joke'])
 def test_off_topic_still_declined(q):
     assert 'outside what this lab covers' in T.curated(q, 'ai01')['answer']
+
+
+REVIEW20 = [('Does the wallet key matter?', 'civic-wallet-rank', 'Did the key in the wallet matter?'),
+            ('Who were the forecasters?', 'dimant-masks-forecast', 'Who was in the forecasting pool?'),
+            ('Did the die matter?', 'lies-in-disguise', None)]
+
+
+@pytest.mark.parametrize('q,cid,fq', REVIEW20)
+def test_offline_tutor_review20_distinctive_words(q, cid, fq):
+    """Review 20, minor 5: a distinctive word the question shares with a follow-up picks that follow-up."""
+    c = T.CHALLENGES[cid]; r = T.curated(q, cid)['answer']
+    want = [f['a'] for f in c['follow'] if f['q'] == fq] if fq else [f['a'] for f in c['follow'] if 'die' in f['a'].lower()]
+    assert r in want, r[:120]
+
+
+def test_offline_tutor_review20_routes():
+    """Review 20, minor 5: trusting a lab game is a transfer question, not ethics; 'does it work' gets the finding."""
+    assert 'what is right' not in T.curated('Should I believe a lab game?', 'ai01')['answer']
+    c = T.CHALLENGES['social16']; assert T.curated('Does the norm nudge work?', 'social16')['answer'].startswith(c['answerTitle'])

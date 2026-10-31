@@ -11,7 +11,7 @@ bank['tutorRoutes'] = {
  'routes': [
   ['offtopic', r'\b(poem|haiku|limerick|joke|weather|recipe|capital of|song|lyrics|horoscope|stock (tip|price)|share price|world cup|super bowl|tax return|homework|movie|write (me )?(code|python|javascript|an essay)|translate|bitcoin)\b'],
   ['action', r'\b(what should (i|we) do|what do (i|we) do|next steps?|monday( morning)?|what would you do|how (do|should|can) (i|we) (use|apply|act on) (this|it))\b'],
-  ['ethics', r'\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)'],
+  ['ethics', r'\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|is it (ok|okay|right|wrong)|allowed|legal)'],
   ['models', r'\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\b'],
   ['authors', r'\b(who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\b'],
   ['voluntary', r'\b(voluntary|volunteer\w*|randomly assigned|chose to|opt(ed)? in|self[- ]selected|vignette|real (bribe|money|job|firm|company)|real world|in the field|lab or field)\b'],
@@ -19,13 +19,23 @@ bank['tutorRoutes'] = {
   ['population', r'\b(american|americans|u\.?s\.? only|other countries|another country|culture|cultures|europe|asia|outside the us|elsewhere|just an? \w+ thing)\b'],
   ['who', r'\b(who (was|were) (studied|in it|tested|the participants)|participants?|how many (people|participants|subjects|workers|agents)|sample size|who took part|population)\b'],
   ['catch', r'\b(catch|backfire|downside|drawback|limit\w*|risk|caveat|fail\w*|weakness|criticis\w*|question(ed)? this|later work)\b'],
-  ['summary', r'\b(summar\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line)\b'],
+  ['summary', r'\b(summar\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|(does|did|do) (it|this|that|the [\w ]{1,30}) work(?=\W*$)|did it work|what (did|was) (it|they) find|what was found)\b'],
   ['duration', r'\b(how long|last(ed)?|persist\w*|fade\w*|long[- ]term|over time|stick)\b'],
   ['subgroup', r'\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\b'],
   ['design', r'\b(how (was|were|did)|design|method|ran|sample|participants|conducted|setup|set up|randomi[sz]\w*|control group)\b'],
   ['pilot', r'\b(test (this|it)|pilot|in (my|our) (company|team|firm|organi[sz]ation)|roll ?out|measure (it|this))\b'],
   ['size', r'\b(big|size|large|how much|practice|magnitude)\b'],
-  ['transfer', r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\w*)']],
+  ['transfer', r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\w*|believe|trust (it|this|a|the)|lab (game|study|experiment)|artificial)']],
  'subgroupFollow': r'^(who\b.*\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\b)',
 }
-p.write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('routes')
+p.write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n')
+# review 20: a word that appears in the follow-up questions of three or more decisions is not distinctive enough to pick a follow-up by itself
+import collections, importlib, sys
+sys.path.insert(0, str(p.parents[1])); from server import tutor; importlib.reload(tutor)
+df = collections.Counter()
+for c in bank['challenges']:
+    if c.get('retired'): continue
+    df.update({w for f in c.get('follow', []) for w in tutor.tokens(f['q'])})
+manual = [tutor.stem(w) for w in 'effect effects study studies finding findings paper research people data work worked works'.split()]
+bank['tutorRoutes']['common'] = sorted({w for w, n in df.items() if n >= 3} | set(manual))
+p.write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('routes', len(bank['tutorRoutes']['common']))

@@ -33,7 +33,7 @@ def score(c: dict, r) -> dict:
         if not tot: return {'score': 0.0, 'correct': False}
         hi = max(v); bs = c['allocate'].get('best'); best = [1 if (i in bs if bs else x == hi) else 0 for i, x in enumerate(v)]; nb = sum(best); p = [s / tot for s in r]
         sc = 1 - sum((x - best[i] / nb) ** 2 for i, x in enumerate(p)); top = max(p)
-        return {'score': sc, 'correct': all(best[i] or x != top for i, x in enumerate(p))}
+        return {'score': sc, 'correct': all(best[i] or x != top for i, x in enumerate(p)) and sum(x for i, x in enumerate(p) if best[i]) >= 0.5}   # a near-even split is not a call
     if f == 'delegate':
         tasks = c['delegate']['tasks']; right = sum(1 for i, t in enumerate(tasks) if isinstance(r, list) and i < len(r) and (r[i] == t['answer'] or r[i] in t.get('also', [])))
         return {'score': right / len(tasks), 'correct': right == len(tasks)}

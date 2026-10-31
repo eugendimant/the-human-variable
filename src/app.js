@@ -94,7 +94,7 @@ function resetCard() {
   st.resp = c.format === 'multi' ? [] : c.format === 'rank' ? shuffle(c.options.map((_, i) => i), rng(hash(c.id + st.seed))) :
     c.format === 'allocate' ? evenSplit(c) : c.format === 'delegate' ? c.delegate.tasks.map(() => null) :
       c.format === 'forecast' ? 50 : c.format === 'estimate' ? null : null;
-  if (c.format === 'rank' && c.rankAnswer && S.score(c, st.resp).correct) st.resp.reverse(); // never start on the answer
+  if (c.format === 'rank' && c.rankAnswer) { const R = rng(hash(c.id + st.seed + 'r')); for (let k = 0; k < 20 && S.score(c, st.resp).correct; k++) st.resp = shuffle(st.resp, R) }   // never start on the answer; a fresh shuffle, so the start order carries no hint
 }
 function evenSplit(c) { const k = c.options.length, t = c.allocate.total, step = c.allocate.step || 10; const base = Math.floor(t / k / step) * step; const a = Array(k).fill(base); let rest = t - base * k; const ord = optionOrder(c).map(o => o.i); for (let j = 0; rest > 0; j = (j + 1) % k) { a[ord[j]] += step; rest -= step } return a }   // any remainder follows the shuffled display order
 function optionOrder(c) { return shuffle(c.options.map((t, i) => ({ t, i })), rng(hash(c.id + '-' + st.seed))) }
@@ -224,7 +224,7 @@ function instrument(c) {
       <div class="axis"><span>0%, certainly false</span><span>100%, certainly true</span></div></div>`;
   }
   if (c.format === 'rank') {
-    return `<p class="hint">${esc(c.rankLabel)}. Use the arrows to reorder.</p><ol class="rank-list">${r.map((oi, k) => `<li class="rank-item"><span class="pos">${k + 1}</span><span>${esc(c.options[oi])}</span><span class="rank-move"><button data-rank="${k}" data-dir="-1" aria-label="Move ${esc(c.options[oi])} up" ${k === 0 || rev ? 'disabled' : ''}>↑</button><button data-rank="${k}" data-dir="1" aria-label="Move ${esc(c.options[oi])} down" ${k === r.length - 1 || rev ? 'disabled' : ''}>↓</button></span></li>`).join('')}</ol>`;
+    return `<p class="hint">First place goes at the top. Use the arrows to reorder.</p><ol class="rank-list">${r.map((oi, k) => `<li class="rank-item"><span class="pos">${k + 1}</span><span>${esc(c.options[oi])}</span><span class="rank-move"><button data-rank="${k}" data-dir="-1" aria-label="Move ${esc(c.options[oi])} up" ${k === 0 || rev ? 'disabled' : ''}>↑</button><button data-rank="${k}" data-dir="1" aria-label="Move ${esc(c.options[oi])} down" ${k === r.length - 1 || rev ? 'disabled' : ''}>↓</button></span></li>`).join('')}</ol>`;
   }
   if (c.format === 'allocate') {
     const a = c.allocate, sum = r.reduce((x, y) => x + y, 0);
@@ -376,7 +376,7 @@ function trTokens(s) {
   const out = (String(s).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().match(/[a-z0-9]+(?:'[a-z]+)?/g) || []).filter(w => !TR_STOP.has(w) && (w.length > 2 || /^\d+$/.test(w))).map(trStem);
   return out.concat(out.flatMap(w => TR_SYN[w] || []));
 }
-const TR_GENERIC = new Set(TR.generic.map(trStem));
+const TR_GENERIC = new Set(TR.generic.map(trStem)), TR_COMMON = new Set(TR.common || []);
 const trNorm = s => (String(s).toLowerCase().match(/[a-z0-9]+/g) || []).join(' ');
 function trNames(q, x) {   // whole surnames, unstemmed: "bill" must not match "Biller-Andorno"
   const words = s => (String(s).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().match(/[a-z]{4,}/g) || []).filter(w => !TR_STOP.has(w) && w !== 'with' && w !== 'others');
@@ -391,7 +391,7 @@ function curated(q, c) {
   const has = w => [...qt].some(x => w === x || (Math.min(w.length, x.length) >= 3 && (w.startsWith(x) || x.startsWith(w)))); const sub = fol.filter(f => { const ft = trTokens(f.q); return ft.length && ft.every(has) }).sort((a, b) => trTokens(b.q).length - trTokens(a.q).length)[0]; if (sub) return { text: sub.a, cites: cs(c) };
   const named = trNames(q, c) ? [] : ALL.filter(x => x.explain && !x.sources.some(s => c.sources.includes(s)) && trNames(q, x));
   if (named.length) { const ov = x => topic.filter(w => trTokens([x.answerTitle, x.explain, x.question].join(' ')).includes(w)).length; const b = named.sort((a, z) => ov(z) - ov(a))[0]; return { text: `${b.explain}\n\n${b.implication}`, cites: cs(b) } }
-  const st0 = c.study || {};
+  const st0 = c.study || {}, rare = topic.filter(w => !TR_COMMON.has(w)), hits = (s, ws) => { const ts = new Set(trTokens(s)); return ws.filter(w => ts.has(w)).length };
   for (const [name, rx] of TR.routes) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
     if (name === 'offtopic') return off;
@@ -412,6 +412,9 @@ function curated(q, c) {
     if (name === 'size') return { text: `${c.explain}\n\nIn practice: ${c.implication}`, cites: cs(c) };
     if (name === 'transfer') return { text: `${c.boundary}\n\nThe study itself: ${c.explain}`, cites: cs(c) };
   }
+  const fq = fol.filter(f => hits(f.q, rare)).sort((a, b) => hits(b.q, rare) - hits(a.q, rare))[0]; if (fq) return { text: fq.a, cites: cs(c) };   // no route: a distinctive word shared with one follow-up question
+  const own = new Set(trTokens([c.answerTitle, c.explain].join(' '))), rareA = rare.filter(w => !own.has(w));
+  const fa = fol.filter(f => hits(f.a, rareA)).sort((a, b) => hits(b.a, rareA) - hits(a.a, rareA))[0]; if (fa) return { text: fa.a, cites: cs(c) };   // a distinctive word found only in a follow-up answer
   if (fol.length) { const ov = f => trTokens(f.q + ' ' + f.a).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const f0 = fol.slice().sort((a, b) => ov(b) - ov(a))[0]; if (ov(f0) >= 2) return { text: f0.a, cites: cs(c) } }
   // no study named and no route: answer about the decision on screen, never about another study on word overlap
   return { text: `${c.answerTitle}. ${c.explain}\n\nWhat a manager does with it: ${c.implication}`, cites: cs(c) };
@@ -441,7 +444,7 @@ function atlas() {
     <label class="sr-only" for="atlas-track">Area</label><select id="atlas-track" class="seg">${['All', ...TRACKS].map(t => `<option value="${esc(t)}" ${st.atlasTrack === t ? 'selected' : ''}>${t === 'All' ? 'All areas' : esc(t)}</option>`).join('')}</select>
     <label class="sr-only" for="atlas-format">Format</label><select id="atlas-format" class="seg">${['All', ...new Set(Object.values(FORMAT_NAME))].map(t => `<option value="${esc(t)}" ${st.atlasFormat === t ? 'selected' : ''}>${t === 'All' ? 'All formats' : esc(t)}</option>`).join('')}</select></div>
     <p class="kicker" aria-live="polite" id="atlas-count">${m.length} of ${ALL.length} decisions</p></section>
-    <section class="wrap"><div class="atlas-grid" id="atlas-grid">${m.length ? m.map(c => { const best = records.filter(r => r.id === c.id).reduce((a, r) => Math.max(a, r.score), -1); return `<button class="entry" data-play="${esc(c.id)}"><span class="meta"><span class="tag">${esc(c.track)}</span><span class="tag">${FORMAT_NAME[c.format]}</span>${best >= 0 ? `<span class="tag tag-ev">Played, best ${pct(best)}</span>` : ''}</span><span class="entry-title">${esc(c.title)}</span><p>${esc(c.question)}</p><span class="cite">${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}</span></button>` }).join('') : `<div class="empty-state">No decision matches “${esc(st.atlasQuery)}”. Clear the search or try an author’s name.</div>`}</div></section>`;
+    <section class="wrap"><div class="atlas-grid" id="atlas-grid">${m.length ? m.map(c => { const best = records.filter(r => r.id === c.id).reduce((a, r) => Math.max(a, r.score), -1); return `<button class="entry" data-play="${esc(c.id)}"><span class="meta"><span class="tag">${esc(c.track)}</span><span class="tag">${FORMAT_NAME[c.format]}</span>${best >= 0 ? `<span class="tag tag-ev">Played, best ${pct(best)}</span>` : ''}</span><span class="entry-title">${esc(c.title)}</span><p>${esc(c.format === 'forecast' && c.forecast && c.forecast.claim ? c.forecast.claim : c.question)}</p><span class="cite">${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}</span></button>` }).join('') : `<div class="empty-state">No decision matches “${esc(st.atlasQuery)}”. Clear the search or try an author’s name.</div>`}</div></section>`;
 }
 
 
@@ -473,7 +476,7 @@ function record() {
   // How the headline moved, call by call (pooled skill over the calls so far), so the big number has a history.
   const series = all.slice(-40).map((_, k, xs) => avg(xs.slice(0, k + 1)));
   const spark = series.length < 3 ? '' : (() => { const W = 220, H = 56, lo = Math.min(-100, ...series), hi = 100, x = k => 4 + k * (W - 8) / (series.length - 1), y = v => 4 + (hi - v) / (hi - lo) * (H - 8);
-    return `<svg class="spark" viewBox="0 0 ${W} ${H}" role="img" aria-label="Skill after each of your last ${series.length} calls, from ${series[0]} to ${series[series.length - 1]}"><line x1="4" x2="${W - 4}" y1="${y(0)}" y2="${y(0)}" stroke="#9aa6b6" stroke-dasharray="3 4"/><polyline fill="none" stroke="#2f54eb" stroke-width="2.5" stroke-linejoin="round" points="${series.map((v, k) => x(k) + ',' + y(v)).join(' ')}"/><circle cx="${x(series.length - 1)}" cy="${y(series[series.length - 1])}" r="4.5" fill="#e0a01c"/><text x="${W - 4}" y="${Math.min(H - 2, y(0) + 13)}" text-anchor="end" font-size="10" fill="#56617a">guessing</text></svg>` })();
+    return `<svg class="spark" viewBox="0 0 ${W} ${H}" role="img" aria-label="Skill after each of your last ${series.length} calls, from ${series[0]} to ${series[series.length - 1]}"><line x1="4" x2="${W - 4}" y1="${y(0)}" y2="${y(0)}" stroke="#9aa6b6" stroke-dasharray="3 4"/><polyline fill="none" stroke="#2f54eb" stroke-width="2.5" stroke-linejoin="round" points="${series.map((v, k) => x(k) + ',' + y(v)).join(' ')}"/><circle cx="${x(series.length - 1)}" cy="${y(series[series.length - 1])}" r="4.5" fill="#e0a01c"/><text x="4" y="${series[0] > 0 ? Math.min(H - 2, y(0) + 12) : Math.max(10, y(0) - 4)}" font-size="10" fill="#56617a">guessing</text></svg>` })();
   const sess = st.session.length ? avg(st.session.filter(r => BY_ID[r.id])) : null;
   const byTrack = TRACKS.map(t => { const x = all.filter(r => BY_ID[r.id].track === t); return [t, x.length, avg(x)] });
   let summary = '';
@@ -493,7 +496,7 @@ function record() {
       <div class="rec-col"><div class="panel rec-panel"><h2>Calibration</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${n < 3 ? '<small>after 3 calls</small>' : sc}<span class="bar-score"><i style="width:${n < 3 ? 0 : Math.max(0, sc)}%"></i></span></span></li>`).join('')}</ul></div>` : ''}</div>
       <div class="rec-col"><div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><p class="small">Decision scores, before the chance adjustment.</p><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><button class="link-quiet" data-play="${esc(r.id)}">${esc(c.title)}</button><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${pct(r.score)}<span class="bar-score"><i style="width:${pct(r.score)}%"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a path to start your record.</span></li>'}</ul></div></div>
     </div>
-    <details class="how"><summary>How scoring works</summary><p>The headline is skill above guessing: each score is rescaled so that what a no-information strategy earns on that format (a 50% forecast, a random order, an even split, a random pick, a random slider position) counts as 0 and a perfect call as 100. Below it, each decision's own score works as follows. Decisions score 0 to 100 with partial credit, except forecasts, which run from −100 to 100. An estimate inside the shaded band earns 100, and credit falls to zero at twice the band's half-width. Ranks score the share of pairs in the measured order. Point splits use the same proper rule as forecasts: all points on the option that worked best earn 100, and spreading points pays when you are unsure. Forecasts use a proper scoring rule built on the Brier score, the standard in forecasting tournaments: a confident correct call earns 100, saying 50% earns 50, and a confident wrong call costs up to 100 points, so stating your true belief always pays best. Your stated confidence earns its own confidence score on the same rule (100 for a sure call that was right, 50 for saying 50%, down to −100 for a sure call that was wrong), and the calibration plot shows it, except for forecasts, where the probability is the statement. This is a learning record, not a validated assessment.</p></details>
+    <details class="how"><summary>How scoring works</summary><p>The headline is skill above guessing: each score is rescaled so that what a no-information strategy earns on that format (a 50% forecast, a random order, an even split, a random pick, the same slider position every time) counts as 0 and a perfect call as 100. Below it, each decision's own score works as follows. Decisions score 0 to 100 with partial credit, except forecasts, which run from −100 to 100. An estimate inside the shaded band earns 100, and credit falls to zero at twice the band's half-width. Ranks score the share of pairs in the measured order. Point splits use the same proper rule as forecasts: all points on the option that worked best earn 100, and spreading points pays when you are unsure. Forecasts use a proper scoring rule built on the Brier score, the standard in forecasting tournaments: a confident correct call earns 100, saying 50% earns 50, and a confident wrong call costs up to 100 points, so stating your true belief always pays best. Your stated confidence earns its own confidence score on the same rule (100 for a sure call that was right, 50 for saying 50%, down to −100 for a sure call that was wrong), and the calibration plot shows it, except for forecasts, where the probability is the statement. This is a learning record, not a validated assessment.</p></details>
     <div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play another round</button><span class="tool-links"><button class="link-btn" data-act="csv">Export CSV</button><button class="link-btn" data-act="json">Export JSON</button><button class="link-btn" data-act="erase">Erase this device’s record</button></span></div></section>`;
 }
 function calPlot(cal) {
@@ -592,7 +595,7 @@ async function roomSubmit(c, rec) {
     try {
       const r = await fetch(`/api/rooms/${R.code}/responses`, { method: 'POST', headers: roomHeaders(true), body: JSON.stringify({ token: R.token, answer: rec.response, confidence: rec.confidence }) });
       const d = await r.json();
-      if (r.ok) { R.sent = true; R.sentMsg = d.accepted ? 'Your answer is in.' : d.message; render(); return }
+      if (r.ok) { R.sent = true; R.sentMsg = d.accepted ? 'Your answer is in.' : d.message; render(); clearTimeout(R.timer); roomPoll(); return }   // refresh the room count now, not at the next poll
       if (r.status === 409 || r.status === 400 || r.status === 403) { R.sent = true; R.sentMsg = d.error; render(); return }
     } catch { }
     await new Promise(z => setTimeout(z, 800 * (k + 1)));
@@ -693,7 +696,7 @@ document.addEventListener('click', e => {
   if (a === 'leave') { if (st.room) { if (!confirm('Leave the live class?')) return; clearTimeout(st.room.timer); st.room = null } st.view = 'home'; render(true); return }
   if (a === 'toggle-custom') { st.custom = !st.custom; render(); qs('[data-act="toggle-custom"]')?.focus(); return }
   if (a === 'menu') { st.menu = !st.menu; t.setAttribute('aria-expanded', st.menu); qs('.nav').classList.toggle('open', st.menu); return }
-  if (a === 'go-start') { qs('#start')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); qs('#start .path')?.focus({ preventScroll: true }); return }
+  if (a === 'go-start') { const first = qs('#start .path'); if (first) { first.click(); return } qs('#start')?.scrollIntoView(); return }   // start the featured path straight away
   if (a === 'start' || a === 'replay') { st.seed = (Math.random() * 2 ** 32) >>> 0; startTrack(); return }
   if (a === 'start-quick') { st.seed = (Math.random() * 2 ** 32) >>> 0; st.track = 'Mixed'; start(ALL.filter(c => c.id !== 'ai01'), 5); return }
   if (a === 'dimant-round') { st.seed = (Math.random() * 2 ** 32) >>> 0; start(ALL.filter(c => c.sources.some(id => /Dimant/.test(SOURCE[id].authors_full || SOURCE[id].authors))), 12); return }

@@ -356,3 +356,19 @@ def test_paths_mix_true_and_false_forecasts():
         t = [C[i]['forecast']['truth'] for i in p['ids'] if i in C and C[i]['format'] == 'forecast']
         if len(t) >= 2 and len(set(t)) < 2: bad.append((p['id'], t))
     assert not bad, bad
+
+
+def test_estimate_guess_fraction_is_current():
+    """Review 20, minor 1: the skill headline's estimate baseline is the best fixed slider position, so a no-information player shows no skill."""
+    from server import scoring
+    E = [c for c in LIVE if c['format'] == 'estimate']
+    best = max(range(101), key=lambda f: sum(scoring.score(c, c['estimate']['min'] + f / 100 * (c['estimate']['max'] - c['estimate']['min']))['score'] for c in E))
+    js = (ROOT / 'src/scoring.js').read_text(); frac = float(re.search(r'GUESS_FRAC = ([\d.]+)', js).group(1))
+    at = lambda f: sum(scoring.score(c, c['estimate']['min'] + f * (c['estimate']['max'] - c['estimate']['min']))['score'] for c in E) / len(E)
+    assert at(best / 100) - at(frac) <= 0.02, (best, frac)
+
+
+def test_streamlit_tutor_holds_siblings():
+    """Review 20, minor 6: the Streamlit tutor holds same-paper siblings of an open decision, as the server does."""
+    t = (ROOT / 'thv_streamlit/tutor_page.py').read_text()
+    assert re.search(r"any\(srcs\(i\) & srcs\(h\) for h in held\)", t)

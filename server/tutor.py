@@ -84,6 +84,7 @@ PRESETS = {
 }
 
 GENERIC = {stem(w) for w in R['generic']}
+COMMON = set(R.get('common', []))   # words too common across follow-ups to pick one by themselves
 
 def names(question: str, cid: str) -> bool:
     """Does the question name a study behind this decision (an author surname)?"""
@@ -124,6 +125,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     if c:
         fol = c.get('follow', [])
         st = c.get('study', {})
+        rare = topic - COMMON
         for name, rx in R['routes']:
             if not re.search(rx, ql): continue
             if name == 'offtopic': return off
@@ -153,6 +155,11 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'pilot': return out(f"Run a small randomized pilot: give the change to some teams or customers and not to others, fix one outcome metric in advance, and compare after a set period. For this finding: {c['implication']} What the study measured: {c['explain']}", c)
             if name == 'size': return out(f"{c['explain']} In practice: {c['implication']}", c)
             if name == 'transfer': return out(f"{c['boundary']} The study itself: {c['explain']}", c)
+        fq = [f for f in fol if rare & set(tokens(f['q']))]   # no route: a distinctive word the question shares with one follow-up question picks it
+        if fq: return out(max(fq, key=lambda f: len(rare & set(tokens(f['q']))))['a'], c)
+        own = set(tokens(' '.join([c['answerTitle'], c['explain']])))
+        fa = [f for f in fol if (rare - own) & set(tokens(f['a']))]   # a distinctive word found only in a follow-up answer
+        if fa: return out(max(fa, key=lambda f: len((rare - own) & set(tokens(f['a']))))['a'], c)
         if fol:
             f0 = max(fol, key=lambda f: len(qt & set(tokens(f['q'] + ' ' + f['a']))))
             if len(qt & set(tokens(f0['q'] + ' ' + f0['a']))) >= 2: return out(f0['a'], c)

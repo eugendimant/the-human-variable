@@ -14,7 +14,8 @@
 .meter-bar{flex:1 1 160px;height:8px;border-radius:4px;background:var(--rule);position:relative;overflow:hidden}
 .meter-bar i{position:absolute;inset:0 auto 0 0;background:var(--you);transition:width .4s}
 .rv{margin-top:24px;border-top:1px solid var(--rule);padding-top:20px}
-.rv-head{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:18px}
+.rv-head{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-bottom:18px}
+.rv-chip{display:block;font-style:normal;font-size:.78em;color:var(--ev,#2f7d5b);margin-top:2px}
 .rv-head div{display:grid}
 .rv-head b{font-size:38px;letter-spacing:-.03em;line-height:1.05}
 .rv-bars{display:grid;gap:10px}
@@ -53,4 +54,6 @@ body.projector .play-grid>.card:not(:has(.rv)) .count-row{grid-column:2;grid-row
 body.projector .play-grid>.card:not(:has(.rv)) .count-row b{font-size:clamp(96px,10vw,168px);line-height:.9;letter-spacing:-.04em;color:#1f3cc2}
 body.projector .play-grid>.card:not(:has(.rv)) .count-row span{font-size:clamp(18px,1.6vw,26px)}
 body.projector .play-grid>.card:not(:has(.rv)) .count-row .meter-bar{width:70%}
-.rv-head>div>span{white-space:nowrap}
+.rv-head>div>span{white-space:normal;min-height:2.4em}
+
+@media (max-width:640px){.rv-head{grid-template-columns:repeat(2,minmax(0,1fr))}}

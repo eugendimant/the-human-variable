@@ -490,3 +490,23 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 234 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 20.
+
+## Iteration 25 (2026-10-31)
+
+**Verified first:** iteration-24 fixes, by independent review 20 (snapshot `snap_r20`): biz04 full-sample pairing, principle wording, axb08 options, estimate grid validation, projector labels, tutor stakes and population routes. Also in that snapshot: 64 Dimant quotes verified against published texts or preprints (`docs/audit/dimant_verification_2026_10_31.json`).
+
+**Independent score:** 87/100 (review 20, `qa/reviews/review20.md`). 0 Blocking, 0 Major, 11 Minor.
+
+**Fixes (all 11 minors):**
+- Estimate skill baseline is the best fixed slider position across the bank (`GUESS_FRAC = 0.30`), with a gate that keeps it current.
+- axf06 tolerance 1 (control 74 lies outside 76 ± 1); axb03 and axb14 axes 0 to 40 with tolerance 3, all estimate gates holding.
+- Allocate counts as a call only with the top weight on a best option and at least half the points there (JS and Python).
+- Tutor: after the routes, a distinctive word the question shares with one follow-up question, or found only in a follow-up answer, picks that follow-up; words common to three or more decisions' follow-ups do not count (`tutorRoutes.common`); "does the X work" goes to the summary; believing or trusting a lab study goes to transfer, not ethics. Server and page agree (test).
+- Streamlit tutor holds same-paper siblings of an open decision (test).
+- bates17 quote stored (verified against the published article PDF); biz04 explanation drops N = 204; opposing-views-bot implication stays with what was tested; bz11 claim at the level of the finding.
+- Projector delegate shows the evidence route under each task; the stat row is a fixed four-column grid.
+- "Start playing" opens the featured path; rank hint says where first place goes; a rank card that starts on the answer is reshuffled; the sparkline label sits away from the data; the All-decisions list shows forecast claims; a phone refreshes the room count right after its answer lands.
+
+**Gates:** build check, 243 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 0 Major. Next: independent review 21.

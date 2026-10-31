@@ -9,7 +9,8 @@ def run():
     st.title('Ask the tutor')
     st.caption(('Answers come from Gemini, restricted to the lab’s checked sources, with citations. ' if T.enabled else 'No AI key is configured, so answers come from the lab’s checked summaries. ') + 'Verify details in the source.')
     locked, allowed = store().class_lock(); held = store().open_challenges()   # an open question stays held even if the console went quiet
-    blocked = lambda i: (locked and i not in allowed) or i in held
+    srcs = lambda i: set(cl.CHALLENGES.get(i, {}).get('sources', []))
+    blocked = lambda i: (locked and i not in allowed) or i in held or any(srcs(i) & srcs(h) for h in held)   # same-paper siblings stay held, as on the server
     ids = [i for i in cl.CHALLENGES if not blocked(i)]
     if locked: st.info('A live class is running, so the tutor covers only decisions your class has already revealed.')
     if not ids: return

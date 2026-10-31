@@ -2831,7 +2831,7 @@
    "scene": "A famous US study found hotel guests reused more towels when a sign said most guests do, especially guests of the same room. Researchers repeated the test in two German hotels.",
    "question": "Is this what the replication found?",
    "answerTitle": "Both signs helped; the norm sign did no better",
-   "explain": "Bohner and Schlüter repeated the test in two German hotels. In the first (N = 724), norm signs combined reached 81.9% reuse against 83.7% for the standard environmental sign; in the second (N = 204), the environmental sign reached 93.3% versus 76.5% for the norm signs combined.",
+   "explain": "Bohner and Schlüter repeated the test in two German hotels. In the first (N = 724), norm signs combined reached 81.9% reuse against 83.7% for the standard environmental sign; in the second hotel, the environmental sign reached 93.3% versus 76.5% for the norm signs combined.",
    "implication": "Before rolling out a famous nudge, test it against the plain message you would otherwise use, not just against doing nothing.",
    "boundary": "Two hotels in Germany; later meta-analyses report modest, consistent effects of norm messages across studies.",
    "sources": [
@@ -3970,9 +3970,9 @@
    "question": "Holding the jailing rate fixed, how much could crime fall?",
    "estimate": {
     "target": 24.7,
-    "min": -30,
-    "max": 30,
-    "tolerance": 5,
+    "min": 0,
+    "max": 40,
+    "tolerance": 3,
     "label": "Maximum crime reduction at the same jailing rate",
     "unit": "%"
    },
@@ -4508,9 +4508,9 @@
    "question": "How much faster did consultants with AI finish?",
    "estimate": {
     "target": 25.1,
-    "min": -25,
-    "max": 35,
-    "tolerance": 5,
+    "min": 0,
+    "max": 40,
+    "tolerance": 3,
     "label": "Speed gain on inside-frontier tasks",
     "unit": "%"
    },
@@ -5208,7 +5208,7 @@
    "scene": "A 2012 PNAS study reported that signing an honesty statement at the top of a form, rather than the bottom, reduced dishonest reports. Government agencies adopted the practice.",
    "question": "Did the sign-first effect hold up?",
    "forecast": {
-    "claim": "A preregistered direct replication with 1,235 people found no effect of signing first.",
+    "claim": "The replications found no effect of signing first on honest reporting.",
     "truth": true
    },
    "answerTitle": "No effect of signing first",
@@ -5820,7 +5820,7 @@
    },
    "answerTitle": "Republicans moved right; Democrats barely moved",
    "explain": "For Republicans the intent-to-treat effect was 0.12 points toward conservatism on a seven-point scale, rising to 0.60 among full compliers; the Democrats' shift was small and not significant.",
-   "implication": "Do not expect that feeding a divided team the other side's messages builds understanding; structure direct, cooperative contact instead.",
+   "implication": "Do not expect that feeding a divided team the other side's messages builds understanding.",
    "boundary": "Party-identified US adults using Twitter at least three times weekly, paid to follow a bot for one month in late 2017.",
    "sources": [
     "bail18"
@@ -8177,7 +8177,7 @@
     "target": 76,
     "min": 40,
     "max": 100,
-    "tolerance": 3,
+    "tolerance": 1,
     "label": "Median diagnostic reasoning score with GPT-4",
     "unit": "%"
    }
@@ -8961,7 +8961,7 @@
    ],
    [
     "ethics",
-    "\\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)"
+    "\\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|is it (ok|okay|right|wrong)|allowed|legal)"
    ],
    [
     "models",
@@ -8993,7 +8993,7 @@
    ],
    [
     "summary",
-    "\\b(summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line)\\b"
+    "\\b(summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|(does|did|do) (it|this|that|the [\\w ]{1,30}) work(?=\\W*$)|did it work|what (did|was) (it|they) find|what was found)\\b"
    ],
    [
     "duration",
@@ -9017,9 +9017,96 @@
    ],
    [
     "transfer",
-    "\\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\\w*)"
+    "\\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\\w*|believe|trust (it|this|a|the)|lab (game|study|experiment)|artificial)"
    ]
   ],
-  "subgroupFollow": "^(who\\b.*\\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\\b)"
+  "subgroupFollow": "^(who\\b.*\\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\\b)",
+  "common": [
+   "accuracy",
+   "acros",
+   "agent",
+   "all",
+   "alon",
+   "anyon",
+   "author",
+   "averag",
+   "base",
+   "behavior",
+   "belief",
+   "benefit",
+   "best",
+   "bett",
+   "bias",
+   "big",
+   "chang",
+   "choic",
+   "come",
+   "compar",
+   "conclud",
+   "cost",
+   "data",
+   "default",
+   "design",
+   "effect",
+   "employ",
+   "every",
+   "evidenc",
+   "experi",
+   "expert",
+   "fast",
+   "find",
+   "finding",
+   "firm",
+   "fram",
+   "gain",
+   "gap",
+   "get",
+   "gpt",
+   "happen",
+   "help",
+   "here",
+   "human",
+   "keep",
+   "kind",
+   "larg",
+   "learn",
+   "less",
+   "long",
+   "manag",
+   "matt",
+   "mean",
+   "measur",
+   "messag",
+   "might",
+   "model",
+   "norm",
+   "original",
+   "out",
+   "paper",
+   "part",
+   "pay",
+   "penalty",
+   "peopl",
+   "predict",
+   "problem",
+   "prompt",
+   "real",
+   "reduc",
+   "research",
+   "rise",
+   "rose",
+   "shar",
+   "stak",
+   "strong",
+   "studi",
+   "study",
+   "task",
+   "test",
+   "time",
+   "took",
+   "train",
+   "use",
+   "work"
+  ]
  }
 }

@@ -62,7 +62,8 @@
     const p = shares.map(s => Number(s || 0) / total);
     const score = 1 - p.reduce((a, x, i) => a + (x - best[i] / nb) ** 2, 0);
     const top = Math.max(...p);
-    return { score, correct: p.every((x, i) => x !== top || best[i]), /* every top-weighted option is a best one */ detail: { onBest: Math.round(100 * p.reduce((a, x, i) => a + (best[i] ? x : 0), 0)) } };
+    const onBest = p.reduce((a, x, i) => a + (best[i] ? x : 0), 0);
+    return { score, correct: p.every((x, i) => x !== top || best[i]) && onBest >= 0.5, /* top weight on a best option and at least half the points there; a near-even split is not a call */ detail: { onBest: Math.round(100 * p.reduce((a, x, i) => a + (best[i] ? x : 0), 0)) } };
   }
 
   // Delegation: one routing decision per task; score = share routed as the evidence suggests.
@@ -145,12 +146,13 @@
       case 'multi': { const k = (c.multiAnswers || []).length || c.pick || 2; return k / c.options.length }
       case 'delegate': return 1 / c.delegate.choices.length;
       case 'allocate': { const n = c.options.length, nb = (c.allocate && c.allocate.best && c.allocate.best.length) || 1; return 1 - 1 / nb + 1 / n }   // an even split
-      case 'estimate': { const e = c.estimate; if (!e || e.target === undefined) return 0; let s = 0; for (let k = 0; k <= 100; k++) s += estimate(c, e.min + (e.max - e.min) * k / 100).score; return s / 101 }   // a random slider position
+      case 'estimate': { const e = c.estimate; if (!e || e.target === undefined) return 0; return estimate(c, e.min + (e.max - e.min) * GUESS_FRAC).score }   // the best fixed slider position across the bank (tests keep GUESS_FRAC current)
       default: return 0;
     }
   }
+  const GUESS_FRAC = 0.30;   // no-information estimate strategy: the same slider position every time
   function skill(c, raw) { const b = baseline(c); return b >= 1 ? 0 : (raw - b) / (1 - b) }
 
-  const api = { score, ready, baseline, skill, statedProbability, calibration, toCalibrationRecord, formats: Object.keys(scorers) };
+  const api = { score, ready, baseline, skill, GUESS_FRAC, statedProbability, calibration, toCalibrationRecord, formats: Object.keys(scorers) };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.THVScore = api;
 })(typeof window !== 'undefined' ? window : globalThis);
