@@ -318,7 +318,7 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .room-wait .q{max-width:none}
 
 /* Paths, summary, playbook */
-.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.paths{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
 .path{text-align:left;padding:20px;border-radius:var(--r-panel);background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:8px;min-height:170px;transition:transform .15s}
 .path:hover{transform:translateY(-2px)}
 .path strong{font-size:20px;letter-spacing:-.02em;line-height:1.15}
@@ -438,6 +438,20 @@ body.in-play{background:var(--paper)}
 .axis-svg{width:100%;height:auto;display:block}
 .fc-ask{margin:0 0 8px}
 .q-claim{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;max-width:30ch;line-height:1.2}
+
+.try-read{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:26px 0 8px}
+.try-read b{font-size:clamp(56px,6vw,84px);letter-spacing:-.05em;line-height:1;color:var(--you-ink)}
+.try-read b.empty{color:var(--rule-strong)}
+.try-read span{font-weight:650;color:var(--ink-2)}
+.try-axis{margin:18px 0 0}
+.try-result{min-height:0;margin:10px 0 0}
+.try-result:empty{display:none}
+.try-src{margin-left:auto;font-size:var(--t7);color:var(--muted)}
+.paths .path:first-child{grid-column:span 2}
+@media (max-width:560px){.paths .path:first-child{grid-column:auto}}
+.path-flag{font-style:normal;align-self:flex-start;font-size:var(--t7);font-weight:750;background:var(--ev);color:var(--ink);padding:3px 9px;border-radius:999px}
+.paths .path:first-child strong{font-size:clamp(24px,2.4vw,32px)}
+.paths .path:first-child span{font-size:18px;max-width:34em}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="./" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -670,16 +684,18 @@ const glyph = `<svg class="brand-glyph" viewBox="0 0 26 26" aria-hidden="true"><
 
 function heroTry() {
   const c = BY_ID.ai01; if (!c || !isLive(SOURCE[c.sources[0]])) return '';
-  const h = st.hero, e = c.estimate, v = h.value;
+  const h = st.hero, e = c.estimate, v = h.value, src = SOURCE[c.sources[0]];
+  const gap = v === null ? 0 : Math.abs(v - e.target);
   return `<section class="panel try" aria-labelledby="try-q">
     <span class="kicker">Try one now</span>
-    <h2 id="try-q">Professionals randomly given ChatGPT for short writing tasks. How much less time did they take?</h2>
-    <p>${esc(cite(c.sources[0]))}. ${esc(c.study?.n || '')}</p>
-    ${h.done ? gapAxis({ min: e.min, max: e.max, unit: '%', you: v, ev: e.target, band: e.tolerance, evLabel: 'Study', id: 'hero' }) : `<div class="try-read"><span class="kicker">Less time with ChatGPT</span><b class="${v === null ? 'empty' : ''}" id="hero-read">${v === null ? '—' : v + '%'}</b></div>`}
+    <h2 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h2>
+    ${h.done ? `<div class="try-axis">${gapAxis({ min: e.min, max: e.max, unit: '%', you: v, ev: e.target, band: e.tolerance, evLabel: 'Study', id: 'hero' })}</div>`
+      : `<div class="try-read"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${v === null ? '?' : v + '%'}</b><span>less time</span></div>
     <label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
-    <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%" ${h.done ? 'disabled' : ''}>
-    <div class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time, and graders rated the output ${c.study?.quality || 'better'}. You were ${Math.abs(v - e.target)} points ${v === e.target ? 'away, exactly right' : 'away'}.` : v === null ? 'Drag the marker to your estimate, then lock it.' : `Your estimate: ${v}% less time.`}</div>
-    <div class="try-foot">${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play a 5-decision round</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}</div>
+    <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">
+    <div class="axis"><span>${e.min}%</span><span>${e.max}%</span></div>`}
+    <p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time, and graders rated the work 18% better. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} points off.`}` : ''}</p>
+    <div class="try-foot">${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}<span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
   </section>`;
 }
 
@@ -696,7 +712,7 @@ function home() {
     ${heroTry()}</div></section>
   <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
-    <div class="paths">${paths.map(p => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
+    <div class="paths">${paths.map(p => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}">${p.case ? '<em class="path-flag">Start here</em>' : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
   </section>
   ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p>How the shape of a norm, the visibility of peers and political identity change what people do at work and in society.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
     <ul class="paper-list">${dimant.slice(0, 6).map(s => `<li><button data-source="${esc(s.id)}"><strong>${esc(s.title)}</strong><small>${esc(s.venue)}, ${s.year}</small></button></li>`).join('')}</ul></div></section>` : ''}`;
@@ -1104,7 +1120,7 @@ document.addEventListener('click', e => {
 });
 document.addEventListener('input', e => {
   const el = e.target, c = card();
-  if (el.id === 'hero-range') { st.hero.value = +el.value; setRange(el); const hr = qs('#hero-read'); hr.textContent = el.value + '%'; hr.classList.remove('empty'); qs('.try-result').textContent = `Your estimate: ${el.value}% less time.`; qs('[data-act="hero-lock"]').disabled = false; return }
+  if (el.id === 'hero-range') { st.hero.value = +el.value; setRange(el); const hr = qs('#hero-read'); hr.textContent = el.value + '%'; hr.classList.remove('empty'); qs('[data-act="hero-lock"]').disabled = false; return }
   if (el.id === 'conf') { st.conf = +el.value; st.confTouched = true; setRange(el); qs('#conf-read').textContent = st.conf + '%'; return }
   if (!c || st.phase !== 'predict') {
     if (el.id === 'atlas-q') { st.atlasQuery = el.value; const tmp = document.createElement('div'); tmp.innerHTML = atlas(); qs('#atlas-grid').replaceWith(tmp.querySelector('#atlas-grid')); qs('#atlas-count').textContent = tmp.querySelector('#atlas-count').textContent }
