@@ -165,3 +165,19 @@ def test_naming_another_study_switches():
     c = CHALLENGES['ai01']; other = next(x for x in CHALLENGES.values() if 'salvi25' in x['sources'])
     r = T.curated('What did Salvi and colleagues find?', 'ai01')
     assert {x['id'] for x in r['citations']} & set(other['sources'])
+
+
+PHRASINGS = json.loads((__import__('pathlib').Path(__file__).parent / 'tutor_phrasings.json').read_text())
+
+def test_natural_phrasings_answer_from_the_decision():
+    """Review 15, M1: thirty ordinary phrasings on every decision: never another study, never "outside"."""
+    bad = []
+    for cid, c in CHALLENGES.items():
+        for q in PHRASINGS:
+            r = T.curated(q, cid)
+            if 'outside what this lab covers' in r['answer'] or not {x['id'] for x in r['citations']} <= set(c['sources']) or not r['citations']: bad.append((cid, q, r['answer'][:50]))
+    assert not bad, (len(bad), bad[:10])
+
+@pytest.mark.parametrize('q', ['What is the capital of France?', 'Write me a poem about cats', 'Tell me a joke'])
+def test_off_topic_still_declined(q):
+    assert 'outside what this lab covers' in T.curated(q, 'ai01')['answer']

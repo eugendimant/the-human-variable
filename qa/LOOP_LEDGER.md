@@ -416,3 +416,18 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 224 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 15.
+
+## Iteration 20 (2026-10-31)
+
+**Verified first:** iteration-19 fixes, by independent review 15 (snapshot `snap_r15`): shared routing table, evidence split, causal and forecast fixes, projector count, console retry, phone tabs. Not held: the tutor answered its test list but declined or misrouted ordinary phrasings; some annotations survived as printed values.
+
+**Independent score:** 86/100 (review 15, `qa/reviews/review15.md`). 0 Blocking, 1 Major.
+
+**Fixes:**
+- **M1.** With a decision on screen the tutor answers about it unless the question names another study by a whole author surname; it never switches study on word overlap and declines only clear off-topic requests (poems, jokes, weather and the like). New routes in the shared table: who was studied, catch or backfire, summary or explain simply, how long it lasted, which AI models. Thirty natural phrasings, including the reviewer's, are tested on every decision, server and page.
+- **Minors.** Printed values must name a table or figure; annotations replaced by verbatim sentences or table cells found in the papers (eight decisions; norms24's n = 1,203 from the published article); lees20 recorded as checked on the version-of-record abstract and figure legend, DASH quotes removed; quarantined judg02 evidence cleaned; axb03, axb14 and axe06 axes widened, with a gate that a random slider guess earns at most 0.3; social13 rival option; sibling spoilers in axb14 and rollout2 follow-ups; biz05 action adds a pilot check for low users; axe14 action recommends disclosure at the start of the call; the confidence line says a 50% hedge scores 50; the questioned link in causal reveals is drawn thick in amber; diagram labels larger on phones; open-question hold window follows instructor activity.
+- **Deeper visual pass.** 22 more decisions show the paper's own numbers as an evidence figure ("What the study measured"), every value checked against that decision's evidence (gate extended to chart values); the figure is the reveal's centrepiece, with larger bars and the evidence in amber, and appears under forecast, estimate, delegate and allocate views where the paper reports comparable numbers; path grid is one featured card plus paper cards with a blue or amber marker; delegate reveal opens with "tasks routed as the evidence suggests"; record headline has a call-by-call history line; Library principles show how many of their decisions the player has opened; causal diagrams sit on a faint lab grid; projector is a dark stage around white cards.
+
+**Gates:** build check, 229 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 1 Major found and addressed. Next: independent review 16.

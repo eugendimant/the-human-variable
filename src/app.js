@@ -251,8 +251,8 @@ function dag(d, rev) {
     // Before the reveal the diagram shows which factors are in play, not which way the arrows run.
     // Before the reveal the diagram shows only the factors in play; links would narrow the options. The reveal draws them one by one.
     if (!rev) return '';
-    return `<line ${fresh ? `class="ed" style="animation-delay:${0.25 + i * 0.35}s"` : ''} x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
-  return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(rev ? d.alt : dagAlt(d))}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n0 => { const n = !rev && n0.mask ? { ...n0, label: '?', hidden: true } : n0; return `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="17" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>` }).join('')}</svg>`;
+    return `<line ${fresh ? `class="ed" style="animation-delay:${0.25 + i * 0.35}s"` : ''} x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${style === 'q' ? '#e0a01c' : '#14203a'}" stroke-width="${style === 'q' ? 4 : 2}" ${style === 'q' ? 'stroke-dasharray="7 5"' : ''} marker-end="url(#${style === 'q' ? 'ahq' : 'ah'})"/>` };
+  return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(rev ? d.alt : dagAlt(d))}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker><marker id="ahq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0a01c"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n0 => { const n = !rev && n0.mask ? { ...n0, label: '?', hidden: true } : n0; return `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="${innerWidth < 640 ? 21 : 17}" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>` }).join('')}</svg>`;
 }
 
 // The gap: player's call (blue) and the evidence (amber) on one axis.
@@ -288,10 +288,11 @@ function gapFigure(c, rec) {
     body = `<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${c.options.map((o, k) => `<div class="hb-row"><span class="hb-label">${esc(o)}${isBest(k) ? ' <span class="tag tag-ev">Worked best</span>' : ''}<small class="alloc-val">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</small></span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num you">${pct(r[k] / tot)}</b></div>`).join('')}</div>`;
     cap = `Bars: your points. Score ${pct(rec.score)}: 100 when all points sit on the option that worked best.`
   }
-  else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
+  else if (c.format === 'delegate') { body = `<div class="gap-head"><div class="gh-cell"><span>Tasks routed as the evidence suggests</span><b class="num gh-you">${rec.detail.right} of ${rec.detail.total}</b></div></div><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
   else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
   else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
-  return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.format === 'allocate' ? '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your points</span><span><span class="tag tag-ev">Worked best</span> marks the study’s answer</span></div>' : c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<div class="gap-legend" aria-hidden="true"><span>Study results</span><span><i class="dot dot-ev"></i>The result the question asks about</span></div>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
+  if (c.chart && ['forecast', 'rank', 'estimate', 'delegate', 'allocate'].includes(c.format) && !(c.format === 'rank' && c.rankValues)) { body += `<div class="plate-more"><p class="plate-h">What the study measured</p>${bars(c.chart)}<p class="small">${esc(c.chart.note || '')}</p></div>` }   // the paper's own figure under the format's gap view
+  return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.format === 'allocate' ? '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your points</span><span><span class="tag tag-ev">Worked best</span> marks the study’s answer</span></div>' : c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<p class="plate-h">What the study measured</p>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
 }
 // The signature moment of a numeric reveal: your number against the study's, large, with the gap between them.
 function gapHead(you, ev, gap, youLab = 'Your call', evLab = 'The study') {
@@ -338,7 +339,7 @@ function play() {
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">${label}
-      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}</span>`}</p>${!rec.missed && rec.confidence !== null ? `<p class="conf-line">Confidence score ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))} (from −100 to 100). You were ${rec.confidence}% sure and ${rec.correct ? 'right' : 'missed'}.</p>` : ''}
+      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .75 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}</span>`}</p>${!rec.missed && rec.confidence !== null ? `<p class="conf-line">Confidence score ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))}, where a 50% hedge scores 50. You were ${rec.confidence}% sure and ${rec.correct ? 'right' : 'missed'}.</p>` : ''}
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
       ${rec.missed ? '' : gapFigure(c, rec)}
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
@@ -369,7 +370,9 @@ function trTokens(s) {
 }
 const TR_GENERIC = new Set(TR.generic.map(trStem));
 const trNorm = s => (String(s).toLowerCase().match(/[a-z0-9]+/g) || []).join(' ');
-function trNames(q, x) { const qt = new Set(trTokens(q)); return x.sources.some(id => SOURCE[id] && trTokens(SOURCE[id].authors).some(a => qt.has(a))) }
+function trNames(q, x) {   // whole surnames, unstemmed: "bill" must not match "Biller-Andorno"
+  const words = s => (String(s).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().match(/[a-z]{4,}/g) || []).filter(w => !TR_STOP.has(w) && w !== 'with' && w !== 'others');
+  const qw = new Set(words(q)); return x.sources.some(id => SOURCE[id] && words(SOURCE[id].authors).some(a => qw.has(a))) }
 function trBody(x) { return new Set(trTokens([x.title, x.scene, x.question, x.answerTitle, x.explain, x.implication, x.boundary, ...(x.follow || []).map(f => f.q + ' ' + f.a)].join(' '))) }
 function curated(q, c) {
   const qt = new Set(trTokens(q)), topic = [...qt].filter(w => !TR_GENERIC.has(w)), ql = q.toLowerCase(), fol = c.follow || [];
@@ -382,6 +385,12 @@ function curated(q, c) {
   const st0 = c.study || {};
   for (const [name, rx] of TR.routes) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
+    if (name === 'offtopic') return off;
+    if (name === 'models') { const fm = fol.find(f => /\b(GPT|Claude|Llama|Gemini|ChatGPT|Bing|DALL|Midjourney)/.test(f.a)) || fol.find(f => /\b(models?|tools?)\b/i.test(f.q)); if (fm) return { text: fm.a, cites: cs(c) }; continue }
+    if (name === 'who') return { text: `Who was studied: ${st0.n || 'see the paper'}. Design: ${st0.design || 'see the paper'}.\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
+    if (name === 'catch') { const fd = fol.find(f => /\b(downside|backfire|risk|cost|worse|harm|limit|fail)/i.test(f.q + ' ' + f.a)); return { text: `What the study covers: ${c.boundary}${fd ? '\n\n' + fd.a : ''}\n\nThe finding itself: ${c.explain}`, cites: cs(c) } }
+    if (name === 'summary') return { text: `${c.answerTitle}. ${c.explain}\n\nWhat a manager does with it: ${c.implication}`, cites: cs(c) };
+    if (name === 'duration') { const fl = fol.find(f => /\b(long|last|later|weeks?|months?|years?|fade|persist|after)\b/i.test(f.q + ' ' + f.a)); return { text: fl ? fl.a : `${c.explain}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) } }
     if (name === 'ethics') return { text: `The study measures what happened, not what is right; that call is yours. What it covers: ${c.boundary}\n\nWhat a manager can do with it: ${c.implication}`, cites: cs(c) };
     if (name === 'subgroup') { const fh = fol.find(f => new RegExp(TR.subgroupFollow, 'i').test(f.q)); if (fh) return { text: fh.a, cites: cs(c) }; continue }
     if (name === 'design' && !/\b(my|our)\b/.test(ql)) return { text: `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\n${c.explain}`, cites: cs(c) };
@@ -390,11 +399,8 @@ function curated(q, c) {
     if (name === 'transfer') return { text: `${c.boundary}\n\nThe study itself: ${c.explain}`, cites: cs(c) };
   }
   if (fol.length) { const ov = f => trTokens(f.q + ' ' + f.a).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const f0 = fol.slice().sort((a, b) => ov(b) - ov(a))[0]; if (ov(f0) >= 2) return { text: f0.a, cites: cs(c) } }
-  const body = trBody(c);
-  if (!topic.length || topic.some(w => body.has(w))) return { text: `${c.explain}\n\n${c.implication}`, cites: cs(c) };
-  const rel = ALL.filter(x => x.explain && x.id !== c.id).map(x => ({ x, n: topic.filter(w => trBody(x).has(w)).length })).sort((a, b) => b.n - a.n)[0];
-  if (rel && rel.n >= Math.max(2, 0.6 * topic.length)) return { text: `A related study in the lab: ${rel.x.explain}\n\n${rel.x.implication}`, cites: cs(rel.x) };
-  return off;
+  // no study named and no route: answer about the decision on screen, never about another study on word overlap
+  return { text: `${c.answerTitle}. ${c.explain}\n\nWhat a manager does with it: ${c.implication}`, cites: cs(c) };
 }
 async function ask(q) {
   q = String(q || '').trim().slice(0, 300); const c = card(); if (!c || st.tutor.busy) return;
@@ -436,7 +442,7 @@ function almanac() {
     <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; const seen = cs.filter(c => played.has(c.id)).length;
       // predict first: a principle and its findings open once the player has made calls on them
       const line = !t.principle ? (libraryLoaded ? 'Held back while a live class is running on this server.' : 'Loading…') : seen ? esc(t.principle) : `Make a call on any of these ${cs.length} studies to open the principle.`;
-      return `<article class="theme panel" id="theme-${esc(t.id)}">${art(t.id)}<div class="theme-head"><h2>${esc(t.title)}</h2><p>${line}</p></div>
+      return `<article class="theme panel" id="theme-${esc(t.id)}">${art(t.id)}<div class="theme-head"><h2>${esc(t.title)}</h2><p class="${seen ? '' : 'locked'}">${line}<span class="theme-meter" aria-hidden="true"><i style="width:${Math.round(100 * seen / cs.length)}%"></i></span><small class="theme-count">${seen} of ${cs.length} played</small></p></div>
       <details class="theme-more"><summary>The ${cs.length} findings behind it${seen && seen < cs.length ? `, ${seen} opened` : ''}</summary><ul class="findings">${cs.map(c => `<li><div>${played.has(c.id) && c.explain ? `<strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small>` : `<strong>${esc(c.title)}</strong><br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. The finding opens after your call.</small>`}</div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
       <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play these ${cs.length}</button></article>` }).join('')}</section>`;
 }
@@ -450,6 +456,10 @@ function record() {
   // Pooled: (mean score - mean chance level) / (1 - mean chance level), so one confident miss cannot swamp a set of good calls.
   const avg = xs => { if (!xs.length) return null; const raw = xs.reduce((a, r) => a + r.score, 0) / xs.length, base = xs.reduce((a, r) => a + S.baseline(BY_ID[r.id]), 0) / xs.length; return pct(base >= 1 ? 0 : (raw - base) / (1 - base)) };
   const meanScore = avg(all);
+  // How the headline moved, call by call (pooled skill over the calls so far), so the big number has a history.
+  const series = all.slice(-40).map((_, k, xs) => avg(xs.slice(0, k + 1)));
+  const spark = series.length < 3 ? '' : (() => { const W = 220, H = 56, lo = Math.min(-100, ...series), hi = 100, x = k => 4 + k * (W - 8) / (series.length - 1), y = v => 4 + (hi - v) / (hi - lo) * (H - 8);
+    return `<svg class="spark" viewBox="0 0 ${W} ${H}" role="img" aria-label="Skill after each of your last ${series.length} calls, from ${series[0]} to ${series[series.length - 1]}"><line x1="4" x2="${W - 4}" y1="${y(0)}" y2="${y(0)}" stroke="#9aa6b6" stroke-dasharray="3 4"/><polyline fill="none" stroke="#2f54eb" stroke-width="2.5" stroke-linejoin="round" points="${series.map((v, k) => x(k) + ',' + y(v)).join(' ')}"/><circle cx="${x(series.length - 1)}" cy="${y(series[series.length - 1])}" r="4.5" fill="#e0a01c"/><text x="${W - 4}" y="${y(0) - 4}" text-anchor="end" font-size="10" fill="#56617a">guessing</text></svg>` })();
   const sess = st.session.length ? avg(st.session.filter(r => BY_ID[r.id])) : null;
   const byTrack = TRACKS.map(t => { const x = all.filter(r => BY_ID[r.id].track === t); return [t, x.length, avg(x)] });
   let summary = '';
@@ -462,7 +472,7 @@ function record() {
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record.</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
-    <div class="score-strip"><div class="score-big"><b class="num">${sess ?? meanScore ?? '–'}</b><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing, 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
+    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${sess ?? meanScore ?? '–'}</b>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing, 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
       <dl class="score-meta"><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">

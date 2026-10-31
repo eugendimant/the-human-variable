@@ -1427,11 +1427,10 @@
    "kind": "peer-reviewed",
    "takeaway": "Partisans overestimate how negatively the other side views their group's actions; correcting this reduced attributions of obstructionism.",
    "verification": {
-    "status": "verified_accepted_manuscript",
+    "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Harvard DASH manuscript of the Nature Human Behaviour article (whether it is the final accepted version is unconfirmed)",
-    "text_url": "https://dash.harvard.edu/server/api/core/bitstreams/fda14585-409f-44d1-8955-82808aeac786/content"
+    "text_read": "Version-of-record abstract and Figure 4 legend on nature.com"
    },
    "flags": [
     "Crossref API returned an error; bibliographic data taken from the Springer Nature page (online 11 Nov 2019, issue March 2020). Experiment-level numbers come from the DASH manuscript, not the typeset article."
@@ -2502,7 +2501,24 @@
     "design": "Five incentivized forecasting experiments (lab and online)",
     "n": "206 to 1,036 participants per study"
    },
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "Saw no forecast results",
+     "Saw own results only",
+     "Saw the model's results only",
+     "Saw both sets of results"
+    ],
+    "values": [
+     65,
+     63,
+     26,
+     23
+    ],
+    "unit": "%",
+    "highlight": 3,
+    "note": "Share who chose the model to forecast, Study 1."
+   }
   },
   {
    "id": "ai10",
@@ -2830,6 +2846,21 @@
    "forecast": {
     "claim": "In the German hotels, the “most guests reuse” sign raised reuse more than a standard environmental sign.",
     "truth": false
+   },
+   "chart": {
+    "labels": [
+     "No sign",
+     "Standard environmental sign",
+     "Norm signs (combined)"
+    ],
+    "values": [
+     64.3,
+     93.3,
+     75.4
+    ],
+    "unit": "%",
+    "highlight": 2,
+    "note": "Towel reuse rate, second hotel."
    }
   },
   {
@@ -2848,7 +2879,7 @@
    ],
    "answerTitle": "A norm message can backfire",
    "explain": "Schultz and colleagues gave usage feedback to 290 San Marcos households. Below-average homes shown only the neighborhood average raised daily use from 10.15 to 11.13 kWh over the longer term; adding a smiley-face approval cue held them at baseline.",
-   "implication": "When sending peer comparisons, add explicit approval for customers already doing better than average.",
+   "implication": "When sending peer comparisons, add explicit approval for customers already doing better than average, and check in a pilot whether low users drift up.",
    "boundary": "Two doorhanger messages to 290 California households, with electricity read from meters over about four weeks.",
    "sources": [
     "energy07"
@@ -2885,7 +2916,24 @@
     "design": "Field experiment",
     "n": "290 households in San Marcos, California"
    },
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "Average only: before",
+     "Average only: weeks later",
+     "Average + smiley: before",
+     "Average + smiley: weeks later"
+    ],
+    "values": [
+     10.15,
+     11.13,
+     10.04,
+     10.14
+    ],
+    "unit": "",
+    "highlight": 1,
+    "note": "Daily electricity use of below-average homes."
+   }
   },
   {
    "id": "biz07",
@@ -2935,7 +2983,20 @@
    "study": {
     "design": "Eight experiments"
    },
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "No reminder",
+     "Reminded to add or subtract"
+    ],
+    "values": [
+     21,
+     48
+    ],
+    "unit": "%",
+    "highlight": 0,
+    "note": "Share listing at least one idea that removes something, experiment 4."
+   }
   },
   {
    "id": "biz08",
@@ -3102,7 +3163,20 @@
     "design": "Online experiment, two-player contribution game (6 treatments)",
     "n": "1,203 US adults (representative sample)"
    },
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "Saw a tight norm",
+     "Saw a loose norm"
+    ],
+    "values": [
+     1.26,
+     1.65
+    ],
+    "unit": "",
+    "highlight": 1,
+    "note": "Variance of contributions after seeing others' choices."
+   }
   },
   {
    "id": "social04",
@@ -3252,6 +3326,19 @@
    "forecast": {
     "claim": "The behavior spread farther through networks with random long ties than through clustered networks with redundant ties.",
     "truth": false
+   },
+   "chart": {
+    "labels": [
+     "Clustered networks",
+     "Random networks"
+    ],
+    "values": [
+     53.77,
+     38.26
+    ],
+    "unit": "%",
+    "highlight": 0,
+    "note": "Share of people who adopted the health behavior."
    }
   },
   {
@@ -3403,7 +3490,7 @@
    "permuted": true,
    "options": [
     "Unfavorable to women, with tight estimates",
-    "Large gains, concentrated in early rounds",
+    "Clear gains, precisely estimated in every round",
     "Unfavorable to women, mostly in early rounds",
     "Favorable to women, with imprecise estimates"
    ],
@@ -3847,7 +3934,24 @@
      1
     ]
    ],
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "Could not change the model",
+     "Could adjust by up to 2",
+     "Could adjust by up to 5",
+     "Could adjust by up to 10"
+    ],
+    "values": [
+     47,
+     68,
+     71,
+     71
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Share who chose to use the model, Study 2."
+   }
   },
   {
    "id": "axb03",
@@ -3859,7 +3963,7 @@
    "question": "Holding the jailing rate fixed, how much could crime fall?",
    "estimate": {
     "target": 24.7,
-    "min": 0,
+    "min": -30,
     "max": 30,
     "tolerance": 5,
     "label": "Maximum crime reduction at the same jailing rate",
@@ -4400,7 +4504,7 @@
    "question": "How much faster did consultants with AI finish?",
    "estimate": {
     "target": 25.1,
-    "min": 0,
+    "min": -25,
     "max": 35,
     "tolerance": 5,
     "label": "Speed gain on inside-frontier tasks",
@@ -4428,7 +4532,7 @@
     },
     {
      "q": "Is there a downside?",
-     "a": "Yes. On a task built to sit outside AI's frontier, correctness fell from about 84.5% without AI to 70.6% and 60% with it."
+     "a": "Yes. The same study built a task outside the frontier, where AI users did worse; the \"Leading with AI\" case covers that result."
     }
    ],
    "theme": "ai-work"
@@ -4514,7 +4618,7 @@
    "follow": [
     {
      "q": "Did anyone gain on both?",
-     "a": "Yes. Less experienced and lower-skilled agents improved both the speed and quality of their output."
+     "a": "The earlier steps of this case show which agents gained on speed and quality."
     },
     {
      "q": "Does the AI help experts at all?",
@@ -4995,7 +5099,22 @@
     "design": "Field experiment",
     "n": "10 day-care centers, 20 weeks"
    },
-   "theme": "incentives"
+   "theme": "incentives",
+   "chart": {
+    "labels": [
+     "Before the fine",
+     "While the fine applied",
+     "After the fine ended"
+    ],
+    "values": [
+     7.25,
+     12.5,
+     15.25
+    ],
+    "unit": "",
+    "highlight": 2,
+    "note": "Average late pickups per week at one day-care center."
+   }
   },
   {
    "id": "bz09",
@@ -5444,7 +5563,22 @@
     "n": "17,303 wallets, 355 cities, 40 countries"
    },
    "theme": "honesty",
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "No money",
+     "US$13.45 inside",
+     "US$94.15 inside"
+    ],
+    "values": [
+     46,
+     61,
+     72
+    ],
+    "unit": "%",
+    "highlight": 2,
+    "note": "Share of lost wallets reported, three countries pooled."
+   }
   },
   {
    "id": "civic-wallet-experts",
@@ -5483,7 +5617,20 @@
     "design": "Field experiment plus prediction surveys",
     "n": "279 economists, 299 laypeople"
    },
-   "theme": "honesty"
+   "theme": "honesty",
+   "chart": {
+    "labels": [
+     "Laypeople",
+     "Economists"
+    ],
+    "values": [
+     18,
+     29
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Share who predicted more money would raise reporting."
+   }
   },
   {
    "id": "truth-telling-gains",
@@ -5607,7 +5754,20 @@
     "design": "Cross-country lab experiment",
     "n": "2,568 students, 23 countries"
    },
-   "theme": "honesty"
+   "theme": "honesty",
+   "chart": {
+    "labels": [
+     "Low rule-breaking countries",
+     "High rule-breaking countries"
+    ],
+    "values": [
+     3.17,
+     3.53
+    ],
+    "unit": "",
+    "highlight": 1,
+    "note": "Average amount claimed in the die-roll task."
+   }
   },
   {
    "id": "tax-letter-norms",
@@ -6333,7 +6493,20 @@
     "n": "Participants in an incentivized experiment"
    },
    "theme": "honesty",
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "Lying chance not yet known",
+     "Lying chance known in advance"
+    ],
+    "values": [
+     38.1,
+     62.7
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Share believing that most people lie."
+   }
   },
   {
    "id": "dimant-proximity-estimate",
@@ -6430,7 +6603,20 @@
     "n": "185 participants"
    },
    "theme": "norms",
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "Saw an anti-social peer",
+     "Saw a pro-social peer"
+    ],
+    "values": [
+     33.7,
+     19.4
+    ],
+    "unit": "%",
+    "highlight": 0,
+    "note": "Share who changed their choice after seeing a peer."
+   }
   },
   {
    "id": "dimant-deviant-choice",
@@ -6473,7 +6659,20 @@
     "n": "418 participants"
    },
    "theme": "honesty",
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "No penalty, no message",
+     "Weak penalty + approval message"
+    ],
+    "values": [
+     28.7,
+     42.7
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Share of money sent back to the truster, low stakes."
+   }
   },
   {
    "id": "dimant-enforcers-rank",
@@ -6512,6 +6711,23 @@
    "forecast": {
     "claim": "Telling people that most others report bribery raised reporting of bribes that created inequity.",
     "truth": true
+   },
+   "chart": {
+    "labels": [
+     "Unfair bribe, no norm info",
+     "Unfair bribe, norm info",
+     "Equalizing bribe, no norm info",
+     "Equalizing bribe, norm info"
+    ],
+    "values": [
+     73.3,
+     82.8,
+     57.9,
+     67.2
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Share who reported the bribe, Study 2."
    }
   },
   {
@@ -6633,7 +6849,24 @@
     "n": "4,128 participants"
    },
    "theme": "persuasion",
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "More feedback: round 1",
+     "More feedback: round 4",
+     "Control: round 1",
+     "Control: round 4"
+    ],
+    "values": [
+     17,
+     33,
+     21,
+     17
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Share who shared conspiracy posts, Study 2."
+   }
   },
   {
    "id": "dimant-opioid-forecast",
@@ -6672,7 +6905,20 @@
     "design": "Pre-registered field experiment",
     "n": "512 veterans"
    },
-   "theme": "honesty"
+   "theme": "honesty",
+   "chart": {
+    "labels": [
+     "Cash incentive only",
+     "Cash + reminder cards"
+    ],
+    "values": [
+     15.66,
+     12.57
+    ],
+    "unit": "$",
+    "highlight": 1,
+    "note": "Program cost per pill returned."
+   }
   },
   {
    "id": "dimant-hate-choice",
@@ -6715,7 +6961,24 @@
     "n": "Over 8,600 participants"
    },
    "theme": "norms",
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "Trump views: same side",
+     "Trump views: opposite side",
+     "Painting taste: same",
+     "Painting taste: different"
+    ],
+    "values": [
+     72.8,
+     59.0,
+     73.2,
+     62.4
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Share who cooperate when they expect the partner to."
+   }
   },
   {
    "id": "dimant-polarizednorms-choice",
@@ -6758,7 +7021,20 @@
     "n": "1,203 US adults (representative sample)"
    },
    "theme": "norms",
-   "permuted": true
+   "permuted": true,
+   "chart": {
+    "labels": [
+     "Saw a tight norm",
+     "Saw a two-camp norm"
+    ],
+    "values": [
+     1.26,
+     2.68
+    ],
+    "unit": "",
+    "highlight": 1,
+    "note": "Variance of contributions after seeing others' choices."
+   }
   },
   {
    "id": "judg09",
@@ -7014,7 +7290,7 @@
    "estimate": {
     "target": 26.08,
     "min": 0,
-    "max": 85,
+    "max": 100,
     "tolerance": 10,
     "label": "Increase in completed tasks",
     "unit": "%"
@@ -7244,7 +7520,24 @@
    "multiAnswers": [
     0,
     1
-   ]
+   ],
+   "chart": {
+    "labels": [
+     "True tweet, by people",
+     "True tweet, by GPT-3",
+     "False tweet, by people",
+     "False tweet, by GPT-3"
+    ],
+    "values": [
+     0.72,
+     0.84,
+     0.92,
+     0.89
+    ],
+    "unit": "",
+    "highlight": 3,
+    "note": "Accuracy at judging whether tweets were true (0 to 1)."
+   }
   },
   {
    "id": "axe12",
@@ -7403,7 +7696,7 @@
    ],
    "answerTitle": "Bots sold well until they announced themselves",
    "explain": "Undisclosed chatbots were as effective as proficient workers; disclosing the bot before the conversation reduced purchase rates by more than 79.7%.",
-   "implication": "Where disclosure is required, test disclosing later in the call and target customers with prior AI experience.",
+   "implication": "Disclose the bot at the start of the call, as transparency rules require, and treat the measured drop in purchases as a cost to manage through service quality, not through hiding the bot.",
    "boundary": "Highly structured outbound sales calls at one company.",
    "sources": [
     "luo19"
@@ -7538,6 +7831,23 @@
    "forecast": {
     "claim": "With an edited prompt and the best of three drafts, GPT-3 articles drew at least as much agreement as the human-written originals.",
     "truth": true
+   },
+   "chart": {
+    "labels": [
+     "No article",
+     "Original propaganda",
+     "AI article, unedited",
+     "AI article, curated"
+    ],
+    "values": [
+     24.4,
+     47.4,
+     43.5,
+     52.7
+    ],
+    "unit": "%",
+    "highlight": 3,
+    "note": "Share agreeing with the article's main claim."
    }
   },
   {
@@ -7702,6 +8012,19 @@
    "forecast": {
     "claim": "Scientists’ average predictions missed which texts raised vaccination most.",
     "truth": true
+   },
+   "chart": {
+    "labels": [
+     "Scientists",
+     "Online lay raters"
+    ],
+    "values": [
+     0.03,
+     0.6
+    ],
+    "unit": "",
+    "highlight": 0,
+    "note": "Correlation of predictions with actual vaccination rates."
    }
   },
   {
@@ -8601,7 +8924,18 @@
    "tell",
    "more",
    "detail",
-   "details"
+   "details",
+   "five",
+   "write",
+   "better",
+   "bill",
+   "boss",
+   "simple",
+   "plain",
+   "terms",
+   "please",
+   "could",
+   "you"
   ],
   "suffixes": [
    "ations",
@@ -8626,8 +8960,32 @@
   },
   "routes": [
    [
+    "offtopic",
+    "\\b(poem|joke|weather|recipe|capital of|song|lyrics|horoscope|stock tip|write (me )?(code|python|an essay)|translate)\\b"
+   ],
+   [
     "ethics",
     "\\b(ethic|fair|moral|should (we|i)|is it (ok|okay|right|wrong)|allowed|legal)"
+   ],
+   [
+    "models",
+    "\\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\\b"
+   ],
+   [
+    "who",
+    "\\b(who (was|were) (studied|in it|tested|the participants)|participants?|how many (people|participants|subjects|workers|agents)|sample size|who took part|population)\\b"
+   ],
+   [
+    "catch",
+    "\\b(catch|backfire|downside|drawback|limit\\w*|risk|caveat|fail\\w*|weakness|criticis\\w*|question(ed)? this|later work)\\b"
+   ],
+   [
+    "summary",
+    "\\b(summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line)\\b"
+   ],
+   [
+    "duration",
+    "\\b(how long|last(ed)?|persist\\w*|fade\\w*|long[- ]term|over time|stick)\\b"
    ],
    [
     "subgroup",

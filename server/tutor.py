@@ -87,8 +87,9 @@ GENERIC = {stem(w) for w in R['generic']}
 
 def names(question: str, cid: str) -> bool:
     """Does the question name a study behind this decision (an author surname)?"""
-    q = set(tokens(question))
-    return any(set(tokens(SOURCES[s]['authors'])) & q for s in CHALLENGES[cid]['sources'] if s in SOURCES)
+    words = lambda s: {w for w in re.findall(r'[a-z]+', __import__('unicodedata').normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()) if len(w) >= 4 and w not in STOP}
+    q = words(question)   # whole surnames, unstemmed: "bill" must not match "Biller-Andorno"
+    return any(words(SOURCES[s]['authors']) - {'with', 'others'} & q for s in CHALLENGES[cid]['sources'] if s in SOURCES)
 
 def _norm(s: str) -> str: return ' '.join(re.findall(r'[a-z0-9]+', s.lower()))
 
@@ -118,6 +119,19 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         st = c.get('study', {})
         for name, rx in R['routes']:
             if not re.search(rx, ql): continue
+            if name == 'offtopic': return off
+            if name == 'models':
+                fm = [f for f in fol if re.search(r'\b(GPT|Claude|Llama|Gemini|ChatGPT|Bing|DALL|Midjourney)', f['a'])] or [f for f in fol if re.search(r'\b(models?|tools?)\b', f['q'], re.I)]
+                if fm: return out(fm[0]['a'], c)
+                continue
+            if name == 'who': return out(f"Who was studied: {st.get('n') or 'see the paper'}. Design: {st.get('design', 'see the paper')}. What the study covers: {c['boundary']}", c)
+            if name == 'catch':
+                fd = [f for f in fol if re.search(r'\b(downside|backfire|risk|cost|worse|harm|limit|fail)', f['q'] + ' ' + f['a'], re.I)]
+                return out(f"What the study covers: {c['boundary']}" + (f" {fd[0]['a']}" if fd else '') + f" The finding itself: {c['explain']}", c)
+            if name == 'summary': return out(f"{c['answerTitle']}. {c['explain']} What a manager does with it: {c['implication']}", c)
+            if name == 'duration':
+                fl = [f for f in fol if re.search(r'\b(long|last|later|weeks?|months?|years?|fade|persist|after)\b', f['q'] + ' ' + f['a'], re.I)]
+                return out(fl[0]['a'] if fl else f"{c['explain']} What the study covers: {c['boundary']}", c)
             if name == 'ethics': return out(f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", c)
             if name == 'subgroup':
                 fh = [f for f in fol if re.search(R['subgroupFollow'], f['q'], re.I)]
@@ -129,14 +143,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         if fol:
             f0 = max(fol, key=lambda f: len(qt & set(tokens(f['q'] + ' ' + f['a']))))
             if len(qt & set(tokens(f0['q'] + ' ' + f0['a']))) >= 2: return out(f0['a'], c)
-        body = set(tokens(' '.join([c['title'], c.get('scene', ''), c['question'], c.get('answerTitle', ''), c['explain'], c['implication'], c['boundary']] + [f['q'] + ' ' + f['a'] for f in fol])))
-        if not topic or topic & body: return out(f"{c['explain']} {c['implication']}", c)
-        # nothing in common with this study: another study only on a strong topic match, else decline
-        for d in retrieve(question, None, 3, exclude):
-            if d['kind'] == 'decision' and len(topic & set(tokens(d['body']))) >= max(2, 0.6 * len(topic)):
-                cc = CHALLENGES[d['id']]; return out(f"A related study in the lab: {cc['explain']} {cc['implication']}", cc)
-        if exclude and [d for d in retrieve(question, None, 3) if d['kind'] == 'decision' and len(topic & set(tokens(d['body']))) >= max(2, 0.6 * len(topic))]: return locked
-        return off
+        # no study named and no route: answer about the decision on screen, never about another study on word overlap
+        return out(f"{c['answerTitle']}. {c['explain']} What a manager does with it: {c['implication']}", c)
     if not topic: return {'answer': 'Open a decision and ask about it, or name the study or topic you mean.', 'citations': [], 'mode': 'curated'}
     for d in retrieve(question, None, 4, exclude):
         ov = len(topic & set(tokens(d['body'])))

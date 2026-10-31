@@ -269,7 +269,7 @@ def test_every_explained_number_is_quoted():
     for c in LIVE:
         qtext = ' '.join(q.get('quote', q.get('printed', '')) for q in ev.get(c['id'], [])).lower().replace(',', '')   # prose quotes and values as printed
         qnums = [float(x) for x in re.findall(r'(?<![\w.])-?\.?\d+(?:\.\d+)?', qtext) if x not in ('-', '.')]
-        txt = ' '.join([c['explain'], c['answerTitle']] + [f['a'] for f in c.get('follow', [])]).replace(',', '')   # review 11: follow-ups too
+        txt = ' '.join([c['explain'], c['answerTitle']] + [f['a'] for f in c.get('follow', [])] + [str(v) for v in c.get('chart', {}).get('values', [])]).replace(',', '')   # review 11: follow-ups too; charts too
         txt = re.sub(r'\b(Stud(y|ies)|Experiments?|GPT|DALL-E|Midjourney v|Fortune|Firefly|Imagen)[- ]?\d+[a-z]?(\s*(to|and|-)\s*\d+[a-z]?)?', ' ', txt)  # names, not results
         for n in re.findall(r'(?<![\w.-])\d+(?:\.\d+)?', txt):
             if re.fullmatch(r'(19|20)\d\d', n): continue
@@ -315,5 +315,18 @@ def test_evidence_entries_are_clean():
     for k, qs in ev.items():
         if not isinstance(qs, list) or k not in C: continue
         bad += [(k, q.get('quote', q.get('printed', ''))[:40]) for q in qs if q.get('source') not in C[k]['sources'] or ('quote' in q) == ('printed' in q)
+                or ('printed' in q and not re.search(r'Table|Fig', q.get('location', '') + q['printed']))   # review 15: printed values name their table or figure
                 or re.search(r'extracted text|rendered as|values below|^PMC\d+|^PubMed \d+|^DOI:|^OCR |^Studies? \d\w*$|^Experiment \d\w*$', q.get('quote', q.get('printed', '')), re.I)]   # review 14: annotations are not evidence
+    assert not bad, bad
+
+
+def test_random_slider_guess_earns_little():
+    """Review 15, m3: an axis whose top sits just above the answer lets a random guess score well."""
+    from server import scoring
+    bad = []
+    for c in LIVE:
+        if c['format'] != 'estimate': continue
+        e = c['estimate']; xs = [e['min'] + (e['max'] - e['min']) * k / 200 for k in range(201)]
+        m = sum(scoring.score(c, x)['score'] for x in xs) / len(xs)
+        if m > 0.3: bad.append((c['id'], round(m, 2)))
     assert not bad, bad

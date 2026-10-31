@@ -195,5 +195,9 @@ def test_offline_tutor_matches_server_rules(browser):
         for (const q of qs) { const r = THV.curated(q, c); if (!r.cites.length || !r.text || /outside what this lab/.test(r.text)) out.push([c.id, q]) }
         for (const f of c.follow) if (THV.curated(f.q, c).text !== f.a) out.push([c.id, f.q]) } return out }""", GENERIC_QS)
     assert not bad, (len(bad), bad[:10])
+    import json as _j
+    phr = _j.loads((Path(__file__).parent / 'tutor_phrasings.json').read_text())
+    bad2 = pg.evaluate("""qs => { const out = []; for (const c of THV.ALL) for (const q of qs) { const r = THV.curated(q, c); if (/outside what this lab/.test(r.text) || !r.cites.length) out.push([c.id, q]) } return out }""", phr)
+    assert not bad2, (len(bad2), bad2[:10])   # review 15, M1: natural phrasings stay on the decision
     r = pg.evaluate("THV.curated('What is the capital of France?', THV.ALL[0]).text"); assert 'outside' in r
     assert not pg.errors, pg.errors; pg.close()

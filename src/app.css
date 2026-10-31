@@ -576,3 +576,48 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
 
 /* phone: the reveal tabs scroll sideways instead of wrapping */
 @media (max-width:640px){.deep .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.deep .tabs::-webkit-scrollbar{display:none}.deep .tabs [role=tab]{flex:none}}
+
+/* ===== editorial pass (iteration 20) ===== */
+/* paths: one featured navy card; the rest are paper cards, so the grid reads as an index, not a row of SaaS tiles */
+.paths .path:not(:first-child){background:var(--surface);color:var(--ink);border:1px solid var(--rule);--art-line:rgba(20,32,58,.28);--art-you:#2f54eb;--art-ev:#e0a01c;transition:transform .15s,border-color .15s,box-shadow .15s}
+.paths .path:not(:first-child):hover{border-color:var(--ink);box-shadow:0 1px 0 var(--ink)}
+.paths .path:not(:first-child) span{color:var(--ink-2)}
+.paths .path:not(:first-child) small{color:var(--muted)}
+.paths .path:not(:first-child)[data-kind=ai]{background:var(--surface)}
+.paths .path:not(:first-child)[data-kind=ai] strong::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--you);margin:0 8px 2px 0;vertical-align:middle}
+.paths .path:not(:first-child)[data-kind=bx] strong::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ev);margin:0 8px 2px 0;vertical-align:middle}
+.paths .path:not(:first-child) .path-flag{background:var(--ink);color:#fff}
+
+/* evidence plate: the study's figure is the reveal's centrepiece */
+.gap .hbars{gap:18px}
+.gap .hb-label{font-size:16px}
+.gap .hb-track{height:22px;border-radius:6px}
+.gap .hb-track i{border-radius:6px;background:rgba(20,32,58,.32)}
+.gap .hb-track i.ev{background:var(--ev)}
+.gap .hb-track i.you{background:var(--you)}
+.gap .hb-row>b{font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.gap .hb-row{grid-template-columns:minmax(0,1fr) 84px}
+.plate-h{font-size:var(--t7);font-weight:750;color:var(--ev-ink);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.plate-h::before{content:"";width:18px;height:3px;background:var(--ev);border-radius:2px}
+
+/* projector: a dark stage around white cards */
+body.projector{background:#0f1830}
+body.projector .join-banner{background:#16223f;border-color:#2a3a63;color:#fff}
+body.projector .join-banner .kicker{color:#b9c4dd}
+body.projector .join-url{color:#fff}
+body.projector .join-code{color:#f0b43c}
+body.projector .proj-exit{background:#fff;color:#14203a}
+body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:content-box}
+.deleg-cmp li.ok>span:first-child::before{content:"✓";color:var(--good);font-weight:800;margin-right:8px}
+.gap:has(.deleg-cmp) .gap-legend{display:flex}
+.score-row{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}.spark{width:220px;height:56px;margin-bottom:14px}
+/* causal diagrams sit on a faint lab grid, so the factors read as a board waiting for its links */
+.dag{background-color:#f4f6f9;background-image:radial-gradient(circle,rgba(20,32,58,.16) 1px,transparent 1.4px);background-size:18px 18px;border:1px solid var(--rule)}
+.plate-more{margin-top:18px;padding-top:16px;border-top:1px solid var(--rule)}
+.plate-more .small{font-size:var(--t7);color:var(--muted);margin:8px 0 0}
+/* library: each principle shows how much of it the player has opened */
+.theme-head p.locked{font-size:17px;color:var(--muted);font-style:italic}
+.theme-meter{display:block;height:6px;border-radius:3px;background:var(--sunk);margin:14px 0 6px;overflow:hidden;max-width:320px}
+.theme-meter i{display:block;height:100%;background:var(--ev);border-radius:3px}
+.theme-count{display:block;font-family:var(--sans);font-style:normal;font-size:var(--t7);color:var(--muted)}
+.theme{padding:clamp(18px,2.4vw,26px)}

@@ -1,0 +1,589 @@
+{
+ "ai09": {
+  "labels": [
+   "Saw no forecast results",
+   "Saw own results only",
+   "Saw the model's results only",
+   "Saw both sets of results"
+  ],
+  "values": [
+   65,
+   63,
+   26,
+   23
+  ],
+  "unit": "%",
+  "highlight": 3,
+  "note": "Share who chose the model to forecast, Study 1."
+ },
+ "biz04": {
+  "labels": [
+   "No sign",
+   "Standard environmental sign",
+   "Norm signs (combined)"
+  ],
+  "values": [
+   64.3,
+   93.3,
+   75.4
+  ],
+  "unit": "%",
+  "highlight": 2,
+  "note": "Towel reuse rate, second hotel."
+ },
+ "biz05": {
+  "labels": [
+   "Average only: before",
+   "Average only: weeks later",
+   "Average + smiley: before",
+   "Average + smiley: weeks later"
+  ],
+  "values": [
+   10.15,
+   11.13,
+   10.04,
+   10.14
+  ],
+  "unit": "kWh/day",
+  "highlight": 1,
+  "note": "Daily electricity use of below-average homes."
+ },
+ "biz07": {
+  "labels": [
+   "No reminder",
+   "Reminded to add or subtract"
+  ],
+  "values": [
+   21,
+   48
+  ],
+  "unit": "%",
+  "highlight": 0,
+  "note": "Share listing at least one idea that removes something, experiment 4."
+ },
+ "social01": {
+  "labels": [
+   "Saw a tight norm",
+   "Saw a loose norm"
+  ],
+  "values": [
+   1.26,
+   1.65
+  ],
+  "unit": "",
+  "highlight": 1,
+  "note": "Variance of contributions after seeing others' choices."
+ },
+ "social08": {
+  "labels": [
+   "Clustered networks",
+   "Random networks"
+  ],
+  "values": [
+   53.77,
+   38.26
+  ],
+  "unit": "%",
+  "highlight": 0,
+  "note": "Share of people who adopted the health behavior."
+ },
+ "judg02": {
+  "labels": [
+   "Gains up to 40, losses up to 20",
+   "Gains up to 20, losses up to 40"
+  ],
+  "values": [
+   1.79,
+   0.88
+  ],
+  "unit": "",
+  "highlight": 1,
+  "note": "Estimated loss aversion (above 1 means losses loom larger), Experiment 1a."
+ },
+ "social15": {
+  "labels": [
+   "Political ally",
+   "Shared painting taste",
+   "Political opponent"
+  ],
+  "values": [
+   14.97,
+   13.54,
+   -22.9
+  ],
+  "unit": "%",
+  "highlight": 2,
+  "note": "Share of endowment given (negative means taken)."
+ },
+ "axb02": {
+  "labels": [
+   "Could not change the model",
+   "Could adjust by up to 2",
+   "Could adjust by up to 5",
+   "Could adjust by up to 10"
+  ],
+  "values": [
+   47,
+   68,
+   71,
+   71
+  ],
+  "unit": "%",
+  "highlight": 0,
+  "note": "Share who chose to use the model, Study 2."
+ },
+ "bz08": {
+  "labels": [
+   "Before the fine",
+   "While the fine applied",
+   "After the fine ended"
+  ],
+  "values": [
+   7.25,
+   12.5,
+   15.25
+  ],
+  "unit": "late parents",
+  "highlight": 2,
+  "note": "Average late pickups per week at one day-care center."
+ },
+ "civic-wallet-rank": {
+  "labels": [
+   "No money",
+   "US$13.45 inside",
+   "US$94.15 inside"
+  ],
+  "values": [
+   46,
+   61,
+   72
+  ],
+  "unit": "%",
+  "highlight": 2,
+  "note": "Share of lost wallets reported, three countries pooled."
+ },
+ "civic-wallet-experts": {
+  "labels": [
+   "Laypeople",
+   "Economists"
+  ],
+  "values": [
+   18,
+   29
+  ],
+  "unit": "%",
+  "highlight": 1,
+  "note": "Share who predicted more money would raise reporting."
+ },
+ "rule-violations-honesty": {
+  "labels": [
+   "Low rule-breaking countries",
+   "High rule-breaking countries"
+  ],
+  "values": [
+   3.17,
+   3.53
+  ],
+  "unit": "money units",
+  "highlight": 1,
+  "note": "Average amount claimed in the die-roll task."
+ },
+ "opposing-views-bot": {
+  "labels": [
+   "Democrats",
+   "Republicans"
+  ],
+  "values": [
+   -0.02,
+   0.12
+  ],
+  "unit": "points",
+  "highlight": 1,
+  "note": "Shift toward conservative views after being offered the bot, 7-point scale."
+ },
+ "dimant-notalie-causal": {
+  "labels": [
+   "Lying chance not yet known",
+   "Lying chance known in advance"
+  ],
+  "values": [
+   38.1,
+   62.7
+  ],
+  "unit": "%",
+  "highlight": 1,
+  "note": "Share believing that most people lie."
+ },
+ "dimant-contagion-multi": {
+  "labels": [
+   "Saw an anti-social peer",
+   "Saw a pro-social peer"
+  ],
+  "values": [
+   33.7,
+   19.4
+  ],
+  "unit": "%",
+  "highlight": 0,
+  "note": "Share who changed their choice after seeing a peer."
+ },
+ "dimant-deviant-choice": {
+  "labels": [
+   "No penalty, no message",
+   "Weak penalty + approval message"
+  ],
+  "values": [
+   28.7,
+   42.7
+  ],
+  "unit": "%",
+  "highlight": 1,
+  "note": "Share of money sent back to the truster, low stakes."
+ },
+ "dimant-enforcers-rank": {
+  "labels": [
+   "Unfair bribe, no norm info",
+   "Unfair bribe, norm info",
+   "Equalizing bribe, no norm info",
+   "Equalizing bribe, norm info"
+  ],
+  "values": [
+   73.3,
+   82.8,
+   57.9,
+   67.2
+  ],
+  "unit": "%",
+  "highlight": 1,
+  "note": "Share who reported the bribe, Study 2."
+ },
+ "dimant-observability-choice": {
+  "labels": [
+   "Not watched",
+   "Watched by others",
+   "Watched + asked about others"
+  ],
+  "values": [
+   -18.4,
+   -28.3,
+   9.3
+  ],
+  "unit": "%",
+  "highlight": 1,
+  "note": "Change in the charity's money (negative means taken)."
+ },
+ "dimant-conspiracy-choice": {
+  "labels": [
+   "More feedback: round 1",
+   "More feedback: round 4",
+   "Control: round 1",
+   "Control: round 4"
+  ],
+  "values": [
+   17,
+   33,
+   21,
+   17
+  ],
+  "unit": "%",
+  "highlight": 1,
+  "note": "Share who shared conspiracy posts, Study 2."
+ },
+ "dimant-opioid-forecast": {
+  "labels": [
+   "Cash incentive only",
+   "Cash + reminder cards"
+  ],
+  "values": [
+   15.66,
+   12.57
+  ],
+  "unit": "$",
+  "highlight": 1,
+  "note": "Program cost per pill returned."
+ },
+ "dimant-hate-choice": {
+  "labels": [
+   "Trump views: same side",
+   "Trump views: opposite side",
+   "Painting taste: same",
+   "Painting taste: different"
+  ],
+  "values": [
+   72.8,
+   59.0,
+   73.2,
+   62.4
+  ],
+  "unit": "%",
+  "highlight": 1,
+  "note": "Share who cooperate when they expect the partner to."
+ },
+ "dimant-polarizednorms-choice": {
+  "labels": [
+   "Saw a tight norm",
+   "Saw a two-camp norm"
+  ],
+  "values": [
+   1.26,
+   2.68
+  ],
+  "unit": "",
+  "highlight": 1,
+  "note": "Variance of contributions after seeing others' choices."
+ },
+ "axe11": {
+  "labels": [
+   "True tweet, by people",
+   "True tweet, by GPT-3",
+   "False tweet, by people",
+   "False tweet, by GPT-3"
+  ],
+  "values": [
+   0.72,
+   0.84,
+   0.92,
+   0.89
+  ],
+  "unit": "",
+  "highlight": 3,
+  "note": "Accuracy at judging whether tweets were true (0 to 1)."
+ },
+ "genai2": {
+  "labels": [
+   "No article",
+   "Original propaganda",
+   "AI article, unedited",
+   "AI article, curated"
+  ],
+  "values": [
+   24.4,
+   47.4,
+   43.5,
+   52.7
+  ],
+  "unit": "%",
+  "highlight": 3,
+  "note": "Share agreeing with the article's main claim."
+ },
+ "axf02": {
+  "labels": [
+   "Scientists",
+   "Online lay raters"
+  ],
+  "values": [
+   0.03,
+   0.6
+  ],
+  "unit": "",
+  "highlight": 0,
+  "note": "Correlation of predictions with actual vaccination rates."
+ },
+ "axf05": {
+  "labels": [
+   "Standard AI",
+   "Standard AI + explanations",
+   "Biased AI",
+   "Biased AI + explanations"
+  ],
+  "values": [
+   2.9,
+   4.4,
+   -11.3,
+   -9.1
+  ],
+  "unit": "points",
+  "highlight": 3,
+  "note": "Change in clinicians' diagnostic accuracy versus no AI."
+ },
+ "_skipped": [
+  {
+   "id": "ai07",
+   "reason": "two different measures only"
+  },
+  {
+   "id": "ai11",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "ai12",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "biz02",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "biz08",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "social04",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "social07",
+   "reason": "different parties and issues compared"
+  },
+  {
+   "id": "social10",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "social13",
+   "reason": "single relative effect only"
+  },
+  {
+   "id": "social14",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "social16",
+   "reason": "only approximate ranges given"
+  },
+  {
+   "id": "social20",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "axb06",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "axb07",
+   "reason": "single accuracy figure, no comparison"
+  },
+  {
+   "id": "axb09",
+   "reason": "only a ratio given"
+  },
+  {
+   "id": "axb10",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "axb11",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "axb12",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "axb13",
+   "reason": "single effect size only"
+  },
+  {
+   "id": "rollout1",
+   "reason": "single effect size only"
+  },
+  {
+   "id": "rollout2",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "bz01",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "bz06",
+   "reason": "no numbers for revised procedure"
+  },
+  {
+   "id": "bz09",
+   "reason": "single relative effect only"
+  },
+  {
+   "id": "bz10",
+   "reason": "headline is single effect size"
+  },
+  {
+   "id": "bz11",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "bz12",
+   "reason": "only a change, no levels"
+  },
+  {
+   "id": "bz13",
+   "reason": "two different measures only"
+  },
+  {
+   "id": "bz14",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "bz15",
+   "reason": "opt-in/opt-out rates not given"
+  },
+  {
+   "id": "bz16",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "tax-letter-norms",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "accuracy-prompt",
+   "reason": "no comparable condition values"
+  },
+  {
+   "id": "false-news-spread",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "meta-perception-causal",
+   "reason": "no condition means given"
+  },
+  {
+   "id": "forecast-teams-rank",
+   "reason": "only test statistics given"
+  },
+  {
+   "id": "forecast-training",
+   "reason": "only test statistics given"
+  },
+  {
+   "id": "overconfidence-hard-task",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "dimant-masks-forecast",
+   "reason": "only test statistics given"
+  },
+  {
+   "id": "dimant-requiem-forecast",
+   "reason": "single approximate rate only"
+  },
+  {
+   "id": "dimant-motivated-estimate",
+   "reason": "single share, no comparison"
+  },
+  {
+   "id": "axe07",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "axe08",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "axe09",
+   "reason": "no numeric comparison"
+  },
+  {
+   "id": "axe10",
+   "reason": "single relative effect only"
+  },
+  {
+   "id": "axe13",
+   "reason": "single effect, other insignificant"
+  },
+  {
+   "id": "axe14",
+   "reason": "single relative effect only"
+  }
+ ]
+}

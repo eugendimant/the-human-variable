@@ -245,7 +245,7 @@ class Store:
         """Decisions currently open or closed-but-unrevealed in a session active in the last six hours (cached for 2 s)."""
         now = time.time(); hit = getattr(self, '_open', None)
         if hit and now - hit[0] < 2: return hit[1]
-        rows = self.db().execute("SELECT challenge FROM sessions WHERE phase IN ('open','closed') AND touched > ?", (now - 6 * 3600,)).fetchall()
+        rows = self.db().execute("SELECT challenge FROM sessions WHERE phase IN ('open','closed') AND beat > ?", (now - 6 * 3600,)).fetchall()   # instructor activity only, as for the lock
         val = {r[0] for r in rows if r[0]}; self._open = (now, val); return val
 
     # score: 0 to 100 for most formats; forecasts run from -100 (confident miss) to 100.
