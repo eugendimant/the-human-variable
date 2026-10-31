@@ -1,125 +1,146 @@
-"""Standard-library classroom server. Run: python -m server.app"""
-import json, sqlite3, secrets, threading, os, time, urllib.parse, urllib.request
-from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
+"""HTTP server for the game, the live classroom and the tutor. Standard library only.
+
+Run locally:   python start_classroom.py            (binds 127.0.0.1:8502)
+In a container: HOST=0.0.0.0 PORT=8080 python -m server.app
+Environment: see docs/DEPLOYMENT.md.
+"""
+from __future__ import annotations
+import json, os, re, threading, time, urllib.parse
+from collections import defaultdict
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
-DB=Path(os.environ.get('THV_DB',str(ROOT/'server'/'classroom.sqlite3')))
-LOCK=threading.RLock()
-BANK=json.loads((ROOT/'src'/'bank.json').read_text())
-CHALLENGES={c['id']:c for c in BANK['challenges']}
-SOURCES=BANK['sources']
+from .classroom import CHALLENGES, ClassroomError, Store, public_challenge, ROOT
+from .tutor import Tutor
 
-def connect():
- c=sqlite3.connect(DB,timeout=10)
- c.execute('PRAGMA busy_timeout=10000')
- c.execute('CREATE TABLE IF NOT EXISTS sessions(code TEXT PRIMARY KEY,secret TEXT NOT NULL,challenge TEXT,revealed INTEGER DEFAULT 0,created INTEGER NOT NULL)')
- c.execute('CREATE TABLE IF NOT EXISTS responses(code TEXT,participant TEXT,challenge TEXT,answer TEXT,created INTEGER,PRIMARY KEY(code,participant,challenge))')
- c.commit();return c
+DATA = Path(os.environ.get('THV_DATA_DIR', str(ROOT / 'server' / 'data')))
+DATA.mkdir(parents=True, exist_ok=True)
+STORE = Store(os.environ.get('THV_DB', str(DATA / 'classroom.sqlite3')))
+TUTOR = Tutor(str(DATA / 'tutor_cache.sqlite3'))
+PASSCODE = os.environ.get('THV_INSTRUCTOR_PASSCODE', '')
+TRUST_PROXY = os.environ.get('THV_TRUST_PROXY', '') == '1'
+FRAME_ANCESTORS = os.environ.get('THV_FRAME_ANCESTORS', "'self'")
+STATIC = {'/': 'index.html', '/index.html': 'index.html', '/classroom': 'classroom.html', '/classroom.html': 'classroom.html'}
+CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; "
+       f"font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors {FRAME_ANCESTORS}")
 
-def create_session(challenge):
- if challenge not in CHALLENGES:raise ValueError('Unknown challenge')
- with LOCK:
-  with connect() as db:
-   for _ in range(10):
-    code=secrets.token_hex(3).upper();secret=secrets.token_urlsafe(24)
-    try:db.execute('INSERT INTO sessions(code,secret,challenge,created) VALUES(?,?,?,?)',(code,secret,challenge,int(time.time())));return {'code':code,'secret':secret,'challenge':challenge}
-    except sqlite3.IntegrityError:pass
- raise RuntimeError('Unable to allocate session')
-
-def session(code,secret=None):
- with connect() as db:
-  s=db.execute('SELECT code,secret,challenge,revealed FROM sessions WHERE code=?',(code,)).fetchone()
-  if not s:raise LookupError('Session not found')
-  admin=secrets.compare_digest(str(secret or ''),s[1])
-  return {'code':s[0],'challenge':s[2],'revealed':bool(s[3]),'admin':admin}
-
-def submit(code,participant,answer):
- if not isinstance(participant,str) or not 3<=len(participant)<=80:raise ValueError('Invalid participant ID')
- if not isinstance(answer,(str,int,float,list)) or len(json.dumps(answer))>1000:raise ValueError('Invalid answer')
- with LOCK:
-  with connect() as db:
-   s=db.execute('SELECT challenge,revealed FROM sessions WHERE code=?',(code,)).fetchone()
-   if not s:raise LookupError('Session not found')
-   if s[1]:raise ValueError('Reveal already completed')
-   challenge=CHALLENGES[s[0]]
-   fmt=challenge.get('format','choice')
-   if fmt=='choice' and (type(answer) is not int or not 0<=answer<len(challenge['options'])):raise ValueError('Invalid choice')
-   if fmt=='multi' and (not isinstance(answer,list) or len(answer)!=2 or any(type(a) is not int or not 0<=a<len(challenge['options']) for a in answer) or len(set(answer))!=2):raise ValueError('Invalid multiple answer')
-   if fmt=='estimate' and (type(answer) not in (int,float) or not -1e9<=answer<=1e9):raise ValueError('Invalid estimate')
-   cur=db.execute('INSERT OR IGNORE INTO responses VALUES(?,?,?,?,?)',(code,participant,s[0],json.dumps(answer),int(time.time())))
-  accepted=cur.rowcount==1
- return {'accepted':accepted}
-
-def change(code,secret,challenge=None,reveal=None):
- s=session(code,secret)
- if not s['admin']:raise PermissionError('Instructor credential required')
- if challenge is not None and challenge not in CHALLENGES:raise ValueError('Unknown challenge')
- with LOCK:
-  with connect() as db:
-   if challenge is not None:db.execute('UPDATE sessions SET challenge=?,revealed=0 WHERE code=?',(challenge,code))
-   if reveal is not None:db.execute('UPDATE sessions SET revealed=? WHERE code=?',(int(bool(reveal)),code))
- return session(code,secret)
-
-def results(code,secret):
- s=session(code,secret)
- if not s['admin'] and not s['revealed']:return {'count':count(code),'revealed':False}
- with connect() as db:rows=db.execute('SELECT challenge,answer FROM responses WHERE code=? AND challenge=?',(code,s['challenge'])).fetchall()
- counts={}
- for cid,ans in rows:
-  counts.setdefault(cid,{})
-  counts[cid][ans]=counts[cid].get(ans,0)+1
- return {'count':len(rows),'by_challenge':counts,'revealed':s['revealed']}
-
-def count(code):
- with connect() as db:return db.execute('SELECT count(*) FROM responses WHERE code=? AND challenge=(SELECT challenge FROM sessions WHERE code=?)',(code,code)).fetchone()[0]
-
-def tutor(question,source_id):
- if source_id not in SOURCES:raise ValueError('Unknown source')
- if not isinstance(question,str) or not 1<=len(question)<=400:raise ValueError('Question must be 1–400 characters')
- source=SOURCES[source_id]
- matches=[c for c in BANK['challenges'] if source_id in c['sources']]
- follow=[f for c in matches for f in c.get('follow',[]) if f.get('a')]
- q=set(question.lower().split());ranked=sorted(follow,key=lambda f:len(q.intersection(f['q'].lower().split())),reverse=True)
- overlap=len(q.intersection(ranked[0]['q'].lower().split())) if ranked else 0
- answer=ranked[0]['a'] if overlap>=2 else source.get('takeaway','Refer to the published study for details.')
- return {'answer':answer,'source':source['url'],'mode':'curated-offline','note':'Curated explanation, not a live AI answer.'}
+class Limiter:
+    """Token bucket per (client ip, bucket name)."""
+    # Per-client buckets (X-Client-Id, a random id each browser keeps) plus a generous per-IP ceiling,
+    # because a whole class often shares one campus NAT address.
+    RULES = {'read': (4.0, 20), 'write': (2.0, 12), 'create': (10 / 3600, 10), 'tutor': (0.5, 6),
+             'ip_read': (150.0, 400), 'ip_write': (60.0, 200)}
+    def __init__(self): self.b = defaultdict(lambda: [0.0, 0.0]); self.lock = threading.Lock()
+    def allow(self, ip: str, name: str) -> bool:
+        rate, burst = self.RULES[name]; now = time.time()
+        with self.lock:
+            tokens, last = self.b[(ip, name)]
+            tokens = burst if last == 0 else min(burst, tokens + (now - last) * rate)
+            if tokens < 1: self.b[(ip, name)] = [tokens, now]; return False
+            self.b[(ip, name)] = [tokens - 1, now]; return True
+LIMIT = Limiter()
+CODE_RE = re.compile(r'^/api/rooms/([A-Z2-9]{4,8})(/[a-z.]+)?$')
 
 class Handler(BaseHTTPRequestHandler):
- def send(self,status,data):
-  body=json.dumps(data).encode();self.send_response(status);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(body)));self.send_header('Cache-Control','no-store');self.send_header('X-Content-Type-Options','nosniff');self.end_headers();self.wfile.write(body)
- def payload(self):
-  n=int(self.headers.get('Content-Length','0'))
-  if n<0 or n>4096:raise ValueError('Request too large')
-  return json.loads(self.rfile.read(n) or b'{}')
- def do_GET(self):
-  u=urllib.parse.urlsplit(self.path);p=u.path;args=urllib.parse.parse_qs(u.query)
-  try:
-   if p=='/':
-    data=(ROOT/'index.html').read_bytes();self.send_response(200);self.send_header('Content-Type','text/html; charset=utf-8');self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data);return
-   if p=='/classroom':
-    data=(ROOT/'classroom.html').read_bytes();self.send_response(200);self.send_header('Content-Type','text/html; charset=utf-8');self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data);return
-   if p=='/api/health':return self.send(200,{'ok':True})
-   if p=='/api/challenges':return self.send(200,{'challenges':[{'id':c['id'],'title':c['title'],'question':c['question'],'options':c.get('options',[]),'format':c.get('format','choice'),'estimate':c.get('estimate')} for c in BANK['challenges']]})
-   if p.startswith('/api/sessions/'):
-    parts=p.split('/');code=parts[3];secret=self.headers.get('X-Instructor-Key','')
-    if len(parts)==5 and parts[4]=='results':return self.send(200,results(code,secret))
-    return self.send(200,session(code,secret))
-   self.send(404,{'error':'Not found'})
-  except Exception as e:self.send(400,{'error':str(e)})
- def do_POST(self):
-  try:
-   d=self.payload();p=self.path
-   if p=='/api/sessions':return self.send(201,create_session(d.get('challenge','ai01')))
-   if p=='/api/tutor':return self.send(200,tutor(d.get('question'),d.get('source')))
-   if p.startswith('/api/sessions/'):
-    parts=p.split('/');code=parts[3]
-    if len(parts)==5 and parts[4]=='responses':return self.send(200,submit(code,d.get('participant'),d.get('answer')))
-    if len(parts)==5 and parts[4]=='control':return self.send(200,change(code,self.headers.get('X-Instructor-Key',''),d.get('challenge'),d.get('reveal')))
-   self.send(404,{'error':'Not found'})
-  except PermissionError as e:self.send(403,{'error':str(e)})
-  except Exception as e:self.send(400,{'error':str(e)})
+    server_version = 'THV'; sys_version = ''
+    def log_message(self, fmt, *args):
+        if os.environ.get('THV_ACCESS_LOG') == '1': super().log_message(fmt, *args)
 
-if __name__=='__main__':
- DB.parent.mkdir(parents=True,exist_ok=True)
- with connect():pass
- ThreadingHTTPServer(('0.0.0.0',int(os.environ.get('PORT','8502'))),Handler).serve_forever()
+    def ip(self) -> str:
+        if TRUST_PROXY and self.headers.get('X-Forwarded-For'): return self.headers['X-Forwarded-For'].split(',')[0].strip()
+        return self.client_address[0]
+
+    def headers_common(self):
+        self.send_header('X-Content-Type-Options', 'nosniff'); self.send_header('Referrer-Policy', 'no-referrer')
+        self.send_header('Content-Security-Policy', CSP); self.send_header('Cross-Origin-Opener-Policy', 'same-origin')
+        self.send_header('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
+
+    def json(self, status: int, data, extra: dict | None = None):
+        body = json.dumps(data, ensure_ascii=False).encode()
+        self.send_response(status); self.send_header('Content-Type', 'application/json; charset=utf-8'); self.send_header('Content-Length', str(len(body)))
+        self.send_header('Cache-Control', 'no-store'); self.headers_common()
+        for k, v in (extra or {}).items(): self.send_header(k, v)
+        self.end_headers(); self.wfile.write(body)
+
+    def body(self) -> dict:
+        n = int(self.headers.get('Content-Length') or 0)
+        if n < 0 or n > 8192: raise ClassroomError('Request too large')
+        if n and 'application/json' not in (self.headers.get('Content-Type') or ''): raise ClassroomError('Send JSON')
+        d = json.loads(self.rfile.read(n) or b'{}')
+        if not isinstance(d, dict): raise ClassroomError('Send a JSON object')
+        return d
+
+    def key(self) -> str: return self.headers.get('X-Instructor-Key', '')
+
+    def client(self) -> str: return re.sub(r'[^A-Za-z0-9_-]', '', self.headers.get('X-Client-Id', ''))[:40]
+
+    def allowed(self, kind: str) -> bool:
+        ip = self.ip()
+        if not LIMIT.allow(ip, 'ip_' + kind): return False
+        return LIMIT.allow(ip + '|' + self.client(), kind)
+
+    def do_GET(self):
+        u = urllib.parse.urlsplit(self.path); p = u.path; qs = urllib.parse.parse_qs(u.query)
+        try:
+            if p in STATIC:
+                f = ROOT / STATIC[p]; data = f.read_bytes()
+                self.send_response(200); self.send_header('Content-Type', 'text/html; charset=utf-8'); self.send_header('Content-Length', str(len(data)))
+                self.send_header('Cache-Control', 'no-cache'); self.headers_common(); self.end_headers(); self.wfile.write(data); return
+            if not self.allowed('read'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
+            if p == '/api/health': return self.json(200, {'ok': True, 'decisions': len(CHALLENGES), 'tutor': TUTOR.enabled})
+            if p == '/api/tutor/status': return self.json(200, TUTOR.status((qs.get('client') or [''])[0][:40]))
+            if p == '/api/challenges': return self.json(200, {'challenges': [public_challenge(c) for c in CHALLENGES.values()]})
+            m = CODE_RE.match(p)
+            if m:
+                code, sub = m.group(1), m.group(2)
+                if sub is None:
+                    admin = bool(self.key()) and STORE.is_admin(code, self.key())
+                    s = STORE.state(code, admin=admin)
+                    if (qs.get('v') or [''])[0] == str(s['version']) + ':' + str(s['responses']) + ':' + str(s['participants']):
+                        return self.json(200, {'same': True})
+                    s['etag'] = f"{s['version']}:{s['responses']}:{s['participants']}"
+                    if s.get('challenge'): s['decision'] = public_challenge(CHALLENGES[s['challenge']])
+                    s['admin'] = admin
+                    return self.json(200, s)
+                if sub == '/export.csv':
+                    data = STORE.export_csv(code, self.key()).encode('utf-8-sig')
+                    self.send_response(200); self.send_header('Content-Type', 'text/csv; charset=utf-8'); self.send_header('Content-Disposition', f'attachment; filename="human-variable-{code}.csv"')
+                    self.send_header('Content-Length', str(len(data))); self.send_header('Cache-Control', 'no-store'); self.headers_common(); self.end_headers(); self.wfile.write(data); return
+            self.json(404, {'error': 'Not found'})
+        except ClassroomError as e: self.json(e.status, {'error': str(e)})
+        except Exception: self.json(500, {'error': 'Server error'})
+
+    def do_POST(self):
+        p = urllib.parse.urlsplit(self.path).path
+        try:
+            d = self.body()
+            if p == '/api/tutor':
+                if not LIMIT.allow(self.ip() + '|' + self.client(), 'tutor'): return self.json(429, {'error': 'Ask again in a few seconds.'}, {'Retry-After': '3'})
+                return self.json(200, TUTOR.ask(d.get('question', ''), d.get('challenge'), str(d.get('client', ''))[:40] or self.ip()))
+            if p == '/api/rooms':
+                if not LIMIT.allow(self.ip(), 'create'): return self.json(429, {'error': 'Too many sessions created from this network. Try again later.'})
+                if PASSCODE and str(d.get('passcode', '')) != PASSCODE: return self.json(403, {'error': 'Instructor passcode required'})
+                return self.json(201, STORE.create(d.get('title', '')))
+            if not self.allowed('write'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
+            m = CODE_RE.match(p)
+            if m:
+                code, sub = m.group(1), m.group(2)
+                if sub == '/join': return self.json(200, STORE.join(code))
+                if sub == '/responses': return self.json(200, STORE.submit(code, d.get('token', ''), d.get('answer'), d.get('confidence')))
+                if sub == '/control': return self.json(200, STORE.control(code, self.key(), str(d.get('action', '')), d.get('challenge')))
+            self.json(404, {'error': 'Not found'})
+        except ClassroomError as e: self.json(e.status, {'error': str(e)})
+        except (ValueError, json.JSONDecodeError): self.json(400, {'error': 'Malformed request'})
+        except Exception: self.json(500, {'error': 'Server error'})
+
+class Server(ThreadingHTTPServer):
+    daemon_threads = True
+    request_queue_size = 128
+
+def serve(host: str | None = None, port: int | None = None):
+    host = host or os.environ.get('HOST', '127.0.0.1'); port = port or int(os.environ.get('PORT', '8502'))
+    httpd = Server((host, port), Handler)
+    print(f'The Human Variable on http://{"localhost" if host in ("127.0.0.1", "0.0.0.0") else host}:{port}/   classroom: /classroom   tutor: {"Gemini" if TUTOR.enabled else "curated only"}', flush=True)
+    httpd.serve_forever()
+
+if __name__ == '__main__':
+    serve()

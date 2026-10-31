@@ -48,7 +48,7 @@ const st = {
   seed: (Number(PARAM.get('seed')) || Math.floor(Math.random() * 2147483647)) >>> 0,
   deck: [], i: 0, phase: 'predict', resp: null, touched: false, conf: 60, confTouched: false, session: [],
   atlasTrack: 'All', atlasQuery: '', atlasFormat: 'All', tutor: { busy: false, text: '', cites: [] }, menu: false,
-  hero: { value: null, done: false }
+  hero: { value: null, done: false }, room: null
 };
 const card = () => st.deck[st.i];
 
@@ -86,7 +86,7 @@ function lock() {
   const rec = { id: c.id, format: c.format, score: Math.round(res.score * 1000) / 1000, correct: res.correct, confidence: c.format === 'forecast' ? null : st.conf, response: st.resp, at: new Date().toISOString(), seed: st.seed, detail: res.detail };
   st.session.push(rec); records.push(rec); records = records.slice(-3000); store.set(REC_KEY, records);
   st.phase = 'reveal'; render(true);
-  if (window.THVRoom) window.THVRoom.submit(c, st.resp, st.conf);
+  if (st.room) roomSubmit(c, rec);
 }
 function next() { if (st.i >= st.deck.length - 1) { st.view = 'record'; st.deck = []; render(true); return } st.i++; resetCard(); render(true) }
 
@@ -225,7 +225,10 @@ function bars(ch) {
 }
 
 function play() {
-  const c = card(); if (!c) { st.view = 'home'; return home() }
+  const c = card();
+  if (st.room && (!c || st.room.challenge !== c.id || st.room.phase === 'lobby')) return roomWait();
+  if (!c) { st.view = 'home'; return home() }
+  if (st.room && st.phase === 'reveal' && st.room.phase !== 'revealed') return roomLocked(c);
   const rev = st.phase === 'reveal', rec = st.session[st.session.length - 1];
   const src = SOURCE[c.sources[0]];
   const steps = st.deck.map((_, k) => `<i class="${k < st.i || (k === st.i && rev) ? 'done' : k === st.i ? 'now' : ''}"></i>`).join('');
@@ -242,16 +245,16 @@ function play() {
       <div class="lessons"><div class="lesson"><h3>What a manager does with this</h3><p>${esc(c.implication)}</p></div><div class="lesson"><h3>Where it stops holding</h3><p>${esc(c.boundary)}</p></div></div>
       <div class="follow">${c.follow.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}
       <details class="note-box"><summary>Write a field note for your own work</summary><p>Which decision would you revisit, and what would you measure first?</p><textarea id="note" maxlength="480" aria-label="Field note">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note" style="margin:10px 0 16px">Save note on this device</button></details></div>
-      <div class="next-row"><button class="btn btn-solid" data-act="next" id="next-btn">${st.i >= st.deck.length - 1 ? 'See your record' : c.case && c.case.step < c.case.of ? 'Next step in the case' : 'Next decision'}</button><span class="kicker">Press N</span></div></article>`;
+      ${st.room ? `<div class="next-row"><span class="kicker">Live class ${esc(st.room.code)}. The next decision appears when your instructor opens it.</span></div>` : ''}<div class="next-row" ${st.room ? 'hidden' : ''}><button class="btn btn-solid" data-act="next" id="next-btn">${st.i >= st.deck.length - 1 ? 'See your record' : c.case && c.case.step < c.case.of ? 'Next step in the case' : 'Next decision'}</button><span class="kicker">Press N</span></div></article>`;
   const side = !rev ? `<aside class="side" aria-label="Your commitment">
       ${c.format === 'forecast' ? `<section class="panel bet"><h2>Your probability is your confidence</h2><p>Forecasts are scored with the Brier rule. Saying 50% is safe but scores only 75 of 100.</p><button class="btn btn-you" data-act="lock" id="lock-btn" ${S.ready(c, st.resp) && st.touched ? '' : 'disabled'}>Lock my forecast</button><p class="bet-note">Keys: Enter locks.</p></section>`
       : `<section class="panel bet"><h2><label for="conf">How sure are you?</label></h2><p>Your stated chance of being right. It feeds your calibration record.</p><div class="meter-read"><span class="kicker">Confidence</span><b class="num" id="conf-read" style="font-size:34px">${st.conf}%</b></div><input type="range" id="conf" min="${c.format === 'choice' || c.format === 'causal' ? Math.round(100 / c.options.length / 5) * 5 : 0}" max="100" step="5" value="${st.conf}" style="--fill:${st.conf}%"><button class="btn btn-you" data-act="lock" id="lock-btn" ${S.ready(c, st.resp) ? '' : 'disabled'}>Lock my ${c.format === 'estimate' ? 'estimate' : c.format === 'allocate' ? 'budget' : c.format === 'rank' ? 'ranking' : c.format === 'delegate' ? 'routing' : 'call'}</button><p class="bet-note">${c.format === 'choice' || c.format === 'causal' || c.format === 'multi' ? 'Keys: 1 to ' + c.options.length + ' choose, Enter locks.' : 'Keys: Enter locks.'}</p></section>`}
       ${c.study ? `<section class="panel stakes" aria-label="About the study"><dl>${c.study.design ? `<dt>Design</dt><dd>${esc(c.study.design)}</dd>` : ''}${c.study.n ? `<dt>Who</dt><dd>${esc(c.study.n)}</dd>` : ''}<dt>Source</dt><dd>${esc(src.venue)}, ${src.year}</dd></dl></section>` : ''}
     </aside>`
-    : `<aside class="side" aria-label="Evidence">${gapPanel(c, rec)}
+    : `<aside class="side" aria-label="Evidence">${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}${gapPanel(c, rec)}
       ${c.sources.map(id => { const s = SOURCE[id], [label, cls] = srcStatus(s); return `<section class="panel source-card"><span class="kicker">Source</span><h3>${esc(s.title)}</h3><p>${esc(s.authors)}, <i>${esc(s.venue)}</i>, ${s.year}</p><div class="row"><span class="status ${cls}">${label}</span><span><button class="link-btn" data-source="${esc(id)}">Details</button> &nbsp; <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">DOI</a></span></div></section>` }).join('')}
       ${tutorPanel(c)}</aside>`;
-  return `<section class="play wrap"><div class="play-top"><button class="btn btn-quiet" data-nav="home">Leave round</button><div class="steps" aria-hidden="true">${steps}</div><span class="kicker num" aria-live="polite">Decision ${st.i + 1} of ${st.deck.length}</span></div>
+  return `<section class="play wrap"><div class="play-top"><button class="btn btn-quiet" data-nav="home">${st.room ? 'Leave class' : 'Leave round'}</button><div class="steps" aria-hidden="true">${steps}</div><span class="kicker num" aria-live="polite">Decision ${st.i + 1} of ${st.deck.length}</span></div>
     <div class="play-grid">${left}${side}</div></section>`;
 }
 
@@ -371,6 +374,81 @@ function download(name, text, mime) { const b = new Blob([text], { type: mime })
 function csvCell(x) { const s = String(x ?? '').replace(/^[=+@\-\t\r]/, m => "'" + m); return '"' + s.replace(/"/g, '""') + '"' }
 function exportCSV() { const head = ['decision_id', 'title', 'area', 'format', 'score_0_100', 'correct', 'confidence', 'response', 'utc_time', 'seed', 'field_note']; const rows = records.map(r => [r.id, BY_ID[r.id].title, BY_ID[r.id].track, r.format, pct(r.score), r.correct ? 1 : 0, r.confidence ?? '', JSON.stringify(r.response), r.at, r.seed, notes[r.id] || ''].map(csvCell).join(',')); download('human-variable-record.csv', [head.join(','), ...rows].join('\n'), 'text/csv;charset=utf-8') }
 
+
+// ----- live class (room mode) -----
+function roomHeaders(json) { const h = { 'X-Client-Id': clientId() }; if (json) h['Content-Type'] = 'application/json'; return h }
+async function roomJoin(code) {
+  code = String(code || '').trim().toUpperCase().replace(/[^A-Z2-9]/g, '').slice(0, 8);
+  if (code.length < 4) { notice('Enter the code shown on the instructor screen.'); return }
+  if (!location.protocol.startsWith('http')) { notice('Live classes need the hosted version of the lab. Ask your instructor for the link.'); return }
+  try {
+    let tok = sessionStorage.getItem('thv:room:' + code);
+    if (!tok) {
+      const r = await fetch(`/api/rooms/${code}/join`, { method: 'POST', headers: roomHeaders(true), body: '{}' }); const d = await r.json();
+      if (!r.ok) throw Error(d.error || 'Could not join'); tok = d.token; sessionStorage.setItem('thv:room:' + code, tok); sessionStorage.setItem('thv:room:' + code + ':n', d.number);
+    }
+    st.room = { code, token: tok, number: sessionStorage.getItem('thv:room:' + code + ':n'), phase: 'lobby', challenge: null, etag: '', agg: null, misses: 0 };
+    st.view = 'play'; st.deck = []; closeModal(); render(true); roomPoll();
+  } catch (e) { notice(e.message) }
+}
+async function roomPoll() {
+  if (!st.room) return; const R = st.room;
+  try {
+    const r = await fetch(`/api/rooms/${R.code}?v=${encodeURIComponent(R.etag)}`, { headers: roomHeaders() });
+    if (r.status === 404) { notice('This live session has ended.'); st.room = null; st.view = 'home'; render(true); return }
+    const d = await r.json(); R.misses = 0;
+    if (!d.same) {
+      const changed = d.challenge !== R.challenge, phaseChanged = d.phase !== R.phase;
+      R.etag = d.etag; R.phase = d.phase; R.agg = d.aggregate || null; R.participants = d.participants; R.responses = d.responses; R.title = d.title;
+      if (changed && d.challenge && BY_ID[d.challenge]) { R.challenge = d.challenge; st.deck = [BY_ID[d.challenge]]; st.i = 0; resetCard(); render(true) }
+      else if (phaseChanged || d.phase === 'revealed') { R.challenge = d.challenge; render(phaseChanged) }
+      else { const live = qs('#room-live'); if (live) live.textContent = roomLine() }
+    }
+  } catch { R.misses++; const live = qs('#room-live'); if (live) live.textContent = 'Reconnecting…' }
+  clearTimeout(R.timer); R.timer = setTimeout(roomPoll, document.hidden ? 6000 : Math.min(8000, 2000 * (1 + R.misses)));
+}
+function roomLine() { const R = st.room; return `${R.participants ?? '–'} joined. ${R.phase === 'open' ? (R.responses ?? 0) + ' answered so far.' : ''}` }
+async function roomSubmit(c, rec) {
+  const R = st.room; R.sent = false; render();
+  for (let k = 0; k < 4; k++) {
+    try {
+      const r = await fetch(`/api/rooms/${R.code}/responses`, { method: 'POST', headers: roomHeaders(true), body: JSON.stringify({ token: R.token, answer: rec.response, confidence: rec.confidence }) });
+      const d = await r.json();
+      if (r.ok) { R.sent = true; R.sentMsg = d.accepted ? 'Your answer is in.' : d.message; render(); return }
+      if (r.status === 409 || r.status === 400 || r.status === 403) { R.sent = true; R.sentMsg = d.error; render(); return }
+    } catch { }
+    await new Promise(z => setTimeout(z, 800 * (k + 1)));
+  }
+  R.sentMsg = 'Could not reach the class server. Check your connection; your answer is saved on this device.'; R.sent = true; render();
+}
+function roomWait() {
+  const R = st.room;
+  return `<section class="play wrap"><div class="panel card room-wait" aria-live="polite"><span class="tag tag-you">Live class ${esc(R.code)}${R.number ? ', you are participant ' + esc(R.number) : ''}</span>
+    <h1 class="q" tabindex="-1" style="margin-top:18px">${R.phase === 'lobby' || !R.challenge ? 'You are in. The first decision appears when your instructor opens it.' : 'Waiting for the next decision.'}</h1>
+    <p class="scene">Keep this page open. Your answers count toward the class picture, not toward a grade, and the instructor sees only participant numbers.</p>
+    <p class="kicker" id="room-live">${roomLine()}</p><button class="btn btn-quiet" data-act="leave-room">Leave the live class</button></div></section>`;
+}
+function roomLocked(c) {
+  const R = st.room;
+  return `<section class="play wrap"><div class="panel card room-wait" aria-live="polite"><span class="tag tag-you">Live class ${esc(R.code)}</span>
+    <h1 class="q" tabindex="-1" style="margin-top:18px">${R.sent ? esc(R.sentMsg || 'Your answer is in.') : 'Sending your answer…'}</h1>
+    <p class="scene">The evidence appears for everyone when your instructor reveals it. ${esc(c.title)}.</p><p class="kicker" id="room-live">${roomLine()}</p></div></section>`;
+}
+function classPanel(c, a) {
+  const f = c.format; let body = '';
+  const hbars = (labels, vals, ev) => { const mx = Math.max(1, ...vals); return `<svg viewBox="0 0 340 ${labels.length * 40 + 4}" role="img" aria-label="Class answers">${labels.map((l, i) => { const y = 2 + i * 40, w = vals[i] / mx * 230; return `<text x="0" y="${y + 12}" font-size="11.5" font-weight="650" fill="#14203a">${esc(short(l, 50))}</text><rect x="0" y="${y + 18}" width="${Math.max(2, w)}" height="12" rx="6" fill="${ev && ev.includes(i) ? '#e0a01c' : '#2f54eb'}"/><text x="${Math.max(2, w) + 6}" y="${y + 28}" font-size="11.5" font-weight="800" fill="#14203a">${vals[i]}</text>` }).join('')}</svg>` };
+  if (a.counts) body = hbars(c.options, a.counts, f === 'multi' ? c.multiAnswers : [c.answer]);
+  else if (a.hist) { const lo = a.lo, hi = a.hi, w = (hi - lo) / a.hist.length, mx = Math.max(1, ...a.hist), ev = f === 'estimate' ? c.estimate.target : (c.forecast.truth ? 100 : 0); body = `<svg viewBox="0 0 340 130" role="img" aria-label="Class distribution, median ${a.median}">${a.hist.map((h, i) => `<rect x="${10 + i * 32}" y="${100 - h / mx * 80}" width="28" height="${h / mx * 80}" rx="3" fill="#2f54eb" fill-opacity=".8"/>`).join('')}<line x1="${10 + (ev - lo) / (hi - lo) * 320}" y1="10" x2="${10 + (ev - lo) / (hi - lo) * 320}" y2="104" stroke="#e0a01c" stroke-width="3"/><text x="10" y="122" font-size="11" fill="#56617a">${lo}</text><text x="330" y="122" font-size="11" fill="#56617a" text-anchor="end">${hi}</text><text x="${Math.min(300, 14 + (ev - lo) / (hi - lo) * 320)}" y="20" font-size="11" font-weight="700" fill="#7d5200">Evidence</text></svg><p class="gap-caption">Class median ${a.median}${f === 'estimate' ? (c.estimate.unit ?? '%') : '%'}.</p>` }
+  else if (a.meanPosition) body = hbars(c.options.map((o, i) => o + ' (avg. rank ' + a.meanPosition[i] + ')'), a.meanPosition.map(p => +(c.options.length + 1 - p).toFixed(2)), [c.rankAnswer[0]]);
+  else if (a.meanShare) body = hbars(c.options.map((o, i) => o + ' (' + a.meanShare[i] + '%)'), a.meanShare, [c.allocate.values.indexOf(Math.max(...c.allocate.values))]);
+  else if (a.taskCounts) body = `<ul class="hist">${c.delegate.tasks.map((t, i) => `<li><span>${esc(short(t.text, 60))}</span><span class="num">${a.taskCounts[i][t.answer]} of ${a.n}</span></li>`).join('')}</ul><p class="gap-caption">Number of classmates who routed each task the way the evidence suggests.</p>`;
+  return `<section class="panel gap" aria-labelledby="class-h"><h2 id="class-h">The room, ${a.n} answers</h2><p class="gap-caption" style="margin:0 0 8px">Average score ${a.meanScore ?? '–'}. ${a.shareCorrect ?? 0}% matched the evidence${a.meanConfidence !== null ? `, at ${a.meanConfidence}% average confidence` : ''}.</p>${body}</section>`;
+}
+function joinModal() {
+  modal(`<span class="kicker">Live class</span><h2>Join with the code on the screen</h2><form data-form="join" class="tutor-line"><label class="sr-only" for="join-code">Session code</label><input id="join-code" maxlength="8" autocomplete="off" autocapitalize="characters" placeholder="For example K7QPM" style="text-transform:uppercase;font-size:20px;letter-spacing:.12em"><button class="btn btn-solid">Join</button></form><p>No name or account needed. The instructor sees answers by participant number only.</p>`, 'Join a live class');
+  setTimeout(() => qs('#join-code')?.focus(), 20);
+}
+
 // ---------- render ----------
 let toastT;
 function notice(s) { const t = qs('#toast'); t.textContent = s; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3200) }
@@ -389,7 +467,7 @@ function setRange(el) { el.classList.remove('untouched'); el.style.setProperty('
 document.addEventListener('click', e => {
   const t = e.target.closest('button,[data-close]'); if (!t) return;
   if (t.dataset.close && (e.target === t || t.classList.contains('close'))) { closeModal(); return }
-  if (t.dataset.nav) { closeModal(); st.view = t.dataset.nav; st.menu = false; render(true); return }
+  if (t.dataset.nav) { closeModal(); if (st.room && t.dataset.nav === 'home' && st.view === 'play') { if (!confirm('Leave the live class?')) return; clearTimeout(st.room.timer); st.room = null } st.view = t.dataset.nav; st.menu = false; render(true); return }
   if (t.dataset.track) { st.track = t.dataset.track; const n = st.track === 'Mixed' ? ALL.length : ALL.filter(c => c.track === st.track).length; if (st.length > n) st.length = 5; render(); return }
   if (t.dataset.length) { st.length = +t.dataset.length; render(); return }
   if (t.dataset.source) { sourceModal(t.dataset.source); return }
@@ -417,6 +495,8 @@ document.addEventListener('click', e => {
   if (a === 'json') { download('human-variable-record.json', JSON.stringify({ kind: 'thv-record', version: 2, exported: new Date().toISOString(), records }, null, 2), 'application/json'); return }
   if (a === 'erase') { if (confirm('Erase every saved call and field note in this browser? This cannot be undone.')) { records = []; notes = {}; st.session = []; store.del(REC_KEY); store.del(NOTE_KEY); store.del('thv:v1:results'); render(); notice('Record erased.') } return }
   if (a === 'methods') { methodsModal(); return }
+  if (a === 'join') { joinModal(); return }
+  if (a === 'leave-room') { clearTimeout(st.room?.timer); st.room = null; st.view = 'home'; render(true); return }
   if (a === 'about') { methodsModal(); return }
 });
 document.addEventListener('input', e => {
@@ -441,7 +521,7 @@ document.addEventListener('change', e => {
   if (e.target.id === 'atlas-track') { st.atlasTrack = e.target.value; render(); qs('#atlas-track').focus() }
   if (e.target.id === 'atlas-format') { st.atlasFormat = e.target.value; render(); qs('#atlas-format').focus() }
 });
-document.addEventListener('submit', e => { if (e.target.dataset.form === 'tutor') { e.preventDefault(); ask(qs('#tutor-in').value) } });
+document.addEventListener('submit', e => { if (e.target.dataset.form === 'tutor') { e.preventDefault(); ask(qs('#tutor-in').value) } if (e.target.dataset.form === 'join') { e.preventDefault(); roomJoin(qs('#join-code').value) } });
 document.addEventListener('keydown', e => {
   if (qs('#overlay').innerHTML) {
     if (e.key === 'Escape') { closeModal(); return }
@@ -462,6 +542,6 @@ qs('#brand-glyph').outerHTML = glyph;
 if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }
-if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else render();
+if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else render();
 window.THV = { st, ALL, BY_ID, records: () => records }; // test hook
 })();

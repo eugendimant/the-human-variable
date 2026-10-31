@@ -1,0 +1,223 @@
+"""Live classroom sessions: instructor-controlled rounds, anonymous participants, aggregate reveals.
+
+Storage is SQLite in WAL mode (one file, safe for one server process with many threads).
+State that every participant polls is cached in memory and versioned, so 50 phones polling
+every two seconds cost a dictionary lookup, not a database query.
+"""
+from __future__ import annotations
+import csv, hashlib, hmac, io, json, os, secrets, sqlite3, statistics, threading, time
+from pathlib import Path
+from . import scoring
+
+ROOT = Path(__file__).resolve().parents[1]
+BANK = json.loads((ROOT / 'src' / 'bank.json').read_text(encoding='utf-8'))
+LIVE_SOURCES = {k for k, s in BANK['sources'].items() if s.get('verification', {}).get('status') != 'quarantined'}
+CHALLENGES = {c['id']: c for c in BANK['challenges'] if all(s in LIVE_SOURCES for s in c['sources'])}
+
+RETENTION_HOURS = float(os.environ.get('THV_RETENTION_HOURS', '48'))
+MAX_PARTICIPANTS = int(os.environ.get('THV_MAX_PARTICIPANTS', '120'))
+CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'  # no 0/O/1/I
+
+class ClassroomError(Exception):
+    status = 400
+class NotFound(ClassroomError):
+    status = 404
+class Forbidden(ClassroomError):
+    status = 403
+class Conflict(ClassroomError):
+    status = 409
+
+def _h(token: str) -> str: return hashlib.sha256(token.encode()).hexdigest()
+
+class Store:
+    def __init__(self, path: str | Path):
+        self.path = str(path); self._local = threading.local(); self.lock = threading.Lock()
+        self.cache: dict[str, dict] = {}
+        db = self.db()
+        db.executescript('''
+        PRAGMA journal_mode=WAL;
+        CREATE TABLE IF NOT EXISTS sessions(code TEXT PRIMARY KEY, secret_hash TEXT NOT NULL, title TEXT, challenge TEXT, phase TEXT NOT NULL DEFAULT 'lobby', version INTEGER NOT NULL DEFAULT 1, created REAL NOT NULL, touched REAL NOT NULL, played TEXT NOT NULL DEFAULT '[]');
+        CREATE TABLE IF NOT EXISTS participants(code TEXT, token_hash TEXT, num INTEGER, joined REAL, PRIMARY KEY(code, token_hash));
+        CREATE TABLE IF NOT EXISTS responses(code TEXT, num INTEGER, challenge TEXT, answer TEXT, confidence INTEGER, score REAL, correct INTEGER, created REAL, PRIMARY KEY(code, num, challenge));
+        CREATE INDEX IF NOT EXISTS r_cc ON responses(code, challenge);
+        ''')
+        db.commit()
+
+    def db(self) -> sqlite3.Connection:
+        c = getattr(self._local, 'c', None)
+        if c is None:
+            c = sqlite3.connect(self.path, timeout=15, check_same_thread=False)
+            c.execute('PRAGMA busy_timeout=15000'); c.execute('PRAGMA synchronous=NORMAL')
+            self._local.c = c
+        return c
+
+    # ---- instructor ----
+    def create(self, title: str = '') -> dict:
+        self.purge()
+        title = str(title or '')[:80]
+        secret = secrets.token_urlsafe(24); now = time.time()
+        with self.lock:
+            db = self.db()
+            for _ in range(20):
+                code = ''.join(secrets.choice(CODE_ALPHABET) for _ in range(5))
+                try:
+                    db.execute('INSERT INTO sessions(code, secret_hash, title, created, touched) VALUES(?,?,?,?,?)', (code, _h(secret), title, now, now)); db.commit()
+                    self.cache.pop(code, None)
+                    return {'code': code, 'secret': secret, 'title': title}
+                except sqlite3.IntegrityError:
+                    continue
+        raise ClassroomError('Could not allocate a session code')
+
+    def _row(self, code: str):
+        r = self.db().execute('SELECT code, secret_hash, title, challenge, phase, version, created, played FROM sessions WHERE code=?', (code,)).fetchone()
+        if not r: raise NotFound('No session with that code. Check the code on the instructor screen.')
+        return r
+
+    def is_admin(self, code: str, secret: str) -> bool:
+        r = self._row(code); return bool(secret) and hmac.compare_digest(r[1], _h(secret))
+
+    def require_admin(self, code: str, secret: str):
+        if not self.is_admin(code, secret): raise Forbidden('Instructor key required')
+
+    def control(self, code: str, secret: str, action: str, challenge: str | None = None) -> dict:
+        self.require_admin(code, secret)
+        r = self._row(code); phase = r[4]; played = json.loads(r[7])
+        if action == 'open':
+            if challenge not in CHALLENGES: raise ClassroomError('Unknown decision')
+            if challenge not in played: played.append(challenge)
+            sql, args = 'UPDATE sessions SET challenge=?, phase=?, played=?', [challenge, 'open', json.dumps(played)]
+        elif action == 'close':
+            if phase != 'open': raise Conflict('Nothing is open')
+            sql, args = 'UPDATE sessions SET phase=?', ['closed']
+        elif action == 'reveal':
+            if phase not in ('open', 'closed'): raise Conflict('Open a decision first')
+            sql, args = 'UPDATE sessions SET phase=?', ['revealed']
+        elif action == 'lobby':
+            sql, args = 'UPDATE sessions SET phase=?', ['lobby']
+        elif action == 'end':
+            self.delete(code, secret); return {'ended': True}
+        else:
+            raise ClassroomError('Unknown action')
+        with self.lock:
+            db = self.db(); db.execute(sql + ', version=version+1, touched=? WHERE code=?', (*args, time.time(), code)); db.commit()
+            self.cache.pop(code, None)
+        return self.state(code, admin=True)
+
+    def delete(self, code: str, secret: str):
+        self.require_admin(code, secret)
+        with self.lock:
+            db = self.db()
+            for t in ('responses', 'participants', 'sessions'): db.execute(f'DELETE FROM {t} WHERE code=?', (code,))
+            db.commit(); self.cache.pop(code, None)
+
+    # ---- participants ----
+    def join(self, code: str) -> dict:
+        code = str(code or '').strip().upper()[:8]
+        self._row(code)
+        with self.lock:
+            db = self.db()
+            n = db.execute('SELECT COUNT(*) FROM participants WHERE code=?', (code,)).fetchone()[0]
+            if n >= MAX_PARTICIPANTS: raise Conflict('This session is full')
+            token = secrets.token_urlsafe(18)
+            db.execute('INSERT INTO participants VALUES(?,?,?,?)', (code, _h(token), n + 1, time.time())); db.commit()
+            self.cache.pop(code, None)
+        return {'code': code, 'token': token, 'number': n + 1}
+
+    def _participant(self, code: str, token: str) -> int:
+        r = self.db().execute('SELECT num FROM participants WHERE code=? AND token_hash=?', (code, _h(str(token or '')))).fetchone()
+        if not r: raise Forbidden('Join the session first')
+        return r[0]
+
+    def submit(self, code: str, token: str, answer, confidence=None) -> dict:
+        r = self._row(code); num = self._participant(code, token)
+        if r[4] != 'open': raise Conflict('Responses are closed for this decision')
+        c = CHALLENGES[r[3]]
+        if not scoring.valid(c, answer): raise ClassroomError('That answer does not fit this decision')
+        if c['format'] != 'forecast':
+            if type(confidence) not in (int, float) or not 0 <= confidence <= 100: raise ClassroomError('Confidence must be 0 to 100')
+            confidence = int(round(confidence))
+        else:
+            confidence = None
+        s = scoring.score(c, answer)
+        with self.lock:
+            db = self.db()
+            cur = db.execute('INSERT OR IGNORE INTO responses VALUES(?,?,?,?,?,?,?,?)', (code, num, c['id'], json.dumps(answer), confidence, s['score'], int(s['correct']), time.time()))
+            db.commit(); accepted = cur.rowcount == 1
+            if accepted: self.cache.pop(code, None)
+        return {'accepted': accepted, 'message': 'Recorded' if accepted else 'You already answered this decision'}
+
+    # ---- reads ----
+    def state(self, code: str, admin: bool = False) -> dict:
+        code = str(code or '').upper()
+        hit = self.cache.get(code)
+        if hit is None or time.time() - hit['_t'] > 30:
+            r = self._row(code); db = self.db()
+            n_part = db.execute('SELECT COUNT(*) FROM participants WHERE code=?', (code,)).fetchone()[0]
+            n_resp = db.execute('SELECT COUNT(*) FROM responses WHERE code=? AND challenge=?', (code, r[3])).fetchone()[0] if r[3] else 0
+            hit = {'_t': time.time(), 'code': r[0], 'title': r[2], 'challenge': r[3], 'phase': r[4], 'version': r[5], 'participants': n_part, 'responses': n_resp}
+            if r[4] == 'revealed' and r[3]: hit['aggregate'] = self.aggregate(code, r[3])
+            self.cache[code] = hit
+        out = {k: v for k, v in hit.items() if not k.startswith('_')}
+        if not admin and out['phase'] != 'revealed': out.pop('aggregate', None)
+        return out
+
+    def aggregate(self, code: str, cid: str) -> dict:
+        c = CHALLENGES[cid]; f = c['format']
+        rows = self.db().execute('SELECT answer, confidence, score, correct FROM responses WHERE code=? AND challenge=?', (code, cid)).fetchall()
+        ans = [json.loads(a) for a, *_ in rows]; n = len(rows)
+        out = {'n': n, 'format': f, 'meanScore': round(100 * sum(r[2] for r in rows) / n) if n else None,
+               'shareCorrect': round(100 * sum(r[3] for r in rows) / n) if n else None,
+               'meanConfidence': round(statistics.mean([r[1] for r in rows if r[1] is not None])) if any(r[1] is not None for r in rows) else None}
+        if f in ('choice', 'causal', 'multi'):
+            counts = [0] * len(c['options'])
+            for a in ans:
+                for i in (a if isinstance(a, list) else [a]): counts[i] += 1
+            out['counts'] = counts
+        elif f in ('estimate', 'forecast'):
+            lo, hi = (c['estimate']['min'], c['estimate']['max']) if f == 'estimate' else (0, 100)
+            bins = 10; w = (hi - lo) / bins; hist = [0] * bins
+            for a in ans: hist[min(bins - 1, int((a - lo) / w))] += 1
+            out.update({'hist': hist, 'lo': lo, 'hi': hi, 'median': statistics.median(ans) if ans else None, 'mean': round(statistics.mean(ans), 1) if ans else None})
+        elif f == 'rank':
+            k = len(c['options']); pos = [0.0] * k
+            for a in ans:
+                for p, item in enumerate(a): pos[item] += p + 1
+            out['meanPosition'] = [round(p / n, 2) if n else None for p in pos]
+        elif f == 'allocate':
+            k = len(c['options']); out['meanShare'] = [round(sum(a[i] for a in ans) / n, 1) if n else None for i in range(k)]
+        elif f == 'delegate':
+            out['taskCounts'] = [[sum(1 for a in ans if a[t] == m) for m in range(len(c['delegate']['choices']))] for t in range(len(c['delegate']['tasks']))]
+        return out
+
+    def export_csv(self, code: str, secret: str) -> str:
+        self.require_admin(code, secret)
+        rows = self.db().execute('SELECT num, challenge, answer, confidence, score, correct, created FROM responses WHERE code=? ORDER BY challenge, num', (code,)).fetchall()
+        buf = io.StringIO(); w = csv.writer(buf)
+        w.writerow(['participant', 'decision_id', 'decision_title', 'format', 'answer', 'confidence', 'score_0_100', 'correct', 'utc_time'])
+        for num, cid, a, conf, sc, ok, t in rows:
+            c = CHALLENGES.get(cid, {}); title = str(c.get('title', ''))
+            if title[:1] in '=+-@': title = "'" + title
+            w.writerow([f'P{num:03d}', cid, title, c.get('format', ''), a, '' if conf is None else conf, round(100 * sc), ok, time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(t))])
+        return buf.getvalue()
+
+    def purge(self):
+        cutoff = time.time() - RETENTION_HOURS * 3600
+        with self.lock:
+            db = self.db(); old = [r[0] for r in db.execute('SELECT code FROM sessions WHERE touched < ?', (cutoff,))]
+            for code in old:
+                for t in ('responses', 'participants', 'sessions'): db.execute(f'DELETE FROM {t} WHERE code=?', (code,))
+                self.cache.pop(code, None)
+            db.commit()
+        return len(old)
+
+def public_challenge(c: dict) -> dict:
+    """Everything a participant needs to answer, nothing that reveals the answer."""
+    keep = ('id', 'track', 'concept', 'title', 'scene', 'question', 'options', 'format', 'rankLabel', 'dag', 'case', 'study')
+    out = {k: c[k] for k in keep if k in c}
+    if c['format'] == 'estimate': out['estimate'] = {k: c['estimate'][k] for k in ('min', 'max', 'label', 'unit', 'step') if k in c['estimate']}
+    if c['format'] == 'forecast': out['forecast'] = {'claim': c['forecast']['claim']}
+    if c['format'] == 'allocate': out['allocate'] = {k: v for k, v in c['allocate'].items() if k not in ('values', 'valueLabels', 'pass')}
+    if c['format'] == 'delegate': out['delegate'] = {'choices': c['delegate']['choices'], 'tasks': [{'text': t['text']} for t in c['delegate']['tasks']]}
+    if c['format'] == 'multi': out['pick'] = len(c['multiAnswers'])
+    if c['format'] == 'rank': out['nRank'] = len(c['rankAnswer'])
+    return out
