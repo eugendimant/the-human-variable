@@ -197,3 +197,5 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 178 tests passed (163 non-browser, 15 browser), audit doc regenerated.
 
 **Count:** 2 Blocking + 15 Major found and addressed. Next: independent review 3.
+
+**Update (2026-10-31, Eugen Dimant):** the expression of concern on Costello et al. (2024) has been officially removed. Every mention was removed from the bank, the Source tab and the docs (`tools/content_costello_notice_2026_10_31.py`); review 2's M6 is superseded.

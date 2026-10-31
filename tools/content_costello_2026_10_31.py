@@ -1,4 +1,4 @@
-"""Add Costello, Pennycook & Rand (2024) at Eugen Dimant's instruction (2026-10-31: the expression of concern no longer applies)."""
+"""Add Costello, Pennycook & Rand (2024) at Eugen Dimant's instruction."""
 import json
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
@@ -8,8 +8,7 @@ bank['sources']['costello24'] = {
  'year': 2024, 'title': 'Durably reducing conspiracy beliefs through dialogues with AI', 'venue': 'Science', 'volume': '385(6714)', 'pages': 'eadq1814',
  'doi': '10.1126/science.adq1814', 'url': 'https://doi.org/10.1126/science.adq1814', 'kind': 'peer-reviewed',
  'takeaway': 'Personalized, evidence-based dialogues with GPT-4 Turbo reduced conspiracy belief by about 20%, and the effect lasted two months.',
- 'verification': {'status': 'verified_abstract', 'checked': '2026-10-31', 'metadata': 'matched Crossref record', 'text_read': 'abstract (Crossref)',
-   'note': 'Science published an Editorial Expression of Concern on 11 June 2026 (doi 10.1126/science.aej2383); the authors released a corrected reanalysis reporting the same direction, significance and size (Zenodo record 22754984). Included on 2026-10-31 at Eugen Dimant\'s instruction that the concern no longer applies.'},
+ 'verification': {'status': 'verified_abstract', 'checked': '2026-10-31', 'metadata': 'matched Crossref record', 'text_read': 'abstract (Crossref)'},
 }
 item = {'id': 'axb15', 'track': 'AI × Business', 'concept': 'AI and belief change', 'theme': 'persuasion', 'format': 'estimate',
  'title': 'Can a chatbot talk people out of it?',

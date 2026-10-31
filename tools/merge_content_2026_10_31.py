@@ -65,7 +65,6 @@ C['misperceived-norms-action']['implication'] = C['misperceived-norms-action']['
 for c in C.values():
     if c['format'] == 'forecast' and re.match(r'How likely is (this|it)', c['question']):
         c['question'] = 'Is this what the study found?'
-# Costello et al. is under an Expression of Concern: not used.
 # costello24: added separately by tools/content_costello_2026_10_31.py at Eugen Dimant's instruction.
 
 THEME_OF_SOURCE = {

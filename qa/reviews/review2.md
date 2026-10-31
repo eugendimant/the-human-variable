@@ -15,7 +15,7 @@ A fresh agent reviewed a snapshot copy after iteration 6. It played in Chromium 
   - M3–M7: content precision (fact-check findings on rollout1, genai1, axe05, dimant-enforcers-rank, dimant-polarizednorms, bz06; author lists).
   - M4: bz07 scored a subgroup ranking the study did not separate statistically.
   - M5: rollout3 offered routes the study never compared; axe01 task text hinted at the answer.
-  - M6: the expression of concern on Costello et al. was not visible to players.
+  - M6: superseded. The notice on Costello et al. (2024) was officially removed, so the item carries none.
   - M8: titles shown before play stated the finding.
   - M9: absolute-word strawman distractors; the correct option was often the longest.
   - M10: Dimant et al. (2025) was described three different ways.

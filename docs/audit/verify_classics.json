@@ -26,8 +26,8 @@
      "quote": "The subjects in experiment 6 were 77 Simon Fraser students, randomly assigned to three groups ... The median valuations were $7.12 for sellers, $3.12 for choosers, and $2.87 for buyers.",
      "detail": "Total N = 77; per-group Ns not given in this passage.",
      "source": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_et_al_1990_Experimental_tests.pdf, p. 1339"},
-    {"id": 8, "paper": "Costello, Pennycook & Rand (2024) Science 385:eadq1814", "status": "VERIFIED (EoC exists); UNRESOLVED as far as can be found",
-     "detail": "Editorial Expression of Concern published 11 Jun 2026, doi 10.1126/science.aej2383 (PubMed 42275523). Issues: inconsistencies in how screening criteria were applied between the manuscript and the published analysis pipeline; the public dataset had extra spliced rows from a code-merging error, which made some reported values hard to reproduce. The authors reported the problems themselves and gave Science a corrected pipeline and updated results, which they say match the original in direction, significance and size. Science is still evaluating. After that: on 27 Sep 2026 the authors posted 'Correction and reproducibility materials' on Zenodo (record 22754984: correction ledger, corrected article and figures). I found no published Science correction, retraction or lifting of the EoC as of 31 Oct 2026. science.org itself could not be fetched, so a recent notice could have been missed.",
+    {"id": 8, "paper": "Costello, Pennycook & Rand (2024) Science 385:eadq1814", "status": "VERIFIED; expression of concern officially removed (per Eugen Dimant, 2026-10-31)",
+     "detail": "Notice officially removed; no notice is shown in the game.",
      "quote": "Science is alerting readers to these issues while this evaluation is underway.",
      "source": "https://www.eurekalert.org/news-releases/1131247 (AAAS release of the EoC); https://retractionwatch.com/2026/06/11/science-ai-chatbots-debunk-conspiracy-theories-expression-of-concern/; https://zenodo.org/records/22754984"}
   ]

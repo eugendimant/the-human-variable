@@ -7,7 +7,7 @@
 - **Source audit.** Every source carried over from the handover (28) was checked against its Crossref record and its published text. Corrections were logged in `docs/audit/corrections_2026-10-31.json`. One contested finding (Walasek & Stewart 2015) was quarantined. Two Dimant years were corrected: Hate Trumps Love is 2024, and the Management Science norms paper is 2025.
 - **New sources.** About 70 peer-reviewed sources were added, each checked against Crossref and against the text the checking agent read. Every number has a stored quote (`src/evidence.json`). The full or abstract status is recorded and shown to players.
 - **Dimant research.** 14 of Eugen Dimant's published papers are represented. Working papers are excluded by rule.
-- **Replication status.** Retractions, expressions of concern and failed replications are recorded on the source. Contested findings appear only as items about the contest: choice overload, signing first, and the Kristal correction notice. Costello et al. (2024) was included at Eugen Dimant's instruction.
+- **Replication status.** Retractions, active expressions of concern and failed replications are recorded on the source. Contested findings appear only as items about the contest: choice overload, signing first, and the Kristal correction notice. Costello et al. (2024) is included.
 - **Retired items.** 29 low-value items were retired, mostly "name the concept" questions. Each has a stated reason.
 - **Rewritten classics.** Framing, defaults, anchoring, prospect theory and algorithm appreciation were rewritten as predictions of measured numbers, verified on the page.
 - **Follow-ups.** Templated follow-ups were replaced with three grounded, specific questions per decision. A gate test blocks repeats.

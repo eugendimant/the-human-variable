@@ -1737,8 +1737,7 @@
     "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract (Crossref)",
-    "note": "Science published an Editorial Expression of Concern on 11 June 2026 (doi 10.1126/science.aej2383); the authors released a corrected reanalysis reporting the same direction, significance and size (Zenodo record 22754984). Included on 2026-10-31 at Eugen Dimant's instruction that the concern no longer applies."
+    "text_read": "abstract (Crossref)"
    }
   },
   "luo19": {
@@ -6996,7 +6995,7 @@
    "answerTitle": "About 20%, and it held for two months",
    "explain": "Belief in the chosen conspiracy fell by about 20% after three rounds of tailored, evidence-based dialogue, and the drop persisted two months later.",
    "implication": "To correct persistent false beliefs among customers or staff, answer each person’s specific claim with evidence. A tailored AI dialogue can do this at scale.",
-   "boundary": "Online experiments with 2,190 conspiracy believers. Science issued an expression of concern in June 2026; the authors’ corrected reanalysis reports the same result.",
+   "boundary": "Online experiments with 2,190 US adults who endorsed at least one conspiracy theory, in conversations with GPT-4 Turbo.",
    "sources": [
     "costello24"
    ],

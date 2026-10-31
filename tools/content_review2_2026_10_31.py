@@ -42,8 +42,7 @@ r3['tasks'][2]['why'] = 'On this outside-frontier task, correctness fell from 84
 C['rollout3']['explain'] = 'Inside the frontier, consultants with GPT-4 completed 12.2% more tasks and worked 25.1% faster. On the outside-frontier case, correctness fell from 84.5% without AI to 70.6% with GPT-4 and 60.0% with GPT-4 plus a prompt overview.'
 C['axb01']['delegate']['choices'][0] = 'Human and AI together'
 C['axe01']['delegate']['tasks'][2]['text'] = 'Pick a vacation spot chosen for sensory pleasure'
-# --- M6: the record on Costello et al. is visible to players
-C['axb15']['boundary'] = 'Online experiments with 2,190 conspiracy believers. Science issued an expression of concern in June 2026; the authors’ corrected reanalysis reports the same result.'
+# --- M6 superseded: the expression of concern was officially removed (tools/content_costello_notice_2026_10_31.py)
 # --- M8: neutral titles (titles show before play in the Library and on the projector)
 T = {'ai01': 'Writing with ChatGPT', 'ai07': 'Stories written with AI', 'ai09': 'The model that erred', 'ai12': 'Medical advice from AI', 'biz05': 'Feedback for thrifty homes',
      'biz07': 'Fixing a slow process', 'social03': 'When peers vary', 'social04': 'Comfort with campus drinking', 'social07': 'Drawing a party’s norm', 'social13': 'Screens at auditions',
