@@ -260,14 +260,14 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
   const narrow = innerWidth < 640, W = narrow ? 360 : 640, fs = narrow ? 14 : 19, L = 18, R = W - 18, y = 52, sx = v => L + (v - min) / (max - min) * (R - L);
   const has = v => v !== null && v !== undefined;
   const anchor = x => x < L + (narrow ? 40 : 60) ? 'start' : x > R - (narrow ? 40 : 60) ? 'end' : 'middle';
-  const lab = (x, txt, color, up) => `<text x="${Math.min(R, Math.max(L, x))}" y="${up ? y - 22 : y + 36}" text-anchor="${anchor(x)}" font-size="${fs}" font-weight="750" fill="${color}" font-family="Schibsted Grotesk,system-ui">${esc(txt)}</text>`;
+  const lab = (x, txt, color, up) => `<text x="${Math.min(R, Math.max(L, x))}" y="${up ? y - 22 : y + 36}" text-anchor="${anchor(x)}" font-size="${fs}" font-weight="750" class="${color}" font-family="Schibsted Grotesk,system-ui">${esc(txt)}</text>`;
   return `<svg class="axis-svg" viewBox="0 0 ${W} 118" role="img" aria-label="${has(you) ? 'Your call ' + fmt(you) : 'No call yet'}${has(ev) ? ', evidence ' + fmt(ev) : ''}">
-    <line x1="${L}" y1="${y}" x2="${R}" y2="${y}" stroke="#cbd3dd" stroke-width="8" stroke-linecap="round"/>
-    ${has(band) && has(ev) ? `<rect x="${sx(Math.max(min, ev - band))}" y="${y - 9}" width="${sx(Math.min(max, ev + band)) - sx(Math.max(min, ev - band))}" height="18" rx="4" fill="#fbefd2" stroke="#e0a01c" stroke-width="1.2"/>` : ''}
-    ${has(you) && has(ev) ? `<line x1="${sx(you)}" y1="${y}" x2="${sx(ev)}" y2="${y}" stroke="#14203a" stroke-width="2.5" stroke-dasharray="3 4"/>` : ''}
-    ${has(you) ? `<circle cx="${sx(you)}" cy="${y}" r="12" fill="#2f54eb" stroke="#fff" stroke-width="3"/>${lab(sx(you), 'You ' + fmt(you), '#1f3cc2', true)}` : ''}
-    ${has(ev) ? `<g class="ev-mark" id="${id}-ev" data-from="${has(you) ? sx(you) - sx(ev) : 0}"><circle cx="${sx(ev)}" cy="${y}" r="12" fill="#e0a01c" stroke="#fff" stroke-width="3"/>${lab(sx(ev), evText ?? evLabel + ' ' + fmt(ev), '#7d5200', false)}</g>` : ''}
-    <text x="${L}" y="114" font-size="${narrow ? 12 : 14}" fill="#56617a" font-family="Schibsted Grotesk,system-ui">${esc(fmt(min))}</text><text x="${R}" y="114" font-size="${narrow ? 12 : 14}" fill="#56617a" text-anchor="end" font-family="Schibsted Grotesk,system-ui">${esc(fmt(max))}</text></svg>`;
+    <line x1="${L}" y1="${y}" x2="${R}" y2="${y}" class="ax-track" stroke-width="8" stroke-linecap="round"/>
+    ${has(band) && has(ev) ? `<rect x="${sx(Math.max(min, ev - band))}" y="${y - 9}" width="${sx(Math.min(max, ev + band)) - sx(Math.max(min, ev - band))}" height="18" rx="4" class="ax-band" stroke-width="1.2"/>` : ''}
+    ${has(you) && has(ev) ? `<line x1="${sx(you)}" y1="${y}" x2="${sx(ev)}" y2="${y}" class="ax-gap" stroke-width="2.5" stroke-dasharray="3 4"/>` : ''}
+    ${has(you) ? `<circle cx="${sx(you)}" cy="${y}" r="12" fill="#2f54eb" stroke="#fff" stroke-width="3"/>${lab(sx(you), 'You ' + fmt(you), 'ax-you', true)}` : ''}
+    ${has(ev) ? `<g class="ev-mark" id="${id}-ev" data-from="${has(you) ? sx(you) - sx(ev) : 0}"><circle cx="${sx(ev)}" cy="${y}" r="12" fill="#e0a01c" stroke="#fff" stroke-width="3"/>${lab(sx(ev), evText ?? evLabel + ' ' + fmt(ev), 'ax-ev', false)}</g>` : ''}
+    <text x="${L}" y="114" font-size="${narrow ? 12 : 14}" class="ax-tick" font-family="Schibsted Grotesk,system-ui">${esc(fmt(min))}</text><text x="${R}" y="114" font-size="${narrow ? 12 : 14}" class="ax-tick" text-anchor="end" font-family="Schibsted Grotesk,system-ui">${esc(fmt(max))}</text></svg>`;
 }
 
 function gapFigure(c, rec) {
@@ -292,11 +292,19 @@ function gapFigure(c, rec) {
   else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
   else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
   if (c.chart && ['forecast', 'rank', 'estimate', 'delegate', 'allocate'].includes(c.format) && !(c.format === 'rank' && c.rankValues)) { body += `<div class="plate-more"><p class="plate-h">What the study measured</p>${bars(c.chart)}<p class="small">${esc(c.chart.note || '')}</p></div>` }   // the paper's own figure under the format's gap view
-  return `<figure class="gap" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${c.format === 'allocate' ? '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your points</span><span><i class="dot dot-ev"></i>What the study measured</span></div>' : c.chart && ['choice', 'causal', 'multi'].includes(c.format) ? '<p class="plate-h">What the study measured</p>' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>'}${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? instrument(c) : body}<p class="gap-caption">${['choice', 'causal', 'multi'].includes(c.format) && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>${['choice', 'causal', 'multi'].includes(c.format) && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;
+  const opt = ['choice', 'causal', 'multi'].includes(c.format), plate = !(opt && !c.chart);   // the evidence sits on a dark plate; a plain option list stays light
+  const legend = c.format === 'allocate' ? '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your points</span><span><i class="dot dot-ev"></i>What the study measured</span></div>' : opt && c.chart ? '<p class="plate-h">What the study measured</p>' : opt ? '' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>';
+  const main = opt && !c.chart ? instrument(c) : body, caption = `<p class="gap-caption">${opt && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>`;
+  return `<figure class="gap${plate ? ' has-plate' : ''}" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${plate ? `<div class="plate">${legend}${main}${caption}</div>` : `${legend}${main}${caption}`}${opt && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}${studyCard(c)}</figure>`;
 }
 // The signature moment of a numeric reveal: your number against the study's, large, with the gap between them.
 function gapHead(you, ev, gap, youLab = 'Your call', evLab = 'The study') {
   return `<div class="gap-head"><div class="gh-cell"><span>${esc(youLab)}</span><b class="num gh-you">${esc(you)}</b></div><div class="gh-cell"><span>${esc(evLab)}</span><b class="num gh-ev">${esc(ev)}</b></div><p class="gh-gap">${esc(gap)}</p></div>`;
+}
+// The study at a glance, under the evidence: who, how, where it was published and how it was checked.
+function studyCard(c) {
+  const d = c.study || {}, s = SOURCE[c.sources[0]] || {}, rows = [['Design', d.design], ['Sample', d.n], ['Published', s.venue ? `${s.venue}, ${s.year}` : ''], ['Checked', srcStatus(s)[0]]].filter(r => r[1]);
+  return `<dl class="study-card">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
 }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {
@@ -338,7 +346,7 @@ function play() {
     : tab === 'source' ? c.sources.map(id => { const s = SOURCE[id], [l, k] = srcStatus(s); return `<div class="src"><p class="src-title">${esc(paperTitle(s) || 'Title shown once you have played every decision built on this paper')}</p><p>${esc(s.authors)}, <i>${esc(s.venue)}</i>${s.volume ? ' ' + esc(s.volume) : ''}, ${s.year}.</p><p class="row"><span class="status ${k}">${l}</span> <button class="link-btn" data-source="${esc(id)}">More on this source</button> <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article</a></p></div>` }).join('')
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
-  return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">${label}
+  return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">${art(c.theme, 'rev-art')}${label}
       <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .5 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}</span>`}</p>${!rec.missed && rec.confidence !== null ? `<p class="conf-line">Calibration points ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))}, where a 50% hedge scores 50. You were ${rec.confidence}% sure and ${rec.correct ? 'right' : 'missed'}.</p>` : ''}
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
       ${rec.missed ? '' : gapFigure(c, rec)}
