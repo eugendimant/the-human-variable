@@ -1,0 +1,903 @@
+{
+  "bz08": {
+    "quotes": [
+      {
+        "source": "gneezy00",
+        "quote": "Our data include observations of 10 day-care centers over a period of 20 weeks. In the first 4 weeks we simply observed the number of parents who arrived late. At the beginning of the fifth week we introduced a fine in six of the 10 day-care centers.",
+        "location": "p. 3, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      },
+      {
+        "source": "gneezy00",
+        "quote": "No fine was introduced in the four other day-care centers, which served as a control group.",
+        "location": "p. 3, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      },
+      {
+        "source": "gneezy00",
+        "quote": "The fine was removed at the beginning of the seventeenth week.",
+        "location": "p. 3, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      },
+      {
+        "source": "gneezy00",
+        "quote": "The announcement specified that the fine would be NIS 10 for a delay of 10 minutes or more.",
+        "location": "pp. 4-5 (sentence continues across the page break, after footnotes 5-7), Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      },
+      {
+        "source": "gneezy00",
+        "quote": "10 for a delay of 10 minutes or more.",
+        "location": "p. 5 (continuation of the sentence above), Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      },
+      {
+        "source": "gneezy00",
+        "quote": "The fine was per child",
+        "location": "p. 5, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      },
+      {
+        "source": "gneezy00",
+        "quote": "In the test group the number of occurrences of delay increased steadily in the first 3–4 weeks after the introduction of the fine. The rate finally settled, at a level that was higher, and almost twice as large as the initial one.",
+        "location": "p. 7, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      },
+      {
+        "source": "gneezy00",
+        "quote": "In the control group no noticeable change took place after the fourth week, or in any other week.",
+        "location": "p. 8, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      },
+      {
+        "source": "gneezy00",
+        "quote": "TABLE 2 Average Number of Late-Coming Parents, according to Four Periods of the Study [columns: Center, No. of Children, Weeks 1–4, Weeks 5–8, Weeks 5–16, Weeks 17–20] 1 37 7.25 9.5 12.5 15.25",
+        "location": "p. 8, Table 2, row for center 1, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      },
+      {
+        "source": "gneezy00",
+        "quote": "After the fine was removed no reduction occurred.",
+        "location": "Abstract, p. 1, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+      }
+    ],
+    "unsupported": [],
+    "problems": "All numbers verified in the published JLS article (scene: 10 centers, 20 weeks, week 5, six centers, NIS 10, 10 minutes, week 17; explain: almost twice, 7.25, 15.25, four controls; follow: fourth week, NIS 10 per child). The old design entry 'as extracted' is replaced by verbatim quotes. Minor: the paper states both 'more than 10 minutes late' (p. 3) and 'a delay of 10 minutes or more' (p. 5); the item uses the latter, which is the wording of the announcement. Footnote 6 notes the study actually ran 21 weeks with a one-week holiday break; '20 weeks' is the paper's own stated period."
+  },
+  "bz09": {
+    "quotes": [
+      {
+        "source": "bertrand10",
+        "quote": "Showing fewer example loans, not suggesting a particular use for the loan, or including a photo of an attractive woman increases loan demand by about as much as a 25% reduction in the interest rate.",
+        "location": "Abstract, QJE 125(1) journal abstract (RePEc/EconPapers record of the QJE article, oup:qjecon); full text paywalled, not read"
+      },
+      {
+        "source": "bertrand10",
+        "quote": "We analyze a direct mail field experiment in South Africa implemented by a consumer lender that randomized advertising content, loan price, and loan offer deadlines simultaneously.",
+        "location": "Abstract, QJE 125(1) journal abstract (RePEc/EconPapers record of the QJE article, oup:qjecon); full text paywalled, not read"
+      },
+      {
+        "source": "bertrand10",
+        "quote": "instead, demand strongly increases with longer deadlines.",
+        "location": "Abstract, QJE 125(1) journal abstract (RePEc/EconPapers record of the QJE article, oup:qjecon); full text paywalled, not read"
+      },
+      {
+        "source": "bertrand10",
+        "quote": "The evidence also suggests that advertising content persuades by appealing \"peripherally\" to intuition rather than reason.",
+        "location": "Abstract, QJE 125(1) journal abstract (RePEc/EconPapers record of the QJE article, oup:qjecon); full text paywalled, not read"
+      }
+    ],
+    "unsupported": [],
+    "problems": "The only number (25%) is verified verbatim in the journal abstract; the old paraphrased entry should be replaced by this quote. 'Former clients' in scene and study.n is not in the abstract (it came from a J-PAL page); it is not a number, but the source record should say so or the phrase should be checked against the article."
+  },
+  "bz10": {
+    "quotes": [
+      {
+        "source": "scheib10",
+        "quote": "In a meta-analysis of 63 conditions from 50 published and unpublished experiments (N = 5,036), we found a mean effect size of virtually zero but considerable variance between studies.",
+        "location": "Abstract, p. 409, Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\")"
+      },
+      {
+        "source": "scheib10",
+        "quote": "50 experiments, with a total of 5,036 participants",
+        "location": "p. 412, Overview of Analyzed Studies, Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\")"
+      },
+      {
+        "source": "scheib10",
+        "quote": "The mean effect size of choice overload across all 63 data points according to equation 1 is D = 0.02 (95% confidence interval [CI95] −0.09 to 0.12).",
+        "location": "p. 413, Results, Mean Effect, Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\") (the PDF text layer renders \"=\" as \"p\")"
+      },
+      {
+        "source": "scheib10",
+        "quote": "The table displayed either a small assortment containing six jams or a large assortment of 24 jams.",
+        "location": "p. 410, Introduction (description of Iyengar & Lepper 2000), Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\")"
+      },
+      {
+        "source": "scheib10",
+        "quote": "the authors found that more consumers approached the tasting table when it displayed 24 jams. Yet, when it came to actual purchase, 30% of all consumers who saw the small assortment of six jams at the tasting display actually bought one of the jams (with the coupon), whereas in the large assortment case, only 3% of the people redeemed the coupon for a jam.",
+        "location": "p. 410, Introduction, Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\")"
+      }
+    ],
+    "unsupported": [
+      {
+        "field": "follow[0].a",
+        "number": "60%, 40%",
+        "action": "correct",
+        "replacement": "More shoppers stopped at the 24-jam table, but about 30% of those who saw 6 jams bought one, versus 3% of those who saw 24.",
+        "note": "The 60%/40% stop rates rest on a course-hosted copy of the JPSP article (faculty.washington.edu), not a publisher, PMC or author-hosted copy, so they cannot be confirmed under the rules. The replacement uses numbers quoted verbatim in the scheib10 version of record (p. 410). If an author-hosted or publisher copy of Iyengar & Lepper becomes readable, the original wording can return with that quote."
+      }
+    ],
+    "problems": "Scene (30%, 6, 3%, 24), explain and follow[1] (63, 50, 5,036, D = 0.02) verified in the published JCR article. The 30%/3% jam numbers are quoted from the meta-analysis's own description of the jam study, a version of record. The source record for iyengar00 cites a course-hosted PDF; treat it as not verified until an allowed copy is read."
+  },
+  "bz11": {
+    "quotes": [
+      {
+        "source": "kristal20",
+        "quote": "Since this finding was published, various government agencies have adopted this practice. However, in this project, we failed to replicate this result. Across five conceptual replications ( n = 4,559) and one highly powered, preregistered, direct replication ( n = 1,235) conducted with the authors of the original paper, we observed no effect of signing first on honest reporting.",
+        "location": "Abstract, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
+      },
+      {
+        "source": "kristal20",
+        "quote": "Given the policy applications of this result, it is important to update the scientific record regarding the veracity of these results.",
+        "location": "Abstract, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
+      },
+      {
+        "source": "kristal20",
+        "quote": "Study 6. A sample of 1,235 adults was recruited across four laboratory sites",
+        "location": "Methods, Study 6, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
+      },
+      {
+        "source": "shu12",
+        "quote": "Retraction for Shu et al., Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end",
+        "location": "Crossref record for doi:10.1073/pnas.2115397118: published-online 2021-09-13 (PNAS retraction notice, PMC8463784). Metadata, not article text."
+      }
+    ],
+    "unsupported": [],
+    "problems": "Verified: 1,235; five; 4,559; 'government agencies adopted'. 2012 is the publication year of shu12 (Crossref). Retraction date 13 September 2021 comes from the Crossref record of the retraction notice (published-online 2021-09-13); the notice body is PDF-only and was not read. follow[0] 'all five authors of the 2012 paper': the abstract says the direct replication was 'conducted with the authors of the original paper'; the five original authors (Shu, Mazar, Gino, Ariely, Bazerman) all appear in the kristal20 byline (Crossref). kristal20 carries a 2026 correction notice whose content is unknown (see source flag)."
+  },
+  "bz12": {
+    "quotes": [
+      {
+        "source": "card12",
+        "quote": "A randomly chosen subset of employees of the University of California was informed about a new website listing the pay of University employees.",
+        "location": "Abstract, p. 2981, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
+      },
+      {
+        "source": "card12",
+        "quote": "Likewise, below-median earners report a significant increase in the likelihood of looking for a new job, while above-median earners are unaffected.",
+        "location": "Abstract, p. 2981, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
+      },
+      {
+        "source": "card12",
+        "quote": "Among this group, the information treatment also increases the probability that respondents report being “very likely” to search for a new job by 4.3 percentage points (t = 2.4), which represents a 20 percent increase in this measure over the base rate for the controls.",
+        "location": "p. 2994, discussion of Table 4, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
+      },
+      {
+        "source": "card12",
+        "quote": "Responses to the treatment appear to be more closely related to an individual’s rank in the salary distribution than to his or her relative pay level",
+        "location": "p. 2982, Introduction, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
+      },
+      {
+        "source": "card12",
+        "quote": "When we estimate models that include both rank and levels (columns 3, 6, and 9), rank wins the “horse race” for all three outcomes.",
+        "location": "p. 2997, Table 5 discussion, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
+      }
+    ],
+    "unsupported": [
+      {
+        "field": "follow[2].a",
+        "number": "(none; wording)",
+        "action": "correct",
+        "replacement": "Rank. Responses tracked a worker's rank in the pay distribution more closely than relative pay level.",
+        "note": "No number here, but the old quote 'differences in pay rank matter more than differences in pay levels' does not appear in the AER article (it is likely from the working-paper abstract). The authors also note caveats that 'preclude a definitive conclusion', so 'The authors conclude' overstates. Replacement follows the p. 2982 and p. 2997 wording."
+      }
+    ],
+    "problems": "Verified: 4.3 percentage points, 20%, below/above median, University of California website. The old abstract-paraphrase entry should be replaced by the AER abstract quotes above."
+  },
+  "bz14": {
+    "quotes": [
+      {
+        "source": "bohnet16",
+        "quote": "Evaluators are more likely to base their decisions on individual performance in joint than in separate evaluation and on group stereotypes in separate than in joint evaluation, making joint evaluation the profit-maximizing evaluation procedure.",
+        "location": "Abstract, Management Science 62(5) abstract (Crossref record of the version of record; identical on the Erasmus University repository page)"
+      },
+      {
+        "source": "bohnet16",
+        "quote": "an “evaluation nudge” in which people are evaluated jointly rather than separately regarding their future performance.",
+        "location": "Abstract, Management Science 62(5) abstract (Crossref record of the version of record; identical on the Erasmus University repository page)"
+      },
+      {
+        "source": "bohnet16",
+        "quote": "Blind evaluation procedures have been proven to significantly increase the likelihood that women musicians are chosen for orchestras, and they are employed by a few companies.",
+        "location": "Abstract, Management Science 62(5) abstract (Crossref record of the version of record; identical on the Erasmus University repository page)"
+      },
+      {
+        "source": "bohnet16",
+        "quote": "Our work is inspired by findings in behavioral decision research suggesting that people make more reasoned choices when examining options jointly rather than separately",
+        "location": "Abstract, Management Science 62(5) abstract (Crossref record of the version of record; identical on the Erasmus University repository page)"
+      }
+    ],
+    "unsupported": [],
+    "problems": "No statistics appear in the player-facing text; the only number-words ('Two ways', 'one at a time') describe the design and match the abstract. The old entry with a '(paraphrased)' location is replaced by the full verbatim abstract sentences. follow[2] says blind evaluation 'is hard to use in many workplaces'; the abstract says only that it is 'employed by a few companies'. Suggested wording if tightened: 'The authors present it as an alternative to blind evaluation, which helped women musicians win orchestra positions but is used by few companies.'"
+  },
+  "bz15": {
+    "quotes": [
+      {
+        "source": "johnson04",
+        "quote": "We asked 161 respondents whether they would be donors using one of three questions with varying defaults.",
+        "location": "p. 1714, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+      },
+      {
+        "source": "johnson04",
+        "quote": "The third, neutral condition simply required them to choose with no prior default.",
+        "location": "p. 1714, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+      },
+      {
+        "source": "johnson04",
+        "quote": "The default had a dramatic impact, with revealed donation rates being about twice as high when opting-out as when opting-in. As can be seen in Figure 1, the opt-out condition did not differ significantly from the neutral condition, which required a choice without a default option.",
+        "location": "p. 1714, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+      },
+      {
+        "source": "johnson04",
+        "quote": "In Table 1, we use the results of our web survey neutral condition to describe the stated preference (79% for donation).",
+        "location": "p. 1715, Conclusion, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+      },
+      {
+        "source": "johnson04",
+        "quote": "The result is surprisingly strong: the two distributions have no overlap and nearly 60 percentage points separate the two groups.",
+        "location": "pp. 1714-1715, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+      },
+      {
+        "source": "johnson04",
+        "quote": "Using similar techniques, but looking only at 1999 for a broader set of countries, including many more from Eastern Europe, Gimbel et al. (24) report an increase from 10.8 to 16.9, a 56.5% increase also plotted in Figure 3.",
+        "location": "p. 1715, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com); Figure 3 legend gives the unit as donors per million"
+      },
+      {
+        "source": "johnson04",
+        "quote": "If preferences concerning organ donation are strong, defaults should have little or no effect.",
+        "location": "p. 1714, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+      }
+    ],
+    "unsupported": [],
+    "problems": "All numbers verified (161, about twice, 79%, nearly 60 percentage points, 1999, 10.8, 16.9). Upgrade the source text_url from the hods.org copy to the author-hosted copy https://www.dangoldstein.com/papers/JohnsonGoldstein_Defaults_Transplantation2004.pdf, which carries real page numbers 1713-1716."
+  },
+  "civic-wallet-rank": {
+    "quotes": [
+      {
+        "source": "cohn19",
+        "quote": "We visited 355 cities in 40 countries and turned in a total of 17,303 wallets. We typically targeted five to eight of the largest cities in a country, with roughly 400 observations per country.",
+        "location": "p. 70, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "Wallets were turned in to one of five types of societal institutions: (i) banks; (ii) theaters, museums, or other cultural establishments; (iii) post offices; (iv) hotels; and (v) police stations, courts of law, or other public offices.",
+        "location": "p. 70, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "we also ran a “BigMoney” condition in three countries (the United States, the United Kingdom, and Poland) that increased the money inside the wallet to US$94.15, or seven times the amount in our original Money condition.",
+        "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "Pooled across the three countries, reporting rates increased from 46% in the NoMoney condition to 61% in the Money condition and topped out at 72% in the BigMoney condition (P < 0.0001 for all pairwise comparisons) (table S9).",
+        "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io) (the sentence runs across a column break)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "and topped out at 72% in the BigMoney condition",
+        "location": "p. 71, continuation of the sentence above, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "Share of wallets reported in the NoMoney (US$0), Money (US$13.45), and BigMoney (US$94.15) conditions.",
+        "location": "p. 71, Fig. 2 legend, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "We observed this pattern for 38 of our 40 countries, and in no country did we find a statistically significant decrease in reporting rates when the wallet contained money. On average, adding money to the wallet increased the likelihood of being reported from 40% in the NoMoney condition to 51% in the Money condition (P < 0.0001).",
+        "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "recipients were, on average, 9.2 percentage points more likely to report a wallet with a key than one without (P = 0.0001 when results are pooled across countries).",
+        "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      }
+    ],
+    "unsupported": [],
+    "problems": "All numbers verified in the published Science article: 46%, 61%, 72%, US$13.45, US$94.15, US, UK and Poland, 40%, 51%, 38 of 40, 17,303, 355, five to eight. rankValues (72%, 46%, 61%) match options (94.15, none, 13.45). The old 'fetch-tool rendering' entry is replaced by the verbatim sentence; note 72% sits after a column break in the PDF. The key result (follow[0]) comes from the Money-NoKey condition run only in the US, UK and Poland; the answer does not say where, which is acceptable."
+  },
+  "civic-wallet-experts": {
+    "quotes": [
+      {
+        "source": "cohn19",
+        "quote": "We asked a sample of 299 participants to predict reporting rates in the United States for wallets containing US$0, US$13.45, and US$94.15 (corresponding to our NoMoney, Money, and BigMoney conditions).",
+        "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "Respondents predicted that rates of civic honesty would be highest when the wallet contained no money (mean predicted reporting rate M = 73%, SD = 29), lower when the wallet contained a modest amount of money (M = 65%, SD = 24), and lower still when the wallet contained a substantial amount of money (M = 55%, SD = 29).",
+        "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "As the amount of money increased, 64% of respondents incorrectly predicted that reporting rates would decrease and 18% correctly predicted that reporting rates would increase (P < 0.001 by a sign test).",
+        "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "We asked a sample of 279 top-performing academic economists to make the same set of predictions. Like our nonexperts, this sample also did not expect reporting rates to increase for wallets with larger amounts of money.",
+        "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "respondents on average predicted that rates of civic honesty would be higher in the NoMoney and Money conditions (M = 69%, SD = 25 and M = 69%, SD = 21, respectively) than in the BigMoney condition (M = 66%, SD = 23).",
+        "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "However, the degree of miscalibration among economists was less severe than in our nonexpert sample. As the amount of money increased, 49% of economists incorrectly predicted that reporting rates would decrease and 29% correctly predicted that reporting rates would increase (P < 0.001 by a sign test).",
+        "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "Average predicted reporting rates for the United States by our expert sample of academic economists (n = 279 individuals).",
+        "location": "p. 72, Fig. 3C legend, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+      },
+      {
+        "source": "cohn19",
+        "quote": "Pooled across the three countries, reporting rates increased from 46% in the NoMoney condition to 61% in the Money condition",
+        "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io) (continues: \"and topped out at 72% in the BigMoney condition\")"
+      }
+    ],
+    "unsupported": [
+      {
+        "field": "scene",
+        "number": "279, 299",
+        "action": "correct",
+        "replacement": "Researchers asked 279 academic economists and 299 other survey respondents to predict how adding cash to a lost wallet would change US return rates.",
+        "note": "The numbers are right, but the article does not say the respondents were US residents (it says they predicted US reporting rates) and does not say the survey ran before the results were public. Both claims are dropped."
+      },
+      {
+        "field": "boundary",
+        "number": "40",
+        "action": "correct",
+        "replacement": "Predictions were for US return rates; actual behavior came from the 40-country field experiment with wallets handed to counter staff.",
+        "note": "'Predictions came from US survey samples' is not stated in the article; it states the predictions were for the United States."
+      }
+    ],
+    "problems": "All numbers verified (279, 299, 49%, 29%, 18%, 73%, 65%, 55%, 69%, 69%, 66%, 46%, 61%, 72%, US$13.45, US$94.15). 'US economists' and 'US laypeople' and 'before the results were public' are not in the article; see replacements. study.n 'laypeople' is fine (the article calls them nonexperts)."
+  },
+  "lies-in-disguise": {
+    "quotes": [
+      {
+        "source": "fischbacher13",
+        "quote": "We find that about 20% of inexperienced subjects lie to the fullest extent possible while 39% of subjects are fully honest.",
+        "location": "Abstract, JEEA 11(3), version-of-record abstract (OpenAlex record of the OUP-published article; its opening words match the abstract snippet on academic.oup.com). Full text paywalled, not read."
+      },
+      {
+        "source": "fischbacher13",
+        "quote": "In addition, a high share of subjects consists of partial liars; these subjects lie, but do not report the payoff-maximizing draw.",
+        "location": "Abstract, JEEA 11(3), version-of-record abstract (OpenAlex record of the OUP-published article; its opening words match the abstract snippet on academic.oup.com). Full text paywalled, not read."
+      },
+      {
+        "source": "fischbacher13",
+        "quote": "We discuss different motives that explain the observed behavioral pattern.",
+        "location": "Abstract, JEEA 11(3), version-of-record abstract (OpenAlex record of the OUP-published article; its opening words match the abstract snippet on academic.oup.com). Full text paywalled, not read."
+      },
+      {
+        "source": "fischbacher13",
+        "quote": "Participants receive a die which they roll privately.",
+        "location": "Abstract, JEEA 11(3), version-of-record abstract (OpenAlex record of the OUP-published article; its opening words match the abstract snippet on academic.oup.com). Full text paywalled, not read."
+      }
+    ],
+    "unsupported": [
+      {
+        "field": "answerTitle",
+        "number": "22%",
+        "action": "correct",
+        "replacement": "About 39% honest, about 20% full liars",
+        "note": "WRONG NUMBER. '39% honest and maximally 22% lying completely' is the abstract of the 2008 working paper (IDEAS states 'This abstract was borrowed from another version of this item'). The JEEA version of record says 'about 20% of inexperienced subjects lie to the fullest extent possible while 39% of subjects are fully honest.' The estimate target 39 stays valid."
+      },
+      {
+        "field": "explain",
+        "number": "22%",
+        "action": "correct",
+        "replacement": "The authors estimate that 39% of subjects were fully honest and about 20% of inexperienced subjects lied to the fullest extent; others lied without claiming the top payoff.",
+        "note": "Same correction: 22% is the working-paper figure; the published abstract says about 20%."
+      },
+      {
+        "field": "follow[1].a",
+        "number": "(none; claim)",
+        "action": "correct",
+        "replacement": "The authors discuss several motives for this pattern; the study itself measures how many people lie, and by how much.",
+        "note": "The 'favorable self-image, honest and not greedy' explanation is in the working-paper abstract only. The published abstract says only 'We discuss different motives that explain the observed behavioral pattern.' Not a number, but the claim is unsupported by the version of record as read."
+      }
+    ],
+    "problems": "22% is wrong for the version of record (published abstract: about 20%). 39% verified. The source record's verification should note that the IDEAS abstract is borrowed from the 2008 TWI working paper and drop it. study.n 'Swiss university students' is not in the published abstract (it came from the working paper); not a number, but should be checked or generalized to 'University students in a lab'."
+  },
+  "rule-violations-honesty": {
+    "quotes": [
+      {
+        "source": "gachter16",
+        "quote": "Subjects from low PRV countries claim 3.17 MUs (s.d. 1.67), that is, 0.67 MU more than under Full Honesty. Subjects from high PRV countries claim 3.53 MU (s.d. 1.49) or 1.03 MU more than under Full Honesty.",
+        "location": "Main text, results on Fig. 1, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      },
+      {
+        "source": "gachter16",
+        "quote": "Justified Dishonesty implies an expected claim of 3.47 MU. The average claim in high PRV countries is not significantly different from this benchmark",
+        "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      },
+      {
+        "source": "gachter16",
+        "quote": "The rate of income maximisers ranges from 0.3% to 38.3% across subject pools (mean 16.2%, s.d. 9.4%; χ 2 (22) = 72.4, P < 0.001).",
+        "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      },
+      {
+        "source": "gachter16",
+        "quote": "we predict that Income Maximisers is positively correlated with PRV. We find, however, that they are unrelated ( Fig. 2c ). Thus, a society’s PRV does not systematically affect maximal cheating in this experiment.",
+        "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      },
+      {
+        "source": "gachter16",
+        "quote": "Across subject pools, Fully Honest People ranges from 4.3% to 87% (mean 48.9%, s.d. 21.3%; χ 2 (22) = 42.1, P = 0.006). In societies with high levels of PRV, fewer people are fully honest than in societies with low levels of PRV.",
+        "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      },
+      {
+        "source": "gachter16",
+        "quote": "Bending the rules is to report the higher of the two rolls, rather than the first roll as required.",
+        "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      },
+      {
+        "source": "gachter16",
+        "quote": "We focus on three broad types of rule violations: political fraud, tax evasion, and corruption.",
+        "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      },
+      {
+        "source": "gachter16",
+        "quote": "We construct PRV for the 159 countries for which data are available for all three variables, the earliest year being 2003. We use the 2003 data to maximise the distance between the measurement of PRV and the point in time the experiments were run (at least 8 years later)",
+        "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      },
+      {
+        "source": "gachter16",
+        "quote": "We conducted the experiments at least eight years after the measurement of PRV with 2568 young participants (students) who could not influence PRV.",
+        "location": "Main text (introduction), Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      },
+      {
+        "source": "gachter16",
+        "quote": "Participants ( n = 2568 from 23 countries) are asked to roll the die twice in the cup and to report the first roll.",
+        "location": "Extended Data Fig. 1 legend, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+      }
+    ],
+    "unsupported": [],
+    "problems": "All numbers verified in the accepted manuscript (3.17, 3.53, 3.47, 0.3%-38.3% unrelated to PRV, 48.9%, 4.3%, 87%, 2,568, 23, 2003, at least eight years). Label stays verified_accepted_manuscript. Minor wording: the paper reports claims for 'subjects from low/high PRV countries', not 'pools'; explain could say 'in low-violation countries' instead of 'pools'. Not a number issue."
+  },
+  "opposing-views-bot": {
+    "quotes": [
+      {
+        "source": "bail18",
+        "quote": "Our most cautious estimate is that treated Republicans increased 0.12 points on a seven-point scale, although our model that estimates the effect of treatment upon fully compliant respondents indicates this effect is substantially larger (0.60 points). These estimates correspond to an increase in conservatism between 0.11 and 0.59 standard deviations.",
+        "location": "Results, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+      },
+      {
+        "source": "bail18",
+        "quote": "“Respondents Assigned to Treatment” describes the ITT effect for Democrats (ITT = −0.02, t = −0.76, p = 0.45, n = 416) and Republicans (ITT = 0.12, t = 2.68, p = 0.008, n = 316).",
+        "location": "Fig. 3 legend, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+      },
+      {
+        "source": "bail18",
+        "quote": "Although treated Democrats exhibited slightly more liberal attitudes posttreatment that increase in size with level of compliance, none of these effects were statistically significant.",
+        "location": "Results, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+      },
+      {
+        "source": "bail18",
+        "quote": "We received 1,652 responses to our pretreatment survey (901 Democrats and 751 Republicans).",
+        "location": "Research Design, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+      },
+      {
+        "source": "bail18",
+        "quote": "for experiments with Democrats ( n = 697) and Republicans ( n = 542).",
+        "location": "Fig. 3 legend, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+      },
+      {
+        "source": "bail18",
+        "quote": "We hired a professional survey firm to recruit self-identified Republicans and Democrats who visit Twitter at least three times each week to complete a 10-min survey in mid-October 2017 and 1.5 mo later.",
+        "location": "Research Design, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+      },
+      {
+        "source": "bail18",
+        "quote": "respondents in the treatment condition were offered $11 to follow a Twitter bot, or automated Twitter account, that they were told would retweet 24 messages each day for 1 mo.",
+        "location": "Research Design, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+      },
+      {
+        "source": "bail18",
+        "quote": "Perhaps the most important limitation of our study is that we were unable to identify the precise mechanism that created the backfire effect among Republican respondents reported above.",
+        "location": "Discussion, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+      },
+      {
+        "source": "bail18",
+        "quote": "increases in conservatism among Republicans may have resulted from increased exposure to women or racial and ethnic minorities whose messages were retweeted by our liberal bot.",
+        "location": "Discussion, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+      }
+    ],
+    "unsupported": [
+      {
+        "field": "follow[1].a",
+        "number": "0.02",
+        "action": "correct",
+        "replacement": "They became slightly more liberal, but the intent-to-treat effect (-0.02 points on the seven-point scale) was not statistically significant.",
+        "note": "The published ITT for Democrats is −0.02 (negative = more liberal). The current '0.02 points' drops the sign and unit. Not wrong in direction given 'more liberal', but the corrected form matches the paper."
+      }
+    ],
+    "problems": "UNIT CHECK: 0.12 and 0.60 are scale POINTS on the seven-point liberal/conservative scale, not standard deviations; the paper converts them to 0.11 and 0.59 SD. The explain text ('0.12 points ... on a seven-point scale ... 0.60 among full compliers') is correct as written. 0.60 is the CACE for fully compliant respondents (n = 53), not an ITT. Other numbers verified: 1,652, 901, 751, 697, 542, three times a week, 1 month, 2017."
+  },
+  "accuracy-prompt": {
+    "quotes": [
+      {
+        "source": "pennycook21",
+        "quote": "First, we find that the veracity of headlines has little effect on sharing intentions, despite having a large effect on judgments of accuracy.",
+        "location": "Abstract, Nature 592 (nature.com article page)"
+      },
+      {
+        "source": "pennycook21",
+        "quote": "we carried out four survey experiments and a field experiment on Twitter; the results show that subtly shifting attention to accuracy increases the quality of news that people subsequently share.",
+        "location": "Abstract, Nature 592 (nature.com article page)"
+      },
+      {
+        "source": "pennycook21",
+        "quote": "In Study 7, we conducted an experiment on the Twitter platform involving n = 5,379 users who had recently shared links to websites that regularly produce misleading and hyperpartisan content. We randomized the date on which users were sent an unsolicited message asking them to rate the accuracy of a single non-political headline. We then compared the quality of the news sites shared in the 24 h after receiving the message to the sites shared by participants who had not yet received the message.",
+        "location": "Fig. 4 legend, Nature 592, published figure legend (nature.com figure page); article body paywalled, not read"
+      },
+      {
+        "source": "pennycook21",
+        "quote": "To test the robustness of our results, we conducted 192 analyses that differed in their dependent variable, inclusion criteria and model specifications. Shown here is the distribution of P values resulting from each of these analyses. More than 80% of approaches yield P < 0.05.",
+        "location": "Fig. 4b legend, Nature 592, published figure legend (nature.com figure page); article body paywalled, not read"
+      },
+      {
+        "source": "pennycook21",
+        "quote": "Participants in study 3 ( a ; n = 727 American individuals from MTurk), study 4 ( b ; n = 780 American individuals from MTurk) and study 5 ( c ; n = 1,268 American individuals from Lucid, quota-matched to the national distribution on age, gender, ethnicity and geographical region) indicated how likely they would be to consider sharing a series of actual headlines from social media. Participants in the ‘treatment’ condition rated the accuracy of a single non-political headline at the outset of the study",
+        "location": "Fig. 2 legend (title: \"Inducing survey respondents to think about accuracy increases the veracity of headlines they are willing to share.\"), Nature 592, published figure legend (nature.com figure page); article body paywalled, not read"
+      },
+      {
+        "source": "pennycook21",
+        "quote": "The first stage of the replication test (n = 701) was unsuccessful (p = .67). After collecting a second round of data (additional n = 882, pooled N = 1,583), we found a small but significant interaction between treatment condition and truth discernment (uncorrected p = .017; treatment: d = 0.14, control: d = 0.10).",
+        "location": "Roozenbeek, Freeman & van der Linden (2021), Psychological Science 32(7), abstract (PMC8641132), titled \"A Preregistered Direct Replication of Pennycook et al. (2020)\". Supports follow[2]; cited in the source flags, not a game source."
+      }
+    ],
+    "unsupported": [
+      {
+        "field": "explain",
+        "number": "4.8%, 2.1%",
+        "action": "remove",
+        "replacement": "In the 24 hours after one private accuracy question, users shared news from higher-quality sites. More than 80% of 192 robustness analyses gave P < 0.05.",
+        "note": "4.8% and 2.1% are in the paywalled article body, which was not read; the only open copies found were a 2019 PsyArXiv preprint (different sample sizes, not allowed) and a course-hosted PDF (not allowed). The replacement uses the published Fig. 4 legend."
+      },
+      {
+        "field": "boundary",
+        "number": "a few percent",
+        "action": "correct",
+        "replacement": "One private message to 5,379 Twitter users who had shared links to misleading sites; quality was measured over the next 24 hours.",
+        "note": "'Gains were a few percent' rests on the unread 4.8%/2.1% figures. Replication caveat is already covered in follow[2]. Replacement uses Fig. 4 legend wording."
+      },
+      {
+        "field": "follow[1].a",
+        "number": "2.0, 2.4",
+        "action": "remove",
+        "replacement": "Rating one non-political headline for accuracy at the start made people more discerning about which headlines they would share, in studies of 727, 780 and 1,268 Americans.",
+        "note": "'2.0 times' and '2.4 times' are in the unread article body. Replacement uses the published Fig. 2 legend and title."
+      }
+    ],
+    "problems": "Verified: 5,379 (scene, study.n), single non-political headline, 24 h, 192 analyses, 80%, survey ns 727/780/1,268, replication facts (Roozenbeek 2021; 2020 target study). Unsupported: 4.8%, 2.1%, 9.0%/4.0% (not shown), 2.0x, 2.4x, 'a few percent'. If someone with institutional access reads the Nature article body, the original numbers can be restored with page quotes. answerTitle 'A small but real lift in quality' has no number and can stay."
+  },
+  "misperceived-norms-action": {
+    "quotes": [
+      {
+        "source": "bursztyn20",
+        "quote": "The percentage of wives who applied for a job outside the home during the time frame of interest goes up from 5.8 percent to 16.2 percent, a 180 percent increase (the p-value of a t-test of equality is 0.001). Regarding interviews for this type of job, the share increases from 1.1 percent to 5.8 percent ( p-value = 0.006). Rates of employment outside the home go up from 7.4 percent to 9.4 percent ( p-value = 0.235).",
+        "location": "p. 3012, Main Results (2): Longer-Term Outcomes, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+      },
+      {
+        "source": "bursztyn20",
+        "quote": "Regarding interviews for this type of job, the share increases from 1.1 percent to 5.8 percent",
+        "location": "p. 3012, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+      },
+      {
+        "source": "bursztyn20",
+        "quote": "Rates of employment outside the home go up from 7.4 percent to 9.4 percent",
+        "location": "p. 3012, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+      },
+      {
+        "source": "bursztyn20",
+        "quote": "We now evaluate the longer-term effects of the information intervention (three to five months later).",
+        "location": "p. 3012, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+      },
+      {
+        "source": "bursztyn20",
+        "quote": "In the control condition, 23.5 percent of participants prefer to sign up their wives for the job service as opposed to taking the gift card payment.",
+        "location": "p. 3010, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+      },
+      {
+        "source": "bursztyn20",
+        "quote": "to the questions on support for WWOH, the sign up rate goes up to 32.0 percent, a 36.4 percent increase (the p-value of a t-test of equality is 0.017).",
+        "location": "p. 3011, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+      },
+      {
+        "source": "bursztyn20",
+        "quote": "The average (median) guess is that 63 percent (67 percent) of other session participants agree with the pro-WWOH statement. The average level of agreement across all sessions is 87 percent",
+        "location": "p. 3009, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+      },
+      {
+        "source": "bursztyn20",
+        "quote": "recruited from different neighborhoods in Riyadh",
+        "location": "p. 2998, Introduction, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+      }
+    ],
+    "unsupported": [],
+    "problems": "All numbers verified (5.8, 16.2, 1.1, 5.8, 7.4, 9.4, 0.235, 23.5, 32.0, 63, 87, three to five months; one city = Riyadh). Chart values match; Fig. 4 shows the same values to two decimals (5.79%, 16.23%, 1.05%, 5.76%, 7.37%, 9.42%), so the chart note is accurate. 'Nearly tripled' is consistent with the paper's 'a 180 percent increase'."
+  },
+  "meta-perception-causal": {
+    "quotes": [
+      {
+        "source": "lees20",
+        "quote": "Across seven experiments and one survey ( n = 4,282), people consistently overestimated out-group negativity towards the collective behaviour of their in-group. This negativity bias in group meta-perception was present across multiple competitive (but not cooperative) intergroup contexts",
+        "location": "Abstract, Nature Human Behaviour 4(3) (nature.com article page, version of record)"
+      },
+      {
+        "source": "lees20",
+        "quote": "Importantly, in the context of US politics, greater inaccuracy was associated with increased belief that the out-group is motivated by purposeful obstructionism. However, an intervention that informed participants of the inaccuracy of their beliefs reduced negative out-group attributions, and was more effective for those whose group meta-perceptions were more inaccurate.",
+        "location": "Abstract, Nature Human Behaviour 4(3) (nature.com, version of record)"
+      },
+      {
+        "source": "lees20",
+        "quote": "Sample size, n = 1,122 (collected via Mechanical Turk). By condition: control, n = 396; hypocrisy intervention, n = 368; truth intervention, n = 358.",
+        "location": "Fig. 4 legend (\"Effect of condition on obstructionism, by accuracy, in Experiment 6\"), Nature Human Behaviour version of record (nature.com figure page)"
+      },
+      {
+        "source": "lees20",
+        "quote": "Here inaccuracy is plotted at 1 s.d. above and below the mean inaccuracy ( M = 22, s.d. = 22).",
+        "location": "Fig. 4 legend, version of record (nature.com figure page)"
+      },
+      {
+        "source": "lees20",
+        "quote": "an s.d. value of +1 equals an inaccuracy of 44, meaning that the participant on average overestimated out-group negativity by 44 points (on a 100-point scale).",
+        "location": "Fig. 4 legend, version of record (nature.com figure page)"
+      },
+      {
+        "source": "lees20",
+        "quote": "As an exploratory measure, we followed up with participants a week after they completed Experiment 6 to see if the effect of the intervention persisted over time. We had a 73% response rate, but found no credible evidence for a continued effect of the intervention on a rating of general out-group obstructionism",
+        "location": "Experiment 6, Harvard DASH author manuscript. CAUTION: DASH lists the \"published version\" as the PsyArXiv record doi:10.31234/osf.io/6qayb, so this may be the preprint rather than the accepted manuscript; not confirmed against the typeset article."
+      }
+    ],
+    "unsupported": [
+      {
+        "field": "boundary",
+        "number": "one-week",
+        "action": "correct",
+        "replacement": "Found in competitive, not cooperative, intergroup contexts; the correction was tested in one online experiment with 1,122 participants.",
+        "note": "The one-week follow-up appears only in the DASH manuscript, whose status (accepted manuscript vs PsyArXiv preprint) is not confirmed; the typeset article body is paywalled. Replacement uses the abstract and the published Fig. 4 legend."
+      },
+      {
+        "field": "study.n",
+        "number": "4,282 US",
+        "action": "correct",
+        "replacement": "4,282 participants",
+        "note": "The abstract gives n = 4,282 without saying all participants were from the US. Minor."
+      }
+    ],
+    "problems": "Verified in the version of record: 4,282 (abstract), 1,122 (Fig. 4 legend), 22 points on a 100-point scale (Fig. 4 legend), competitive not cooperative, more effective for the more inaccurate. The source verification block should say the experiment-level numbers now come from published figure legends; the DASH copy should be relabelled as an author manuscript of unconfirmed status."
+  },
+  "forecast-teams-rank": {
+    "quotes": [
+      {
+        "source": "mellers14",
+        "quote": "Figure 1 shows that in Year 1, team forecasters were more accurate than crowd-belief forecasters, t(1036) = 5.52, p < .001, and crowd-belief forecasters were more accurate than independent forecasters, t(1120) = 5.92, p < .001.",
+        "location": "pp. 1109-1110, Results, Teaming, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "team forecasters were more accurate than crowd-belief",
+        "location": "p. 1109, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "A 2-year tournament (September 2011–April 2012 for Year 1 and June 2012–April 2013 for Year 2) was conducted. Participants from around the world submitted probability estimates for 199 geopolitical outcomes",
+        "location": "p. 1108, Method, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "Year 1 began with 2,246 participants (1,593 survey respondents and 653 prediction-market traders).",
+        "location": "p. 1108, Participants, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "Eighty-five and 114 questions closed and were included in the Brier scores in Years 1 and 2, respectively",
+        "location": "p. 1109, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "We examined tracking by placing the 60 top performers of Year 1 (5 from each condition) in five teams of 12 members each (superforecaster teams).",
+        "location": "p. 1108, Design, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "The best performers from Year 1 (i.e., the top 2%) were placed together in elite teams in Year 2. These superforecasters outperformed all other groups by a wide margin.",
+        "location": "p. 1111, Tracking, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "This score measures individual accuracy; 0 is the best score, and 2 is the worst score.",
+        "location": "p. 1108, Questions and measures, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      }
+    ],
+    "unsupported": [],
+    "problems": "All numbers verified (t(1036) = 5.52, t(1120) = 5.92, 2-year, 2,246, 199, 85, 114, top 2%, 60, five teams of 12, 0 and 2). The comparisons are Year 1 results. Note that 2,246 includes 653 prediction-market traders who were not in the three ranked conditions; study.n is still accurate as 'Year 1' total."
+  },
+  "forecast-training": {
+    "quotes": [
+      {
+        "source": "mellers14",
+        "quote": "Probability training was more effective than scenario training, t(1053) = 2.23, p = .026, and scenario training was more effective than no training, t(1056) = 3.25, p < .001.",
+        "location": "p. 1109, Results, Training, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "Scenario and probability training, administered at the start of the forecasting year, took approximately 45 min",
+        "location": "p. 1108, Design, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "All three manipulations significantly reduced forecasting errors.",
+        "location": "p. 1113, Discussion, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "Training, teaming, and tracking are psychological interventions that dramatically increased the accuracy of forecasts.",
+        "location": "Abstract, p. 1106, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "Year 1 began with 2,246 participants",
+        "location": "p. 1108, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      },
+      {
+        "source": "mellers14",
+        "quote": "A 2-year tournament",
+        "location": "p. 1108, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+      }
+    ],
+    "unsupported": [],
+    "problems": "All numbers verified (45 minutes, t(1053) = 2.23, p = .026, three interventions, 2,246, two-year). Note that the 2.23 comparison is Year 1. Option 'Neither beat no training' is wrong, as the paper also shows scenario training beat no training (t(1056) = 3.25); the answer key (probability training) is valid."
+  },
+  "overconfidence-hard-task": {
+    "quotes": [
+      {
+        "source": "moore08",
+        "quote": "On difficult tasks, people overestimate their actual performances but also mistakenly believe that they are worse than others; on easy tasks, people underestimate their actual performances but mistakenly believe they are better than others.",
+        "location": "Abstract, p. 502, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+      },
+      {
+        "source": "moore08",
+        "quote": "(a) overestimation of one’s actual performance, (b) overplacement of one’s performance relative to others, and (c) excessive precision in one’s beliefs.",
+        "location": "Abstract, p. 502, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+      },
+      {
+        "source": "moore08",
+        "quote": "Participants were 82 students from Carnegie Mellon University, Pittsburgh, PA.",
+        "location": "p. 508, Illustrative Study, Method, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+      },
+      {
+        "source": "moore08",
+        "quote": "In each of 18 rounds, each participant took a 10-item trivia quiz.",
+        "location": "p. 508, Procedure, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+      },
+      {
+        "source": "moore08",
+        "quote": "This quadratic scoring rule maximizes participants’ expected payoffs if they accurately report their best estimate of the truth",
+        "location": "p. 508, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+      },
+      {
+        "source": "moore08",
+        "quote": "Participants were paid (an average of $20.23 after about 90 min in the laboratory), debriefed, thanked, and dismissed.",
+        "location": "p. 509, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+      }
+    ],
+    "unsupported": [],
+    "problems": "All numbers verified (18 rounds, 82 students, Carnegie Mellon, about $20). Replace the old 'audit/new_sources.json' entry with these quotes, and change the source text_url from the DOI to the author-hosted PDF (healy.econ.ohio-state.edu/papers/Moore_Healy-TroubleWithOverconfidence.pdf). Wording: $20.23 is the average total payment for the session, not the payment from the elicitation alone; follow[2] reads acceptably ('paid ... about $20')."
+  },
+  "dimant-masks-forecast": {
+    "quotes": [
+      {
+        "source": "masks22",
+        "quote": "We evaluated whether academics, behavioral science practitioners, and laypeople ( N = 1034) were able to forecast the effectiveness of seven different messages compared to a baseline message for Republicans and Democrats separately.",
+        "location": "Abstract, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "the goal of the intervention study was to evaluate the effectiveness of 7 nudge interventions relative to a baseline in a representative U.S. sample of Republicans and Democrats ( N = 4931)",
+        "location": "Methods, Nudges to wear a mask, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "there was no evidence that 7 nudge interventions were effective at promoting mask-wearing among Democrats or Republicans in the U.S. relative to a baseline condition",
+        "location": "Methods, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "ranged from moral-frame interventions (including individual harm, group harm, loyalty, and purity) to framing interventions that tapped into other psychological mechanisms (including the economic impact of not wearing masks, the threat of COVID-19 indicated by mortality statistics, and scientific evidence in favor of masks).",
+        "location": "Methods, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "forecasters overestimated the effect size in the pooled sample ( z − score = 4.40, p < 0.001, H4a). Forecasters also overestimated the nudge effects for Democrats ( z − score = 4.84, p < 0.001, H4b)",
+        "location": "Results, Hypothesis 4, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "Academics and practitioners made more accurate predictions compared to laypeople.",
+        "location": "Abstract, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "This representative laypeople sample ( n = 611) consisted of 294 Republicans and 317 Democrats",
+        "location": "Methods, Participants, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "We added additional laypeople to the sample from our professional networks ( n = 103).",
+        "location": "Methods, Participants, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "Data for academics ( n = 199) and practitioners ( n = 121) was collected through academic mailing lists",
+        "location": "Methods, Participants, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "In sum, we were able to collect data from a total of 1034 participants.",
+        "location": "Methods, Participants, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      },
+      {
+        "source": "masks22",
+        "quote": "the correlation between aggregate forecasted and observed results is negative and statistically significant for Democrat predictions (r(28) = −0.63, t(26) = −4.12, p = 0.0003)",
+        "location": "Results, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+      }
+    ],
+    "unsupported": [
+      {
+        "field": "follow[1].a",
+        "number": "714",
+        "action": "correct",
+        "replacement": "1,034 forecasters: 611 laypeople from a representative US panel and 103 from the authors' networks, plus 199 academics and 121 practitioners.",
+        "note": "714 is correct arithmetic (611 + 103) but does not appear verbatim in the article. The replacement uses the verbatim counts. Alternatively keep 714 and note it as a sum of two reported figures."
+      }
+    ],
+    "problems": "Verified: 7 messages, 4,931, 1,034, z = 4.40, p < 0.001, Democrats z = 4.84 (supports 'most of all for Democrats'), 199, 121, r = -0.63, p = 0.0003; experts more accurate than laypeople. Only 714 needed a fix (sum, not stated). Result stated positively: the study shows forecasters, including experts, overestimate nudge effects, and experts forecast more accurately than laypeople."
+  },
+  "dimant-opioid-forecast": {
+    "quotes": [
+      {
+        "source": "opioid26",
+        "quote": "We report results from a pre-registered field experiment testing whether behaviorally informed reminder cards increase participation in a financial incentive program for returning unused opioid pills among U.S. Veterans. The cards incorporate principles from behavioral economics, including timely reminders, implementation intention prompts, and loss framing.",
+        "location": "Abstract, p. 1023, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+      },
+      {
+        "source": "opioid26",
+        "quote": "Relative to a cash incentive alone, the reminder cards increase both the likelihood that patients return unused pills (the extensive margin) and the number of pills returned (the intensive margin). The intervention also improves cost-effectiveness, reducing both the cost per pill returned and the cost per participant who returns pills.",
+        "location": "Abstract, p. 1023, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+      },
+      {
+        "source": "opioid26",
+        "quote": "Treatment patients received this standard information plus two reminder cards designed to increase the return of unused pills.",
+        "location": "p. 1025, Design, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+      },
+      {
+        "source": "opioid26",
+        "quote": "The sample for our project consisted of 512 Veterans visiting the VAMC for outpatient surgeries from June 2019 to January 2022.",
+        "location": "p. 1025, 2.2 Population, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+      },
+      {
+        "source": "opioid26",
+        "quote": "Panel A of Figure 2 shows that the cards increase the probability that patients return unused opioid pills by 6.88% points over an unadjusted control group mean of 24.8% (p = 0.007, one-sided; p = 0.014, two-sided).",
+        "location": "p. 1027, 3 Study Results, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+      },
+      {
+        "source": "opioid26",
+        "quote": "the total program cost per pill returned is $12.57 in the treatment group, and $15.66 in the control group.",
+        "location": "p. 1029, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+      }
+    ],
+    "unsupported": [],
+    "problems": "All numbers verified in the published open-access article (512, two cards, 6.88 percentage points, 24.8%, $15.66, $12.57, pre-registered, Health Economics). Replace the old paraphrased abstract entry with the verbatim abstract sentences above. Results stated positively."
+  }
+}

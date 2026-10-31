@@ -284,3 +284,24 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 200 tests, audit doc and counts regenerated.
 
 **Count:** 0 Blocking + 7 Major found and addressed. Next: independent review 7.
+
+## Iteration 12 (2026-10-31)
+
+**Verified first:** iteration-11 fixes, by independent review 7 (snapshot `snap_r7`): no arrowheads before reveal, ties unscored, midpoint cap, lock follows the instructor, tutor locked and off-topic handling, no console toast, Streamlit Play gated, allocate rebalancing, served takeaways and principles gated. Not held: allocate structured fields leaked; strawman distractors; Streamlit double navigation; scope gate too weak.
+
+**Independent score:** 79/100 (review 7, `qa/reviews/review7.md`). 0 Blocking, 5 Major.
+
+**Fixes:**
+- **M1.** The public allocate block is an allow-list (total, step, label, prefix, suffix). The leak test now fails on any answer-bearing key (best, valueName, also, why, rankTies, rankValues, chart, follow and more) anywhere in the served bank.
+- **M2.** axf01 asks which of the three machine interfaces kept people most honest (self-reporting moved to the scene); axe04 became an estimate. Gate: an even split scores at most 0.6 on every allocate item.
+- **M3.** Two fresh agents rebuilt the evidence for 40 decisions with verbatim quotes and page or section from published texts (accepted manuscripts labelled). One wrong number fixed (lies-in-disguise: about 20% full liars, not 22%); numbers without a published source removed or rewritten (bz01's 73%/222%/316% appear only in a 2018 authors' copy; accuracy-prompt's 4.8% and 2.1% are behind the paywall; bz10, meta-perception, civic-wallet-experts, dimant-masks, opposing-views-bot sign, bz12). Gate: no paraphrased or summarized evidence entries.
+- **M4.** The measurement path now includes randomized trials that confirmed their claims (bz05, bz07), with a neutral blurb.
+- **M5.** Neutral scenes (biz07, bz06), rival distractors (misperceived-norms-action, biz02, social07, social13), social20 rewritten as a measurement choice with rival methods; ai04 retired as a repeat of rollout1; ai11 has two options and a neutral title.
+- **Minors.** axb01 count; internal study notes removed; sibling leak gate across decisions that share a paper, with fixes; forecasting principle grounded; 23 scope lines rewritten and the scope gate widened; tutor finds studies by author; allocate reveal shows player bars with a "Worked best" tag; chart legend wording; lock button label; Streamlit passcode warning and constant-time check.
+- **Visual.** Dark research band; reveal titles balanced to fewer lines.
+
+**Gates:** build check, full suite, audit doc and counts regenerated.
+
+**Count:** 0 Blocking + 5 Major found and addressed. Next: independent review 8.
+
+**Needs the owner:** bz01's original figures (73% randomized lift, 222% to 316% observational) can return once checked against the published Marketing Science PDF, which requires library access.

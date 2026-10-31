@@ -1,0 +1,758 @@
+{
+ "ai04": {
+  "quotes": [
+   {
+    "source": "bry25",
+    "quote": "We study the staggered introduction of a generative AI–based conversational assistant using data from 5,172 customer-support agents.",
+    "location": "QJE 140(2) abstract (version of record, Crossref record)"
+   },
+   {
+    "source": "bry25",
+    "quote": "Access to AI assistance increases worker productivity, as measured by issues resolved per hour, by 15% on average, with substantial heterogeneity across workers.",
+    "location": "QJE abstract"
+   },
+   {
+    "source": "bry25",
+    "quote": "Less experienced and lower-skilled workers improve both the speed and quality of their output, while the most experienced and highest-skilled workers see small gains in speed and small declines in quality.",
+    "location": "QJE abstract"
+   },
+   {
+    "source": "bry25",
+    "quote": "the gains from AI adoption are largest for moderately rare problems, where human agents have less baseline experience but the system still has adequate training data",
+    "location": "QJE abstract"
+   },
+   {
+    "source": "bry25",
+    "quote": "customers are more polite and less likely to ask to speak to a manager",
+    "location": "QJE abstract"
+   }
+  ],
+  "unsupported": [],
+  "problems": "Verified: 5,172 (explain, boundary, study.n), 15% (answerTitle, explain, estimate.target). Chart values 100 and 115 are an index derived from the 15% (100 x 1.15), not a reported number; acceptable as arithmetic, but the label 'relative output' should make the indexing explicit if the reviewer wants every value quoted. All four old evidence entries were paraphrases and are replaced by the verbatim abstract sentences above."
+ },
+ "ai09": {
+  "quotes": [
+   {
+    "source": "diet15",
+    "quote": "We test this in five studies.",
+    "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 115"
+   },
+   {
+    "source": "diet15",
+    "quote": "We conducted Studies 1, 2, and 4 in the Wharton School’s Behavioral Lab. Participants received a $10 show-up fee for an hour-long session of experiments, of which ours was a 20-min component, and they could earn up to an additional $10 for accurate forecasting performance.",
+    "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 115, Method, Participants"
+   },
+   {
+    "source": "diet15",
+    "quote": "leaving us with final samples of 361, 206, and 354.",
+    "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), pp. 115-116 (sentence broken by Table 1)"
+   },
+   {
+    "source": "diet15",
+    "quote": "We conducted Studies 3a and 3b using participants from the Amazon.com Mechanical Turk (MTurk) Web site.",
+    "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 116"
+   },
+   {
+    "source": "diet15",
+    "quote": "This left us with final samples of 410 in Study 3a and 1,036 in Study 3b.",
+    "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 116"
+   },
+   {
+    "source": "diet15",
+    "quote": "all participants learned that they would make 10 “official” incentivized estimates, earning an extra $1 each time the forecast they used was within 5 percentiles of an MBA student’s realized percentile.",
+    "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 117, Study 1 procedure"
+   },
+   {
+    "source": "diet15",
+    "quote": "In terms of average absolute error, the human forecasters produced [...] 15–29% more error than the model in the MBA student forecasting task of Studies 1, 2, and 4 and 90–97% more error than the model in the airline passenger forecasting task of Studies 3a and 3b (see Table 3).",
+    "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), pp. 118-119 (sentence broken by footnote and Table 3)"
+   },
+   {
+    "source": "diet15",
+    "quote": "Figure 3. Studies 1–4: Participants who saw the statistical model’s results were less likely to choose it. [Panel '% Choosing Statistical Model to Forecast MBA Students’ Performance', Study 1 bar labels: Control 65%; Saw Results of Human's Forecasts 63%; Saw Results of Model's Forecasts 26%; Saw Results of Model's and Human's Forecasts 23%]",
+    "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 120, Figure 3 (legend verbatim; bar labels as printed in the figure, read from the rendered page)"
+   }
+  ],
+  "unsupported": [],
+  "problems": "All numbers verified: 65%, 23%, 15 to 29%, 90 to 97%, 206 and 1,036 (range of final samples 206, 354, 361, 410, 1,036), $10, $1, 5 percentiles, five experiments, Studies 1, 2, 4 and 3a, 3b. The old 'Final samples ... (paraphrase)' entry is replaced by the two verbatim sample sentences."
+ },
+ "ai10": {
+  "quotes": [
+   {
+    "source": "logg19",
+    "quote": "results from six experiments show that lay people adhere more to advice when they think it comes from an algorithm than from a person.",
+    "location": "OBHDP 151, p. 90, abstract (published version, journal PDF)"
+   },
+   {
+    "source": "logg19",
+    "quote": "People showed this effect, what we call algorithm appreciation, when making numeric estimates about a visual stimulus (Experiment 1A) and forecasts about the popularity of songs and romantic attraction (Experiments 1B and 1C).",
+    "location": "OBHDP 151, p. 90, abstract"
+   },
+   {
+    "source": "logg19",
+    "quote": "However, algorithm appreciation waned when: people chose between an algorithm’s estimate and their own (versus an external advisor’s; Experiment 3) and they had expertise in forecasting (Experiment 4). Paradoxically, experienced professionals, who make forecasts on a regular basis, relied less on algorithmic advice than lay people did, which hurt their accuracy.",
+    "location": "OBHDP 151, p. 90, abstract"
+   },
+   {
+    "source": "logg19",
+    "quote": "Participants estimated the weight of a person in a photograph (see Fig. A1 in the Appendix) at two points in time: before and after receiving advice, which either came from a person or an algorithm.",
+    "location": "OBHDP 151, p. 93, Section 2.2 Method: Experiment 1A"
+   },
+   {
+    "source": "logg19",
+    "quote": "WOA of 0% occurs when a participant ignores advice and WOA of 100% occurs when a participant abandons his or her prior judgment to match the advice.",
+    "location": "OBHDP 151, p. 92, Section 1"
+   },
+   {
+    "source": "logg19",
+    "quote": "Participants showed an appreciation of algorithms, relying more on the same advice when they thought it came from an algorithm (M = 0.45, SD = 0.37), than when they thought it came from other people (M = 0.30, SD = 0.35), F (1, 200) = 8.86, p = .003, d = 0.42; see Fig. 1.",
+    "location": "OBHDP 151, p. 93, Section 2.2.1 Results (Experiment 1A)"
+   }
+  ],
+  "unsupported": [],
+  "problems": "Verified: 0.45 and 0.30 (explain; shown as 45% and 30% in scene, answerTitle and chart, which is the paper's own WOA percentage scale), six experiments, Experiment 1A (chart note), one study of experienced forecasters (Experiment 4). Full published text was read (journal PDF hosted at iacmr.org); the source's verification block says abstract only and can be upgraded to full text (https://iacmr.org/wp-content/uploads/sites/26/2026/06/4.-Logg-J.-M.-Minson-J.-A.-Moore-D.-A.-2019.-Algorithm-appreciation-People-prefer-algorithmic-to-human-judgment.-Organizational-Behavior-and-Human-Decision-Processes-151-90–103.pdf)."
+ },
+ "ai11": {
+  "quotes": [
+   {
+    "source": "cast19",
+    "quote": "They find that algorithms are trusted and relied on less for tasks that seem subjective (vs. objective) in nature.",
+    "location": "JMR 56(5) abstract (version of record, Crossref record)"
+   },
+   {
+    "source": "cast19",
+    "quote": "However, they show that perceived task objectivity is malleable and that increasing a task’s perceived objectivity increases trust in and use of algorithms for that task.",
+    "location": "JMR abstract"
+   },
+   {
+    "source": "cast19",
+    "quote": "Increasing algorithms’ perceived affective human-likeness is therefore effective at increasing the use of algorithms for subjective tasks.",
+    "location": "JMR abstract"
+   },
+   {
+    "source": "cast19",
+    "quote": "These findings are supported by the results of four online lab studies with over 1,400 participants and two online field studies with over 56,000 participants.",
+    "location": "JMR abstract"
+   }
+  ],
+  "unsupported": [],
+  "problems": "Verified: four, 1,400, two, 56,000. Delete the two old '(paraphrase)' entries; the verbatim entries already present cover the same claims."
+ },
+ "ai12": {
+  "quotes": [
+   {
+    "source": "long19",
+    "quote": "Consumers are reluctant to utilize healthcare provided by AI in real and hypothetical choices, separate and joint evaluations.",
+    "location": "JCR 46(4) abstract (version of record, Crossref record)"
+   },
+   {
+    "source": "long19",
+    "quote": "Consumers are less likely to utilize healthcare (study 1), exhibit lower reservation prices for healthcare (study 2), are less sensitive to differences in provider performance (studies 3A–3C), and derive negative utility if a provider is automated rather than human (study 4).",
+    "location": "JCR abstract"
+   },
+   {
+    "source": "long19",
+    "quote": "Uniqueness neglect, a concern that AI providers are less able than human providers to account for consumers’ unique characteristics and circumstances, drives consumer resistance to medical AI.",
+    "location": "JCR abstract"
+   },
+   {
+    "source": "long19",
+    "quote": "Indeed, resistance to medical AI is stronger for consumers who perceive themselves to be more unique (study 5).",
+    "location": "JCR abstract"
+   },
+   {
+    "source": "long19",
+    "quote": "is eliminated when AI provides care (a) that is framed as personalized (study 7), (b) to consumers other than the self (study 8), or (c) that only supports, rather than replaces, a decision made by a human healthcare provider (study 9).",
+    "location": "JCR abstract"
+   }
+  ],
+  "unsupported": [],
+  "problems": "No numbers in the player-facing text. The paraphrased evidence entries are replaced by verbatim abstract sentences. The scene line 'Consumers are told the system is highly accurate' is not supported by the abstract; it is not a number, but the lead may want to check it or cut it."
+ },
+ "biz03": {
+  "quotes": [
+   {
+    "source": "hotel08",
+    "quote": "Over an 80-day span, we collected data on 1,058 instances of potential towel reuse in 190 rooms in a midsized, midpriced hotel in the Southwest that was part of a national hotel chain.",
+    "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 473, Experiment 1, Method, Participants"
+   },
+   {
+    "source": "hotel08",
+    "quote": "we analyzed only the towel reuse data from guests’ first eligible day of participation so that no guest would participate in the study more than once. The dependent variable was dichotomous; room attendants simply recorded whether guests reused at least one towel.",
+    "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 474, Experiment 1, Results"
+   },
+   {
+    "source": "hotel08",
+    "quote": "a chi-square test revealed that the descriptive norm condition yielded a significantly higher towel reuse rate (44.1%) than the environmental protection condition (35.1%; χ2 (1, N = 433) = 3.72, p = .05, φ = .09; see fig. 2).",
+    "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 474, Experiment 1, Results (the PDF's font renders '=' as 'p')"
+   },
+   {
+    "source": "hotel08",
+    "quote": "Over a 53-day span, we collected data on 1,595 instances of potential towel reuse at the same hotel used in experiment 1.",
+    "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 476, Experiment 2, Method"
+   }
+  ],
+  "unsupported": [
+   {
+    "field": "explain",
+    "number": "1,058",
+    "action": "correct",
+    "replacement": "In Goldstein, Cialdini and Griskevicius's first hotel experiment, 44.1% of guests reused towels under the \"most guests reuse\" sign, against 35.1% under the standard environmental sign.",
+    "note": "1,058 is quoted verbatim, but it counts reuse opportunities collected. The 44.1% and 35.1% rates come from the first eligible day per guest, and that test used N = 433. Putting 1,058 next to the rates suggests they rest on 1,058 cases. Drop the count from explain; study.n already gives it correctly."
+   }
+  ],
+  "problems": "Verified: 44.1%, 35.1%, 1,058, 1,595, 80 days, first eligible day, at least one towel. The boundary's claim about later replications is not from this source and needs its own replication source record. The URL in hotel08.verification.text_url is Crossref, not the PDF that was read: http://carlsonschool-d8.prd.umn.edu/sites/carlsonschool.umn.edu/files/2018-10/118359.pdf (its https certificate chain fails, plain http works)."
+ },
+ "biz05": {
+  "quotes": [
+   {
+    "source": "energy07",
+    "quote": "Participants were 290 households in San Marcos, CA, with visible energy meters.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 430, Method, Participants and Design"
+   },
+   {
+    "source": "energy07",
+    "quote": "Three households called to withdraw from the study following the initial normative-feedback distribution, resulting in a final sample of 287.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Results"
+   },
+   {
+    "source": "energy07",
+    "quote": "One week after that, a second doorhanger was distributed [...] We took a final meter reading 3 weeks after the distribution of the second feedback message. Short-term change in electricity usage was calculated by subtracting the meter reading taken the day the first message was distributed from the reading taken the day the second message was distributed.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Procedure"
+   },
+   {
+    "source": "energy07",
+    "quote": "For households that consumed more than the average during the baseline period, the descriptive-norm-only feedback produced a significant decrease in energy consumption relative to the baseline (M = 20.25, SE = 1.03 vs. baseline M = 21.47, SE = 0.89; n = 64), t(63) = 2.17, prep = .93, d = 0.55. Figure 1a shows this significant change as a reduction of 1.22 kWh in daily energy consumption.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Results, Short-Term Change"
+   },
+   {
+    "source": "energy07",
+    "quote": "for households that were below the mean on baseline energy consumption, the descriptive-norm-only message produced an increase in energy consumption from baseline (M = 11.27, SE = 0.46 vs. baseline M = 10.38, SE = 0.33; n = 79)",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Results, Short-Term Change"
+   },
+   {
+    "source": "energy07",
+    "quote": "For those households that were high in energy consumption at baseline, the descriptive-norm-only message continued to produce the (constructive) decrease in energy consumption, although the difference was not conventionally significant (baseline M = 22.32, SE = 1.05 vs. longer-term M = 21.29, SE = 0.92; n = 52), t(51) = 1.45, n.s.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
+   },
+   {
+    "source": "energy07",
+    "quote": "For those households initially low in energy consumption, the descriptive-norm-only condition produced a significant increase in electricity usage (longer-term M = 11.13, SE = 0.44 vs. baseline M = 10.15, SE = 0.34; n = 68), t(67) = 2.42, prep = .95, d = 0.59.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
+   },
+   {
+    "source": "energy07",
+    "quote": "However, the combined injunctive-plus-descriptive message produced no change from baseline for low-consuming households (longer-term M = 10.14, SE = 0.37 vs. baseline M = 10.04, SE = 0.35; n = 70), t(69) = 0.64, n.s.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
+   }
+  ],
+  "unsupported": [
+   {
+    "field": "follow[2].a",
+    "number": "1.03",
+    "action": "correct",
+    "replacement": "Above-average households given only the average cut 1.22 kWh per day in the first week. Over the next three weeks their use went from 22.32 to 21.29 kWh per day, a drop that was not statistically significant.",
+    "note": "1.03 is not printed as a change; it is 22.32 minus 21.29, from two reported means. (The '1.03' in the short-term sentence is a standard error, not this drop.) The replacement uses only printed numbers."
+   }
+  ],
+  "problems": "Verified verbatim: 290, 287, 10.15, 11.13, 10.38, 11.27, 1.22, three weeks, one week; about four weeks = one week plus 3 weeks (boundary). The answer key is valid: options 1 and 3 match the reported boomerang and its removal by the injunctive cue. The URL in energy07.verification.text_url is Crossref; the PDF that was read is http://carlsonschool-d8.prd.umn.edu/sites/carlsonschool.umn.edu/files/2018-10/118375.pdf."
+ },
+ "biz06": {
+  "quotes": [
+   {
+    "source": "energy07",
+    "quote": "Participants were 290 households in San Marcos, CA, with visible energy meters.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 430"
+   },
+   {
+    "source": "energy07",
+    "quote": "If the household had consumed less than the average for the neighborhood, the researcher drew a happy face ( ); if the household had consumed more than the average, the researcher drew a sad face ( ).",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), pp. 430-431, Intervention (sentence broken by footnote 1)"
+   },
+   {
+    "source": "energy07",
+    "quote": "the descriptive-norm-only message produced an increase in energy consumption from baseline (M = 11.27, SE = 0.46 vs. baseline M = 10.38, SE = 0.33; n = 79)",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Results, Short-Term Change"
+   },
+   {
+    "source": "energy07",
+    "quote": "When the injunctive message was added to the descriptive normative feedback, households that were consuming less energy than average continued to consume at the desirable low rate (M = 10.58, SE = 0.38 vs. baseline M = 10.34, SE = 0.33; n = 81), t(80) = 1.04, n.s.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), pp. 431-432, Results, Short-Term Change (sentence broken by Figure 1)"
+   },
+   {
+    "source": "energy07",
+    "quote": "However, the combined injunctive-plus-descriptive message produced no change from baseline for low-consuming households (longer-term M = 10.14, SE = 0.37 vs. baseline M = 10.04, SE = 0.35; n = 70), t(69) = 0.64, n.s.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
+   },
+   {
+    "source": "energy07",
+    "quote": "in the short term, the reduction in energy usage for high-consuming households was 1.72 kWh/day in the descriptive-plus-injunctive condition, compared with 1.22 kWh/day in the descriptive-only condition.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 433, Discussion"
+   },
+   {
+    "source": "energy07",
+    "quote": "Finally, for households that initially consumed more energy than the neighborhood average, the combined descriptive-plus-injunctive feedback continued to produce a significant decrease in energy consumption relative to the baseline (baseline M = 20.62, SE = 0.64 vs. longer-term M = 19.39, SE = 0.62; n = 56), t(55) = 2.13, prep = .93, d = 0.58.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
+   },
+   {
+    "source": "energy07",
+    "quote": "We took a final meter reading 3 weeks after the distribution of the second feedback message.",
+    "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Procedure"
+   }
+  ],
+  "unsupported": [
+   {
+    "field": "follow[1].a",
+    "number": "0.24; 0.10",
+    "action": "correct",
+    "replacement": "Their use went from 10.34 to 10.58 kWh per day in the first week, and from 10.04 to 10.14 over the next three weeks. Neither change was statistically significant.",
+    "note": "0.24 and 0.10 are differences of reported means, not printed numbers. The replacement uses the printed means."
+   },
+   {
+    "field": "follow[2].a",
+    "number": "1.23",
+    "action": "correct",
+    "replacement": "Yes. Above-average households that got it cut use by 1.72 kWh per day in the first week. Over the next three weeks their use fell from 20.62 to 19.39 kWh per day.",
+    "note": "1.72 is printed (Discussion, p. 433). 1.23 is 20.62 minus 19.39, not printed."
+   }
+  ],
+  "problems": "Verified verbatim: 290, 10.38, 11.27, 10.58, 10.34, 1.72, three weeks. Forecast truth=true is supported (the boomerang was eliminated)."
+ },
+ "biz07": {
+  "quotes": [
+   {
+    "source": "subtract21",
+    "quote": "Across eight experiments, participants were less likely to identify advantageous subtractive changes when the task did not (versus did) cue them to consider subtraction, when they had only one opportunity (versus several) to recognize the shortcomings of an additive search strategy or when they were under a higher (versus lower) cognitive load.",
+    "location": "Nature 592, nature.com article page (publisher), abstract"
+   },
+   {
+    "source": "subtract21",
+    "quote": "Participants reported their ideas for how to change this miniature golf hole.",
+    "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 3 legend"
+   },
+   {
+    "source": "subtract21",
+    "quote": "Participants were randomly assigned to one of two conditions in experiments 2 and 3 (no-cue versus cue) ( n = 312); and one of four conditions in experiment 4 ((no-cue versus cue) × (improve versus make-it-worse)) ( n = 369).",
+    "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 4 legend"
+   },
+   {
+    "source": "subtract21",
+    "quote": "c , In experiment 4, the cue increased the likelihood of participants listing at least one subtractive idea within the improvement conditions (no-cue = 21%, cue = 48%, χ 2 = 13.63, P < 0.001)",
+    "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 4 legend, panel c"
+   },
+   {
+    "source": "subtract21",
+    "quote": "Participants could stabilize the top platform of the Lego structure so it could hold a masonry brick above the head of the action figure by adding new supports to reinforce the single corner block or by removing the corner block and letting the platform sit flush on the layer below.",
+    "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 2 legend (experiment 1)"
+   }
+  ],
+  "unsupported": [],
+  "problems": "Verified: 21%, 48%, experiment 4, eight experiments. The answer is valid. Not verifiable without the paywalled main text, though none of these are numbers: 'Most people added a block to the Lego structure rather than removing one' and 'transforming a grid pattern' (follow[0]). The public page supports the Lego and mini-golf tasks only. follow[1] 'Hundreds of participants' agrees with the n = 312 and n = 369 printed in the Extended Data Fig. 4 legend. Without the main text, a safer follow[0].a is: 'Problems such as stabilizing a Lego structure and improving a miniature golf hole. In the Lego task, removing a piece was the most profitable fix.' That last claim is supported by the Extended Data Fig. 2 legend: 'The most profitable solution was to remove the single support.'"
+ },
+ "biz08": {
+  "quotes": [
+   {
+    "source": "subtract21",
+    "quote": "Across eight experiments, participants were less likely to identify advantageous subtractive changes when the task did not (versus did) cue them to consider subtraction, when they had only one opportunity (versus several) to recognize the shortcomings of an additive search strategy or when they were under a higher (versus lower) cognitive load.",
+    "location": "Nature 592, nature.com article page (publisher), abstract"
+   },
+   {
+    "source": "subtract21",
+    "quote": "Defaulting to searches for additive changes may be one reason that people struggle to mitigate overburdened schedules, institutional red tape and damaging effects on the planet.",
+    "location": "Nature 592, nature.com article page (publisher), abstract (reference numerals omitted)"
+   }
+  ],
+  "unsupported": [],
+  "problems": "The only number, eight experiments, is verified. Delete the old '(paraphrase)' entry for red tape and use the verbatim sentence above. follow[2] says 'one of eight experiments'; the abstract does not say how many of the eight tested cognitive load, so the wording is fine as written."
+ },
+ "biz11": {
+  "quotes": [
+   {
+    "source": "anchor74",
+    "quote": "subjects were asked to estimate various quantities, stated in percentages (for example, the percentage of African countries in the United Nations). For each quantity, a number between 0 and 100 was determined by spinning a wheel of fortune in the subjects' presence. The subjects were instructed to indicate first whether that number was higher or lower than the value of the quantity, and then to estimate the value of the quantity by moving upward or downward from the given number.",
+    "location": "Science 185(4157), p. 1128 (JSTOR scan of published article, ncsu.edu course copy)"
+   },
+   {
+    "source": "anchor74",
+    "quote": "For example, the median estimates of the percentage of African countries in the United Nations were 25 and 45 for groups that received 10 and 65, respectively, as starting points. Payoffs for accuracy did not reduce the anchoring effect.",
+    "location": "Science 185, p. 1128"
+   },
+   {
+    "source": "anchor74",
+    "quote": "Two groups of high school students estimated, within 5 seconds, a numerical expression that was written on the blackboard. One group estimated the product 8x7x6x5x4x3x2x1 while another group estimated the product 1x2x3x4x5x6x7x8",
+    "location": "Science 185, p. 1128 (OCR garbles '5' as 'S' in the first product; restored)"
+   },
+   {
+    "source": "anchor74",
+    "quote": "The median estimate for the ascending sequence was 512, while the median estimate for the descending sequence was 2,250. The correct answer is 40,320.",
+    "location": "Science 185, p. 1128"
+   },
+   {
+    "source": "anchor74",
+    "quote": "The reliance on heuristics and the prevalence of biases are not restricted to laymen. Experienced researchers are also prone to the same biases—when they think intuitively.",
+    "location": "Science 185, p. 1130 (three-column OCR interleaves lines; words restored in order)"
+   }
+  ],
+  "unsupported": [],
+  "problems": "Verified: 10, 65, 25, 45, 5 seconds, 512, 2,250, 40,320, 1x2x...x8. Not numbers, but worth fixing: (1) the boundary says 'Students', but the wheel demonstration says only 'subjects' (students appear only in the multiplication study). Suggested boundary: 'Participants estimating percentages after seeing a visibly random number; paying for accuracy did not reduce the effect.' (2) study.design 'Classroom experiment' is not stated for the wheel study. Suggested: 'Anchoring demonstration reported in a review article'. (3) The paper's wording 'percentage of African countries in the United Nations' is ambiguous. The scene reads it as the share of UN members that are African, which is the standard reading."
+ },
+ "social08": {
+  "quotes": [
+   {
+    "source": "cent10",
+    "quote": "I studied the spread of a health behavior through a network-embedded population by creating an Internet-based health community, containing 1528 participants recruited from health-interest World Wide Web sites",
+    "location": "Science 329(5996), main text (Science online full text, printout hosted on faculty.cs.byu.edu)"
+   },
+   {
+    "source": "cent10",
+    "quote": "I report the results from six independent trials of this experimental design, each consisting of a matched pair of network conditions.",
+    "location": "Science 329, main text"
+   },
+   {
+    "source": "cent10",
+    "quote": "On average, the behavior reached 53.77% of the clustered networks, whereas only 38.26% of the population adopted in the random networks",
+    "location": "Science 329, main text, results"
+   },
+   {
+    "source": "cent10",
+    "quote": "The average rate of diffusion in the clustered networks (0.2820 x 10–3 nodes/s) was more than four times faster than that of the random condition (0.0643 x 10–3 nodes/s).",
+    "location": "Science 329, main text, results"
+   },
+   {
+    "source": "cent10",
+    "quote": "Though less than 15% of adopters receiving one signal made a return visit to the forum, more than 30% of participants receiving two signals made return visits",
+    "location": "Science 329, main text, discussion of Fig. 4"
+   }
+  ],
+  "unsupported": [],
+  "problems": "All numbers verified: 1,528, 53.77%, 38.26%, more than four times, fewer than 15%, over 30%, six trials. The old return-visit entry was a paraphrase and is replaced by the verbatim sentence above."
+ },
+ "social13": {
+  "quotes": [
+   {
+    "source": "blind00",
+    "quote": "Although some of our estimates have large standard errors and there is one persistent effect in the opposite direction, the weight of the evidence suggests that the blind audition procedure fostered impartiality in hiring and increased the proportion women in symphony orchestras.",
+    "location": "AER 90(4), p. 715, abstract (published AER PDF, Notre Dame course copy)"
+   },
+   {
+    "source": "blind00",
+    "quote": "Using the audition data, we find that the screen increases— by 50 percent—the probability that a woman will be advanced from certain preliminary rounds and increases by severalfold the likelihood that a woman will be selected in the final round.",
+    "location": "AER 90(4), p. 738, Conclusion"
+   },
+   {
+    "source": "blind00",
+    "quote": "By the use of the roster data, the switch to blind auditions can explain 30 percent of the increase in the proportion female among new hires and possibly 25 percent of the increase in the percentage female in the orchestras from 1970 to 1996.",
+    "location": "AER 90(4), p. 738, Conclusion"
+   },
+   {
+    "source": "blind00",
+    "quote": "Using data from actual auditions, in an individual fixed-effects framework, we find that the screen increases the probability a woman will be advanced and hired.",
+    "location": "AER 90(4), p. 715, abstract"
+   }
+  ],
+  "unsupported": [],
+  "problems": "Verified: 50 percent, 30 percent. The full-text PDF read is https://academicweb.nd.edu/~rwilliam/ndonly/readings/PopDynamics/09-StatusMenWomen/Orchestrating-impartiality-the-impact-of-blind-auditions-on-female-musicians-2000.pdf; the source's text_url points to Crossref."
+ },
+ "judg05": {
+  "quotes": [
+   {
+    "source": "frame81",
+    "quote": "Here we present selected illustrations of preference reversals, with data obtained from students at Stanford University and at the University of British Columbia who answered brief questionnaires in a classroom setting.",
+    "location": "Science 211(4481), p. 453 (JSTOR scan of published article)"
+   },
+   {
+    "source": "frame81",
+    "quote": "Problem 1 [N = 152]: Imagine that the U.S. is preparing for the outbreak of an unusual Asian disease, which is expected to kill 600 people. [...] If Program A is adopted, 200 people will be saved. [72 percent] If Program B is adopted, there is 1/3 probability that 600 people will be saved, and 2/3 probability that no people will be saved. [28 percent]",
+    "location": "Science 211, p. 453 (OCR renders '152]' as '1521' and '1/3' as '113'; restored)"
+   },
+   {
+    "source": "frame81",
+    "quote": "Problem 2 [N = 155]: If Program C is adopted 400 people will die. [22 percent] If Program D is adopted there is 1/3 probability that nobody will die, and 2/3 probability that 600 people will die. [78 percent]",
+    "location": "Science 211, p. 453 (same OCR restorations)"
+   },
+   {
+    "source": "frame81",
+    "quote": "We have observed this reversal in several groups of respondents, including university faculty and physicians.",
+    "location": "Science 211, p. 453"
+   },
+   {
+    "source": "frame81",
+    "quote": "choices involving gains are often risk averse and choices involving losses are often risk taking.",
+    "location": "Science 211, p. 453"
+   }
+  ],
+  "unsupported": [],
+  "problems": "All numbers verified: 600, 200, 400, one-third, 72%, 78%, 22% (chart), 152, 155. The old N/percent paraphrase is replaced by the verbatim problem text."
+ },
+ "axb02": {
+  "quotes": [
+   {
+    "source": "dietvorst18",
+    "quote": "Participants predicted the percentiles of high school students on a standardized math test.",
+    "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 15, Study 2 Procedure"
+   },
+   {
+    "source": "dietvorst18",
+    "quote": "final sample consisted of 816 participants who completed their forecasts.",
+    "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 15, Study 2 Participants"
+   },
+   {
+    "source": "dietvorst18",
+    "quote": "For example, in the adjust-by-2 condition, participants who decided to use the model’s forecasts could adjust its forecasts by up to 2 percentiles. Second, we recruited participants from Amazon Mechanical Turk instead of the laboratory.",
+    "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 15, Study 2 Procedure"
+   },
+   {
+    "source": "dietvorst18",
+    "quote": "Whereas only 47% of participants in the can’t-change condition chose to use the model’s forecasts, 70% of participants in the adjust-by-X conditions chose to the model",
+    "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 15, Study 2 Results"
+   },
+   {
+    "source": "dietvorst18",
+    "quote": "71%, 71%, and 68% chose to the model in the adjust-by-10, adjust-by-5, and adjust-by-2 conditions. These three conditions did not differ significantly, χ2(2, N = 623) = 0.42, p = .809.",
+    "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 16, Study 2 Results"
+   },
+   {
+    "source": "dietvorst18",
+    "quote": "Participants were considerably more likely to choose to use an imperfect algorithm when they could modify its forecasts, and they performed better as a result.",
+    "location": "Management Science 64(3) abstract (version of record, Crossref record)"
+   },
+   {
+    "source": "dietvorst18",
+    "quote": "giving participants the freedom to modify an imperfect algorithm made them feel more satisfied with the forecasting process, more likely to believe that the algorithm was superior, and more likely to choose to use an algorithm to make subsequent forecasts (Study 3).",
+    "location": "Management Science 64(3) abstract"
+   }
+  ],
+  "unsupported": [],
+  "problems": "Verified in the accepted manuscript: 47%, 68%, 71%, 71%, 816, 2, 5 and 10 percentiles, Study 2 of 3. The core.ac.uk link in the verification block is blocked by Cloudflare; the same deposit can be read at https://repository.upenn.edu/server/api/core/bitstreams/ac9f1367-c0e9-4a52-a90b-c7e30e6c4910/content. Do not use the Wharton marketing-site PDF (June 2015, earlier title); it is a working version. The old 'fetch-tool summary' and 'paraphrase' entries are replaced above. The boundary says 'Online and lab forecasting', but the scored Study 2 was MTurk only. The lab claim holds for Study 1, so the boundary is acceptable as a description of the paper."
+ },
+ "axb11": {
+  "quotes": [
+   {
+    "source": "yeomans19",
+    "quote": "Here, we compare computer recommender systems to human recommenders in a domain that affords humans many advantages: predicting which jokes people will find funny.",
+    "location": "JBDM 32(4) abstract (version of record, Crossref record)"
+   },
+   {
+    "source": "yeomans19",
+    "quote": "We find that recommender systems outperform humans, whether strangers, friends, or family. Yet people are averse to relying on these recommender systems.",
+    "location": "JBDM abstract"
+   },
+   {
+    "source": "yeomans19",
+    "quote": "This aversion partly stems from the fact that people believe the human recommendation process is easier to understand.",
+    "location": "JBDM abstract"
+   },
+   {
+    "source": "yeomans19",
+    "quote": "It is not enough for recommender systems to be accurate, they must also be understood.",
+    "location": "JBDM abstract"
+   }
+  ],
+  "unsupported": [],
+  "problems": "No numbers in the player-facing text. Delete the four 'fetch-tool summary wording' entries; the verbatim abstract sentences above replace them. The answer key is valid (options 1 and 2). 'Spouses' in option 3 is a distractor, and the abstract names only 'family'."
+ },
+ "bz01": {
+  "quotes": [
+   {
+    "source": "gordon19",
+    "quote": "Using data from 15 U.S. advertising experiments at Facebook comprising 500 million user-experiment observations and 1.6 billion ad impressions, we contrast the experimental results to those obtained from multiple observational models. The observational methods often fail to produce the same effects as the randomized experiments, even after conditioning on extensive demographic and behavioral variables.",
+    "location": "Marketing Science 38(2) published abstract (publisher-supplied abstract as indexed at ideas.repec.org/a/inm/ormksc/v38y2019i2p193-225.html; the Crossref record carries only a one-line summary)"
+   },
+   {
+    "source": "gordon19",
+    "quote": "this implies the ATT lift was 73% (=0.033%/(0.079%-0.033%)).",
+    "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 31, Study 4. Pre-publication text only."
+   },
+   {
+    "source": "gordon19",
+    "quote": "The conversion rate among exposed and unexposed users was 0.061% and 0.019%, respectively, implying an ATT lift of 316%. This estimate represents the combined lift due to treatment and selection and is more than four times the lift due to treatment of 73%.",
+    "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 34, Study 4. Pre-publication text only."
+   },
+   {
+    "source": "gordon19",
+    "quote": "Exact matching (EM) on age and gender alone performs poorly, yielding a lift of 222%.",
+    "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 34, Study 4. Pre-publication text only."
+   },
+   {
+    "source": "gordon19",
+    "quote": "Generally, the observational methods overestimate ad effectiveness relative to the RCT, although in some cases, they significantly underestimate effectiveness. The bias can be large: in half of our studies, the estimated percentage increase in purchase outcomes is off by a factor of three across all methods.",
+    "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 3, Introduction. Pre-publication text only."
+   }
+  ],
+  "unsupported": [
+   {
+    "field": "scene",
+    "number": "222%",
+    "action": "remove",
+    "replacement": "Your agency compares Facebook users who saw your campaign with users who did not, after matching on age and gender. A randomized holdout ran at the same time.",
+    "note": "Use only if the version of record cannot be read. 222% appears verbatim only in the April 2018 authors' copy."
+   },
+   {
+    "field": "question",
+    "number": "(none; depends on removed numbers)",
+    "action": "remove",
+    "replacement": "How did the matched estimate compare with the randomized test?",
+    "note": "Fallback only, paired with the option and answer changes below."
+   },
+   {
+    "field": "options",
+    "number": "316%; 73%; 222%",
+    "action": "remove",
+    "replacement": "[\"It matched the randomized lift\", \"It often missed the randomized lift\", \"It always found no lift\", \"It needed no randomized check\"] with answer = 1",
+    "note": "Fallback only. The answer rests on the published abstract: 'The observational methods often fail to produce the same effects as the randomized experiments'."
+   },
+   {
+    "field": "answerTitle",
+    "number": "73%; 222%",
+    "action": "remove",
+    "replacement": "Matching often missed the experiment's answer",
+    "note": "Fallback only."
+   },
+   {
+    "field": "explain",
+    "number": "73%; 222%; 316%",
+    "action": "remove",
+    "replacement": "Across 15 Facebook ad experiments, observational methods often failed to produce the same effects as the randomized tests, even after conditioning on extensive demographic and behavioral data.",
+    "note": "Fallback only."
+   },
+   {
+    "field": "chart",
+    "number": "316; 222; 73",
+    "action": "remove",
+    "replacement": "(delete the chart block)",
+    "note": "Fallback only."
+   },
+   {
+    "field": "follow[1].a",
+    "number": "factor of three; half",
+    "action": "remove",
+    "replacement": "No. Across the 15 experiments, observational methods often failed to match the randomized results, even with rich demographic and behavioral data.",
+    "note": "Fallback only. 'Factor of three' and 'half of the studies' appear verbatim only in the April 2018 authors' copy, not in the published abstract. Also change follow[1].q to 'Was this a one-off?'"
+   }
+  ],
+  "problems": "The published abstract (verbatim) verifies 15 experiments, 500 million user-experiment observations and 1.6 billion impressions. 73%, 222%, 316% and 'factor of three in half of the studies' appear verbatim in the authors' April 12, 2018 copy, but I could not read the version of record: pubsonline.informs.org returns 403, and Semantic Scholar marks the paper closed. That copy predates the final text (its abstract differs), so under the content guide it cannot carry the evidence. Recommended action: read pp. 193-225 of the published PDF through Penn library access and quote 73%, 222%, 316% and the factor-of-three sentence from it. If those quotes cannot be obtained, apply the fallback replacements above. Boundary and follow[2] ('sometimes underestimated') rest on the same unverified text. The current evidence entries '(as recorded in audit)' and '(audit summary)' must go either way. The scene's 'Your agency' framing is hypothetical and does not describe a real firm or rollout; keep it only if the guide's framing rule allows it."
+ },
+ "bz05": {
+  "quotes": [
+   {
+    "source": "bloom15",
+    "quote": "We report the results of a WFH experiment at Ctrip, a 16,000-employee, NASDAQ-listed Chinese travel agency. Call center employees who volunteered to WFH were randomly assigned either to work from home or in the office for nine months.",
+    "location": "QJE 130(1) abstract (version of record, Crossref record)"
+   },
+   {
+    "source": "bloom15",
+    "quote": "Home working led to a 13% performance increase, of which 9% was from working more minutes per shift (fewer breaks and sick days) and 4% from more calls per minute (attributed to a quieter and more convenient working environment).",
+    "location": "QJE abstract"
+   },
+   {
+    "source": "bloom15",
+    "quote": "Home workers also reported improved work satisfaction, and their attrition rate halved, but their promotion rate conditional on performance fell.",
+    "location": "QJE abstract"
+   },
+   {
+    "source": "bloom15",
+    "quote": "Interestingly, over half of them switched, which led to the gains from WFH almost doubling to 22%. This highlights the benefits of learning and selection effects when adopting modern management practices like WFH.",
+    "location": "QJE abstract"
+   }
+  ],
+  "unsupported": [],
+  "problems": "All numbers verified in the published abstract: 16,000, nine months, 13%, 9%, 4% (implied by 'the rest'), over half, 22%, attrition halved. Delete the two 'paraphrased by fetch tool' entries. explain says 'roughly halved'; the abstract says 'halved'. Either wording is accurate."
+ },
+ "bz06": {
+  "quotes": [
+   {
+    "source": "kahneman90",
+    "quote": "The subjects in experiment 6 were 77 Simon Fraser students, randomly assigned to three groups.",
+    "location": "JPE 98(6), published version (scan hosted on MIT course site), p. 1339, Experiment 6"
+   },
+   {
+    "source": "kahneman90",
+    "quote": "While 12.5 trades were expected between buyers and sellers, only three trades took place (V/V* = .24). The median valuations were $7.12 for sellers, $3.12 for choosers, and $2.87 for buyers. The close similarity of results for buyers and choosers indicates that there was relatively little reluctance to pay for the mug.",
+    "location": "JPE 98(6), published version (scan hosted on MIT course site), p. 1339, Experiment 6"
+   },
+   {
+    "source": "plott05",
+    "quote": "Such controls include ensuring subject anonymity, using incentive-compatible elicitation mechanisms, and providing subjects with practice and training on the elicitation mechanism before employing it to measure valuations.",
+    "location": "AER 95(3) abstract (version of record, Crossref record)"
+   },
+   {
+    "source": "plott05",
+    "quote": "Experiments were conducted using both lotteries and mugs, goods frequently used in endowment effect experiments. Using the modified procedures, we observe no gap between WTA and WTP.",
+    "location": "AER 95(3) abstract"
+   },
+   {
+    "source": "isoni11",
+    "quote": "Plott and Zeiler (2005) report that the willingness-to-pay/willingness-to-accept disparity is absent for mugs in a particular experimental setting, designed to neutralize misconceptions about the procedures used to elicit valuations.",
+    "location": "AER 101(2) abstract (version of record, Crossref record)"
+   },
+   {
+    "source": "isoni11",
+    "quote": "However, other data from that same study, not published in that paper, exhibit a significant and persistent disparity when the same experimental procedures are applied to lotteries. We report new data confirming both results",
+    "location": "AER 101(2) abstract"
+   }
+  ],
+  "unsupported": [],
+  "problems": "Verified: $7.12, $2.87, 12.5, three trades, 77 students (Experiment 6). Years 2005 and 2011 are citation years. Delete the old Experiment 1 entry '(as extracted from Table)': it backs nothing on screen, and its numbers were not re-read. Content issue (no number wrong): study.n and design describe Kahneman, Knetsch and Thaler's Experiment 6, but the question and answer are about Plott and Zeiler. A clearer study block is design 'Lab valuation experiments, original and replication' with n '77 Simon Fraser students (1990 Experiment 6); Plott and Zeiler sample not read'. The scene says Plott and Zeiler used 'anonymous offers'; the abstract says 'ensuring subject anonymity', which is close enough."
+ },
+ "bz07": {
+  "quotes": [
+   {
+    "source": "bloom24",
+    "quote": "Here we ran a six-month randomized control trial investigating the effects of hybrid working from home on 1,612 employees in a Chinese technology company in 2021–2022. We found that hybrid working improved job satisfaction and reduced quit rates by one-third. The reduction in quit rates was significant for non-managers, female employees and those with long commutes. Null equivalence tests showed that hybrid working did not affect performance grades over the next two years of reviews.",
+    "location": "Nature 630, open-access full text on nature.com, abstract"
+   },
+   {
+    "source": "bloom24",
+    "quote": "Trip.com decided to evaluate the effects of hybrid WFH on the 1,612 engineering, marketing and finance employees in the Airfare and IT divisions, spanning 395 managers and 1,217 non-managers.",
+    "location": "Nature 630, open-access full text on nature.com, main text, experiment description"
+   },
+   {
+    "source": "bloom24",
+    "quote": "Employees were randomized by even or odd birthdays into the option to WFH on Wednesday and Friday and come into the office on the other three days, or to come into the office on all five days. We found that in the hybrid WFH (‘treatment’) group, attrition rates dropped by one-third (mean control = 7.20, mean treat = 4.80, t (1610) = 2.02, P = 0.043)",
+    "location": "Nature 630, open-access full text on nature.com, main text, introduction"
+   },
+   {
+    "source": "bloom24",
+    "quote": "The net effect was to reduce attrition over the experiment by 2.4%, which against the control-group base of 7.2% was a one-third (33%) reduction in attrition (mean control = 7.20, mean treat = 4.80, t (1610) = 2.02, P = 0.043).",
+    "location": "Nature 630, open-access full text on nature.com, main text, attrition results"
+   },
+   {
+    "source": "bloom24",
+    "quote": "We saw a significant drop in attrition of 3.3 percentage points for the non-managers, which against a control-group base of 8.6% is a 40% reduction (mean control = 8.59, mean treat = 5.33, t (1215) = 2.23, P = 0.026).",
+    "location": "Nature 630, open-access full text on nature.com, main text, attrition results"
+   },
+   {
+    "source": "bloom24",
+    "quote": "We found that there was a 54% reduction in quit rates for female employees (mean control = 9.2, mean treat = 4.2, t (568) = 2.40, P = 0.017).",
+    "location": "Nature 630, open-access full text on nature.com, main text, attrition results"
+   },
+   {
+    "source": "bloom24",
+    "quote": "Figure 3 reports the distribution of performance grades for treatment and control employees for the four half-year periods: July to December 2021, January to June 2022, July to December 2022 and January to June 2023. These four performance reviews span a two-year period from the start of the experimental period. Across all review periods, we found no difference in reviews between the treatment and control groups",
+    "location": "Nature 630, open-access full text on nature.com, main text, Employee performance and promotions"
+   },
+   {
+    "source": "bloom24",
+    "quote": "We found no evidence for a difference in promotions over the next two years overall, or for any major employee subgroup.",
+    "location": "Nature 630, open-access full text on nature.com, abstract"
+   },
+   {
+    "source": "bloom24",
+    "quote": "Second, for the 653 computer engineers, we obtained data on the lines of code uploaded by each engineer each day. For this ‘lines of code submitted’ measure, we found no difference between employees in the control and treatment groups",
+    "location": "Nature 630, open-access full text on nature.com, main text, Employee performance and promotions"
+   },
+   {
+    "source": "bloom24",
+    "quote": "We also found that the 395 managers in the experiment revised their surveyed views about the effect of hybrid working on productivity, from a perceived negative effect (−2.6% on average) before the experiment to a perceived positive one (+1.0%) after the experiment.",
+    "location": "Nature 630, open-access full text on nature.com, abstract"
+   },
+   {
+    "source": "bloom24",
+    "quote": "First, it uses a randomized control trial to examine the causal effect of a hybrid schedule in which employees are allowed to WFH two days per week.",
+    "location": "Nature 630, open-access full text on nature.com, main text, introduction"
+   }
+  ],
+  "unsupported": [],
+  "problems": "All numbers verified: 1,612, odd birthdays, Wednesdays and Fridays, two home days, six months, one-third and 33, 7.20% and 4.80%, P = 0.043, 54 (9.2 to 4.2), 40 (8.59 to 5.33), two years, four half-year periods, 653, 2.6%. Replace the two '(as extracted from full text)' entries with the verbatim sentences above. The old long-commuter numbers (6.00, 2.89, 52%) are not shown on screen and need no evidence."
+ }
+}

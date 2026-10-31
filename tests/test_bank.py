@@ -227,3 +227,11 @@ def test_allocate_even_split_is_not_a_hit():
         if c['format'] != 'allocate': continue
         n = len(c['options']); t = c['allocate']['total']
         assert scoring.score(c, [t // n] * (n - 1) + [t - t // n * (n - 1)])['score'] <= 0.6, c['id']
+
+def test_evidence_entries_are_verbatim():
+    """Review 7, M3: evidence entries are quotes from published texts, not paraphrases or summaries."""
+    ev = json.loads((ROOT / 'src/evidence.json').read_text())
+    weak = re.compile(r'paraphrase|as recorded|audit summary|fetch-tool|as extracted|rendering', re.I)
+    live = {c['id'] for c in LIVE}
+    bad = [k for k, qs in ev.items() if k in live for q in qs if weak.search(q.get('location', '') + ' ' + q['quote'])]
+    assert not bad, sorted(set(bad))

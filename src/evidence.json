@@ -64,13 +64,38 @@
   },
   {
    "source": "dietvorst18",
-   "quote": "Study 2 (N = 816 completed forecasts; MTurk): can't-change, adjust-by-10, adjust-by-5, and adjust-by-2 conditions",
-   "location": "Study 2, Method (p. 14-15; fetch-tool summary)"
+   "quote": "Participants predicted the percentiles of high school students on a standardized math test.",
+   "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 15, Study 2 Procedure"
   },
   {
    "source": "dietvorst18",
-   "quote": "they forecast more accurately as a result; preference did not grow with the size of permitted changes; modification increased satisfaction, belief in the algorithm's superiority, and later use",
-   "location": "Abstract (Crossref; paraphrase of returned text)"
+   "quote": "final sample consisted of 816 participants who completed their forecasts.",
+   "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 15, Study 2 Participants"
+  },
+  {
+   "source": "dietvorst18",
+   "quote": "For example, in the adjust-by-2 condition, participants who decided to use the model’s forecasts could adjust its forecasts by up to 2 percentiles. Second, we recruited participants from Amazon Mechanical Turk instead of the laboratory.",
+   "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 15, Study 2 Procedure"
+  },
+  {
+   "source": "dietvorst18",
+   "quote": "Whereas only 47% of participants in the can’t-change condition chose to use the model’s forecasts, 70% of participants in the adjust-by-X conditions chose to the model",
+   "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 15, Study 2 Results"
+  },
+  {
+   "source": "dietvorst18",
+   "quote": "71%, 71%, and 68% chose to the model in the adjust-by-10, adjust-by-5, and adjust-by-2 conditions. These three conditions did not differ significantly, χ2(2, N = 623) = 0.42, p = .809.",
+   "location": "Accepted manuscript: Penn ScholarlyCommons deposit (repository.upenn.edu, file Simmons_Massey_Overcoming_Algorithm_Aversion.pdf, Aug 2016), which the repository describes as 'a pre-final version of the article'; its abstract matches the Management Science abstract word for word, p. 16, Study 2 Results"
+  },
+  {
+   "source": "dietvorst18",
+   "quote": "Participants were considerably more likely to choose to use an imperfect algorithm when they could modify its forecasts, and they performed better as a result.",
+   "location": "Management Science 64(3) abstract (version of record, Crossref record)"
+  },
+  {
+   "source": "dietvorst18",
+   "quote": "giving participants the freedom to modify an imperfect algorithm made them feel more satisfied with the forecasting process, more likely to believe that the algorithm was superior, and more likely to choose to use an algorithm to make subsequent forecasts (Study 3).",
+   "location": "Management Science 64(3) abstract"
   }
  ],
  "axb03": [
@@ -307,32 +332,22 @@
  "axb11": [
   {
    "source": "yeomans19",
-   "quote": "Recommender systems outperformed humans, whether the humans were strangers, friends, or family",
-   "location": "Abstract (Crossref; fetch-tool summary wording)"
-  },
-  {
-   "source": "yeomans19",
-   "quote": "people were averse to relying on the algorithms, partly because they believed the human recommendation process was easier to understand",
-   "location": "Abstract (Crossref; fetch-tool summary wording)"
-  },
-  {
-   "source": "yeomans19",
-   "quote": "a domain where humans have many advantages",
-   "location": "Abstract (Crossref; fetch-tool summary wording)"
-  },
-  {
-   "source": "yeomans19",
-   "quote": "accuracy alone is not enough for recommender systems; they must also be understood",
-   "location": "Abstract (Crossref; fetch-tool summary wording)"
-  },
-  {
-   "source": "yeomans19",
    "quote": "We find that recommender systems outperform humans, whether strangers, friends, or family. Yet people are averse to relying on these recommender systems.",
    "location": "JBDM abstract (version of record)"
   },
   {
    "source": "yeomans19",
    "quote": "This aversion partly stems from the fact that people believe the human recommendation process is easier to understand.",
+   "location": "JBDM abstract"
+  },
+  {
+   "source": "yeomans19",
+   "quote": "Here, we compare computer recommender systems to human recommenders in a domain that affords humans many advantages: predicting which jokes people will find funny.",
+   "location": "JBDM 32(4) abstract (version of record, Crossref record)"
+  },
+  {
+   "source": "yeomans19",
+   "quote": "It is not enough for recommender systems to be accurate, they must also be understood.",
    "location": "JBDM abstract"
   }
  ],
@@ -593,11 +608,6 @@
   },
   {
    "source": "gordon19",
-   "quote": "naive exposed-vs-unexposed lift 316% (as recorded in audit)",
-   "location": "Study 4"
-  },
-  {
-   "source": "gordon19",
    "quote": "in half of our studies, the estimated percentage increase in purchase outcomes is off by a factor of three across all methods",
    "location": "Abstract/conclusion"
   },
@@ -608,8 +618,28 @@
   },
   {
    "source": "gordon19",
-   "quote": "15 US advertising RCTs at Facebook (~500 million user-experiment observations, 1.6 billion impressions)",
-   "location": "Data section (audit summary)"
+   "quote": "Using data from 15 U.S. advertising experiments at Facebook comprising 500 million user-experiment observations and 1.6 billion ad impressions, we contrast the experimental results to those obtained from multiple observational models. The observational methods often fail to produce the same effects as the randomized experiments, even after conditioning on extensive demographic and behavioral variables.",
+   "location": "Marketing Science 38(2) published abstract (publisher-supplied abstract as indexed at ideas.repec.org/a/inm/ormksc/v38y2019i2p193-225.html; the Crossref record carries only a one-line summary)"
+  },
+  {
+   "source": "gordon19",
+   "quote": "this implies the ATT lift was 73% (=0.033%/(0.079%-0.033%)).",
+   "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 31, Study 4. Pre-publication text only."
+  },
+  {
+   "source": "gordon19",
+   "quote": "The conversion rate among exposed and unexposed users was 0.061% and 0.019%, respectively, implying an ATT lift of 316%. This estimate represents the combined lift due to treatment and selection and is more than four times the lift due to treatment of 73%.",
+   "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 34, Study 4. Pre-publication text only."
+  },
+  {
+   "source": "gordon19",
+   "quote": "Exact matching (EM) on age and gender alone performs poorly, yielding a lift of 222%.",
+   "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 34, Study 4. Pre-publication text only."
+  },
+  {
+   "source": "gordon19",
+   "quote": "Generally, the observational methods overestimate ad effectiveness relative to the RCT, although in some cases, they significantly underestimate effectiveness. The bias can be large: in half of our studies, the estimated percentage increase in purchase outcomes is off by a factor of three across all methods.",
+   "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 3, Introduction. Pre-publication text only."
   }
  ],
  "bz02": [
@@ -681,18 +711,28 @@
   },
   {
    "source": "bloom15",
-   "quote": "Abstract (paraphrased by fetch tool): home workers reported better job satisfaction and attrition roughly halved; promotion rate conditional on performance fell",
-   "location": "Abstract"
-  },
-  {
-   "source": "bloom15",
    "quote": "over half of them switched, which led to the gains from WFH almost doubling to 22%",
    "location": "Abstract"
   },
   {
    "source": "bloom15",
-   "quote": "Abstract (paraphrased by fetch tool): Ctrip, a Chinese travel agency with about 16,000 employees; volunteers assigned to home or office for nine months",
-   "location": "Abstract"
+   "quote": "We report the results of a WFH experiment at Ctrip, a 16,000-employee, NASDAQ-listed Chinese travel agency. Call center employees who volunteered to WFH were randomly assigned either to work from home or in the office for nine months.",
+   "location": "QJE 130(1) abstract (version of record, Crossref record)"
+  },
+  {
+   "source": "bloom15",
+   "quote": "Home working led to a 13% performance increase, of which 9% was from working more minutes per shift (fewer breaks and sick days) and 4% from more calls per minute (attributed to a quieter and more convenient working environment).",
+   "location": "QJE abstract"
+  },
+  {
+   "source": "bloom15",
+   "quote": "Home workers also reported improved work satisfaction, and their attrition rate halved, but their promotion rate conditional on performance fell.",
+   "location": "QJE abstract"
+  },
+  {
+   "source": "bloom15",
+   "quote": "Interestingly, over half of them switched, which led to the gains from WFH almost doubling to 22%. This highlights the benefits of learning and selection effects when adopting modern management practices like WFH.",
+   "location": "QJE abstract"
   }
  ],
  "bz06": [
@@ -712,11 +752,6 @@
    "location": "Experiment 6"
   },
   {
-   "source": "kahneman90",
-   "quote": "Experiment 1: 44 Cornell students; expected trades = 11 per trial; mug trials 4-7 had 4, 1, 2, 2 trades; induced-value markets V/V* = 1.0 (as extracted from Table)",
-   "location": "Experiment 1"
-  },
-  {
    "source": "isoni11",
    "quote": "exhibit a significant and persistent disparity when the same experimental procedures are applied to lotteries",
    "location": "Abstract"
@@ -725,6 +760,36 @@
    "source": "isoni11",
    "quote": "the willingness-to-pay/willingness-to-accept disparity is absent for mugs in a particular experimental setting",
    "location": "Abstract"
+  },
+  {
+   "source": "kahneman90",
+   "quote": "The subjects in experiment 6 were 77 Simon Fraser students, randomly assigned to three groups.",
+   "location": "JPE 98(6), published version (scan hosted on MIT course site), p. 1339, Experiment 6"
+  },
+  {
+   "source": "kahneman90",
+   "quote": "While 12.5 trades were expected between buyers and sellers, only three trades took place (V/V* = .24). The median valuations were $7.12 for sellers, $3.12 for choosers, and $2.87 for buyers. The close similarity of results for buyers and choosers indicates that there was relatively little reluctance to pay for the mug.",
+   "location": "JPE 98(6), published version (scan hosted on MIT course site), p. 1339, Experiment 6"
+  },
+  {
+   "source": "plott05",
+   "quote": "Such controls include ensuring subject anonymity, using incentive-compatible elicitation mechanisms, and providing subjects with practice and training on the elicitation mechanism before employing it to measure valuations.",
+   "location": "AER 95(3) abstract (version of record, Crossref record)"
+  },
+  {
+   "source": "plott05",
+   "quote": "Experiments were conducted using both lotteries and mugs, goods frequently used in endowment effect experiments. Using the modified procedures, we observe no gap between WTA and WTP.",
+   "location": "AER 95(3) abstract"
+  },
+  {
+   "source": "isoni11",
+   "quote": "Plott and Zeiler (2005) report that the willingness-to-pay/willingness-to-accept disparity is absent for mugs in a particular experimental setting, designed to neutralize misconceptions about the procedures used to elicit valuations.",
+   "location": "AER 101(2) abstract (version of record, Crossref record)"
+  },
+  {
+   "source": "isoni11",
+   "quote": "However, other data from that same study, not published in that paper, exhibit a significant and persistent disparity when the same experimental procedures are applied to lotteries. We report new data confirming both results",
+   "location": "AER 101(2) abstract"
   }
  ],
  "bz07": [
@@ -750,13 +815,58 @@
   },
   {
    "source": "bloom24",
-   "quote": "Attrition 7.20% control vs 4.80% treatment (P = 0.043); non-managers 8.59% vs 5.33%, 40% reduction; women 9.2% vs 4.2%, 54%; long commuters 6.00% vs 2.89%, 52% (P = 0.062) (as extracted from full text)",
-   "location": "Results, attrition"
+   "quote": "Here we ran a six-month randomized control trial investigating the effects of hybrid working from home on 1,612 employees in a Chinese technology company in 2021–2022. We found that hybrid working improved job satisfaction and reduced quit rates by one-third. The reduction in quit rates was significant for non-managers, female employees and those with long commutes. Null equivalence tests showed that hybrid working did not affect performance grades over the next two years of reviews.",
+   "location": "Nature 630, open-access full text on nature.com, abstract"
   },
   {
    "source": "bloom24",
-   "quote": "No difference in performance reviews across four half-year periods; 653 engineers, no difference in daily lines of code (as extracted from full text)",
-   "location": "Results, performance"
+   "quote": "Trip.com decided to evaluate the effects of hybrid WFH on the 1,612 engineering, marketing and finance employees in the Airfare and IT divisions, spanning 395 managers and 1,217 non-managers.",
+   "location": "Nature 630, open-access full text on nature.com, main text, experiment description"
+  },
+  {
+   "source": "bloom24",
+   "quote": "Employees were randomized by even or odd birthdays into the option to WFH on Wednesday and Friday and come into the office on the other three days, or to come into the office on all five days. We found that in the hybrid WFH (‘treatment’) group, attrition rates dropped by one-third (mean control = 7.20, mean treat = 4.80, t (1610) = 2.02, P = 0.043)",
+   "location": "Nature 630, open-access full text on nature.com, main text, introduction"
+  },
+  {
+   "source": "bloom24",
+   "quote": "The net effect was to reduce attrition over the experiment by 2.4%, which against the control-group base of 7.2% was a one-third (33%) reduction in attrition (mean control = 7.20, mean treat = 4.80, t (1610) = 2.02, P = 0.043).",
+   "location": "Nature 630, open-access full text on nature.com, main text, attrition results"
+  },
+  {
+   "source": "bloom24",
+   "quote": "We saw a significant drop in attrition of 3.3 percentage points for the non-managers, which against a control-group base of 8.6% is a 40% reduction (mean control = 8.59, mean treat = 5.33, t (1215) = 2.23, P = 0.026).",
+   "location": "Nature 630, open-access full text on nature.com, main text, attrition results"
+  },
+  {
+   "source": "bloom24",
+   "quote": "We found that there was a 54% reduction in quit rates for female employees (mean control = 9.2, mean treat = 4.2, t (568) = 2.40, P = 0.017).",
+   "location": "Nature 630, open-access full text on nature.com, main text, attrition results"
+  },
+  {
+   "source": "bloom24",
+   "quote": "Figure 3 reports the distribution of performance grades for treatment and control employees for the four half-year periods: July to December 2021, January to June 2022, July to December 2022 and January to June 2023. These four performance reviews span a two-year period from the start of the experimental period. Across all review periods, we found no difference in reviews between the treatment and control groups",
+   "location": "Nature 630, open-access full text on nature.com, main text, Employee performance and promotions"
+  },
+  {
+   "source": "bloom24",
+   "quote": "We found no evidence for a difference in promotions over the next two years overall, or for any major employee subgroup.",
+   "location": "Nature 630, open-access full text on nature.com, abstract"
+  },
+  {
+   "source": "bloom24",
+   "quote": "Second, for the 653 computer engineers, we obtained data on the lines of code uploaded by each engineer each day. For this ‘lines of code submitted’ measure, we found no difference between employees in the control and treatment groups",
+   "location": "Nature 630, open-access full text on nature.com, main text, Employee performance and promotions"
+  },
+  {
+   "source": "bloom24",
+   "quote": "We also found that the 395 managers in the experiment revised their surveyed views about the effect of hybrid working on productivity, from a perceived negative effect (−2.6% on average) before the experiment to a perceived positive one (+1.0%) after the experiment.",
+   "location": "Nature 630, open-access full text on nature.com, abstract"
+  },
+  {
+   "source": "bloom24",
+   "quote": "First, it uses a randomized control trial to examine the causal effect of a hybrid schedule in which employees are allowed to WFH two days per week.",
+   "location": "Nature 630, open-access full text on nature.com, main text, introduction"
   }
  ],
  "bz08": [
@@ -782,13 +892,48 @@
   },
   {
    "source": "gneezy00",
-   "quote": "10 centers analyzed (6 test, 4 control); 20 weeks; NIS 10 fine for 10+ minutes late, introduced week 5, removed week 17 (design section, as extracted)",
-   "location": "Design"
+   "quote": "Table 2, center 1: weeks 1-4 = 7.25; weeks 17-20 = 15.25 (Average Number of Late-Coming Parents, according to Four Periods of the Study)",
+   "location": "J. Legal Studies 29(1), Table 2"
   },
   {
    "source": "gneezy00",
-   "quote": "Table 2, center 1: weeks 1-4 = 7.25; weeks 17-20 = 15.25 (Average Number of Late-Coming Parents, according to Four Periods of the Study)",
-   "location": "J. Legal Studies 29(1), Table 2"
+   "quote": "Our data include observations of 10 day-care centers over a period of 20 weeks. In the first 4 weeks we simply observed the number of parents who arrived late. At the beginning of the fifth week we introduced a fine in six of the 10 day-care centers.",
+   "location": "p. 3, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+  },
+  {
+   "source": "gneezy00",
+   "quote": "No fine was introduced in the four other day-care centers, which served as a control group.",
+   "location": "p. 3, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+  },
+  {
+   "source": "gneezy00",
+   "quote": "The fine was removed at the beginning of the seventeenth week.",
+   "location": "p. 3, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+  },
+  {
+   "source": "gneezy00",
+   "quote": "The announcement specified that the fine would be NIS 10 for a delay of 10 minutes or more.",
+   "location": "pp. 4-5 (sentence continues across the page break, after footnotes 5-7), Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+  },
+  {
+   "source": "gneezy00",
+   "quote": "10 for a delay of 10 minutes or more.",
+   "location": "p. 5 (continuation of the sentence above), Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+  },
+  {
+   "source": "gneezy00",
+   "quote": "The fine was per child",
+   "location": "p. 5, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+  },
+  {
+   "source": "gneezy00",
+   "quote": "In the test group the number of occurrences of delay increased steadily in the first 3–4 weeks after the introduction of the fine. The rate finally settled, at a level that was higher, and almost twice as large as the initial one.",
+   "location": "p. 7, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
+  },
+  {
+   "source": "gneezy00",
+   "quote": "TABLE 2 Average Number of Late-Coming Parents, according to Four Periods of the Study [columns: Center, No. of Children, Weeks 1–4, Weeks 5–8, Weeks 5–16, Weeks 17–20] 1 37 7.25 9.5 12.5 15.25",
+   "location": "p. 8, Table 2, row for center 1, Journal of Legal Studies 29(1), published article (author-hosted PDF, rady.ucsd.edu)"
   }
  ],
  "bz09": [
@@ -799,13 +944,28 @@
   },
   {
    "source": "bertrand10",
-   "quote": "Abstract (paraphrased by fetch tool): fewer example loans, not suggesting a particular use, or a photo of an attractive woman raise demand by about as much as a 25% interest-rate cut",
+   "quote": "demand strongly increases with longer deadlines",
    "location": "Abstract"
   },
   {
    "source": "bertrand10",
-   "quote": "demand strongly increases with longer deadlines",
-   "location": "Abstract"
+   "quote": "Showing fewer example loans, not suggesting a particular use for the loan, or including a photo of an attractive woman increases loan demand by about as much as a 25% reduction in the interest rate.",
+   "location": "Abstract, QJE 125(1) journal abstract (RePEc/EconPapers record of the QJE article, oup:qjecon); full text paywalled, not read"
+  },
+  {
+   "source": "bertrand10",
+   "quote": "We analyze a direct mail field experiment in South Africa implemented by a consumer lender that randomized advertising content, loan price, and loan offer deadlines simultaneously.",
+   "location": "Abstract, QJE 125(1) journal abstract (RePEc/EconPapers record of the QJE article, oup:qjecon); full text paywalled, not read"
+  },
+  {
+   "source": "bertrand10",
+   "quote": "instead, demand strongly increases with longer deadlines.",
+   "location": "Abstract, QJE 125(1) journal abstract (RePEc/EconPapers record of the QJE article, oup:qjecon); full text paywalled, not read"
+  },
+  {
+   "source": "bertrand10",
+   "quote": "The evidence also suggests that advertising content persuades by appealing \"peripherally\" to intuition rather than reason.",
+   "location": "Abstract, QJE 125(1) journal abstract (RePEc/EconPapers record of the QJE article, oup:qjecon); full text paywalled, not read"
   }
  ],
  "bz10": [
@@ -820,11 +980,6 @@
    "location": "Abstract"
   },
   {
-   "source": "scheib10",
-   "quote": "N = 5,036; mean effect D = 0.02 (as extracted from Results)",
-   "location": "Results"
-  },
-  {
    "source": "iyengar00",
    "quote": "60% (145) actually stopped at the booth",
    "location": "p. 997, extensive-choice condition; limited: 40% (104)"
@@ -833,6 +988,31 @@
    "source": "iyengar00",
    "quote": "only 3% (4) of the consumers in the extensive-choice condition did so",
    "location": "p. 997; limited-choice condition about 30% (31)"
+  },
+  {
+   "source": "scheib10",
+   "quote": "In a meta-analysis of 63 conditions from 50 published and unpublished experiments (N = 5,036), we found a mean effect size of virtually zero but considerable variance between studies.",
+   "location": "Abstract, p. 409, Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\")"
+  },
+  {
+   "source": "scheib10",
+   "quote": "50 experiments, with a total of 5,036 participants",
+   "location": "p. 412, Overview of Analyzed Studies, Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\")"
+  },
+  {
+   "source": "scheib10",
+   "quote": "The mean effect size of choice overload across all 63 data points according to equation 1 is D = 0.02 (95% confidence interval [CI95] −0.09 to 0.12).",
+   "location": "p. 413, Results, Mean Effect, Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\") (the PDF text layer renders \"=\" as \"p\")"
+  },
+  {
+   "source": "scheib10",
+   "quote": "The table displayed either a small assortment containing six jams or a large assortment of 24 jams.",
+   "location": "p. 410, Introduction (description of Iyengar & Lepper 2000), Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\")"
+  },
+  {
+   "source": "scheib10",
+   "quote": "the authors found that more consumers approached the tasting table when it displayed 24 jams. Yet, when it came to actual purchase, 30% of all consumers who saw the small assortment of six jams at the tasting display actually bought one of the jams (with the coupon), whereas in the large assortment case, only 3% of the people redeemed the coupon for a jam.",
+   "location": "p. 410, Introduction, Journal of Consumer Research 37(3), published version (UNIGE Archive ouverte copy labelled \"Published version\")"
   }
  ],
  "bz11": [
@@ -847,14 +1027,29 @@
    "location": "Abstract; direct replication n = 1,235"
   },
   {
-   "source": "kristal20",
-   "quote": "Abstract (paraphrased): government agencies adopted the practice; the authors argue the scientific record needs updating",
-   "location": "Abstract"
-  },
-  {
    "source": "shu12",
    "quote": "RETRACTED: Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end",
    "location": "Crossref title; retraction doi:10.1073/pnas.2115397118 dated 2021-09-13"
+  },
+  {
+   "source": "kristal20",
+   "quote": "Since this finding was published, various government agencies have adopted this practice. However, in this project, we failed to replicate this result. Across five conceptual replications ( n = 4,559) and one highly powered, preregistered, direct replication ( n = 1,235) conducted with the authors of the original paper, we observed no effect of signing first on honest reporting.",
+   "location": "Abstract, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
+  },
+  {
+   "source": "kristal20",
+   "quote": "Given the policy applications of this result, it is important to update the scientific record regarding the veracity of these results.",
+   "location": "Abstract, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
+  },
+  {
+   "source": "kristal20",
+   "quote": "Study 6. A sample of 1,235 adults was recruited across four laboratory sites",
+   "location": "Methods, Study 6, PNAS 117(13), published article (PMC7132248, Europe PMC full text)"
+  },
+  {
+   "source": "shu12",
+   "quote": "Retraction for Shu et al., Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end",
+   "location": "Crossref record for doi:10.1073/pnas.2115397118: published-online 2021-09-13 (PNAS retraction notice, PMC8463784). Metadata, not article text."
   }
  ],
  "bz12": [
@@ -866,11 +1061,6 @@
   {
    "source": "card12",
    "quote": "significant increase in the likelihood of looking for a new job",
-   "location": "Abstract"
-  },
-  {
-   "source": "card12",
-   "quote": "Abstract (paraphrased): above-median earners were unaffected; a random subset of UC employees learned about a new website publishing pay",
    "location": "Abstract"
   },
   {
@@ -887,6 +1077,31 @@
    "source": "card12",
    "quote": "Above-median earners are unaffected.",
    "location": "AER abstract"
+  },
+  {
+   "source": "card12",
+   "quote": "A randomly chosen subset of employees of the University of California was informed about a new website listing the pay of University employees.",
+   "location": "Abstract, p. 2981, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
+  },
+  {
+   "source": "card12",
+   "quote": "Likewise, below-median earners report a significant increase in the likelihood of looking for a new job, while above-median earners are unaffected.",
+   "location": "Abstract, p. 2981, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
+  },
+  {
+   "source": "card12",
+   "quote": "Among this group, the information treatment also increases the probability that respondents report being “very likely” to search for a new job by 4.3 percentage points (t = 2.4), which represents a 20 percent increase in this measure over the base rate for the controls.",
+   "location": "p. 2994, discussion of Table 4, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
+  },
+  {
+   "source": "card12",
+   "quote": "Responses to the treatment appear to be more closely related to an individual’s rank in the salary distribution than to his or her relative pay level",
+   "location": "p. 2982, Introduction, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
+  },
+  {
+   "source": "card12",
+   "quote": "When we estimate models that include both rank and levels (columns 3, 6, and 9), rank wins the “horse race” for all three outcomes.",
+   "location": "p. 2997, Table 5 discussion, AER 102(6), published article (author-hosted PDF, eml.berkeley.edu/~saez)"
   }
  ],
  "bz13": [
@@ -924,13 +1139,23 @@
   },
   {
    "source": "bohnet16",
-   "quote": "in which people are evaluated jointly rather than separately",
-   "location": "Abstract; abstract also cites blind auditions for women musicians and greater reliance on group stereotypes in separate evaluation (paraphrased)"
+   "quote": "Evaluators are more likely to base their decisions on individual performance in joint than in separate evaluation and on group stereotypes in separate than in joint evaluation, making joint evaluation the profit-maximizing evaluation procedure.",
+   "location": "Management Science abstract (version of record)"
   },
   {
    "source": "bohnet16",
-   "quote": "Evaluators are more likely to base their decisions on individual performance in joint than in separate evaluation and on group stereotypes in separate than in joint evaluation, making joint evaluation the profit-maximizing evaluation procedure.",
-   "location": "Management Science abstract (version of record)"
+   "quote": "an “evaluation nudge” in which people are evaluated jointly rather than separately regarding their future performance.",
+   "location": "Abstract, Management Science 62(5) abstract (Crossref record of the version of record; identical on the Erasmus University repository page)"
+  },
+  {
+   "source": "bohnet16",
+   "quote": "Blind evaluation procedures have been proven to significantly increase the likelihood that women musicians are chosen for orchestras, and they are employed by a few companies.",
+   "location": "Abstract, Management Science 62(5) abstract (Crossref record of the version of record; identical on the Erasmus University repository page)"
+  },
+  {
+   "source": "bohnet16",
+   "quote": "Our work is inspired by findings in behavioral decision research suggesting that people make more reasoned choices when examining options jointly rather than separately",
+   "location": "Abstract, Management Science 62(5) abstract (Crossref record of the version of record; identical on the Erasmus University repository page)"
   }
  ],
  "bz15": [
@@ -951,13 +1176,38 @@
   },
   {
    "source": "johnson04",
-   "quote": "Cross-sectional 1999 (Gimbel et al.): 10.8 to 16.9 donations per million (as extracted)",
-   "location": "Donation rates"
+   "quote": "We asked 161 respondents whether they would be donors using one of three questions with varying defaults.",
+   "location": "p. 1714, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
   },
   {
    "source": "johnson04",
-   "quote": "161 respondents (as extracted)",
-   "location": "Method"
+   "quote": "The third, neutral condition simply required them to choose with no prior default.",
+   "location": "p. 1714, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+  },
+  {
+   "source": "johnson04",
+   "quote": "The default had a dramatic impact, with revealed donation rates being about twice as high when opting-out as when opting-in. As can be seen in Figure 1, the opt-out condition did not differ significantly from the neutral condition, which required a choice without a default option.",
+   "location": "p. 1714, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+  },
+  {
+   "source": "johnson04",
+   "quote": "In Table 1, we use the results of our web survey neutral condition to describe the stated preference (79% for donation).",
+   "location": "p. 1715, Conclusion, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+  },
+  {
+   "source": "johnson04",
+   "quote": "The result is surprisingly strong: the two distributions have no overlap and nearly 60 percentage points separate the two groups.",
+   "location": "pp. 1714-1715, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
+  },
+  {
+   "source": "johnson04",
+   "quote": "Using similar techniques, but looking only at 1999 for a broader set of countries, including many more from Eastern Europe, Gimbel et al. (24) report an increase from 10.8 to 16.9, a 56.5% increase also plotted in Figure 3.",
+   "location": "p. 1715, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com); Figure 3 legend gives the unit as donors per million"
+  },
+  {
+   "source": "johnson04",
+   "quote": "If preferences concerning organ donation are strong, defaults should have little or no effect.",
+   "location": "p. 1714, Transplantation 78(12), published article (author-hosted PDF, dangoldstein.com)"
   }
  ],
  "bz16": [
@@ -990,11 +1240,6 @@
   },
   {
    "source": "cohn19",
-   "quote": "46% with no money, 61% with US$13.45, and 72% with US$94.15 (BigMoney 'topped out at 72%')",
-   "location": "Main text, BigMoney condition (US, UK, Poland pooled); fetch-tool rendering"
-  },
-  {
-   "source": "cohn19",
    "quote": "We observed this pattern for 38 of our 40 countries",
    "location": "Main text"
   },
@@ -1002,14 +1247,49 @@
    "source": "cohn19",
    "quote": "17,303 wallets ... 355 cities in 40 countries; banks, cultural venues, post offices, hotels, and police stations, courts, or other public offices",
    "location": "Main text, design"
+  },
+  {
+   "source": "cohn19",
+   "quote": "We visited 355 cities in 40 countries and turned in a total of 17,303 wallets. We typically targeted five to eight of the largest cities in a country, with roughly 400 observations per country.",
+   "location": "p. 70, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "Wallets were turned in to one of five types of societal institutions: (i) banks; (ii) theaters, museums, or other cultural establishments; (iii) post offices; (iv) hotels; and (v) police stations, courts of law, or other public offices.",
+   "location": "p. 70, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "we also ran a “BigMoney” condition in three countries (the United States, the United Kingdom, and Poland) that increased the money inside the wallet to US$94.15, or seven times the amount in our original Money condition.",
+   "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "Pooled across the three countries, reporting rates increased from 46% in the NoMoney condition to 61% in the Money condition and topped out at 72% in the BigMoney condition (P < 0.0001 for all pairwise comparisons) (table S9).",
+   "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io) (the sentence runs across a column break)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "and topped out at 72% in the BigMoney condition",
+   "location": "p. 71, continuation of the sentence above, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "Share of wallets reported in the NoMoney (US$0), Money (US$13.45), and BigMoney (US$94.15) conditions.",
+   "location": "p. 71, Fig. 2 legend, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "We observed this pattern for 38 of our 40 countries, and in no country did we find a statistically significant decrease in reporting rates when the wallet contained money. On average, adding money to the wallet increased the likelihood of being reported from 40% in the NoMoney condition to 51% in the Money condition (P < 0.0001).",
+   "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "recipients were, on average, 9.2 percentage points more likely to report a wallet with a key than one without (P = 0.0001 when results are pooled across countries).",
+   "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
   }
  ],
  "civic-wallet-experts": [
-  {
-   "source": "cohn19",
-   "quote": "Economists (n = 279, US): predicted 69% (no money), 69% (US$13.45), and 66% (US$94.15); 49% predicted a decrease, and 29% correctly predicted an increase",
-   "location": "Main text, prediction survey; fetch-tool rendering"
-  },
   {
    "source": "cohn19",
    "quote": "this sample also did not expect reporting rates to increase for wallets with larger amounts of money",
@@ -1017,8 +1297,43 @@
   },
   {
    "source": "cohn19",
-   "quote": "Nonexperts (n = 299, US): predicted reporting would fall ... from 73% (no money) to 65% (modest) to 55% (substantial). 64% predicted a decrease, and 18% correctly predicted an increase",
-   "location": "Main text, prediction survey; fetch-tool rendering"
+   "quote": "We asked a sample of 299 participants to predict reporting rates in the United States for wallets containing US$0, US$13.45, and US$94.15 (corresponding to our NoMoney, Money, and BigMoney conditions).",
+   "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "Respondents predicted that rates of civic honesty would be highest when the wallet contained no money (mean predicted reporting rate M = 73%, SD = 29), lower when the wallet contained a modest amount of money (M = 65%, SD = 24), and lower still when the wallet contained a substantial amount of money (M = 55%, SD = 29).",
+   "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "As the amount of money increased, 64% of respondents incorrectly predicted that reporting rates would decrease and 18% correctly predicted that reporting rates would increase (P < 0.001 by a sign test).",
+   "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "We asked a sample of 279 top-performing academic economists to make the same set of predictions. Like our nonexperts, this sample also did not expect reporting rates to increase for wallets with larger amounts of money.",
+   "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "respondents on average predicted that rates of civic honesty would be higher in the NoMoney and Money conditions (M = 69%, SD = 25 and M = 69%, SD = 21, respectively) than in the BigMoney condition (M = 66%, SD = 23).",
+   "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "However, the degree of miscalibration among economists was less severe than in our nonexpert sample. As the amount of money increased, 49% of economists incorrectly predicted that reporting rates would decrease and 29% correctly predicted that reporting rates would increase (P < 0.001 by a sign test).",
+   "location": "p. 72, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "Average predicted reporting rates for the United States by our expert sample of academic economists (n = 279 individuals).",
+   "location": "p. 72, Fig. 3C legend, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io)"
+  },
+  {
+   "source": "cohn19",
+   "quote": "Pooled across the three countries, reporting rates increased from 46% in the NoMoney condition to 61% in the Money condition",
+   "location": "p. 71, Science 365(6448), published article (author-hosted PDF, davetannenbaum.github.io) (continues: \"and topped out at 72% in the BigMoney condition\")"
   }
  ],
  "truth-telling-gains": [
@@ -1056,21 +1371,26 @@
   },
   {
    "source": "fischbacher13",
-   "quote": "the abstract reports that some participants lied without maximizing their income, and that additional experiments point to a desire to keep a favorable self-image, including honesty and not being greedy",
-   "location": "Abstract (JEEA, via IDEAS); paraphrase"
+   "quote": "We find that about 20% of inexperienced subjects lie to the fullest extent possible while 39% of subjects are fully honest.",
+   "location": "Abstract, JEEA 11(3), version-of-record abstract (OpenAlex record of the OUP-published article; its opening words match the abstract snippet on academic.oup.com). Full text paywalled, not read."
+  },
+  {
+   "source": "fischbacher13",
+   "quote": "In addition, a high share of subjects consists of partial liars; these subjects lie, but do not report the payoff-maximizing draw.",
+   "location": "Abstract, JEEA 11(3), version-of-record abstract (OpenAlex record of the OUP-published article; its opening words match the abstract snippet on academic.oup.com). Full text paywalled, not read."
+  },
+  {
+   "source": "fischbacher13",
+   "quote": "We discuss different motives that explain the observed behavioral pattern.",
+   "location": "Abstract, JEEA 11(3), version-of-record abstract (OpenAlex record of the OUP-published article; its opening words match the abstract snippet on academic.oup.com). Full text paywalled, not read."
+  },
+  {
+   "source": "fischbacher13",
+   "quote": "Participants receive a die which they roll privately.",
+   "location": "Abstract, JEEA 11(3), version-of-record abstract (OpenAlex record of the OUP-published article; its opening words match the abstract snippet on academic.oup.com). Full text paywalled, not read."
   }
  ],
  "rule-violations-honesty": [
-  {
-   "source": "gachter16",
-   "quote": "Mean claim: 3.17 MU in low-PRV pools versus 3.53 MU in high-PRV pools (t = 5.84, P < 0.001). The Justified Dishonesty benchmark is 3.47 MU.",
-   "location": "Results; fetch-tool rendering of author manuscript"
-  },
-  {
-   "source": "gachter16",
-   "quote": "Income maximisers (claiming 5) ranged from 0.3% to 38.3% and were unrelated to PRV",
-   "location": "Results; fetch-tool rendering"
-  },
   {
    "source": "gachter16",
    "quote": "Bending the rules is to report the higher of the two rolls, rather than the first roll as required.",
@@ -1083,18 +1403,43 @@
   },
   {
    "source": "gachter16",
-   "quote": "Fully honest people ... averaged 48.9% across pools, ranging from 4.3% to 87%",
-   "location": "Results; fetch-tool rendering"
+   "quote": "Subjects from low PRV countries claim 3.17 MUs (s.d. 1.67), that is, 0.67 MU more than under Full Honesty. Subjects from high PRV countries claim 3.53 MU (s.d. 1.49) or 1.03 MU more than under Full Honesty.",
+   "location": "Main text, results on Fig. 1, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
   },
   {
    "source": "gachter16",
-   "quote": "2,568 students from 23 countries, all nationals of their country",
-   "location": "Methods; fetch-tool rendering"
+   "quote": "Justified Dishonesty implies an expected claim of 3.47 MU. The average claim in high PRV countries is not significantly different from this benchmark",
+   "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
   },
   {
    "source": "gachter16",
-   "quote": "the experiments ran at least eight years after the PRV measurement ... the earliest year being 2003",
-   "location": "Abstract and Methods; fetch-tool rendering"
+   "quote": "The rate of income maximisers ranges from 0.3% to 38.3% across subject pools (mean 16.2%, s.d. 9.4%; χ 2 (22) = 72.4, P < 0.001).",
+   "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+  },
+  {
+   "source": "gachter16",
+   "quote": "we predict that Income Maximisers is positively correlated with PRV. We find, however, that they are unrelated ( Fig. 2c ). Thus, a society’s PRV does not systematically affect maximal cheating in this experiment.",
+   "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+  },
+  {
+   "source": "gachter16",
+   "quote": "Across subject pools, Fully Honest People ranges from 4.3% to 87% (mean 48.9%, s.d. 21.3%; χ 2 (22) = 42.1, P = 0.006). In societies with high levels of PRV, fewer people are fully honest than in societies with low levels of PRV.",
+   "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+  },
+  {
+   "source": "gachter16",
+   "quote": "We construct PRV for the 159 countries for which data are available for all three variables, the earliest year being 2003. We use the 2003 data to maximise the distance between the measurement of PRV and the point in time the experiments were run (at least 8 years later)",
+   "location": "Main text, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+  },
+  {
+   "source": "gachter16",
+   "quote": "We conducted the experiments at least eight years after the measurement of PRV with 2568 young participants (students) who could not influence PRV.",
+   "location": "Main text (introduction), Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
+  },
+  {
+   "source": "gachter16",
+   "quote": "Participants ( n = 2568 from 23 countries) are asked to roll the die twice in the cup and to report the first roll.",
+   "location": "Extended Data Fig. 1 legend, Nature 531: Europe PMC author manuscript (accepted manuscript of the Nature article, PMC4817241); typeset article paywalled"
   }
  ],
  "tax-letter-norms": [
@@ -1132,23 +1477,48 @@
   },
   {
    "source": "bail18",
-   "quote": "Republicans: intent-to-treat effect of 0.12 points (p = 0.008) ... 0.60 (fully compliant) on a seven-point scale",
-   "location": "Results; fetch-tool rendering of PMC full text"
+   "quote": "Our most cautious estimate is that treated Republicans increased 0.12 points on a seven-point scale, although our model that estimates the effect of treatment upon fully compliant respondents indicates this effect is substantially larger (0.60 points). These estimates correspond to an increase in conservatism between 0.11 and 0.59 standard deviations.",
+   "location": "Results, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
   },
   {
    "source": "bail18",
-   "quote": "Democrats: intent-to-treat effect of -0.02 points (p = 0.45)",
-   "location": "Results; fetch-tool rendering"
+   "quote": "“Respondents Assigned to Treatment” describes the ITT effect for Democrats (ITT = −0.02, t = −0.76, p = 0.45, n = 416) and Republicans (ITT = 0.12, t = 2.68, p = 0.008, n = 316).",
+   "location": "Fig. 3 legend, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
   },
   {
    "source": "bail18",
-   "quote": "1,652 pretreatment respondents (901 Democrats, 751 Republicans), all of whom used Twitter at least three times a week; analyzed 697 Democrats and 542 Republicans",
-   "location": "Methods; fetch-tool rendering"
+   "quote": "Although treated Democrats exhibited slightly more liberal attitudes posttreatment that increase in size with level of compliance, none of these effects were statistically significant.",
+   "location": "Results, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
   },
   {
    "source": "bail18",
-   "quote": "Bot-following lasted 1 month ... from a mid-October 2017 survey",
-   "location": "Methods; fetch-tool rendering"
+   "quote": "We received 1,652 responses to our pretreatment survey (901 Democrats and 751 Republicans).",
+   "location": "Research Design, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+  },
+  {
+   "source": "bail18",
+   "quote": "for experiments with Democrats ( n = 697) and Republicans ( n = 542).",
+   "location": "Fig. 3 legend, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+  },
+  {
+   "source": "bail18",
+   "quote": "We hired a professional survey firm to recruit self-identified Republicans and Democrats who visit Twitter at least three times each week to complete a 10-min survey in mid-October 2017 and 1.5 mo later.",
+   "location": "Research Design, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+  },
+  {
+   "source": "bail18",
+   "quote": "respondents in the treatment condition were offered $11 to follow a Twitter bot, or automated Twitter account, that they were told would retweet 24 messages each day for 1 mo.",
+   "location": "Research Design, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+  },
+  {
+   "source": "bail18",
+   "quote": "Perhaps the most important limitation of our study is that we were unable to identify the precise mechanism that created the backfire effect among Republican respondents reported above.",
+   "location": "Discussion, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
+  },
+  {
+   "source": "bail18",
+   "quote": "increases in conservatism among Republicans may have resulted from increased exposure to women or racial and ethnic minorities whose messages were retweeted by our liberal bot.",
+   "location": "Discussion, PNAS 115(37), published article (PMC6140520, Europe PMC full text)"
   }
  ],
  "facebook-deactivation": [
@@ -1201,23 +1571,38 @@
   },
   {
    "source": "pennycook21",
-   "quote": "5,379 Twitter users ... rate the accuracy of a single non-political headline",
-   "location": "Study 7; fetch-tool rendering"
-  },
-  {
-   "source": "pennycook21",
-   "quote": "Average quality of shared news rose 4.8%, and total quality rose 9.0%, for user-days when users would tweet. Including all user-days, the increases were 2.1% and 4.0%.",
-   "location": "Study 7 results; fetch-tool rendering"
-  },
-  {
-   "source": "pennycook21",
-   "quote": "Study 3: Discernment was 2.0 times larger in the treatment group. Study 4: 2.4 times larger",
-   "location": "Survey experiments; fetch-tool rendering"
-  },
-  {
-   "source": "pennycook21",
    "quote": "The first stage of the replication test (n = 701) was unsuccessful (p =.67) ... we found a small but significant interaction",
    "location": "Roozenbeek, Freeman & van der Linden (2021), abstract; cited in flags, not a game source"
+  },
+  {
+   "source": "pennycook21",
+   "quote": "First, we find that the veracity of headlines has little effect on sharing intentions, despite having a large effect on judgments of accuracy.",
+   "location": "Abstract, Nature 592 (nature.com article page)"
+  },
+  {
+   "source": "pennycook21",
+   "quote": "we carried out four survey experiments and a field experiment on Twitter; the results show that subtly shifting attention to accuracy increases the quality of news that people subsequently share.",
+   "location": "Abstract, Nature 592 (nature.com article page)"
+  },
+  {
+   "source": "pennycook21",
+   "quote": "In Study 7, we conducted an experiment on the Twitter platform involving n = 5,379 users who had recently shared links to websites that regularly produce misleading and hyperpartisan content. We randomized the date on which users were sent an unsolicited message asking them to rate the accuracy of a single non-political headline. We then compared the quality of the news sites shared in the 24 h after receiving the message to the sites shared by participants who had not yet received the message.",
+   "location": "Fig. 4 legend, Nature 592, published figure legend (nature.com figure page); article body paywalled, not read"
+  },
+  {
+   "source": "pennycook21",
+   "quote": "To test the robustness of our results, we conducted 192 analyses that differed in their dependent variable, inclusion criteria and model specifications. Shown here is the distribution of P values resulting from each of these analyses. More than 80% of approaches yield P < 0.05.",
+   "location": "Fig. 4b legend, Nature 592, published figure legend (nature.com figure page); article body paywalled, not read"
+  },
+  {
+   "source": "pennycook21",
+   "quote": "Participants in study 3 ( a ; n = 727 American individuals from MTurk), study 4 ( b ; n = 780 American individuals from MTurk) and study 5 ( c ; n = 1,268 American individuals from Lucid, quota-matched to the national distribution on age, gender, ethnicity and geographical region) indicated how likely they would be to consider sharing a series of actual headlines from social media. Participants in the ‘treatment’ condition rated the accuracy of a single non-political headline at the outset of the study",
+   "location": "Fig. 2 legend (title: \"Inducing survey respondents to think about accuracy increases the veracity of headlines they are willing to share.\"), Nature 592, published figure legend (nature.com figure page); article body paywalled, not read"
+  },
+  {
+   "source": "pennycook21",
+   "quote": "The first stage of the replication test (n = 701) was unsuccessful (p = .67). After collecting a second round of data (additional n = 882, pooled N = 1,583), we found a small but significant interaction between treatment condition and truth discernment (uncorrected p = .017; treatment: d = 0.14, control: d = 0.10).",
+   "location": "Roozenbeek, Freeman & van der Linden (2021), Psychological Science 32(7), abstract (PMC8641132), titled \"A Preregistered Direct Replication of Pennycook et al. (2020)\". Supports follow[2]; cited in the source flags, not a game source."
   }
  ],
  "false-news-spread": [
@@ -1282,18 +1667,48 @@
  "misperceived-norms-action": [
   {
    "source": "bursztyn20",
-   "quote": "Applied for an outside-the-home job: rose from 5.8% to 16.2% (p = 0.001). Interviewed for such a job: rose from 1.1% to 5.8% (p = 0.006).",
-   "location": "3-5 month follow-up; fetch-tool rendering"
-  },
-  {
-   "source": "bursztyn20",
-   "quote": "Current outside-the-home employment rose from 7.4% to 9.4%, which is not significant (p = 0.235)",
-   "location": "Follow-up; fetch-tool rendering"
-  },
-  {
-   "source": "bursztyn20",
    "quote": "In the control condition, 23.5 percent of participants prefer to sign up their wives ... 32.0%",
    "location": "Results"
+  },
+  {
+   "source": "bursztyn20",
+   "quote": "The percentage of wives who applied for a job outside the home during the time frame of interest goes up from 5.8 percent to 16.2 percent, a 180 percent increase (the p-value of a t-test of equality is 0.001). Regarding interviews for this type of job, the share increases from 1.1 percent to 5.8 percent ( p-value = 0.006). Rates of employment outside the home go up from 7.4 percent to 9.4 percent ( p-value = 0.235).",
+   "location": "p. 3012, Main Results (2): Longer-Term Outcomes, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+  },
+  {
+   "source": "bursztyn20",
+   "quote": "Regarding interviews for this type of job, the share increases from 1.1 percent to 5.8 percent",
+   "location": "p. 3012, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+  },
+  {
+   "source": "bursztyn20",
+   "quote": "Rates of employment outside the home go up from 7.4 percent to 9.4 percent",
+   "location": "p. 3012, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+  },
+  {
+   "source": "bursztyn20",
+   "quote": "We now evaluate the longer-term effects of the information intervention (three to five months later).",
+   "location": "p. 3012, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+  },
+  {
+   "source": "bursztyn20",
+   "quote": "In the control condition, 23.5 percent of participants prefer to sign up their wives for the job service as opposed to taking the gift card payment.",
+   "location": "p. 3010, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+  },
+  {
+   "source": "bursztyn20",
+   "quote": "to the questions on support for WWOH, the sign up rate goes up to 32.0 percent, a 36.4 percent increase (the p-value of a t-test of equality is 0.017).",
+   "location": "p. 3011, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+  },
+  {
+   "source": "bursztyn20",
+   "quote": "The average (median) guess is that 63 percent (67 percent) of other session participants agree with the pro-WWOH statement. The average level of agreement across all sessions is 87 percent",
+   "location": "p. 3009, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
+  },
+  {
+   "source": "bursztyn20",
+   "quote": "recruited from different neighborhoods in Riyadh",
+   "location": "p. 2998, Introduction, AER 110(10), published article (author-hosted PDF, home.uchicago.edu/bursztyn)"
   }
  ],
  "meta-perception-causal": [
@@ -1324,8 +1739,33 @@
   },
   {
    "source": "lees20",
-   "quote": "Exp. 6 (N = 1,122): truth intervention b = -4.08, P = 0.027; average GMP inaccuracy 22 points (SD 22) on a 100-point scale; no credible persistence at an exploratory one-week follow-up",
-   "location": "Experiment 6; fetch-tool rendering of DASH manuscript"
+   "quote": "Across seven experiments and one survey ( n = 4,282), people consistently overestimated out-group negativity towards the collective behaviour of their in-group. This negativity bias in group meta-perception was present across multiple competitive (but not cooperative) intergroup contexts",
+   "location": "Abstract, Nature Human Behaviour 4(3) (nature.com article page, version of record)"
+  },
+  {
+   "source": "lees20",
+   "quote": "Importantly, in the context of US politics, greater inaccuracy was associated with increased belief that the out-group is motivated by purposeful obstructionism. However, an intervention that informed participants of the inaccuracy of their beliefs reduced negative out-group attributions, and was more effective for those whose group meta-perceptions were more inaccurate.",
+   "location": "Abstract, Nature Human Behaviour 4(3) (nature.com, version of record)"
+  },
+  {
+   "source": "lees20",
+   "quote": "Sample size, n = 1,122 (collected via Mechanical Turk). By condition: control, n = 396; hypocrisy intervention, n = 368; truth intervention, n = 358.",
+   "location": "Fig. 4 legend (\"Effect of condition on obstructionism, by accuracy, in Experiment 6\"), Nature Human Behaviour version of record (nature.com figure page)"
+  },
+  {
+   "source": "lees20",
+   "quote": "Here inaccuracy is plotted at 1 s.d. above and below the mean inaccuracy ( M = 22, s.d. = 22).",
+   "location": "Fig. 4 legend, version of record (nature.com figure page)"
+  },
+  {
+   "source": "lees20",
+   "quote": "an s.d. value of +1 equals an inaccuracy of 44, meaning that the participant on average overestimated out-group negativity by 44 points (on a 100-point scale).",
+   "location": "Fig. 4 legend, version of record (nature.com figure page)"
+  },
+  {
+   "source": "lees20",
+   "quote": "As an exploratory measure, we followed up with participants a week after they completed Experiment 6 to see if the effect of the intervention persisted over time. We had a 73% response rate, but found no credible evidence for a continued effect of the intervention on a rating of general out-group obstructionism",
+   "location": "Experiment 6, Harvard DASH author manuscript. CAUTION: DASH lists the \"published version\" as the PsyArXiv record doi:10.31234/osf.io/6qayb, so this may be the preprint rather than the accepted manuscript; not confirmed against the typeset article."
   }
  ],
  "forecast-teams-rank": [
@@ -1336,28 +1776,53 @@
   },
   {
    "source": "mellers14",
-   "quote": "Team forecasters beat crowd-belief forecasters, t(1036) = 5.52, p < .001; crowd-belief beat independents, t(1120) = 5.92, p < .001",
-   "location": "Results (audit/new_sources.json)"
-  },
-  {
-   "source": "mellers14",
    "quote": "Superforecasters outperformed all other groups by a wide margin",
    "location": "Results"
   },
   {
    "source": "mellers14",
-   "quote": "top 2% from Year 1 ... 60 forecasters (5 from each condition), placed in five superforecaster teams of 12",
-   "location": "Method; fetch-tool rendering"
-  },
-  {
-   "source": "mellers14",
-   "quote": "Year 1 began with 2,246 participants ... 199 geopolitical outcomes ... 85 (Year 1) and 114 (Year 2) closed",
-   "location": "Method; fetch-tool rendering"
-  },
-  {
-   "source": "mellers14",
    "quote": "0 is the best score, and 2 is the worst score",
    "location": "Method"
+  },
+  {
+   "source": "mellers14",
+   "quote": "Figure 1 shows that in Year 1, team forecasters were more accurate than crowd-belief forecasters, t(1036) = 5.52, p < .001, and crowd-belief forecasters were more accurate than independent forecasters, t(1120) = 5.92, p < .001.",
+   "location": "pp. 1109-1110, Results, Teaming, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "team forecasters were more accurate than crowd-belief",
+   "location": "p. 1109, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "A 2-year tournament (September 2011–April 2012 for Year 1 and June 2012–April 2013 for Year 2) was conducted. Participants from around the world submitted probability estimates for 199 geopolitical outcomes",
+   "location": "p. 1108, Method, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "Year 1 began with 2,246 participants (1,593 survey respondents and 653 prediction-market traders).",
+   "location": "p. 1108, Participants, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "Eighty-five and 114 questions closed and were included in the Brier scores in Years 1 and 2, respectively",
+   "location": "p. 1109, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "We examined tracking by placing the 60 top performers of Year 1 (5 from each condition) in five teams of 12 members each (superforecaster teams).",
+   "location": "p. 1108, Design, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "The best performers from Year 1 (i.e., the top 2%) were placed together in elite teams in Year 2. These superforecasters outperformed all other groups by a wide margin.",
+   "location": "p. 1111, Tracking, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "This score measures individual accuracy; 0 is the best score, and 2 is the worst score.",
+   "location": "p. 1108, Questions and measures, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
   }
  ],
  "forecast-training": [
@@ -1378,8 +1843,28 @@
   },
   {
    "source": "mellers14",
+   "quote": "Probability training was more effective than scenario training, t(1053) = 2.23, p = .026, and scenario training was more effective than no training, t(1056) = 3.25, p < .001.",
+   "location": "p. 1109, Results, Training, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "Scenario and probability training, administered at the start of the forecasting year, took approximately 45 min",
+   "location": "p. 1108, Design, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "All three manipulations significantly reduced forecasting errors.",
+   "location": "p. 1113, Discussion, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
    "quote": "Year 1 began with 2,246 participants",
-   "location": "Method; fetch-tool rendering"
+   "location": "p. 1108, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
+  },
+  {
+   "source": "mellers14",
+   "quote": "A 2-year tournament",
+   "location": "p. 1108, Psychological Science 25(5), published article (eScholarship copy of the SAGE typeset PDF)"
   }
  ],
  "overconfidence-hard-task": [
@@ -1400,8 +1885,33 @@
   },
   {
    "source": "moore08",
-   "quote": "82 Carnegie Mellon students; 18 rounds of 10-item trivia quizzes; elicited distributions over own and others' scores; incentive-compatible payment (~$20)",
-   "location": "Method (audit/new_sources.json)"
+   "quote": "On difficult tasks, people overestimate their actual performances but also mistakenly believe that they are worse than others; on easy tasks, people underestimate their actual performances but mistakenly believe they are better than others.",
+   "location": "Abstract, p. 502, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+  },
+  {
+   "source": "moore08",
+   "quote": "(a) overestimation of one’s actual performance, (b) overplacement of one’s performance relative to others, and (c) excessive precision in one’s beliefs.",
+   "location": "Abstract, p. 502, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+  },
+  {
+   "source": "moore08",
+   "quote": "Participants were 82 students from Carnegie Mellon University, Pittsburgh, PA.",
+   "location": "p. 508, Illustrative Study, Method, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+  },
+  {
+   "source": "moore08",
+   "quote": "In each of 18 rounds, each participant took a 10-item trivia quiz.",
+   "location": "p. 508, Procedure, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+  },
+  {
+   "source": "moore08",
+   "quote": "This quadratic scoring rule maximizes participants’ expected payoffs if they accurately report their best estimate of the truth",
+   "location": "p. 508, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
+  },
+  {
+   "source": "moore08",
+   "quote": "Participants were paid (an average of $20.23 after about 90 min in the laboratory), debriefed, thanked, and dismissed.",
+   "location": "p. 509, Psychological Review 115(2), published article (author-hosted PDF, Healy website)"
   }
  ],
  "dimant-masks-forecast": [
@@ -1437,8 +1947,58 @@
   },
   {
    "source": "masks22",
-   "quote": "individual harm, group harm, ingroup loyalty, and purity ... threat of the virus (mortality statistics), scientific evidence ... economic impact",
-   "location": "Published version of record, nudge descriptions (paraphrase-level fragments)"
+   "quote": "We evaluated whether academics, behavioral science practitioners, and laypeople ( N = 1034) were able to forecast the effectiveness of seven different messages compared to a baseline message for Republicans and Democrats separately.",
+   "location": "Abstract, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "the goal of the intervention study was to evaluate the effectiveness of 7 nudge interventions relative to a baseline in a representative U.S. sample of Republicans and Democrats ( N = 4931)",
+   "location": "Methods, Nudges to wear a mask, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "there was no evidence that 7 nudge interventions were effective at promoting mask-wearing among Democrats or Republicans in the U.S. relative to a baseline condition",
+   "location": "Methods, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "ranged from moral-frame interventions (including individual harm, group harm, loyalty, and purity) to framing interventions that tapped into other psychological mechanisms (including the economic impact of not wearing masks, the threat of COVID-19 indicated by mortality statistics, and scientific evidence in favor of masks).",
+   "location": "Methods, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "forecasters overestimated the effect size in the pooled sample ( z − score = 4.40, p < 0.001, H4a). Forecasters also overestimated the nudge effects for Democrats ( z − score = 4.84, p < 0.001, H4b)",
+   "location": "Results, Hypothesis 4, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "Academics and practitioners made more accurate predictions compared to laypeople.",
+   "location": "Abstract, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "This representative laypeople sample ( n = 611) consisted of 294 Republicans and 317 Democrats",
+   "location": "Methods, Participants, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "We added additional laypeople to the sample from our professional networks ( n = 103).",
+   "location": "Methods, Participants, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "Data for academics ( n = 199) and practitioners ( n = 121) was collected through academic mailing lists",
+   "location": "Methods, Participants, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "In sum, we were able to collect data from a total of 1034 participants.",
+   "location": "Methods, Participants, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
+  },
+  {
+   "source": "masks22",
+   "quote": "the correlation between aggregate forecasted and observed results is negative and statistically significant for Democrat predictions (r(28) = −0.63, t(26) = −4.12, p = 0.0003)",
+   "location": "Results, Scientific Reports 12, 7575, published open-access article (nature.com HTML)"
   }
  ],
  "dimant-requiem-forecast": [
@@ -1802,11 +2362,6 @@
   },
   {
    "source": "opioid26",
-   "quote": "Abstract states the cards also lowered cost per pill returned and cost per participant who returned pills; pre-registered field experiment with U.S. Veterans using timely reminders, implementation prompts, and loss framing",
-   "location": "Published abstract (Europe PMC record PMID 41834481; read in full, reported here as paraphrase because the fetch tool limited verbatim length)"
-  },
-  {
-   "source": "opioid26",
    "quote": "The sample for our project consisted of 512 Veterans visiting the VAMC for outpatient surgeries from June 2019 to January 2022.",
    "location": "Health Economics (2026), Data section (published open-access PDF, Warwick repository)"
   },
@@ -1819,6 +2374,31 @@
    "source": "opioid26",
    "quote": "the total program cost per pill returned is $12.57 in the treatment group, and $15.66 in the control group",
    "location": "Health Economics (2026), Discussion"
+  },
+  {
+   "source": "opioid26",
+   "quote": "We report results from a pre-registered field experiment testing whether behaviorally informed reminder cards increase participation in a financial incentive program for returning unused opioid pills among U.S. Veterans. The cards incorporate principles from behavioral economics, including timely reminders, implementation intention prompts, and loss framing.",
+   "location": "Abstract, p. 1023, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+  },
+  {
+   "source": "opioid26",
+   "quote": "Relative to a cash incentive alone, the reminder cards increase both the likelihood that patients return unused pills (the extensive margin) and the number of pills returned (the intensive margin). The intervention also improves cost-effectiveness, reducing both the cost per pill returned and the cost per participant who returns pills.",
+   "location": "Abstract, p. 1023, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+  },
+  {
+   "source": "opioid26",
+   "quote": "Treatment patients received this standard information plus two reminder cards designed to increase the return of unused pills.",
+   "location": "p. 1025, Design, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+  },
+  {
+   "source": "opioid26",
+   "quote": "Panel A of Figure 2 shows that the cards increase the probability that patients return unused opioid pills by 6.88% points over an unadjusted control group mean of 24.8% (p = 0.007, one-sided; p = 0.014, two-sided).",
+   "location": "p. 1027, 3 Study Results, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
+  },
+  {
+   "source": "opioid26",
+   "quote": "the total program cost per pill returned is $12.57 in the treatment group, and $15.66 in the control group.",
+   "location": "p. 1029, Health Economics 35(7), published open-access article (PDF, Wiley/Warwick repository)"
   }
  ],
  "dimant-hate-choice": [
@@ -1993,10 +2573,6 @@
    "location": "Full text, Wharton author PDF, p. 115"
   },
   {
-   "quote": "Final samples 361, 206, 354, 410, 1,036 (paraphrase)",
-   "location": "Full text, Wharton author PDF, p. 115"
-  },
-  {
    "quote": "the human forecasters produced 15-29% more error than the model in the MBA student forecasting task",
    "location": "Full text, Wharton author PDF, p. 118"
   },
@@ -2021,15 +2597,51 @@
    "source": "diet15",
    "quote": "15-29% more error than the model in the MBA student forecasting task of Studies 1, 2, and 4",
    "location": "JEP:General 144(1), p. 119"
+  },
+  {
+   "source": "diet15",
+   "quote": "We test this in five studies.",
+   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 115"
+  },
+  {
+   "source": "diet15",
+   "quote": "We conducted Studies 1, 2, and 4 in the Wharton School’s Behavioral Lab. Participants received a $10 show-up fee for an hour-long session of experiments, of which ours was a 20-min component, and they could earn up to an additional $10 for accurate forecasting performance.",
+   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 115, Method, Participants"
+  },
+  {
+   "source": "diet15",
+   "quote": "leaving us with final samples of 361, 206, and 354.",
+   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), pp. 115-116 (sentence broken by Table 1)"
+  },
+  {
+   "source": "diet15",
+   "quote": "We conducted Studies 3a and 3b using participants from the Amazon.com Mechanical Turk (MTurk) Web site.",
+   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 116"
+  },
+  {
+   "source": "diet15",
+   "quote": "This left us with final samples of 410 in Study 3a and 1,036 in Study 3b.",
+   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 116"
+  },
+  {
+   "source": "diet15",
+   "quote": "all participants learned that they would make 10 “official” incentivized estimates, earning an extra $1 each time the forecast they used was within 5 percentiles of an MBA student’s realized percentile.",
+   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 117, Study 1 procedure"
+  },
+  {
+   "source": "diet15",
+   "quote": "In terms of average absolute error, the human forecasters produced [...] 15–29% more error than the model in the MBA student forecasting task of Studies 1, 2, and 4 and 90–97% more error than the model in the airline passenger forecasting task of Studies 3a and 3b (see Table 3).",
+   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), pp. 118-119 (sentence broken by footnote and Table 3)"
+  },
+  {
+   "source": "diet15",
+   "quote": "Figure 3. Studies 1–4: Participants who saw the statistical model’s results were less likely to choose it. [Panel '% Choosing Statistical Model to Forecast MBA Students’ Performance', Study 1 bar labels: Control 65%; Saw Results of Human's Forecasts 63%; Saw Results of Model's Forecasts 26%; Saw Results of Model's and Human's Forecasts 23%]",
+   "location": "JEP: General 144(1), published version (APA-stamped PDF hosted on Wharton faculty site), p. 120, Figure 3 (legend verbatim; bar labels as printed in the figure, read from the rendered page)"
   }
  ],
  "ai10": [
   {
    "quote": "results from six experiments show that lay people adhere more to advice",
-   "location": "Abstract, ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html"
-  },
-  {
-   "quote": "numeric estimates about a visual stimulus; forecasts about the popularity of songs and romantic attraction (paraphrase)",
    "location": "Abstract, ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html"
   },
   {
@@ -2039,19 +2651,41 @@
   {
    "quote": "waned when: people chose between an algorithm's estimate and their own",
    "location": "Abstract, ideas.repec.org/a/eee/jobhdp/v151y2019icp90-103.html"
+  },
+  {
+   "source": "logg19",
+   "quote": "results from six experiments show that lay people adhere more to advice when they think it comes from an algorithm than from a person.",
+   "location": "OBHDP 151, p. 90, abstract (published version, journal PDF)"
+  },
+  {
+   "source": "logg19",
+   "quote": "People showed this effect, what we call algorithm appreciation, when making numeric estimates about a visual stimulus (Experiment 1A) and forecasts about the popularity of songs and romantic attraction (Experiments 1B and 1C).",
+   "location": "OBHDP 151, p. 90, abstract"
+  },
+  {
+   "source": "logg19",
+   "quote": "However, algorithm appreciation waned when: people chose between an algorithm’s estimate and their own (versus an external advisor’s; Experiment 3) and they had expertise in forecasting (Experiment 4). Paradoxically, experienced professionals, who make forecasts on a regular basis, relied less on algorithmic advice than lay people did, which hurt their accuracy.",
+   "location": "OBHDP 151, p. 90, abstract"
+  },
+  {
+   "source": "logg19",
+   "quote": "Participants estimated the weight of a person in a photograph (see Fig. A1 in the Appendix) at two points in time: before and after receiving advice, which either came from a person or an algorithm.",
+   "location": "OBHDP 151, p. 93, Section 2.2 Method: Experiment 1A"
+  },
+  {
+   "source": "logg19",
+   "quote": "WOA of 0% occurs when a participant ignores advice and WOA of 100% occurs when a participant abandons his or her prior judgment to match the advice.",
+   "location": "OBHDP 151, p. 92, Section 1"
+  },
+  {
+   "source": "logg19",
+   "quote": "Participants showed an appreciation of algorithms, relying more on the same advice when they thought it came from an algorithm (M = 0.45, SD = 0.37), than when they thought it came from other people (M = 0.30, SD = 0.35), F (1, 200) = 8.86, p = .003, d = 0.42; see Fig. 1.",
+   "location": "OBHDP 151, p. 93, Section 2.2.1 Results (Experiment 1A)"
   }
  ],
  "ai11": [
   {
    "quote": "algorithms are trusted and relied on less for tasks that seem subjective",
-   "location": "JMR abstract, Crossref api.crossref.org/works/10.1177/0022243719851788"
-  },
-  {
-   "quote": "Four online lab studies (over 1,400 participants) and two online field studies (over 56,000) (paraphrase)",
-   "location": "JMR abstract, Crossref api.crossref.org/works/10.1177/0022243719851788"
-  },
-  {
-   "quote": "increasing perceived task objectivity increases reliance; making algorithms seem more humanlike in affective ability increases use for subjective tasks (paraphrase)",
    "location": "JMR abstract, Crossref api.crossref.org/works/10.1177/0022243719851788"
   },
   {
@@ -2068,19 +2702,21 @@
    "source": "cast19",
    "quote": "increasing a task's perceived objectivity increases trust in and use of algorithms for that task",
    "location": "JMR abstract"
+  },
+  {
+   "source": "cast19",
+   "quote": "However, they show that perceived task objectivity is malleable and that increasing a task’s perceived objectivity increases trust in and use of algorithms for that task.",
+   "location": "JMR abstract"
+  },
+  {
+   "source": "cast19",
+   "quote": "Increasing algorithms’ perceived affective human-likeness is therefore effective at increasing the use of algorithms for subjective tasks.",
+   "location": "JMR abstract"
   }
  ],
  "ai12": [
   {
    "quote": "Consumers are reluctant to utilize healthcare provided by AI in real and hypothetical choices",
-   "location": "JCR abstract, Crossref api.crossref.org/works/10.1093/jcr/ucz013"
-  },
-  {
-   "quote": "less likely to use it, will pay less for it, less sensitive to differences in provider quality (paraphrase)",
-   "location": "JCR abstract, Crossref api.crossref.org/works/10.1093/jcr/ucz013"
-  },
-  {
-   "quote": "eliminated when AI care is framed as personalized, provided to others, or supports rather than replaces a human provider (paraphrase)",
    "location": "JCR abstract, Crossref api.crossref.org/works/10.1093/jcr/ucz013"
   },
   {
@@ -2096,6 +2732,31 @@
   {
    "source": "long19",
    "quote": "is eliminated when AI provides care (a) that is framed as personalized (study 7)",
+   "location": "JCR abstract"
+  },
+  {
+   "source": "long19",
+   "quote": "Consumers are reluctant to utilize healthcare provided by AI in real and hypothetical choices, separate and joint evaluations.",
+   "location": "JCR 46(4) abstract (version of record, Crossref record)"
+  },
+  {
+   "source": "long19",
+   "quote": "Consumers are less likely to utilize healthcare (study 1), exhibit lower reservation prices for healthcare (study 2), are less sensitive to differences in provider performance (studies 3A–3C), and derive negative utility if a provider is automated rather than human (study 4).",
+   "location": "JCR abstract"
+  },
+  {
+   "source": "long19",
+   "quote": "Uniqueness neglect, a concern that AI providers are less able than human providers to account for consumers’ unique characteristics and circumstances, drives consumer resistance to medical AI.",
+   "location": "JCR abstract"
+  },
+  {
+   "source": "long19",
+   "quote": "Indeed, resistance to medical AI is stronger for consumers who perceive themselves to be more unique (study 5).",
+   "location": "JCR abstract"
+  },
+  {
+   "source": "long19",
+   "quote": "is eliminated when AI provides care (a) that is framed as personalized (study 7), (b) to consumers other than the self (study 8), or (c) that only supports, rather than replaces, a decision made by a human healthcare provider (study 9).",
    "location": "JCR abstract"
   }
  ],
@@ -2159,14 +2820,6 @@
    "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Exp. 1 Method"
   },
   {
-   "quote": "Over an 80-day span; 1,058 instances of potential towel reuse (paraphrase)",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Exp. 1 Method"
-  },
-  {
-   "quote": "descriptive norm 44.1% vs environmental protection 35.1% (paraphrase)",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Exp. 1 Results"
-  },
-  {
    "quote": "room attendants simply recorded whether guests reused at least one towel",
    "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118359.pdf), Results"
   },
@@ -2174,6 +2827,26 @@
    "source": "hotel08",
    "quote": "a significantly higher towel reuse rate (44.1%) than the environmental protection condition (35.1%",
    "location": "JCR 35(3), Experiment 1 Results (published version, Carlson School author copy; read via fetch tool)"
+  },
+  {
+   "source": "hotel08",
+   "quote": "Over an 80-day span, we collected data on 1,058 instances of potential towel reuse in 190 rooms in a midsized, midpriced hotel in the Southwest that was part of a national hotel chain.",
+   "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 473, Experiment 1, Method, Participants"
+  },
+  {
+   "source": "hotel08",
+   "quote": "we analyzed only the towel reuse data from guests’ first eligible day of participation so that no guest would participate in the study more than once. The dependent variable was dichotomous; room attendants simply recorded whether guests reused at least one towel.",
+   "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 474, Experiment 1, Results"
+  },
+  {
+   "source": "hotel08",
+   "quote": "a chi-square test revealed that the descriptive norm condition yielded a significantly higher towel reuse rate (44.1%) than the environmental protection condition (35.1%; χ2 (1, N = 433) = 3.72, p = .05, φ = .09; see fig. 2).",
+   "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 474, Experiment 1, Results (the PDF's font renders '=' as 'p')"
+  },
+  {
+   "source": "hotel08",
+   "quote": "Over a 53-day span, we collected data on 1,595 instances of potential towel reuse at the same hotel used in experiment 1.",
+   "location": "JCR 35(3), published version (author-hosted PDF, Carlson School), p. 476, Experiment 2, Method"
   }
  ],
  "biz04": [
@@ -2204,14 +2877,6 @@
    "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results"
   },
   {
-   "quote": "Below average, descriptive only: 10.38 -> 11.27 short term; 10.15 -> 11.13 longer term (paraphrase of table)",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results"
-  },
-  {
-   "quote": "Above average, descriptive only: -1.22 short term; -1.03 longer term, not significant (paraphrase)",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results"
-  },
-  {
    "quote": "3 weeks after the distribution of the second feedback message",
    "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results, Procedure"
   },
@@ -2224,6 +2889,41 @@
    "source": "energy07",
    "quote": "the combined injunctive-plus-descriptive message produced no change from baseline for low-consuming households (longer-term M = 10.14, SE = 0.37 vs. baseline M = 10.04, SE = 0.35; n = 70)",
    "location": "Psychological Science 18(5), Results"
+  },
+  {
+   "source": "energy07",
+   "quote": "Three households called to withdraw from the study following the initial normative-feedback distribution, resulting in a final sample of 287.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Results"
+  },
+  {
+   "source": "energy07",
+   "quote": "One week after that, a second doorhanger was distributed [...] We took a final meter reading 3 weeks after the distribution of the second feedback message. Short-term change in electricity usage was calculated by subtracting the meter reading taken the day the first message was distributed from the reading taken the day the second message was distributed.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Procedure"
+  },
+  {
+   "source": "energy07",
+   "quote": "For households that consumed more than the average during the baseline period, the descriptive-norm-only feedback produced a significant decrease in energy consumption relative to the baseline (M = 20.25, SE = 1.03 vs. baseline M = 21.47, SE = 0.89; n = 64), t(63) = 2.17, prep = .93, d = 0.55. Figure 1a shows this significant change as a reduction of 1.22 kWh in daily energy consumption.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Results, Short-Term Change"
+  },
+  {
+   "source": "energy07",
+   "quote": "for households that were below the mean on baseline energy consumption, the descriptive-norm-only message produced an increase in energy consumption from baseline (M = 11.27, SE = 0.46 vs. baseline M = 10.38, SE = 0.33; n = 79)",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Results, Short-Term Change"
+  },
+  {
+   "source": "energy07",
+   "quote": "For those households that were high in energy consumption at baseline, the descriptive-norm-only message continued to produce the (constructive) decrease in energy consumption, although the difference was not conventionally significant (baseline M = 22.32, SE = 1.05 vs. longer-term M = 21.29, SE = 0.92; n = 52), t(51) = 1.45, n.s.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
+  },
+  {
+   "source": "energy07",
+   "quote": "For those households initially low in energy consumption, the descriptive-norm-only condition produced a significant increase in electricity usage (longer-term M = 11.13, SE = 0.44 vs. baseline M = 10.15, SE = 0.34; n = 68), t(67) = 2.42, prep = .95, d = 0.59.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
+  },
+  {
+   "source": "energy07",
+   "quote": "However, the combined injunctive-plus-descriptive message produced no change from baseline for low-consuming households (longer-term M = 10.14, SE = 0.37 vs. baseline M = 10.04, SE = 0.35; n = 70), t(69) = 0.64, n.s.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
   }
  ],
  "biz06": [
@@ -2236,14 +2936,6 @@
    "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results, Intervention"
   },
   {
-   "quote": "Below average, descriptive+injunctive: +0.24 short term, +0.10 longer term, not significant (paraphrase)",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results"
-  },
-  {
-   "quote": "Above average, descriptive+injunctive: -1.72 short term, -1.23 longer term (paraphrase)",
-   "location": "Full text, Carlson School author PDF (carlsonschool-d8.prd.umn.edu .../118375.pdf), Results"
-  },
-  {
    "source": "energy07",
    "quote": "the descriptive-norm-only message produced an increase in energy consumption from baseline (M = 11.27, SE = 0.46 vs. baseline M = 10.38, SE = 0.33; n = 79)",
    "location": "Psychological Science 18(5), Results, short term"
@@ -2252,13 +2944,44 @@
    "source": "energy07",
    "quote": "households that were consuming less energy than average continued to consume at the desirable low rate (M = 10.58, SE = 0.38 vs. baseline M = 10.34, SE = 0.33; n = 81)",
    "location": "Psychological Science 18(5), Results, short term, descriptive plus injunctive"
+  },
+  {
+   "source": "energy07",
+   "quote": "Participants were 290 households in San Marcos, CA, with visible energy meters.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 430"
+  },
+  {
+   "source": "energy07",
+   "quote": "If the household had consumed less than the average for the neighborhood, the researcher drew a happy face ( ); if the household had consumed more than the average, the researcher drew a sad face ( ).",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), pp. 430-431, Intervention (sentence broken by footnote 1)"
+  },
+  {
+   "source": "energy07",
+   "quote": "When the injunctive message was added to the descriptive normative feedback, households that were consuming less energy than average continued to consume at the desirable low rate (M = 10.58, SE = 0.38 vs. baseline M = 10.34, SE = 0.33; n = 81), t(80) = 1.04, n.s.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), pp. 431-432, Results, Short-Term Change (sentence broken by Figure 1)"
+  },
+  {
+   "source": "energy07",
+   "quote": "However, the combined injunctive-plus-descriptive message produced no change from baseline for low-consuming households (longer-term M = 10.14, SE = 0.37 vs. baseline M = 10.04, SE = 0.35; n = 70), t(69) = 0.64, n.s.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
+  },
+  {
+   "source": "energy07",
+   "quote": "in the short term, the reduction in energy usage for high-consuming households was 1.72 kWh/day in the descriptive-plus-injunctive condition, compared with 1.22 kWh/day in the descriptive-only condition.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 433, Discussion"
+  },
+  {
+   "source": "energy07",
+   "quote": "Finally, for households that initially consumed more energy than the neighborhood average, the combined descriptive-plus-injunctive feedback continued to produce a significant decrease in energy consumption relative to the baseline (baseline M = 20.62, SE = 0.64 vs. longer-term M = 19.39, SE = 0.62; n = 56), t(55) = 2.13, prep = .93, d = 0.58.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 432, Results, Longer-Term Changes"
+  },
+  {
+   "source": "energy07",
+   "quote": "We took a final meter reading 3 weeks after the distribution of the second feedback message.",
+   "location": "Psychological Science 18(5), published version (author-hosted PDF, Carlson School; extracted text renders '=' as '5', restored here), p. 431, Procedure"
   }
  ],
  "biz07": [
-  {
-   "quote": "less likely to identify subtractive changes when not cued, with one (vs several) opportunity, under higher cognitive load (paraphrase)",
-   "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)"
-  },
   {
    "source": "subtract21",
    "quote": "In experiment 4, the cue increased the likelihood of participants listing at least one subtractive idea within the improvement conditions (no-cue = 21%, cue = 48%, chi2 = 13.63, P < 0.001)",
@@ -2268,6 +2991,31 @@
    "source": "subtract21",
    "quote": "Participants were randomly assigned to a no-cue instruction that mentioned neither addition nor subtraction or to a cue condition that reminded participants they could 'add or subtract'.",
    "location": "Nature 592, Extended Data Fig. 3 legend"
+  },
+  {
+   "source": "subtract21",
+   "quote": "Across eight experiments, participants were less likely to identify advantageous subtractive changes when the task did not (versus did) cue them to consider subtraction, when they had only one opportunity (versus several) to recognize the shortcomings of an additive search strategy or when they were under a higher (versus lower) cognitive load.",
+   "location": "Nature 592, nature.com article page (publisher), abstract"
+  },
+  {
+   "source": "subtract21",
+   "quote": "Participants reported their ideas for how to change this miniature golf hole.",
+   "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 3 legend"
+  },
+  {
+   "source": "subtract21",
+   "quote": "Participants were randomly assigned to one of two conditions in experiments 2 and 3 (no-cue versus cue) ( n = 312); and one of four conditions in experiment 4 ((no-cue versus cue) × (improve versus make-it-worse)) ( n = 369).",
+   "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 4 legend"
+  },
+  {
+   "source": "subtract21",
+   "quote": "c , In experiment 4, the cue increased the likelihood of participants listing at least one subtractive idea within the improvement conditions (no-cue = 21%, cue = 48%, χ 2 = 13.63, P < 0.001)",
+   "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 4 legend, panel c"
+  },
+  {
+   "source": "subtract21",
+   "quote": "Participants could stabilize the top platform of the Lego structure so it could hold a masonry brick above the head of the action figure by adding new supports to reinforce the single corner block or by removing the corner block and letting the platform sit flush on the layer below.",
+   "location": "Nature 592, nature.com article page (publisher), Extended Data Fig. 2 legend (experiment 1)"
   }
  ],
  "biz08": [
@@ -2280,13 +3028,14 @@
    "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)"
   },
   {
-   "quote": "may explain overburdened schedules, institutional red tape, and environmental damage (paraphrase)",
-   "location": "Nature abstract via Europe PMC (DOI:10.1038/s41586-021-03380-y)"
-  },
-  {
    "source": "subtract21",
    "quote": "Across eight experiments, participants were less likely to identify advantageous subtractive changes when the task did not (versus did) cue them to consider subtraction, when they had only one opportunity (versus several) to recognize the shortcomings of an additive search strategy or when they were under a higher (versus lower) cognitive load.",
    "location": "Nature abstract (version of record)"
+  },
+  {
+   "source": "subtract21",
+   "quote": "Defaulting to searches for additive changes may be one reason that people struggle to mitigate overburdened schedules, institutional red tape and damaging effects on the planet.",
+   "location": "Nature 592, nature.com article page (publisher), abstract (reference numerals omitted)"
   }
  ],
  "biz11": [
@@ -2303,16 +3052,37 @@
    "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128"
   },
   {
-   "quote": "medians 512 (ascending) and 2,250 (descending); correct answer 40,320 (paraphrase; expressions garbled in scan)",
-   "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128"
-  },
-  {
    "quote": "Experienced researchers are also prone to the same biases-when they think intuitively.",
    "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1130"
   },
   {
    "quote": "Payoffs for accuracy did not reduce the anchoring effect.",
    "location": "Full text scan, Science 185:1124-1131 (sites.stat.washington.edu Tversky.pdf), p. 1128"
+  },
+  {
+   "source": "anchor74",
+   "quote": "subjects were asked to estimate various quantities, stated in percentages (for example, the percentage of African countries in the United Nations). For each quantity, a number between 0 and 100 was determined by spinning a wheel of fortune in the subjects' presence. The subjects were instructed to indicate first whether that number was higher or lower than the value of the quantity, and then to estimate the value of the quantity by moving upward or downward from the given number.",
+   "location": "Science 185(4157), p. 1128 (JSTOR scan of published article, ncsu.edu course copy)"
+  },
+  {
+   "source": "anchor74",
+   "quote": "For example, the median estimates of the percentage of African countries in the United Nations were 25 and 45 for groups that received 10 and 65, respectively, as starting points. Payoffs for accuracy did not reduce the anchoring effect.",
+   "location": "Science 185, p. 1128"
+  },
+  {
+   "source": "anchor74",
+   "quote": "Two groups of high school students estimated, within 5 seconds, a numerical expression that was written on the blackboard. One group estimated the product 8x7x6x5x4x3x2x1 while another group estimated the product 1x2x3x4x5x6x7x8",
+   "location": "Science 185, p. 1128 (OCR garbles '5' as 'S' in the first product; restored)"
+  },
+  {
+   "source": "anchor74",
+   "quote": "The median estimate for the ascending sequence was 512, while the median estimate for the descending sequence was 2,250. The correct answer is 40,320.",
+   "location": "Science 185, p. 1128"
+  },
+  {
+   "source": "anchor74",
+   "quote": "The reliance on heuristics and the prevalence of biases are not restricted to laymen. Experienced researchers are also prone to the same biases—when they think intuitively.",
+   "location": "Science 185, p. 1130 (three-column OCR interleaves lines; words restored in order)"
   }
  ],
  "social01": [
@@ -2462,8 +3232,29 @@
    "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)"
   },
   {
-   "quote": "less than 15% of adopters receiving one signal made a return visit to the forum; over 30% with two (paraphrase)",
-   "location": "Full text, author-hosted PDF (faculty.cs.byu.edu)"
+   "source": "cent10",
+   "quote": "I studied the spread of a health behavior through a network-embedded population by creating an Internet-based health community, containing 1528 participants recruited from health-interest World Wide Web sites",
+   "location": "Science 329(5996), main text (Science online full text, printout hosted on faculty.cs.byu.edu)"
+  },
+  {
+   "source": "cent10",
+   "quote": "I report the results from six independent trials of this experimental design, each consisting of a matched pair of network conditions.",
+   "location": "Science 329, main text"
+  },
+  {
+   "source": "cent10",
+   "quote": "On average, the behavior reached 53.77% of the clustered networks, whereas only 38.26% of the population adopted in the random networks",
+   "location": "Science 329, main text, results"
+  },
+  {
+   "source": "cent10",
+   "quote": "The average rate of diffusion in the clustered networks (0.2820 x 10–3 nodes/s) was more than four times faster than that of the random condition (0.0643 x 10–3 nodes/s).",
+   "location": "Science 329, main text, results"
+  },
+  {
+   "source": "cent10",
+   "quote": "Though less than 15% of adopters receiving one signal made a return visit to the forum, more than 30% of participants receiving two signals made return visits",
+   "location": "Science 329, main text, discussion of Fig. 4"
   }
  ],
  "social10": [
@@ -2492,13 +3283,28 @@
   },
   {
    "source": "blind00",
-   "quote": "the switch to blind auditions can explain 30 percent of the increase in the proportion female among new hires",
-   "location": "AER 90(4), p. 738"
+   "quote": "Although some of our estimates have large standard errors and there is one persistent effect in the opposite direction",
+   "location": "AER abstract"
   },
   {
    "source": "blind00",
-   "quote": "Although some of our estimates have large standard errors and there is one persistent effect in the opposite direction",
-   "location": "AER abstract"
+   "quote": "Although some of our estimates have large standard errors and there is one persistent effect in the opposite direction, the weight of the evidence suggests that the blind audition procedure fostered impartiality in hiring and increased the proportion women in symphony orchestras.",
+   "location": "AER 90(4), p. 715, abstract (published AER PDF, Notre Dame course copy)"
+  },
+  {
+   "source": "blind00",
+   "quote": "Using the audition data, we find that the screen increases— by 50 percent—the probability that a woman will be advanced from certain preliminary rounds and increases by severalfold the likelihood that a woman will be selected in the final round.",
+   "location": "AER 90(4), p. 738, Conclusion"
+  },
+  {
+   "source": "blind00",
+   "quote": "By the use of the roster data, the switch to blind auditions can explain 30 percent of the increase in the proportion female among new hires and possibly 25 percent of the increase in the percentage female in the orchestras from 1970 to 1996.",
+   "location": "AER 90(4), p. 738, Conclusion"
+  },
+  {
+   "source": "blind00",
+   "quote": "Using data from actual auditions, in an individual fixed-effects framework, we find that the screen increases the probability a woman will be advanced and hired.",
+   "location": "AER 90(4), p. 715, abstract"
   }
  ],
  "social14": [
@@ -2603,10 +3409,6 @@
  ],
  "judg05": [
   {
-   "quote": "Problem 1 N = 152, 72% chose Program A; Problem 2 N = 155, 78% chose Program D (paraphrase)",
-   "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453"
-  },
-  {
    "quote": "The majority choice in this problem is risk averse",
    "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453"
   },
@@ -2617,6 +3419,31 @@
   {
    "quote": "including university faculty and physicians",
    "location": "Full text scan, Science 211:453-458 (gwern.net 1981-tversky.pdf), p. 453"
+  },
+  {
+   "source": "frame81",
+   "quote": "Here we present selected illustrations of preference reversals, with data obtained from students at Stanford University and at the University of British Columbia who answered brief questionnaires in a classroom setting.",
+   "location": "Science 211(4481), p. 453 (JSTOR scan of published article)"
+  },
+  {
+   "source": "frame81",
+   "quote": "Problem 1 [N = 152]: Imagine that the U.S. is preparing for the outbreak of an unusual Asian disease, which is expected to kill 600 people. [...] If Program A is adopted, 200 people will be saved. [72 percent] If Program B is adopted, there is 1/3 probability that 600 people will be saved, and 2/3 probability that no people will be saved. [28 percent]",
+   "location": "Science 211, p. 453 (OCR renders '152]' as '1521' and '1/3' as '113'; restored)"
+  },
+  {
+   "source": "frame81",
+   "quote": "Problem 2 [N = 155]: If Program C is adopted 400 people will die. [22 percent] If Program D is adopted there is 1/3 probability that nobody will die, and 2/3 probability that 600 people will die. [78 percent]",
+   "location": "Science 211, p. 453 (same OCR restorations)"
+  },
+  {
+   "source": "frame81",
+   "quote": "We have observed this reversal in several groups of respondents, including university faculty and physicians.",
+   "location": "Science 211, p. 453"
+  },
+  {
+   "source": "frame81",
+   "quote": "choices involving gains are often risk averse and choices involving losses are often risk taking.",
+   "location": "Science 211, p. 453"
   }
  ],
  "axe01": [

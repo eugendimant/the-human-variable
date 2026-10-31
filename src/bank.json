@@ -1284,7 +1284,7 @@
     "status": "verified_abstract",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Journal abstract (IDEAS/RePEc record of the JEEA article); design details checked against the 2008 working-paper version (TWI Research Paper 40), not the version of record",
+    "text_read": "abstract of the published JEEA article",
     "text_url": "https://ideas.repec.org/a/bla/jeurec/v11y2013i3p525-547.html"
    }
   },
@@ -1437,7 +1437,7 @@
     "status": "verified_accepted_manuscript",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Harvard DASH accepted manuscript of the Nature Human Behaviour article",
+    "text_read": "Harvard DASH manuscript of the Nature Human Behaviour article (whether it is the final accepted version is unconfirmed)",
     "text_url": "https://dash.harvard.edu/server/api/core/bitstreams/fda14585-409f-44d1-8955-82808aeac786/content"
    },
    "flags": [
@@ -2804,7 +2804,7 @@
    ],
    "answer": 2,
    "answerTitle": "Behavioral evidence beat a generic appeal",
-   "explain": "In Goldstein, Cialdini and Griskevicius's first hotel experiment (1,058 reuse opportunities), 44.1% of guests reused towels under the \"most guests reuse\" sign, against 35.1% under the standard environmental sign.",
+   "explain": "In Goldstein, Cialdini and Griskevicius's first hotel experiment, 44.1% of guests reused towels under the \"most guests reuse\" sign, against 35.1% under the standard environmental sign.",
    "implication": "In customer prompts, replace purely environmental or civic appeals with an accurate statement of what most peers do.",
    "boundary": "Field studies in one US hotel; later replications found smaller effects, with the norm sign sometimes matching a plain environmental sign.",
    "sources": [
@@ -2929,7 +2929,7 @@
     },
     {
      "q": "Did heavy users keep saving?",
-     "a": "Above-average households given only the average cut 1.22 kWh per day in the first week; the 1.03 kWh drop over the next three weeks was not statistically significant."
+     "a": "Above-average households given only the average cut 1.22 kWh per day in the first week. Over the next three weeks their use went from 22.32 to 21.29 kWh per day, a drop that was not statistically significant."
     }
    ],
    "format": "multi",
@@ -2974,11 +2974,11 @@
     },
     {
      "q": "What happened to low users who got the happy face?",
-     "a": "Their use changed by only 0.24 kWh per day in the first week and 0.10 over the next three weeks; neither change was statistically significant."
+     "a": "Their use went from 10.34 to 10.58 kWh per day in the first week, and from 10.04 to 10.14 over the next three weeks. Neither change was statistically significant."
     },
     {
      "q": "Did the sad face help heavy users?",
-     "a": "Yes. Above-average households that got it cut use by 1.72 kWh per day in the first week and 1.23 over the following three weeks."
+     "a": "Yes. Above-average households that got it cut use by 1.72 kWh per day in the first week. Over the next three weeks their use fell from 20.62 to 19.39 kWh per day."
     }
    ],
    "format": "forecast",
@@ -4747,17 +4747,17 @@
    "format": "causal",
    "concept": "Ad lift measurement",
    "title": "Measuring ad lift",
-   "scene": "Your agency compares Facebook users who saw your campaign with users who did not. After matching on age and gender, it reports a 222% conversion lift. A randomized holdout ran at the same time.",
-   "question": "What lift did the randomized holdout show?",
+   "scene": "Your agency compares Facebook users who saw a campaign with users who did not, after matching on demographics and behavior. A randomized holdout ran at the same time.",
+   "question": "How did the matched estimates compare with the randomized tests across 15 campaigns?",
    "options": [
-    "About 316%",
-    "No measurable lift",
-    "About 73%",
-    "About 222%"
+    "They matched the randomized lift",
+    "They often missed the randomized lift",
+    "They understated the lift every time",
+    "They matched once enough data were added"
    ],
-   "answer": 2,
-   "answerTitle": "The experiment found 73%, not 222%",
-   "explain": "In Study 4 the randomized lift was 73%, while exact matching on age and gender gave 222% and the naive exposed-versus-unexposed comparison 316%.",
+   "answer": 1,
+   "answerTitle": "Matching often missed the experiment’s answer",
+   "explain": "Across 15 Facebook ad experiments with 1.6 billion impressions, observational methods often failed to reproduce the randomized estimates, even after conditioning on extensive demographic and behavioral data.",
    "implication": "Keep a randomized holdout for major campaigns before trusting matched or platform-reported lift numbers.",
    "boundary": "Fifteen US Facebook campaigns; observational methods both over- and underestimated lift across campaigns.",
    "dag": {
@@ -4810,21 +4810,6 @@
      ]
     ]
    },
-   "chart": {
-    "labels": [
-     "Naive comparison",
-     "Matched on age, gender",
-     "Randomized test"
-    ],
-    "values": [
-     316,
-     222,
-     73
-    ],
-    "unit": "%",
-    "highlight": 2,
-    "note": "Values reported in Gordon et al. (2019), Study 4."
-   },
    "sources": [
     "gordon19"
    ],
@@ -4834,8 +4819,8 @@
      "a": "Fifteen US advertising RCTs run at Facebook, covering about 500 million user-experiment observations and 1.6 billion impressions."
     },
     {
-     "q": "Was Study 4 unusual?",
-     "a": "No. In half of the studies, the estimated percentage increase in purchases was off by a factor of three across all observational methods."
+     "q": "Did adding data fix it?",
+     "a": "No. Across the 15 experiments, observational methods often failed to match the randomized results, even with rich demographic and behavioral data."
     },
     {
      "q": "Do observational methods always overstate?",
@@ -5169,7 +5154,7 @@
    "format": "forecast",
    "concept": "Ad content value",
    "title": "Photo or price?",
-   "scene": "A consumer lender mailed loan offers to former clients, randomizing the interest rate along with ad content such as a photo, the number of example loans and the offer deadline.",
+   "scene": "A consumer lender mailed loan offers to clients, randomizing the interest rate along with ad content such as a photo, the number of example loans and the offer deadline.",
    "question": "Can ad content move demand as much as price?",
    "forecast": {
     "claim": "A photo of an attractive woman raised loan demand about as much as a 25% interest-rate cut.",
@@ -5225,7 +5210,7 @@
    "follow": [
     {
      "q": "What did the jam study find exactly?",
-     "a": "More shoppers stopped at 24 jams (60%) than at 6 (40%), but about 30% of stoppers bought with 6 jams versus 3% with 24."
+     "a": "More shoppers stopped at the 24-jam table, but about 30% of those who saw 6 jams bought one, versus 3% of those who saw 24."
     },
     {
      "q": "How large was the meta-analysis?",
@@ -5375,7 +5360,7 @@
     },
     {
      "q": "Does pay level or pay rank matter more?",
-     "a": "Rank. The authors conclude that differences in pay rank matter more than differences in pay levels."
+     "a": "Rank. Responses tracked a worker's rank in the pay distribution more closely than relative pay level."
     }
    ],
    "study": {
@@ -5620,7 +5605,7 @@
    "track": "Judgment",
    "concept": "Forecasting honesty",
    "title": "What the experts expected",
-   "scene": "Before the wallet results were public, researchers asked 279 US economists and 299 US laypeople how adding cash to a lost wallet would change return rates.",
+   "scene": "Researchers asked 279 academic economists and 299 other survey respondents to predict how adding cash to a lost wallet would change US return rates.",
    "question": "Did most economists foresee that more cash means more returns?",
    "forecast": {
     "claim": "Most surveyed economists predicted that more money in a wallet would raise return rates.",
@@ -5629,7 +5614,7 @@
    "answerTitle": "Only 29% of economists predicted the increase",
    "explain": "Among 279 economists, 49% predicted a decrease and 29% an increase; among 299 laypeople only 18% predicted the increase that actually occurred.",
    "implication": "Pilot honesty controls before scaling them; expert intuition about how people respond to temptation got the direction wrong here.",
-   "boundary": "Predictions came from US survey samples; actual behavior came from the 40-country field experiment with wallets handed to counter staff.",
+   "boundary": "Predictions were for US return rates; actual behavior came from the 40-country field experiment with wallets handed to counter staff.",
    "sources": [
     "cohn19"
    ],
@@ -5712,8 +5697,8 @@
     "label": "Estimated share of honest participants",
     "unit": "%"
    },
-   "answerTitle": "About 39% honest, at most 22% full liars",
-   "explain": "The authors estimate that 39% of subjects were honest and at most 22% lied completely; others lied without maximizing their income.",
+   "answerTitle": "About 39% honest, about 20% full liars",
+   "explain": "The authors estimate that 39% of subjects were fully honest and about 20% of inexperienced subjects lied to the fullest extent; others lied without claiming the top payoff.",
    "implication": "Design expense or time reporting so moderate inflation, not only extreme claims, meets a check or a reminder.",
    "boundary": "One-shot lab die task; the shares are inferred from the distribution of reports.",
    "sources": [
@@ -5726,7 +5711,7 @@
     },
     {
      "q": "Why lie only a little?",
-     "a": "The authors point to a wish to keep a favorable self-image, including being seen as honest and not greedy."
+     "a": "The authors discuss several motives for this pattern; the study itself measures how many people lie, and by how much."
     },
     {
      "q": "Why does partial lying matter for managers?",
@@ -5734,8 +5719,7 @@
     }
    ],
    "study": {
-    "design": "Lab experiment",
-    "n": "Swiss university students"
+    "design": "Lab experiment"
    },
    "theme": "honesty"
   },
@@ -5851,7 +5835,7 @@
     },
     {
      "q": "What happened to Democrats?",
-     "a": "They became slightly more liberal, but the intent-to-treat effect of 0.02 points was not statistically significant."
+     "a": "They became slightly more liberal, but the intent-to-treat effect (-0.02 points on the seven-point scale) was not statistically significant."
     },
     {
      "q": "Why did Republicans move right?",
@@ -5940,9 +5924,9 @@
     "truth": true
    },
    "answerTitle": "A small but real lift in quality",
-   "explain": "On days users tweeted, the average quality of shared news rose 4.8%; counting all user-days, the gain was 2.1%.",
+   "explain": "In the 24 hours after one private accuracy question, users shared news from higher-quality sites. More than 80% of 192 robustness analyses gave P < 0.05.",
    "implication": "Add a light accuracy prompt before staff forward external content internally, and expect modest rather than dramatic gains.",
-   "boundary": "One private message on Twitter; gains were a few percent, and a replication of the authors' earlier survey version found weaker effects.",
+   "boundary": "One private message to 5,379 Twitter users who had shared links to misleading sites; quality was measured over the next 24 hours.",
    "sources": [
     "pennycook21"
    ],
@@ -5953,7 +5937,7 @@
     },
     {
      "q": "What happened in the survey experiments?",
-     "a": "Discernment between true and false headlines in sharing was 2.0 times larger with the prompt in Study 3 and 2.4 times larger in Study 4."
+     "a": "Rating one non-political headline for accuracy at the start made people more discerning about which headlines they would share, in studies of 727, 780 and 1,268 Americans."
     },
     {
      "q": "Has the accuracy prompt replicated?",
@@ -6180,7 +6164,7 @@
    "answerTitle": "Correcting beliefs cut obstructionism attributions",
    "explain": "Across 4,282 participants people overestimated out-group negativity; in an experiment with 1,122 people, showing true out-group reactions significantly reduced perceived obstructionism.",
    "implication": "In a divided team, collect each side's actual reactions to a proposal and share them before anyone assumes deliberate blocking.",
-   "boundary": "Found in competitive contexts; at an exploratory one-week follow-up the correction had faded.",
+   "boundary": "Found in competitive intergroup contexts; the correction was tested in one online experiment with 1,122 participants.",
    "sources": [
     "lees20"
    ],
@@ -6200,7 +6184,7 @@
    ],
    "study": {
     "design": "Online experiments and survey",
-    "n": "4,282 US participants"
+    "n": "4,282 participants"
    },
    "theme": "norms",
    "permuted": true
@@ -6369,7 +6353,7 @@
     },
     {
      "q": "Who was in the forecasting pool?",
-     "a": "1,034 forecasters: 714 laypeople, 199 academics and 121 practitioners."
+     "a": "1,034 forecasters: 611 laypeople from a representative US panel and 103 from the authors' networks, plus 199 academics and 121 practitioners."
     },
     {
      "q": "Did forecasters at least rank the messages correctly?",
