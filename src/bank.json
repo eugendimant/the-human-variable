@@ -1756,7 +1756,7 @@
    "answerTitle": "40% less time",
    "explain": "Across 453 professionals, average completion time fell 40%. Output quality also rose 18%.",
    "implication": "Pilot AI on measurable tasks. Track quality as well as speed.",
-   "boundary": "These were controlled writing tasks, not a forecast for every job.",
+   "boundary": "Short, incentivized, occupation-specific writing tasks done online by 453 college-educated professionals.",
    "sources": [
     "noy23"
    ],
@@ -1772,16 +1772,16 @@
    "unit": "relative time",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Pilot AI on measurable tasks. Track quality as well as speed."
+     "q": "Who was in the study?",
+     "a": "453 college-educated professionals recruited online, from occupations such as marketing, grant writing, consulting, data analysis, HR, and management. Each did writing tasks typical of their job."
     },
     {
-     "q": "Is this always true?",
-     "a": "These were controlled writing tasks, not a forecast for every job."
+     "q": "Who gained the most?",
+     "a": "Participants with weaker writing skills benefited most, so the gap between stronger and weaker workers narrowed."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "In a 453-person writing experiment, time decreased 40% and quality increased 18%."
+     "q": "Did people keep using it?",
+     "a": "Yes. Two weeks later, people who had ChatGPT access were about twice as likely to report using it in their real jobs, and about 1.6 times as likely two months later."
     }
    ],
    "format": "estimate",
@@ -1793,7 +1793,11 @@
     "tolerance": 10,
     "label": "Decrease in completion time (%)"
    },
-   "theme": "ai-work"
+   "theme": "ai-work",
+   "study": {
+    "design": "Preregistered online experiment",
+    "n": "453 college-educated professionals"
+   }
   },
   {
    "id": "ai02",
@@ -1812,7 +1816,7 @@
    "answerTitle": "Quality improved 18%",
    "explain": "The study found faster completion and higher externally evaluated quality.",
    "implication": "Set up double-outcome tests, with blind quality evaluation.",
-   "boundary": "The 18% finding is from this writing-task sample.",
+   "boundary": "Quality was graded blind by professionals from each occupation, on writing tasks of 20 to 30 minutes.",
    "sources": [
     "noy23"
    ],
@@ -1828,16 +1832,16 @@
    "unit": "quality index",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Set up double-outcome tests, with blind quality evaluation."
+     "q": "Who judged the quality?",
+     "a": "Experienced professionals working in the same occupations graded each piece without knowing whether ChatGPT had been used. Each output had three graders."
     },
     {
-     "q": "Is this always true?",
-     "a": "The 18% finding is from this writing-task sample."
+     "q": "Were participants trying hard?",
+     "a": "Yes. The tasks were incentivized: pay depended on the quality grade each piece received."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "In a 453-person writing experiment, time decreased 40% and quality increased 18%."
+     "q": "How long were the tasks?",
+     "a": "Each assignment was designed to take 20 to 30 minutes and to resemble real work in that occupation."
     }
    ],
    "format": "estimate",
@@ -1849,7 +1853,11 @@
     "tolerance": 5,
     "label": "Increase in quality (%)"
    },
-   "theme": "ai-work"
+   "theme": "ai-work",
+   "study": {
+    "design": "Preregistered online experiment",
+    "n": "453 college-educated professionals"
+   }
   },
   {
    "id": "ai04",
@@ -1867,8 +1875,8 @@
    "answer": 1,
    "answerTitle": "15% on average",
    "explain": "The analysis covered 5,172 agents and measured issues resolved per hour.",
-   "implication": "Start with a single operational metric and check subgroup effects.",
-   "boundary": "Context was customer support; other workflows may differ.",
+   "implication": "Report AI productivity gains separately for new and experienced staff, since gains concentrated among less experienced workers.",
+   "boundary": "5,172 customer-support agents given a generative AI conversational assistant in a staggered rollout.",
    "sources": [
     "bry25"
    ],
@@ -1884,16 +1892,16 @@
    "unit": "relative output",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Start with a single operational metric and check subgroup effects."
+     "q": "Who gained the most?",
+     "a": "Less experienced and lower-skilled agents improved in both speed and quality. The most experienced agents saw small speed gains and slight quality declines."
     },
     {
-     "q": "Is this always true?",
-     "a": "Context was customer support; other workflows may differ."
+     "q": "How did customers react?",
+     "a": "Customers were more polite to agents and less likely to ask for a manager."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "AI assistance raised customer-support issues resolved per hour 15% on average, with larger gains for less experienced workers."
+     "q": "Which problems saw the biggest gains?",
+     "a": "Moderately rare problems, where agents had limited experience but the AI had enough training data."
     }
    ],
    "format": "estimate",
@@ -1905,7 +1913,11 @@
     "tolerance": 5,
     "label": "Increase in issues per hour (%)"
    },
-   "theme": "ai-work"
+   "theme": "ai-work",
+   "study": {
+    "design": "Staggered workplace rollout (field data)",
+    "n": "5,172 customer-support agents"
+   }
   },
   {
    "id": "ai07",
@@ -1920,11 +1932,10 @@
     "AI-assisted stories were more similar to each other",
     "Writers universally rejected the AI ideas"
    ],
-   "answer": 0,
    "answerTitle": "A creativity trade-off",
    "explain": "AI-assisted stories scored higher on creativity but became more similar to one another.",
    "implication": "Evaluate distinctiveness across your full campaign, not only each asset.",
-   "boundary": "This experiment studied short stories, not all innovation work.",
+   "boundary": "Online writers produced eight-sentence stories with no AI ideas, one AI idea, or up to five AI ideas.",
    "sources": [
     "doshi24"
    ],
@@ -1937,16 +1948,16 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Evaluate distinctiveness across your full campaign, not only each asset."
+     "q": "Who was in the study?",
+     "a": "293 writers recruited on Prolific each wrote an eight-sentence story. A separate group of 600 participants rated the stories."
     },
     {
-     "q": "Is this always true?",
-     "a": "This experiment studied short stories, not all innovation work."
+     "q": "How large was the creativity gain?",
+     "a": "With access to up to five AI ideas, rated novelty rose 8.1% and usefulness 9.0% compared with writers who had no AI help."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "AI ideas improved evaluated short-story creativity but made resulting stories more similar."
+     "q": "Who benefited most?",
+     "a": "Writers who scored lowest on a creativity test: with up to five AI ideas, their stories' novelty rose 10.7%. The most creative writers saw little effect."
     }
    ],
    "format": "multi",
@@ -1955,7 +1966,11 @@
     0,
     1
    ],
-   "theme": "ai-work"
+   "theme": "ai-work",
+   "study": {
+    "design": "Online experiment",
+    "n": "293 writers and 600 evaluators"
+   }
   },
   {
    "id": "ai09",
@@ -1974,7 +1989,7 @@
    "answerTitle": "A visible error can dominate",
    "explain": "Participants became reluctant to use an algorithm after watching it err, even when it outperformed people.",
    "implication": "Communicate expected error rates and compare human and model performance symmetrically.",
-   "boundary": "Other experiments find algorithm appreciation. The task and framing matter.",
+   "boundary": "Incentivized forecasts of MBA students' performance and US states' airline-passenger ranks, by lab and online participants.",
    "sources": [
     "diet15"
    ],
@@ -1987,21 +2002,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Communicate expected error rates and compare human and model performance symmetrically."
+     "q": "Who took part?",
+     "a": "Participants in the Wharton Behavioral Lab (Studies 1, 2, 4) and on Mechanical Turk (Studies 3a, 3b), with final samples of 206 to 1,036 per study."
     },
     {
-     "q": "Is this always true?",
-     "a": "Other experiments find algorithm appreciation. The task and framing matter."
+     "q": "How much better was the model?",
+     "a": "Human forecasts had 15 to 29% more error than the model when predicting MBA students' performance, and 90 to 97% more when ranking states by airline passengers."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Observers lose confidence in algorithmic forecasters after seeing them err, even where algorithms outperform humans."
+     "q": "Was real money at stake?",
+     "a": "Yes. Lab participants could earn up to $10 extra for accurate forecasts. In Study 1 they earned $1 each time the forecast they relied on was within 5 percentiles."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "ai-trust"
+   "theme": "ai-trust",
+   "study": {
+    "design": "Five incentivized forecasting experiments (lab and online)",
+    "n": "206 to 1,036 participants per study"
+   }
   },
   {
    "id": "ai10",
@@ -2019,8 +2038,8 @@
    "answer": 1,
    "answerTitle": "Algorithm appreciation exists",
    "explain": "In several tasks, participants relied more on algorithmic advice than human advice.",
-   "implication": "Test how trust changes by task, domain, and visible errors.",
-   "boundary": "Appreciation and aversion are not contradictory universal rules.",
+   "implication": "Check whether experienced staff discount model advice; in this study, experts who relied less on the algorithm were less accurate.",
+   "boundary": "Six experiments, mostly with lay participants, on estimation and forecasting tasks; one tested experienced forecasters.",
    "sources": [
     "logg19"
    ],
@@ -2033,21 +2052,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Test how trust changes by task, domain, and visible errors."
+     "q": "What tasks were used?",
+     "a": "Numeric estimates about a visual stimulus, and forecasts of song popularity and romantic attraction, across six experiments."
     },
     {
-     "q": "Is this always true?",
-     "a": "Appreciation and aversion are not contradictory universal rules."
+     "q": "Did experts behave the same way?",
+     "a": "No. Experienced professionals who forecast regularly relied less on algorithmic advice than lay people did, and that hurt their accuracy."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "In several prediction settings, people weigh algorithmic advice more heavily than human advice."
+     "q": "When did the preference fade?",
+     "a": "It weakened when people had to choose between the algorithm's estimate and their own, rather than weighing advice from an outside source."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "ai-trust"
+   "theme": "ai-trust",
+   "study": {
+    "design": "Six experiments",
+    "n": "Lay participants, plus one study of experienced forecasters"
+   }
   },
   {
    "id": "ai11",
@@ -2065,8 +2088,8 @@
    "answer": 0,
    "answerTitle": "Subjectivity changes acceptance",
    "explain": "The task-dependent aversion experiments link perceived subjectivity to resistance to algorithms.",
-   "implication": "Frame tools around strengths and allow agency in subjective contexts.",
-   "boundary": "Task perceptions differ between users and cultures.",
+   "implication": "For taste-based recommendations, explain the measurable inputs the algorithm uses, which makes the task seem more objective.",
+   "boundary": "Online lab and field studies of consumers' reliance on algorithms for tasks seen as subjective or objective.",
    "sources": [
     "cast19"
    ],
@@ -2079,21 +2102,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Frame tools around strengths and allow agency in subjective contexts."
+     "q": "How much evidence is there?",
+     "a": "Four online lab studies with over 1,400 participants and two online field studies with over 56,000."
     },
     {
-     "q": "Is this always true?",
-     "a": "Task perceptions differ between users and cultures."
+     "q": "Can the aversion be reduced?",
+     "a": "Yes. Making a task seem more objective increased trust in, and use of, algorithms for that task."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Acceptance of algorithms varies with whether tasks seem subjective or objective."
+     "q": "What if the task stays subjective?",
+     "a": "Presenting the algorithm as having more humanlike emotional ability increased its use for subjective tasks."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "ai-trust"
+   "theme": "ai-trust",
+   "study": {
+    "design": "Four online lab studies and two online field studies",
+    "n": "Over 1,400 lab and over 56,000 field participants"
+   }
   },
   {
    "id": "ai12",
@@ -2111,8 +2138,8 @@
    "answer": 1,
    "answerTitle": "People care about being seen",
    "explain": "Medical-AI resistance research highlights concerns that algorithms will not consider unique circumstances.",
-   "implication": "Explain customization and allow meaningful human escalation.",
-   "boundary": "Healthcare attitudes may not transfer directly to retail or HR.",
+   "implication": "Present AI as supporting a clinician's or advisor's decision, and say how it adapts to each person's case.",
+   "boundary": "Consumers choosing between AI and human providers of medical care, in real and hypothetical choices.",
    "sources": [
     "long19"
    ],
@@ -2125,21 +2152,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Explain customization and allow meaningful human escalation."
+     "q": "What did the resistance look like?",
+     "a": "In real and hypothetical choices, consumers were less likely to use AI care, would pay less for it, and were less sensitive to differences in provider quality."
     },
     {
-     "q": "Is this always true?",
-     "a": "Healthcare attitudes may not transfer directly to retail or HR."
+     "q": "What removed the resistance?",
+     "a": "It disappeared when AI care was framed as personalized, when the care was for someone else, or when AI supported a human provider's decision instead of replacing it."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Consumers can resist medical AI, in part from concerns about uniqueness and tailoring."
+     "q": "What drives the resistance?",
+     "a": "Uniqueness neglect: the worry that an AI provider cannot account for a person’s unique characteristics and circumstances as well as a human provider can."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "ai-trust"
+   "theme": "ai-trust",
+   "study": {
+    "design": "Series of consumer choice experiments",
+    "n": "Consumer samples across multiple studies (sizes not read)"
+   }
   },
   {
    "id": "biz01",
@@ -2151,8 +2182,8 @@
    "question": "What share of the automatically enrolled hires participated?",
    "answerTitle": "86% under the default, against 37%",
    "explain": "At 3 to 15 months of tenure, 86% of automatically enrolled hires participated, against 37% of the previous cohort who had to sign up.",
-   "implication": "Audit defaults in product settings, benefits, and subscriptions.",
-   "boundary": "Defaults can preserve unwanted allocations as well as improve take-up.",
+   "implication": "Make enrollment in beneficial programs the default, with easy opt-out, and track take-up by employee group.",
+   "boundary": "New hires at one Fortune 500 health care and insurance firm, compared with the cohort hired just before the switch.",
    "sources": [
     "defaults01"
    ],
@@ -2165,16 +2196,16 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Audit defaults in product settings, benefits, and subscriptions."
+     "q": "What was the default?",
+     "a": "New hires were enrolled at a 3% contribution rate, invested entirely in the money market fund."
     },
     {
-     "q": "Is this always true?",
-     "a": "Defaults can preserve unwanted allocations as well as improve take-up."
+     "q": "Who gained the most?",
+     "a": "Gains were largest among groups with low participation before: Black and Hispanic employees, younger workers, and lower-paid employees. The gap between women and men nearly disappeared."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Automatic enrollment increased plan participation, and many retained default rates and allocations."
+     "q": "What kind of company was it?",
+     "a": "A large, publicly traded Fortune 500 firm in health care and insurance. The plan's economic features did not change, only the default."
     }
    ],
    "format": "estimate",
@@ -2222,8 +2253,8 @@
    "answer": 1,
    "answerTitle": "Defaults communicate advice",
    "explain": "The researchers linked persistence partly to inertia and perceiving defaults as implicit advice.",
-   "implication": "Make beneficial defaults clear, editable, and salient.",
-   "boundary": "Persistence by itself does not prove a choice was optimal.",
+   "implication": "Set default contribution rates at the level you would recommend, since most enrollees keep whatever rate you choose.",
+   "boundary": "Contribution rates and fund choices of new hires at one US firm, measured in their first months of tenure.",
    "sources": [
     "defaults01"
    ],
@@ -2236,21 +2267,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Make beneficial defaults clear, editable, and salient."
+     "q": "How many kept the default rate?",
+     "a": "About three-quarters of automatically enrolled participants contributed at the 3% default. Among earlier hires, only about 1% of participants chose 3%."
     },
     {
-     "q": "Is this always true?",
-     "a": "Persistence by itself does not prove a choice was optimal."
+     "q": "Did they keep the default fund too?",
+     "a": "Yes. 75% held their whole balance in the money market fund, a choice made by under 1% of employees hired before the switch."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Automatic enrollment increased plan participation, and many retained default rates and allocations."
+     "q": "Was there an employer match?",
+     "a": "Yes: 50% on the first 6% of pay, but only after one year of service, so the new hires studied were not yet eligible."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "choice"
+   "theme": "choice",
+   "study": {
+    "design": "Natural experiment in one firm",
+    "n": "New hires and earlier cohorts at one Fortune 500 firm"
+   }
   },
   {
    "id": "biz03",
@@ -2268,8 +2303,8 @@
    "answer": 1,
    "answerTitle": "Behavioral evidence beat a generic appeal",
    "explain": "Descriptive-norm messaging outperformed a conventional environmental appeal in the hotel field experiments.",
-   "implication": "Use truthful, locally relevant peer comparisons.",
-   "boundary": "Do not invent “most customers” statistics.",
+   "implication": "In customer prompts, replace purely environmental or civic appeals with an accurate statement of what most peers do.",
+   "boundary": "Towel-reuse signs in the rooms of one midpriced US hotel, measured by room attendants.",
    "sources": [
     "hotel08"
    ],
@@ -2282,21 +2317,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Use truthful, locally relevant peer comparisons."
+     "q": "How big was the difference?",
+     "a": "In the first experiment, 44.1% of guests reused towels with the descriptive-norm sign, against 35.1% with the environmental sign."
     },
     {
-     "q": "Is this always true?",
-     "a": "Do not invent “most customers” statistics."
+     "q": "How was reuse measured?",
+     "a": "Room attendants recorded whether guests reused at least one towel, counting each guest's first eligible day."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Descriptive norm appeals outperformed a conventional conservation appeal; local-room norms performed well."
+     "q": "Where was the study run?",
+     "a": "A midsized, midpriced hotel in the US Southwest belonging to a national chain, over 80 days in the first experiment."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "choice"
+   "theme": "choice",
+   "study": {
+    "design": "Two field experiments in one hotel",
+    "n": "1,058 and 1,595 recorded towel-reuse opportunities"
+   }
   },
   {
    "id": "biz04",
@@ -2314,8 +2353,8 @@
    "answer": 1,
    "answerTitle": "Local norms can carry more weight",
    "explain": "The hotel experiments found stronger influence from norms tied to the guests’ immediate setting.",
-   "implication": "Compare reference-group proximity when designing social proof.",
-   "boundary": "Local norms must be measured accurately and ethically.",
+   "implication": "In social-proof messages, cite the peers whose situation most closely matches the customer's, such as the same store or team.",
+   "boundary": "Five sign versions in one US hotel over 53 days; norms referred to guests, same-room guests, citizens, or same-gender guests.",
    "sources": [
     "hotel08"
    ],
@@ -2328,21 +2367,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Compare reference-group proximity when designing social proof."
+     "q": "What were the reuse rates?",
+     "a": "In the second experiment, the same-room norm produced 49.3% reuse, the general guest norm 44.0%, and the standard environmental message 37.2%."
     },
     {
-     "q": "Is this always true?",
-     "a": "Local norms must be measured accurately and ethically."
+     "q": "Did other shared identities work as well?",
+     "a": "Norms about fellow citizens (43.5%) and same-gender guests (40.9%) fell short of the same-room norm (49.3%)."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Descriptive norm appeals outperformed a conventional conservation appeal; local-room norms performed well."
+     "q": "How much data was there?",
+     "a": "1,595 recorded opportunities for towel reuse over 53 days, in the same hotel as the first experiment."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "choice"
+   "theme": "choice",
+   "study": {
+    "design": "Field experiment in one hotel",
+    "n": "1,595 recorded towel-reuse opportunities"
+   }
   },
   {
    "id": "biz05",
@@ -2357,11 +2400,10 @@
     "Injunctive feedback counteracted the boomerang effect",
     "Descriptive averages reduced use for every household"
    ],
-   "answer": 0,
    "answerTitle": "A norm message can backfire",
    "explain": "Information on typical neighborhood consumption increased consumption among some already-efficient households.",
-   "implication": "Add signals that praise the desired behavior, not averages alone.",
-   "boundary": "The result concerns this specific norm intervention.",
+   "implication": "When sending peer comparisons, add explicit approval for customers already doing better than average.",
+   "boundary": "Two doorhanger messages to 290 California households, with electricity read from meters over about four weeks.",
    "sources": [
     "energy07"
    ],
@@ -2374,16 +2416,16 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Add signals that praise the desired behavior, not averages alone."
+     "q": "Who was in the study?",
+     "a": "290 households in San Marcos, California, with visible electricity meters; 287 stayed in the analysis."
     },
     {
-     "q": "Is this always true?",
-     "a": "The result concerns this specific norm intervention."
+     "q": "How large was the boomerang?",
+     "a": "Below-average households that saw only the neighborhood average rose from 10.38 to 11.27 kWh per day in the first week, and stayed higher three weeks later."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Neighborhood average messages induced savings or boomerang effects; injunctive feedback changed that pattern."
+     "q": "Did heavy users keep saving?",
+     "a": "Above-average households given only the average cut 1.22 kWh per day in the first week; the 1.03 kWh drop over the next three weeks was not statistically significant."
     }
    ],
    "format": "multi",
@@ -2392,7 +2434,11 @@
     0,
     1
    ],
-   "theme": "choice"
+   "theme": "choice",
+   "study": {
+    "design": "Field experiment",
+    "n": "290 households in San Marcos, California"
+   }
   },
   {
    "id": "biz06",
@@ -2410,8 +2456,8 @@
    "answer": 0,
    "answerTitle": "Approval changed the response",
    "explain": "Injunctive feedback counteracted the increase among households already below average.",
-   "implication": "Combine descriptive norms with clear approval for desirable conduct.",
-   "boundary": "Approval signals also need responsible testing.",
+   "implication": "Pair every peer comparison with a simple approval or disapproval signal, such as a happy or sad face.",
+   "boundary": "Hand-drawn faces on doorhanger feedback to California households; follow-up ended three weeks after the second message.",
    "sources": [
     "energy07"
    ],
@@ -2424,21 +2470,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Combine descriptive norms with clear approval for desirable conduct."
+     "q": "What did the approval cue look like?",
+     "a": "Researchers drew a happy face on the feedback for households below the average and a sad face for those above it."
     },
     {
-     "q": "Is this always true?",
-     "a": "Approval signals also need responsible testing."
+     "q": "What happened to low users who got the happy face?",
+     "a": "Their use changed by only 0.24 kWh per day in the first week and 0.10 over the next three weeks; neither change was statistically significant."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Neighborhood average messages induced savings or boomerang effects; injunctive feedback changed that pattern."
+     "q": "Did the sad face help heavy users?",
+     "a": "Yes. Above-average households that got it cut use by 1.72 kWh per day in the first week and 1.23 over the following three weeks."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "choice"
+   "theme": "choice",
+   "study": {
+    "design": "Field experiment",
+    "n": "290 households in San Marcos, California"
+   }
   },
   {
    "id": "biz07",
@@ -2457,7 +2507,7 @@
    "answerTitle": "Subtraction is often missed",
    "explain": "Across experiments, people overlooked beneficial subtractive changes, especially without prompts to consider deletion.",
    "implication": "Make “What can we remove?” mandatory in process reviews.",
-   "boundary": "Subtraction is an option to test, not a universal answer.",
+   "boundary": "Eight experiments with puzzles and design tasks in which removing an element was an advantageous change.",
    "sources": [
     "subtract21"
    ],
@@ -2470,21 +2520,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Make “What can we remove?” mandatory in process reviews."
+     "q": "What tasks did people solve?",
+     "a": "Problems such as stabilizing a Lego structure, improving a miniature golf course, and transforming a grid pattern. Most people added a block to the Lego structure rather than removing one."
     },
     {
-     "q": "Is this always true?",
-     "a": "Subtraction is an option to test, not a universal answer."
+     "q": "How many people took part?",
+     "a": "1,153 participants across eight experiments."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "People often default to adding rather than subtracting when asked to improve a situation."
+     "q": "What helped people spot subtractions?",
+     "a": "Being cued to consider subtraction, and having several chances rather than one to see that adding was not working."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "choice"
+   "theme": "choice",
+   "study": {
+    "design": "Eight experiments",
+    "n": "1,153 participants"
+   }
   },
   {
    "id": "biz08",
@@ -2503,7 +2557,7 @@
    "answerTitle": "Pressure favors additions",
    "explain": "The Nature experiments found subtractive improvements were less likely under greater cognitive load.",
    "implication": "Schedule deliberate simplification sessions with fewer distractions.",
-   "boundary": "Effects depend on the search problem and prompts.",
+   "boundary": "Cognitive load was manipulated in controlled experiments on puzzle and design tasks.",
    "sources": [
     "subtract21"
    ],
@@ -2516,21 +2570,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Schedule deliberate simplification sessions with fewer distractions."
+     "q": "Does a second try help?",
+     "a": "Yes. People found subtractive improvements more often when they had several opportunities, rather than one, to notice that adding was not working."
     },
     {
-     "q": "Is this always true?",
-     "a": "Effects depend on the search problem and prompts."
+     "q": "Which real problems do the authors link this to?",
+     "a": "Overloaded schedules, institutional red tape, and damage to the environment."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "People often default to adding rather than subtracting when asked to improve a situation."
+     "q": "Was this a single study?",
+     "a": "No. It was one of eight experiments, with 1,153 participants in total, that all pointed to a default toward adding."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "choice"
+   "theme": "choice",
+   "study": {
+    "design": "Eight experiments",
+    "n": "1,153 participants"
+   }
   },
   {
    "id": "biz11",
@@ -2543,7 +2601,7 @@
    "answerTitle": "45%, pulled up by a random number",
    "explain": "Median estimates were 25% after the wheel showed 10 and 45% after it showed 65, though everyone could see the number was random.",
    "implication": "In negotiations and forecasts, write down your own estimate before you see anyone else’s number.",
-   "boundary": "Anchor effects vary with context, and a relevant anchor can carry real information; in the original study, paying for accuracy did not remove the effect.",
+   "boundary": "Students estimating general-knowledge quantities after seeing a visibly random number; paying for accuracy did not reduce the effect.",
    "sources": [
     "anchor74"
    ],
@@ -2556,16 +2614,16 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Seek independent valuations before opening offers."
+     "q": "What exactly did people do?",
+     "a": "The wheel was spun in front of them. They first said whether the true value was higher or lower than the number, then gave their own estimate."
     },
     {
-     "q": "Is this always true?",
-     "a": "Anchor effects vary with context, and a relevant anchor can carry real information; in the original study, paying for accuracy did not remove the effect."
+     "q": "Does anchoring show up in calculations too?",
+     "a": "Yes. High school students given 5 seconds estimated 1x2x...x8 at a median of 512 and 8x7x...x1 at 2,250. The correct answer is 40,320."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Judgments often rely on representativeness, availability, and adjustment from anchors."
+     "q": "Are experts immune?",
+     "a": "No. The authors note that experienced researchers are prone to the same biases when they think intuitively."
     }
    ],
    "format": "estimate",
@@ -2610,11 +2668,10 @@
     "Loose norms generated more behavioral variation",
     "A group average fully explains behavior"
    ],
-   "answer": 0,
    "answerTitle": "The distribution matters",
    "explain": "Dimant and colleagues found that variance and polarization of observed norms affect behavior beyond the mean.",
-   "implication": "Look at spread and clustering, not only average culture scores.",
-   "boundary": "Incentivized coordination games with a representative US sample, varying the shape of the norm while holding its average fixed.",
+   "implication": "Report the spread and clustering of team behavior alongside averages in culture and engagement dashboards.",
+   "boundary": "Online public goods game; about 1,200 US participants saw tight, loose, or polarized distributions of earlier players' contributions.",
    "sources": [
     "norms24"
    ],
@@ -2627,16 +2684,16 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Look at spread and clustering, not only average culture scores."
+     "q": "What did participants actually do?",
+     "a": "They played a two-player public goods game. Each could contribute up to four tokens; contributions were multiplied by 1.4 and shared."
     },
     {
-     "q": "Is this always true?",
-     "a": "Findings concern studied strategic settings."
+     "q": "Who took part?",
+     "a": "About 1,200 US participants recruited on Prolific, representative by age, gender, and ethnicity."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "The distribution shape, not only its average, influenced behavior in strategic norm settings."
+     "q": "How did polarized norms change choices?",
+     "a": "Most people picked extreme contributions, which carry more strategic risk than middle options."
     }
    ],
    "format": "multi",
@@ -2645,7 +2702,11 @@
     0,
     1
    ],
-   "theme": "norms"
+   "theme": "norms",
+   "study": {
+    "design": "Online incentivized experiment, six treatments",
+    "n": "About 1,200 US participants"
+   }
   },
   {
    "id": "social03",
@@ -2663,8 +2724,8 @@
    "answer": 0,
    "answerTitle": "Looser norms, wider responses",
    "explain": "Loose norm distributions generated greater behavioral variation in the experiments.",
-   "implication": "Avoid assuming that the “average employee” describes your organization.",
-   "boundary": "Coordination games in which the spread of the norm was set by design; whether variety helps depends on the task.",
+   "implication": "Where peer behavior varies widely, state expected conduct explicitly, since individual values then drive choices more.",
+   "boundary": "Two-player contribution game in which tight, loose, and polarized peer distributions had the same mean.",
    "sources": [
     "norms24"
    ],
@@ -2677,21 +2738,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Avoid assuming that the “average employee” describes your organization."
+     "q": "How were peers' choices shown?",
+     "a": "Participants saw a distribution of contributions built from an earlier session, and their partner's contribution was drawn from it."
     },
     {
-     "q": "Is this always true?",
-     "a": "Variation is not automatically bad; the task determines value."
+     "q": "What drives choices when norms are loose?",
+     "a": "Personal traits mattered more: sucker aversion, free-riding aversion, and personal values shaped decisions more under loose and polarized norms."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "The distribution shape, not only its average, influenced behavior in strategic norm settings."
+     "q": "Did the average still matter?",
+     "a": "Yes. People contributed more when the observed mean was higher (2.4 vs 1.6 tokens), and the mean mattered even more in the polarized condition."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "norms"
+   "theme": "norms",
+   "study": {
+    "design": "Online incentivized experiment, six treatments",
+    "n": "About 1,200 US participants"
+   }
   },
   {
    "id": "social04",
@@ -2710,7 +2775,7 @@
    "answerTitle": "Private views and public beliefs diverge",
    "explain": "Pluralistic-ignorance research documents systematic differences between personal attitudes and perceived group attitudes.",
    "implication": "Elicit private views before public discussion.",
-   "boundary": "Not every apparent consensus conceals hidden disagreement.",
+   "boundary": "Four studies of college students' own attitudes toward campus alcohol use and their estimates of peers' attitudes.",
    "sources": [
     "plural93"
    ],
@@ -2723,21 +2788,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Elicit private views before public discussion."
+     "q": "Who was studied?",
+     "a": "College students, across four studies, who rated their own comfort with campus drinking and estimated the average student's comfort."
     },
     {
-     "q": "Is this always true?",
-     "a": "Not every apparent consensus conceals hidden disagreement."
+     "q": "Did beliefs change over time?",
+     "a": "In a study that followed students over a semester, men shifted their attitudes toward the norm they mistakenly perceived. Women did not."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Students thought peers were more comfortable with campus drinking than they themselves were. Men's attitudes later shifted toward that mistaken norm, and feeling out of step was linked to alienation from campus."
+     "q": "What did feeling out of step cost?",
+     "a": "Students who saw themselves as deviant felt more alienated from campus, even though that deviance was illusory."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "norms"
+   "theme": "norms",
+   "study": {
+    "design": "Four studies, one following students over a semester",
+    "n": "College students"
+   }
   },
   {
    "id": "social07",
@@ -2755,8 +2824,8 @@
    "answer": 1,
    "answerTitle": "Groups are less monolithic",
    "explain": "The study recovered divergence between parties and multiple co-existing views within each party, more so among Republicans than Democrats on most issues.",
-   "implication": "For stakeholder mapping, examine within-group factions.",
-   "boundary": "A norm-drawing method applied to seven policy issues with about 1,000 US respondents.",
+   "implication": "Before engaging a stakeholder group, map the distinct views inside it and estimate each view's share.",
+   "boundary": "One incentivized online survey of 996 US respondents on seven political issues, compared with a standard single-norm measure.",
    "sources": [
     "plural24"
    ],
@@ -2769,21 +2838,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "For stakeholder mapping, examine within-group factions."
+     "q": "Who answered?",
+     "a": "996 US respondents on Prolific, stratified by age, gender, and political orientation."
     },
     {
-     "q": "Is this always true?",
-     "a": "This does not establish the effects of a specific intervention."
+     "q": "Which issues were covered?",
+     "a": "Abortion, same-sex rights, marijuana legalization, federal spending, gun violence, immigration, and energy investments."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Norm-drawing recovered within- and between-party diversity beyond single-norm measures."
+     "q": "How does norm-drawing work?",
+     "a": "Respondents sketch the views different subgroups might hold and estimate the share holding each. Pay depends on how close their guesses come."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "norms"
+   "theme": "norms",
+   "study": {
+    "design": "Incentivized online survey",
+    "n": "996 US respondents"
+   }
   },
   {
    "id": "social08",
@@ -2801,8 +2874,8 @@
    "answer": 0,
    "answerTitle": "Reinforcement can beat reach",
    "explain": "In the experimental networks, clustered ties supported diffusion of a health behavior requiring social reinforcement.",
-   "implication": "For difficult behavior change, build peer reinforcement, not just reach.",
-   "boundary": "Findings depend on contagion complexity and network design.",
+   "implication": "Launch hard-to-adopt practices inside tightly connected teams, so each person hears about them from several colleagues.",
+   "boundary": "1,528 anonymous online participants in constructed networks deciding whether to register for a health forum.",
    "sources": [
     "cent10"
    ],
@@ -2815,21 +2888,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "For difficult behavior change, build peer reinforcement, not just reach."
+     "q": "How much farther did it spread?",
+     "a": "The behavior reached 53.77% of people in clustered networks, against 38.26% in random networks."
     },
     {
-     "q": "Is this always true?",
-     "a": "Findings depend on contagion complexity and network design."
+     "q": "How much faster?",
+     "a": "Diffusion in clustered networks was more than four times faster than in random ones."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Repeated reinforcement from clustered network ties spread the studied health behavior farther than random networks."
+     "q": "Did reinforcement affect follow-through?",
+     "a": "Yes. Fewer than 15% of adopters who got one signal returned to the forum, against over 30% of those who got two."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "forecasting"
+   "theme": "forecasting",
+   "study": {
+    "design": "Online network experiment, six trials",
+    "n": "1,528 participants"
+   }
   },
   {
    "id": "social10",
@@ -2847,8 +2924,8 @@
    "answer": 0,
    "answerTitle": "Air time matters",
    "explain": "The group-intelligence study linked collective performance to social sensitivity and conversational turn-taking.",
-   "implication": "Track meeting participation and encourage balanced contributions.",
-   "boundary": "These correlations do not prove that a timer alone improves performance.",
+   "implication": "In team meetings, track who speaks and rotate the floor so one or two members do not dominate.",
+   "boundary": "Correlational lab studies of 699 people in groups of two to five; turn-taking was measured with badges in some groups.",
    "sources": [
     "team10"
    ],
@@ -2861,21 +2938,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Track meeting participation and encourage balanced contributions."
+     "q": "What tasks did the groups do?",
+     "a": "A range including visual puzzles, brainstorming, collective moral judgments, and negotiating over limited resources."
     },
     {
-     "q": "Is this always true?",
-     "a": "These correlations do not prove that a timer alone improves performance."
+     "q": "Did individual IQ predict group performance?",
+     "a": "Not significantly. The group factor correlated r = .19 with average and r = .27 with maximum member intelligence, neither significant."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Group performance across tasks related to social sensitivity and conversational turn-taking."
+     "q": "Why did having more women help?",
+     "a": "The effect appeared largely mediated by social sensitivity, on which women scored higher."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "forecasting"
+   "theme": "forecasting",
+   "study": {
+    "design": "Two lab studies (correlational)",
+    "n": "699 people in groups of two to five"
+   }
   },
   {
    "id": "social12",
@@ -2893,8 +2974,8 @@
    "answer": 1,
    "answerTitle": "50% more callbacks",
    "explain": "The field experiment found a large gap in callbacks associated with names, holding résumé content constant.",
-   "implication": "Audit recruitment funnels with controlled comparisons.",
-   "boundary": "This historical US field study does not directly quantify today’s hiring bias.",
+   "implication": "Run periodic paired-résumé audits of your own screening, comparing callbacks for identical profiles with different names.",
+   "boundary": "Fictitious résumés sent to sales, administrative, clerical, and customer-service ads in Boston and Chicago, 2001 to 2002.",
    "sources": [
     "resume04"
    ],
@@ -2910,16 +2991,16 @@
    "unit": "callback rate index",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Audit recruitment funnels with controlled comparisons."
+     "q": "What is the gap worth?",
+     "a": "A White name was worth about as much as eight additional years of experience in callbacks."
     },
     {
-     "q": "Is this always true?",
-     "a": "This historical US field study does not directly quantify today’s hiring bias."
+     "q": "Did a stronger résumé close the gap?",
+     "a": "No. Better credentials raised callbacks much less for African-American names than for White names."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "White-sounding names received 50% more callbacks in a US resume field experiment."
+     "q": "Did 'Equal Opportunity Employers' discriminate less?",
+     "a": "No. Neither employers using that label nor federal contractors showed a smaller gap."
     }
    ],
    "format": "estimate",
@@ -2931,7 +3012,11 @@
     "tolerance": 10,
     "label": "Callback advantage (%)"
    },
-   "theme": "fairness"
+   "theme": "fairness",
+   "study": {
+    "design": "Field experiment (résumé audit)",
+    "n": "Nearly 5,000 résumés sent to over 1,300 job ads"
+   }
   },
   {
    "id": "social13",
@@ -2949,8 +3034,8 @@
    "answer": 0,
    "answerTitle": "Screens helped reduce bias",
    "explain": "The study found evidence of increased female advancement and hiring, while noting imprecise and some opposing estimates.",
-   "implication": "Remove irrelevant identity cues where feasible and assess outcomes.",
-   "boundary": "Blinding is not possible or sufficient for all recruitment steps.",
+   "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
+   "boundary": "Audition records from major US symphony orchestras that adopted screens, mostly in the 1970s and 1980s.",
    "sources": [
     "blind00"
    ],
@@ -2963,21 +3048,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Remove irrelevant identity cues where feasible and assess outcomes."
+     "q": "How large were the effects?",
+     "a": "In the working-paper version, the screen raised by 50% the chance a woman advanced out of certain preliminary rounds, and raised her chance of winning the final round severalfold."
     },
     {
-     "q": "Is this always true?",
-     "a": "Blinding is not possible or sufficient for all recruitment steps."
+     "q": "How much of the rise in women does it explain?",
+     "a": "Blind auditions explain 30% to 55% of the increase in women among new hires, by the working-paper estimates."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Concealing identity during auditions increased women advancing and being hired in study settings, with uncertainty around some estimates."
+     "q": "How was this measured?",
+     "a": "With actual audition records, comparing the same musicians across auditions with and without a screen."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "fairness"
+   "theme": "fairness",
+   "study": {
+    "design": "Panel of audition records (individual fixed effects)",
+    "n": "Musicians auditioning at major US orchestras"
+   }
   },
   {
    "id": "social14",
@@ -2995,8 +3084,8 @@
    "answer": 0,
    "answerTitle": "The misreading can be mutual",
    "explain": "Participants attributed their own avoidance to fear of being rejected because of their race, but the other group's avoidance to lack of interest.",
-   "implication": "Create low-risk, reciprocal first-contact structures.",
-   "boundary": "The original work studied specific intergroup contexts.",
+   "implication": "Have managers make the first cross-group introduction, so neither side has to risk reaching out first.",
+   "boundary": "Seven studies of White and Black participants' interest in interracial contact and how they explained avoidance.",
    "sources": [
     "contact05"
    ],
@@ -3009,21 +3098,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Create low-risk, reciprocal first-contact structures."
+     "q": "Who took part?",
+     "a": "White and Black participants, across seven studies."
     },
     {
-     "q": "Is this always true?",
-     "a": "The original work studied specific intergroup contexts."
+     "q": "Why call it pluralistic ignorance?",
+     "a": "Both groups privately wanted more contact, yet each wrongly believed the other group did not."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "People may misattribute each other’s reluctance to initiate intergroup contact."
+     "q": "Did the researchers go beyond attitudes?",
+     "a": "Yes. One study examined the behavioral consequences of the bias, and a final study tested a way to reduce it based on the extended contact hypothesis."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "fairness"
+   "theme": "fairness",
+   "study": {
+    "design": "Seven studies",
+    "n": "White and Black participants"
+   }
   },
   {
    "id": "judg02",
@@ -3038,11 +3131,10 @@
     "The distributions of outcomes can matter",
     "Every loss must hurt twice as much as a matching gain"
    ],
-   "answer": 0,
    "answerTitle": "It is not a universal law",
    "explain": "Experiments have found that apparent loss aversion can disappear or reverse when distributions change.",
-   "implication": "Check the local decision environment rather than assuming a fixed 2:1 ratio.",
-   "boundary": "This does not imply that loss aversion is never observed.",
+   "implication": "Before applying a 2:1 loss-aversion rule to pricing, test how customers respond to the gains and losses they actually face.",
+   "boundary": "Accept-or-reject choices on 50/50 money gambles, mostly hypothetical, with Mechanical Turk workers and Warwick students.",
    "sources": [
     "loss15"
    ],
@@ -3055,16 +3147,16 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Check the local decision environment rather than assuming a fixed 2:1 ratio."
+     "q": "How was loss aversion measured?",
+     "a": "People accepted or rejected 50/50 gambles offering a gain and a loss. The researchers varied the ranges from which gains and losses were drawn."
     },
     {
-     "q": "Is this always true?",
-     "a": "This does not imply that loss aversion is never observed."
+     "q": "Who took part?",
+     "a": "Three online experiments with Mechanical Turk workers (323 to 401 analyzed) using hypothetical gambles, and one lab study with 82 Warwick participants playing for real money."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Laboratory context and distributions can reduce or reverse apparent loss aversion."
+     "q": "Has the reversal held up?",
+     "a": "It is contested. Andre and de Langhe (2021) showed the conditions used different gambles; comparing only shared gambles removes the pattern."
     }
    ],
    "format": "multi",
@@ -3073,7 +3165,11 @@
     0,
     1
    ],
-   "theme": "choice"
+   "theme": "choice",
+   "study": {
+    "design": "Four experiments (three online, one lab)",
+    "n": "1,106 MTurk workers and 82 lab participants analyzed"
+   }
   },
   {
    "id": "social15",
@@ -3091,8 +3187,8 @@
    "answer": 0,
    "answerTitle": "The domains diverged",
    "explain": "The published study found ingroup love in perceived closeness, but outgroup hate in behavioral outcomes.",
-   "implication": "Assess actual cross-team cooperation, not only stated affinity.",
-   "boundary": "Five preregistered studies with more than 8,600 participants on US political identity.",
+   "implication": "When teams distrust each other, share evidence of the other side's actual cooperation, since pessimistic expectations drove the hostility.",
+   "boundary": "Incentivized behavioral experiments with US Trump supporters and opponents, plus a sports-identity comparison.",
    "sources": [
     "hate23"
    ],
@@ -3105,21 +3201,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Assess actual cross-team cooperation, not only stated affinity."
+     "q": "How large was the evidence base?",
+     "a": "Five preregistered studies with 15 behavioral experiments and over 8,600 participants."
     },
     {
-     "q": "Is this always true?",
-     "a": "The studies centered on political identity in a particular US context."
+     "q": "What drove the hostile behavior?",
+     "a": "Grim expectations about how cooperative the other side would be, rather than a flat refusal to cooperate across factions."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Across five preregistered studies, ingroup love appeared in feelings of closeness while outgroup hate appeared in observed behavior; tested nudges improved prosociality but did not close the polarization gap."
+     "q": "Which games measured behavior?",
+     "a": "In the working-paper version, a dictator game where people could give or take money, and a public goods game that also measured beliefs about others."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "norms"
+   "theme": "norms",
+   "study": {
+    "design": "Five preregistered studies, 15 behavioral experiments",
+    "n": "Over 8,600 participants"
+   }
   },
   {
    "id": "social16",
@@ -3134,11 +3234,10 @@
     "Measured polarization gaps persisted",
     "Defaults completely removed the identity gap"
    ],
-   "answer": 0,
    "answerTitle": "General improvement, persistent gap",
    "explain": "In the paper, tested defaults and norm nudges raised prosociality but did not close measured polarization gaps.",
-   "implication": "Measure between-group gaps separately from average cooperation.",
-   "boundary": "The tested nudges raised prosocial behavior overall, and the gap between Trump supporters and opponents remained.",
+   "implication": "Track between-group gaps as a separate metric when testing interventions, since average cooperation can rise while the gap stays.",
+   "boundary": "Default and norm nudges tested in incentivized giving and cooperation games with US Trump supporters and opponents.",
    "sources": [
     "hate23"
    ],
@@ -3151,16 +3250,16 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Measure between-group gaps separately from average cooperation."
+     "q": "Which nudges were tested?",
+     "a": "A default nudge and a norm nudge that gave descriptive information about others' behavior."
     },
     {
-     "q": "Is this always true?",
-     "a": "This is not proof that every intervention fails."
+     "q": "Is this only about politics?",
+     "a": "In the working-paper version, a sports-identity comparison also showed an ingroup-outgroup gap in giving, though not in cooperation."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Across five preregistered studies, ingroup love appeared in feelings of closeness while outgroup hate appeared in observed behavior; tested nudges improved prosociality but did not close the polarization gap."
+     "q": "Why might nudges miss the gap?",
+     "a": "The gap traced to grim expectations about the other side's cooperativeness, which raising overall giving does not address."
     }
    ],
    "format": "multi",
@@ -3169,7 +3268,11 @@
     0,
     1
    ],
-   "theme": "norms"
+   "theme": "norms",
+   "study": {
+    "design": "Five preregistered studies, 15 behavioral experiments",
+    "n": "Over 8,600 participants"
+   }
   },
   {
    "id": "social20",
@@ -3188,8 +3291,8 @@
    "answer": 0,
    "answerTitle": "Keep the whole distribution",
    "explain": "The published measurement paper describes how eliciting norm-belief distributions can reveal disagreement hidden by mean or mode.",
-   "implication": "Use distributions in culture audits before selecting interventions.",
-   "boundary": "A measurement method for tight, loose and polarized norms built on incentivized elicitation of each person’s beliefs.",
+   "implication": "In culture surveys, ask each person how views are spread across colleagues, not only what the typical view is.",
+   "boundary": "A short methods paper presenting an incentive-compatible survey tool that measures each person's perceived norm distribution.",
    "sources": [
     "measure23"
    ],
@@ -3202,21 +3305,25 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Use distributions in culture audits before selecting interventions."
+     "q": "What do standard norm measures capture?",
+     "a": "The average or most frequent behavior or opinion in a given context."
     },
     {
-     "q": "Is this always true?",
-     "a": "The paper introduces a method; it does not validate every possible corporate use."
+     "q": "Why pay respondents?",
+     "a": "The method is incentive-compatible, so respondents are rewarded for reporting their real beliefs about how views are spread."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Introduces an incentive-compatible method to elicit the distribution of perceived norms rather than only the most common norm."
+     "q": "Can a team use it?",
+     "a": "Yes. The paper comes with ready-made Qualtrics software."
     }
    ],
    "format": "choice",
    "weight": 1,
-   "theme": "norms"
+   "theme": "norms",
+   "study": {
+    "design": "Methods paper (measurement tool)",
+    "n": "Not stated in abstract"
+   }
   },
   {
    "id": "judg05",
@@ -3228,8 +3335,8 @@
    "question": "In the deaths frame, what share chose the gamble?",
    "answerTitle": "78% gambled once the frame was losses",
    "explain": "With identical outcomes, 72% chose the sure option when it was framed as lives saved; 78% chose the gamble when the same options were framed as deaths.",
-   "implication": "Use symmetrical framing in investment memos.",
-   "boundary": "This does not specify which framing wins in a new venture.",
+   "implication": "In investment memos, state each option's outcomes as both gains and losses before the team decides.",
+   "boundary": "Stanford and UBC students choosing between hypothetical public-health programs in a classroom questionnaire.",
    "sources": [
     "frame81"
    ],
@@ -3242,16 +3349,16 @@
    "unit": "",
    "follow": [
     {
-     "q": "Where does this show up at work?",
-     "a": "Use symmetrical framing in investment memos."
+     "q": "Who answered?",
+     "a": "Students at Stanford and the University of British Columbia, in brief classroom questionnaires: 152 saw the lives-saved version and 155 the deaths version."
     },
     {
-     "q": "Is this always true?",
-     "a": "This does not specify which framing wins in a new venture."
+     "q": "Do experts fall for it too?",
+     "a": "Yes. The authors report the same reversal in other groups, including university faculty and physicians."
     },
     {
-     "q": "What did the researchers actually test?",
-     "a": "Equivalent decision problems can produce different preferences depending on presentation."
+     "q": "Why does the frame flip choices?",
+     "a": "People tend to avoid risk when outcomes are described as gains and to take risk when they are described as losses."
     }
    ],
    "format": "estimate",
