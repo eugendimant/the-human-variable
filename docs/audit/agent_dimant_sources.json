@@ -1,0 +1,264 @@
+[
+  {
+    "id": "dimant_social_proximity_geb2022",
+    "citation": "Bicchieri, C., Dimant, E., Gächter, S., & Nosenzo, D. (2022). Social proximity and the erosion of norm compliance. Games and Economic Behavior, 132, 59-72.",
+    "doi": "10.1016/j.geb.2021.11.012",
+    "metadata_verified_via": "Crossref API (authors, journal, volume 132, pages 59-72, March 2022); OpenAlex: OA, CC-BY published version",
+    "what_was_read": "Published full text (ScienceDirect OA, CC-BY): design, Experiment 1 results, Tables 2-4. Note: paper reports N=1,699 across four experiments; numbers below are Experiment 1.",
+    "design": "Lab, University of Pennsylvania, zTree. Experiment 1 N=842 students. Take-or-Give charity game (100/100 ECU split; give, take, or leave). One individual decision then 19 more periods in fixed groups of 2 or 4. Conditions: NoObservation; Observation (history table of group members' decisions); ObservationSP (Observation plus each member's answer to a Philadelphia baseball question, the social proximity manipulation).",
+    "key_findings": [
+      "Initial takers did not differ by treatment: 45% (NoObservation), 44% (Observation), 42% (ObservationSP); Kruskal-Wallis p=0.703.",
+      "NoObservation: average change over periods -4.9 ECU (p=0.308, n.s.).",
+      "Observation: participants took an additional 21.9 ECU (p<0.001); paper: donations 'decline by about 20% compared to NoObservation'.",
+      "ObservationSP: additional 7.5 ECU taken (p=0.008); 'the average donation is not significantly different from our NoObservation baseline.'",
+      "Observation: each ECU others took reduced own donation by about 0.24 ECU; seeing others give had no significant effect. 'the effects of examples of violation are significantly larger than the effects of examples of compliance (p < 0.001).'",
+      "ObservationSP: seeing taking reduced donations ~0.12 ECU per ECU; seeing giving increased them ~0.20 ECU (p<0.01); effects of giving and taking of similar magnitude (p=0.649).",
+      "Abstract: compliance can persist without social sanctions provided there is group identification."
+    ],
+    "game_item": {
+      "interaction_type": "causal reasoning",
+      "scenario": "You run a hybrid team of 4. You plan to launch a dashboard showing each person's compliance with a voluntary expense-policy norm, visible to the whole team. Option A shows the dashboard only. Option B shows the dashboard plus small markers of shared identity (same office, shared affiliation) on each profile.",
+      "question": "In a 20-period experiment where peers could see each other's give/take choices, what happened to norm compliance when people saw peers' choices WITHOUT any cue of social proximity?",
+      "options": [
+        "A. Compliance stayed flat: visibility had no effect",
+        "B. Compliance rose: people copied the compliant majority",
+        "C. Compliance eroded: people copied violations but ignored compliance",
+        "D. Compliance eroded equally fast with or without social proximity"
+      ],
+      "correct_answer": "C",
+      "explanation": "With observation alone, participants took an additional 21.9 ECU (p<0.001), donations falling about 20% relative to no observation. Observed taking reduced own donations (~0.24 ECU per ECU taken) while observed giving had no significant effect. Adding a minimal social-proximity cue cut the extra taking to 7.5 ECU and made donations statistically indistinguishable from the no-observation baseline, because people then responded to good examples as well as bad ones.",
+      "boundary": "Lab experiment with Penn students and charity donations; proximity was a minimal cue (shared answer to a local baseball question). Effects are for a non-strategic giving task without sanctions.",
+      "managerial_implication": "Transparency about peers' behavior is not automatically norm-reinforcing: bad examples spread faster than good ones. Pair visibility with real group identification, or the dashboard can accelerate erosion."
+    }
+  },
+  {
+    "id": "dimant_requiem_nudge_jebo2020",
+    "citation": "Dimant, E., van Kleef, G. A., & Shalvi, S. (2020). Requiem for a Nudge: Framing effects in nudging honesty. Journal of Economic Behavior & Organization, 172, 247-266.",
+    "doi": "10.1016/j.jebo.2020.02.015",
+    "metadata_verified_via": "Crossref API (authors, volume 172, pages 247-266, 2020)",
+    "what_was_read": "Published abstract (RePEc/EconPapers) and full text of the pre-publication version, CESifo Working Paper 8170 (March 2020, 'forthcoming in JEBO'). Numbers below are from the WP; check against the published version before display.",
+    "design": "Pre-registered, Amazon Mechanical Turk, N=1,200 US participants (May 2019); follow-ups n=250 (comprehension) and n=217 (norm elicitation). Baseline plus 2x2 norm-nudges: empirical vs normative content x positive ('The vast majority of participants were honest...') vs negative framing. Mind game: 20 periods, report whether a privately chosen number matched a die roll, $0.10 per match; truthful expectation 16.67%.",
+    "key_findings": [
+      "'we find no significant differences in average reporting behavior across all conditions (p=0.134)'; lowest pairwise p=0.164 (Baseline vs Empirical Negative).",
+      "Share of rounds reported as wins (figure values): Baseline 45.1%, Normative Negative 46.7%, Normative Positive 44.9%, Empirical Negative 41.4%, Empirical Positive 45.0%, vs 16.67% chance.",
+      "Norm elicitation: 'none of the norm elicitation results yield any significant changes in norm perceptions compared to the Baseline' (p=0.19, 0.25, 0.17, 0.49).",
+      "Participants who failed the recall check 'were about 33% more likely to report a winning number than those who did pass the attention check (p=0.012)' (odds ratio 1.327); many misremembered the message in a self-serving direction."
+    ],
+    "game_item": {
+      "interaction_type": "forecast probability",
+      "scenario": "Compliance proposes adding a truthful honesty message to your self-reported expense form (e.g., 'The vast majority of employees report honestly'). It costs nothing. Four versions are drafted: what others do vs what others approve of, each framed positively or negatively.",
+      "question": "In a pre-registered test with 1,200 participants who could cheat undetectably, what is the probability (0-100%) that at least one of the four honesty messages significantly reduced cheating relative to no message?",
+      "options": "Slider 0-100%",
+      "correct_answer": "Low. None of the four nudges differed significantly from control (overall p=0.134; best pairwise p=0.164). A well-calibrated answer is near the low end.",
+      "explanation": "Win-report rates stayed far above the 16.67% chance level in every arm (41.4% to 46.7%). A follow-up showed the messages did not shift perceived norms at all, and people who misremembered the message cheated more, consistent with motivated misremembering.",
+      "boundary": "Online MTurk sample, small stakes ($0.10 per report), single exposure to a one-line message, fully undetectable cheating. A null for these messages in this setting does not show that all norm interventions fail.",
+      "managerial_implication": "Do not assume a free honesty message works; norm-nudges that do not change perceived norms do not change behavior. Test before rollout and check whether the message actually moves beliefs."
+    }
+  },
+  {
+    "id": "dimant_not_a_lie_geb2023",
+    "citation": "Bicchieri, C., Dimant, E., & Sonderegger, S. (2023). It's not a lie if you believe the norm does not apply: Conditional norm-following and belief distortion. Games and Economic Behavior, 138, 321-354.",
+    "doi": "10.1016/j.geb.2023.01.005",
+    "metadata_verified_via": "Crossref API (authors, volume 138, pages 321-354, March 2023)",
+    "what_was_read": "Published abstract (RePEc) and full text of the earlier version, CeDEx Discussion Paper 2019-07 ('It's not a lie if you believe it'). Numbers are from that WP; the published version may report updated figures. Verify before display.",
+    "design": "Amazon Mechanical Turk, US. Main experiment N=724; pre-experiment N=100 (source of true information); follow-up N=300. Two-stage task: belief elicitation, then a die roll where reporting '5' paid $0.25. Belief type: empirical (what others do) vs normative (what others approve). Awareness: Cheating Possibility Known (CPK, learned about the die task before stating beliefs) vs Unknown (CPU). Baseline without belief elicitation.",
+    "key_findings": [
+      "Share reporting the winning number: Baseline 34.7%; Empirical CPK 40.5% vs Empirical CPU 21.4%; Normative CPK 40.2% vs Normative CPU 38.0%.",
+      "Belief that most people lie rose when the cheating opportunity was known: '38.1% versus 62.7%, Equality of Proportions Test (EPT), p<0.001'.",
+      "Normative beliefs did not differ between CPK (39.4%) and CPU (34.9%).",
+      "Follow-up: told most people did not lie, 77.48% inferred that most disapproved of lying; told most disapproved, only 47.65% inferred most were honest.",
+      "Published abstract: 'widespread honest behavior is a strong indicator of disapproval of lying', but not the reverse; results fit a dual-self model of strategic belief distortion."
+    ],
+    "game_item": {
+      "interaction_type": "numeric estimate",
+      "scenario": "Before a sales team learns that a new commission scheme can be gamed, you survey them: 'What share of your colleagues do you think misreport?' A second, similar team gets the same question only after learning how the scheme can be gamed.",
+      "question": "In the experiment, when participants already knew they could profit from lying, what share believed most others lie? (Comparison group who did not yet know: 38.1%.)",
+      "options": "Numeric entry, 0-100%",
+      "correct_answer": "62.7% (vs 38.1% when unaware; p<0.001)",
+      "explanation": "Knowing a lie is profitable shifted empirical beliefs by about 25 points, a self-serving distortion: 'everyone does it' makes the lie feel acceptable. Lying in that arm was 40.5% vs 21.4% when beliefs were stated before learning of the opportunity. Normative beliefs (what others approve) did not shift.",
+      "boundary": "Working-paper numbers from an MTurk die-roll task with $0.25 stakes; the published GEB version should be checked for final figures.",
+      "managerial_implication": "Employees' claims that 'everyone games the system' may be motivated beliefs, not information. Communicate what peers actually do and approve of before temptation arises, and emphasize honest behavior, which people read as disapproval of lying."
+    }
+  },
+  {
+    "id": "dimant_deviant_or_wrong_jebo2021",
+    "citation": "Bicchieri, C., Dimant, E., & Xiao, E. (2021). Deviant or wrong? The effects of norm information on the efficacy of punishment. Journal of Economic Behavior & Organization, 188, 209-235.",
+    "doi": "10.1016/j.jebo.2021.04.002",
+    "metadata_verified_via": "Crossref API (authors, volume 188, pages 209-235, August 2021)",
+    "what_was_read": "Published abstract (RePEc) and full text of CESifo Working Paper 9067 (May 2021, 'forthcoming in JEBO'). Numbers from WP.",
+    "design": "Lab, University of Pennsylvania, z-Tree, N=418 in 34 sessions (2016). Trust game, 10 rounds, random rematching; investor sends 0/4/8 ECU and may request at least 50% back. Weak punishment: 5 ECU cut if the trustee returns less than 50% after a request (smaller than the cost of complying). Six conditions: Baseline; Pun NoInfo; NoPun NormInfo; Pun NormInfo; NoPun EmpInfo; Pun EmpInfo. Low stakes (4 sent, 6 requested) vs high stakes (8 sent, 12 requested).",
+    "key_findings": [
+      "Punishment alone: 'non-significant increase from 32.4% to 35.6% (BSM, p=0.19)' in returns.",
+      "Norm information alone: no significant effect (pooled 27.5% normative, 28.5% empirical vs 32.4% baseline).",
+      "Punishment plus normative information, low stakes: '(42.7% vs. 28.7%, BSM, p<0.01)'; high stakes 31.6% vs 36.5%, n.s.",
+      "Punishment plus empirical information, high stakes: '(22.2% vs. 36.5%, BSM, p=0.01)', a backfire.",
+      "Published abstract: the negative effect arises because punishment is perceived as unjustified, at least by some."
+    ],
+    "game_item": {
+      "interaction_type": "ranking",
+      "scenario": "You are adding a modest penalty for employees who miss a costly service standard (e.g., returning at least half of a shared bonus pool). You can attach one message: none, 'Most colleagues think meeting the standard is the right thing to do' (normative), or 'Most colleagues meet the standard' (empirical).",
+      "question": "When complying is COSTLY, rank the three options (penalty alone, penalty + normative message, penalty + empirical message) from highest to lowest resulting compliance.",
+      "options": ["Penalty alone", "Penalty + normative message", "Penalty + empirical message"],
+      "correct_answer": "Penalty alone (36.8% returned) > Penalty + normative (31.6%, n.s. vs baseline 36.5%) > Penalty + empirical (22.2%, significant backfire vs 36.5%)",
+      "explanation": "With high compliance costs, telling people 'most others comply' while imposing a weak penalty cut returns from 36.5% to 22.2% (p=0.01). When compliance was cheap, the penalty plus a normative message worked (42.7% vs 28.7%, p<0.01). The authors attribute the backfire to punishment being seen as unjustified.",
+      "boundary": "Lab trust game with students and small ECU stakes; 'weak' punishment means the fine is below the cost of compliance.",
+      "managerial_implication": "Weak sanctions need the right message. If compliance is cheap, pair the sanction with what people think is right. If compliance is costly, do not lean on 'everyone else does it'; it can make the sanction feel illegitimate and lower compliance."
+    }
+  },
+  {
+    "id": "dimant_nudging_enforcers_pnasnexus2023",
+    "citation": "Dimant, E., & Gesche, T. (2023). Nudging enforcers: how norm perceptions and motives for lying shape sanctions. PNAS Nexus, 2(7), pgad224.",
+    "doi": "10.1093/pnasnexus/pgad224",
+    "metadata_verified_via": "Crossref API (authors, volume 2, issue 7, article pgad224, published online 4 July 2023)",
+    "what_was_read": "Published abstract and design section (OUP page; Results section not retrieved; PMC10360164 behind a captcha). Numbers from full text of CESifo Working Paper 9385, whose study numbering differs from the published version (published: Study 1 behavioral, Study 2 vignette, Study 3 norm elicitation). Verify numbers against the published article before display.",
+    "design": "Study 1 (preregistered): Liar experiment n=170 MTurk (teams of two; reporter could misreport a five-sided die roll for a bonus lottery). Punisher experiment n=1,240 recruited by a market research firm to be representative of the US working-age population (April/May 2019): conditions NO INFO, EMPIRICAL ('The majority of Player As in the previous study reported the number truthfully'), NORMATIVE ('The majority ... stated that the right thing to do ... is to report the number truthfully'); 0-5 punishment points per scenario across 10 scenarios, $0.30 per point. Plus a vignette study (corruption in a company) and an incentivized norm-elicitation study (WP: n=1,519).",
+    "key_findings": [
+      "WP: relative to NO INFO, EMPIRICAL raised punishment by about 3.5 percentage points (5% level) and NORMATIVE by about 2.7 points (10% level); the two did not differ (p=0.629).",
+      "WP: smallest lie received 44.7% of maximum punishment; each additional unit of lie size added about 10 percentage points.",
+      "WP: 'While punishment for lies that achieve equity amounts to 43.6%, the share of punishment for lies that achieve inequity is 9.2 percentage points higher, at a level of 52.8%.'",
+      "WP vignette: 75.0% punishment with norm information vs 65.7% without.",
+      "Published abstract: enforcement is sensitive to the size of the lie and to whether it creates or offsets payoff inequality; enforcers respond to norm-nudges; norm-nudges work best when existing norms are ambiguous."
+    ],
+    "game_item": {
+      "interaction_type": "numeric estimate",
+      "scenario": "Two employees each inflate a performance report by the same amount. Employee A's lie closes a gap with a better-paid colleague (equity). Employee B's lie widens their existing advantage (inequity). Your managers, acting as enforcers, decide how harshly to sanction.",
+      "question": "In the experiment, lies that restored equity received 43.6% of the maximum punishment. What share did same-mechanism lies that created inequity receive?",
+      "options": "Numeric entry, 0-100%",
+      "correct_answer": "52.8% (9.2 percentage points higher)",
+      "explanation": "Enforcers judge lies by motive and consequence, not just size: lies that create inequity are punished more. Short norm messages (what most people did, or what most think is right) raised punishment by about 3.5 and 2.7 points, and published Study 3 shows such nudges work best where norms are ambiguous.",
+      "boundary": "Numbers from the CESifo working-paper version; online US sample; hypothetical-style scenarios with real monetary punishment of small size.",
+      "managerial_implication": "Managers' sanctions are shaped by perceived fairness and by norm information. Calibrate enforcement guidelines explicitly, because enforcers can be nudged and will treat 'Robin Hood' lies more leniently."
+    }
+  },
+  {
+    "id": "dimant_observability_jebo2021",
+    "citation": "Bolton, G., Dimant, E., & Schmidt, U. (2021). Observability and social image: On the robustness and fragility of reciprocity. Journal of Economic Behavior & Organization, 191, 946-964.",
+    "doi": "10.1016/j.jebo.2021.09.018",
+    "metadata_verified_via": "Crossref API author listing (DOI, title, journal, 2021); RePEc (volume 191, pages 946-964)",
+    "what_was_read": "Published abstract (IDEAS/RePEc) and full text of CeDEx Discussion Paper 2019-03, 'When a Nudge Backfires: Using Observation with Social and Economic Incentives to Promote Pro-Social Behavior'. Numbers from the WP.",
+    "design": "Experiment 1: lab, University of Kiel, N=423, z-Tree; dictator game with taking option toward a charity. Conditions: SelfSig (no observer), Reputation (an observer can reciprocate with money), SocSig (passive observer, no economic consequences). Experiment 2: MTurk, 1,650 US participants in the decision-maker role; SelfSig vs SocSig, with belief-elicitation (norm focus) variants and advantageous vs disadvantageous inequality variants.",
+    "key_findings": [
+      "Lab: under Reputation 'participants donated 40.9% of their initial endowment'; pro-social behavior 78.05% (Reputation) vs 48.72% (SelfSig) and 54.55% (SocSig); anti-social behavior 4.88% vs 21.95% and 31.82%.",
+      "MTurk: 'SocSig leads to a significant backfiring effect overall with respect to money left in the charity account' (-28.3% vs -18.4%, p=0.0401).",
+      "Under disadvantageous inequality, depletion was larger with observation (-34.9% vs -19.8%, p=0.0154); under advantageous inequality the reverse (-8.3% vs -21.9%, p=0.0308).",
+      "Norm focus (belief elicitation) moved SocSig from -28.3% to +9.3% and SelfSig from -18.4% to +1.8%.",
+      "Published abstract: observability alone has little positive effect and can backfire; inequality aversion explains the backfire; making norms salient mitigates it."
+    ],
+    "game_item": {
+      "interaction_type": "sequential decision",
+      "scenario": "To boost contributions to a company charity drive, HR proposes publicly showing each person's contribution to a colleague (no rewards attached). Step 1: choose 'observation only', 'observation with reciprocity (colleague can reward)', or 'no observation'. Step 2: after seeing results, decide whether to add a prompt asking people what they think others consider appropriate.",
+      "question": "Which step-1 choice and step-2 add-on produced the most pro-social outcome, and what happened under 'observation only'?",
+      "options": [
+        "A. Observation only is best; no add-on needed",
+        "B. Observation with reciprocity is best; observation only can backfire, and a norm-focus prompt reverses the backfire",
+        "C. No observation is best; prompts do nothing",
+        "D. All three are equivalent"
+      ],
+      "correct_answer": "B",
+      "explanation": "In the lab, the reciprocity condition had 78.05% pro-social choices vs 54.55% under passive observation. Online, passive observation depleted the charity account more than no observation (-28.3% vs -18.4%, p=0.0401), driven by people at a disadvantage. Making the norm salient through belief elicitation turned observation's -28.3% into +9.3%.",
+      "boundary": "Working-paper numbers; charity dictator games with small stakes; observers were anonymous participants.",
+      "managerial_implication": "Being watched is not a free lever. Visibility without consequences can trigger resentment-driven taking among those who feel disadvantaged; attach real reciprocity or make the norm salient."
+    }
+  },
+  {
+    "id": "dimant_motivated_info_eer2024",
+    "citation": "Dimant, E., Galeotti, F., & Villeval, M. C. (2024). Motivated information acquisition and social norm formation. European Economic Review, 167, 104778.",
+    "doi": "10.1016/j.euroecorev.2024.104778",
+    "metadata_verified_via": "Crossref API (authors Eugen Dimant, Fabio Galeotti, Marie Claire Villeval; volume 167, article 104778, 2024); OpenAlex OA flag.",
+    "what_was_read": "Published abstract (OpenAlex, reconstructed) and published full text (ScienceDirect OA).",
+    "design": "Two online experiments with US CloudResearch/MTurk participants: Experiment 1 (endogenous choice of information source) N=1,945; Experiment 2 (exogenous assignment) N=2,414. Lying game: 'wheel game' (mind-game variant), undetectable. Participants chose between peers providing above-median (more lenient) or below-median (stricter) empirical or normative information. Control (colors only) vs Group Identity (colors linked to Democrat/Republican).",
+    "key_findings": [
+      "Baseline: 'In Part 1, participants on average reported a success in 61.81% of the cases.'",
+      "Control: 'In the Emp-Info condition, the average share of above-median information consumed was 54.61%'; Norm-Info 54.53%.",
+      "With political identity, participants consumed roughly 11-19% more lenient information from in-group peers and 21-28% less from out-group peers, relative to Control.",
+      "Emp-Info: participants 'selected in-group information 62.44% of the times' when it was more lenient vs 58.29% when stricter (Norm-Info 62.48% vs 57.30%).",
+      "Abstract: 'being exposed to information that suggests lying is more socially acceptable increases lying behavior'; normative expectations shift with information about what peers think is right, not with peers' actions."
+    ],
+    "game_item": {
+      "interaction_type": "confidence calibration",
+      "scenario": "An AI assistant lets employees pick whose past decisions to see before filing a discretionary claim: colleagues known to be lenient or colleagues known to be strict. Leadership assumes people will pick neutrally.",
+      "question": "True or false, with confidence (50-100%): When people could choose, they favored lenient sources, and more so when the lenient source shared their political identity.",
+      "options": ["True", "False"],
+      "correct_answer": "True",
+      "explanation": "Even without identity cues, lenient information was chosen 54.61% (empirical) and 54.53% (normative) of the time. With partisan labels, in-group lenient information was picked 62.44% of the time vs 58.29% for stricter in-group information. Exposure to information that lying is more acceptable increased lying, and normative information is what shifted people's sense of what is appropriate.",
+      "boundary": "Online US samples, small-stakes lying game; identity was operationalized as US partisan affiliation.",
+      "managerial_implication": "When people curate their own social information (feeds, AI recommendations, peer benchmarks), they shop for permission. Default to representative norm information rather than self-selected benchmarks."
+    }
+  },
+  {
+    "id": "dimant_beyond_belief_jesp2023",
+    "citation": "Ren, Z. B., Dimant, E., & Schweitzer, M. (2023). Beyond belief: How social engagement motives influence the spread of conspiracy theories. Journal of Experimental Social Psychology, 104, 104421.",
+    "doi": "10.1016/j.jesp.2022.104421",
+    "metadata_verified_via": "Crossref API author listing; Duke Scholars record (volume 104, article 104421, January 2023)",
+    "what_was_read": "SSRN abstract of the 2021 version (SSRN 3919364; the OA copy OpenAlex links to). Published JESP full text not retrieved. Numbers in the authors' Psychology Today summary (40% willing to share known-false conspiracy theories; nearly 50% shared under engagement rewards; sharing nearly doubled after positive feedback) are secondary and NOT used as the scored answer.",
+    "design": "Three preregistered studies, total N=1,560 Prolific workers; incentives for engagement vs accuracy; simulated social media environment with manipulated social feedback.",
+    "key_findings": [
+      "SSRN abstract: 'Across three preregistered studies (total N=1,560 Prolific workers)' people 'knowingly share misinformation to advance social motives'.",
+      "'they expect sharing conspiracy theories to generate more social feedback' '(i.e. comments and \"likes\") than sharing factual news.'",
+      "'Giving more positive social feedback for sharing conspiracy theories significantly increases people's tendency' 'to share these conspiracy theories that they do not believe in.'"
+    ],
+    "game_item": {
+      "interaction_type": "causal reasoning",
+      "scenario": "Your internal comms platform rewards posts with visible likes and a monthly 'most engaging' badge. Rumors about a reorganization start circulating, including some that posters privately doubt.",
+      "question": "According to three preregistered studies (N=1,560), why do many people share conspiracy content?",
+      "options": [
+        "A. Only because they believe it and are inattentive",
+        "B. Partly because they expect more likes and comments, even for content they do not believe; more positive feedback increases such sharing",
+        "C. Only because of low digital literacy",
+        "D. Social feedback has no effect on what people share"
+      ],
+      "correct_answer": "B",
+      "explanation": "People make calculated trade-offs between accuracy and engagement: they expect conspiracy theories to draw more comments and likes than factual news, and more positive feedback significantly increases sharing of conspiracy theories they do not believe.",
+      "boundary": "Prolific samples on simulated platforms with modest incentives; reputational costs were lower than on real platforms (per the authors). Scored on the abstract's qualitative finding; numbers should come from the published JESP article if used.",
+      "managerial_implication": "Engagement-maximizing incentives (internal or algorithmic) can reward knowingly sharing falsehoods. Reward accuracy, or decouple visibility from raw engagement."
+    }
+  },
+  {
+    "id": "dimant_mask_forecasting_scirep2022",
+    "citation": "Dimant, E., Clemente, E. G., Pieper, D., Dreber, A., Gelfand, M., & Behavioral Science Units Consortium (2022). Politicizing mask-wearing: predicting the success of behavioral interventions among republicans and democrats in the U.S. Scientific Reports, 12, 7575.",
+    "doi": "10.1038/s41598-022-10524-1",
+    "metadata_verified_via": "Crossref API (volume 12, article 7575, 2022; Crossref also lists consortium members Hallsworth, Holzwarth, Tantia)",
+    "what_was_read": "Published full text (Nature, open access).",
+    "design": "Forecasting study tied to a companion nudge experiment (Gelfand et al., 2021; representative US sample of 4,931 Republicans and Democrats; seven nudges vs baseline, e.g., moral frames, economy, mortality threat, scientific evidence). Forecasters N=1,034: 714 laypeople, 199 academics, 121 practitioners; 64 predictions each in Cohen's d; raffle incentive for predictions within ±0.10.",
+    "key_findings": [
+      "'there was no evidence that 7 nudge interventions were effective at promoting mask-wearing among Democrats or Republicans'.",
+      "Forecasters overestimated effects overall (z=4.40, p<0.001), significantly for Democrats (z=4.84, p<0.001), not for Republicans (z=1.67, p=0.09).",
+      "Forecasters predicted larger effects for Democrats than for Republicans (mean difference 0.28, p<0.001).",
+      "Predicted vs observed effects for Democrats correlated r=-0.63 (p=0.0003); for Republicans r=0.30 (p=0.12).",
+      "'Academics and practitioners made more accurate predictions compared to laypeople' (laypeople's error higher by 0.29 and 0.25, both p<0.001); academics vs practitioners p=0.10."
+    ],
+    "game_item": {
+      "interaction_type": "forecast probability",
+      "scenario": "Your leadership team is choosing among seven messaging campaigns to raise compliance with a new safety protocol among a politically mixed workforce. Experienced consultants confidently predict which messages will work best for which group.",
+      "question": "In a test of seven mask-wearing nudges on 4,931 Americans, what is the probability that at least one nudge reliably increased mask-wearing for either party?",
+      "options": "Slider 0-100%",
+      "correct_answer": "Low. The companion study found no evidence that any of the 7 nudges was effective for either Democrats or Republicans.",
+      "explanation": "1,034 forecasters, including 199 academics and 121 practitioners, overestimated nudge effects (z=4.40, p<0.001), especially for Democrats, and their rank ordering for Democrats was inversely related to the truth (r=-0.63). Experts beat laypeople but still overestimated effects.",
+      "boundary": "One domain (COVID-19 mask-wearing, US, 2020) and one set of light-touch messages; outcomes included attitudes, intentions, and pledge behavior.",
+      "managerial_implication": "Expert intuition about which message will work is a weak substitute for testing. Budget for a quick A/B test before scaling, and expect smaller effects than forecast."
+    }
+  },
+  {
+    "id": "dimant_opioid_disposal_healthecon2026",
+    "citation": "Toma, M., Burnett, R., Debroy, P., Dimant, E., Liu, J., Safran, E., Saya, U., & Schultz, B. (2026). Promoting Safe Opioid Disposal: Experimental Evidence on Behavioral Messaging With Financial Incentives. Health Economics, 35.",
+    "doi": "10.1002/hec.70085",
+    "metadata_verified_via": "Crossref API (authors, Health Economics, 2026, volume 35; issue/pages not retrieved)",
+    "what_was_read": "Published abstract (via synapsesocial abstract mirror) and the US Office of Evaluation Sciences (GSA) project page for the same trial. Published full text not retrieved (Wiley blocked); numbers below are from the OES page and should be checked against the published article.",
+    "design": "Pre-registered field experiment with US Veterans at White River Junction VA Medical Center 'Cash for Your Stash' buyback ($5 per returned pill, up to $50) after outpatient surgery. Control: standard program information. Treatment: plus two reminder cards (one at pickup, one mailed about a week after surgery) using timely reminders, implementation-intention prompts, and loss framing ('money waiting to be claimed'). Randomized by week of surgery. N not reported on the OES page.",
+    "key_findings": [
+      "Abstract: cards increased both the likelihood of returning unused pills and the number returned, and lowered cost per pill returned and cost per participant who returned pills; 'low-cost behavioral messaging can meaningfully enhance the effectiveness of existing financial incentive programs.'",
+      "OES: control return rate 24.8%; treatment 'increased the likelihood that a patient would return unused pills by 7.0 percentage points' (p=0.043).",
+      "OES: 'When using reminder cards, the cost per pill returned was $12.57.' vs 'When no reminder cards were used, the cost per pill returned was $15.66.'"
+    ],
+    "game_item": {
+      "interaction_type": "allocation",
+      "scenario": "You run a cash-incentive program that pays customers to return unused product for safe disposal. Your budget increase can go to (a) raising the cash incentive or (b) adding two low-cost behaviorally designed reminder cards (timely reminder, plan-making prompt, 'money waiting for you' framing). Allocate 100 points.",
+      "question": "In a VA field experiment, adding reminder cards to a $5-per-pill buyback raised return rates from 24.8% by how many percentage points, and what happened to cost per pill returned?",
+      "options": "Allocation slider plus numeric entry for the effect",
+      "correct_answer": "+7.0 percentage points (p=0.043); cost per pill returned fell from $15.66 to $12.57.",
+      "explanation": "Cards targeted follow-through rather than motivation: reminders at the right moments, a prompt to plan the return, and loss framing of an existing incentive. They raised participation and made each incentive dollar more cost-effective.",
+      "boundary": "One VA medical center, post-surgical opioid prescriptions, existing incentive already in place; numbers from the OES project summary rather than the published article.",
+      "managerial_implication": "Before raising an incentive, fix the follow-through problem. Cheap, well-timed behavioral messaging can make an existing incentive program both more effective and cheaper per outcome."
+    }
+  }
+]

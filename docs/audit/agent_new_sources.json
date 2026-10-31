@@ -1,0 +1,526 @@
+[
+  {
+    "id": "vaccaro2024_humanai_synergy",
+    "topic": "human-AI complementarity",
+    "authors": ["Michelle Vaccaro", "Abdullah Almaatouq", "Thomas W. Malone"],
+    "year": 2024,
+    "title": "When combinations of humans and AI are useful: A systematic review and meta-analysis",
+    "journal": "Nature Human Behaviour",
+    "volume_issue_pages": "8(12), 2293-2303",
+    "doi": "10.1038/s41562-024-02024-1",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "\"The overall pooled effect was negative (g = -0.23; t92 = -2.89; two-tailed P = 0.005; 95% confidence interval (CI), -0.39 to -0.07)\" [human-AI vs best of human or AI alone]",
+      "\"this pooled effect size was positive (g = 0.64; t98 = 11.87; two-tailed P = 0.000; 95% CI, 0.53 to 0.74)\" [human-AI vs humans alone]",
+      "Decision tasks: \"significantly negative (g = -0.27 ... 95% CI, -0.44 to -0.10)\"; creation tasks: \"positive (g = 0.19 ... P = 0.180; 95% CI, -0.09 to 0.48)\"",
+      "When humans outperformed AI alone: \"the combined human-AI system outperformed both alone with an average pooled effect size for human-AI synergy of g = 0.46\"; when AI outperformed humans: \"g = -0.54 (... 95% CI, -0.71 to -0.37)\""
+    ],
+    "quote_status": "verbatim from published full text as returned by fetch tool (minus signs normalized)",
+    "sample_design": "Preregistered systematic review and meta-analysis of 106 experimental studies (370 effect sizes) published Jan 2020-Jun 2023.",
+    "text_read": "Full text (results section) on nature.com plus Crossref metadata/abstract",
+    "caveats": "Average effects with heterogeneity; authors flag possible publication bias and design variation.",
+    "interaction_type": "AI delegation",
+    "game_item": {
+      "scenario": "Your insurer piloted an AI claim-fraud classifier. On the pilot, the AI alone is clearly more accurate than your experienced analysts alone. A manager proposes that analysts review and can override every AI decision.",
+      "question": "Based on a meta-analysis of 106 experiments, what is the most likely result of adding the human-override layer in a decision task where AI alone beats humans alone?",
+      "options": ["A. Human+AI beats both (true synergy)", "B. Human+AI performs worse than the AI alone", "C. Human+AI equals the AI alone", "D. Human+AI performs worse than humans alone"],
+      "correct_option": "B",
+      "explanation": "Across studies, human-AI systems were on average worse than the best of humans or AI alone (g = -0.23), losses concentrated in decision tasks (g = -0.27), and when AI outperformed humans the combination lost performance (g = -0.54). Combinations still beat humans alone (g = 0.64), so D is wrong.",
+      "boundary_condition": "When humans outperform the AI alone, combinations gained (g = 0.46); content-creation tasks trended positive (g = 0.19, n.s.). Meta-analytic averages, not a guarantee for a given workflow."
+    }
+  },
+  {
+    "id": "bastani2025_genai_guardrails",
+    "topic": "generative AI and learning without guardrails",
+    "authors": ["Hamsa Bastani", "Osbert Bastani", "Alp Sungu", "Haosen Ge", "Özge Kabakcı", "Rei Mariman"],
+    "year": 2025,
+    "title": "Generative AI without guardrails can harm learning: Evidence from high school mathematics",
+    "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+    "volume_issue_pages": "122(26), e2422633122",
+    "doi": "10.1073/pnas.2422633122",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "\"48% improvement in grades for GPT Base\" and \"127% for GPT Tutor\" [practice performance with access]",
+      "\"17% reduction in grades for GPT Base\" [subsequent unassisted exam vs students never given access]"
+    ],
+    "quote_status": "verbatim fragments of the PNAS abstract (RePEc record of the journal article); consistent with full manuscript copy",
+    "sample_design": "Field RCT with nearly 1,000 students in grades 9-11 at a large high school in Turkey (Fall 2023-24), four 90-minute sessions; arms: control, GPT Base (ChatGPT-like GPT-4), GPT Tutor (GPT-4 with learning safeguards). Main analysis sample 839 students.",
+    "text_read": "Abstract (journal version via Crossref and RePEc); full text of an unheadered manuscript copy for design details",
+    "caveats": "PNAS publisher page did not load; design details (839, Turkey, sessions) come from a manuscript copy whose match to the version of record was not confirmed.",
+    "interaction_type": "numeric estimate",
+    "game_item": {
+      "scenario": "Your analyst academy gives new hires unrestricted ChatGPT during practice exercises. Practice scores jump. Certification exams are taken without AI.",
+      "question": "In a field RCT with ~1,000 math students, how did students who practiced with an unrestricted GPT-4 interface perform on a later exam without AI, relative to students who never had access?",
+      "options": ["A. About 48% better", "B. No difference", "C. About 17% worse", "D. About 127% better"],
+      "correct_option": "C",
+      "explanation": "Access raised practice grades (48% for GPT Base) but, once removed, GPT Base students scored 17% lower than controls; the authors attribute this to using AI as a crutch.",
+      "boundary_condition": "The guardrailed GPT Tutor (127% practice gain) largely avoided the exam harm. Evidence is from high school math over four sessions; transfer to adult professional training is an extrapolation."
+    }
+  },
+  {
+    "id": "dietvorst2018_modify_algorithms",
+    "topic": "algorithm aversion reduced by modification",
+    "authors": ["Berkeley J. Dietvorst", "Joseph P. Simmons", "Cade Massey"],
+    "year": 2018,
+    "title": "Overcoming Algorithm Aversion: People Will Use Imperfect Algorithms If They Can (Even Slightly) Modify Them",
+    "journal": "Management Science",
+    "volume_issue_pages": "64(3), 1155-1170",
+    "doi": "10.1287/mnsc.2016.2643",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "Study 1 share choosing the model: can't-change 32%; adjust-by-10 76%; change-10 73%",
+      "Study 2 share choosing the model: can't-change 47%; adjust-by-10 71%; adjust-by-5 71%; adjust-by-2 68%",
+      "Model described to participants as off by \"17.5 percentiles on average\""
+    ],
+    "quote_status": "numbers extracted from full text (author-hosted PDF); percentages reported by the fetch tool, verify against Tables before final use",
+    "sample_design": "Incentivized online experiments; participants forecast real high school seniors' standardized math percentile from nine variables. Study 1 N = 288; Study 2 N = 816; Study 3 N = 818.",
+    "text_read": "Full text (author-hosted PDF on Wharton faculty site) plus Crossref abstract",
+    "caveats": "PDF header not confirmed as final typeset version.",
+    "interaction_type": "AI delegation",
+    "game_item": {
+      "scenario": "Your sales-forecasting model beats planners but adoption is low. You can (a) mandate it unchanged, or (b) let planners nudge each forecast by at most 2 percentiles.",
+      "question": "In incentivized experiments, when people could adjust an algorithm's forecasts by only 2 percentiles, roughly what share chose to use the algorithm, versus 47% when it could not be changed?",
+      "options": ["A. About 30%", "B. About 47% (no change)", "C. About 68%", "D. About 95%"],
+      "correct_option": "C",
+      "explanation": "In Study 2, 68% chose the model with a +/-2 adjustment versus 47% when it could not be changed; the size of the allowed adjustment (2, 5 or 10) barely mattered (68-71%).",
+      "boundary_condition": "Lab/online forecasting of student test scores with an imperfect but superior model; tiny modifications cost little accuracy here, but unrestricted overriding could erase the model's advantage."
+    }
+  },
+  {
+    "id": "dietvorst2015_algorithm_aversion",
+    "topic": "algorithm aversion after seeing errors",
+    "authors": ["Berkeley J. Dietvorst", "Joseph P. Simmons", "Cade Massey"],
+    "year": 2015,
+    "title": "Algorithm aversion: People erroneously avoid algorithms after seeing them err",
+    "journal": "Journal of Experimental Psychology: General",
+    "volume_issue_pages": "144(1), 114-126",
+    "doi": "10.1037/xge0000033",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "\"seeing an algorithm perform (and therefore err) makes people less likely to use it\"",
+      "Study 1, model-and-human condition, incentivized stage average absolute error: model 22.07 vs human 26.61",
+      "Across Studies 1, 2 and 4 humans produced 15-29% more error than the model on the MBA task"
+    ],
+    "quote_status": "verbatim quote and numbers from published full text (journal header present in author-hosted PDF)",
+    "sample_design": "Lab experiments (Wharton Behavioral Lab; Study 1 N = 361) with MBA-admissions forecasting; participants saw the model, themselves, both, or neither perform, then chose who would make incentivized forecasts.",
+    "text_read": "Full text (author-hosted published PDF)",
+    "caveats": "Exact choice percentages are only in figures; item uses direction and error numbers only.",
+    "interaction_type": "causal reasoning",
+    "game_item": {
+      "scenario": "A hiring team watched your screening model make several visible mistakes during a trial. The model's average error is still lower than the recruiters'.",
+      "question": "What does experimental evidence predict about the team's choice to rely on the model after watching it err?",
+      "options": ["A. Reliance increases because they now understand it", "B. Reliance falls, even though the model is more accurate", "C. No change: people judge on average accuracy", "D. Reliance falls only if the model was worse"],
+      "correct_option": "B",
+      "explanation": "People who saw the model perform were less likely to choose it, although humans made 15-29% more error than the model.",
+      "boundary_condition": "Without performance feedback people can prefer algorithmic advice (Logg et al. 2019); letting users slightly modify outputs reduces aversion (Dietvorst et al. 2018)."
+    }
+  },
+  {
+    "id": "logg2019_algorithm_appreciation",
+    "topic": "AI advice taking",
+    "authors": ["Jennifer M. Logg", "Julia A. Minson", "Don A. Moore"],
+    "year": 2019,
+    "title": "Algorithm appreciation: People prefer algorithmic to human judgment",
+    "journal": "Organizational Behavior and Human Decision Processes",
+    "volume_issue_pages": "151, 90-103",
+    "doi": "10.1016/j.obhdp.2018.12.005",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "Experiment 1A weight on advice: algorithmic M = 0.45 (SD = 0.37) vs human M = 0.30 (SD = 0.35), F(1, 200) = 8.86, p = .003, d = 0.42",
+      "\"lay people adhere more to advice when they think it comes from an algorithm\"",
+      "\"lay people ironically achieved greater accuracy than experts when they received advice from an algorithm\"",
+      "\"experts heavily discounted all advice sources\""
+    ],
+    "quote_status": "verbatim fragments and statistics from published full text (eScholarship copy) and abstract",
+    "sample_design": "Six experiments; Exp 1A: estimate a person's weight from a photo, receiving identical advice labeled as algorithmic or human; Exp 4: national security professionals vs lay participants forecasting.",
+    "text_read": "Full text (eScholarship published version) plus abstract",
+    "caveats": "Appreciation weakened when choosing between own judgment and an algorithm, and among experts.",
+    "interaction_type": "AI delegation",
+    "game_item": {
+      "scenario": "You give two groups the exact same numeric estimate as advice. One is told it came from an algorithm, the other that it came from other people.",
+      "question": "How much weight do lay people put on identical advice when labeled algorithmic versus human (weight-on-advice, 0 = ignore, 1 = adopt)?",
+      "options": ["A. 0.30 algorithm vs 0.45 human", "B. 0.45 algorithm vs 0.30 human", "C. About equal (0.38 each)", "D. 0.90 algorithm vs 0.10 human"],
+      "correct_option": "B",
+      "explanation": "In Experiment 1A, WOA was 0.45 for algorithmic vs 0.30 for human advice (d = 0.42): algorithm appreciation, not aversion, in a first encounter.",
+      "boundary_condition": "Experts discounted all advice and lost accuracy; appreciation weakened when the comparison was the person's own judgment; seeing the algorithm err can reverse it (Dietvorst et al. 2015)."
+    }
+  },
+  {
+    "id": "bucinca2021_cognitive_forcing",
+    "topic": "overreliance on AI with explanations",
+    "authors": ["Zana Buçinca", "Maja Barbara Malaya", "Krzysztof Z. Gajos"],
+    "year": 2021,
+    "title": "To Trust or to Think: Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making",
+    "journal": "Proceedings of the ACM on Human-Computer Interaction (CSCW1)",
+    "volume_issue_pages": "5(CSCW1), 1-21",
+    "doi": "10.1145/3449287",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "Abstract (journal): cognitive forcing interventions reduced overreliance compared with simple explainable-AI approaches; the designs that reduced overreliance most received the least favorable subjective ratings; N = 199",
+      "Overreliance on carb-source detection (agreement with incorrect AI, model marginal means): simple XAI 0.64 vs cognitive forcing 0.48 (p = .003); overall-decision overreliance 0.30 vs 0.26 (not significant)",
+      "Accuracy when AI was wrong (carb source): no AI 0.49, simple XAI 0.08, cognitive forcing 0.27"
+    ],
+    "quote_status": "abstract paraphrased from Crossref record of the journal version; numbers from arXiv 2102.09692 (same paper, preprint) and must be checked against the version of record",
+    "sample_design": "Online experiment, 199 analyzed MTurk adults (of 260); nutrition task (replace highest-carb ingredient) with a simulated AI at 75% accuracy; simple XAI (explanation, uncertainty) vs cognitive forcing designs (on demand, update, wait).",
+    "text_read": "Abstract of journal version (Crossref); full text of arXiv preprint for numbers",
+    "caveats": "Venue is an ACM journal (PACM HCI), CSCW track. Numbers from preprint; overall-decision difference not significant.",
+    "interaction_type": "AI delegation",
+    "game_item": {
+      "scenario": "Your bank's credit officers rubber-stamp an AI recommender, including its wrong calls. The vendor offers to add richer explanations; your UX lead proposes making officers record their own judgment before the AI recommendation appears.",
+      "question": "Which design is better supported for reducing agreement with incorrect AI recommendations?",
+      "options": ["A. Add explanations to each recommendation", "B. Make officers commit or wait before seeing the AI (cognitive forcing)", "C. Show AI confidence scores only", "D. Neither; overreliance cannot be reduced"],
+      "correct_option": "B",
+      "explanation": "Cognitive forcing designs reduced overreliance relative to simple explanation designs (e.g., 0.48 vs 0.64 agreement with incorrect AI on carb-source detection), though users liked them least.",
+      "boundary_condition": "Effect was clear on the sub-decision but not significant on the overall decision; benefits were larger for people high in Need for Cognition; adoption may suffer because users rate these designs poorly."
+    }
+  },
+  {
+    "id": "costello2024_ai_conspiracy",
+    "topic": "AI-generated persuasion",
+    "authors": ["Thomas H. Costello", "Gordon Pennycook", "David G. Rand"],
+    "year": 2024,
+    "title": "Durably reducing conspiracy beliefs through dialogues with AI",
+    "journal": "Science",
+    "volume_issue_pages": "385(6714), eadq1814",
+    "doi": "10.1126/science.adq1814",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "Abstract: personalized evidence-based dialogues with GPT-4 Turbo reduced conspiracy belief by about 20%; the effect persisted for two months; it also reduced belief in unrelated conspiracies",
+      "\"Conspiracy theory beliefs are notoriously persistent.\" (abstract opening)"
+    ],
+    "quote_status": "paraphrase of journal abstract via Crossref (fetch tool would not return full abstract)",
+    "sample_design": "Online experiments with 2,190 conspiracy believers; three-round dialogues with GPT-4 Turbo tailored to each participant's stated conspiracy; 2-month follow-up.",
+    "text_read": "Abstract only (Crossref); Retraction Watch report on the expression of concern",
+    "caveats": "Science issued an Editorial Expression of Concern on 11 June 2026 (doi:10.1126/science.aej2383): the public dataset made some reported values hard to reproduce and screening criteria were applied inconsistently. Authors report reanalysis matches in direction, significance and size; Science was still evaluating as of that report. Use with a flag or avoid the exact 20% figure until resolved.",
+    "interaction_type": "numeric estimate",
+    "game_item": {
+      "scenario": "A public-health agency considers an LLM chatbot that answers each skeptic's specific claims with evidence.",
+      "question": "In a Science study with 2,190 conspiracy believers, by roughly how much did a short personalized GPT-4 dialogue reduce belief in their chosen conspiracy, and did it last?",
+      "options": ["A. ~2%, gone within a week", "B. ~20%, persisting two months", "C. ~60%, persisting two months", "D. It backfired and increased belief"],
+      "correct_option": "B",
+      "explanation": "Belief fell by about 20% and the effect held at two months, including for entrenched beliefs.",
+      "boundary_condition": "Expression of concern (June 2026) pending; online sample; effect depends on accurate, evidence-based content, not persuasion per se."
+    }
+  },
+  {
+    "id": "salvi2025_gpt4_persuasion",
+    "topic": "LLM persuasion / personalization",
+    "authors": ["Francesco Salvi", "Manoel Horta Ribeiro", "Riccardo Gallotti", "Robert West"],
+    "year": 2025,
+    "title": "On the conversational persuasiveness of GPT-4",
+    "journal": "Nature Human Behaviour",
+    "volume_issue_pages": "9(8), 1645-1653",
+    "doi": "10.1038/s41562-025-02194-6",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "In debate pairs where AI and humans were not equally persuasive, GPT-4 with personalization was more persuasive 64.4% of the time",
+      "81.2% relative increase in the odds of higher post-debate agreement (95% CI [+26.0%, +160.7%], P < 0.01; N = 900)"
+    ],
+    "quote_status": "numbers from the journal abstract (Crossref), paraphrased wrapper",
+    "sample_design": "Preregistered online experiment, N = 900; 2 x 2 x 3 design: opponent (human vs GPT-4) x access to opponent's sociodemographics x topic opinion strength; short multiround debates.",
+    "text_read": "Abstract (Crossref)",
+    "caveats": "Structured short debates with assigned positions; not field persuasion.",
+    "interaction_type": "forecast probability",
+    "game_item": {
+      "scenario": "Your marketing team wants to deploy a GPT-4 agent that tailors arguments using customers' demographic profiles.",
+      "question": "In debates where the two sides were not equally persuasive, what share of the time was personalized GPT-4 more persuasive than a human opponent?",
+      "options": ["A. 35.6%", "B. 50.0%", "C. 64.4%", "D. 91.0%"],
+      "correct_option": "C",
+      "explanation": "Personalized GPT-4 won 64.4% of non-tied pairs, an 81.2% relative increase in the odds of higher agreement.",
+      "boundary_condition": "Short online debates with minimal demographic data; persuasion in long-run commercial contexts and with disclosure was not tested."
+    }
+  },
+  {
+    "id": "altay2024_ai_labels",
+    "topic": "disclosure of AI authorship",
+    "authors": ["Sacha Altay", "Fabrizio Gilardi"],
+    "year": 2024,
+    "title": "People are skeptical of headlines labeled as AI-generated, even if true or human-made, because they assume full AI automation",
+    "journal": "PNAS Nexus",
+    "volume_issue_pages": "3(10), pgae403",
+    "doi": "10.1093/pnasnexus/pgae403",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "Labeling headlines as AI-generated lowered perceived accuracy and willingness to share, regardless of whether headlines were true or false and human- or AI-written",
+      "The AI-generated label's effect was about one-third the size of a 'false' label",
+      "Skepticism stemmed from assuming AI-labeled headlines were fully AI-written with no human oversight"
+    ],
+    "quote_status": "paraphrase of the journal abstract via Crossref",
+    "sample_design": "Two preregistered online experiments, 4,976 participants in the US and UK.",
+    "text_read": "Abstract (Crossref)",
+    "caveats": "Headlines only; effect measured on perceived accuracy and sharing intentions.",
+    "interaction_type": "causal reasoning",
+    "game_item": {
+      "scenario": "Your newsroom wants to label any article where AI helped draft the headline as \"AI-generated\", including fact-checked, human-edited ones.",
+      "question": "What does experimental evidence predict for true, human-written headlines that carry an \"AI-generated\" label?",
+      "options": ["A. No effect: readers judge content, not labels", "B. Lower perceived accuracy and sharing, about one-third the effect of a 'false' label", "C. Higher trust because of transparency", "D. Readers treat the label the same as 'false'"],
+      "correct_option": "B",
+      "explanation": "The label reduced perceived accuracy and sharing even for true or human-made headlines, at about one-third the effect of a false label; readers assumed full automation.",
+      "boundary_condition": "Authors suggest labels that explain what AI involvement means may reduce the unfair penalty; tested on headlines in US/UK online samples."
+    }
+  },
+  {
+    "id": "mellers2014_forecasting_tournament",
+    "topic": "superforecasting training",
+    "authors": ["Barbara Mellers", "Lyle Ungar", "Jonathan Baron", "Jaime Ramos", "Burcu Gurcay", "Katrina Fincher", "Sydney E. Scott", "Don Moore", "Pavel Atanasov", "Samuel A. Swift", "Terry Murray", "Eric Stone", "Philip E. Tetlock"],
+    "year": 2014,
+    "title": "Psychological Strategies for Winning a Geopolitical Forecasting Tournament",
+    "journal": "Psychological Science",
+    "volume_issue_pages": "25(5), 1106-1115",
+    "doi": "10.1177/0956797614524255",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "\"Training, teaming, and tracking are psychological interventions that dramatically increased the accuracy of forecasts.\"",
+      "\"Probability training was more effective than scenario training, t(1053) = 2.23, p = .026.\"",
+      "Team forecasters beat crowd-belief forecasters, t(1036) = 5.52, p < .001; crowd-belief beat independents, t(1120) = 5.92, p < .001",
+      "\"Superforecasters outperformed all other groups by a wide margin\""
+    ],
+    "quote_status": "verbatim from abstract and full text (eScholarship copy). Percent Brier improvements are NOT reported by the authors; any percentages derived from Table 1 would be our own calculation",
+    "sample_design": "Two-year IARPA geopolitical forecasting tournament (Good Judgment Project); randomized assignment to training (probability, scenario, none) and to independent, crowd-belief or team conditions; top 2% tracked into superforecaster teams in Year 2.",
+    "text_read": "Full text (eScholarship copy) plus Crossref abstract",
+    "caveats": "Paper reports test statistics, not percentage gains. Do not use popular '10%' or similar figures unless sourced elsewhere.",
+    "interaction_type": "ranking",
+    "game_item": {
+      "scenario": "You are building a geopolitical risk unit. You can invest in three levers: a one-hour probability-reasoning training, putting forecasters in collaborative teams, and tracking top performers into elite teams.",
+      "question": "Rank these Year-2 forecaster groups from most to least accurate: (1) independent forecasters, (2) teams, (3) superforecaster teams.",
+      "options": ["A. Superforecaster teams > teams > independents", "B. Teams > superforecaster teams > independents", "C. Independents > teams > superforecaster teams", "D. All roughly equal"],
+      "correct_option": "A",
+      "explanation": "Teams beat crowd-belief forecasters who beat independents, and superforecasters outperformed all other groups by a wide margin; training, teaming and tracking all improved accuracy.",
+      "boundary_condition": "Geopolitical questions with 1-12 month horizons and Brier scoring; selected volunteers; effects reported as significance tests, not percentage gains."
+    }
+  },
+  {
+    "id": "moore_healy2008_overconfidence",
+    "topic": "overconfidence",
+    "authors": ["Don A. Moore", "Paul J. Healy"],
+    "year": 2008,
+    "title": "The trouble with overconfidence",
+    "journal": "Psychological Review",
+    "volume_issue_pages": "115(2), 502-517",
+    "doi": "10.1037/0033-295X.115.2.502",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "Three forms: \"overestimation of one's actual performance\", \"overplacement of one's performance relative to others\", and \"excessive precision in one's beliefs\"",
+      "\"On difficult tasks, people overestimate their actual performances but also mistakenly believe that they are worse than others\"",
+      "\"on easy tasks, people underestimate their actual performances but mistakenly believe they are better than others\""
+    ],
+    "quote_status": "verbatim from the published abstract (author-hosted published PDF)",
+    "sample_design": "82 Carnegie Mellon students; 18 rounds of 10-item trivia quizzes (easy/medium/hard in six topics); elicited distributions over own and others' scores; incentive-compatible payment (~$20).",
+    "text_read": "Full text (published version, author-hosted PDF)",
+    "caveats": "Theory plus one lab experiment with trivia; field generalization rests on the model.",
+    "interaction_type": "confidence calibration",
+    "game_item": {
+      "scenario": "Your team just took a very hard certification exam. Before scores are released, you ask each person to estimate their score and their rank versus peers.",
+      "question": "What pattern does the evidence predict on a hard task?",
+      "options": ["A. Overestimate own score and think they beat others", "B. Overestimate own score but think they are worse than others", "C. Underestimate own score and think they beat others", "D. Accurate on both"],
+      "correct_option": "B",
+      "explanation": "On difficult tasks people overestimate their actual performance yet believe they are worse than others (underplacement); the reverse holds on easy tasks.",
+      "boundary_condition": "Overprecision is distinct and more persistent; results from trivia quizzes with clear difficulty variation."
+    }
+  },
+  {
+    "id": "buehler1994_planning_fallacy",
+    "topic": "planning fallacy",
+    "authors": ["Roger Buehler", "Dale Griffin", "Michael Ross"],
+    "year": 1994,
+    "title": "Exploring the \"planning fallacy\": Why people underestimate their task completion times",
+    "journal": "Journal of Personality and Social Psychology",
+    "volume_issue_pages": "67(3), 366-381",
+    "doi": "10.1037/0022-3514.67.3.366",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "respondents \"predicted, on average, that they would finish in 33.9 days\"; actual mean completion 55.5 days",
+      "\"Fewer than one third of the respondents (29.7%) finished in the time they reported as their most accurate prediction.\"",
+      "\"fewer than half of the respondents (48.7%) finished by the time they had predicted assuming that 'everything went as poorly as it possibly could.'\"",
+      "Best-case prediction 27.4 days; worst-case 48.6 days (Table 1)"
+    ],
+    "quote_status": "verbatim from full text (scanned course copy of the published article; OCR)",
+    "sample_design": "Study 1: 37 senior psychology honors students predicted thesis completion (best guess, best case, worst case); 33 analyzed. Further studies examined causes (focus on future plans, discounting past experience).",
+    "text_read": "Full text (scanned published article)",
+    "caveats": "Small student sample in Study 1; OCR copy (one value checked against Table 1).",
+    "interaction_type": "numeric estimate",
+    "game_item": {
+      "scenario": "Your product lead gives three launch dates: best guess, best case, and an 'everything goes wrong' worst case. You plan to commit externally to the worst case.",
+      "question": "When students predicted thesis completion, what share finished by their own worst-case date?",
+      "options": ["A. 95%", "B. 75%", "C. 48.7%", "D. 10.8%"],
+      "correct_option": "C",
+      "explanation": "Only 48.7% finished by their worst-case prediction and 29.7% by their best guess; mean prediction 33.9 days vs actual 55.5 days.",
+      "boundary_condition": "Thesis projects of undergraduates; later studies show reference-class (past-experience) prompts can reduce bias."
+    }
+  },
+  {
+    "id": "gordon2019_ad_measurement",
+    "topic": "causal inference: RCT vs observational",
+    "authors": ["Brett R. Gordon", "Florian Zettelmeyer", "Neha Bhargava", "Dan Chapsky"],
+    "year": 2019,
+    "title": "A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook",
+    "journal": "Marketing Science",
+    "volume_issue_pages": "38(2), 193-225",
+    "doi": "10.1287/mksc.2018.1135",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "Study 4: \"the ATT lift was 73%\" (95% CI [49%, 103%]); exact matching on age and gender \"yielding a lift of 222%\"; naive exposed-vs-unexposed lift 316%",
+      "\"in half of our studies, the estimated percentage increase in purchase outcomes is off by a factor of three across all methods\"",
+      "\"the observational methods we study mostly overestimate the RCT lift, although in some cases they can significantly underestimate RCT lift\""
+    ],
+    "quote_status": "verbatim from journal Articles in Advance full text (INFORMS, published online 4 Apr 2019)",
+    "sample_design": "15 US advertising RCTs at Facebook (~500 million user-experiment observations, 1.6 billion impressions); compared RCT lift with matching, regression adjustment, inverse-probability weighting and related observational estimators.",
+    "text_read": "Full text (Articles in Advance version) plus Crossref metadata",
+    "caveats": "Articles-in-Advance pagination differs from print; results specific to Facebook ad exposure selection.",
+    "interaction_type": "causal reasoning",
+    "game_item": {
+      "scenario": "Your agency reports that customers who saw your Facebook campaign converted far more, and after matching exposed and unexposed users on age and gender the lift is 222%. A randomized holdout was also run.",
+      "question": "What did the randomized experiment show for that campaign?",
+      "options": ["A. About 222%, matching worked", "B. About 73%, matching overstated the lift about threefold", "C. About 316%", "D. Zero lift"],
+      "correct_option": "B",
+      "explanation": "In Study 4 the RCT lift was 73% while exact matching gave 222% and the naive comparison 316%; across studies estimates were often off by a factor of three.",
+      "boundary_condition": "Observational methods sometimes underestimated lift (e.g., Study 15); richer covariates did not reliably fix the bias in this setting."
+    }
+  },
+  {
+    "id": "lewis_rao2015_ad_roi",
+    "topic": "causal inference: power of ad experiments",
+    "authors": ["Randall A. Lewis", "Justin M. Rao"],
+    "year": 2015,
+    "title": "The Unfavorable Economics of Measuring the Returns to Advertising",
+    "journal": "The Quarterly Journal of Economics",
+    "volume_issue_pages": "130(4), 1941-1973",
+    "doi": "10.1093/qje/qjv023",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "\"The median confidence interval on return on investment is over 100 percentage points wide.\"",
+      "25 large field experiments with major US retailers and brokerages; combined digital ad spend $2.8 million",
+      "Coefficient of variation of individual sales around 10 is common; informative experiments can require more than 10 million person-weeks"
+    ],
+    "quote_status": "first quote verbatim from abstract; others paraphrased from abstract via Crossref",
+    "sample_design": "25 randomized digital ad field experiments, most reaching millions of customers.",
+    "text_read": "Abstract only (Crossref)",
+    "caveats": "Abstract-only; selection bias in observational methods noted but not quantified in abstract.",
+    "interaction_type": "sequential decision",
+    "game_item": {
+      "scenario": "Your CFO demands an RCT to prove the ROI of a modest digital campaign before renewing it. Individual weekly sales are highly volatile.",
+      "question": "Across 25 large retail/brokerage ad experiments, how wide was the median 95% confidence interval on ROI?",
+      "options": ["A. About 5 percentage points", "B. About 20 percentage points", "C. Over 100 percentage points", "D. Exactly zero: RCTs give precise ROI"],
+      "correct_option": "C",
+      "explanation": "Median ROI CIs exceeded 100 percentage points; with sales CVs near 10, informative tests can need over 10 million person-weeks.",
+      "boundary_condition": "RCTs remain unbiased; the problem is power. Larger effects, lower-variance outcomes, or pooled experiments improve precision."
+    }
+  },
+  {
+    "id": "benartzi_thaler2001_naive_diversification",
+    "topic": "allocation: 1/n heuristic",
+    "authors": ["Shlomo Benartzi", "Richard H. Thaler"],
+    "year": 2001,
+    "title": "Naive Diversification Strategies in Defined Contribution Saving Plans",
+    "journal": "American Economic Review",
+    "volume_issue_pages": "91(1), 79-98",
+    "doi": "10.1257/aer.91.1.79",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "\"We show that some investors follow the '1/n strategy'\": \"they divide their contributions evenly across the funds offered in the plan\"",
+      "\"we find that the proportion invested in stocks depends strongly on the proportion of stock funds in the plan\""
+    ],
+    "quote_status": "verbatim from AER abstract (aeaweb.org)",
+    "sample_design": "Hypothetical allocation experiments with plan participants plus cross-plan archival analysis of defined contribution plans.",
+    "text_read": "Abstract only (full text not accessible)",
+    "caveats": "No numbers used because full text was not read; secondary sources report specific figures that were not verified here.",
+    "interaction_type": "allocation",
+    "game_item": {
+      "scenario": "You design two versions of your company's 401(k) menu with five funds each. Menu X: four stock funds, one bond fund. Menu Y: one stock fund, four bond funds.",
+      "question": "How will average employee equity exposure differ between the menus?",
+      "options": ["A. Same: people pick their risk level regardless of menu", "B. Higher under Menu X", "C. Higher under Menu Y", "D. Unpredictable"],
+      "correct_option": "B",
+      "explanation": "Many investors split contributions evenly (1/n), so the share in stocks tracks the share of stock funds offered.",
+      "boundary_condition": "Not all investors use 1/n; defaults and target-date funds change behavior; magnitude not given here because only the abstract was verified."
+    }
+  },
+  {
+    "id": "dellacqua2026_jagged_frontier",
+    "topic": "jagged frontier (version of record check)",
+    "authors": ["Fabrizio Dell'Acqua", "Edward McFowland III", "Ethan Mollick", "Hila Lifshitz", "Katherine C. Kellogg", "Saran Rajendran", "Lisa Krayer", "François Candelon", "Karim R. Lakhani"],
+    "year": 2026,
+    "title": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality",
+    "journal": "Organization Science",
+    "volume_issue_pages": "37(2), 403-423",
+    "doi": "10.1287/orsc.2025.21838",
+    "crossref_verified": true,
+    "version_of_record_status": "YES: peer-reviewed version of record exists (Organization Science, March 2026, DOI 10.1287/orsc.2025.21838). Cite this, not the 2023 HBS/SSRN working paper.",
+    "finding_quotes": [
+      "Abstract: inside the frontier, AI users \"completed 12.2% more tasks\", finished \"25.1% faster\", with significantly higher quality",
+      "Abstract: outside the frontier, AI users were \"19% less likely to produce correct solutions\"",
+      "Body: outside-frontier correctness about 84.5% (control) vs 70.6% (GPT-4 only) vs 60.0% (GPT-4 + prompt overview); regression decreases of 13.9 and 24.5 points",
+      "Body: human-graded quality +29.9% (GPT-only) and +33.9% (GPT + overview); task completion 82% control, 91% GPT-only, 93% GPT + overview"
+    ],
+    "quote_status": "abstract fragments via Crossref; body numbers from the journal PDF (HBS-hosted INFORMS download) as returned by the fetch tool",
+    "sample_design": "Preregistered field experiment with 758 BCG consultants (~7% of individual-contributor workforce), randomized to no AI, GPT-4, or GPT-4 with prompt-engineering overview; 18 inside-frontier tasks and one outside-frontier business case.",
+    "text_read": "Full text (journal version PDF) plus Crossref abstract",
+    "caveats": "Abstract says '19% less likely' while body reports percentage-point drops (13.9 and 24.5 pp by arm); phrase the item in absolute rates to avoid ambiguity.",
+    "interaction_type": "forecast probability",
+    "game_item": {
+      "scenario": "Consultants tackle a business case designed so that the AI gives a convincing but wrong answer. Without AI, about 84.5% of consultants solve it correctly.",
+      "question": "What was the correct-solution rate for consultants given GPT-4 plus a prompt-engineering overview?",
+      "options": ["A. About 95%", "B. About 84.5% (no change)", "C. About 60%", "D. About 30%"],
+      "correct_option": "C",
+      "explanation": "Outside the frontier correctness fell to about 60.0% (GPT + overview) and 70.6% (GPT only) from 84.5%, while inside-frontier tasks saw 12.2% more completion and 25.1% faster work.",
+      "boundary_condition": "One designed outside-frontier task with GPT-4 (2023); the frontier moves as models improve, so which tasks fall outside changes."
+    }
+  },
+  {
+    "id": "noy_zhang2023_chatgpt_productivity",
+    "topic": "generative AI productivity and inequality",
+    "authors": ["Shakked Noy", "Whitney Zhang"],
+    "year": 2023,
+    "title": "Experimental evidence on the productivity effects of generative artificial intelligence",
+    "journal": "Science",
+    "volume_issue_pages": "381(6654), 187-192",
+    "doi": "10.1126/science.adh2586",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "ChatGPT reduced average task time by 40% and raised output quality by 18%",
+      "It narrowed inequality between workers",
+      "Treated workers were 2 times as likely to report using ChatGPT in their real job two weeks later and 1.6 times as likely two months later"
+    ],
+    "quote_status": "numbers from the journal abstract via Crossref (paraphrased wrapper)",
+    "sample_design": "Preregistered online experiment, 453 college-educated professionals doing occupation-specific writing tasks; half randomly given ChatGPT.",
+    "text_read": "Abstract (Crossref)",
+    "caveats": "Short, self-contained writing tasks; quality graded by evaluators.",
+    "interaction_type": "numeric estimate",
+    "game_item": {
+      "scenario": "You consider licensing ChatGPT for your communications staff, who write press releases and short reports.",
+      "question": "In a preregistered experiment with 453 professionals on occupation-specific writing tasks, how much did ChatGPT cut average task time?",
+      "options": ["A. 5%", "B. 18%", "C. 40%", "D. 80%"],
+      "correct_option": "C",
+      "explanation": "Time fell 40% and quality rose 18%, with gains compressing differences between workers.",
+      "boundary_condition": "Short mid-level writing tasks done online; longer, knowledge-intensive or error-sensitive work may differ (see Dell'Acqua et al. 2026)."
+    }
+  },
+  {
+    "id": "brynjolfsson2025_genai_at_work",
+    "topic": "who gains from AI assistance",
+    "authors": ["Erik Brynjolfsson", "Danielle Li", "Lindsey Raymond"],
+    "year": 2025,
+    "title": "Generative AI at Work",
+    "journal": "The Quarterly Journal of Economics",
+    "volume_issue_pages": "140(2), 889-942",
+    "doi": "10.1093/qje/qjae044",
+    "crossref_verified": true,
+    "finding_quotes": [
+      "Access to AI assistance raised productivity (issues resolved per hour) by 15% on average",
+      "Less experienced and lower-skilled workers improved both speed and quality; the most experienced and highest-skilled saw small speed gains and small quality declines",
+      "Customers were more polite and less likely to ask for a manager"
+    ],
+    "quote_status": "paraphrase of the QJE abstract via Crossref (journal version states 15%; earlier NBER working paper reported 14%, so cite 15% with the QJE)",
+    "sample_design": "Staggered rollout of a generative-AI conversational assistant to 5,172 customer-support agents at one firm; difference-in-differences.",
+    "text_read": "Abstract (Crossref)",
+    "caveats": "Single firm, customer support; quasi-experimental staggered adoption.",
+    "interaction_type": "allocation",
+    "game_item": {
+      "scenario": "You have AI-assistant licenses for half of your 400 support agents and must choose who gets them first to maximize the gain in resolved issues.",
+      "question": "Where does the evidence from 5,172 support agents predict the largest productivity gains?",
+      "options": ["A. Most experienced, top-skilled agents", "B. Less experienced, lower-skilled agents", "C. Equal for everyone", "D. Gains only for managers"],
+      "correct_option": "B",
+      "explanation": "Average productivity rose 15%, concentrated among less experienced and lower-skilled agents; top agents saw small speed gains and slight quality declines.",
+      "boundary_condition": "Customer-support chat with an assistant trained on top performers' conversations; may not transfer to tasks where the AI lacks expert training data."
+    }
+  }
+]
