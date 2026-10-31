@@ -35,7 +35,7 @@ The target is 95 from an independent reviewer. It has not been reached yet; the 
 - **Answer integrity:** a byte scan of the served pages found no answer text; the class lock held on every route probed in reviews 4 and 5.
 - **Accessibility:** axe reported no serious or critical violations on up to 30 states; keyboard-only play and reduced motion worked.
 - **Load:** 50 concurrent students, p95 under 45 ms, no errors.
-- **Fact-checks:** 10 items per review against the papers. Numbers were correct or consistent; scoring and framing problems found are listed in the ledger with their fixes.
+- **Fact-checks:** 8 to 10 items per review against the papers. Most numbers were correct or consistent; review 6 found one wrong number on a Dimant item and several provenance gaps (fixed in iteration 11). All findings and fixes are in the ledger.
 
 ## Not verified
 
