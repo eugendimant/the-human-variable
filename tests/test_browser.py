@@ -200,9 +200,9 @@ def test_offline_tutor_matches_server_rules(browser):
     bad2 = pg.evaluate("""qs => { const out = []; for (const c of THV.ALL) for (const q of qs) { const r = THV.curated(q, c); if (/outside what this lab/.test(r.text) || !r.cites.length) out.push([c.id, q]) } return out }""", phr)
     assert not bad2, (len(bad2), bad2[:10])   # review 15, M1: natural phrasings stay on the decision
     r = pg.evaluate("THV.curated('What is the capital of France?', THV.ALL[0]).text"); assert 'outside' in r
-    from tests.test_tutor import REVIEW20
+    from tests.test_tutor import REVIEW20, REVIEW21
     from server import tutor as _T
-    for q, cid, _ in REVIEW20 + [('Should I believe a lab game?', 'ai01', 0), ('Does the norm nudge work?', 'social16', 0)]:   # review 20: page and server agree
+    for q, cid, _ in REVIEW20 + REVIEW21 + [('Should I believe a lab game?', 'ai01', 0), ('Does the norm nudge work?', 'social16', 0)]:   # review 20: page and server agree
         pt = pg.evaluate("([q, id]) => THV.curated(q, THV.ALL.find(c => c.id === id)).text", [q, cid])
         assert pt.replace('\n\n', ' ').split()[:12] == _T.curated(q, cid)['answer'].split()[:12], (q, pt[:80])
     assert not pg.errors, pg.errors; pg.close()
@@ -223,3 +223,17 @@ def test_served_confidence_prompts_read_cleanly(browser, tmp_path):
             if re.search(r'\b(undefined|null|NaN)\b', txt): bad.append((c['id'], fmt))
         assert not bad, bad; pg.close()
     finally: proc.kill()
+
+
+@pytest.mark.parametrize('width', [1440, 390])
+def test_axe_every_format_reveal(browser, width):
+    """Review 21, minor 1: every format's reveal passes axe at both widths (the rank reveal failed contrast at 390)."""
+    bad = []
+    for f in ('choice', 'causal', 'multi', 'estimate', 'forecast', 'rank', 'allocate', 'delegate'):
+        c = next(x for x in LIVE if x['format'] == f)
+        pg = browser.new_page(viewport={'width': width, 'height': 900}); pg.goto(URL + '?play=' + c['id']); pg.wait_for_timeout(150)
+        answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h'); pg.wait_for_timeout(900)
+        pg.add_script_tag(path=str(AXE))
+        res = pg.evaluate("axe.run(document,{runOnly:['wcag2a','wcag2aa','wcag21aa']}).then(r=>r.violations.filter(v=>['serious','critical'].includes(v.impact)).map(v=>v.id+': '+v.nodes.slice(0,2).map(n=>n.target.join(' ')).join(', ')))")
+        bad += [(f, v) for v in res]; pg.close()
+    assert not bad, bad

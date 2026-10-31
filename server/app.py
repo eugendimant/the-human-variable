@@ -197,8 +197,11 @@ class Handler(BaseHTTPRequestHandler):
                 if not PASSCODE and not LOOPBACK: return self.json(403, {'error': 'This server has no instructor passcode set. Set THV_INSTRUCTOR_PASSCODE before creating sessions.'})
                 if PASSCODE and not hmac.compare_digest(str(d.get('passcode', '')).encode(), PASSCODE.encode()): return self.json(403, {'error': 'Instructor passcode required'})
                 return self.json(201, STORE.create(d.get('title', '')))
-            if not self.allowed('write'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
             m = CODE_RE.match(p)
+            instructor = bool(m and m.group(2) == '/control' and self.key() and STORE.is_admin(m.group(1), self.key()))
+            if instructor:   # the instructor's controls have their own bucket, so students on the same campus NAT cannot throttle them
+                if not LIMIT.allow(self.ip() + '|instructor', 'write'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
+            elif not self.allowed('write'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
             if m:
                 code, sub = m.group(1), m.group(2)
                 if sub == '/join':

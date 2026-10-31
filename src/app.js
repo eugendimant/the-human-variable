@@ -47,7 +47,7 @@ async function loadLibrary() {
   try { const r = await fetch('/api/library', { headers: { 'X-Client-Id': clientId() } }); const d = await r.json(); for (const x of d.challenges || []) if (BY_ID[x.id]) mergeFull(BY_ID[x.id], x); if (d.themes && d.themes.length) BANK.themes = d.themes; render() } catch { libraryLoaded = false }
 }
 function cite(id) { const s = SOURCE[id]; return s ? `${s.authors} (${s.year})` : id }
-function srcStatus(s) { const v = s.verification || {}; return v.status === 'verified_full_text' ? ['Checked against the published full text', ''] : v.status === 'verified_accepted_manuscript' ? ['Checked against the authors’ accepted manuscript', ''] : ['Checked against the published abstract', 'abstract'] }
+function srcStatus(s) { const v = s.verification || {}; return v.status === 'verified_full_text' ? ['Checked against the published full text', ''] : v.status === 'verified_accepted_manuscript' ? ['Checked against the authors’ accepted manuscript', ''] : v.status === 'verified_published_excerpts' ? ['Checked against the publisher’s abstract and figure legends', ''] : ['Checked against the published abstract', 'abstract'] }
 
 // ---------- state ----------
 const PARAM = new URLSearchParams(location.search);
@@ -145,12 +145,16 @@ function next() { if (st.i >= st.deck.length - 1) { st.view = 'record'; st.deck 
 // ---------- views ----------
 const glyph = `<svg class="brand-glyph" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="7" fill="#14203a"/><line x1="6" y1="17" x2="20" y2="17" stroke="#cbd3dd" stroke-width="1.5"/><circle cx="9.5" cy="17" r="3" fill="#2f54eb"/><circle cx="16.5" cy="17" r="3" fill="#e0a01c"/><path d="M9.5 12.5V8.5M16.5 12.5V8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>`;
 
+// One tick per decision in the path, filled once played: the path's length and your progress, and nothing else.
+function pathStrip(p, done) {
+  const k = p.items.length, w = 3, g = 3;   // a word-sized graphic beside the count
+  return `<svg class="strip" viewBox="0 0 ${k * (w + g) - g} 12" width="${k * (w + g) - g}" height="12" aria-hidden="true">${p.items.map((id, i) => `<rect x="${i * (w + g)}" y="0" width="${w}" height="12" class="${done.has(id) ? 'on' : ''}"/>`).join('')}</svg>`;
+}
 function heroTry() {
   const c = BY_ID.ai01; if (!c || !isLive(SOURCE[c.sources[0]])) return '';
   const h = st.hero, e = c.estimate, v = h.value, src = SOURCE[c.sources[0]];
   const gap = v === null ? 0 : Math.abs(v - e.target);
   return `<section class="panel try try-dark" aria-labelledby="try-q">
-    <span class="kicker">Try one now</span>
     <h2 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h2>
     ${h.done ? `<div class="try-axis">${gapAxis({ min: e.min, max: e.max, unit: '%', you: v, ev: e.target, band: e.tolerance, evLabel: 'Study', id: 'hero' })}</div>`
       : `<div class="try-read"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${v === null ? 'Slide to answer' : v + '%'}</b><span class="hero-unit" ${v === null ? 'hidden' : ''}>less time</span></div>
@@ -194,7 +198,7 @@ function home() {
     ${heroTry()}</div></section>
   <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
-    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}">${art(PATH_ART[p.id])}${pi === 0 ? `<em class="path-flag">${p.case ? 'Start here: multi-step case' : 'Start here'}</em>` : p.case ? '<em class="path-flag">Multi-step case</em>' : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `. ${n} played` : ''}</small><i class="path-bar" style="--p:${Math.round(100 * n / p.items.length)}%"></i></button>` }).join('')}</div>
+    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}">${pi === 0 ? `<em class="path-flag">${p.case ? 'Start here: multi-step case' : 'Start here'}</em>` : ''}<strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${pathStrip(p, done)}${p.items.length} decisions${p.case && pi ? ', with a multi-step case' : ''}${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
   </section>
   ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p>How the shape of a norm, the visibility of peers and political identity change what people do at work and in society.</p><p class="dimant-stat">${ALL.filter(c => c.sources.some(id => dimant.some(d => d.id === id))).length} decisions in the game draw on ${dimant.length} of his published papers, in Management Science, PNAS Nexus, Scientific Reports and other journals.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
     <ul class="paper-list">${dimant.slice(0, 6).map(s => `<li><button data-source="${esc(s.id)}"><strong>${esc(paperTitle(s) || ALL.find(c => c.sources.includes(s.id))?.title || s.venue)}</strong><small>${esc(s.venue)}, ${s.year}</small></button></li>`).join('')}</ul></div></section>` : ''}`;
@@ -210,7 +214,7 @@ function instrument(c) {
   if (c.format === 'choice' || c.format === 'causal' || c.format === 'multi') {
     const isEv = i => c.format === 'multi' ? c.multiAnswers.includes(i) : i === c.answer;
     const picked = i => Array.isArray(r) ? r.includes(i) : r === i;
-    return `${c.format === 'causal' && c.dag ? dag(c.dag, rev) + (rev ? '' : '<p class="hint dag-hint">The factors in play. The reveal draws the links the study found.</p>') : ''}<div class="opts" role="group" aria-label="Answer options">${optionOrder(c).map((o, j) => `<button class="opt ${rev && isEv(o.i) ? 'is-ev' : ''}" data-choice="${o.i}" aria-pressed="${picked(o.i)}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${j + 1}</span><span>${esc(o.t)}</span>${rev && (isEv(o.i) || picked(o.i)) ? `<span class="mark">${picked(o.i) ? '<span class="dot dot-you"></span>Your call' : ''}${isEv(o.i) ? '<span class="dot dot-ev"></span>Evidence' : ''}</span>` : ''}</button>`).join('')}</div>`;
+    return `${c.format === 'causal' && c.dag ? dag(c.dag, rev) + (rev ? '' : '<p class="hint dag-hint">The factors in play. The reveal draws the links the study found.</p>') : ''}<div class="opts" role="group" aria-label="Answer options">${optionOrder(c).map((o, j) => `<button class="opt ${rev && isEv(o.i) ? 'is-ev' : ''}" data-choice="${o.i}" aria-pressed="${picked(o.i)}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${j + 1}</span><span>${esc(o.t)}</span>${rev && (isEv(o.i) || picked(o.i)) ? `<span class="mark">${picked(o.i) ? '<span class="k-you">Your call</span>' : ''}${isEv(o.i) ? '<span class="k-ev">Evidence</span>' : ''}</span>` : ''}</button>`).join('')}</div>`;
   }
   if (c.format === 'estimate') {
     const e = c.estimate, v = r ?? Math.round((e.min + e.max) / 2);
@@ -280,21 +284,21 @@ function gapFigure(c, rec) {
     // Items the study did not separate share a rank, shown as "2=".
     // A pair the study did not separate is marked on the lower row; its order is not scored.
     const tieUp = t => t > 0 && tied(truth[t - 1], truth[t]);
-    body = `<ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li class="${tieUp(t) ? 'tie' : ''}"><span class="rc-name">${esc(c.options[oi])}${c.rankValues ? `<small>${esc(c.rankValues[oi])}${tieUp(t) ? ', not separated from the row above' : ''}</small>` : tieUp(t) ? '<small>Not separated from the row above</small>' : ''}</span><span class="rc-badge ev" title="Measured rank">${t + 1}</span><span class="rc-badge you ${k === t || (tieUp(t) && k === t - 1) || (tieUp(t + 1) && k === t + 1) ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol><div class="rc-head"><span>Measured order, top first</span><span><i class="dot dot-ev"></i>Study <i class="dot dot-you"></i>You</span></div>`;
+    body = `<ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li class="${tieUp(t) ? 'tie' : ''}"><span class="rc-name">${esc(c.options[oi])}${c.rankValues ? `<small>${esc(c.rankValues[oi])}${tieUp(t) ? ', not separated from the row above' : ''}</small>` : tieUp(t) ? '<small>Not separated from the row above</small>' : ''}</span><span class="rc-badge ev" title="Measured rank">${t + 1}</span><span class="rc-badge you ${k === t || (tieUp(t) && k === t - 1) || (tieUp(t + 1) && k === t + 1) ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol><div class="rc-head"><span>Measured order, top first</span><span><span class="k-ev">Study</span> <span class="k-you">You</span></span></div>`;
     cap = `${rec.detail.agree} of ${rec.detail.total} scored pairs in the measured order.${ties.length ? ' Rows marked as not separated were not told apart by the study, so their order is not scored.' : ''}`
   }
   else if (c.format === 'allocate') {
     const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, hi = Math.max(...a.values), evNum = k => { const m = String(a.valueLabels ? a.valueLabels[k] : a.values[k]).replace('−', '-').match(/-?\d+(\.\d+)?/); return m ? Math.max(0, parseFloat(m[0])) : 0 }, evNs = k => /n\.s\./.test(String(a.valueLabels ? a.valueLabels[k] : '')), evMax = Math.max(1, ...c.options.map((_, k) => evNum(k))), isBest = k => a.best ? a.best.includes(k) : a.values[k] === hi;
-    body = `<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${c.options.map((o, k) => `<div class="hb-row two"><span class="hb-label">${esc(o)}${isBest(k) ? ' <span class="tag tag-ev">Worked best</span>' : ''}</span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num you">${pct(r[k] / tot)} pts</b><span class="hb-track"><i class="grow ev${evNs(k) ? ' ns' : ''}" style="width:${Math.max(1.5, evNum(k) / evMax * 100)}%"></i></span><b class="num ev">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</b></div>`).join('')}</div>`;   // your points over the study's measured result, per option
-    cap = `Bars: your points. Score ${pct(rec.score)}: 100 when all points sit on the option that worked best.`
+    body = `<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${c.options.map((o, k) => `<div class="hb-row two"><span class="hb-label">${esc(o)}${isBest(k) ? ' <em class="ev-note">worked best</em>' : ''}</span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i>${k === 0 ? '<em class="in-lab">your points</em>' : ''}</span><b class="num you">${pct(r[k] / tot)} pts</b><span class="hb-track"><i class="grow ev${evNs(k) ? ' ns' : ''}" style="width:${Math.max(1.5, evNum(k) / evMax * 100)}%"></i>${k === 0 ? '<em class="in-lab">effect the study measured</em>' : ''}</span><b class="num ev">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</b></div>`).join('')}</div>`;   // your points over the study's measured result, per option
+    cap = `${c.options.some((_, k) => evNs(k)) ? 'Outlined bars: effects that were not statistically significant. ' : ''}Score ${pct(rec.score)}: 100 when all points sit on the option that worked best. ${srcLine(c)}`
   }
-  else if (c.format === 'delegate') { body = `<div class="gap-head"><div class="gh-cell"><span>Tasks routed as the evidence suggests</span><b class="num gh-you">${rec.detail.right} of ${rec.detail.total}</b></div></div><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
-  else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
+  else if (c.format === 'delegate') { body = `<div class="gap-head"><div class="gh-cell"><span>Tasks routed as the evidence suggests</span><b class="num gh-you">${rec.detail.right} of ${rec.detail.total}</b></div></div><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">You: ${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">Evidence: ${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = '' }
+  else if (c.chart) { body = bars(c.chart); cap = srcLine(c) }
   else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
-  if (c.chart && ['forecast', 'rank', 'estimate', 'delegate', 'allocate'].includes(c.format) && !(c.format === 'rank' && c.rankValues)) { body += `<div class="plate-more"><p class="plate-h">What the study measured</p>${bars(c.chart)}<p class="small">${esc(c.chart.note || '')}</p></div>` }   // the paper's own figure under the format's gap view
+  if (c.chart && ['forecast', 'rank', 'estimate', 'delegate', 'allocate'].includes(c.format) && !(c.format === 'rank' && c.rankValues)) { body += `<div class="plate-more"><p class="plate-h">${esc((c.chart.note || '').replace(/\.$/, ''))}</p>${bars(c.chart)}<p class="small">${esc(srcLine(c))}</p></div>` }   // the paper's own figure under the format's gap view
   const opt = ['choice', 'causal', 'multi'].includes(c.format), plate = !(opt && !c.chart);   // the evidence sits on a dark plate; a plain option list stays light
-  const legend = c.format === 'allocate' ? '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your points</span><span><i class="dot dot-ev"></i>What the study measured</span></div>' : opt && c.chart ? '<p class="plate-h">What the study measured</p>' : opt ? '' : '<div class="gap-legend" aria-hidden="true"><span><i class="dot dot-you"></i>Your call</span><span><i class="dot dot-ev"></i>The evidence</span></div>';
-  const main = opt && !c.chart ? instrument(c) : body, caption = `<p class="gap-caption">${opt && !c.chart ? 'Blue marks your call, amber the evidence.' : cap}</p>`;
+  const legend = opt && c.chart ? `<p class="plate-h">${esc((c.chart.note || '').replace(/\.$/, ''))}</p>` : '';   // no colour keys: every mark is labelled where it sits
+  const main = opt && !c.chart ? instrument(c) : body, caption = opt && !c.chart || !cap ? '' : `<p class="gap-caption">${esc(cap)}</p>`;
   return `<figure class="gap${plate ? ' has-plate' : ''}" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${plate ? `<div class="plate">${legend}${main}${caption}</div>` : `${legend}${main}${caption}`}${opt && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}${studyCard(c)}</figure>`;
 }
 // The signature moment of a numeric reveal: your number against the study's, large, with the gap between them.
@@ -306,6 +310,7 @@ function studyCard(c) {
   const d = c.study || {}, s = SOURCE[c.sources[0]] || {}, rows = [['Design', d.design], ['Sample', d.n], ['Published', s.venue ? `${s.venue}, ${s.year}` : ''], ['Checked', srcStatus(s)[0]]].filter(r => r[1]);
   return `<dl class="study-card">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
 }
+function srcLine(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: ${s.authors} (${s.year}), ${s.venue}.` : '' }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {
   const share = ch.unit === '%' && ch.values.every(v => v >= 0 && v <= 100) && Math.max(...ch.values) >= 20;   // shares read on a 0 to 100 scale
@@ -334,7 +339,7 @@ function play() {
     const verb = { estimate: 'estimate', allocate: 'split', rank: 'ranking', delegate: 'routing', forecast: 'forecast' }[c.format] || 'answer';
     return `<section class="focus">${top}<article class="focus-card" aria-labelledby="q-h">${CLASS_LOCK && !st.room && !BY_ID[c.id].answerTitle ? '<p class="lock-note" role="note">A live class is running on this server, so results for decisions it has not reached open after it reveals them. You can still make your call now.</p>' : ''}${label}
       <p class="scene">${esc(c.scene)}</p><p class="study-line">${esc(studyLine(c))}</p>
-      ${c.format === 'forecast' ? `<p class="hint fc-ask">How likely is it that the study found this?</p><h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : ''}
+      ${c.format === 'forecast' ? `<h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1><p class="hint fc-ask">How likely is it that the study found this?</p>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : ''}
       ${instrument(c)}${conf}</article>
       <div class="actionbar"><div class="actionbar-in"><span class="kicker">${lockHint(c)}</span><button class="btn btn-you btn-lg" data-act="lock" id="lock-btn" ${ready ? '' : 'disabled'}>Lock my ${verb}</button></div></div></section>`;
   }
@@ -346,13 +351,13 @@ function play() {
     : tab === 'source' ? c.sources.map(id => { const s = SOURCE[id], [l, k] = srcStatus(s); return `<div class="src"><p class="src-title">${esc(paperTitle(s) || 'Title shown once you have played every decision built on this paper')}</p><p>${esc(s.authors)}, <i>${esc(s.venue)}</i>${s.volume ? ' ' + esc(s.volume) : ''}, ${s.year}.</p><p class="row"><span class="status ${k}">${l}</span> <button class="link-btn" data-source="${esc(id)}">More on this source</button> <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article</a></p></div>` }).join('')
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
-  return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">${art(c.theme, 'rev-art')}${label}
-      <p class="verdict">${rec.missed ? '<span class="tag">You did not answer this one</span>' : `<span class="tag ${rec.correct ? 'tag-ev' : ''}">${rec.correct ? 'You called it' : c.format !== 'forecast' && rec.score >= .5 ? 'Close' : 'The evidence surprised you'}</span><span class="num">Score ${pct(rec.score)}</span>`}</p>${!rec.missed && rec.confidence !== null ? `<p class="conf-line">Calibration points ${Math.round(100 * (1 - 2 * (rec.confidence / 100 - (rec.correct ? 1 : 0)) ** 2))}, where a 50% hedge scores 50. You were ${rec.confidence}% sure and ${rec.correct ? 'right' : 'missed'}.</p>` : ''}
+  return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
+      <p class="verdict">${rec.missed ? '<strong>You did not answer this one.</strong>' : `<strong class="${rec.correct ? 'v-ok' : ''}">${rec.correct ? 'You called it.' : c.format !== 'forecast' && rec.score >= .5 ? 'Close.' : 'The evidence surprised you.'}</strong> <span class="num">Score ${pct(rec.score)}</span>`}</p>${label}${!rec.missed && rec.confidence !== null ? `<p class="conf-line">You were ${rec.confidence}% sure and ${rec.correct ? 'right' : 'missed'}. Your record tracks how well your confidence matches your hits.</p>` : ''}
       ${rec.missed ? '' : gapFigure(c, rec)}
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
       <p class="reveal-body">${esc(c.explain)}</p>
-      <div class="action-note"><h2>What a manager does with this</h2><p>${esc(c.implication)}</p></div>
+      <p class="action-note"><strong>For a manager:</strong> ${esc(c.implication)}</p>
       <div class="deep"><div class="tabs" role="tablist" aria-label="Go deeper">${tabs.map(([k, l]) => `<button role="tab" id="tab-${k}" aria-selected="${tab === k}" aria-controls="tabpanel" data-tab="${k}" tabindex="${tab === k ? 0 : -1}">${l}</button>`).join('')}</div><div class="tabpanel" id="tabpanel" role="tabpanel" aria-labelledby="tab-${tab}">${panel}</div></div>
     </article>
     <div class="actionbar"><div class="actionbar-in"><span class="kicker">${st.room ? `Live class ${esc(st.room.code)}. Your instructor opens the next decision.` : `${st.session.filter(r => r.correct).length} of ${st.session.length} called right, average score ${st.session.length ? pct(st.session.reduce((a, r) => a + r.score, 0) / st.session.length) : 0}`}</span>${st.room ? '' : `<button class="btn btn-solid btn-lg" data-act="next" id="next-btn">${nextLabel}</button>`}</div></div></section>`;
@@ -392,9 +397,11 @@ function curated(q, c) {
   const named = trNames(q, c) ? [] : ALL.filter(x => x.explain && !x.sources.some(s => c.sources.includes(s)) && trNames(q, x));
   if (named.length) { const ov = x => topic.filter(w => trTokens([x.answerTitle, x.explain, x.question].join(' ')).includes(w)).length; const b = named.sort((a, z) => ov(z) - ov(a))[0]; return { text: `${b.explain}\n\n${b.implication}`, cites: cs(b) } }
   const st0 = c.study || {}, rare = topic.filter(w => !TR_COMMON.has(w)), hits = (s, ws) => { const ts = new Set(trTokens(s)); return ws.filter(w => ts.has(w)).length };
+  if (c.delegate && /\bwhy\b/.test(ql)) { const ov = tk => trTokens(tk.text).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const tk = c.delegate.tasks.slice().sort((a, b) => ov(b) - ov(a))[0]; if (tk && ov(tk) >= 1 && tk.why) return { text: tk.why, cites: cs(c) } }   // the task's own reason
   for (const [name, rx] of TR.routes) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
     if (name === 'offtopic') return off;
+    if (name === 'foresight') { const fp = fol.find(f => /\b(predict\w*|expect\w*|forecast\w*|experts?|anticipat\w*)/i.test(f.q + ' ' + f.a)); if (fp) return { text: fp.a, cites: cs(c) }; continue }
     if (name === 'authors') return { text: `${c.sources.map(id => SOURCE[id] ? `${SOURCE[id].authors} (${SOURCE[id].year}), ${SOURCE[id].venue}` : '').filter(Boolean).join('; ')}. Design: ${st0.design || 'see the paper'}.`, cites: cs(c) };
     if (name === 'voluntary') return { text: `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\nSetting: ${c.scene}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
     if (name === 'stakes') return { text: `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
@@ -417,6 +424,7 @@ function curated(q, c) {
   const fa = fol.filter(f => hits(f.a, rareA)).sort((a, b) => hits(b.a, rareA) - hits(a.a, rareA))[0]; if (fa) return { text: fa.a, cites: cs(c) };   // a distinctive word found only in a follow-up answer
   if (fol.length) { const ov = f => trTokens(f.q + ' ' + f.a).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const f0 = fol.slice().sort((a, b) => ov(b) - ov(a))[0]; if (ov(f0) >= 2) return { text: f0.a, cites: cs(c) } }
   // no study named and no route: answer about the decision on screen, never about another study on word overlap
+  if (rare.length) return { text: `The lab's summary of this study does not cover that detail. What it does cover: ${c.answerTitle}. ${c.explain}`, cites: cs(c) };   // say so, rather than pass the summary off as an answer
   return { text: `${c.answerTitle}. ${c.explain}\n\nWhat a manager does with it: ${c.implication}`, cites: cs(c) };
 }
 async function ask(q) {
@@ -483,13 +491,13 @@ function record() {
   if (st.session.length) {
     const worst = st.session.reduce((a, r) => r.score < a.score ? r : a), best = st.session.reduce((a, r) => r.score > a.score ? r : a);
     const sc = S.calibration(st.session.map(r => S.toCalibrationRecord(BY_ID[r.id], r)));
-    summary = `<div class="summary">${best.score > worst.score ? `<div class="panel lesson-card"><span class="kicker">Best call</span><h2 class="card-h">${esc(best.title || BY_ID[best.id].title)}</h2><p>${esc(best.answerTitle || BY_ID[best.id].answerTitle)}. Score ${pct(best.score)}.</p></div>` : ''}<div class="panel lesson-card"><span class="kicker">Biggest surprise</span><h2 class="card-h">${esc(worst.title || BY_ID[worst.id].title)}</h2><p>${esc(worst.answerTitle || BY_ID[worst.id].answerTitle)}. ${esc(worst.implication || BY_ID[worst.id].implication)}</p><button class="link-btn" data-play="${esc(worst.id)}">Play it again</button></div></div>`;
+    summary = `<div class="summary">${best.score > worst.score ? `<div class="panel lesson-card"><h2 class="card-h">Best call: ${esc(best.title || BY_ID[best.id].title)}</h2><p>${esc(best.answerTitle || BY_ID[best.id].answerTitle)}. Score ${pct(best.score)}.</p></div>` : ''}<div class="panel lesson-card"><h2 class="card-h">Biggest surprise: ${esc(worst.title || BY_ID[worst.id].title)}</h2><p>${esc(worst.answerTitle || BY_ID[worst.id].answerTitle)}. ${esc(worst.implication || BY_ID[worst.id].implication)}</p><button class="link-btn" data-play="${esc(worst.id)}">Play it again</button></div></div>`;
   }
   const played = byTrack.filter(t => t[1]);
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record.</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
-    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${sess ?? meanScore ?? '–'}</b>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing, 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
+    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${String(sess ?? meanScore ?? '–').replace(/^-/, '−')}</b><span class="score-unit">skill points<br>above guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing, 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
       <dl class="score-meta"><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">
@@ -503,10 +511,10 @@ function calPlot(cal) {
   const W = 320, P = 34, sx = v => P + v / 100 * (W - P - 22), sy = v => W - P - v / 100 * (W - P - 22);
   const pts = cal.bins.filter(b => b.n);
   return `<svg viewBox="0 0 ${W} ${W}" role="img" aria-label="Calibration plot: ${pts.map(b => `stated ${Math.round(b.meanP)}%, right ${Math.round(b.hitRate)}% over ${b.n} calls`).join('; ') || 'no data yet'}" style="max-width:420px;width:100%;display:block;margin:0 auto">
-    <rect x="${P}" y="22" width="${W - P - 22}" height="${W - P - 22}" fill="#f4f6f9" stroke="#cbd3dd"/>
-    ${[0, 25, 50, 75, 100].map(v => `<line x1="${sx(v)}" y1="22" x2="${sx(v)}" y2="${W - P}" stroke="#e2e7ed"/><line x1="${P}" y1="${sy(v)}" x2="${W - 22}" y2="${sy(v)}" stroke="#e2e7ed"/><text x="${sx(v)}" y="${W - P + 15}" font-size="10" text-anchor="middle" fill="#56617a">${v}</text><text x="${P - 6}" y="${sy(v) + 3}" font-size="10" text-anchor="end" fill="#56617a">${v}</text>`).join('')}
-    <line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(100)}" y2="${sy(100)}" stroke="#9aa6b6" stroke-dasharray="4 4"/>
-    ${pts.map(b => `<circle cx="${sx(b.meanP)}" cy="${sy(b.hitRate)}" r="${5 + Math.min(10, Math.sqrt(b.n) * 2)}" fill="#2f54eb" fill-opacity=".85" stroke="#fff" stroke-width="2"/>`).join('')}
+    <path d="M${P} 22 V${W - P} H${W - 22}" fill="none" stroke="#cbd3dd"/>
+    ${[0, 25, 50, 75, 100].map(v => `<text x="${sx(v)}" y="${W - P + 15}" font-size="10" text-anchor="middle" fill="#56617a">${v}</text><text x="${P - 6}" y="${sy(v) + 3}" font-size="10" text-anchor="end" fill="#56617a">${v}</text>`).join('')}
+    <line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(100)}" y2="${sy(100)}" stroke="#9aa6b6" stroke-dasharray="4 4"/><text x="${sx(62)}" y="${sy(70)}" font-size="10.5" fill="#56617a" transform="rotate(-45 ${sx(62)} ${sy(70)})">as sure as right</text>
+    ${pts.map(b => { const r = 5 + Math.min(10, Math.sqrt(b.n) * 2); return `<circle cx="${sx(b.meanP)}" cy="${sy(b.hitRate)}" r="${r}" fill="#2f54eb" fill-opacity=".85" stroke="#fff" stroke-width="2"/><text x="${sx(b.meanP) + (b.meanP > 80 ? -r - 4 : r + 4)}" y="${sy(b.hitRate) + 4}" font-size="10.5" fill="#36425e" text-anchor="${b.meanP > 80 ? 'end' : 'start'}">${b.n} call${b.n === 1 ? '' : 's'}</text>` }).join('')}
     <text x="${(W + P) / 2}" y="${W - 4}" font-size="11" text-anchor="middle" fill="#36425e">Stated confidence (%)</text>
     <text x="10" y="${(W - P) / 2}" font-size="11" text-anchor="middle" fill="#36425e" transform="rotate(-90 10 ${(W - P) / 2})">Share right (%)</text></svg>${pts.length ? '' : '<p class="kicker">Points appear after your first calls.</p>'}`;
 }
@@ -523,7 +531,7 @@ function closeModal() { if (!qs('#overlay').innerHTML) return; qs('#overlay').in
 function paperTitle(s) { const used = ALL.filter(c => c.sources.includes(s.id)); return s.title && used.every(c => records.some(r => r.id === c.id)) ? s.title : null }
 function sourceModal(id) {
   const s = SOURCE[id]; if (!s) return; const v = s.verification || {}; const used = ALL.filter(c => c.sources.includes(id));
-  modal(`<span class="kicker">Peer-reviewed source</span><h2>${esc(paperTitle(s) || `${s.authors} (${s.year})`)}</h2>${paperTitle(s) ? '' : '<p class="small">The paper’s title appears once you have played every decision built on it, because titles often state the finding.</p>'}<p><strong>${esc(s.authors)}</strong> (${s.year}). <i>${esc(s.venue)}</i>${s.volume ? `, ${esc(s.volume)}` : ''}${s.pages ? `, ${esc(s.pages)}` : ''}.</p>
+  modal(`<h2>${esc(paperTitle(s) || `${s.authors} (${s.year})`)}</h2>${paperTitle(s) ? '' : '<p class="small">The paper’s title appears once you have played every decision built on it, because titles often state the finding.</p>'}<p><strong>${esc(s.authors)}</strong> (${s.year}). <i>${esc(s.venue)}</i>${s.volume ? `, ${esc(s.volume)}` : ''}${s.pages ? `, ${esc(s.pages)}` : ''}.</p>
     ${s.takeaway && used.every(c => records.some(r => r.id === c.id)) ? `<p><strong>What the lab uses.</strong> ${esc(s.takeaway)}</p>` : `<p>The paper’s finding appears here once you have played ${used.length > 1 ? 'every decision' : 'the decision'} built on it.</p>`}
     <p><strong>How it was checked.</strong> ${esc(srcStatus(s)[0])}${v.checked ? ' on ' + esc(v.checked) : ''}. Metadata matched against the DOI registry.${v.note ? ' ' + esc(v.note) : ''}</p>
     ${used.length ? `<p><strong>Decisions built on it:</strong> ${used.map(c => `<button class="link-btn" data-play="${esc(c.id)}">${esc(c.title)}</button>`).join(', ')}.</p>` : ''}
@@ -531,7 +539,7 @@ function sourceModal(id) {
 }
 function methodsModal() {
   const live = Object.values(SOURCE).filter(isLive), q = Object.values(SOURCE).filter(s => !isLive(s));
-  modal(`<span class="kicker">How the lab is built</span><h2>Research standard</h2>
+  modal(`<h2>Research standard</h2>
     <p>Scored answers come only from peer-reviewed journal articles or scholarly books. Each source was matched against the DOI registry, and every number used in a decision was checked against the published abstract or full text. ${live.length} sources passed${q.length ? `; ${q.length} are held back until their claims can be checked` : ''}.</p>
     <p>Scenarios are teaching adaptations written for managers. They describe the study design accurately but do not replicate it. Charts appear only where the study reported the values shown.</p>
     <p>A single study is evidence about one population, task and time. Each decision states the population, task and setting the evidence comes from.</p>
@@ -604,8 +612,8 @@ async function roomSubmit(c, rec) {
 }
 function roomWait() {
   const R = st.room;
-  return `<section class="play wrap"><div class="panel card room-wait" aria-live="polite"><span class="tag tag-you">Live class ${esc(R.code)}${R.number ? ', you are participant ' + esc(R.number) : ''}</span>
-    <h1 class="q" tabindex="-1" style="margin-top:18px">${R.phase === 'lobby' || !R.challenge ? 'You are in. The first decision appears when your instructor opens it.' : 'Waiting for the next decision.'}</h1>
+  return `<section class="play wrap"><div class="panel card room-wait" aria-live="polite">
+    <h1 class="q" tabindex="-1">${R.phase === 'lobby' || !R.challenge ? 'You are in. The first decision appears when your instructor opens it.' : 'Waiting for the next decision.'}</h1><p class="room-id">Live class ${esc(R.code)}${R.number ? ', you are participant ' + esc(R.number) : ''}.</p>
     <p class="scene">Keep this page open. Your answers count toward the class picture, not toward a grade, and the instructor sees only participant numbers.</p>
     <p class="kicker" id="room-live">${roomLine()}</p><button class="btn btn-quiet" data-act="leave-room">Leave the live class</button></div></section>`;
 }
@@ -626,7 +634,7 @@ function classPanel(c, a) {
   return `<section class="panel gap" aria-labelledby="class-h"><h2 id="class-h">The room, ${a.n} answers</h2><p class="gap-caption" style="margin:0 0 8px">Average score ${a.meanScore ?? '–'}. ${a.shareCorrect ?? 0}% matched the evidence${a.meanConfidence !== null ? `, at ${a.meanConfidence}% average confidence` : ''}.</p>${body}</section>`;
 }
 function joinModal() {
-  modal(`<span class="kicker">Live class</span><h2>Join with the code on the screen</h2><form data-form="join" class="tutor-line"><label class="sr-only" for="join-code">Session code</label><input id="join-code" maxlength="8" autocomplete="off" autocapitalize="characters" placeholder="For example K7QPM" style="text-transform:uppercase;font-size:20px;letter-spacing:.12em"><button class="btn btn-solid">Join</button></form><p>No name or account needed. The instructor sees answers by participant number only.</p>`, 'Join a live class');
+  modal(`<h2>Join the live class with the code on the screen</h2><form data-form="join" class="tutor-line"><label class="sr-only" for="join-code">Session code</label><input id="join-code" maxlength="8" autocomplete="off" autocapitalize="characters" placeholder="For example K7QPM" style="text-transform:uppercase;font-size:20px;letter-spacing:.12em"><button class="btn btn-solid">Join</button></form><p>No name or account needed. The instructor sees answers by participant number only.</p>`, 'Join a live class');
   setTimeout(() => qs('#join-code')?.focus(), 20);
 }
 

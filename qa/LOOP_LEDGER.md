@@ -510,3 +510,23 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 240 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 0 Major. Next: independent review 21.
+
+## Iteration 26 (2026-10-31)
+
+**Verified first:** iteration-25 fixes, by independent review 21 (snapshot `snap_r21`): estimate baseline (fixed position 0.319 against GUESS_FRAC), axes, allocate verdict, tutor distinctive words, Streamlit sibling hold, projector delegate, rank start order (no leak on the served page).
+
+**Independent score:** 87/100 (review 21, `qa/reviews/review21.md`). 0 Blocking, 0 Major, 14 Minor.
+
+**Owner's instruction this iteration:** remove every AI design marker from every page, gather 25 rules for interfaces that do not read as AI-made, add the chart guidance he sent (headline titles, annotate in place, source inside the figure), ask on every page "what would Tufte do?", and put all of it into the loop.
+- `qa/DESIGN_RULES.md`: 30 rules (25 on AI giveaways and usability from five published catalogues, 5 on figures). `tools/design_lint.js` and `tools/design_lint.py` detect 27 of them in a real browser on every page state at 1440 and 390 px, including the console, projector and a phone; `tests/test_design.py` fails on any hit, and a live-fire test injects one tell per detector. Baseline: 50 distinct hits across 15 rules; now 0.
+- Fixes, all pages: no blur, no glow or coloured shadows, no side stripes or hatching, no decorative dots, labels folded into headings ("Best call: …", the hero's demo without "Try one now"), the verdict as a sentence under the headline instead of a pill above it, tracking no tighter than −0.03 em, balanced headings and orphan-free paragraphs, a three-line hero headline, a radius scale of 4, 10 and 14 px, paths as an index instead of a grid of identical cards, flattened option recaps and projector lists, 12 px minimum text, 40 em measure.
+- `qa/TUFTE_PASS.md`: the page-by-page answers. Path drawings replaced by a word-sized strip (one tick per decision, filled once played); the reveal's theme drawing removed; legends replaced by labels on the marks; each chart titled by its measure with its source inside the figure; one amber bar per chart; calibration plot without box and grid, its diagonal and dots labelled in place; the record's number carries its unit.
+- `qa/REVIEW_PROMPT.md` asks every reviewer to run the lint, read the rules by eye and ask the Tufte question on every page.
+
+**Review-21 fixes (all 14):** rank header contrast on the dark plate, plus axe on every format's reveal at both widths; tutor routes for skill level, countries, foresight and a delegate task's reason, and an honest "the lab's summary does not cover that detail" fallback (server and page agree); the polarized-norms item keyed on the printed variance (2.68 against 1.26), with the abstract's "most" attributed to the authors, after reading the published text (the 46% share concerns contributing more than two); subtract21 status "checked against the publisher's abstract and figure legends"; ai01's follow-up replaced by one the stored quotes answer (and not ai02's key number); delegate baseline is the best constant routing; allocate calibration scores "top-weighted option is a best one"; the reveal says how sure you were and whether you were right, calibration lives in the record; bz02 is a forecast (its answer is a threshold), axb04 0 to 60, axe04 0 to 60, GUESS_FRAC 0.36; instructor controls have their own bucket (test); Streamlit pauses solo play while any class holds an unrevealed decision and the no-passcode warning says what it exposes; record number with unit; phone readout on its own row; titles "Four honesty messages" and "Tight, loose or split".
+
+**Own audit:** no number in an estimate's scene inside its band (gate; judg05 tolerance 5).
+
+**Gates:** build check, 251 tests (including `tests/test_design.py`: 0 design-lint hits on every page state, detectors live-fired), audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 0 Major. Next: independent review 22, which now runs the design lint and the Tufte question on every page.

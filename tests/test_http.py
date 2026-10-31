@@ -225,3 +225,13 @@ def test_open_decision_holds_its_same_paper_siblings(base, tmp_path, monkeypatch
     monkeypatch.setattr(cl, 'CLASS_LOCK_IDLE_MIN', 0); app.STORE._lock = None; app.STORE._open = None
     assert req(base, '/api/reveal/' + b, client='peek6')[0] == 409
     req(base, f"/api/rooms/{room['code']}/control", {'action': 'end'}, key=key, client='inst6')
+
+
+def test_instructor_controls_survive_a_student_flood(base, monkeypatch):
+    """Review 21, minor 10: students exhausting the per-IP write bucket do not throttle the instructor."""
+    monkeypatch.setattr(app, 'LIMIT', app.Limiter())
+    _, room, _ = req(base, '/api/rooms', {'title': 'nat'}, client='instN')
+    code, key = room['code'], room.get('key') or room.get('secret') or room.get('adminKey')
+    statuses = [req(base, f'/api/rooms/{code}/responses', {'token': 'x', 'answer': 0}, client=f's{i}')[0] for i in range(400)]
+    assert 429 in statuses                       # the network's student bucket is spent
+    assert req(base, f'/api/rooms/{code}/control', {'action': 'end'}, key=key, client='instN')[0] == 200

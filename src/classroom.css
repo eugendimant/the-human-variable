@@ -10,12 +10,12 @@
 .present-opts{font-size:19px;line-height:1.45;padding-left:22px;margin:0 0 18px}
 .present-opts li{margin:4px 0}
 .count-row{display:flex;align-items:center;gap:12px;margin:18px 0 4px;flex-wrap:wrap}
-.count-row b{font-size:46px;letter-spacing:-.04em;line-height:1}
+.count-row b{font-size:46px;letter-spacing:-.03em;line-height:1}
 .meter-bar{flex:1 1 160px;height:8px;border-radius:4px;background:var(--rule);position:relative;overflow:hidden}
 .meter-bar i{position:absolute;inset:0 auto 0 0;background:var(--you);transition:width .4s}
 .rv{margin-top:24px;border-top:1px solid var(--rule);padding-top:20px}
 .rv-head{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-bottom:18px}
-.rv-chip{display:block;font-style:normal;font-size:.78em;color:var(--ev,#2f7d5b);margin-top:2px}
+.rv-chip{display:block;font-style:normal;font-size:12.5px;color:var(--ev,#2f7d5b);margin-top:2px}
 .rv-head div{display:grid}
 .rv-head b{font-size:38px;letter-spacing:-.03em;line-height:1.05}
 .rv-bars{display:grid;gap:10px}
@@ -44,16 +44,20 @@ body.projector .play-grid>.card>.rv{grid-column:2;grid-row:1/span 30}
 
 /* rank reveal: the study's order as large numbered badges, the room's average beside each */
 .rank-proj{list-style:none;margin:8px 0 6px;padding:0;display:grid;gap:10px}
-.rank-proj li{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:10px 14px;border:1px solid var(--rule,#cbd3dd);border-radius:14px;background:#fff}
+.rank-proj li{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--rule,#cbd3dd)}
 .rp-badge{width:40px;height:40px;border-radius:50%;background:#e0a01c;color:#14203a;font-weight:800;display:grid;place-items:center;font-size:20px}
 .rp-name{font-weight:650}.rp-room{color:#56617a;font-size:.9em;white-space:nowrap}.rp-room b{color:#1f3cc2;font-size:1.15em}
 body.projector .rp-badge{width:56px;height:56px;font-size:28px}
 
 /* projector, before the reveal: the room's answer count fills the right half */
-body.projector .play-grid>.card:not(:has(.rv)) .count-row{grid-column:2;grid-row:1/span 30;align-self:center;display:grid;justify-items:center;text-align:center;gap:12px;padding:40px;border:1px solid #cbd3dd;border-radius:24px;background:#f4f6f9}
-body.projector .play-grid>.card:not(:has(.rv)) .count-row b{font-size:clamp(96px,10vw,168px);line-height:.9;letter-spacing:-.04em;color:#1f3cc2}
+body.projector .play-grid>.card:not(:has(.rv)) .count-row{grid-column:2;grid-row:1/span 30;align-self:center;display:grid;justify-items:center;text-align:center;gap:12px;padding:40px 0;border-left:1px solid #cbd3dd}
+body.projector .play-grid>.card:not(:has(.rv)) .count-row b{font-size:clamp(96px,10vw,168px);line-height:.9;letter-spacing:-.03em;color:#1f3cc2}
 body.projector .play-grid>.card:not(:has(.rv)) .count-row span{font-size:clamp(18px,1.6vw,26px)}
 body.projector .play-grid>.card:not(:has(.rv)) .count-row .meter-bar{width:70%}
 .rv-head>div>span{white-space:normal;min-height:2.4em}
 
 @media (max-width:640px){.rv-head{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+h1,h2,h3{text-wrap:balance}
+p,li{text-wrap:pretty}
+.rv .kicker{max-width:40em}

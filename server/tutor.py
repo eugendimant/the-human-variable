@@ -126,9 +126,17 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         fol = c.get('follow', [])
         st = c.get('study', {})
         rare = topic - COMMON
+        if c.get('delegate') and re.search(r'\bwhy\b', ql):   # "why did X do worse on Y": the task's own reason
+            ov = lambda tk: len(qt & set(tokens(tk['text'])))
+            tk = max(c['delegate']['tasks'], key=ov)
+            if ov(tk) >= 1 and tk.get('why'): return out(tk['why'], c)
         for name, rx in R['routes']:
             if not re.search(rx, ql): continue
             if name == 'offtopic': return off
+            if name == 'foresight':
+                fp = [f for f in fol if re.search(r'\b(predict\w*|expect\w*|forecast\w*|experts?|anticipat\w*)', f['q'] + ' ' + f['a'], re.I)]
+                if fp: return out(fp[0]['a'], c)
+                continue
             if name == 'authors': return out(f"{_papers(c)}. Design: {st.get('design', 'see the paper')}.", c)
             if name == 'voluntary': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" Setting: {c.get('scene', '')} What the study covers: {c['boundary']}", c)
             if name == 'stakes': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
@@ -164,6 +172,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             f0 = max(fol, key=lambda f: len(qt & set(tokens(f['q'] + ' ' + f['a']))))
             if len(qt & set(tokens(f0['q'] + ' ' + f0['a']))) >= 2: return out(f0['a'], c)
         # no study named and no route: answer about the decision on screen, never about another study on word overlap
+        if rare: return out(f"The lab's summary of this study does not cover that detail. What it does cover: {c['answerTitle']}. {c['explain']}", c)   # say so, rather than pass the summary off as an answer
         return out(f"{c['answerTitle']}. {c['explain']} What a manager does with it: {c['implication']}", c)
     if not topic: return {'answer': 'Open a decision and ask about it, or name the study or topic you mean.', 'citations': [], 'mode': 'curated'}
     for d in retrieve(question, None, 4, exclude):

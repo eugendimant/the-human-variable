@@ -397,11 +397,11 @@
    "volume": "592(7853)",
    "pages": "258-261",
    "verification": {
-    "status": "verified_abstract",
+    "status": "verified_published_excerpts",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "abstract only (PubMed/Europe PMC)",
-    "text_url": "https://pubmed.ncbi.nlm.nih.gov/33828317/"
+    "text_read": "publisher article page: abstract and Extended Data figure legends",
+    "text_url": "https://www.nature.com/articles/s41586-021-03380-y"
    }
   },
   "plural93": {
@@ -2343,8 +2343,8 @@
      "a": "Participants with weaker writing skills benefited most, so the gap between stronger and weaker workers narrowed."
     },
     {
-     "q": "Did people keep using it?",
-     "a": "Yes. Two weeks and two months later, people who had ChatGPT access were more likely to report using it in their real jobs."
+     "q": "What kind of tasks were they?",
+     "a": "Occupation-specific, incentivized writing tasks, each typical of the participant’s own job."
     }
    ],
    "format": "estimate",
@@ -3139,7 +3139,7 @@
    "track": "Culture & Society",
    "concept": "Norm distributions",
    "tag": "27 / CULTURE",
-   "title": "Same average, different culture",
+   "title": "Tight, loose or split",
    "scene": "Two teams have the same average cooperation. In one, behavior is tightly clustered around the average; in the other, it is widely spread out.",
    "question": "Which two results did the experiments find?",
    "options": [
@@ -4014,7 +4014,7 @@
    "estimate": {
     "target": 10,
     "min": 0,
-    "max": 65,
+    "max": 60,
     "tolerance": 2,
     "label": "Average accuracy advantage of formulas over experts",
     "unit": "%"
@@ -4794,19 +4794,11 @@
   {
    "id": "bz02",
    "track": "Business",
-   "format": "estimate",
+   "format": "forecast",
    "concept": "Ad ROI precision",
    "title": "The noisy ROI test",
    "scene": "Your CFO wants a randomized test to prove a digital campaign's return before renewing it. Individual customers' weekly sales swing wildly.",
-   "question": "Across 25 large ad experiments, the median ROI confidence interval was more than how many percentage points wide?",
-   "estimate": {
-    "target": 100,
-    "min": 0,
-    "max": 445,
-    "tolerance": 30,
-    "label": "Median width of the ROI confidence interval",
-    "unit": " pp"
-   },
+   "question": "How likely is it that the study found this?",
    "answerTitle": "Over 100 percentage points wide",
    "explain": "The median confidence interval on return on investment was over 100 percentage points wide, because individual sales are very noisy relative to ad effects.",
    "implication": "Pool several experiments or measure lower-variance outcomes before asking one test to settle a campaign's ROI.",
@@ -4832,7 +4824,11 @@
     "design": "Randomized field experiments",
     "n": "25 ad campaigns at US retailers and brokerages"
    },
-   "theme": "evidence"
+   "theme": "evidence",
+   "forecast": {
+    "claim": "In the median experiment, the confidence interval on return on investment was narrower than 50 percentage points.",
+    "truth": false
+   }
   },
   {
    "id": "bz03",
@@ -6368,7 +6364,7 @@
    "format": "forecast",
    "track": "Business",
    "concept": "Honesty nudges",
-   "title": "A free line on the form",
+   "title": "Four honesty messages",
    "scene": "Participants read one truthful norm message (what others did or approved of, framed positively or negatively), then reported whether a die roll matched a number they privately chose. Matches paid a bonus; lies were undetectable.",
    "question": "Is this what the study found?",
    "forecast": {
@@ -6977,16 +6973,16 @@
    "concept": "Polarized norms",
    "title": "Pick the middle or a side?",
    "scene": "A representative US sample played a two-player contribution game after seeing how others behaved: tightly clustered, widely spread, or split into two extreme camps.",
-   "question": "In the split, polarized setting, what did most people do?",
+   "question": "After a split, two-camp norm, how did people contribute?",
    "options": [
-    "Chose an extreme, despite the risk",
-    "Chose the safe middle option",
-    "Acted as they did when norms were tight",
-    "Copied the average behavior"
+    "Far more spread out, toward both ends",
+    "Clustered at the safe middle option",
+    "Much as they did after a tight norm",
+    "Close to the average of what they saw"
    ],
    "answer": 0,
-   "answerTitle": "Most picked extremes, accepting strategic risk",
-   "explain": "With 1,203 US adults, Dimant and colleagues show that a polarized, two-camp norm produced the most dispersed contributions (variance 2.68, against 1.26 under a tight norm), as most people chose extreme actions despite their strategic risk.",
+   "answerTitle": "Contributions split toward the extremes",
+   "explain": "With 1,203 US adults, Dimant and colleagues show that a polarized, two-camp norm produced far more dispersed contributions than a tight norm (variance 2.68 against 1.26). In the authors’ words, in polarized environments most individuals prefer extreme actions despite the strategic risk.",
    "implication": "Report the spread of team behavior, not only the average; a split norm pulls people toward one camp or the other.",
    "boundary": "Two-player contribution game with 1,203 US adults, with the distribution of others’ behavior set by design.",
    "sources": [
@@ -7219,8 +7215,8 @@
    "theme": "persuasion",
    "estimate": {
     "target": 43.5,
-    "min": 20,
-    "max": 100,
+    "min": 0,
+    "max": 60,
     "tolerance": 6,
     "label": "Share agreeing after an unedited GPT-3 article",
     "unit": "%"
@@ -8980,12 +8976,16 @@
     "\\b(real money|paid|incentiv\\w*|hypothetical|just a survey|for real|stakes)\\b"
    ],
    [
+    "foresight",
+    "\\b((experts?|economists?|forecasters?|anyone|people) (see|saw|predict\\w*|expect\\w*|anticipate\\w*)|see (this|it) coming|predicted)\\b"
+   ],
+   [
     "population",
-    "\\b(american|americans|u\\.?s\\.? only|other countries|another country|culture|cultures|europe|asia|outside the us|elsewhere|just an? \\w+ thing)\\b"
+    "\\b(countries|which country|what country|where (was|were) (it|this|they)|american|americans|u\\.?s\\.? only|other countries|another country|culture|cultures|europe|asia|outside the us|elsewhere|just an? \\w+ thing)\\b"
    ],
    [
     "who",
-    "\\b(who (was|were) (studied|in it|tested|the participants)|participants?|how many (people|participants|subjects|workers|agents)|sample size|who took part|population)\\b"
+    "\\b(who (was|were) (studied|in it|tested|the participants)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students)|sample size|who took part|population)\\b"
    ],
    [
     "catch",
@@ -9001,7 +9001,7 @@
    ],
    [
     "subgroup",
-    "\\b(junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b"
+    "\\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\\w*|good writers|junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b"
    ],
    [
     "design",
@@ -9066,7 +9066,6 @@
    "help",
    "here",
    "human",
-   "keep",
    "kind",
    "larg",
    "learn",

@@ -12,8 +12,8 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 111 (formats: forecast 32, choice 29, estimate 25, multi 11, causal 5, delegate 4, rank 3, allocate 2).
-- Sources: 109 (60 checked against the published full text, 3 against the authors' accepted manuscript, 45 against the published abstract, 1 quarantined).
+- Decisions in scored play: 111 (formats: forecast 33, choice 29, estimate 24, multi 11, causal 5, delegate 4, rank 3, allocate 2).
+- Sources: 109 (60 checked against the published full text, 3 against the authors' accepted manuscript, 1 against the publisher's abstract and figure legends, 44 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
 - Decisions retired with reasons: 35 (listed below).
 - Track balance: AI × Business 46, Culture & Society 30, Business 28, Judgment 7.
@@ -23,7 +23,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Source | Venue | Check | Decisions | Note |
 |---|---|---|---|---|
 | Abeler, Nosenzo & Raymond (2019). *Preferences for Truth-Telling*. [doi:10.3982/ECTA14673](https://doi.org/10.3982/ECTA14673) | Econometrica 87(4) 1115-1153 | Full text | truth-telling-gains |  |
-| Adams et al. (2021). *People systematically overlook subtractive changes*. [doi:10.1038/s41586-021-03380-y](https://doi.org/10.1038/s41586-021-03380-y) | Nature 592(7853) 258-261 | Abstract | biz07, biz08 |  |
+| Adams et al. (2021). *People systematically overlook subtractive changes*. [doi:10.1038/s41586-021-03380-y](https://doi.org/10.1038/s41586-021-03380-y) | Nature 592(7853) 258-261 | Abstract and figure legends | biz07, biz08 |  |
 | Allcott, Braghieri, Eichmeyer & Gentzkow (2020). *The Welfare Effects of Social Media*. [doi:10.1257/aer.20190658](https://doi.org/10.1257/aer.20190658) | American Economic Review 110(3) 629-676 | Accepted manuscript | facebook-deactivation | ["Effect sizes (SD units, minutes, WTA) were read in the authors' final manuscript dated Nov 2019, not the typeset AER pages; direction of every effect is confirmed by the AER abstract."] |
 | Altay & Gilardi (2024). *People are skeptical of headlines labeled as AI-generated, even if true or human-made, because they assume full AI automation*. [doi:10.1093/pnasnexus/pgae403](https://doi.org/10.1093/pnasnexus/pgae403) | PNAS Nexus 3(10) pgae403 | Full text | axb09 |  |
 | Ayers et al. (2023). *Comparing Physician and Artificial Intelligence Chatbot Responses to Patient Questions Posted to a Public Social Media Forum*. [doi:10.1001/jamainternmed.2023.1838](https://doi.org/10.1001/jamainternmed.2023.1838) | JAMA Internal Medicine 183(6) 589-596 | Full text | axe05 | Evaluators were blinded but were also coauthors; accuracy was not separately assessed and longer chatbot answers may have inflated empathy ratings (authors' own limitations). |

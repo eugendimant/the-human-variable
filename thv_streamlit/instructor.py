@@ -33,7 +33,7 @@ def run():
                 if secret('THV_INSTRUCTOR_PASSCODE') and not hmac.compare_digest(str(pw).encode(), secret('THV_INSTRUCTOR_PASSCODE').encode()): st.error('Wrong passcode.')
                 else: ss.inst = S.create(title); st.rerun()
         st.caption('Answers are stored by participant number only and deleted when you end the session or after 48 hours.')
-        if not secret('THV_INSTRUCTOR_PASSCODE'): st.warning('No instructor passcode is set, so anyone who opens this page can start a class. Set THV_INSTRUCTOR_PASSCODE in the app secrets before sharing the link.')
+        if not secret('THV_INSTRUCTOR_PASSCODE'): st.warning('No instructor passcode is set, so anyone who opens this page can start a class. Set THV_INSTRUCTOR_PASSCODE in the app secrets before sharing the link. Without it, Play stays on as self-study and carries the answers: a student who opened Play before your class started keeps them. For classes, set the passcode, which turns self-study play off.')
         return
     I = ss.inst
     join = join_url(I['code'])

@@ -200,3 +200,15 @@ def test_offline_tutor_review20_routes():
     """Review 20, minor 5: trusting a lab game is a transfer question, not ethics; 'does it work' gets the finding."""
     assert 'what is right' not in T.curated('Should I believe a lab game?', 'ai01')['answer']
     c = T.CHALLENGES['social16']; assert T.curated('Does the norm nudge work?', 'social16')['answer'].startswith(c['answerTitle'])
+
+
+REVIEW21 = [('Did the people who were already good writers get anything out of it?', 'ai01', 'weaker writing skills'),
+            ('Why did the combination do worse for fake reviews?', 'axb01', '69%'),
+            ('Which countries were in the study?', 'civic-wallet-rank', 'cities'),
+            ('did experts see this coming', 'civic-wallet-rank', 'does not cover that detail')]
+
+
+@pytest.mark.parametrize('q,cid,want', REVIEW21)
+def test_offline_tutor_review21(q, cid, want):
+    """Review 21, minor 2: skill-level, delegate-why and location questions get their answer; an uncovered detail is named as such."""
+    assert want in T.curated(q, cid)['answer'], T.curated(q, cid)['answer'][:120]

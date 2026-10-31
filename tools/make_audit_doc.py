@@ -17,14 +17,14 @@ L = ['# Scientific audit', '', f"Generated from `src/bank.json` by `tools/make_a
      '- Scenes are teaching adaptations; they describe the real design (population, task, setting).', '',
      '## Summary', '',
      f"- Decisions in scored play: {sum(map(live, C))} (formats: {', '.join(f'{k} {v}' for k, v in Counter(c['format'] for c in C if live(c)).most_common())}).",
-     f"- Sources: {len(S)} ({st.get('verified_full_text', 0)} checked against the published full text, {st.get('verified_accepted_manuscript', 0)} against the authors' accepted manuscript, {st.get('verified_abstract', 0)} against the published abstract, {st.get('quarantined', 0)} quarantined).",
+     f"- Sources: {len(S)} ({st.get('verified_full_text', 0)} checked against the published full text, {st.get('verified_accepted_manuscript', 0)} against the authors' accepted manuscript, {st.get('verified_published_excerpts', 0)} against the publisher's abstract and figure legends, {st.get('verified_abstract', 0)} against the published abstract, {st.get('quarantined', 0)} quarantined).",
      f"- Corrections applied to the 28 carried-forward sources and their 60 decisions: {len(corr)} logged changes (`docs/audit/corrections_2026-10-31.json`).",
      f"- Decisions retired with reasons: {len(B.get('retired', []))} (listed below).",
      f"- Track balance: {', '.join(f'{k} {v}' for k, v in Counter(c['track'] for c in C if live(c)).most_common())}.", '',
      '## Sources', '', '| Source | Venue | Check | Decisions | Note |', '|---|---|---|---|---|']
 for sid, s in sorted(S.items(), key=lambda kv: (kv[1]['authors'], kv[1]['year'])):
     used = [c['id'] for c in C if sid in c['sources']]
-    v = s['verification']; check = {'verified_full_text': 'Full text', 'verified_accepted_manuscript': 'Accepted manuscript', 'verified_abstract': 'Abstract', 'quarantined': 'Quarantined'}[v['status']]
+    v = s['verification']; check = {'verified_full_text': 'Full text', 'verified_accepted_manuscript': 'Accepted manuscript', 'verified_published_excerpts': 'Abstract and figure legends', 'verified_abstract': 'Abstract', 'quarantined': 'Quarantined'}[v['status']]
     note = (v.get('note') or s.get('flags') or '')
     if isinstance(note, (list, dict)): note = json.dumps(note, ensure_ascii=False)
     L.append(f"| {s['authors']} ({s['year']}). *{s['title']}*. [doi:{s['doi']}]({s['url']}) | {s['venue']} {s.get('volume', '')} {s.get('pages', '')} | {check} | {', '.join(used)} | {str(note).replace('|', '/')[:300]} |")

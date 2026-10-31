@@ -56,7 +56,7 @@ def test_sources_verified_and_referenced():
         assert s['kind'] in ('peer-reviewed', 'scholarly-book'), sid
         assert re.match(r'^10\.\d{4,9}/\S+$', s['doi']) or s['kind'] == 'scholarly-book', sid
         assert s['url'].startswith('https://'), sid
-        v = s['verification']; assert v['status'] in ('verified_full_text', 'verified_accepted_manuscript', 'verified_abstract', 'quarantined') and v['checked'], sid
+        v = s['verification']; assert v['status'] in ('verified_full_text', 'verified_accepted_manuscript', 'verified_published_excerpts', 'verified_abstract', 'quarantined') and v['checked'], sid
         assert s.get('year') and s.get('venue') and s.get('takeaway'), sid
     assert not (set(S) - used), f'unused sources: {set(S) - used}'
 
@@ -382,3 +382,17 @@ def test_estimate_scene_numbers_sit_outside_the_band():
         e = c['estimate']; txt = ' '.join([c.get('scene', ''), c['question'], e.get('label', '')]).replace(',', '')
         bad += [(c['id'], m) for m in re.findall(r'-?\d+(?:\.\d+)?', txt) if abs(float(m) - e['target']) <= e['tolerance']]
     assert not bad, bad
+
+
+def test_review21_baselines_and_calibration_events():
+    """Review 21, minors 6 and 7: delegate baseline is the best constant routing; allocate calibration scores the event it states."""
+    import subprocess, json as _j
+    js = r"""const S=require('./src/scoring.js'); const B=require('./src/bank.json'); const out={};
+      for (const c of B.challenges) if (c.format==='delegate' && !c.retired) { const T=c.delegate.tasks; let best=0; c.delegate.choices.forEach((_,j)=>{ best=Math.max(best, S.score(c, T.map(()=>j)).score) }); out[c.id]=[S.baseline(c), best] }
+      const a=B.challenges.find(c=>c.format==='allocate'&&!c.retired), bi=(a.allocate.best||[a.allocate.values.indexOf(Math.max(...a.allocate.values))])[0], n=a.options.length;
+      const r=a.options.map((_,i)=> i===bi ? 40 : 0); const rest=60/(n-1); a.options.forEach((_,i)=>{ if(i!==bi) r[i]=Math.floor(rest) }); r[bi]+=100-r.reduce((x,y)=>x+y,0);
+      const sc=S.score(a,r); out.alloc=[S.toCalibrationRecord(a,{format:'allocate',response:r,correct:sc.correct}).outcome, sc.correct]; console.log(JSON.stringify(out))"""
+    out = _j.loads(subprocess.run(['node', '-e', js], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+    alloc = out.pop('alloc')
+    for cid, (base, best) in out.items(): assert abs(base - best) < 1e-9, (cid, base, best)
+    assert alloc[0] == 1, alloc   # top weight on the best option counts as a hit for calibration even when the verdict wants half the points

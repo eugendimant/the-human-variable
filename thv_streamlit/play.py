@@ -20,7 +20,7 @@ def run():
         st.title('The Human Variable')
         st.write('This deployment runs live classes. Open **Join a class** and enter the code on the instructor screen. Self-study play is available in the offline game your instructor shares.')
         return
-    if store().class_lock()[0]:
+    if store().class_lock()[0] or store().open_challenges():   # any class with an unrevealed decision also pauses solo play
         st.info('A live class is running on this app. Solo play pauses until it ends, so the evidence stays hidden until your instructor reveals it. Use "Join a class" to take part.')
         return
     embed(page_html(), height=900)
