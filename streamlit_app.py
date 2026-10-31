@@ -1,8 +1,18 @@
+"""Streamlit entry point. Run: streamlit run streamlit_app.py
+
+Pages: the full game (embedded), a native live classroom (instructor and student) and a grounded tutor.
+On Streamlit Community Cloud everything runs in one process, so classroom state is shared across
+browser sessions through one SQLite file. See docs/DEPLOYMENT.md for durability limits.
+"""
 import streamlit as st
-from pathlib import Path
-st.set_page_config(page_title='The Human Variable',layout='wide',initial_sidebar_state='collapsed')
-st.markdown('<style>header[data-testid="stHeader"], footer {display:none} .block-container{padding:0;max-width:100%}</style>',unsafe_allow_html=True)
-import streamlit.components.v1 as components
-html=(Path(__file__).parent/'index.html').read_text()
-components.html(html,height=940,scrolling=True)
-st.caption('For best full-screen experience, use the standalone browser edition. Browser storage inside embedded components can vary by hosting environment.')
+
+st.set_page_config(page_title='The Human Variable', page_icon='◐', layout='wide', initial_sidebar_state='collapsed')
+from thv_streamlit import play, student, instructor, tutor_page
+
+pages = [
+    st.Page(play.run, title='Play', default=True),
+    st.Page(student.run, title='Join a class', url_path='join'),
+    st.Page(instructor.run, title='Run a class', url_path='teach'),
+    st.Page(tutor_page.run, title='Ask the tutor', url_path='tutor'),
+]
+st.navigation(pages, position='top').run()

@@ -1,0 +1,18 @@
+# Render blueprint. A persistent disk keeps classroom data across restarts (requires a paid instance).
+services:
+  - type: web
+    name: human-variable
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: THV_INSTRUCTOR_PASSCODE
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_RPM
+        value: "12"
+    disk:
+      name: thv-data
+      mountPath: /data
+      sizeGB: 1

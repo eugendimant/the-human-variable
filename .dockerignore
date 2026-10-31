@@ -1,0 +1,10 @@
+.git
+tests
+docs
+qa
+screenshots
+thv_streamlit
+streamlit_app.py
+server/data
+**/__pycache__
+*.sqlite3*

@@ -991,6 +991,8 @@ document.addEventListener('keydown', e => {
 
 // ---------- boot ----------
 document.body.insertAdjacentHTML('afterbegin', `<a class="skip" href="#view">Skip to content</a>`);
+// Live classes need the Python server; hide their entry points in the offline file and inside Streamlit's frame.
+if (!location.protocol.startsWith('http')) qa('[data-act="join"], a[href="classroom.html"]').forEach(el => el.hidden = true);
 qs('#brand-glyph').outerHTML = glyph;
 if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
