@@ -182,7 +182,7 @@ const art = (id, cls = '') => ART[id] ? `<svg class="art ${cls}" viewBox="0 0 16
 
 function home() {
   const nSrc = Object.values(SOURCE).filter(isLive).length;
-  const dimant = Object.values(SOURCE).filter(s => isLive(s) && /Dimant/.test(s.authors));
+  const dimant = Object.values(SOURCE).filter(s => isLive(s) && /Dimant/.test(s.authors_full || s.authors));
   const paths = (BANK.paths || []).map(p => ({ ...p, items: p.ids.filter(id => ALL.some(c => c.id === id)) })).filter(p => p.items.length);
   const done = new Set(records.map(r => r.id));
   const resume = paths.find(p => { const n = p.items.filter(id => done.has(id)).length; return n > 0 && n < p.items.length });
@@ -353,17 +353,20 @@ function tutorPanel(c) {
 }
 function curated(q, c) {
   const stop = new Set('what which where when does that this with from about have should would there their these they them then into could work study research finding found people your thing much more make'.split(' '));
-  const terms = (q.toLowerCase().match(/[a-z]{4,}/g) || []).filter(w => !stop.has(w));
+  let terms = (q.toLowerCase().match(/[a-z]{4,}/g) || []).filter(w => !stop.has(w));
+  if (terms.some(w => /^(juniors?|seniors?|novices?|newer|newcomers|veterans|tenure|rookies)$/.test(w))) terms = terms.concat('experienced');   // the papers' word for it
   const fields = x => [x.concept, x.title, x.explain, x.boundary, x.implication, x.scene, ...(x.follow || []).map(f => f.q + ' ' + f.a)].join(' ').toLowerCase();
   const scoreOf = x => terms.reduce((s, t) => s + (fields(x).includes(t) ? 1 : 0), 0) + (x.id === c.id ? 1.5 : 0);
   const best = ALL.map(x => ({ x, s: scoreOf(x) })).sort((a, b) => b.s - a.s)[0];
   const fq = (c.follow || []).map(f => ({ f, s: terms.filter(t => (f.q + ' ' + f.a).toLowerCase().includes(t)).length })).sort((a, b) => b.s - a.s)[0];
   const cs = [cite(c.sources[0])];
   if (/\b(big|size|large|much|practice|magnitude)\b/i.test(q)) return { text: `${c.explain}${c.study && c.study.n && !/not (stated|confirmed)/i.test(c.study.n) ? ' Sample: ' + c.study.n + '.' : ''}\n\nIn practice: ${c.implication}`, cites: cs };
-  if (/test|pilot|company|measure|experiment/i.test(q)) return { text: `Start with a small randomized pilot: assign the change to some teams and not others, fix the outcome metric in advance, and compare. ${c.implication}\n\nThe study itself: ${c.explain}`, cites: [cite(c.sources[0])] };
+  if (/\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|set ?up)\b/i.test(q) && !/\b(my|our)\b/i.test(q) && c.study) return { text: `Design: ${c.study.design}; sample: ${c.study.n}.\n\n${c.explain}`, cites: cs };
+  if (/\b(test|pilot|company|measure)\b/i.test(q)) return { text: `Start with a small randomized pilot: assign the change to some teams and not others, fix the outcome metric in advance, and compare. ${c.implication}\n\nThe study itself: ${c.explain}`, cites: [cite(c.sources[0])] };
   if (/today|hold|still|generali|apply|transfer|everywhere|always/i.test(q)) return { text: `${c.boundary}\n\n${c.explain}`, cites: [cite(c.sources[0])] };
   if (fq && fq.s >= 1) return { text: fq.f.a, cites: [cite(c.sources[0])] };
-  if (best && best.x.id !== c.id && best.x.explain && best.s >= 3) return { text: `A related study in the lab: ${best.x.explain}\n\nWhere it applies: ${best.x.implication}`, cites: [cite(best.x.sources[0])] };
+  const named = x => x.sources.some(id => SOURCE[id] && (SOURCE[id].authors.toLowerCase().match(/[a-z]{4,}/g) || []).some(a => terms.includes(a)));
+  if (best && best.x.id !== c.id && best.x.explain && best.s >= 3 && (named(best.x) || !terms.some(t => fields(c).includes(t)))) return { text: `A related study in the lab: ${best.x.explain}\n\nWhere it applies: ${best.x.implication}`, cites: [cite(best.x.sources[0])] };
   const topical = terms.some(t => fields(c).includes(t)) || (best && best.s - (best.x.id === c.id ? 1.5 : 0) >= 1);
   if (!topical) return { text: 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', cites: [] };
   return { text: `${c.explain}\n\n${c.boundary}`, cites: [cite(c.sources[0])] };
@@ -375,7 +378,7 @@ async function ask(q) {
   if (TUTOR_REMOTE) {
     try {
       const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 15000);
-      const res = await fetch(TUTOR_REMOTE, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question: q, challenge: c.id, client: clientId() }), signal: ctl.signal });
+      const res = await fetch(TUTOR_REMOTE, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Client-Id': clientId() }, body: JSON.stringify({ question: q, challenge: c.id, client: clientId() }), signal: ctl.signal });
       clearTimeout(to); const d = await res.json();
       if (res.ok && typeof d.answer === 'string' && d.answer.trim()) { st.tutor = { busy: false, text: d.answer.slice(0, 1600), cites: (d.citations || []).map(x => x.label).slice(0, 4) }; render(); return }
     } catch { }
@@ -416,7 +419,8 @@ function record() {
   const seen = new Set(), all = records.filter(r => BY_ID[r.id] && !seen.has(r.id) && seen.add(r.id)), last = st.session.length ? st.session : records.filter(r => BY_ID[r.id]).slice(-12);
   const cal = S.calibration(all.map(r => S.toCalibrationRecord(BY_ID[r.id], r)));
   // Headline figures are skill above guessing, so formats with different chance levels compare fairly.
-  const sk = r => S.skill(BY_ID[r.id], r.score), avg = xs => xs.length ? pct(xs.reduce((a, r) => a + sk(r), 0) / xs.length) : null;
+  // Pooled: (mean score - mean chance level) / (1 - mean chance level), so one confident miss cannot swamp a set of good calls.
+  const avg = xs => { if (!xs.length) return null; const raw = xs.reduce((a, r) => a + r.score, 0) / xs.length, base = xs.reduce((a, r) => a + S.baseline(BY_ID[r.id]), 0) / xs.length; return pct(base >= 1 ? 0 : (raw - base) / (1 - base)) };
   const meanScore = avg(all);
   const sess = st.session.length ? avg(st.session.filter(r => BY_ID[r.id])) : null;
   const byTrack = TRACKS.map(t => { const x = all.filter(r => BY_ID[r.id].track === t); return [t, x.length, avg(x)] });
@@ -428,14 +432,15 @@ function record() {
   }
   const played = byTrack.filter(t => t[1]);
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
+  if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record.</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
-    <div class="score-strip"><div class="score-big"><b class="num">${sess ?? meanScore ?? '–'}</b><span>${sess !== null ? 'skill this round' : 'average skill'}: 0 is guessing, 100 is perfect</span></div>
+    <div class="score-strip"><div class="score-big"><b class="num">${sess ?? meanScore ?? '–'}</b><span>${sess !== null ? 'Skill this round' : 'Skill overall'}: 0 is guessing, 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
       <dl class="score-meta"><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">
       <div class="panel rec-panel"><h2>Calibration</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>
-      <div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><button class="link-quiet" data-play="${esc(r.id)}">${esc(c.title)}</button><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${pct(r.score)}<span class="bar-score"><i style="width:${pct(r.score)}%"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a path to start your record.</span></li>'}</ul></div>
-      ${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${sc}<span class="bar-score"><i style="width:${sc}%"></i></span></span></li>`).join('')}</ul></div>` : ''}
+      <div class="rec-col"><div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><p class="small">Decision scores, before the chance adjustment.</p><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><button class="link-quiet" data-play="${esc(r.id)}">${esc(c.title)}</button><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${pct(r.score)}<span class="bar-score"><i style="width:${pct(r.score)}%"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a path to start your record.</span></li>'}</ul></div>
+      ${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${sc}<span class="bar-score"><i style="width:${sc}%"></i></span></span></li>`).join('')}</ul></div>` : ''}</div>
     </div>
     <details class="how"><summary>How scoring works</summary><p>The headline is skill above guessing: each score is rescaled so that what a no-information strategy earns on that format (a 50% forecast, a random order, an even split, a random pick) counts as 0 and a perfect call as 100. Below it, each decision's own score works as follows. Decisions score 0 to 100 with partial credit, except forecasts, which run from −100 to 100. An estimate inside the shaded band earns 100, and credit falls to zero at twice the band's half-width. Ranks score the share of pairs in the measured order. Point splits use the same proper rule as forecasts: all points on the option that worked best earn 100, and spreading points pays when you are unsure. Forecasts use a proper scoring rule built on the Brier score, the standard in forecasting tournaments: a confident correct call earns 100, saying 50% earns 50, and a confident wrong call costs up to 100 points, so stating your true belief always pays best. The calibration plot uses your stated confidence, except for forecasts, where the probability is the statement. This is a learning record, not a validated assessment.</p></details>
     <div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play another round</button><span class="tool-links"><button class="link-btn" data-act="csv">Export CSV</button><button class="link-btn" data-act="json">Export JSON</button><button class="link-btn" data-act="erase">Erase this device’s record</button></span></div></section>`;
@@ -443,7 +448,7 @@ function record() {
 function calPlot(cal) {
   const W = 320, P = 34, sx = v => P + v / 100 * (W - P - 22), sy = v => W - P - v / 100 * (W - P - 22);
   const pts = cal.bins.filter(b => b.n);
-  return `<svg viewBox="0 0 ${W} ${W}" role="img" aria-label="Calibration plot: ${pts.map(b => `stated ${Math.round(b.meanP)}%, right ${Math.round(b.hitRate)}% over ${b.n} calls`).join('; ') || 'no data yet'}" style="max-width:420px;width:100%">
+  return `<svg viewBox="0 0 ${W} ${W}" role="img" aria-label="Calibration plot: ${pts.map(b => `stated ${Math.round(b.meanP)}%, right ${Math.round(b.hitRate)}% over ${b.n} calls`).join('; ') || 'no data yet'}" style="max-width:420px;width:100%;display:block;margin:0 auto">
     <rect x="${P}" y="22" width="${W - P - 22}" height="${W - P - 22}" fill="#f4f6f9" stroke="#cbd3dd"/>
     ${[0, 25, 50, 75, 100].map(v => `<line x1="${sx(v)}" y1="22" x2="${sx(v)}" y2="${W - P}" stroke="#e2e7ed"/><line x1="${P}" y1="${sy(v)}" x2="${W - 22}" y2="${sy(v)}" stroke="#e2e7ed"/><text x="${sx(v)}" y="${W - P + 15}" font-size="10" text-anchor="middle" fill="#56617a">${v}</text><text x="${P - 6}" y="${sy(v) + 3}" font-size="10" text-anchor="end" fill="#56617a">${v}</text>`).join('')}
     <line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(100)}" y2="${sy(100)}" stroke="#9aa6b6" stroke-dasharray="4 4"/>
@@ -633,7 +638,7 @@ document.addEventListener('click', e => {
   if (a === 'go-start') { qs('#start')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); qs('#start .path')?.focus({ preventScroll: true }); return }
   if (a === 'start' || a === 'replay') { st.seed = (Math.random() * 2 ** 32) >>> 0; startTrack(); return }
   if (a === 'start-quick') { st.seed = (Math.random() * 2 ** 32) >>> 0; st.track = 'Mixed'; start(ALL.filter(c => c.id !== 'ai01'), 5); return }
-  if (a === 'dimant-round') { st.seed = (Math.random() * 2 ** 32) >>> 0; start(ALL.filter(c => c.sources.some(id => /Dimant/.test(SOURCE[id].authors))), 12); return }
+  if (a === 'dimant-round') { st.seed = (Math.random() * 2 ** 32) >>> 0; start(ALL.filter(c => c.sources.some(id => /Dimant/.test(SOURCE[id].authors_full || SOURCE[id].authors))), 12); return }
   if (a === 'hero-lock') { if (st.hero.value === null) return; ensureFull('ai01').then(ok => { if (!ok) return; st.hero.done = true; render(); animateReveal(); qs('[data-act="start-quick"]')?.focus({ preventScroll: true }) }); return; st.hero.done = true; render(); animateReveal(); qs('[data-act="start-quick"]')?.focus({ preventScroll: true }); return }
   if (a === 'hero-reset') { st.hero = { value: null, done: false }; render(); qs('#hero-range')?.focus(); return }
   if (a === 'lock') { lock(); return }
@@ -707,6 +712,6 @@ if (PUBLIC) { TUTOR_REMOTE = '/api/tutor'; refreshLock() }
 if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; TUTOR_AI = true; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }
-if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else { const v = fromHash(location.hash); if (v !== 'play') st.view = v; render() }
+if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else { const v = fromHash(location.hash); if (v !== 'play') st.view = v; render(); if (PARAM.get('play')) notice('That decision link is out of date. Pick a decision from the list.') }
 if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records }; // test hook (offline file only)
 })();

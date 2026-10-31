@@ -22,7 +22,11 @@ TOK = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
 def tokens(s: str) -> list[str]:
     import unicodedata   # Köbis and Kobis, Zünd and Zund match
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
-    return [t for t in TOK.findall(s.lower()) if t not in STOP and len(t) > 2]
+    out = [t for t in TOK.findall(s.lower()) if t not in STOP and len(t) > 2]
+    return out + [SYN[t] for t in out if t in SYN]
+
+# words students use for what the papers call experience or skill
+SYN = {w: 'experienced' for w in ('junior', 'juniors', 'senior', 'seniors', 'novice', 'novices', 'newer', 'newcomers', 'veterans', 'tenure', 'rookies')}
 
 def cite_label(sid: str) -> str:
     s = SOURCES[sid]; return f"{s['authors']} ({s['year']})"
@@ -72,15 +76,23 @@ PRESETS = {
     'test': 'How would I test this in my company?',
 }
 
+def names(question: str, cid: str) -> bool:
+    """Does the question name a study behind this decision (an author surname)?"""
+    q = set(tokens(question))
+    return any(set(tokens(SOURCES[s]['authors'])) & q for s in CHALLENGES[cid]['sources'] if s in SOURCES)
+
 def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     c = CHALLENGES.get(challenge_id or '')
     ql = question.lower()
     if c:
         cites = [{'id': s, 'label': cite_label(s)} for s in c['sources']]
-        if re.search(r'\b(test|pilot|measure|experiment|company|my team|roll ?out)\b', ql):
+        if re.search(r'\b(test|pilot|measure|company|my team|roll ?out)\b', ql):
             return {'answer': f"Run a small randomized pilot: give the change to some teams or customers and not to others, fix one outcome metric in advance, and compare after a set period. For this finding: {c['implication']} What the study measured: {c['explain']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|always|everywhere|replicat)', ql):
             return {'answer': f"{c['boundary']} The study itself: {c['explain']}", 'citations': cites, 'mode': 'curated'}
+        if re.search(r'\b(how (was|were|did)|design|method|run|ran|sample|participants|conducted|setup|set up)\b', ql) and not re.search(r'\b(my|our)\b', ql):
+            st = c.get('study', {})
+            return {'answer': f"Design: {st.get('design', 'see the paper')}; sample: {st.get('n', 'see the paper')}. {c['explain']}", 'citations': cites, 'mode': 'curated'}
         if re.search(r'\b(big|size|large|much|practice|magnitude)\b', ql):
             return {'answer': f"{c['explain']} {c.get('study', {}).get('n', '') and 'Sample: ' + c['study']['n'] + '.'} In practice: {c['implication']}".strip(), 'citations': cites, 'mode': 'curated'}
         qt = set(tokens(question)); best = max(c.get('follow', []), key=lambda f: len(qt & set(tokens(f['q'] + ' ' + f['a']))), default=None)
@@ -97,6 +109,9 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             # several decisions on one paper: pick the one whose text best matches the question's topic words
             body = lambda cid: ' '.join([CHALLENGES[cid]['answerTitle'], CHALLENGES[cid]['explain'], CHALLENGES[cid]['question']])
             if cands: docs.append({'id': max(cands, key=lambda cid: len(qt & set(tokens(body(cid))))), 'kind': 'decision', 'body': d['body']})
+    if docs and c and docs[0]['id'] != c['id'] and not names(question, docs[0]['id']):
+        # a decision is on screen: answer about it, not a neighbour, unless the question names the other study
+        if len(qt & set(tokens(' '.join([c['question'], c['answerTitle'], c['explain'], c.get('implication', '')])))) >= max(1, len(qt) / 3): docs = [{'id': c['id']}]
     if docs:
         d = docs[0]; cc = CHALLENGES[d['id']]
         return {'answer': f"{cc['explain']} {cc['implication']}", 'citations': [{'id': s, 'label': cite_label(s)} for s in cc['sources']], 'mode': 'curated'}

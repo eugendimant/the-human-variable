@@ -176,7 +176,8 @@ class Handler(BaseHTTPRequestHandler):
         try:
             d = self.body()
             if p == '/api/tutor':
-                if not LIMIT.allow(self.ip() + '|' + self.client(), 'tutor'): return self.json(429, {'error': 'Ask again in a few seconds.'}, {'Retry-After': '3'})
+                who = self.client() or re.sub(r'[^A-Za-z0-9_-]', '', str(d.get('client', '')))[:40]   # header or body: one bucket per browser, not per network
+                if not LIMIT.allow(self.ip() + '|' + who, 'tutor'): return self.json(429, {'error': 'Ask again in a few seconds.'}, {'Retry-After': '3'})
                 q = str(d.get('question', ''))
                 cheap = not TUTOR.enabled or q.strip() in PRESETS.values()  # curated answers cost nothing upstream
                 if not cheap and not LIMIT.allow(self.ip(), 'ip_tutor'): return self.json(429, {'error': 'The tutor is busy on this network. Ask again in a moment.'}, {'Retry-After': '5'})

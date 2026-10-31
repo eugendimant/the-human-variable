@@ -623,43 +623,8 @@
  "bz01": [
   {
    "source": "gordon19",
-   "quote": "the ATT lift was 73%",
-   "location": "Study 4 results"
-  },
-  {
-   "source": "gordon19",
-   "quote": "yielding a lift of 222%",
-   "location": "Study 4, exact matching on age and gender"
-  },
-  {
-   "source": "gordon19",
-   "quote": "in half of our studies, the estimated percentage increase in purchase outcomes is off by a factor of three across all methods",
-   "location": "Abstract/conclusion"
-  },
-  {
-   "source": "gordon19",
    "quote": "the observational methods we study mostly overestimate the RCT lift, although in some cases they can significantly underestimate RCT lift",
    "location": "Conclusion"
-  },
-  {
-   "source": "gordon19",
-   "quote": "this implies the ATT lift was 73% (=0.033%/(0.079%-0.033%)).",
-   "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 31, Study 4. Pre-publication text only."
-  },
-  {
-   "source": "gordon19",
-   "quote": "The conversion rate among exposed and unexposed users was 0.061% and 0.019%, respectively, implying an ATT lift of 316%. This estimate represents the combined lift due to treatment and selection and is more than four times the lift due to treatment of 73%.",
-   "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 34, Study 4. Pre-publication text only."
-  },
-  {
-   "source": "gordon19",
-   "quote": "Exact matching (EM) on age and gender alone performs poorly, yielding a lift of 222%.",
-   "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 34, Study 4. Pre-publication text only."
-  },
-  {
-   "source": "gordon19",
-   "quote": "Generally, the observational methods overestimate ad effectiveness relative to the RCT, although in some cases, they significantly underestimate effectiveness. The bias can be large: in half of our studies, the estimated percentage increase in purchase outcomes is off by a factor of three across all methods.",
-   "location": "Authors' copy dated April 12, 2018, hosted at kellogg.northwestern.edu/faculty/gordon_b/files/fb_comparison.pdf. This is NOT the version of record and cannot be confirmed as the accepted manuscript: its abstract lacks a sentence that the published abstract has ('In our setting, advances in causal inference methods do not allow us to isolate the exogenous variation needed to estimate the treatment effects.'). PDF p. 3, Introduction. Pre-publication text only."
   },
   {
    "source": "gordon19",

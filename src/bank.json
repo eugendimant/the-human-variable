@@ -61,8 +61,7 @@
     "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Full text of the Organization Science Articles in Advance PDF (published online 11 March 2026), first 100,000 characters",
-    "text_url": "https://digitalfluency.mattalldian.com/research/foundational/dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier.pdf"
+    "text_read": "Full text of the publisher's Organization Science Articles in Advance PDF (published online 11 March 2026), first 100,000 characters"
    },
    "authors_full": "Fabrizio Dell'Acqua, Edward McFowland III, Ethan Mollick, Hila Lifshitz, Katherine C. Kellogg, Saran Rajendran, Lisa Krayer, François Candelon, Karim R. Lakhani"
   },
@@ -182,8 +181,7 @@
     "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "full text scan, p. 453 (Problems 1 and 2)",
-    "text_url": "https://www.gwern.net/doc/psychology/1981-tversky.pdf"
+    "text_read": "full text scan, p. 453 (Problems 1 and 2)"
    }
   },
   "anchor74": {
@@ -502,8 +500,7 @@
     "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Journal of Economic Psychology article, published version (author-hosted PDF); numbers identical to the accepted manuscript",
-    "text_url": "https://www.ifo.de/DocDL/cesifo1_wp8263.pdf"
+    "text_read": "Journal of Economic Psychology article, published version (author-hosted PDF); numbers identical to the accepted manuscript"
    },
    "authors_full": "Eugen Dimant"
   },
@@ -714,8 +711,7 @@
     "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Full text of the Nature Human Behaviour article PDF (journal header and DOI present; online date placeholder) plus Crossref abstract",
-    "text_url": "https://www.rivista.ai/wp-content/uploads/2025/05/s41562-025-02194-6.pdf"
+    "text_read": "Full text of the Nature Human Behaviour article PDF (journal header and DOI present; online date placeholder) plus Crossref abstract"
    }
   },
   "altay24": {
@@ -798,8 +794,7 @@
     "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Abstract (University of Minnesota Experts record) and full-text PDF showing 2000, Vol. 12, No. 1 and APA copyright",
-    "text_url": "https://scispace.com/pdf/clinical-versus-mechanical-prediction-a-meta-analysis-4wov3bdnn5.pdf"
+    "text_read": "Abstract (University of Minnesota Experts record) and full-text PDF showing 2000, Vol. 12, No. 1 and APA copyright"
    }
   },
   "gordon19": {
@@ -1170,8 +1165,7 @@
     "status": "verified_full_text",
     "checked": "2026-10-31",
     "metadata": "matched Crossref record",
-    "text_read": "Full text (pre-pagination journal copy hosted by hods.org; pages shown as placeholders)",
-    "text_url": "https://hods.org/pdf/Defaults%20and%20Donation%20Decisions.pdf"
+    "text_read": "Full text (pre-pagination journal copy hosted by hods.org; pages shown as placeholders)"
    },
    "flags": [
     "Cited instead of Johnson & Goldstein (2003) Science 302:1338-1339 because the Science text could not be accessed; exact opt-in/opt-out percentages appear only in a figure and are not used."
@@ -1681,7 +1675,7 @@
   "opioid26": {
    "id": "opioid26",
    "authors": "Toma et al.",
-   "authors_full": "Mattie Toma, Russell Burnett, Pompa Debroy, Eugen Dimant, Jean Liu, Elana Safran, Uzaib Saya, Bill Schultz",
+   "authors_full": "Mattie Toma, Elizabeth Burnett, Akshay Debroy, Eugen Dimant, Lu Liu, Steven Safran, Meghan Saya, Elizabeth Schultz",
    "year": 2026,
    "title": "Promoting Safe Opioid Disposal: Experimental Evidence on Behavioral Messaging With Financial Incentives",
    "venue": "Health Economics",
@@ -2636,7 +2630,7 @@
     "It cannot account for each patient’s uniqueness"
    ],
    "answer": 2,
-   "answerTitle": "People care about being seen",
+   "answerTitle": "People fear AI ignores what makes them unique",
    "explain": "Longoni, Bonezzi and Morewedge traced resistance to uniqueness neglect: consumers doubt an AI provider can account for their unique characteristics and circumstances. Resistance was stronger among people who saw themselves as more unique and disappeared when AI care was framed as personalized.",
    "implication": "Present AI as supporting a clinician's or advisor's decision, and say how it adapts to each person's case.",
    "boundary": "Consumers choosing between AI and human providers of medical care, in real and hypothetical choices.",
@@ -2798,7 +2792,7 @@
    "scene": "A hotel asks guests to reuse towels. One sign cites conservation; another cites what other guests do.",
    "question": "Which sign got more towels reused?",
    "options": [
-    "Neither changed reuse",
+    "Both signs worked about equally",
     "The standard conservation sign",
     "The “most guests reuse” sign"
    ],
@@ -2901,7 +2895,7 @@
    "options": [
     "Above-average households raised their electricity use",
     "Some already-efficient households raised usage",
-    "Feedback had no effect on heavy users",
+    "Heavy users raised their use after feedback",
     "A smiley face kept efficient homes steady"
    ],
    "answerTitle": "A norm message can backfire",
@@ -3422,7 +3416,7 @@
    "tag": "39 / HIRING",
    "title": "Screens at auditions",
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
-   "question": "How did the authors describe the weight of their own estimates?",
+   "question": "How did the authors characterize their evidence?",
    "answerTitle": "Favorable to women, with some imprecise estimates",
    "explain": "Goldin and Rouse estimate that the screen raised by 50 percent the chance a woman advanced from certain preliminary rounds, and that blind auditions explain about 30 percent of the rise in women among new hires. Some estimates have large standard errors.",
    "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
@@ -5234,7 +5228,7 @@
    "question": "What did learning about peers' pay do?",
    "options": [
     "Above-median earners: more satisfied",
-    "Everyone: more satisfied with transparency",
+    "Above-median earners: happier, job hunting less",
     "Below-median earners: less satisfied, job hunting",
     "No change: staff already knew peer pay"
    ],
@@ -5375,7 +5369,7 @@
    "scene": "Evaluators chose workers for a task and were paid on the chosen worker's future performance. Some saw candidates one at a time; others compared candidates side by side.",
    "question": "Which procedure made evaluators rely more on individual performance?",
    "options": [
-    "Neither: gender drove both equally",
+    "Separate review, judged on more information",
     "Comparing candidates side by side",
     "Neither: both leaned on interview impressions",
     "Seeing candidates one at a time"
@@ -6081,7 +6075,7 @@
      },
      {
       "id": "meta",
-      "label": "Meta-percept",
+      "label": "Belief gap",
       "x": 240,
       "y": 110
      },
@@ -6120,7 +6114,7 @@
     ]
    },
    "answerTitle": "Correcting beliefs cut obstructionism attributions",
-   "explain": "Across 4,282 participants people overestimated out-group negativity; in an experiment with 1,122 people, showing true out-group reactions significantly reduced perceived obstructionism.",
+   "explain": "Across 4,282 participants, people overestimated out-group negativity; in an experiment with 1,122 people, showing true out-group reactions significantly reduced perceived obstructionism.",
    "implication": "In a divided team, collect each side's actual reactions to a proposal and share them before anyone assumes deliberate blocking.",
    "boundary": "Found in competitive intergroup contexts; the correction was tested in one online experiment with 1,122 participants.",
    "sources": [
@@ -6581,32 +6575,13 @@
   },
   {
    "id": "dimant-enforcers-rank",
-   "format": "rank",
+   "format": "forecast",
    "track": "Business",
    "concept": "Whistle-blowing",
    "title": "Who gets reported for bribery?",
    "scene": "US adults read about a coworker accepting a bribe and chose how likely they were to report it. The bribe either created inequity or restored equity; half also saw norm information.",
-   "question": "Rank the four cases from highest to lowest reporting probability.",
-   "options": [
-    "Equity, with norm information",
-    "Equity, no norm information",
-    "Inequity, with norm information",
-    "Inequity, no norm information"
-   ],
-   "rankAnswer": [
-    2,
-    3,
-    0,
-    1
-   ],
-   "rankLabel": "Average chosen probability of reporting",
-   "rankValues": [
-    "67.2%",
-    "57.9%",
-    "82.8%",
-    "73.3%"
-   ],
-   "answerTitle": "Inequity raised reporting; norm information helped most there",
+   "question": "How likely is it that the study found this?",
+   "answerTitle": "Norm information raised reporting of unfair bribes",
    "explain": "Norm information raised reporting from 73.3% to 82.8% when the bribe created inequity (P < 0.005), and from 57.9% to 67.2% when it restored equity (marginal, P = 0.074). Inequity-creating bribes drew more reporting overall (77.8% vs 62.3%, P < 0.001).",
    "implication": "When you build a speak-up channel, tell staff that most colleagues object to bribes and back reporting; it raises reporting most for deals that create unfair advantages.",
    "boundary": "Bribery vignette with 225 US adults, alongside a main behavioral study with 1,240 punishers from a representative US sample.",
@@ -6632,17 +6607,10 @@
     "n": "225 US adults across 10 states"
    },
    "theme": "honesty",
-   "rankTies": [
-    [
-     0,
-     1
-    ],
-    [
-     0,
-     3
-    ]
-   ],
-   "permuted": true
+   "forecast": {
+    "claim": "Telling people that most others report bribery raised reporting of bribes that created inequity.",
+    "truth": true
+   }
   },
   {
    "id": "dimant-observability-choice",
@@ -6995,13 +6963,12 @@
    "format": "delegate",
    "concept": "Word-of-machine effect",
    "title": "Whose recommendation will customers trust?",
-   "scene": "Your retail site can show product picks from an AI engine, a human expert, or an expert using the AI. Eight experiments tested which source consumers prefer.",
+   "scene": "Your retail site can show product picks from an AI engine or from a human expert. Eight experiments tested which source consumers prefer.",
    "question": "For each recommendation, which source should customers see?",
    "delegate": {
     "choices": [
      "AI recommender",
-     "Human recommender",
-     "Human with AI input"
+     "Human recommender"
     ],
     "tasks": [
      {
@@ -7016,16 +6983,13 @@
      },
      {
       "text": "Pick a vacation spot chosen for sensory pleasure",
-      "answer": 2,
-      "why": "Resistance to AI in hedonic choices disappeared when AI augmented a human decision maker, bringing trust up to the level of a human recommender (Study 6), so both routes count.",
-      "also": [
-       1
-      ]
+      "answer": 1,
+      "why": "For hedonic picks, people judged AI recommenders less competent than humans (Studies 1 to 4)."
      }
     ]
    },
    "answerTitle": "AI for practical picks; humans for taste",
-   "explain": "Across Studies 1 to 7b, people saw AI as more competent for utilitarian attributes and less competent for hedonic ones. Human-AI hybrid recommendations eliminated the effect.",
+   "explain": "Across Studies 1 to 7b, people saw AI as more competent for utilitarian attributes and less competent for hedonic ones, and the preference for AI reversed when a practical pick had to fit one person’s unique tastes.",
    "implication": "Label AI picks for practical product attributes; present taste-based picks as expert recommendations supported by AI.",
    "boundary": "Consumer experiments on recommendations, measuring how competent people judged AI and human recommenders.",
    "sources": [

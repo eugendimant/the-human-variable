@@ -339,3 +339,18 @@ The lenses: MBA student (M), executive (E), behavioral scientist (S), learning s
 **Gates:** build check, 207 tests, audit doc, counts and screenshots regenerated.
 
 **Count:** 0 Blocking + 3 Major found and addressed. Next: independent review 10.
+
+## Iteration 15 (2026-10-31)
+
+**Verified first:** iteration-14 fixes, by independent review 10 (snapshot `snap_r10`): quoted-numbers gate, skill headline, neutral diagram ids, two-column reveal.
+
+**Independent score:** 82/100 (review 10, `qa/reviews/review10.md`). 0 Blocking, 2 Major.
+
+**Fixes:**
+- **M1.** The skill headline pools first and rescales once (mean raw score against mean baseline), so one confident forecast miss no longer erases a round of right calls. Recent calls are labelled as decision scores before the chance adjustment.
+- **M2.** The tutor request carries the client id in a header and the per-client limit keys on it, so a class behind one network address is not throttled. Test: 30 tutor requests from one address all answered.
+- **Minors.** dimant-enforcers is a forecast on the contrast the paper tests (norm information raised reporting of inequity-creating bribes), not a rank with untested cross-cell pairs; axe01 offers only the two routes the studies compared; bz01 quotes come only from the version of record; opioid26 lists Dimant among its authors and the Dimant count reads full author lists (18 decisions, 15 papers); null and absolute distractors replaced with rival claims in bz12, bz14, biz03, biz05; the tutor stays on the decision on screen unless the question names another study, answers design questions from the study record, maps junior and senior to experience, and no longer reads "experiment" as a pilot question; projector bars scale to the room size or 100% and show "2 of 3"; the projector exit sits beside the QR code; record reads in two columns (calibration beside recent calls and areas) and has an empty state; unknown `?play=` links say so; provenance links to third-party re-hosts and working-paper PDFs removed (5 sources) with a gate; social13, ai12, meta-perception copy.
+
+**Gates:** build check, 209 tests, audit doc, counts and screenshots regenerated.
+
+**Count:** 0 Blocking + 2 Major found and addressed. Next: independent review 11.

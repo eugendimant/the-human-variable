@@ -156,3 +156,14 @@ def test_join_flood_limited(base):
     codes = [req(base, f"/api/rooms/{room['code']}/join", {}, client=f'f{i}')[0] for i in range(200)]
     assert codes[:120].count(200) == 120          # a full class behind one network joins at once (review 8)
     assert 429 in codes or 409 in codes           # a flood beyond the class cap is refused
+
+def test_tutor_serves_a_class_behind_one_address(base, tmp_path, monkeypatch):
+    """Review 10, M2: thirty students on one campus network, sending requests the way the game does."""
+    monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 'tut.sqlite3'))
+    cid = next(iter(cl.CHALLENGES)); codes = []
+    for i in range(30):
+        r = urllib.request.Request(base + '/api/tutor', data=json.dumps({'question': 'How big is this effect in practice?', 'challenge': cid, 'client': f'stu{i}'}).encode(),
+                                   headers={'Content-Type': 'application/json', 'X-Client-Id': f'stu{i}'}, method='POST')
+        try: codes.append(urllib.request.urlopen(r).status)
+        except urllib.error.HTTPError as e: codes.append(e.code)
+    assert codes.count(200) == 30, codes

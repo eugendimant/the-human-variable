@@ -7,7 +7,7 @@ Players commit to a prediction about a published experiment, state how sure they
 - **Decisions:** <!--n:decisions-->112<!--/n-->, drawn from <!--n:sources-->107<!--/n--> peer-reviewed papers and scholarly books (<!--n:fulltext-->60<!--/n--> checked against the full text, the rest against the published abstract). Each source has a recorded check against its DOI record and its published text; see [`docs/SCIENTIFIC_AUDIT.md`](docs/SCIENTIFIC_AUDIT.md).
 - **Formats:** eight ways to commit: forecast a claim and spread points over which option worked best (both scored with proper rules), estimate, rank, delegate tasks to AI, find the cause (with a causal diagram), pick one, pick two.
 - **Structure:** multi-step cases, <!--n:paths-->8<!--/n--> curated paths, a playbook of <!--n:principles-->10<!--/n--> principles, a personal calibration record, and live classes with an instructor console.
-- **Research by Eugen Dimant:** <!--n:dimant_decisions-->17<!--/n--> decisions from <!--n:dimant_papers-->14<!--/n--> of his published papers. Working papers are excluded.
+- **Research by Eugen Dimant:** <!--n:dimant_decisions-->18<!--/n--> decisions from <!--n:dimant_papers-->15<!--/n--> of his published papers. Working papers are excluded.
 
 ## Run it
 

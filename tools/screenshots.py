@@ -27,6 +27,11 @@ with sync_playwright() as p:
               play(next(c['id'] for c in BANK['challenges'] if c['format'] == 'allocate')))
         shoot(b, f'{tag}-predict-delegate', w, h, URL + '?play=rollout3', play('rollout3', False))
         shoot(b, f'{tag}-library', w, h, URL + '#library')
-        shoot(b, f'{tag}-record', w, h, URL + '#record')
+        def seeded(pg):   # a record with a few calls, played in the same page so storage persists
+            for cid in ('bz07', 'rollout3', 'dimant-notalie-causal', 'dimant-enforcers-rank'):
+                pg.goto(URL + '?play=' + cid); pg.wait_for_timeout(250); play(cid)(pg)
+            pg.goto(URL + '#record')
+        shoot(b, f'{tag}-record', w, h, URL, seeded)
+        shoot(b, f'{tag}-record-empty', w, h, URL + '#record')
     b.close()
 print('wrote', len(list(OUT.glob('*.png'))), 'screenshots to', OUT)

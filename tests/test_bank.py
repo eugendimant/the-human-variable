@@ -276,3 +276,10 @@ def test_every_explained_number_is_quoted():
             if not _quote_has(n, qnums, qtext): bad.append((c['id'], n))
     assert not [c['id'] for c in LIVE if not ev.get(c['id'])]
     assert not bad, bad
+
+
+def test_no_rehosted_or_working_paper_links_in_provenance():
+    """Provenance links point to publishers, authors, institutions or indexes, never to third-party re-hosts or working papers."""
+    import re
+    bad = [k for k, s in BANK['sources'].items() if re.search(r'gwern\.net|rivista\.ai|scispace\.com|hods\.org|mattalldian\.com|cesifo1_wp|/wp\d|workingpaper', s.get('verification', {}).get('text_url', ''), re.I)]
+    assert not bad, bad

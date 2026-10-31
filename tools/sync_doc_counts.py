@@ -10,8 +10,8 @@ def counts():
     b = json.loads((ROOT / 'src/bank.json').read_text()); S = b['sources']
     live = [c for c in b['challenges'] if all(S[s]['verification']['status'] != 'quarantined' for s in c['sources'])]
     used = {s for c in live for s in c['sources']}
-    dim = [c for c in live if any('Dimant' in S[s].get('authors', '') for s in c['sources'])]
-    dim_src = {s for c in dim for s in c['sources'] if 'Dimant' in S[s].get('authors', '')}
+    dim = [c for c in live if any('Dimant' in (S[s].get('authors_full') or S[s].get('authors', '')) for s in c['sources'])]
+    dim_src = {s for c in dim for s in c['sources'] if 'Dimant' in (S[s].get('authors_full') or S[s].get('authors', ''))}
     full = sum(1 for s in used if S[s]['verification']['status'] == 'verified_full_text')
     return {'decisions': len(live), 'sources': len(used), 'fulltext': full, 'dimant_decisions': len(dim), 'dimant_papers': len(dim_src),
             'paths': len(b.get('paths', [])), 'principles': len(b.get('themes', [])), 'retired': len(b.get('retired', []))}

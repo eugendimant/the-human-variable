@@ -18,11 +18,11 @@
 .rv-head div{display:grid}
 .rv-head b{font-size:38px;letter-spacing:-.03em;line-height:1.05}
 .rv-bars{display:grid;gap:10px}
-.rv-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 54px;gap:12px;align-items:center;font-size:15px}
+.rv-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 4.6em;gap:12px;align-items:center;font-size:15px}
 .rv-track{height:14px;border-radius:7px;background:var(--sunk);position:relative;overflow:hidden}
 .rv-track i{position:absolute;inset:0 auto 0 0;background:var(--you);border-radius:7px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
 .rv-track i.ev{background:var(--ev)}
-@media (max-width:700px){.join-banner{flex-direction:column;align-items:flex-start}.rv-row{grid-template-columns:1fr 54px}.rv-track{grid-column:1/-1;grid-row:2}}
+@media (max-width:700px){.join-banner{flex-direction:column;align-items:flex-start}.rv-row{grid-template-columns:1fr 4.6em}.rv-track{grid-column:1/-1;grid-row:2}}
 .console-h{font-size:var(--t2);letter-spacing:-.035em;line-height:1.02;margin:0}
 
 /* projector view: the stage fills the screen, controls stay one click away */
@@ -34,7 +34,9 @@ body.projector .play-grid>.card{font-size:clamp(18px,1.6vw,26px)}
 body.projector .stage-h{font-size:clamp(32px,3.4vw,56px)}
 body.projector .play-grid>.card .scene{font-size:clamp(18px,1.5vw,24px)}
 body.projector .rv-row,body.projector .present-opts li,body.projector .rv-row b{font-size:clamp(18px,1.6vw,26px)}
-body.projector .proj-exit{display:inline-flex;position:fixed;right:16px;top:12px;z-index:30;opacity:.7}body.projector .proj-exit:hover,body.projector .proj-exit:focus{opacity:1}
+body.projector .proj-exit{display:inline-flex;opacity:.7}.join-end{display:flex;align-items:center;gap:16px}body.projector .proj-exit:hover,body.projector .proj-exit:focus{opacity:1}
 body.projector .play-grid>.card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);column-gap:48px;align-items:start}
 body.projector .play-grid>.card>*{grid-column:1}
 body.projector .play-grid>.card>.rv{grid-column:2;grid-row:1/span 30}
+
+.rv-row b{white-space:nowrap}
