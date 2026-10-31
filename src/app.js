@@ -265,10 +265,10 @@ function gapFigure(c, rec) {
     const truth = c.rankAnswer, ties = c.rankTies || [];
     const tied = (a, b) => ties.some(t => t.includes(a) && t.includes(b));
     // Items the study did not separate share a rank, shown as "2=".
-    const lab = []; truth.forEach((oi, t) => { lab[t] = t > 0 && tied(truth[t - 1], oi) ? lab[t - 1] : { n: t + 1, eq: false }; if (t > 0 && lab[t] === lab[t - 1]) lab[t].eq = true });
-    const group = t => truth.map((_, u) => u).filter(u => lab[u] === lab[t]);
-    body = `<ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li><span class="rc-name">${esc(c.options[oi])}${c.rankValues ? `<small>${esc(c.rankValues[oi])}</small>` : ''}</span><span class="rc-badge ev" title="Measured rank">${lab[t].n}${lab[t].eq ? '=' : ''}</span><span class="rc-badge you ${group(t).includes(k) ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol><div class="rc-head"><span>Measured order, top first</span><span><i class="dot dot-ev"></i>Study <i class="dot dot-you"></i>You</span></div>`;
-    cap = `${rec.detail.agree} of ${rec.detail.total} scored pairs in the measured order.${ties.length ? ' Items marked = were not separated by the study, so their order is not scored.' : ''}`
+    // A pair the study did not separate is marked on the lower row; its order is not scored.
+    const tieUp = t => t > 0 && tied(truth[t - 1], truth[t]);
+    body = `<ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li class="${tieUp(t) ? 'tie' : ''}"><span class="rc-name">${esc(c.options[oi])}${c.rankValues ? `<small>${esc(c.rankValues[oi])}${tieUp(t) ? ', not separated from the row above' : ''}</small>` : tieUp(t) ? '<small>Not separated from the row above</small>' : ''}</span><span class="rc-badge ev" title="Measured rank">${t + 1}</span><span class="rc-badge you ${k === t || (tieUp(t) && k === t - 1) || (tieUp(t + 1) && k === t + 1) ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol><div class="rc-head"><span>Measured order, top first</span><span><i class="dot dot-ev"></i>Study <i class="dot dot-you"></i>You</span></div>`;
+    cap = `${rec.detail.agree} of ${rec.detail.total} scored pairs in the measured order.${ties.length ? ' Rows marked as not separated were not told apart by the study, so their order is not scored.' : ''}`
   }
   else if (c.format === 'allocate') {
     const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, mx = Math.max(...a.values);

@@ -1,5 +1,24 @@
 import streamlit as st
-from .common import FORMAT_NAME, secret, store, style
+import json
+from .common import FORMAT_NAME, ROOT, secret, store, style
+
+def join_url(code: str) -> str:
+    """The student page with the code filled in, built from the address this page was opened at."""
+    try:
+        u = st.context.url or ''
+    except Exception:
+        return ''
+    base = u.split('?')[0].rstrip('/')
+    base = base.rsplit('/teach', 1)[0]
+    return f"{base}/join?code={code}" if base.startswith('http') else ''
+
+def qr_block(text: str):
+    """QR code drawn with the vendored MIT qrcode.js, the same generator the instructor console uses."""
+    js = (ROOT / 'src/vendor/qrcode.js').read_text(encoding='utf-8')
+    html = f"""<div id=q style="background:#fff;padding:8px;display:inline-block;border-radius:10px"></div><script>{js}
+    const q = qrcode(0, 'M'); q.addData({json.dumps(text)}); q.make(); document.getElementById('q').innerHTML = q.createSvgTag(5, 0);</script>"""
+    import streamlit.components.v1 as components
+    components.html(html, height=200)
 from server import classroom as cl
 
 def run():
@@ -16,13 +35,20 @@ def run():
         st.caption('Answers are stored by participant number only and deleted when you end the session or after 48 hours.')
         return
     I = ss.inst
-    st.markdown(f"Students open **Join a class** and enter <div class='thv-code'>{I['code']}</div>", unsafe_allow_html=True)
+    join = join_url(I['code'])
+    a, b = st.columns([3, 1])
+    a.markdown(f"Students open **Join a class** and enter <div class='thv-code'>{I['code']}</div>" + (f"<p>Or scan, or open <code>{join}</code></p>" if join else ''), unsafe_allow_html=True)
+    if join:
+        with b: qr_block(join)
     left, right = st.columns([3, 2])
     with right:
         q = st.text_input('Search decisions', '')
         opts = [c for c in cl.CHALLENGES.values() if q.lower() in (c['title'] + ' ' + c['question'] + ' ' + c['concept']).lower()]
         pick = st.selectbox('Decision', [c['id'] for c in opts], format_func=lambda i: f"{cl.CHALLENGES[i]['title']} ({FORMAT_NAME[cl.CHALLENGES[i]['format']]})") if opts else None
         if st.button('Open for answers', type='primary', disabled=not pick): S.control(I['code'], I['secret'], 'open', pick); st.rerun()
+        joining = S.state(I['code']).get('joining', True)
+        if st.button('Close joining' if joining else 'Reopen joining'):
+            S.control(I['code'], I['secret'], 'lockjoin' if joining else 'unlockjoin'); st.rerun()
         st.download_button('Download answers (CSV)', S.export_csv(I['code'], I['secret']), file_name=f"human-variable-{I['code']}.csv", mime='text/csv')
         if st.button('End session and delete data'):
             S.control(I['code'], I['secret'], 'end'); ss.pop('inst'); st.rerun()

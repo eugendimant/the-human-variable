@@ -50,7 +50,7 @@ def run():
     style(); S = store(); ss = st.session_state
     st.title('Join a live class')
     if 'room' not in ss:
-        code = st.text_input('Session code', max_chars=8, placeholder='K7QPM').strip().upper()
+        code = st.text_input('Session code', value=str(st.query_params.get('code', ''))[:8], max_chars=8, placeholder='K7QPM').strip().upper()
         if st.button('Join', type='primary') and code:
             try: ss.room = S.join(code); st.rerun()
             except cl.ClassroomError as e: st.error(str(e))
