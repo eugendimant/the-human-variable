@@ -47,8 +47,8 @@ def test_aggregate_shapes(store):
     for fmt in ('choice', 'multi', 'forecast', 'rank', 'allocate', 'delegate'):
         c = pick(fmt); store.control(code, key, 'open', c['id'])
         for t in toks:
-            r = {'choice': 0, 'multi': [0, 1], 'forecast': 70, 'rank': list(range(len(c['options']))),
-                 'allocate': [c['allocate']['total']] + [0] * (len(c['options']) - 1), 'delegate': [0] * len(c.get('delegate', {}).get('tasks', []))}[fmt]
+            r = {'choice': lambda: 0, 'multi': lambda: [0, 1], 'forecast': lambda: 70, 'rank': lambda: list(range(len(c['options']))),
+                 'allocate': lambda: [c['allocate']['total']] + [0] * (len(c['options']) - 1), 'delegate': lambda: [0] * len(c['delegate']['tasks'])}[fmt]()
             assert store.submit(code, t, r, 50)['accepted']
         store.control(code, key, 'reveal'); a = store.state(code)['aggregate']; assert a['n'] == 3
         key_field = {'choice': 'counts', 'multi': 'counts', 'forecast': 'hist', 'rank': 'meanPosition', 'allocate': 'meanShare', 'delegate': 'taskCounts'}[fmt]

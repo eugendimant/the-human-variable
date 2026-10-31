@@ -83,3 +83,12 @@ def test_no_script_markup():
 def test_built_page_current():
     r = subprocess.run([sys.executable, str(ROOT / 'src' / 'build.py'), '--check'], capture_output=True, text=True)
     assert r.returncode == 0, r.stdout
+
+def test_followups_add_information():
+    """A follow-up must not repeat text already on the reveal screen (implication, boundary, explain)."""
+    dup = [(c['id'], f['q']) for c in LIVE for f in c['follow'] if f['a'].strip() in (c['implication'].strip(), c['boundary'].strip(), c['explain'].strip())]
+    assert not dup, dup
+
+def test_followup_questions_unique_per_item():
+    for c in LIVE:
+        qs = [f['q'].lower() for f in c['follow']]; assert len(set(qs)) == len(qs), c['id']

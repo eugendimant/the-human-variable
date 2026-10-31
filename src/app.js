@@ -131,7 +131,8 @@ function home() {
     <div class="fact"><b class="num">${nFormats}</b><span>ways to commit, from forecasts to budgets</span></div>
     <div class="fact"><b class="num">${records.length}</b><span>predictions saved on this device</span></div>
   </div></div>
-  <section class="section wrap" id="start"><div class="section-head"><h2>Pick an area and a length.</h2><p>Rounds mix formats. Your answers stay in this browser unless you export them or join a live class.</p></div>
+  ${(BANK.paths || []).length ? `<section class="section wrap" style="padding-bottom:0"><div class="section-head"><h2>Start with a path.</h2><p>Each path is a short sequence that builds one argument, from the evidence to the decision a manager faces.</p></div><div class="paths">${BANK.paths.map(p => { const items = p.ids.filter(id => ALL.some(c => c.id === id)); return items.length ? `<button class="path" data-path="${esc(p.id)}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${items.length} decisions${p.case ? ', includes a multi-step case' : ''}</small></button>` : '' }).join('')}</div></section>` : ''}
+  <section class="section wrap" id="start"><div class="section-head"><h2>Or build your own round.</h2><p>Rounds mix formats. Your answers stay in this browser unless you export them or join a live class.</p></div>
     <div class="picker" role="group" aria-label="Area">${['Mixed', ...TRACKS].map(t => `<button class="pick" data-track="${esc(t)}" aria-pressed="${st.track === t}"><strong>${esc(t === 'Mixed' ? 'Mixed round' : t)}</strong><small>${t === 'Mixed' ? 'All four areas, ' + ALL.length + ' decisions' : esc(TRACK_NOTE[t]) + ', ' + counts[t]}</small></button>`).join('')}</div>
     <div class="lengths" role="group" aria-label="Round length"><span class="kicker label">Length</span>${[[5, '5 decisions, about 6 min'], [8, '8 decisions, about 10 min'], [12, '12 decisions, about 15 min']].map(([n, l]) => `<button class="seg" data-length="${n}" aria-pressed="${st.length === n}">${l}</button>`).join('')}</div>
     <button class="btn btn-solid" data-act="start">Start the round</button>
@@ -182,8 +183,8 @@ function instrument(c) {
 function dag(d) {
   const W = 520, H = d.height || 200;
   const node = Object.fromEntries(d.nodes.map(n => [n.id, n]));
-  const edge = ([a, b, style]) => { const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 52; return `<line x1="${A.x + ux * pad}" y1="${A.y + uy * pad * .45}" x2="${B.x - ux * pad}" y2="${B.y - uy * pad * .45}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
-  return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(d.alt)}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n => `<g><rect x="${n.x - 62}" y="${n.y - 20}" width="124" height="40" rx="20" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="13" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>`).join('')}</svg>`;
+  const edge = ([a, b, style]) => { const A = node[a], B = node[b]; const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L; const pad = 72; return `<line x1="${A.x + ux * pad}" y1="${A.y + uy * pad * .45}" x2="${B.x - ux * pad}" y2="${B.y - uy * pad * .45}" stroke="${style === 'q' ? '#9aa6b6' : '#14203a'}" stroke-width="2" ${style === 'q' ? 'stroke-dasharray="5 5"' : ''} marker-end="url(#ah)"/>` };
+  return `<svg class="dag" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(d.alt)}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n => `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/><text x="${n.x}" y="${n.y + 5}" text-anchor="middle" font-size="17" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${n.hidden ? '#14203a' : '#fff'}">${esc(n.label)}</text></g>`).join('')}</svg>`;
 }
 
 // The gap: player's call (blue) and the evidence (amber) on one axis.
@@ -195,7 +196,7 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
     ${band !== null && band !== undefined && ev !== null ? `<rect x="${sx(Math.max(min, ev - band))}" y="${y - 7}" width="${sx(Math.min(max, ev + band)) - sx(Math.max(min, ev - band))}" height="14" rx="3" fill="#fbefd2" stroke="#e0a01c" stroke-width="1"/>` : ''}
     ${you !== null && you !== undefined && ev !== null && ev !== undefined ? `<line x1="${sx(you)}" y1="${y}" x2="${sx(ev)}" y2="${y}" stroke="#14203a" stroke-width="2" stroke-dasharray="2 3"/>` : ''}
     ${you !== null && you !== undefined ? `<circle cx="${sx(you)}" cy="${y}" r="9" fill="#2f54eb" stroke="#fff" stroke-width="2.5"/>${lab(sx(you), 'You ' + fmt(you), '#1f3cc2', true)}` : ''}
-    ${ev !== null && ev !== undefined ? `<g class="ev-mark" id="${id}-ev"><circle cx="${sx(ev)}" cy="${y}" r="9" fill="#e0a01c" stroke="#fff" stroke-width="2.5"/>${lab(sx(ev), evLabel + ' ' + fmt(ev), '#7d5200', false)}</g>` : ''}
+    ${ev !== null && ev !== undefined ? `<g class="ev-mark" id="${id}-ev" data-from="${you !== null && you !== undefined ? sx(you) - sx(ev) : 0}"><circle cx="${sx(ev)}" cy="${y}" r="9" fill="#e0a01c" stroke="#fff" stroke-width="2.5"/>${lab(sx(ev), evLabel + ' ' + fmt(ev), '#7d5200', false)}</g>` : ''}
     <text x="${L}" y="88" font-size="11" fill="#56617a" font-family="Schibsted Grotesk,system-ui">${esc(fmt(min))}</text><text x="${R}" y="88" font-size="11" fill="#56617a" text-anchor="end" font-family="Schibsted Grotesk,system-ui">${esc(fmt(max))}</text></svg>`;
 }
 
@@ -204,24 +205,24 @@ function gapPanel(c, rec) {
   if (c.format === 'estimate') { const e = c.estimate; body = gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); cap = `Shaded band: within ${e.tolerance}${e.unit ?? '%'} of the study value counts as a hit. You were ${rec.detail.gap}${e.unit ?? '%'} away.` }
   else if (c.format === 'forecast') { body = gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evLabel: c.forecast.truth ? 'True' : 'False', fmt: x => x + '%' }); cap = `Brier score ${rec.detail.brier.toFixed(2)} (0 is perfect, 0.25 is a coin flip at 50%, 1 is confidently wrong).` }
   else if (c.format === 'rank') {
-    const truth = c.rankAnswer, n = truth.length, H = 34 * n + 30, yy = k => 34 + k * 34;
-    body = `<svg viewBox="0 0 340 ${H}" role="img" aria-label="Your order compared with the evidence order"><text x="10" y="16" font-size="12" font-weight="700" fill="#1f3cc2">Your order</text><text x="330" y="16" font-size="12" font-weight="700" fill="#7d5200" text-anchor="end">Measured order</text>${r.map((oi, k) => { const t = truth.indexOf(oi); return `<line x1="40" y1="${yy(k) - 4}" x2="300" y2="${yy(t) - 4}" stroke="${t === k ? '#14203a' : '#9aa6b6'}" stroke-width="${t === k ? 2.5 : 1.5}"/><circle cx="40" cy="${yy(k) - 4}" r="9" fill="#2f54eb"/><text x="40" y="${yy(k)}" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">${k + 1}</text><circle cx="300" cy="${yy(t) - 4}" r="9" fill="#e0a01c"/><text x="300" y="${yy(t)}" text-anchor="middle" font-size="11" font-weight="800">${t + 1}</text><text x="56" y="${yy(k) - 13}" font-size="10.5" fill="#36425e">${esc(short(c.options[oi], 34))}</text>` }).join('')}</svg>`;
-    cap = `${rec.detail.agree} of ${rec.detail.total} pairs in the measured order.${c.rankValues ? ' Reported values: ' + c.rankAnswer.map(i => `${c.options[i]} ${c.rankValues[i]}`).join('; ') + '.' : ''}`
+    const truth = c.rankAnswer;
+    body = `<ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li><span class="rc-name">${esc(c.options[oi])}${c.rankValues ? `<small>${esc(c.rankValues[oi])}</small>` : ''}</span><span class="rc-badge ev" title="Measured rank">${t + 1}</span><span class="rc-badge you ${k === t ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol><div class="rc-head"><span>Measured order, top first</span><span><i class="dot dot-ev"></i>Study <i class="dot dot-you"></i>You</span></div>`;
+    cap = `${rec.detail.agree} of ${rec.detail.total} pairs in the measured order.`
   }
   else if (c.format === 'allocate') {
     const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, mx = Math.max(...a.values);
     body = `<svg viewBox="0 0 340 ${c.options.length * 58 + 10}" role="img" aria-label="Your allocation compared with reported effects">${c.options.map((o, k) => { const y = 8 + k * 58; return `<text x="0" y="${y + 10}" font-size="12" font-weight="650" fill="#14203a">${esc(short(o, 44))}</text><rect x="0" y="${y + 17}" width="${Math.max(2, r[k] / tot * 250)}" height="10" rx="5" fill="#2f54eb"/><text x="${Math.max(2, r[k] / tot * 250) + 6}" y="${y + 26}" font-size="11" fill="#1f3cc2" font-weight="700">${pct(r[k] / tot)}% of budget</text><rect x="0" y="${y + 32}" width="${Math.max(2, a.values[k] / mx * 250)}" height="10" rx="5" fill="#e0a01c"/><text x="${Math.max(2, a.values[k] / mx * 250) + 6}" y="${y + 41}" font-size="11" fill="#7d5200" font-weight="700">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</text>` }).join('')}</svg>`;
     cap = `Blue: your split. Amber: ${esc(a.valueName)}. Score ${pct(rec.score)}: share of the maximum payoff your split captures under the reported effects.`
   }
-  else if (c.format === 'delegate') { body = `<p class="verdict-score" style="font-size:40px;letter-spacing:-.03em;margin:6px 0">${rec.detail.right} of ${rec.detail.total}</p>`; cap = 'Tasks routed the way the evidence suggests. Amber rings on the left mark the evidence route.' }
+  else if (c.format === 'delegate') { body = `<p class="big-stat">${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${r[k] === t.answer ? 'ok' : ''}"><span>${esc(short(t.text, 70))}</span><span class="chip-row"><span class="chip you">${esc(c.delegate.choices[r[k]] ?? '–')}</span>${r[k] === t.answer ? '' : `<span class="chip ev">${esc(c.delegate.choices[t.answer])}</span>`}</span></li>`).join('')}</ul>`; cap = 'Blue: your routing. Amber: the route the evidence supports, shown where they differ.' }
   else if (c.chart) { body = bars(c.chart); cap = c.chart.note }
-  else { body = `<p class="verdict-score" style="font-size:40px;letter-spacing:-.03em;margin:6px 0">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
+  else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = 'Blue marks your call, amber the evidence, in the options on the left.' }
   return `<section class="panel gap" aria-labelledby="gap-h"><h2 id="gap-h">Your call against the evidence</h2><div class="gap-legend"><span><i class="dot dot-you"></i>You</span><span><i class="dot dot-ev"></i>Evidence</span></div>${body}<p class="gap-caption">${cap}</p></section>`;
 }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function bars(ch) {
   const mx = Math.max(...ch.values) * 1.12;
-  return `<svg viewBox="0 0 340 ${ch.values.length * 46 + 6}" role="img" aria-label="${esc(ch.labels.map((l, i) => l + ' ' + ch.values[i] + (ch.unit || '')).join(', '))}">${ch.values.map((v, i) => { const y = 4 + i * 46, w = v / mx * 280; return `<text x="0" y="${y + 11}" font-size="12" font-weight="650" fill="#14203a">${esc(ch.labels[i])}</text><rect x="0" y="${y + 17}" width="300" height="14" rx="7" fill="#e2e7ed"/><rect x="0" y="${y + 17}" width="${w}" height="14" rx="7" fill="${i === ch.highlight ? '#e0a01c' : '#14203a'}"/><text x="${w + 6}" y="${y + 29}" font-size="12" font-weight="800" fill="#14203a">${esc(v + (ch.unit || ''))}</text>` }).join('')}</svg>`;
+  return `<svg viewBox="0 0 340 ${ch.values.length * 46 + 6}" role="img" aria-label="${esc(ch.labels.map((l, i) => l + ' ' + ch.values[i] + (ch.unit || '')).join(', '))}">${ch.values.map((v, i) => { const y = 4 + i * 46, w = v / mx * 280; return `<text x="0" y="${y + 11}" font-size="12" font-weight="650" fill="#14203a">${esc(ch.labels[i])}</text><rect x="0" y="${y + 17}" width="300" height="14" rx="7" fill="#e2e7ed"/><rect class="rv-bar-grow" x="0" y="${y + 17}" width="${w}" height="14" rx="7" fill="${i === ch.highlight ? '#e0a01c' : '#14203a'}"/><text x="${w + 6}" y="${y + 29}" font-size="12" font-weight="800" fill="#14203a">${esc(v + (ch.unit || ''))}</text>` }).join('')}</svg>`;
 }
 
 function play() {
@@ -310,6 +311,17 @@ function atlas() {
     <section class="wrap"><div class="atlas-grid" id="atlas-grid">${m.length ? m.map(c => `<button class="entry" data-play="${esc(c.id)}"><span class="meta"><span class="tag">${esc(c.track)}</span><span class="tag">${FORMAT_NAME[c.format]}</span></span><h3>${esc(c.title)}</h3><p>${esc(c.question)}</p><span class="cite">${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}</span></button>`).join('') : `<div class="empty">No decision matches “${esc(st.atlasQuery)}”. Clear the search or try an author’s name.</div>`}</div></section>`;
 }
 
+
+// ----- almanac: the playbook of principles, grouped by theme -----
+function almanac() {
+  const themes = BANK.themes || [];
+  return `<section class="atlas-head wrap"><h1>The playbook.</h1><p class="hero-lede" style="margin:0">Every principle in the lab, the evidence behind it, and the decision it changes. Read it before a meeting, or play the decisions that test it.</p>
+    <nav class="theme-index" aria-label="Themes">${themes.map(t => `<a href="#theme-${esc(t.id)}">${esc(t.title)}</a>`).join('')}</nav></section>
+    <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; return `<article class="theme panel" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p>${esc(t.principle)}</p></div>
+      <ul class="findings">${cs.map(c => `<li><div><strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small></div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul>
+      <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play all ${cs.length}</button></article>` }).join('')}</section>`;
+}
+
 // ----- record -----
 function record() {
   const all = records, last = st.session.length ? st.session : all.slice(-12);
@@ -317,13 +329,19 @@ function record() {
   const meanScore = all.length ? pct(all.reduce((a, r) => a + r.score, 0) / all.length) : null;
   const sess = st.session.length ? pct(st.session.reduce((a, r) => a + r.score, 0) / st.session.length) : null;
   const byTrack = TRACKS.map(t => { const x = all.filter(r => BY_ID[r.id].track === t); return [t, x.length, x.length ? pct(x.reduce((a, r) => a + r.score, 0) / x.length) : null] });
+  let summary = '';
+  if (st.session.length) {
+    const worst = st.session.reduce((a, r) => r.score < a.score ? r : a), best = st.session.reduce((a, r) => r.score > a.score ? r : a);
+    const sc = S.calibration(st.session.map(r => S.toCalibrationRecord(BY_ID[r.id], r)));
+    summary = `<div class="summary">${best.score > worst.score ? `<div class="panel lesson-card"><span class="kicker">Best call</span><h3>${esc(BY_ID[best.id].title)}</h3><p>${esc(BY_ID[best.id].answerTitle)}. Score ${pct(best.score)}.</p></div>` : ''}<div class="panel lesson-card"><span class="kicker">Biggest surprise</span><h3>${esc(BY_ID[worst.id].title)}</h3><p>${esc(BY_ID[worst.id].answerTitle)}. ${esc(BY_ID[worst.id].implication)}</p><button class="link-btn" data-play="${esc(worst.id)}">Play it again</button></div><div class="panel lesson-card"><span class="kicker">Confidence this round</span><h3>${sc.overconfidence === null ? '–' : sc.overconfidence > 8 ? 'More sure than right' : sc.overconfidence < -8 ? 'More right than sure' : 'Well matched'}</h3><p>You stated ${Math.round(st.session.filter(r => r.confidence !== null).reduce((a, r) => a + r.confidence, 0) / Math.max(1, st.session.filter(r => r.confidence !== null).length))}% confidence on average and matched the evidence on ${st.session.filter(r => r.correct).length} of ${st.session.length} decisions.</p></div></div>`;
+  }
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1><p class="hero-lede" style="margin:0">How close your calls were, and whether your confidence matched your accuracy. Stored only in this browser.</p>
     <div class="kpis">
       <div class="panel kpi"><b>${sess ?? meanScore ?? '—'}</b><span>${sess !== null ? 'Score this round, out of 100' : 'Average score, out of 100'}</span></div>
       <div class="panel kpi"><b>${all.length}</b><span>Calls saved on this device</span></div>
       <div class="panel kpi"><b>${cal.brier === null ? '—' : cal.brier.toFixed(2)}</b><span>Brier score (lower is better)</span></div>
       <div class="panel kpi"><b>${cal.overconfidence === null ? '—' : (cal.overconfidence > 0 ? '+' : '') + Math.round(cal.overconfidence)}</b><span>${cal.overconfidence === null ? 'Confidence gap' : cal.overconfidence > 3 ? 'Points more confident than accurate' : cal.overconfidence < -3 ? 'Points less confident than accurate' : 'Confidence matches accuracy'}</span></div>
-    </div></section>
+    </div>${summary}</section>
     <section class="wrap"><div class="rec-grid">
       <div class="panel rec-panel"><h2>Calibration</h2><p>Each dot compares how sure you said you were with how often you were right in that range. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>
       <div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><p>Score out of 100 for each decision.</p><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><strong>${esc(c.title)}</strong><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${pct(r.score)}<span class="bar-score"><i style="width:${pct(r.score)}%"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a round to start your record.</span></li>'}</ul></div>
@@ -454,12 +472,18 @@ let toastT;
 function notice(s) { const t = qs('#toast'); t.textContent = s; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3200) }
 function render(moveFocus) {
   const v = qs('#view');
-  v.innerHTML = st.view === 'home' ? home() : st.view === 'atlas' ? atlas() : st.view === 'record' ? record() : play();
+  v.innerHTML = st.view === 'home' ? home() : st.view === 'atlas' ? atlas() : st.view === 'almanac' ? almanac() : st.view === 'record' ? record() : play();
   qa('.nav button').forEach(b => b.setAttribute('aria-current', b.dataset.nav === (st.view === 'play' ? 'home' : st.view) ? 'page' : 'false'));
   qs('.nav').classList.toggle('open', st.menu);
   const c = card();
-  document.title = (st.view === 'play' && c ? (st.phase === 'reveal' ? c.answerTitle : c.title) + ' · ' : st.view === 'atlas' ? 'Studies · ' : st.view === 'record' ? 'Your record · ' : '') + 'The Human Variable';
+  document.title = (st.view === 'play' && c ? (st.phase === 'reveal' ? c.answerTitle : c.title) + ' · ' : st.view === 'atlas' ? 'Studies · ' : st.view === 'almanac' ? 'Playbook · ' : st.view === 'record' ? 'Your record · ' : '') + 'The Human Variable';
+  if (moveFocus && (st.phase === 'reveal' || st.hero.done)) animateReveal();
   if (moveFocus) { scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' }); const h = qs('#view h1'); if (h) { if (!h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }) } }
+}
+function animateReveal() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  qa('.ev-mark[data-from]').forEach(g => { const d = +g.dataset.from; if (!d) return; g.style.transition = 'none'; g.style.transform = `translateX(${d}px)`; g.style.opacity = '.3'; requestAnimationFrame(() => requestAnimationFrame(() => { g.style.transition = ''; g.style.transform = ''; g.style.opacity = '' })) });
+  qa('.rv-bar-grow').forEach(r => { const w = r.getAttribute('width'); r.setAttribute('width', 0); requestAnimationFrame(() => requestAnimationFrame(() => r.setAttribute('width', w))) });
 }
 function setRange(el) { el.classList.remove('untouched'); el.style.setProperty('--fill', (el.value - el.min) / (el.max - el.min) * 100 + '%') }
 
@@ -470,9 +494,12 @@ document.addEventListener('click', e => {
   if (t.dataset.nav) { closeModal(); if (st.room && t.dataset.nav === 'home' && st.view === 'play') { if (!confirm('Leave the live class?')) return; clearTimeout(st.room.timer); st.room = null } st.view = t.dataset.nav; st.menu = false; render(true); return }
   if (t.dataset.track) { st.track = t.dataset.track; const n = st.track === 'Mixed' ? ALL.length : ALL.filter(c => c.track === st.track).length; if (st.length > n) st.length = 5; render(); return }
   if (t.dataset.length) { st.length = +t.dataset.length; render(); return }
+  if (t.dataset.themeRound) { st.seed = (Math.random() * 2 ** 32) >>> 0; start(ALL.filter(c => c.theme === t.dataset.themeRound), 99); return }
   if (t.dataset.source) { sourceModal(t.dataset.source); return }
   if (t.dataset.play) { closeModal(); const c = ALL.find(x => x.id === t.dataset.play); if (c) { st.seed = (Math.random() * 2 ** 32) >>> 0; start(c.case ? ALL.filter(x => x.case && x.case.id === c.case.id) : [c], c.case ? c.case.of : 1) } return }
   if (t.dataset.ask) { ask(t.dataset.ask); return }
+  if (t.dataset.path) { const p = BANK.paths.find(x => x.id === t.dataset.path); const list = p.ids.map(id => ALL.find(c => c.id === id)).filter(Boolean); st.deck = list; st.i = 0; st.session = []; st.view = 'play'; resetCard(); render(true); return }
+  if (t.dataset.theme) { st.view = 'almanac'; st.almanacOpen = t.dataset.theme; render(true); qs('#theme-' + t.dataset.theme)?.scrollIntoView(); return }
   if (st.view === 'play' && st.phase === 'predict') {
     const c = card();
     if (t.dataset.choice !== undefined) { const i = +t.dataset.choice; if (c.format === 'multi') { const r = st.resp.includes(i) ? st.resp.filter(x => x !== i) : [...st.resp, i].slice(-c.multiAnswers.length); st.resp = r } else st.resp = i; render(); qs(`[data-choice="${i}"]`)?.focus(); return }
@@ -486,7 +513,7 @@ document.addEventListener('click', e => {
   if (a === 'start' || a === 'replay') { st.seed = (Math.random() * 2 ** 32) >>> 0; startTrack(); return }
   if (a === 'start-quick') { st.seed = (Math.random() * 2 ** 32) >>> 0; st.track = 'Mixed'; start(ALL.filter(c => c.id !== 'ai01'), 5); return }
   if (a === 'dimant-round') { st.seed = (Math.random() * 2 ** 32) >>> 0; start(ALL.filter(c => c.sources.some(id => /Dimant/.test(SOURCE[id].authors))), 12); return }
-  if (a === 'hero-lock') { if (st.hero.value === null) return; st.hero.done = true; render(); return }
+  if (a === 'hero-lock') { if (st.hero.value === null) return; st.hero.done = true; render(); animateReveal(); qs('[data-act="start-quick"]')?.focus({ preventScroll: true }); return }
   if (a === 'hero-reset') { st.hero = { value: null, done: false }; render(); qs('#hero-range')?.focus(); return }
   if (a === 'lock') { lock(); return }
   if (a === 'next') { next(); return }

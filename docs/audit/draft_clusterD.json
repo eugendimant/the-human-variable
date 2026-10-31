@@ -1,0 +1,631 @@
+{
+  "sources": {
+    "masks22": {
+      "id": "masks22",
+      "authors": "Dimant et al.",
+      "authors_full": "Eugen Dimant, Elena Giulia Clemente, Dylan Pieper, Anna Dreber, Michele Gelfand, Behavioral Science Units Consortium (Crossref also lists Michael Hallsworth, Aline Holzwarth, Piyush Tantia)",
+      "year": 2022,
+      "title": "Politicizing mask-wearing: predicting the success of behavioral interventions among republicans and democrats in the U.S.",
+      "venue": "Scientific Reports",
+      "volume": "12",
+      "pages": "7575",
+      "doi": "10.1038/s41598-022-10524-1",
+      "url": "https://doi.org/10.1038/s41598-022-10524-1",
+      "kind": "peer-reviewed",
+      "takeaway": "Seven mask-wearing nudges showed no effect in either party, yet 1,034 forecasters, experts included, overestimated their effects.",
+      "verification": {"status": "verified_full_text", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published open access full text (Nature HTML)", "text_url": "https://www.nature.com/articles/s41598-022-10524-1"}
+    },
+    "requiem20": {
+      "id": "requiem20",
+      "authors": "Dimant, van Kleef & Shalvi",
+      "authors_full": "Eugen Dimant, Gerben A. van Kleef, Shaul Shalvi",
+      "year": 2020,
+      "title": "Requiem for a Nudge: Framing effects in nudging honesty",
+      "venue": "Journal of Economic Behavior & Organization",
+      "volume": "172",
+      "pages": "247-266",
+      "doi": "10.1016/j.jebo.2020.02.015",
+      "url": "https://doi.org/10.1016/j.jebo.2020.02.015",
+      "kind": "peer-reviewed",
+      "takeaway": "Four truthful honesty norm-nudges, empirical or normative and positively or negatively framed, did not reduce cheating because they did not shift perceived norms.",
+      "verification": {"status": "verified_abstract", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published abstract (RePEc/IDEAS listing of the JEBO article). Publisher full text paywalled; working-paper numbers deliberately not used.", "text_url": "https://ideas.repec.org/a/eee/jeborg/v172y2020icp247-266.html"}
+    },
+    "notalie23": {
+      "id": "notalie23",
+      "authors": "Bicchieri, Dimant & Sonderegger",
+      "authors_full": "Cristina Bicchieri, Eugen Dimant, Silvia Sonderegger",
+      "year": 2023,
+      "title": "It's not a lie if you believe the norm does not apply: Conditional norm-following and belief distortion",
+      "venue": "Games and Economic Behavior",
+      "volume": "138",
+      "pages": "321-354",
+      "doi": "10.1016/j.geb.2023.01.005",
+      "url": "https://doi.org/10.1016/j.geb.2023.01.005",
+      "kind": "peer-reviewed",
+      "takeaway": "People tempted to lie for money strategically distort their beliefs about honesty norms to justify it; widespread honesty signals disapproval of lying, but widespread lying does not signal approval.",
+      "verification": {"status": "verified_abstract", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published abstract (RePEc/IDEAS listing of the GEB article). Publisher full text paywalled; working-paper numbers deliberately not used.", "text_url": "https://ideas.repec.org/a/eee/gamebe/v138y2023icp321-354.html"}
+    },
+    "prox22": {
+      "id": "prox22",
+      "authors": "Bicchieri, Dimant, Gächter & Nosenzo",
+      "authors_full": "Cristina Bicchieri, Eugen Dimant, Simon Gächter, Daniele Nosenzo",
+      "year": 2022,
+      "title": "Social proximity and the erosion of norm compliance",
+      "venue": "Games and Economic Behavior",
+      "volume": "132",
+      "pages": "59-72",
+      "doi": "10.1016/j.geb.2021.11.012",
+      "url": "https://doi.org/10.1016/j.geb.2021.11.012",
+      "kind": "peer-reviewed",
+      "takeaway": "Seeing peers' choices eroded compliance because people copied violations but not good examples; a minimal social-proximity cue halted the erosion.",
+      "verification": {"status": "verified_full_text", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published version of record, open access CC BY (ScienceDirect HTML, PII S0899825621001597)", "text_url": "https://www.sciencedirect.com/science/article/pii/S0899825621001597"}
+    },
+    "contagion19": {
+      "id": "contagion19",
+      "authors": "Dimant",
+      "authors_full": "Eugen Dimant",
+      "year": 2019,
+      "title": "Contagion of pro- and anti-social behavior among peers and the role of social proximity",
+      "venue": "Journal of Economic Psychology",
+      "volume": "73",
+      "pages": "66-88",
+      "doi": "10.1016/j.joep.2019.04.009",
+      "url": "https://doi.org/10.1016/j.joep.2019.04.009",
+      "kind": "peer-reviewed",
+      "takeaway": "Anti-social behavior spreads among peers more than pro-social behavior, and social proximity amplifies the spread of anti-social behavior more strongly.",
+      "verification": {"status": "verified_abstract", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published abstract (RePEc/IDEAS listing of the JEP article)", "text_url": "https://ideas.repec.org/a/eee/joepsy/v73y2019icp66-88.html"}
+    },
+    "deviant21": {
+      "id": "deviant21",
+      "authors": "Bicchieri, Dimant & Xiao",
+      "authors_full": "Cristina Bicchieri, Eugen Dimant, Erte Xiao",
+      "year": 2021,
+      "title": "Deviant or wrong? The effects of norm information on the efficacy of punishment",
+      "venue": "Journal of Economic Behavior & Organization",
+      "volume": "188",
+      "pages": "209-235",
+      "doi": "10.1016/j.jebo.2021.04.002",
+      "url": "https://doi.org/10.1016/j.jebo.2021.04.002",
+      "kind": "peer-reviewed",
+      "takeaway": "Weak punishment raised reciprocity only when paired with normative information and cheap compliance; with costly compliance, punishment plus empirical information could backfire.",
+      "verification": {"status": "verified_abstract", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published abstract (RePEc/IDEAS listing of the JEBO article). Publisher full text paywalled; working-paper numbers deliberately not used.", "text_url": "https://ideas.repec.org/a/eee/jeborg/v188y2021icp209-235.html"}
+    },
+    "enforcers23": {
+      "id": "enforcers23",
+      "authors": "Dimant & Gesche",
+      "authors_full": "Eugen Dimant, Tobias Gesche",
+      "year": 2023,
+      "title": "Nudging enforcers: how norm perceptions and motives for lying shape sanctions",
+      "venue": "PNAS Nexus",
+      "volume": "2(7)",
+      "pages": "pgad224",
+      "doi": "10.1093/pnasnexus/pgad224",
+      "url": "https://doi.org/10.1093/pnasnexus/pgad224",
+      "kind": "peer-reviewed",
+      "takeaway": "Enforcers punish lies more when they are larger or create inequity, and short norm messages raise punishment, most where norms are ambiguous.",
+      "verification": {"status": "verified_full_text", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published version of record, open access full text via Europe PMC (PMC10360164)", "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10360164/fullTextXML"}
+    },
+    "observ21": {
+      "id": "observ21",
+      "authors": "Bolton, Dimant & Schmidt",
+      "authors_full": "Gary Bolton, Eugen Dimant, Ulrich Schmidt",
+      "year": 2021,
+      "title": "Observability and social image: On the robustness and fragility of reciprocity",
+      "venue": "Journal of Economic Behavior & Organization",
+      "volume": "191",
+      "pages": "946-964",
+      "doi": "10.1016/j.jebo.2021.09.018",
+      "url": "https://doi.org/10.1016/j.jebo.2021.09.018",
+      "kind": "peer-reviewed",
+      "takeaway": "Being observed alone does little for pro-social behavior and can backfire through inequality aversion; making norms salient fixes it.",
+      "verification": {"status": "verified_abstract", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published abstract (RePEc/IDEAS listing of the JEBO article). Publisher full text paywalled; working-paper numbers deliberately not used.", "text_url": "https://ideas.repec.org/a/eee/jeborg/v191y2021icp946-964.html"}
+    },
+    "motivated24": {
+      "id": "motivated24",
+      "authors": "Dimant, Galeotti & Villeval",
+      "authors_full": "Eugen Dimant, Fabio Galeotti, Marie Claire Villeval",
+      "year": 2024,
+      "title": "Motivated information acquisition and social norm formation",
+      "venue": "European Economic Review",
+      "volume": "167",
+      "pages": "104778",
+      "doi": "10.1016/j.euroecorev.2024.104778",
+      "url": "https://doi.org/10.1016/j.euroecorev.2024.104778",
+      "kind": "peer-reviewed",
+      "takeaway": "Given a choice, people pick lenient sources of norm information, more so when sources share their political identity, and lenient information increases lying.",
+      "verification": {"status": "verified_full_text", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published version of record, open access (ScienceDirect HTML)", "text_url": "https://www.sciencedirect.com/science/article/pii/S0014292124001077"}
+    },
+    "beyond23": {
+      "id": "beyond23",
+      "authors": "Ren, Dimant & Schweitzer",
+      "authors_full": "Zhiying (Bella) Ren, Eugen Dimant, Maurice Schweitzer",
+      "year": 2023,
+      "title": "Beyond belief: How social engagement motives influence the spread of conspiracy theories",
+      "venue": "Journal of Experimental Social Psychology",
+      "volume": "104",
+      "pages": "104421",
+      "doi": "10.1016/j.jesp.2022.104421",
+      "url": "https://doi.org/10.1016/j.jesp.2022.104421",
+      "kind": "peer-reviewed",
+      "takeaway": "People knowingly share conspiracy theories they believe are false when they expect, or receive, more social engagement for them.",
+      "verification": {"status": "verified_abstract", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published abstract and highlights (ScienceDirect abstract page). Full text paywalled; SSRN sample size and Psychology Today figures deliberately not used.", "text_url": "https://www.sciencedirect.com/science/article/abs/pii/S0022103122001408"}
+    },
+    "opioid26": {
+      "id": "opioid26",
+      "authors": "Toma et al.",
+      "authors_full": "Mattie Toma, Russell Burnett, Pompa Debroy, Eugen Dimant, Jean Liu, Elana Safran, Uzaib Saya, Bill Schultz",
+      "year": 2026,
+      "title": "Promoting Safe Opioid Disposal: Experimental Evidence on Behavioral Messaging With Financial Incentives",
+      "venue": "Health Economics",
+      "volume": "35(7)",
+      "pages": "1023-1032",
+      "doi": "10.1002/hec.70085",
+      "url": "https://doi.org/10.1002/hec.70085",
+      "kind": "peer-reviewed",
+      "takeaway": "Adding low-cost behavioral reminder cards to a cash buyback raised opioid pill returns and lowered cost per pill returned.",
+      "verification": {"status": "verified_abstract", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published abstract (Crossref record and Europe PMC record, PMID 41834481). Article is CC BY but Wiley full text could not be fetched; OES project-page numbers deliberately not used.", "text_url": "https://doi.org/10.1002/hec.70085"}
+    },
+    "hate23": {
+      "id": "hate23",
+      "authors": "Dimant",
+      "authors_full": "Eugen Dimant",
+      "year": 2024,
+      "title": "Hate Trumps Love: The Impact of Political Polarization on Social Preferences",
+      "venue": "Management Science",
+      "volume": "70(1)",
+      "pages": "1-31",
+      "doi": "10.1287/mnsc.2023.4701",
+      "url": "https://doi.org/10.1287/mnsc.2023.4701",
+      "kind": "peer-reviewed",
+      "takeaway": "Partisan conflict shows up as out-group hate in behavior, driven by grim expectations about the other side's cooperativeness rather than unwillingness to cooperate.",
+      "verification": {"status": "verified_abstract", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published abstract (RePEc/IDEAS listing of the Management Science article)", "text_url": "https://ideas.repec.org/a/inm/ormnsc/v70y2024i1p1-31.html"}
+    },
+    "norms24": {
+      "id": "norms24",
+      "authors": "Dimant, Gelfand, Hochleitner & Sonderegger",
+      "authors_full": "Eugen Dimant, Michele Gelfand, Anna Hochleitner, Silvia Sonderegger",
+      "year": 2025,
+      "title": "Strategic Behavior with Tight, Loose, and Polarized Norms",
+      "venue": "Management Science",
+      "volume": "71(3)",
+      "pages": "2245-2263",
+      "doi": "10.1287/mnsc.2023.01022",
+      "url": "https://doi.org/10.1287/mnsc.2023.01022",
+      "kind": "peer-reviewed",
+      "takeaway": "The spread of peer behavior matters, not just its average: loose norms widen behavior and polarized norms push most people to risky extremes.",
+      "verification": {"status": "verified_abstract", "checked": "2026-10-31", "metadata": "matched Crossref record", "text_read": "Published abstract (Crossref record and RePEc/IDEAS listing of the Management Science article)", "text_url": "https://ideas.repec.org/a/inm/ormnsc/v71y2025i3p2245-2263.html"}
+    }
+  },
+  "challenges": [
+    {
+      "id": "dimant-masks-forecast",
+      "format": "forecast",
+      "track": "Judgment",
+      "concept": "Forecasting nudges",
+      "title": "Will the mask messages work?",
+      "scene": "Researchers tested seven messages (moral frames, mortality, scientific evidence, the economy) to raise mask-wearing among 4,931 US Republicans and Democrats. Beforehand, 1,034 forecasters predicted each message's effect.",
+      "question": "How likely is it that at least one message worked for either party?",
+      "forecast": {"claim": "At least one of the seven messages reliably increased mask-wearing among Democrats or Republicans.", "truth": false},
+      "answerTitle": "No message worked; forecasters still overestimated effects",
+      "explain": "The study found no evidence that any of the 7 nudges promoted mask-wearing in either party. Forecasters overestimated effects overall (z = 4.40, p < 0.001), most of all for Democrats.",
+      "implication": "Treat expert predictions about which message works as hypotheses. Run a small randomized test before scaling a compliance campaign.",
+      "boundary": "One topic (COVID-19 mask-wearing), US Democrats and Republicans, and seven short messages.",
+      "sources": ["masks22"],
+      "follow": [
+        {"q": "Were experts better than laypeople?", "a": "Yes. Academics and practitioners made more accurate predictions than laypeople, but forecasters as a group still overestimated the effects."},
+        {"q": "Who was in the forecasting pool?", "a": "1,034 forecasters: 714 laypeople, 199 academics and 121 practitioners."},
+        {"q": "Did forecasters at least rank the messages correctly?", "a": "Not for Democrats. Predicted and observed effects for Democrats were negatively correlated (r = -0.63, p = 0.0003)."}
+      ],
+      "study": {"design": "Forecasting study of a nudge experiment", "n": "1,034 forecasters; 4,931 experiment participants"},
+      "evidence": [
+        {"source": "masks22", "quote": "there was no evidence that 7 nudge interventions were effective at promoting mask-wearing among Democrats or Republicans", "location": "Published version of record (Sci Rep OA HTML), Results"},
+        {"source": "masks22", "quote": "a representative U.S. sample of Republicans and Democrats (N = 4931)", "location": "Published version of record, description of companion nudge study"},
+        {"source": "masks22", "quote": "overestimated the effect size in the pooled sample (z = 4.40, p < 0.001); Democrats z = 4.84, p < 0.001; Republicans z = 1.67, p = 0.09", "location": "Published version of record, Results (quote condensed from fetched text)"},
+        {"source": "masks22", "quote": "1,034 forecasters: 714 laypeople, 199 academics, and 121 practitioners", "location": "Published version of record, Methods (condensed)"},
+        {"source": "masks22", "quote": "negative and statistically significant for Democrat predictions (r(28) = -0.63, p = 0.0003)", "location": "Published version of record, Results"},
+        {"source": "masks22", "quote": "Academics and practitioners made more accurate predictions compared to laypeople", "location": "Published version of record, Results"},
+        {"source": "masks22", "quote": "individual harm, group harm, ingroup loyalty, and purity ... threat of the virus (mortality statistics), scientific evidence ... economic impact", "location": "Published version of record, nudge descriptions (paraphrase-level fragments)"}
+      ]
+    },
+    {
+      "id": "dimant-requiem-forecast",
+      "format": "forecast",
+      "track": "Business",
+      "concept": "Honesty nudges",
+      "title": "A free line on the form",
+      "scene": "Participants read one truthful norm message (what others did or approved of, framed positively or negatively), then reported whether a die roll matched a number they privately chose. Matches paid a bonus; lies were undetectable.",
+      "question": "How likely is it that at least one message reduced cheating?",
+      "forecast": {"claim": "At least one of the four honesty messages reduced cheating compared with no message.", "truth": false},
+      "answerTitle": "None of the four messages changed behavior",
+      "explain": "The pre-registered, high-powered study found null effects with tight confidence intervals for all four messages. A follow-up showed the messages did not change perceived norms.",
+      "implication": "Before adding an honesty statement to expense or reporting forms, test whether it actually shifts employees' beliefs about the norm.",
+      "boundary": "One-line messages before a die-reporting game with undetectable lies; other norm interventions may behave differently.",
+      "sources": ["requiem20"],
+      "follow": [
+        {"q": "Why did the messages fail?", "a": "A follow-up experiment found the messages did not change norm perceptions, so there was no belief shift to move behavior."},
+        {"q": "Did anyone react to the message?", "a": "Many participants misremembered the message in a way that supported cheating, and this group cheated significantly more."},
+        {"q": "Did the framing matter?", "a": "No. Neither empirical vs normative content nor positive vs negative framing produced an effect; none of the four worked."}
+      ],
+      "study": {"design": "Pre-registered experiment", "n": "High-powered sample (size not confirmed in published text read)"},
+      "evidence": [
+        {"source": "requiem20", "quote": "We find compelling null effects with tight confidence intervals showing that none of the norm-nudge interventions worked.", "location": "Published abstract (JEBO, via RePEc)"},
+        {"source": "requiem20", "quote": "the information norm-nudges did not actually change norms.", "location": "Published abstract"},
+        {"source": "requiem20", "quote": "misremembered norm-nudges such that they conveniently supported deviant behavior. This subset of participants indeed displayed significantly higher deviance levels", "location": "Published abstract"},
+        {"source": "requiem20", "quote": "then rolled a digital die, and then reported whether the two numbers coincide ... whether or not the report was truthful remained unobservable to the experimenters.", "location": "Published abstract"}
+      ]
+    },
+    {
+      "id": "dimant-notalie-causal",
+      "format": "causal",
+      "track": "Business",
+      "concept": "Motivated beliefs",
+      "title": "\"Everyone does it,\" they say",
+      "scene": "A sales team knows its commission scheme can be gamed. In a survey, the people who misreport are also the ones most likely to say most colleagues misreport.",
+      "question": "What best explains the link between this belief and misreporting?",
+      "options": [
+        "The belief is accurate information that drives lying",
+        "Temptation distorts the belief to justify lying",
+        "The belief and lying are unrelated",
+        "Honest employees hold this belief most strongly"
+      ],
+      "answer": 1,
+      "dag": {
+        "alt": "Profit from lying feeds both the belief that most people lie and lying itself; the belief-to-lying arrow may be partly reversed.",
+        "height": 200,
+        "nodes": [
+          {"id": "gain", "label": "Lying pays", "x": 70, "y": 100},
+          {"id": "belief", "label": "\"Most lie\"", "x": 260, "y": 40},
+          {"id": "lie", "label": "Misreporting", "x": 450, "y": 100}
+        ],
+        "edges": [["gain", "belief", "q"], ["gain", "lie"], ["belief", "lie"]]
+      },
+      "answerTitle": "Temptation reshapes beliefs to excuse lying",
+      "explain": "Results fit a model in which conditional norm-followers strategically distort their beliefs to justify self-serving behavior. Widespread honesty signaled disapproval of lying, but widespread lying did not signal approval.",
+      "implication": "Do not treat \"everyone games it\" survey answers as facts; check them against actual compliance data and publish what peers really do.",
+      "boundary": "Incentivized experiment where lying paid money; beliefs concerned other participants, not long-term colleagues.",
+      "sources": ["notalie23"],
+      "follow": [
+        {"q": "Which beliefs were distorted?", "a": "The paper studies two: empirical beliefs (what others do) and normative beliefs (what others approve of), and shows when and which are distorted."},
+        {"q": "Which signal is hardest to explain away?", "a": "Widespread honest behavior. People read it as a strong sign that lying is disapproved of; widespread lying was not read as approval."},
+        {"q": "Who distorts beliefs?", "a": "Conditional norm-followers: people who follow a norm only when they believe it applies, and who shade those beliefs when lying pays."}
+      ],
+      "study": {"design": "Incentivized lying experiment", "n": "Not stated in published abstract"},
+      "evidence": [
+        {"source": "notalie23", "quote": "We investigate self-serving belief distortion about dominant norms of honesty.", "location": "Published abstract (GEB, via RePEc)"},
+        {"source": "notalie23", "quote": "in which conditional norm-followers strategically distort their beliefs to justify self-serving behavior.", "location": "Published abstract"},
+        {"source": "notalie23", "quote": "widespread honest behavior is a strong indicator of disapproval of lying (and thus that a norm of honesty is followed), but the opposite does not hold.", "location": "Published abstract"},
+        {"source": "notalie23", "quote": "Consider an environment where the subject can earn a monetary reward by lying.", "location": "Published abstract"}
+      ]
+    },
+    {
+      "id": "dimant-proximity-estimate",
+      "format": "estimate",
+      "track": "Culture & Society",
+      "concept": "Peer transparency",
+      "title": "The open dashboard problem",
+      "scene": "Penn students played repeated rounds of a charity game: give to, take from, or leave a donation. One group could see peers' past choices; another could not.",
+      "question": "By about how much did donations fall when peers' choices were visible?",
+      "estimate": {"target": 20, "min": 0, "max": 60, "tolerance": 7, "label": "Drop in donations vs no visibility", "unit": "%"},
+      "answerTitle": "Donations fell about 20% with visibility alone",
+      "explain": "With observation alone, participants took an additional 21.9 ECUs and donations fell by about 20% compared with no observation. People copied bad examples but ignored good ones.",
+      "implication": "Before publishing peer compliance dashboards, build real shared identity in the team, or bad examples will spread faster than good ones.",
+      "boundary": "Lab game with Penn students in small groups, no sanctions; social proximity was a minimal shared-identity cue.",
+      "sources": ["prox22"],
+      "follow": [
+        {"q": "Did shared identity help?", "a": "Yes. With a minimal social-proximity cue, extra taking fell to 7.5 ECUs, and seeing peers give raised donations by about 0.20 ECU per ECU given."},
+        {"q": "How strongly did people copy bad behavior?", "a": "Without proximity, each ECU a peer took cut a participant's own donation by about 0.24 ECU. Seeing peers give had no significant effect."},
+        {"q": "Were the groups different at the start?", "a": "No. Initial takers were 45%, 44% and 42% across conditions (p = 0.703), so the gap emerged from watching peers."}
+      ],
+      "study": {"design": "Lab experiment", "n": "842 Penn students (Experiment 1)"},
+      "evidence": [
+        {"source": "prox22", "quote": "donations in Observation decline by about 20% compared to NoObservation", "location": "Published version of record (GEB, OA CC BY), Experiment 1 results"},
+        {"source": "prox22", "quote": "took on average an additional 21.9 ECUs", "location": "Published version of record, Experiment 1 results"},
+        {"source": "prox22", "quote": "the balance of the charity was reduced only by an additional 7.5 ECUs", "location": "Published version of record, Experiment 1 results (ObservationSP)"},
+        {"source": "prox22", "quote": "reduces the amount that is donated on average by -0.29 + 0.05 = -0.24 ECUs", "location": "Published version of record, Table 2 discussion (Observation)"},
+        {"source": "prox22", "quote": "increases the amount donated by 0.21 - 0.01 = 0.20 ECUs", "location": "Published version of record, Table 2 discussion (ObservationSP)"},
+        {"source": "prox22", "quote": "the effects of examples of violation are significantly larger than the effects of examples of compliance", "location": "Published version of record, Table 2 discussion (Observation, p < 0.001)"},
+        {"source": "prox22", "quote": "Table 1: initial takers NoObservation 45%, Observation 44%, ObservationSP 42%; Kruskal-Wallis p = 0.703", "location": "Published version of record, Table 1 (values transcribed)"},
+        {"source": "prox22", "quote": "n=842 collected in the laboratory from students at the University of Pennsylvania.", "location": "Published version of record, Experiment 1 design"}
+      ]
+    },
+    {
+      "id": "dimant-contagion-multi",
+      "format": "multi",
+      "track": "Culture & Society",
+      "concept": "Behavioral contagion",
+      "title": "Which behavior spreads faster?",
+      "scene": "In an experiment, people saw what peers had chosen before making their own pro-social or anti-social choices. The design also varied how socially close those peers were.",
+      "question": "Which two findings did the study report?",
+      "options": [
+        "Anti-social behavior was more contagious than pro-social",
+        "Closeness amplified bad behavior's spread more than good",
+        "Pro-social behavior was the more contagious",
+        "Closeness spread only good behavior",
+        "Anti-social people resisted anti-social peers most"
+      ],
+      "multiAnswers": [0, 1],
+      "answerTitle": "Bad behavior spreads more, especially among close peers",
+      "explain": "Anti-social behavior was generally more contagious than pro-social behavior, and social proximity amplified the contagion of anti-social behavior more strongly than that of pro-social behavior.",
+      "implication": "Address visible misconduct inside tight-knit teams quickly; close peers copy it more readily than they copy good conduct.",
+      "boundary": "One experiment with stylized pro- and anti-social choices; real workplace misconduct was not observed.",
+      "sources": ["contagion19", "prox22"],
+      "follow": [
+        {"q": "Who was most affected?", "a": "Anti-social individuals were the most susceptible to contagion from other anti-social peers."},
+        {"q": "Does closeness always make things worse?", "a": "Not always. In a later repeated-group study (Bicchieri, Dimant, Gächter & Nosenzo 2022), a minimal shared-identity cue led people to copy good examples too, halting the erosion of compliance."},
+        {"q": "What is the finding meant to inform?", "a": "Norm-based interventions: the paper argues its results help design policies that encourage pro-social and reduce anti-social behavior."}
+      ],
+      "study": {"design": "Behavioral experiment", "n": "Not stated in published abstract"},
+      "evidence": [
+        {"source": "contagion19", "quote": "we find that anti-social behavior is generally more contagious than pro-social behavior.", "location": "Published abstract (JEP, via RePEc)"},
+        {"source": "contagion19", "quote": "social proximity amplifies the contagion of anti-social behavior more strongly than the contagion of pro-social behavior.", "location": "Published abstract"},
+        {"source": "contagion19", "quote": "Anti-social individuals are also most susceptible to the behavioral contagion of other anti-social peers.", "location": "Published abstract"},
+        {"source": "prox22", "quote": "With social proximity, participants conform to both types of observed behaviors, thus halting the erosion of compliance.", "location": "Published version of record (GEB 2022, OA), abstract"}
+      ]
+    },
+    {
+      "id": "dimant-deviant-choice",
+      "format": "choice",
+      "track": "Business",
+      "concept": "Weak sanctions",
+      "title": "Small fine, which message?",
+      "scene": "In a trust game, researchers added a weak penalty for returning too little, alone or with a message about what most others do or what most think is right. The cost of complying also varied.",
+      "question": "Which combination raised reciprocity?",
+      "options": [
+        "Weak penalty alone",
+        "Norm message alone",
+        "Penalty plus \"most think it's right,\" cheap compliance",
+        "Penalty plus \"most others comply,\" costly compliance"
+      ],
+      "answer": 2,
+      "answerTitle": "Penalty plus normative message, only when compliance is cheap",
+      "explain": "Neither weak punishment nor norm information alone increased reciprocity. Together, weak punishment and normative information raised it when compliance was cheap; with costly compliance, punishment plus empirical information could backfire.",
+      "implication": "When a sanction is modest and compliance is costly, do not justify it with \"everyone complies\"; explain why the rule is right.",
+      "boundary": "Lab trust game with a weak penalty and generic norm messages; strong sanctions and real team norms were not tested.",
+      "sources": ["deviant21"],
+      "follow": [
+        {"q": "Why did the costly case backfire?", "a": "Additional experiments attribute it to the punishment being perceived as unjustified, at least by some people."},
+        {"q": "Did the penalty work on its own?", "a": "No. In isolation, neither weak punishment nor empirical or normative information increased reciprocal behavior."},
+        {"q": "How many conditions were tested?", "a": "Six, systematically combining whether weak punishment existed with no norm information, empirical information or normative information."}
+      ],
+      "study": {"design": "Lab experiment (trust game)", "n": "Six conditions; size not confirmed in published text read"},
+      "evidence": [
+        {"source": "deviant21", "quote": "We show that in isolation, neither weak punishment nor empirical/normative information increase prosocial, reciprocal behavior.", "location": "Published abstract (JEBO, via RePEc)"},
+        {"source": "deviant21", "quote": "reciprocity significantly increases when normative information and weak punishment are combined, but only when compliance is relatively cheap.", "location": "Published abstract"},
+        {"source": "deviant21", "quote": "When compliance is more costly, we find that the combination of punishment and generic empirical information about others' conformity can have detrimental effects.", "location": "Published abstract"},
+        {"source": "deviant21", "quote": "this negative effect can be attributed to the punishment being perceived as unjustified, at least in some individuals.", "location": "Published abstract"},
+        {"source": "deviant21", "quote": "Across six conditions, we systematically vary the combination of the existence of weak punishment and norm information.", "location": "Published abstract"}
+      ]
+    },
+    {
+      "id": "dimant-enforcers-rank",
+      "format": "rank",
+      "track": "Business",
+      "concept": "Whistle-blowing",
+      "title": "Who gets reported for bribery?",
+      "scene": "US adults read about a coworker accepting a bribe and chose how likely they were to report it. The bribe either created inequity or restored equity; half also saw norm information.",
+      "question": "Rank the four cases from highest to lowest reporting probability.",
+      "options": [
+        "Inequity, with norm information",
+        "Inequity, no norm information",
+        "Equity, with norm information",
+        "Equity, no norm information"
+      ],
+      "rankAnswer": [0, 1, 2, 3],
+      "rankLabel": "Average chosen probability of reporting",
+      "rankValues": ["82.8%", "73.3%", "67.2%", "57.9%"],
+      "answerTitle": "Inequity and norm information both raised reporting",
+      "explain": "Norm information raised reporting from 73.3% to 82.8% when the bribe created inequity (P < 0.005) and from 57.9% to 67.2% when it restored equity (P = 0.074).",
+      "implication": "Give investigators explicit sanction guidelines; short norm statements and the perceived fairness of the gain shift how harshly they judge.",
+      "boundary": "Hypothetical vignette with 225 US adults; the paper's main behavioral study used small monetary punishments.",
+      "sources": ["enforcers23"],
+      "follow": [
+        {"q": "Did the behavioral study agree?", "a": "Yes. Lies that created inequity drew 52.8% of the maximum punishment vs 43.6% for lies that achieved equity (P < 0.001)."},
+        {"q": "Does the size of the lie matter?", "a": "Yes. The smallest lie drew 44.7% of maximum punishment, and each larger step added about 10 percentage points."},
+        {"q": "When do norm messages work best?", "a": "Study 3 found norm perceptions are malleable and norm-nudges are most effective when existing norms are ambiguous."}
+      ],
+      "study": {"design": "Vignette experiment (Study 2)", "n": "225 US adults across 10 states"},
+      "evidence": [
+        {"source": "enforcers23", "quote": "(82.8% vs. 73.3%; P < 0.005)", "location": "Published version of record (PNAS Nexus, PMC10360164), Study 2 results, inequity scenario"},
+        {"source": "enforcers23", "quote": "(67.2% vs. 57.9%; P = 0.074)", "location": "Published version of record, Study 2 results, equity scenario"},
+        {"source": "enforcers23", "quote": "bribe acceptance (akin to cheating) and whistle-blowing (similar to punishing) in a corporate context", "location": "Published version of record, Study 2 design"},
+        {"source": "enforcers23", "quote": "We collected a general population sample of n=225 in person through research assistants across 10 US states.", "location": "Published version of record, Study 2 design"},
+        {"source": "enforcers23", "quote": "the share of punishment for lies that achieve equity is 43.6% ... 9.2 percentage points higher, at 52.8%", "location": "Published version of record, Study 1 results (P < 0.001)"},
+        {"source": "enforcers23", "quote": "the smallest possible lie (size = 1) is only assigned a share of punishment of 44.7% ... increases by about 10 percentage points", "location": "Published version of record, Study 1 results"},
+        {"source": "enforcers23", "quote": "We find that norm perceptions are malleable and norm-nudges are most effective when preexisting norms are ambiguous.", "location": "Published abstract"}
+      ]
+    },
+    {
+      "id": "dimant-observability-choice",
+      "format": "choice",
+      "track": "Culture & Society",
+      "concept": "Being watched",
+      "title": "Just let colleagues see it",
+      "scene": "To boost charity giving, an experiment let another person observe each donation decision. In some versions the observer simply watched, with no rewards or consequences attached.",
+      "question": "What did being watched, with nothing attached, do to giving?",
+      "options": [
+        "Raised giving sharply",
+        "Little positive effect; it could even backfire",
+        "Raised giving only among the best-paid",
+        "No effect of any kind"
+      ],
+      "answer": 1,
+      "answerTitle": "Watching alone did little and could backfire",
+      "explain": "Observability alone had very little positive effect and could even backfire, a pattern the authors trace to inequality aversion. Making norms more salient reduced the backfire and raised pro-social behavior.",
+      "implication": "Do not rely on visibility alone in giving or compliance drives; pair it with a clear statement of what is expected.",
+      "boundary": "Experimental charity-giving games; observers were study participants, not colleagues with ongoing relationships.",
+      "sources": ["observ21"],
+      "follow": [
+        {"q": "Why would being watched backfire?", "a": "The authors find that inequality aversion drives the backfiring of observability."},
+        {"q": "What fixed it?", "a": "Increasing the salience of norms mitigated the unintended consequences and increased pro-social behavior."},
+        {"q": "Do people care about being observed at all?", "a": "Yes. Individuals were sensitive to the observability of their actions; observation alone just rarely moved behavior in the intended direction."}
+      ],
+      "study": {"design": "Experiments", "n": "Not confirmed in published text read"},
+      "evidence": [
+        {"source": "observ21", "quote": "individuals are sensitive to the observability of their actions", "location": "Published abstract (JEBO, via RePEc)"},
+        {"source": "observ21", "quote": "observability alone has very little positive effect and can even backfire", "location": "Published abstract"},
+        {"source": "observ21", "quote": "inequality aversion drives the observed backfiring of observability", "location": "Published abstract"},
+        {"source": "observ21", "quote": "increasing the salience of norms can mitigate unintended consequences and successfully increase pro-sociality", "location": "Published abstract"}
+      ]
+    },
+    {
+      "id": "dimant-motivated-estimate",
+      "format": "estimate",
+      "track": "Culture & Society",
+      "concept": "Shopping for permission",
+      "title": "Whose example do you pick?",
+      "scene": "Before a game where lying paid, US online participants chose whose information to see: a peer reporting more lenient behavior or views on lying, or a stricter one. No political labels were shown.",
+      "question": "How often did they choose the more lenient peer's information?",
+      "estimate": {"target": 54.6, "min": 0, "max": 100, "tolerance": 6, "label": "Share choosing lenient information", "unit": "%"},
+      "answerTitle": "About 55%, a self-serving tilt",
+      "explain": "Without identity cues, the share of lenient (above-median) information chosen was 54.61% for peers' behavior and 54.53% for peers' views, a self-serving bias in source selection.",
+      "implication": "When employees pick their own benchmarks or peer examples, default them to representative norm data instead.",
+      "boundary": "US MTurk participants, an undetectable lying game, and partisan identity as the group cue; workplace teams were not studied.",
+      "sources": ["motivated24"],
+      "follow": [
+        {"q": "Did political identity change the choice?", "a": "Yes. With partisan labels, people chose in-group information 62.44% of the time when it was more lenient vs 58.29% when it was stricter."},
+        {"q": "Did the information change behavior?", "a": "Yes. Exposure to information suggesting lying is more socially acceptable increased lying. Views on what is right moved only with information about peers' views, not their actions."},
+        {"q": "How large were the samples?", "a": "Two experiments: 1,945 participants who chose their sources and 2,414 who were assigned information."}
+      ],
+      "study": {"design": "Online experiments", "n": "4,359 US MTurk participants (1,945 + 2,414)"},
+      "evidence": [
+        {"source": "motivated24", "quote": "the average share of above-median information consumed was 54.61%", "location": "Published version of record (EER, OA), Control, Emp-Info; Norm-Info 54.53%"},
+        {"source": "motivated24", "quote": "participants selected in-group information 62.44% of the times ... 58.29% of the times when it was associated with stricter behavior", "location": "Published version of record, Group Identity results"},
+        {"source": "motivated24", "quote": "Our findings reveal a self-serving bias in the selection of information sources with a preference for lenient sources", "location": "Published abstract"},
+        {"source": "motivated24", "quote": "We observe that being exposed to information that suggests lying is more socially acceptable increases lying behavior.", "location": "Published abstract"},
+        {"source": "motivated24", "quote": "while people's normative expectations are not swayed by observing their peers' actions ... influenced by information about what peers believe is the right thing to do", "location": "Published abstract"},
+        {"source": "motivated24", "quote": "This is explored through two experiments (N=1,945; N=2,414)", "location": "Published abstract"},
+        {"source": "motivated24", "quote": "We recruited participants located in the United States through Amazon Mechanical Turk for our online experiment", "location": "Published version of record, Experiment 1 design"}
+      ]
+    },
+    {
+      "id": "dimant-conspiracy-choice",
+      "format": "choice",
+      "track": "Culture & Society",
+      "concept": "Engagement incentives",
+      "title": "Sharing what you don't believe",
+      "scene": "In a multi-round sharing task, participants chose whether to share factual news or conspiracy theories, including ones they knew were false. The social feedback each kind of post earned varied.",
+      "question": "What drove sharing of conspiracy theories people knew were false?",
+      "options": [
+        "Inattention: they missed that the content was false",
+        "Expected and received social engagement",
+        "Low digital literacy among sharers",
+        "Nothing; people shared only what they believed"
+      ],
+      "answer": 1,
+      "answerTitle": "Expected engagement drove sharing of known falsehoods",
+      "explain": "Across a pilot and three preregistered experiments, people expected conspiracy theories to draw more engagement than factual news, and shared more of them when they got more feedback, even knowing they were false.",
+      "implication": "Do not reward internal posts by raw engagement; recognize accuracy and sourcing, especially when reorganization rumors circulate.",
+      "boundary": "Experiments with a simulated sharing task and conspiracy content; internal company channels and real reputations were not studied.",
+      "sources": ["beyond23"],
+      "follow": [
+        {"q": "Did people care about accuracy at all?", "a": "Yes, but in addition to accuracy, people seemed to value social engagement, and traded one off against the other."},
+        {"q": "How fast did feedback matter?", "a": "People were very sensitive to feedback in the multi-round task: more feedback for conspiracy posts than for factual news raised conspiracy sharing."},
+        {"q": "How was this tested?", "a": "A pilot study and three preregistered experiments, reported in the Journal of Experimental Social Psychology."}
+      ],
+      "study": {"design": "Pilot plus three preregistered experiments", "n": "Not stated in published abstract"},
+      "evidence": [
+        {"source": "beyond23", "quote": "Across a pilot study and three preregistered experiments ... people knowingly shared conspiracy theories to advance social motives.", "location": "Published abstract (JESP, ScienceDirect abstract page)"},
+        {"source": "beyond23", "quote": "In addition to accuracy, people seemed to value social engagement.", "location": "Published abstract"},
+        {"source": "beyond23", "quote": "people not only expected most conspiracy theories to generate greater social engagement than factual news", "location": "Published abstract"},
+        {"source": "beyond23", "quote": "When they received greater social feedback for sharing conspiracy theories than factual news ... even when they knew these theories to be false", "location": "Published abstract"},
+        {"source": "beyond23", "quote": "we found that people were very sensitive to the social feedback they received", "location": "Published abstract"},
+        {"source": "beyond23", "quote": "People readily share conspiracy theories that they know to be untrue.", "location": "Published highlights"}
+      ]
+    },
+    {
+      "id": "dimant-opioid-forecast",
+      "format": "forecast",
+      "track": "Business",
+      "concept": "Incentive follow-through",
+      "title": "Cards on top of cash",
+      "scene": "A program paid US veterans cash to return unused opioid pills. Researchers randomly added two reminder cards built on timely reminders, planning prompts and loss framing.",
+      "question": "How likely is it that the cards cut the cost per pill returned?",
+      "forecast": {"claim": "Adding the reminder cards lowered the program's cost per pill returned.", "truth": true},
+      "answerTitle": "Cards raised returns and lowered cost per pill",
+      "explain": "The cards increased both the likelihood that patients returned unused pills and the number returned, and lowered cost per pill returned and per participant who returned pills.",
+      "implication": "Before raising an incentive, test cheap, well-timed reminders that help people act on the incentive they already have.",
+      "boundary": "US veterans in one cash buyback program for opioid pills; the cards added to, not replaced, the cash incentive.",
+      "sources": ["opioid26"],
+      "follow": [
+        {"q": "What did the cards do?", "a": "They combined timely reminders, implementation prompts that help people plan the return, and loss framing of the cash on offer."},
+        {"q": "Did more people return pills, or just more pills?", "a": "Both. The cards raised the likelihood of returning unused pills and the number of pills returned."},
+        {"q": "How strong is the design?", "a": "It was a pre-registered field experiment with US veterans, published in Health Economics."}
+      ],
+      "study": {"design": "Pre-registered field experiment", "n": "US veterans (N not confirmed in published text read)"},
+      "evidence": [
+        {"source": "opioid26", "quote": "the reminder cards increase both the likelihood that patients return unused pills", "location": "Published abstract (Health Economics, via Crossref)"},
+        {"source": "opioid26", "quote": "low-cost behavioral messaging can meaningfully enhance the effectiveness of existing financial incentive programs", "location": "Published abstract"},
+        {"source": "opioid26", "quote": "Abstract states the cards also lowered cost per pill returned and cost per participant who returned pills; pre-registered field experiment with U.S. Veterans using timely reminders, implementation prompts, and loss framing", "location": "Published abstract (Europe PMC record PMID 41834481; read in full, reported here as paraphrase because the fetch tool limited verbatim length)"}
+      ]
+    },
+    {
+      "id": "dimant-hate-choice",
+      "format": "choice",
+      "track": "Culture & Society",
+      "concept": "Partisan cooperation",
+      "title": "Why won't they cooperate?",
+      "scene": "Across 15 behavioral experiments with over 8,600 people, participants decided how much to help, harm or cooperate with others who supported or opposed Donald Trump.",
+      "question": "What mainly explained weaker cooperation across the political divide?",
+      "options": [
+        "Grim expectations that the other side won't cooperate",
+        "Genuine unwillingness to cooperate with opponents",
+        "Stronger love for one's own side",
+        "Too little information about the other side"
+      ],
+      "answer": 0,
+      "answerTitle": "Pessimistic expectations, not unwillingness, drove the gap",
+      "explain": "The intergroup conflict was attributed to grim expectations about the opposing faction's cooperativeness, not actual unwillingness to cooperate. Out-group hate appeared in behavior; in-group love appeared in perceptions.",
+      "implication": "In politically mixed teams, share evidence that colleagues on the other side do cooperate before launching joint projects.",
+      "boundary": "US polarization around Donald Trump in incentivized experiments, compared with other identities; ongoing coworker relationships were not studied.",
+      "sources": ["hate23"],
+      "follow": [
+        {"q": "Did nudges close the gap?", "a": "No. Defaults and norm-nudges improved prosociality but were ineffective in closing the polarization gap."},
+        {"q": "Is love or hate the stronger force?", "a": "It depends on the domain: in-group love showed up in perceptions, while out-group hate showed up in how people helped, harmed and cooperated."},
+        {"q": "How large is the evidence base?", "a": "Five preregistered studies with 15 well-powered experiments and over 8,600 participants, compared with other political and nonpolitical identities."}
+      ],
+      "study": {"design": "Five preregistered studies, 15 experiments", "n": "Over 8,600 participants"},
+      "evidence": [
+        {"source": "hate23", "quote": "which can be attributed to one's grim expectations regarding cooperativeness of the opposing faction, rather than one's actual unwillingness to cooperate.", "location": "Published abstract (Management Science, via RePEc)"},
+        {"source": "hate23", "quote": "ingroup-love occurs in the perceptional domain whereas outgroup-hate occurs in the behavioral domain (how one helps/harms/cooperates with others).", "location": "Published abstract"},
+        {"source": "hate23", "quote": "comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.", "location": "Published abstract"},
+        {"source": "hate23", "quote": "The tested interventions improve prosociality but are ineffective in closing the polarization gap.", "location": "Published abstract"},
+        {"source": "hate23", "quote": "I quantify this phenomenon via five preregistered studies in the context of Donald J. Trump", "location": "Published abstract"}
+      ]
+    },
+    {
+      "id": "dimant-polarizednorms-choice",
+      "format": "choice",
+      "track": "Culture & Society",
+      "concept": "Polarized norms",
+      "title": "Pick the middle or a side?",
+      "scene": "A representative US sample played a strategic game after seeing how others behaved: tightly clustered, widely spread, or split into two extreme camps.",
+      "question": "In the split, polarized setting, what did most people do?",
+      "options": [
+        "Chose the safe middle option",
+        "Chose an extreme option despite strategic risk",
+        "Copied the average behavior",
+        "Behaved as they did in tight settings"
+      ],
+      "answer": 1,
+      "answerTitle": "Most picked extremes, accepting strategic risk",
+      "explain": "In polarized environments, most people preferred extreme actions that exposed them to considerable strategic risk over intermediate actions that minimized it. Loose norms produced more varied behavior.",
+      "implication": "Report the spread of team behavior, not only the average; a split norm pulls people toward one camp or the other.",
+      "boundary": "Experimental strategic game with a representative US sample; real team norms and productivity were not measured.",
+      "sources": ["norms24"],
+      "follow": [
+        {"q": "What do tight, loose and polarized mean?", "a": "Tight means low variance in others' behavior, loose means high variance, and polarized means u-shaped behavior clustered at two extremes."},
+        {"q": "Whose behavior is hardest to predict?", "a": "In loose and polarized environments, personal traits and values played a larger role in what people actually did."},
+        {"q": "Why look beyond the average?", "a": "Organizations increasingly use descriptive norms to nudge behavior; the authors show the whole distribution of peer behavior, not just its mean, shapes reactions."}
+      ],
+      "study": {"design": "Experiment", "n": "Representative US sample"},
+      "evidence": [
+        {"source": "norms24", "quote": "In polarized environments, most individuals prefer extreme actions, which expose them to considerable strategic risk, to intermediate actions that minimize such risk.", "location": "Published abstract (Management Science, via RePEc/Crossref)"},
+        {"source": "norms24", "quote": "Loose norms generate greater behavioral variance and polarization generates polarized responses.", "location": "Published abstract"},
+        {"source": "norms24", "quote": "tight (i.e., characterized by low behavioral variance) loose (i.e., characterized by high behavioral variance), and polarized (i.e., characterized by u-shaped behavior) environments.", "location": "Published abstract"},
+        {"source": "norms24", "quote": "in polarized and loose environments, personal traits and values play a larger role in determining actual behavior.", "location": "Published abstract"},
+        {"source": "norms24", "quote": "Organizations are increasingly using information about descriptive norms to nudge positive behavior change.", "location": "Published abstract"},
+        {"source": "norms24", "quote": "Using a representative sample of the U.S. population, we experimentally investigate", "location": "Published abstract"}
+      ]
+    }
+  ]
+}

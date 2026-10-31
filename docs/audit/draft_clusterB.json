@@ -1,0 +1,1573 @@
+{
+ "sources": {
+  "gordon19": {
+   "id": "gordon19",
+   "authors": "Gordon et al.",
+   "authors_full": "Brett R. Gordon, Florian Zettelmeyer, Neha Bhargava, Dan Chapsky",
+   "year": 2019,
+   "title": "A Comparison of Approaches to Advertising Measurement: Evidence from Big Field Experiments at Facebook",
+   "venue": "Marketing Science",
+   "volume": "38(2)",
+   "pages": "193-225",
+   "doi": "10.1287/mksc.2018.1135",
+   "url": "https://doi.org/10.1287/mksc.2018.1135",
+   "kind": "peer-reviewed",
+   "takeaway": "Observational estimates of ad lift often missed the randomized lift by a factor of three, mostly overstating it.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (INFORMS Articles in Advance version) plus Crossref metadata; verified in earlier audit pass (new_sources.json)",
+    "text_url": "https://doi.org/10.1287/mksc.2018.1135"
+   },
+   "flags": [
+    "Articles-in-Advance pagination differs from print; print 38(2):193-225 per Crossref."
+   ]
+  },
+  "lewis15": {
+   "id": "lewis15",
+   "authors": "Lewis & Rao",
+   "authors_full": "Randall A. Lewis, Justin M. Rao",
+   "year": 2015,
+   "title": "The Unfavorable Economics of Measuring the Returns to Advertising",
+   "venue": "The Quarterly Journal of Economics",
+   "volume": "130(4)",
+   "pages": "1941-1973",
+   "doi": "10.1093/qje/qjv023",
+   "url": "https://doi.org/10.1093/qje/qjv023",
+   "kind": "peer-reviewed",
+   "takeaway": "Across 25 large ad experiments, the median ROI confidence interval was over 100 percentage points wide.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (Crossref record)",
+    "text_url": "https://api.crossref.org/works/10.1093/qje/qjv023"
+   }
+  },
+  "thaler04": {
+   "id": "thaler04",
+   "authors": "Thaler & Benartzi",
+   "authors_full": "Richard H. Thaler, Shlomo Benartzi",
+   "year": 2004,
+   "title": "Save More Tomorrow: Using Behavioral Economics to Increase Employee Saving",
+   "venue": "Journal of Political Economy",
+   "volume": "112(S1)",
+   "pages": "S164-S187",
+   "doi": "10.1086/380085",
+   "url": "https://doi.org/10.1086/380085",
+   "kind": "peer-reviewed",
+   "takeaway": "Precommitting future raises to saving lifted participants' savings rates from 3.5% to 13.6% over 40 months.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (EconPapers record of the JPE article); a 2003 working-paper draft was also read for design context but not used for numbers",
+    "text_url": "https://econpapers.repec.org/RePEc:ucp:jpolec:v:112:y:2004:i:s1:p:s164-s187"
+   },
+   "flags": [
+    "First implementation is a non-randomized company rollout."
+   ]
+  },
+  "buehler94": {
+   "id": "buehler94",
+   "authors": "Buehler, Griffin & Ross",
+   "authors_full": "Roger Buehler, Dale Griffin, Michael Ross",
+   "year": 1994,
+   "title": "Exploring the \"planning fallacy\": Why people underestimate their task completion times",
+   "venue": "Journal of Personality and Social Psychology",
+   "volume": "67(3)",
+   "pages": "366-381",
+   "doi": "10.1037/0022-3514.67.3.366",
+   "url": "https://doi.org/10.1037/0022-3514.67.3.366",
+   "kind": "peer-reviewed",
+   "takeaway": "Only 29.7% of students finished their thesis by their best-guess date; they predicted 33.9 days and took 55.5.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (scanned published article, OCR); verified in earlier audit pass (new_sources.json)",
+    "text_url": "https://doi.org/10.1037/0022-3514.67.3.366"
+   }
+  },
+  "bloom15": {
+   "id": "bloom15",
+   "authors": "Bloom et al.",
+   "authors_full": "Nicholas Bloom, James Liang, John Roberts, Zhichun Jenny Ying",
+   "year": 2015,
+   "title": "Does Working from Home Work? Evidence from a Chinese Experiment",
+   "venue": "The Quarterly Journal of Economics",
+   "volume": "130(1)",
+   "pages": "165-218",
+   "doi": "10.1093/qje/qju032",
+   "url": "https://doi.org/10.1093/qje/qju032",
+   "kind": "peer-reviewed",
+   "takeaway": "Randomized home working raised call-center performance 13% and roughly halved attrition.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (Crossref record)",
+    "text_url": "https://api.crossref.org/works/10.1093/qje/qju032"
+   }
+  },
+  "kahneman90": {
+   "id": "kahneman90",
+   "authors": "Kahneman, Knetsch & Thaler",
+   "authors_full": "Daniel Kahneman, Jack L. Knetsch, Richard H. Thaler",
+   "year": 1990,
+   "title": "Experimental Tests of the Endowment Effect and the Coase Theorem",
+   "venue": "Journal of Political Economy",
+   "volume": "98(6)",
+   "pages": "1325-1348",
+   "doi": "10.1086/261737",
+   "url": "https://doi.org/10.1086/261737",
+   "kind": "peer-reviewed",
+   "takeaway": "Mug owners demanded a median $7.12 to sell, while buyers paid $2.87 and choosers valued it at $3.12.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (published JPE article, OCR copy on MIT course site)",
+    "text_url": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_et_al_1990_Experimental_tests.pdf"
+   }
+  },
+  "bloom24": {
+   "id": "bloom24",
+   "authors": "Bloom, Han & Liang",
+   "authors_full": "Nicholas Bloom, Ruobing Han, James Liang",
+   "year": 2024,
+   "title": "Hybrid working from home improves retention without damaging performance",
+   "venue": "Nature",
+   "volume": "630(8018)",
+   "pages": "920-925",
+   "doi": "10.1038/s41586-024-07500-2",
+   "url": "https://doi.org/10.1038/s41586-024-07500-2",
+   "kind": "peer-reviewed",
+   "takeaway": "Two home days a week cut quits by one-third with no difference in performance reviews or promotions over two years.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (Crossref) and full text (nature.com, open access)",
+    "text_url": "https://www.nature.com/articles/s41586-024-07500-2"
+   }
+  },
+  "gneezy00": {
+   "id": "gneezy00",
+   "authors": "Gneezy & Rustichini",
+   "authors_full": "Uri Gneezy, Aldo Rustichini",
+   "year": 2000,
+   "title": "A Fine is a Price",
+   "venue": "The Journal of Legal Studies",
+   "volume": "29(1)",
+   "pages": "1-17",
+   "doi": "10.1086/468061",
+   "url": "https://doi.org/10.1086/468061",
+   "kind": "peer-reviewed",
+   "takeaway": "A small fine for late day-care pickups increased lateness, which did not fall after the fine was removed.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (published JLS article, author-hosted PDF)",
+    "text_url": "https://rady.ucsd.edu/_files/faculty-research/uri-gneezy/fine.pdf"
+   }
+  },
+  "bertrand10": {
+   "id": "bertrand10",
+   "authors": "Bertrand et al.",
+   "authors_full": "Marianne Bertrand, Dean Karlan, Sendhil Mullainathan, Eldar Shafir, Jonathan Zinman",
+   "year": 2010,
+   "title": "What's Advertising Content Worth? Evidence from a Consumer Credit Marketing Field Experiment",
+   "venue": "The Quarterly Journal of Economics",
+   "volume": "125(1)",
+   "pages": "263-305",
+   "doi": "10.1162/qjec.2010.125.1.263",
+   "url": "https://doi.org/10.1162/qjec.2010.125.1.263",
+   "kind": "peer-reviewed",
+   "takeaway": "Simple ad features, such as a photo of an attractive woman, raised loan demand about as much as a 25% interest-rate cut.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (EconPapers record of the QJE article); country and lender from J-PAL project page",
+    "text_url": "https://econpapers.repec.org/RePEc:oup:qjecon:v:125:y:2010:i:1:p:263-306."
+   }
+  },
+  "iyengar00": {
+   "id": "iyengar00",
+   "authors": "Iyengar & Lepper",
+   "authors_full": "Sheena S. Iyengar, Mark R. Lepper",
+   "year": 2000,
+   "title": "When choice is demotivating: Can one desire too much of a good thing?",
+   "venue": "Journal of Personality and Social Psychology",
+   "volume": "79(6)",
+   "pages": "995-1006",
+   "doi": "10.1037/0022-3514.79.6.995",
+   "url": "https://doi.org/10.1037/0022-3514.79.6.995",
+   "kind": "peer-reviewed",
+   "takeaway": "In a grocery tasting booth, about 30% of shoppers bought jam after seeing 6 flavors versus 3% after seeing 24.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (published JPSP article, course-hosted PDF)",
+    "text_url": "https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20&%20Lepper%20(2000).pdf"
+   },
+   "flags": [
+    "Contested on average: Scheibehenne, Greifeneder & Todd (2010) meta-analysis finds a mean effect near zero. Used only in an item about that contest."
+   ]
+  },
+  "scheib10": {
+   "id": "scheib10",
+   "authors": "Scheibehenne, Greifeneder & Todd",
+   "authors_full": "Benjamin Scheibehenne, Rainer Greifeneder, Peter M. Todd",
+   "year": 2010,
+   "title": "Can There Ever Be Too Many Options? A Meta-Analytic Review of Choice Overload",
+   "venue": "Journal of Consumer Research",
+   "volume": "37(3)",
+   "pages": "409-425",
+   "doi": "10.1086/651235",
+   "url": "https://doi.org/10.1086/651235",
+   "kind": "peer-reviewed",
+   "takeaway": "Across 50 experiments, the mean choice-overload effect was virtually zero, with large variation between studies.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (published JCR article, author-hosted PDF)",
+    "text_url": "https://abcwest.cogs.indiana.edu/pmwiki/pdf/scheibehenne.options.2010.pdf"
+   }
+  },
+  "kristal20": {
+   "id": "kristal20",
+   "authors": "Kristal et al.",
+   "authors_full": "Ariella S. Kristal, Ashley V. Whillans, Max H. Bazerman, Francesca Gino, Lisa L. Shu, Nina Mazar, Dan Ariely",
+   "year": 2020,
+   "title": "Signing at the beginning versus at the end does not decrease dishonesty",
+   "venue": "Proceedings of the National Academy of Sciences",
+   "volume": "117(13)",
+   "pages": "7103-7107",
+   "doi": "10.1073/pnas.1911695117",
+   "url": "https://doi.org/10.1073/pnas.1911695117",
+   "kind": "peer-reviewed",
+   "takeaway": "Six studies with 5,000+ participants found no effect of signing first on honest reporting.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (Europe PMC record) plus Crossref metadata",
+    "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1073/pnas.1911695117&resultType=core&format=json"
+   },
+   "flags": [
+    "Crossref lists a correction notice (doi:10.1073/pnas.2610441123, 29 June 2026); its body text could not be read, so what it changes is unknown."
+   ]
+  },
+  "shu12": {
+   "id": "shu12",
+   "authors": "Shu et al.",
+   "authors_full": "Lisa L. Shu, Nina Mazar, Francesca Gino, Dan Ariely, Max H. Bazerman",
+   "year": 2012,
+   "title": "Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end",
+   "venue": "Proceedings of the National Academy of Sciences",
+   "volume": "109(38)",
+   "pages": "15197-15200",
+   "doi": "10.1073/pnas.1209746109",
+   "url": "https://doi.org/10.1073/pnas.1209746109",
+   "kind": "peer-reviewed",
+   "takeaway": "Claimed that signing an honesty statement first reduced dishonesty; retracted by PNAS in 2021.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Crossref record (title prefixed RETRACTED; retraction notice doi:10.1073/pnas.2115397118, 13 Sep 2021)",
+    "text_url": "https://api.crossref.org/works/10.1073/pnas.1209746109"
+   },
+   "flags": [
+    "RETRACTED 13 September 2021 (doi:10.1073/pnas.2115397118). Cited only as the retracted original in a replication item."
+   ]
+  },
+  "card12": {
+   "id": "card12",
+   "authors": "Card et al.",
+   "authors_full": "David Card, Alexandre Mas, Enrico Moretti, Emmanuel Saez",
+   "year": 2012,
+   "title": "Inequality at Work: The Effect of Peer Salaries on Job Satisfaction",
+   "venue": "American Economic Review",
+   "volume": "102(6)",
+   "pages": "2981-3003",
+   "doi": "10.1257/aer.102.6.2981",
+   "url": "https://doi.org/10.1257/aer.102.6.2981",
+   "kind": "peer-reviewed",
+   "takeaway": "Learning peers' pay lowered satisfaction and raised job search among below-median earners; above-median earners were unaffected.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (Crossref and EconPapers records)",
+    "text_url": "https://econpapers.repec.org/RePEc:aea:aecrev:v:102:y:2012:i:6:p:2981-3003"
+   }
+  },
+  "breza18": {
+   "id": "breza18",
+   "authors": "Breza, Kaur & Shamdasani",
+   "authors_full": "Emily Breza, Supreet Kaur, Yogita Shamdasani",
+   "year": 2018,
+   "title": "The Morale Effects of Pay Inequality",
+   "venue": "The Quarterly Journal of Economics",
+   "volume": "133(2)",
+   "pages": "611-663",
+   "doi": "10.1093/qje/qjx041",
+   "url": "https://doi.org/10.1093/qje/qjx041",
+   "kind": "peer-reviewed",
+   "takeaway": "Unjustified-looking pay gaps cut output by 0.45 SD and attendance by 18 points; visibly justified gaps had no effect.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (EconPapers/IDEAS records of the QJE article)",
+    "text_url": "https://econpapers.repec.org/RePEc:oup:qjecon:v:133:y:2018:i:2:p:611-663."
+   }
+  },
+  "bohnet16": {
+   "id": "bohnet16",
+   "authors": "Bohnet, van Geen & Bazerman",
+   "authors_full": "Iris Bohnet, Alexandra van Geen, Max Bazerman",
+   "year": 2016,
+   "title": "When Performance Trumps Gender Bias: Joint vs. Separate Evaluation",
+   "venue": "Management Science",
+   "volume": "62(5)",
+   "pages": "1225-1234",
+   "doi": "10.1287/mnsc.2015.2186",
+   "url": "https://doi.org/10.1287/mnsc.2015.2186",
+   "kind": "peer-reviewed",
+   "takeaway": "Evaluators relied more on individual performance and less on gender stereotypes when judging candidates jointly.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (Crossref and EconPapers records); author manuscript read for design context only, numbers not used because its match to the version of record is unconfirmed",
+    "text_url": "https://econpapers.repec.org/RePEc:inm:ormnsc:v:62:y:2016:i:5:p:1225-1234"
+   }
+  },
+  "johnson04": {
+   "id": "johnson04",
+   "authors": "Johnson & Goldstein",
+   "authors_full": "Eric J. Johnson, Daniel G. Goldstein",
+   "year": 2004,
+   "title": "Defaults and Donation Decisions",
+   "venue": "Transplantation",
+   "volume": "78(12)",
+   "pages": "1713-1716",
+   "doi": "10.1097/01.TP.0000149788.10382.B2",
+   "url": "https://doi.org/10.1097/01.TP.0000149788.10382.B2",
+   "kind": "peer-reviewed",
+   "takeaway": "Organ-donor consent was about twice as high under opt-out as opt-in, and active choice matched opt-out.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (pre-pagination journal copy hosted by hods.org; pages shown as placeholders)",
+    "text_url": "https://hods.org/pdf/Defaults%20and%20Donation%20Decisions.pdf"
+   },
+   "flags": [
+    "Cited instead of Johnson & Goldstein (2003) Science 302:1338-1339 because the Science text could not be accessed; exact opt-in/opt-out percentages appear only in a figure and are not used."
+   ]
+  },
+  "benartzi01": {
+   "id": "benartzi01",
+   "authors": "Benartzi & Thaler",
+   "authors_full": "Shlomo Benartzi, Richard H. Thaler",
+   "year": 2001,
+   "title": "Naive Diversification Strategies in Defined Contribution Saving Plans",
+   "venue": "American Economic Review",
+   "volume": "91(1)",
+   "pages": "79-98",
+   "doi": "10.1257/aer.91.1.79",
+   "url": "https://doi.org/10.1257/aer.91.1.79",
+   "kind": "peer-reviewed",
+   "takeaway": "Some investors split contributions evenly across offered funds, so stock exposure tracks the share of stock funds on the menu.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (aeaweb.org)",
+    "text_url": "https://www.aeaweb.org/articles?id=10.1257/aer.91.1.79"
+   }
+  }
+ },
+ "challenges": [
+  {
+   "id": "bz01",
+   "track": "AI × Business",
+   "format": "causal",
+   "concept": "Ad lift measurement",
+   "title": "The lift that wasn't there",
+   "scene": "Your agency compares Facebook users who saw your campaign with users who did not. After matching on age and gender, it reports a 222% conversion lift. A randomized holdout ran at the same time.",
+   "question": "What lift did the randomized holdout show?",
+   "options": [
+    "About 222%: matching removed the bias",
+    "About 73%: matching overstated the lift threefold",
+    "About 316%: matching was too cautious",
+    "No lift: the campaign did nothing"
+   ],
+   "answer": 1,
+   "answerTitle": "The experiment found 73%, not 222%",
+   "explain": "In Study 4 the randomized lift was 73%, while exact matching on age and gender gave 222% and the naive exposed-versus-unexposed comparison 316%.",
+   "implication": "Keep a randomized holdout for major campaigns before trusting matched or platform-reported lift numbers.",
+   "boundary": "Fifteen US Facebook campaigns; observational methods sometimes underestimated lift, so the bias does not always run upward.",
+   "dag": {
+    "alt": "A random holdout determines ad exposure. Unobserved user activity drives both who sees the ad and who buys, so comparing exposed and unexposed users confounds the ad's effect on purchase.",
+    "height": 200,
+    "nodes": [
+     {
+      "id": "rand",
+      "label": "Random holdout",
+      "x": 70,
+      "y": 150
+     },
+     {
+      "id": "exp",
+      "label": "Ad exposure",
+      "x": 220,
+      "y": 100
+     },
+     {
+      "id": "buy",
+      "label": "Purchase",
+      "x": 430,
+      "y": 100
+     },
+     {
+      "id": "act",
+      "label": "User activity",
+      "x": 325,
+      "y": 30,
+      "hidden": true
+     }
+    ],
+    "edges": [
+     [
+      "rand",
+      "exp"
+     ],
+     [
+      "exp",
+      "buy",
+      "q"
+     ],
+     [
+      "act",
+      "exp"
+     ],
+     [
+      "act",
+      "buy"
+     ]
+    ]
+   },
+   "chart": {
+    "labels": [
+     "Naive comparison",
+     "Matched on age, gender",
+     "Randomized test"
+    ],
+    "values": [
+     316,
+     222,
+     73
+    ],
+    "unit": "%",
+    "highlight": 2,
+    "note": "Values reported in Gordon et al. (2019), Study 4."
+   },
+   "sources": [
+    "gordon19"
+   ],
+   "follow": [
+    {
+     "q": "How many experiments were compared?",
+     "a": "Fifteen US advertising RCTs run at Facebook, covering about 500 million user-experiment observations and 1.6 billion impressions."
+    },
+    {
+     "q": "Was Study 4 unusual?",
+     "a": "No. In half of the studies, the estimated percentage increase in purchases was off by a factor of three across all observational methods."
+    },
+    {
+     "q": "Do observational methods always overstate?",
+     "a": "Mostly, but not always. In some studies they significantly underestimated the randomized lift."
+    }
+   ],
+   "study": {
+    "design": "15 field RCTs compared with observational methods",
+    "n": "15 Facebook ad campaigns"
+   },
+   "evidence": [
+    {
+     "source": "gordon19",
+     "quote": "the ATT lift was 73%",
+     "location": "Study 4 results"
+    },
+    {
+     "source": "gordon19",
+     "quote": "yielding a lift of 222%",
+     "location": "Study 4, exact matching on age and gender"
+    },
+    {
+     "source": "gordon19",
+     "quote": "naive exposed-vs-unexposed lift 316% (as recorded in audit)",
+     "location": "Study 4"
+    },
+    {
+     "source": "gordon19",
+     "quote": "in half of our studies, the estimated percentage increase in purchase outcomes is off by a factor of three across all methods",
+     "location": "Abstract/conclusion"
+    },
+    {
+     "source": "gordon19",
+     "quote": "the observational methods we study mostly overestimate the RCT lift, although in some cases they can significantly underestimate RCT lift",
+     "location": "Conclusion"
+    },
+    {
+     "source": "gordon19",
+     "quote": "15 US advertising RCTs at Facebook (~500 million user-experiment observations, 1.6 billion impressions)",
+     "location": "Data section (audit summary)"
+    }
+   ]
+  },
+  {
+   "id": "bz02",
+   "track": "Business",
+   "format": "estimate",
+   "concept": "Ad ROI precision",
+   "title": "The noisy ROI test",
+   "scene": "Your CFO wants a randomized test to prove a digital campaign's return before renewing it. Individual customers' weekly sales swing wildly.",
+   "question": "Across 25 large ad experiments, how wide was the median ROI confidence interval?",
+   "estimate": {
+    "target": 100,
+    "min": 0,
+    "max": 300,
+    "tolerance": 30,
+    "label": "Median width of the ROI confidence interval",
+    "unit": " pp"
+   },
+   "answerTitle": "Over 100 percentage points wide",
+   "explain": "The median confidence interval on return on investment was over 100 percentage points wide, because individual sales are very noisy relative to ad effects.",
+   "implication": "Pool several experiments or measure lower-variance outcomes before asking one test to settle a campaign's ROI.",
+   "boundary": "Digital ads for major US retailers and brokerages; the experiments were unbiased, the limit was statistical precision.",
+   "sources": [
+    "lewis15"
+   ],
+   "follow": [
+    {
+     "q": "How much spending was tested?",
+     "a": "The 25 experiments represented $2.8 million in digital advertising expenditure."
+    },
+    {
+     "q": "How big would a decisive test be?",
+     "a": "With a coefficient of variation of sales around 10, which the authors call common, informative experiments can require more than 10 million person-weeks."
+    },
+    {
+     "q": "Does this mean RCTs are useless here?",
+     "a": "No. Randomization still removes selection bias; the problem is that ad effects are small relative to sales noise, so estimates are imprecise."
+    }
+   ],
+   "study": {
+    "design": "Randomized field experiments",
+    "n": "25 ad campaigns at US retailers and brokerages"
+   },
+   "evidence": [
+    {
+     "source": "lewis15",
+     "quote": "Twenty-five large field experiments with major U.S. retailers and brokerages",
+     "location": "Abstract"
+    },
+    {
+     "source": "lewis15",
+     "quote": "The median confidence interval on return on investment is over 100 percentage points wide.",
+     "location": "Abstract"
+    },
+    {
+     "source": "lewis15",
+     "quote": "collectively representing $2.8 million in digital advertising expenditure",
+     "location": "Abstract"
+    },
+    {
+     "source": "lewis15",
+     "quote": "a coefficient of variation of 10 is common",
+     "location": "Abstract"
+    },
+    {
+     "source": "lewis15",
+     "quote": "informative advertising experiments can easily require more than 10 million person-weeks",
+     "location": "Abstract"
+    }
+   ]
+  },
+  {
+   "id": "bz03",
+   "track": "Business",
+   "format": "estimate",
+   "concept": "Commitment savings",
+   "title": "Save more, later",
+   "scene": "Employees save little for retirement and resist raising contributions now. An adviser offers a plan that commits part of each future pay raise to savings.",
+   "question": "Participants started at a 3.5% savings rate. Where were they after four raises?",
+   "estimate": {
+    "target": 13.6,
+    "min": 0,
+    "max": 25,
+    "tolerance": 2,
+    "label": "Average savings rate after four pay raises",
+    "unit": "%"
+   },
+   "answerTitle": "Savings rates rose from 3.5% to 13.6%",
+   "explain": "In the first implementation, participants' savings rates increased from 3.5 percent to 13.6 percent over 40 months, and 78 percent of those offered the plan joined.",
+   "implication": "Offer a sign-up that raises retirement contributions at each future raise, so take-home pay never falls.",
+   "boundary": "Early company implementations with employees who chose to join; not a randomized trial.",
+   "sources": [
+    "thaler04"
+   ],
+   "follow": [
+    {
+     "q": "How many people signed up?",
+     "a": "78 percent of those offered the plan joined."
+    },
+    {
+     "q": "Did people quit the plan?",
+     "a": "Few did. 80 percent of those enrolled remained in it through the fourth pay raise."
+    },
+    {
+     "q": "Why tie saving to raises?",
+     "a": "Employees commit in advance to allocating part of future salary increases to saving, so the extra saving starts when pay goes up rather than out of current take-home pay."
+    }
+   ],
+   "study": {
+    "design": "Company field implementation",
+    "n": "Employees offered the plan at the first implementing firm"
+   },
+   "evidence": [
+    {
+     "source": "thaler04",
+     "quote": "increased from 3.5 percent to 13.6 percent over the course of 40 months",
+     "location": "Abstract"
+    },
+    {
+     "source": "thaler04",
+     "quote": "a high proportion (78 percent) of those offered the plan joined",
+     "location": "Abstract"
+    },
+    {
+     "source": "thaler04",
+     "quote": "the vast majority of those enrolled in the SMarT plan (80 percent) remained in it through the fourth pay raise",
+     "location": "Abstract"
+    }
+   ]
+  },
+  {
+   "id": "bz04",
+   "track": "Business",
+   "format": "estimate",
+   "concept": "Planning fallacy",
+   "title": "Your best guess is late",
+   "scene": "Senior honors students gave their most realistic date for finishing their thesis, plus a best-case and a worst-case date. Researchers then tracked when they actually finished.",
+   "question": "What share finished by their own most realistic date?",
+   "estimate": {
+    "target": 29.7,
+    "min": 0,
+    "max": 100,
+    "tolerance": 8,
+    "label": "Share finishing by their best-guess date",
+    "unit": "%"
+   },
+   "answerTitle": "Fewer than one in three finished on time",
+   "explain": "Only 29.7% finished by their best-guess date. On average they predicted 33.9 days and took 55.5 days.",
+   "implication": "Set project deadlines from how long similar past projects actually took, not from the team's step-by-step plan.",
+   "boundary": "Study 1 tracked 37 psychology honors students on their theses; one task type, one university.",
+   "sources": [
+    "buehler94"
+   ],
+   "follow": [
+    {
+     "q": "Did worst-case dates hold?",
+     "a": "Not reliably. Only 48.7% finished by the date they predicted if everything went as poorly as it possibly could."
+    },
+    {
+     "q": "How far off was the average?",
+     "a": "Students predicted 33.9 days on average; actual completion averaged 55.5 days."
+    },
+    {
+     "q": "Why do people underestimate?",
+     "a": "Later studies in the paper point to focusing on plans for the future while discounting past experience with similar tasks."
+    }
+   ],
+   "study": {
+    "design": "Prospective prediction study",
+    "n": "37 honors students (33 analyzed)"
+   },
+   "evidence": [
+    {
+     "source": "buehler94",
+     "quote": "Fewer than one third of the respondents (29.7%) finished in the time they reported as their most accurate prediction.",
+     "location": "Study 1 results"
+    },
+    {
+     "source": "buehler94",
+     "quote": "predicted, on average, that they would finish in 33.9 days",
+     "location": "Study 1 results; actual mean 55.5 days"
+    },
+    {
+     "source": "buehler94",
+     "quote": "fewer than half of the respondents (48.7%) finished by the time they had predicted assuming that 'everything went as poorly as it possibly could.'",
+     "location": "Study 1 results"
+    }
+   ]
+  },
+  {
+   "id": "bz05",
+   "track": "Business",
+   "format": "estimate",
+   "concept": "Remote work productivity",
+   "title": "Shirking from home?",
+   "scene": "Ctrip, a 16,000-employee Chinese travel agency, asked call-center staff to volunteer for home working, then randomly assigned volunteers to home or office for nine months.",
+   "question": "By how much did home workers' performance change?",
+   "estimate": {
+    "target": 13,
+    "min": -30,
+    "max": 40,
+    "tolerance": 4,
+    "label": "Change in performance when working from home",
+    "unit": "%"
+   },
+   "answerTitle": "Performance rose 13%",
+   "explain": "Home working led to a 13% performance increase, 9% of it from working more minutes per shift, and attrition roughly halved.",
+   "implication": "Pilot remote work on roles with measurable output, assign it randomly, and judge it on output rather than presence.",
+   "boundary": "Volunteer call-center staff with easily measured output; home workers' promotion rate, given performance, fell.",
+   "sources": [
+    "bloom15"
+   ],
+   "follow": [
+    {
+     "q": "Where did the gain come from?",
+     "a": "Nine of the 13 points came from working more minutes per shift; the rest from more calls per minute, which the authors attribute to a quieter, more convenient setting."
+    },
+    {
+     "q": "What happened when it went company-wide?",
+     "a": "Over half of employees switched their choice, and the gains from working from home almost doubled to 22%, which the authors attribute to learning and selection."
+    },
+    {
+     "q": "Was there any downside?",
+     "a": "Yes. Conditional on performance, home workers' promotion rate fell."
+    }
+   ],
+   "study": {
+    "design": "Randomized field experiment",
+    "n": "Volunteer call-center staff at Ctrip, 9 months"
+   },
+   "evidence": [
+    {
+     "source": "bloom15",
+     "quote": "Home working led to a 13% performance increase, of which 9% was from working more minutes per shift",
+     "location": "Abstract"
+    },
+    {
+     "source": "bloom15",
+     "quote": "Abstract (paraphrased by fetch tool): home workers reported better job satisfaction and attrition roughly halved; promotion rate conditional on performance fell",
+     "location": "Abstract"
+    },
+    {
+     "source": "bloom15",
+     "quote": "over half of them switched, which led to the gains from WFH almost doubling to 22%",
+     "location": "Abstract"
+    },
+    {
+     "source": "bloom15",
+     "quote": "Abstract (paraphrased by fetch tool): Ctrip, a Chinese travel agency with about 16,000 employees; volunteers assigned to home or office for nine months",
+     "location": "Abstract"
+    }
+   ]
+  },
+  {
+   "id": "bz06",
+   "track": "Business",
+   "format": "rank",
+   "concept": "Endowment effect",
+   "title": "Mine is worth more",
+   "scene": "Students were split into three groups. Sellers were given a coffee mug, buyers could buy one, and choosers picked between the mug and cash.",
+   "question": "Rank the groups by the median value they placed on the same mug.",
+   "options": [
+    "Buyers",
+    "Sellers (given the mug)",
+    "Choosers (mug or cash)"
+   ],
+   "rankAnswer": [
+    1,
+    2,
+    0
+   ],
+   "rankLabel": "Highest median valuation of the mug",
+   "rankValues": [
+    "$2.87",
+    "$7.12",
+    "$3.12"
+   ],
+   "answerTitle": "Owners valued the mug over twice as much",
+   "explain": "Median valuations were $7.12 for sellers, $3.12 for choosers and $2.87 for buyers. Choosers face the same trade-off as sellers without owning the mug, so ownership drives the gap.",
+   "implication": "When reallocating budgets, territories or assets, expect current holders to value them far above what others would pay.",
+   "boundary": "Students trading mugs and pens in classroom markets; tokens with assigned cash values traded as predicted.",
+   "sources": [
+    "kahneman90"
+   ],
+   "follow": [
+    {
+     "q": "Did it reduce trading?",
+     "a": "Yes. While 12.5 trades were expected between buyers and sellers, only three took place."
+    },
+    {
+     "q": "Is it just reluctance to pay?",
+     "a": "No. Buyers and choosers gave similar values, so the gap reflects reluctance to give up the mug, not reluctance to spend."
+    },
+    {
+     "q": "Did repeated trading fix it?",
+     "a": "No. In Experiment 1, mug markets produced 1 to 4 trades per trial against 11 expected, while induced-value token markets matched predictions."
+    }
+   ],
+   "study": {
+    "design": "Lab market experiment",
+    "n": "77 Simon Fraser students (Experiment 6)"
+   },
+   "evidence": [
+    {
+     "source": "kahneman90",
+     "quote": "The median valuations were $7.12 for sellers, $3.12 for choosers, and $2.87 for buyers.",
+     "location": "Experiment 6"
+    },
+    {
+     "source": "kahneman90",
+     "quote": "While 12.5 trades were expected between buyers and sellers, only three trades took place",
+     "location": "Experiment 6"
+    },
+    {
+     "source": "kahneman90",
+     "quote": "The close similarity of results for buyers and choosers indicates that there was relatively little reluctance to pay for the mug.",
+     "location": "Experiment 6"
+    },
+    {
+     "source": "kahneman90",
+     "quote": "Experiment 1: 44 Cornell students; expected trades = 11 per trial; mug trials 4-7 had 4, 1, 2, 2 trades; induced-value markets V/V* = 1.0 (as extracted from Table)",
+     "location": "Experiment 1"
+    }
+   ]
+  },
+  {
+   "id": "bz07",
+   "track": "Business",
+   "format": "rank",
+   "concept": "Hybrid work retention",
+   "title": "Who stays with hybrid?",
+   "scene": "Trip.com randomized 1,612 engineering, marketing and finance staff. Those with odd-numbered birthdays could work from home on Wednesdays and Fridays; the rest stayed in the office full time.",
+   "question": "Rank the groups by how much hybrid work cut their quit rate.",
+   "options": [
+    "All employees",
+    "Women",
+    "Non-managers",
+    "Long commuters"
+   ],
+   "rankAnswer": [
+    1,
+    3,
+    2,
+    0
+   ],
+   "rankLabel": "Largest reduction in quit rate",
+   "rankValues": [
+    "One-third (7.20% to 4.80%)",
+    "54% (9.2% to 4.2%)",
+    "40% (8.59% to 5.33%)",
+    "52% (6.00% to 2.89%)"
+   ],
+   "answerTitle": "Quits fell most for women and long commuters",
+   "explain": "Hybrid work cut quit rates by one-third overall, with larger drops for women (54%), long commuters (52%) and non-managers (40%). Performance reviews showed no difference over two years.",
+   "implication": "Offer two home days a week in high-attrition roles, and track performance reviews to confirm nothing is lost.",
+   "boundary": "One Chinese tech firm, six-month trial; the long-commuter reduction (P = 0.062) was not statistically significant.",
+   "sources": [
+    "bloom24"
+   ],
+   "follow": [
+    {
+     "q": "Did performance suffer?",
+     "a": "No. Reviews across four half-year periods showed no difference between groups, and equivalence tests supported a null effect."
+    },
+    {
+     "q": "What about promotions and output?",
+     "a": "No evidence of a difference in promotions, and for 653 engineers no difference in daily lines of code."
+    },
+    {
+     "q": "Did managers change their minds?",
+     "a": "Yes. Before the trial managers expected a negative effect of 2.6% on average; afterward their estimate turned positive."
+    }
+   ],
+   "study": {
+    "design": "Randomized controlled trial",
+    "n": "1,612 Trip.com employees"
+   },
+   "evidence": [
+    {
+     "source": "bloom24",
+     "quote": "reduced quit rates by one-third",
+     "location": "Abstract"
+    },
+    {
+     "source": "bloom24",
+     "quote": "on 1,612 employees in a Chinese technology company",
+     "location": "Abstract"
+    },
+    {
+     "source": "bloom24",
+     "quote": "a hybrid schedule with two days a week working from home does not damage performance",
+     "location": "Abstract"
+    },
+    {
+     "source": "bloom24",
+     "quote": "from a perceived negative effect (−2.6% on average)",
+     "location": "Abstract"
+    },
+    {
+     "source": "bloom24",
+     "quote": "Attrition 7.20% control vs 4.80% treatment (P = 0.043); non-managers 8.59% vs 5.33%, 40% reduction; women 9.2% vs 4.2%, 54%; long commuters 6.00% vs 2.89%, 52% (P = 0.062) (as extracted from full text)",
+     "location": "Results, attrition"
+    },
+    {
+     "source": "bloom24",
+     "quote": "No difference in performance reviews across four half-year periods; 653 engineers, no difference in daily lines of code (as extracted from full text)",
+     "location": "Results, performance"
+    }
+   ]
+  },
+  {
+   "id": "bz08",
+   "track": "Business",
+   "format": "forecast",
+   "concept": "Fines as prices",
+   "title": "The fine that backfired",
+   "scene": "Ten Israeli day-care centers tracked late pickups for 20 weeks. In week 5, six centers began fining parents NIS 10 for arriving 10+ minutes late. In week 17 the fine was dropped.",
+   "question": "What happened to late pickups after the fine ended?",
+   "forecast": {
+    "claim": "After the fine was removed, late pickups stayed at the higher level.",
+    "truth": true
+   },
+   "answerTitle": "Lateness nearly doubled and stayed high",
+   "explain": "Late pickups rose steadily after the fine, settling almost twice as high as before, and after the fine was removed no reduction occurred.",
+   "implication": "Before fining a behavior, ask whether the fine turns a social obligation into a price people will happily pay.",
+   "boundary": "A small fine in ten day-care centers over 20 weeks; four control centers showed no change.",
+   "sources": [
+    "gneezy00"
+   ],
+   "follow": [
+    {
+     "q": "Was there a control group?",
+     "a": "Yes. In the four centers without a fine, no noticeable change took place after the fourth week, or in any other week."
+    },
+    {
+     "q": "How large was the fine?",
+     "a": "NIS 10 per child for parents arriving 10 or more minutes late."
+    },
+    {
+     "q": "How fast did lateness rise?",
+     "a": "The authors observed a steady increase after the fine began, until the rate settled almost twice as large as the initial one."
+    }
+   ],
+   "study": {
+    "design": "Field experiment",
+    "n": "10 day-care centers, 20 weeks"
+   },
+   "evidence": [
+    {
+     "source": "gneezy00",
+     "quote": "As a result, the number of late-coming parents increased significantly.",
+     "location": "Abstract"
+    },
+    {
+     "source": "gneezy00",
+     "quote": "After the fine was removed no reduction occurred.",
+     "location": "Abstract"
+    },
+    {
+     "source": "gneezy00",
+     "quote": "The rate finally settled, at a level that was higher, and almost twice as large as the initial one.",
+     "location": "p. 7"
+    },
+    {
+     "source": "gneezy00",
+     "quote": "In the control group no noticeable change took place after the fourth week, or in any other week.",
+     "location": "p. 8"
+    },
+    {
+     "source": "gneezy00",
+     "quote": "10 centers analyzed (6 test, 4 control); 20 weeks; NIS 10 fine for 10+ minutes late, introduced week 5, removed week 17 (design section, as extracted)",
+     "location": "Design"
+    }
+   ]
+  },
+  {
+   "id": "bz09",
+   "track": "Business",
+   "format": "forecast",
+   "concept": "Ad content value",
+   "title": "A photo worth a rate cut",
+   "scene": "A consumer lender mailed loan offers to former clients, randomizing the interest rate along with ad content such as a photo, the number of example loans and the offer deadline.",
+   "question": "Can ad content move demand as much as price?",
+   "forecast": {
+    "claim": "A photo of an attractive woman raised loan demand about as much as a 25% interest-rate cut.",
+    "truth": true
+   },
+   "answerTitle": "The photo matched a 25% rate cut",
+   "explain": "Showing fewer example loans, not suggesting a particular use, or including a photo of an attractive woman each raised demand about as much as a 25% interest-rate reduction.",
+   "implication": "Test creative content against price in randomized offers before giving up margin on discounts.",
+   "boundary": "Direct-mail offers of short-term consumer credit in South Africa; one lender's former clients.",
+   "sources": [
+    "bertrand10"
+   ],
+   "follow": [
+    {
+     "q": "Which content features mattered?",
+     "a": "Fewer example loans, not suggesting a particular use for the loan, and a photo of an attractive woman."
+    },
+    {
+     "q": "What about deadlines?",
+     "a": "Demand strongly increased with longer deadlines, contrary to the idea that short deadlines help people who procrastinate."
+    },
+    {
+     "q": "Why would content work?",
+     "a": "The authors read the evidence as ads persuading by appealing peripherally to intuition rather than to reason."
+    }
+   ],
+   "study": {
+    "design": "Randomized direct-mail field experiment",
+    "n": "Former clients of a consumer lender"
+   },
+   "evidence": [
+    {
+     "source": "bertrand10",
+     "quote": "advertising content, loan price, and loan offer deadlines simultaneously",
+     "location": "Abstract"
+    },
+    {
+     "source": "bertrand10",
+     "quote": "Abstract (paraphrased by fetch tool): fewer example loans, not suggesting a particular use, or a photo of an attractive woman raise demand by about as much as a 25% interest-rate cut",
+     "location": "Abstract"
+    },
+    {
+     "source": "bertrand10",
+     "quote": "demand strongly increases with longer deadlines",
+     "location": "Abstract"
+    },
+    {
+     "source": "bertrand10",
+     "quote": "J-PAL project page: South Africa; consumer lender offering small, short-term, uncollateralized credit",
+     "location": "https://www.povertyactionlab.org/node/1421 (secondary, setting only)"
+    }
+   ]
+  },
+  {
+   "id": "bz10",
+   "track": "Business",
+   "format": "forecast",
+   "concept": "Choice overload",
+   "title": "Does more choice backfire?",
+   "scene": "A famous grocery study found about 30% of shoppers bought jam after a 6-flavor display versus 3% after a 24-flavor display. Your team proposes cutting your product range.",
+   "question": "Does choice overload hold on average across studies?",
+   "forecast": {
+    "claim": "Across 50 experiments, more options reduced choice or satisfaction on average.",
+    "truth": false
+   },
+   "answerTitle": "On average, the effect is near zero",
+   "explain": "A meta-analysis of 63 conditions from 50 experiments (5,036 participants) found a mean effect size of virtually zero (D = 0.02), with considerable variance between studies.",
+   "implication": "Test a range cut in your own category before assuming fewer options will sell more.",
+   "boundary": "Large variance between studies means overload appears in some settings; the average does not say which ones.",
+   "sources": [
+    "scheib10",
+    "iyengar00"
+   ],
+   "follow": [
+    {
+     "q": "What did the jam study find exactly?",
+     "a": "More shoppers stopped at 24 jams (60%) than at 6 (40%), but about 30% of stoppers bought with 6 jams versus 3% with 24."
+    },
+    {
+     "q": "How large was the meta-analysis?",
+     "a": "63 conditions from 50 published and unpublished experiments, with 5,036 participants."
+    },
+    {
+     "q": "So was the jam study wrong?",
+     "a": "Not necessarily. The meta-analysis found considerable variance between studies, so single results like the jam study coexist with an average near zero."
+    }
+   ],
+   "study": {
+    "design": "Meta-analysis",
+    "n": "50 experiments, 5,036 participants"
+   },
+   "evidence": [
+    {
+     "source": "scheib10",
+     "quote": "In a meta-analysis of 63 conditions from 50 published and unpublished experiments",
+     "location": "Abstract"
+    },
+    {
+     "source": "scheib10",
+     "quote": "we found a mean effect size of virtually zero but considerable variance between studies",
+     "location": "Abstract"
+    },
+    {
+     "source": "scheib10",
+     "quote": "N = 5,036; mean effect D = 0.02 (as extracted from Results)",
+     "location": "Results"
+    },
+    {
+     "source": "iyengar00",
+     "quote": "60% (145) actually stopped at the booth",
+     "location": "p. 997, extensive-choice condition; limited: 40% (104)"
+    },
+    {
+     "source": "iyengar00",
+     "quote": "only 3% (4) of the consumers in the extensive-choice condition did so",
+     "location": "p. 997; limited-choice condition about 30% (31)"
+    }
+   ]
+  },
+  {
+   "id": "bz11",
+   "track": "Business",
+   "format": "forecast",
+   "concept": "Replication check",
+   "title": "Sign here first?",
+   "scene": "A 2012 PNAS study reported that signing an honesty statement at the top of a form, rather than the bottom, reduced dishonest reports. Government agencies adopted the practice.",
+   "question": "Did the sign-first effect hold up?",
+   "forecast": {
+    "claim": "A preregistered direct replication with 1,235 people confirmed that signing first reduces dishonesty.",
+    "truth": false
+   },
+   "answerTitle": "No effect of signing first",
+   "explain": "Across five conceptual replications (n = 4,559) and a preregistered direct replication (n = 1,235), the authors observed no effect of signing first on honest reporting. PNAS retracted the 2012 paper in 2021.",
+   "implication": "Before rolling out a published nudge, check for replications and retractions, then pilot it on your own forms.",
+   "boundary": "Tests one form-design nudge on experimental self-reports; it does not evaluate honesty interventions in general.",
+   "sources": [
+    "kristal20",
+    "shu12"
+   ],
+   "follow": [
+    {
+     "q": "Who ran the replication?",
+     "a": "The replication team included all five authors of the 2012 paper, alongside Kristal and Whillans."
+    },
+    {
+     "q": "When was the original retracted?",
+     "a": "PNAS published the retraction notice on 13 September 2021."
+    },
+    {
+     "q": "Why did a failed replication matter so much?",
+     "a": "The authors note that government agencies had adopted the practice, so they argued the scientific record needed updating."
+    }
+   ],
+   "study": {
+    "design": "Preregistered direct and conceptual replications",
+    "n": "4,559 + 1,235 participants"
+   },
+   "evidence": [
+    {
+     "source": "kristal20",
+     "quote": "five conceptual replications (n = 4,559)",
+     "location": "Abstract"
+    },
+    {
+     "source": "kristal20",
+     "quote": "observed no effect of signing first on honest reporting",
+     "location": "Abstract; direct replication n = 1,235"
+    },
+    {
+     "source": "kristal20",
+     "quote": "Abstract (paraphrased): government agencies adopted the practice; the authors argue the scientific record needs updating",
+     "location": "Abstract"
+    },
+    {
+     "source": "shu12",
+     "quote": "RETRACTED: Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end",
+     "location": "Crossref title; retraction doi:10.1073/pnas.2115397118 dated 2021-09-13"
+    }
+   ]
+  },
+  {
+   "id": "bz12",
+   "track": "Business",
+   "format": "causal",
+   "concept": "Pay transparency",
+   "title": "When salaries go public",
+   "scene": "A new website published University of California employees' pay. Researchers told a random subset of staff about the site, then surveyed everyone on job satisfaction and job search.",
+   "question": "What did learning about peers' pay do?",
+   "options": [
+    "Below-median earners less satisfied, more job search",
+    "Everyone more satisfied with transparency",
+    "Above-median earners became more satisfied",
+    "No change: staff already knew peer pay"
+   ],
+   "answer": 0,
+   "answerTitle": "Below-median earners grew unhappy and started looking",
+   "explain": "Workers paid below the median for their unit and occupation reported lower pay and job satisfaction and were more likely to look for a new job. Above-median earners were unaffected.",
+   "implication": "Before publishing pay data, prepare clear explanations of pay differences for below-median staff, who carry the morale cost.",
+   "boundary": "University of California employees; outcomes were self-reported satisfaction and job-search intentions.",
+   "dag": {
+    "alt": "A random notice about the website changes who knows peers' pay, which affects satisfaction. Unobserved traits such as ability and fit drive both pay rank and satisfaction, which is why a simple survey correlation between rank and satisfaction is confounded.",
+    "height": 200,
+    "nodes": [
+     {
+      "id": "note",
+      "label": "Random notice",
+      "x": 70,
+      "y": 150
+     },
+     {
+      "id": "know",
+      "label": "Knows peer pay",
+      "x": 240,
+      "y": 150
+     },
+     {
+      "id": "rank",
+      "label": "Pay rank",
+      "x": 240,
+      "y": 50
+     },
+     {
+      "id": "sat",
+      "label": "Satisfaction",
+      "x": 430,
+      "y": 100
+     },
+     {
+      "id": "fit",
+      "label": "Ability, fit",
+      "x": 400,
+      "y": 30,
+      "hidden": true
+     }
+    ],
+    "edges": [
+     [
+      "note",
+      "know"
+     ],
+     [
+      "know",
+      "sat",
+      "q"
+     ],
+     [
+      "rank",
+      "sat"
+     ],
+     [
+      "fit",
+      "rank"
+     ],
+     [
+      "fit",
+      "sat"
+     ]
+    ]
+   },
+   "sources": [
+    "card12"
+   ],
+   "follow": [
+    {
+     "q": "Why randomize who heard about the site?",
+     "a": "Low-paid staff differ from high-paid staff in many ways. Randomizing who learned about the site isolates the effect of the information itself."
+    },
+    {
+     "q": "Did higher earners gain from learning they earn more?",
+     "a": "No. Workers paid above the median were unaffected."
+    },
+    {
+     "q": "Does pay level or pay rank matter more?",
+     "a": "Rank. The authors conclude that differences in pay rank matter more than differences in pay levels."
+    }
+   ],
+   "study": {
+    "design": "Randomized information experiment",
+    "n": "University of California employees"
+   },
+   "evidence": [
+    {
+     "source": "card12",
+     "quote": "Workers with salaries below the median for their pay unit and occupation report lower pay and job satisfaction",
+     "location": "Abstract"
+    },
+    {
+     "source": "card12",
+     "quote": "significant increase in the likelihood of looking for a new job",
+     "location": "Abstract"
+    },
+    {
+     "source": "card12",
+     "quote": "Abstract (paraphrased): above-median earners were unaffected; a random subset of UC employees learned about a new website publishing pay",
+     "location": "Abstract"
+    },
+    {
+     "source": "card12",
+     "quote": "differences in pay rank matter more than differences in pay levels",
+     "location": "Abstract"
+    }
+   ]
+  },
+  {
+   "id": "bz13",
+   "track": "Business",
+   "format": "choice",
+   "concept": "Pay inequality morale",
+   "title": "Unequal pay, lower output",
+   "scene": "For a month, Indian manufacturing workers in production teams were randomly paid either the same flat daily wage or different wages based on their baseline productivity rank.",
+   "question": "Where coworkers' productivity was hard to observe, what did unequal pay do?",
+   "options": [
+    "Raised output through stronger incentives",
+    "Cut output and attendance",
+    "Had no effect on output",
+    "Raised attendance but cut cooperation"
+   ],
+   "answer": 1,
+   "answerTitle": "Output fell 0.45 SD; attendance fell 18 points",
+   "explain": "When coworkers' productivity was difficult to observe, pay inequality reduced output by 0.45 standard deviations and attendance by 18 percentage points, and weakened cooperation.",
+   "implication": "If pay differs within a team, make the productivity basis visible to everyone before the gap takes effect.",
+   "boundary": "When workers clearly saw that higher-paid peers were more productive, pay gaps had no discernible effect.",
+   "sources": [
+    "breza18"
+   ],
+   "follow": [
+    {
+     "q": "Is every pay gap harmful?",
+     "a": "No. When workers could clearly perceive that higher-paid peers were more productive, pay disparity had no discernible effect on output, attendance or group cohesion."
+    },
+    {
+     "q": "What happened to teamwork?",
+     "a": "Pay inequality also lowered coworkers' ability to cooperate in their own self-interest."
+    },
+    {
+     "q": "How long did the experiment run?",
+     "a": "About one month, in Indian manufacturing."
+    }
+   ],
+   "study": {
+    "design": "Randomized field experiment",
+    "n": "Indian manufacturing workers, one month"
+   },
+   "evidence": [
+    {
+     "source": "breza18",
+     "quote": "When coworkers' productivity is difficult to observe, pay inequality reduces output by 0.45 standard deviations",
+     "location": "Abstract"
+    },
+    {
+     "source": "breza18",
+     "quote": "and attendance by 18 percentage points.",
+     "location": "Abstract"
+    },
+    {
+     "source": "breza18",
+     "quote": "pay disparity has no discernible effect on output, attendance, or group cohesion.",
+     "location": "Abstract"
+    },
+    {
+     "source": "breza18",
+     "quote": "In a month-long experiment with Indian manufacturing workers,",
+     "location": "Abstract"
+    }
+   ]
+  },
+  {
+   "id": "bz14",
+   "track": "Business",
+   "format": "choice",
+   "concept": "Joint evaluation",
+   "title": "Compare candidates, not impressions",
+   "scene": "Evaluators chose workers for a task and were paid on the chosen worker's future performance. Some saw candidates one at a time; others compared candidates side by side.",
+   "question": "Which procedure made evaluators rely more on individual performance?",
+   "options": [
+    "Comparing candidates side by side",
+    "Seeing candidates one at a time",
+    "No difference between procedures",
+    "Neither: gender drove both equally"
+   ],
+   "answer": 0,
+   "answerTitle": "Side-by-side review focused choices on performance",
+   "explain": "Evaluators were more likely to base decisions on individual performance in joint than in separate evaluation, where they leaned more on group stereotypes, making joint evaluation the profit-maximizing procedure.",
+   "implication": "Compare shortlisted candidates side by side on the same criteria instead of scoring each one in isolation.",
+   "boundary": "Incentivized lab hiring task with clear performance scores; real hiring information is noisier.",
+   "sources": [
+    "bohnet16"
+   ],
+   "follow": [
+    {
+     "q": "Why does comparing help?",
+     "a": "The authors draw on decision research showing that people reason more carefully when they compare options together than when they judge one in isolation."
+    },
+    {
+     "q": "Does it cost the employer anything?",
+     "a": "No. Because evaluators picked on performance, joint evaluation was the profit-maximizing procedure."
+    },
+    {
+     "q": "How does it relate to blind auditions?",
+     "a": "The authors present it as an alternative to blind evaluation, which helped women musicians win orchestra positions but is hard to use in many workplaces."
+    }
+   ],
+   "study": {
+    "design": "Incentivized lab experiment",
+    "n": "Evaluators choosing among candidates"
+   },
+   "evidence": [
+    {
+     "source": "bohnet16",
+     "quote": "Evaluators are more likely to base their decisions on individual performance in joint than in separate evaluation",
+     "location": "Abstract"
+    },
+    {
+     "source": "bohnet16",
+     "quote": "making joint evaluation the profit-maximizing evaluation procedure",
+     "location": "Abstract"
+    },
+    {
+     "source": "bohnet16",
+     "quote": "in which people are evaluated jointly rather than separately",
+     "location": "Abstract; abstract also cites blind auditions for women musicians and greater reliance on group stereotypes in separate evaluation (paraphrased)"
+    }
+   ]
+  },
+  {
+   "id": "bz15",
+   "track": "Business",
+   "format": "multi",
+   "concept": "Default consent",
+   "title": "The default decides",
+   "scene": "An online survey asked 161 people whether they would be organ donors. The question was framed as opt-in, opt-out, or a neutral form requiring a choice with no default.",
+   "question": "Which two forms produced similarly high consent?",
+   "options": [
+    "Opt-in (default: not a donor)",
+    "Opt-out (default: donor)",
+    "Neutral (must choose, no default)",
+    "None: all three were similar"
+   ],
+   "multiAnswers": [
+    1,
+    2
+   ],
+   "answerTitle": "Opt-out and active choice both beat opt-in",
+   "explain": "Consent was about twice as high under opt-out as under opt-in, and opt-out did not differ significantly from the neutral form (79%).",
+   "implication": "Where you cannot set a favorable default, require an active choice rather than leaving opt-in as the silent default.",
+   "boundary": "Stated intentions from 161 online respondents; the country comparisons in the paper are correlational.",
+   "sources": [
+    "johnson04"
+   ],
+   "follow": [
+    {
+     "q": "Does this show up across countries?",
+     "a": "Yes. In effective consent rates, nearly 60 percentage points separated opt-out from opt-in European countries, with no overlap."
+    },
+    {
+     "q": "Do actual donations rise?",
+     "a": "In a 1999 cross-section cited by the authors, presumed-consent countries had 16.9 donations per million versus 10.8 in explicit-consent countries."
+    },
+    {
+     "q": "Why does the default matter so much?",
+     "a": "The authors argue that if preferences about donation were strong, defaults should have little effect; the large gap suggests many people hold weak preferences."
+    }
+   ],
+   "study": {
+    "design": "Online experiment plus country comparison",
+    "n": "161 online respondents"
+   },
+   "evidence": [
+    {
+     "source": "johnson04",
+     "quote": "revealed donation rates being about twice as high when opting-out as when opting-in",
+     "location": "Results, online experiment"
+    },
+    {
+     "source": "johnson04",
+     "quote": "the opt-out condition did not differ significantly from the neutral condition",
+     "location": "Results; Table 1 uses 79% for the neutral condition"
+    },
+    {
+     "source": "johnson04",
+     "quote": "the two distributions have no overlap and nearly 60 percentage points separate the two groups",
+     "location": "Effective consent, European countries"
+    },
+    {
+     "source": "johnson04",
+     "quote": "Cross-sectional 1999 (Gimbel et al.): 10.8 to 16.9 donations per million (as extracted)",
+     "location": "Donation rates"
+    },
+    {
+     "source": "johnson04",
+     "quote": "161 respondents (as extracted)",
+     "location": "Method"
+    }
+   ]
+  },
+  {
+   "id": "bz16",
+   "track": "Business",
+   "format": "choice",
+   "concept": "Naive diversification",
+   "title": "The menu picks the portfolio",
+   "scene": "Your 401(k) offers five funds. Menu X has four stock funds and one bond fund. Menu Y has one stock fund and four bond funds.",
+   "question": "How will employees' stock exposure differ between the two menus?",
+   "options": [
+    "Same: people pick their own risk level",
+    "Higher under stock-heavy menu X",
+    "Higher under bond-heavy menu Y",
+    "Unpredictable: it depends on markets"
+   ],
+   "answer": 1,
+   "answerTitle": "Stock share follows the menu",
+   "explain": "Some investors divide contributions evenly across the funds offered, so the proportion invested in stocks depends strongly on the proportion of stock funds in the plan.",
+   "implication": "Audit the mix of fund types on your plan menu, because it quietly sets employees' risk exposure.",
+   "boundary": "Not every investor splits evenly; the evidence combines hypothetical allocation tasks with plan-level data.",
+   "sources": [
+    "benartzi01"
+   ],
+   "follow": [
+    {
+     "q": "What is the 1/n strategy?",
+     "a": "Dividing contributions evenly across whatever funds the plan offers, regardless of what those funds hold."
+    },
+    {
+     "q": "Does everyone do it?",
+     "a": "No. The paper finds that some investors follow it, which is enough to shift average stock exposure."
+    },
+    {
+     "q": "Does it show up in real plans?",
+     "a": "Yes. The authors report that the proportion invested in stocks depends strongly on the proportion of stock funds in the plan."
+    }
+   ],
+   "study": {
+    "design": "Allocation experiments plus plan data",
+    "n": "Defined contribution plan participants"
+   },
+   "evidence": [
+    {
+     "source": "benartzi01",
+     "quote": "some investors follow the \"1/n strategy\"",
+     "location": "Abstract"
+    },
+    {
+     "source": "benartzi01",
+     "quote": "divide their contributions evenly across the funds offered in the plan",
+     "location": "Abstract"
+    },
+    {
+     "source": "benartzi01",
+     "quote": "the proportion invested in stocks depends strongly on the proportion of stock funds in the plan",
+     "location": "Abstract"
+    }
+   ]
+  }
+ ]
+}

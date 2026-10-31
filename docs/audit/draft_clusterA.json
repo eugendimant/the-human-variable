@@ -1,0 +1,882 @@
+{
+  "sources": {
+    "vaccaro24": {
+      "id": "vaccaro24",
+      "authors": "Vaccaro, Almaatouq & Malone",
+      "authors_full": "Michelle Vaccaro, Abdullah Almaatouq, Thomas W. Malone",
+      "year": 2024,
+      "title": "When combinations of humans and AI are useful: A systematic review and meta-analysis",
+      "venue": "Nature Human Behaviour",
+      "volume": "8(12)",
+      "pages": "2293-2303",
+      "doi": "10.1038/s41562-024-02024-1",
+      "url": "https://doi.org/10.1038/s41562-024-02024-1",
+      "kind": "peer-reviewed",
+      "takeaway": "Human-AI combinations beat humans alone but on average underperform the better of humans or AI alone; they gain when humans are the stronger party.",
+      "verification": {
+        "status": "verified_full_text",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Full text (Results and Discussion) via Europe PMC open-access XML",
+        "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11659167/fullTextXML"
+      }
+    },
+    "bastani25": {
+      "id": "bastani25",
+      "authors": "Bastani et al.",
+      "authors_full": "Hamsa Bastani, Osbert Bastani, Alp Sungu, Haosen Ge, Özge Kabakcı, Rei Mariman",
+      "year": 2025,
+      "title": "Generative AI without guardrails can harm learning: Evidence from high school mathematics",
+      "venue": "Proceedings of the National Academy of Sciences",
+      "volume": "122(26)",
+      "pages": "e2422633122",
+      "doi": "10.1073/pnas.2422633122",
+      "url": "https://doi.org/10.1073/pnas.2422633122",
+      "kind": "peer-reviewed",
+      "takeaway": "Unrestricted GPT-4 raised practice grades but lowered later unaided exam grades by 17%; a tutor version with safeguards avoided the harm.",
+      "verification": {
+        "status": "verified_full_text",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Abstract (PubMed 40560616) and full text via Europe PMC open-access XML (PMC12232635)",
+        "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12232635/fullTextXML"
+      },
+      "flags": "Correction (PNAS 2025, doi:10.1073/pnas.2518204122) fixes one author affiliation only; findings unchanged."
+    },
+    "dietvorst18": {
+      "id": "dietvorst18",
+      "authors": "Dietvorst, Simmons & Massey",
+      "authors_full": "Berkeley J. Dietvorst, Joseph P. Simmons, Cade Massey",
+      "year": 2018,
+      "title": "Overcoming Algorithm Aversion: People Will Use Imperfect Algorithms If They Can (Even Slightly) Modify Them",
+      "venue": "Management Science",
+      "volume": "64(3)",
+      "pages": "1155-1170",
+      "doi": "10.1287/mnsc.2016.2643",
+      "url": "https://doi.org/10.1287/mnsc.2016.2643",
+      "kind": "peer-reviewed",
+      "takeaway": "People are far more willing to use an imperfect algorithm when they may adjust its output, even slightly, and the size of the allowed adjustment barely matters.",
+      "verification": {
+        "status": "verified_full_text",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Crossref abstract plus full text of the UPenn ScholarlyCommons deposit whose cover page cites Management Science 64(3):1155-1170 (accepted-manuscript layout)",
+        "text_url": "https://core.ac.uk/download/219378607.pdf"
+      },
+      "flags": "An earlier manuscript on a Wharton site (marketing.wharton.upenn.edu) has a different Study 2 (state rankings, N = 1,040, 47/75/77%); do not use those numbers. Numbers here follow the deposit tied to the published version (Study 2, N = 816)."
+    },
+    "kleinberg18": {
+      "id": "kleinberg18",
+      "authors": "Kleinberg et al.",
+      "authors_full": "Jon Kleinberg, Himabindu Lakkaraju, Jure Leskovec, Jens Ludwig, Sendhil Mullainathan",
+      "year": 2018,
+      "title": "Human Decisions and Machine Predictions",
+      "venue": "The Quarterly Journal of Economics",
+      "volume": "133(1)",
+      "pages": "237-293",
+      "doi": "10.1093/qje/qjx032",
+      "url": "https://doi.org/10.1093/qje/qjx032",
+      "kind": "peer-reviewed",
+      "takeaway": "A machine-learning risk model could cut crime up to 24.7% at the same bail jailing rate, or cut jailing up to 41.9% with no rise in crime.",
+      "verification": {
+        "status": "verified_abstract",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Journal abstract (Crossref and RePEc records)",
+        "text_url": "https://econpapers.repec.org/RePEc:oup:qjecon:v:133:y:2018:i:1:p:237-293."
+      }
+    },
+    "obermeyer19": {
+      "id": "obermeyer19",
+      "authors": "Obermeyer, Powers, Vogeli & Mullainathan",
+      "authors_full": "Ziad Obermeyer, Brian Powers, Christine Vogeli, Sendhil Mullainathan",
+      "year": 2019,
+      "title": "Dissecting racial bias in an algorithm used to manage the health of populations",
+      "venue": "Science",
+      "volume": "366(6464)",
+      "pages": "447-453",
+      "doi": "10.1126/science.aax2342",
+      "url": "https://doi.org/10.1126/science.aax2342",
+      "kind": "peer-reviewed",
+      "takeaway": "A widely used health algorithm predicted cost rather than need, so it underrated Black patients' needs; fixing the disparity would raise their share of extra help from 17.7% to 46.5%.",
+      "verification": {
+        "status": "verified_abstract",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Journal abstract (Crossref and PubMed 31649194)",
+        "text_url": "https://pubmed.ncbi.nlm.nih.gov/31649194/"
+      }
+    },
+    "hoffman18": {
+      "id": "hoffman18",
+      "authors": "Hoffman, Kahn & Li",
+      "authors_full": "Mitchell Hoffman, Lisa B. Kahn, Danielle Li",
+      "year": 2018,
+      "title": "Discretion in Hiring",
+      "venue": "The Quarterly Journal of Economics",
+      "volume": "133(2)",
+      "pages": "765-800",
+      "doi": "10.1093/qje/qjx042",
+      "url": "https://doi.org/10.1093/qje/qjx042",
+      "kind": "peer-reviewed",
+      "takeaway": "At 15 firms that introduced job testing, managers who hired against test recommendations ended up with worse average hires.",
+      "verification": {
+        "status": "verified_abstract",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Journal abstract (RePEc record of the QJE article)",
+        "text_url": "https://econpapers.repec.org/RePEc:oup:qjecon:v:133:y:2018:i:2:p:765-800."
+      }
+    },
+    "lambrecht19": {
+      "id": "lambrecht19",
+      "authors": "Lambrecht & Tucker",
+      "authors_full": "Anja Lambrecht, Catherine Tucker",
+      "year": 2019,
+      "title": "Algorithmic Bias? An Empirical Study of Apparent Gender-Based Discrimination in the Display of STEM Career Ads",
+      "venue": "Management Science",
+      "volume": "65(7)",
+      "pages": "2966-2981",
+      "doi": "10.1287/mnsc.2018.3093",
+      "url": "https://doi.org/10.1287/mnsc.2018.3093",
+      "kind": "peer-reviewed",
+      "takeaway": "A gender-neutral STEM job ad reached fewer women because younger women are costlier to reach, so cost-optimizing delivery crowded them out.",
+      "verification": {
+        "status": "verified_abstract",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Journal abstract (Crossref and RePEc records)",
+        "text_url": "https://econpapers.repec.org/RePEc:inm:ormnsc:v:65:y:2019:i:7:p:2966-2981"
+      }
+    },
+    "jakesch23": {
+      "id": "jakesch23",
+      "authors": "Jakesch, Hancock & Naaman",
+      "authors_full": "Maurice Jakesch, Jeffrey T. Hancock, Mor Naaman",
+      "year": 2023,
+      "title": "Human heuristics for AI-generated language are flawed",
+      "venue": "Proceedings of the National Academy of Sciences",
+      "volume": "120(11)",
+      "pages": "e2208839120",
+      "doi": "10.1073/pnas.2208839120",
+      "url": "https://doi.org/10.1073/pnas.2208839120",
+      "kind": "peer-reviewed",
+      "takeaway": "People identified AI-written self-presentations with only 50 to 52% accuracy because they rely on misleading cues.",
+      "verification": {
+        "status": "verified_full_text",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Full text via PNAS page and Europe PMC open-access XML (PMC10089155)",
+        "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10089155/fullTextXML"
+      }
+    },
+    "salvi25": {
+      "id": "salvi25",
+      "authors": "Salvi, Horta Ribeiro, Gallotti & West",
+      "authors_full": "Francesco Salvi, Manoel Horta Ribeiro, Riccardo Gallotti, Robert West",
+      "year": 2025,
+      "title": "On the conversational persuasiveness of GPT-4",
+      "venue": "Nature Human Behaviour",
+      "volume": "9(8)",
+      "pages": "1645-1653",
+      "doi": "10.1038/s41562-025-02194-6",
+      "url": "https://doi.org/10.1038/s41562-025-02194-6",
+      "kind": "peer-reviewed",
+      "takeaway": "In short online debates, GPT-4 given basic demographic data raised the odds of opinion change by 81.2% versus human opponents; without the data it was not significantly better.",
+      "verification": {
+        "status": "verified_full_text",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Full text of the Nature Human Behaviour article PDF (journal header and DOI present; online date placeholder) plus Crossref abstract",
+        "text_url": "https://www.rivista.ai/wp-content/uploads/2025/05/s41562-025-02194-6.pdf"
+      }
+    },
+    "altay24": {
+      "id": "altay24",
+      "authors": "Altay & Gilardi",
+      "authors_full": "Sacha Altay, Fabrizio Gilardi",
+      "year": 2024,
+      "title": "People are skeptical of headlines labeled as AI-generated, even if true or human-made, because they assume full AI automation",
+      "venue": "PNAS Nexus",
+      "volume": "3(10)",
+      "pages": "pgae403",
+      "doi": "10.1093/pnasnexus/pgae403",
+      "url": "https://doi.org/10.1093/pnasnexus/pgae403",
+      "kind": "peer-reviewed",
+      "takeaway": "An 'AI-generated' label lowers belief in and sharing of headlines even when they are true or human-made, at about one-third the effect of a 'false' label.",
+      "verification": {
+        "status": "verified_full_text",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Full text via Europe PMC open-access XML (PMC11443540), first 100,000 characters",
+        "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11443540/fullTextXML"
+      }
+    },
+    "bucinca21": {
+      "id": "bucinca21",
+      "authors": "Buçinca, Malaya & Gajos",
+      "authors_full": "Zana Buçinca, Maja Barbara Malaya, Krzysztof Z. Gajos",
+      "year": 2021,
+      "title": "To Trust or to Think: Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making",
+      "venue": "Proceedings of the ACM on Human-Computer Interaction (CSCW1)",
+      "volume": "5(CSCW1)",
+      "pages": "1-21",
+      "doi": "10.1145/3449287",
+      "url": "https://doi.org/10.1145/3449287",
+      "kind": "peer-reviewed",
+      "takeaway": "Designs that force people to think before accepting AI advice reduced overreliance more than plain explanations, but users liked them least.",
+      "verification": {
+        "status": "verified_abstract",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Journal abstract (Crossref); ACM full text did not load, so no preprint numbers are used",
+        "text_url": "https://api.crossref.org/works/10.1145/3449287"
+      }
+    },
+    "yeomans19": {
+      "id": "yeomans19",
+      "authors": "Yeomans, Shah, Mullainathan & Kleinberg",
+      "authors_full": "Michael Yeomans, Anuj Shah, Sendhil Mullainathan, Jon Kleinberg",
+      "year": 2019,
+      "title": "Making sense of recommendations",
+      "venue": "Journal of Behavioral Decision Making",
+      "volume": "32(4)",
+      "pages": "403-414",
+      "doi": "10.1002/bdm.2118",
+      "url": "https://doi.org/10.1002/bdm.2118",
+      "kind": "peer-reviewed",
+      "takeaway": "Recommender systems beat strangers, friends and family at predicting which jokes people like, yet people preferred human recommenders whose process felt easier to understand.",
+      "verification": {
+        "status": "verified_abstract",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Journal abstract (Crossref)",
+        "text_url": "https://api.crossref.org/works/10.1002/bdm.2118"
+      }
+    },
+    "grove00": {
+      "id": "grove00",
+      "authors": "Grove et al.",
+      "authors_full": "William M. Grove, David H. Zald, Boyd S. Lebow, Beth E. Snitz, Chad Nelson",
+      "year": 2000,
+      "title": "Clinical versus mechanical prediction: A meta-analysis",
+      "venue": "Psychological Assessment",
+      "volume": "12(1)",
+      "pages": "19-30",
+      "doi": "10.1037/1040-3590.12.1.19",
+      "url": "https://doi.org/10.1037/1040-3590.12.1.19",
+      "kind": "peer-reviewed",
+      "takeaway": "Across 136 studies, statistical formulas were about 10% more accurate than expert clinical judgment, and experts were clearly better in only 6% to 16% of studies.",
+      "verification": {
+        "status": "verified_full_text",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Abstract (University of Minnesota Experts record) and full-text PDF showing 2000, Vol. 12, No. 1 and APA copyright",
+        "text_url": "https://scispace.com/pdf/clinical-versus-mechanical-prediction-a-meta-analysis-4wov3bdnn5.pdf"
+      }
+    },
+    "bry25": {
+      "id": "bry25",
+      "authors": "Brynjolfsson, Li & Raymond",
+      "authors_full": "Erik Brynjolfsson, Danielle Li, Lindsey Raymond",
+      "year": 2025,
+      "title": "Generative AI at Work",
+      "venue": "The Quarterly Journal of Economics",
+      "volume": "140(2)",
+      "pages": "889-942",
+      "doi": "10.1093/qje/qjae044",
+      "url": "https://doi.org/10.1093/qje/qjae044",
+      "kind": "peer-reviewed",
+      "takeaway": "An AI assistant raised support agents' issues resolved per hour 15% on average, mostly for less experienced and lower-skilled agents; customers grew more polite and asked for managers less.",
+      "verification": {
+        "status": "verified_abstract",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "QJE abstract (RePEc journal record); journal full text did not load, so no subgroup percentages are used",
+        "text_url": "https://econpapers.repec.org/RePEc:oup:qjecon:v:140:y:2025:i:2:p:889-942."
+      },
+      "flags": "Existing id reused. The 30% novice gain appears in a press release, not in text read from the journal article, so it is not used."
+    },
+    "dell26": {
+      "id": "dell26",
+      "authors": "Dell'Acqua et al.",
+      "authors_full": "Fabrizio Dell'Acqua, Edward McFowland III, Ethan Mollick, Hila Lifshitz, Katherine C. Kellogg, Saran Rajendran, Lisa Krayer, François Candelon, Karim R. Lakhani",
+      "year": 2026,
+      "title": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality",
+      "venue": "Organization Science",
+      "volume": "37(2)",
+      "pages": "403-423",
+      "doi": "10.1287/orsc.2025.21838",
+      "url": "https://doi.org/10.1287/orsc.2025.21838",
+      "kind": "peer-reviewed",
+      "takeaway": "GPT-4 made consultants faster and better on tasks inside its frontier but less often correct on a task outside it.",
+      "verification": {
+        "status": "verified_full_text",
+        "checked": "2026-10-31",
+        "metadata": "matched Crossref record",
+        "text_read": "Full text of the Organization Science Articles in Advance PDF (published online 11 March 2026), first 100,000 characters",
+        "text_url": "https://digitalfluency.mattalldian.com/research/foundational/dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier.pdf"
+      },
+      "flags": "Existing id reused. Abstract says '19% less likely' outside the frontier; items use the absolute rates (84.5%, 70.6%, 60%)."
+    }
+  },
+  "challenges": [
+    {
+      "id": "axb01",
+      "track": "AI × Business",
+      "format": "delegate",
+      "concept": "Human-AI synergy",
+      "title": "Who should have the final say?",
+      "scene": "You are designing workflows for three AI-supported tasks. A meta-analysis of 106 experiments shows when humans plus AI beat either one working alone.",
+      "question": "For each task, who should do the work?",
+      "delegate": {
+        "choices": ["AI drafts, human checks", "Human alone", "AI alone"],
+        "tasks": [
+          {"text": "Flag fake hotel reviews: AI is 73% accurate, staff 55%", "answer": 2, "why": "In this example the human-AI team scored 69%, below the AI alone at 73%."},
+          {"text": "Classify bird photos: staff are 81% accurate, AI 73%", "answer": 0, "why": "Here the human-AI team reached 90%, beating both humans and AI alone."},
+          {"text": "Draft open-ended marketing copy", "answer": 0, "why": "Creation tasks showed positive though non-significant synergy (g = 0.19), unlike decision tasks (g = -0.27)."}
+        ]
+      },
+      "answerTitle": "Combine only where humans beat the AI",
+      "explain": "Across 370 effect sizes, human-AI teams did worse than the best performer alone (g = -0.23). They gained when humans beat the AI (g = 0.46) and lost when the AI was better (g = -0.54).",
+      "implication": "Benchmark humans and AI separately before adding a human review layer; skip that layer where the AI alone is clearly stronger.",
+      "boundary": "Covers experiments published January 2020 to June 2023; averages span very different tasks, so they are no rule for one workflow.",
+      "sources": ["vaccaro24"],
+      "study": {"design": "Systematic review and meta-analysis", "n": "106 experiments, 370 effect sizes"},
+      "follow": [
+        {"q": "Do humans with AI beat humans alone?", "a": "Yes. Against humans alone, human-AI systems performed better (g = 0.64). The losses appear only against the better of the two."},
+        {"q": "Which task types lost most?", "a": "Decision tasks, where people choose from a fixed set of options, showed losses (g = -0.27). Creation tasks trended positive (g = 0.19, not significant)."},
+        {"q": "Where do the review and bird numbers come from?", "a": "Both come from Cabrera, Perer and Hong (2023), which the authors discuss to show how relative skill drives synergy."}
+      ],
+      "evidence": [
+        {"source": "vaccaro24", "quote": "370 unique effect sizes from 106 different experiments published between January 2020 and June 2023", "location": "Results"},
+        {"source": "vaccaro24", "quote": "The overall pooled effect was negative (g = -0.23; t92 = -2.89; two-tailed P = 0.005; 95% confidence interval (CI), -0.39 to -0.07)", "location": "Results (via new_sources.json; reconfirmed)"},
+        {"source": "vaccaro24", "quote": "the combined human-AI system outperformed both alone with an average pooled effect size for human-AI synergy of g = 0.46", "location": "Results, moderators"},
+        {"source": "vaccaro24", "quote": "performance losses occurred in the combined system relative to the AI alone", "location": "Results, moderators (g = -0.54)"},
+        {"source": "vaccaro24", "quote": "the AI alone achieved an accuracy of 73%, the human alone achieved an accuracy of 55%", "location": "Discussion (fake hotel reviews, citing Cabrera et al.)"},
+        {"source": "vaccaro24", "quote": "the human-AI system achieved an accuracy of 69%", "location": "Discussion (fake hotel reviews)"},
+        {"source": "vaccaro24", "quote": "the human alone achieved an accuracy of 81%", "location": "Discussion (bird images; AI alone 73%)"},
+        {"source": "vaccaro24", "quote": "the human-AI system achieved an accuracy of 90%", "location": "Discussion (bird images)"},
+        {"source": "vaccaro24", "quote": "Decision tasks: significantly negative (g = -0.27); creation tasks: positive (g = 0.19 ... P = 0.180)", "location": "Results, task type"},
+        {"source": "vaccaro24", "quote": "performed significantly better than humans alone", "location": "Results (g = 0.64)"}
+      ]
+    },
+    {
+      "id": "axb02",
+      "track": "AI × Business",
+      "format": "rank",
+      "concept": "Algorithm aversion",
+      "title": "Give them a small dial",
+      "scene": "In an incentivized task, people forecast students' math percentiles. They may use an imperfect model that outperforms human forecasts, but each group gets different rules for adjusting it.",
+      "question": "Rank the groups by share who chose to use the model.",
+      "options": ["Could adjust each forecast by up to 10", "Could adjust each forecast by up to 2", "Could not change the model at all"],
+      "rankAnswer": [0, 1, 2],
+      "rankLabel": "Share choosing the model",
+      "rankValues": ["71%", "68%", "47%"],
+      "answerTitle": "Any control beats none; size barely matters",
+      "explain": "In Study 2, 47% used the unchangeable model versus 68% to 71% when they could adjust it by 2, 5 or 10 percentiles.",
+      "implication": "Let staff make small, bounded adjustments to model outputs instead of mandating the outputs unchanged.",
+      "boundary": "Online and lab forecasting of student test percentiles with small bonuses; workplace accountability and long-term use were not studied.",
+      "sources": ["dietvorst18"],
+      "study": {"design": "Incentivized online experiment (Study 2 of 3)", "n": "816 participants"},
+      "follow": [
+        {"q": "Did adjusting hurt accuracy?", "a": "No. Because more people used the model, participants who could modify it forecast more accurately as a result, the authors report."},
+        {"q": "What about a 5-percentile limit?", "a": "Also 71%, the same as the 10-percentile limit. More freedom did not raise uptake."},
+        {"q": "Did the effect carry over?", "a": "Yes. Being able to modify the model raised satisfaction, belief that the model was superior, and willingness to use algorithms for later forecasts."}
+      ],
+      "evidence": [
+        {"source": "dietvorst18", "quote": "Whereas only 47% of participants in the can't-change condition chose to use the model's forecasts", "location": "Study 2, Results (p. 15-16 of deposit)"},
+        {"source": "dietvorst18", "quote": "71%, 71%, and 68% chose to the model in the adjust-by-10, adjust-by-5, and adjust-by-2 conditions", "location": "Study 2, Results (p. 16 of deposit; wording as printed)"},
+        {"source": "dietvorst18", "quote": "Study 2 (N = 816 completed forecasts; MTurk): can't-change, adjust-by-10, adjust-by-5, and adjust-by-2 conditions", "location": "Study 2, Method (p. 14-15; fetch-tool summary)"},
+        {"source": "dietvorst18", "quote": "they forecast more accurately as a result; preference did not grow with the size of permitted changes; modification increased satisfaction, belief in the algorithm's superiority, and later use", "location": "Abstract (Crossref; paraphrase of returned text)"}
+      ]
+    },
+    {
+      "id": "axb03",
+      "track": "AI × Business",
+      "format": "estimate",
+      "concept": "Machine prediction",
+      "title": "Same jail rate, less crime",
+      "scene": "Judges decide whether defendants await trial at home or in jail, partly by predicting crime risk. Researchers train a machine-learning model on past cases and simulate letting it rank defendants.",
+      "question": "Holding the jailing rate fixed, how much could crime fall?",
+      "estimate": {"target": 24.7, "min": 0, "max": 60, "tolerance": 6, "label": "Maximum crime reduction at the same jailing rate", "unit": "%"},
+      "answerTitle": "Up to 24.7% less crime",
+      "explain": "Simulations showed crime reductions up to 24.7% with no change in jailing rates, or jailing cuts up to 41.9% with no rise in crime.",
+      "implication": "Audit high-volume screening decisions with a prediction model and estimate how many errors you could cut at today's approval rate.",
+      "boundary": "These are policy simulations on past bail cases, not a deployed system; crime outcomes exist only for released defendants.",
+      "sources": ["kleinberg18"],
+      "study": {"design": "Machine-learning policy simulation on court records", "n": "Pretrial bail decisions (administrative data)"},
+      "follow": [
+        {"q": "Couldn't the model just copy judges' choices?", "a": "Crime is observed only for defendants judges released. The authors use methods such as quasi-random assignment of cases to judges to compare fairly."},
+        {"q": "What about racial disparities?", "a": "The authors report these gains can be achieved while also reducing racial disparities."},
+        {"q": "Is there another way to use the gain?", "a": "Yes. Hold crime constant and jail fewer people: jailing could fall up to 41.9% with no increase in crime."}
+      ],
+      "evidence": [
+        {"source": "kleinberg18", "quote": "crime reductions up to 24.7% with no change in jailing rates", "location": "Abstract"},
+        {"source": "kleinberg18", "quote": "jailing rate reductions up to 41.9% with no increase in crime rates", "location": "Abstract"},
+        {"source": "kleinberg18", "quote": "these gains can be achieved while simultaneously reducing racial disparities", "location": "Abstract"},
+        {"source": "kleinberg18", "quote": "We only observe crime outcomes for released defendants, not for those judges detained.", "location": "Abstract"}
+      ]
+    },
+    {
+      "id": "axb04",
+      "track": "AI × Business",
+      "format": "estimate",
+      "concept": "Mechanical prediction",
+      "title": "The formula versus the expert",
+      "scene": "A meta-analysis compares expert clinicians' predictions about human health and behavior with predictions from statistical formulas.",
+      "question": "On average, how much more accurate were the formulas?",
+      "estimate": {"target": 10, "min": 0, "max": 50, "tolerance": 4, "label": "Average accuracy advantage of formulas over experts", "unit": "%"},
+      "answerTitle": "About 10% more accurate",
+      "explain": "Across 136 studies, formulas were about 10% more accurate on average. Experts were substantially more accurate in only 6% to 16% of studies.",
+      "implication": "For repeated predictions from structured data, make a validated scoring rule the default and log every expert override.",
+      "boundary": "Studies of clinical and behavioral prediction up to 2000 using statistical formulas, not modern AI; many studies showed ties.",
+      "sources": ["grove00"],
+      "study": {"design": "Meta-analysis", "n": "136 studies"},
+      "follow": [
+        {"q": "Did experience help the experts?", "a": "No. The formula advantage held across judgment tasks, types of judges, judges' experience and types of data."},
+        {"q": "Do interviews give experts an edge?", "a": "The reverse. Clinical predictions did relatively worse when predictors included clinical interview data."},
+        {"q": "How often did formulas win clearly?", "a": "Formulas substantially outperformed experts in 33% to 47% of studies. In many others the two were about equally accurate."}
+      ],
+      "evidence": [
+        {"source": "grove00", "quote": "Of the 163 studies, 136 qualified for inclusion once closely examined for coding.", "location": "Method"},
+        {"source": "grove00", "quote": "On average, mechanical-prediction techniques were about 10% more accurate than clinical predictions.", "location": "Abstract"},
+        {"source": "grove00", "quote": "in only a few studies (6%-16%) were they substantially more accurate", "location": "Abstract"},
+        {"source": "grove00", "quote": "substantially outperformed clinical prediction in 33%-47% of studies examined", "location": "Abstract"},
+        {"source": "grove00", "quote": "Clinical predictions performed relatively less well when predictors included clinical interview data.", "location": "Abstract"}
+      ]
+    },
+    {
+      "id": "axb05",
+      "track": "AI × Business",
+      "format": "causal",
+      "concept": "Proxy bias",
+      "title": "The wrong target variable",
+      "scene": "A health system uses a widely sold algorithm to choose patients for an extra-care program. It predicts future health-care costs and treats high predicted cost as high need.",
+      "question": "Why were Black patients flagged less than equally sick White patients?",
+      "options": ["Race was an input to the model", "Less is spent on Black patients at equal need", "Black patients had fewer chronic illnesses", "The model had too little training data"],
+      "answer": 1,
+      "dag": {
+        "alt": "Health need and race both affect spending. The risk score is trained to predict spending, so lower spending on Black patients lowers their scores at the same need.",
+        "height": 200,
+        "nodes": [
+          {"id": "race", "label": "Race", "x": 80, "y": 50},
+          {"id": "need", "label": "Health need", "x": 80, "y": 150},
+          {"id": "cost", "label": "Spending", "x": 260, "y": 100},
+          {"id": "score", "label": "Risk score", "x": 440, "y": 100}
+        ],
+        "edges": [["need", "cost"], ["race", "cost", "q"], ["cost", "score"]]
+      },
+      "chart": {"labels": ["Current algorithm", "Disparity removed"], "values": [17.7, 46.5], "unit": "%", "highlight": 1, "note": "Share of Black patients receiving additional help. Values reported in Obermeyer et al. 2019, abstract."},
+      "answerTitle": "Cost was a biased proxy for need",
+      "explain": "Less money is spent caring for Black patients, so predicted cost understated their need. Removing the disparity would raise their share of extra help from 17.7% to 46.5%.",
+      "implication": "Before deploying a model, confirm its target measures what you care about, and audit outcomes by group at equal scores.",
+      "boundary": "One widely used commercial algorithm in US health care; the size of the bias depends on spending gaps in each system.",
+      "sources": ["obermeyer19"],
+      "study": {"design": "Audit of a deployed commercial algorithm", "n": "One widely used risk algorithm"},
+      "follow": [
+        {"q": "What fixed it?", "a": "Reformulating the algorithm so it no longer used costs as a proxy for needs eliminated the racial bias in predicting who needs extra care."},
+        {"q": "How large was the bias?", "a": "At a given risk score, Black patients were sicker than White patients, and the bias cut the number of Black patients identified for extra care by more than half."},
+        {"q": "Why did cost seem a sensible target?", "a": "The authors note that health-care cost appears to be an effective proxy for health on many measures, which made the problem easy to miss."}
+      ],
+      "evidence": [
+        {"source": "obermeyer19", "quote": "Remedying this disparity would increase the percentage of Black patients receiving additional help from 17.7 to 46.5%.", "location": "Abstract"},
+        {"source": "obermeyer19", "quote": "Bias occurs because the algorithm uses health costs as a proxy for health needs.", "location": "Abstract"},
+        {"source": "obermeyer19", "quote": "we spend less money caring for Black patients than for White patients", "location": "Abstract"},
+        {"source": "obermeyer19", "quote": "health care cost appearing to be an effective proxy for health", "location": "Abstract"},
+        {"source": "obermeyer19", "quote": "At a given risk score", "location": "Abstract (followed by the comparison of how sick Black and White patients are)"}
+      ]
+    },
+    {
+      "id": "axb06",
+      "track": "AI × Business",
+      "format": "forecast",
+      "concept": "Hiring discretion",
+      "title": "When managers overrule the test",
+      "scene": "Fifteen firms hiring low-skilled service workers introduce a job test that scores applicants. Managers can still hire against its recommendations.",
+      "question": "How likely is this claim to match what the study found?",
+      "forecast": {"claim": "Managers who hired against test recommendations more often ended up with better average hires.", "truth": false},
+      "answerTitle": "Overruling the test led to worse hires",
+      "explain": "Comparing managers with similar applicant pools, those who appeared to hire against test recommendations ended up with worse average hires.",
+      "implication": "Track override rates by manager, compare outcomes of overridden hires, and require a written reason for each override.",
+      "boundary": "Low-skilled service jobs at 15 firms adopting job testing; professional and creative roles were not studied.",
+      "sources": ["hoffman18"],
+      "study": {"design": "Observational study of job-test adoption", "n": "15 firms"},
+      "follow": [
+        {"q": "Why do managers overrule?", "a": "The authors conclude managers often overrule test recommendations because they are biased or mistaken, not mainly because they hold better information."},
+        {"q": "What tradeoff does the firm face?", "a": "More weight on test scores can cut bias and error but may discard useful private information held by managers. Here the first effect dominated."},
+        {"q": "How were managers compared?", "a": "The authors compared managers facing similar applicant pools, so differences in overrides were not just differences in who applied."}
+      ],
+      "evidence": [
+        {"source": "hoffman18", "quote": "We study the introduction of job testing across 15 firms employing low-skilled service sector workers.", "location": "Abstract"},
+        {"source": "hoffman18", "quote": "managers who appear to hire against test recommendations end up with worse average hires", "location": "Abstract"},
+        {"source": "hoffman18", "quote": "managers often overrule test recommendations because they are biased or mistaken", "location": "Abstract"},
+        {"source": "hoffman18", "quote": "Job-testing technologies enable firms to rely less on human judgment when making hiring decisions.", "location": "Abstract"}
+      ]
+    },
+    {
+      "id": "axb07",
+      "track": "AI × Business",
+      "format": "forecast",
+      "concept": "AI detection",
+      "title": "Spot the AI profile",
+      "scene": "Readers see self-descriptions written for job, hospitality and dating profiles. Some were written by people, others by an AI language model.",
+      "question": "How likely is this claim to match what the study found?",
+      "forecast": {"claim": "People identified which self-descriptions were AI-written clearly better than chance.", "truth": false},
+      "answerTitle": "Detection was at chance: 50 to 52%",
+      "explain": "Across experiments with 4,600 participants, people identified the source with only 50 to 52% accuracy, relying on cues like first-person pronouns and family topics.",
+      "implication": "Do not count on reviewers to spot AI-written applications or reviews; set disclosure rules and verify claims directly.",
+      "boundary": "Short self-presentations in professional, hospitality and dating contexts, judged by online participants; other text types were not tested.",
+      "sources": ["jakesch23"],
+      "study": {"design": "Six online experiments", "n": "4,600 participants, 7,600 self-presentations"},
+      "follow": [
+        {"q": "Did paying for accuracy help?", "a": "No. In the dating context half the participants were offered a $3 accuracy bonus, with no difference in performance."},
+        {"q": "Can AI text seem more human than human?", "a": "Yes. Text optimized against people's cues was judged human 65.7% of the time, versus 51.7% for real human text."},
+        {"q": "Which cues misled people?", "a": "First-person pronouns, contractions and family topics were read as signs of a human writer, but they did not reliably indicate one."}
+      ],
+      "evidence": [
+        {"source": "jakesch23", "quote": "participants identified the source of a self-presentation with only 50 to 52% accuracy", "location": "Results"},
+        {"source": "jakesch23", "quote": "we asked 4,600 participants to read through a total of 7,600 self-presentations", "location": "Results"},
+        {"source": "jakesch23", "quote": "associating first-person pronouns, use of contractions, or family topics with human-written language", "location": "Abstract"},
+        {"source": "jakesch23", "quote": "The optimized self-presentations were also more likely to be seen as human ... 65.7% vs. 51.7%", "location": "Results"},
+        {"source": "jakesch23", "quote": "additional $3 bonus payment ... no difference in performance between the bonus and no-bonus groups", "location": "Methods"},
+        {"source": "jakesch23", "quote": "professional, hospitality, and dating contexts", "location": "Abstract"}
+      ]
+    },
+    {
+      "id": "axb08",
+      "track": "AI × Business",
+      "format": "allocate",
+      "concept": "AI persuasion",
+      "title": "Who argues your case?",
+      "scene": "In 10-minute online debates on assigned topics, people faced either a human or GPT-4. Some opponents also received basic demographic details about the person they debated.",
+      "question": "Split a persuasion pilot budget across four opponent types.",
+      "options": ["Human opponent", "Human with demographic profile", "GPT-4", "GPT-4 with demographic profile"],
+      "allocate": {"total": 100, "step": 10, "label": "Pilot budget", "prefix": "", "suffix": "%", "values": [0, -15.7, 21.9, 81.2], "valueLabels": ["Baseline", "-15.7% (n.s.)", "+21.9% (n.s.)", "+81.2%"], "valueName": "change in odds of higher post-debate agreement vs human-human debates", "pass": 0.8},
+      "answerTitle": "Personalized GPT-4 was most persuasive",
+      "explain": "Versus human-human debates, personalized GPT-4 raised the odds of higher post-debate agreement by 81.2%. GPT-4 without profiles and personalized humans showed no significant effect.",
+      "implication": "Treat customer data fed to persuasive AI as a governed input; review consent and disclosure before using it in sales.",
+      "boundary": "Short structured online debates with assigned positions and basic demographics; long-run commercial persuasion was not tested.",
+      "sources": ["salvi25"],
+      "study": {"design": "Preregistered online experiment", "n": "900 participants"},
+      "follow": [
+        {"q": "How often did personalized GPT-4 win?", "a": "In pairs where the two sides were not equally persuasive, personalized GPT-4 was more persuasive 64.4% of the time."},
+        {"q": "Could people tell they faced an AI?", "a": "Often. Participants identified AI opponents in about three of four cases; for human opponents, identification was near chance (52.0%)."},
+        {"q": "Did humans use the profile well?", "a": "No. Humans given the same demographic details were not significantly more persuasive (-15.7%, P = 0.38)."}
+      ],
+      "evidence": [
+        {"source": "salvi25", "quote": "81.2% relative increase in odds of higher post-debate agreement", "location": "Abstract"},
+        {"source": "salvi25", "quote": "+81.2% (95% CI [+26.0%, +160.7%], P < 0.01)", "location": "Results, Aggregate results, Fig. 2 (Human-AI personalized)"},
+        {"source": "salvi25", "quote": "Human-AI (+21.9%, 95% CI [-16.2%, +77.3%], P = 0.30)", "location": "Results, Aggregate results, Fig. 2"},
+        {"source": "salvi25", "quote": "(-15.7%, 95% CI [-42.2%, +23.0%], P = 0.38)", "location": "Results, Aggregate results, Fig. 2 (Human-Human personalized)"},
+        {"source": "salvi25", "quote": "GPT-4 with personalization was more persuasive 64.4% of the time", "location": "Abstract"},
+        {"source": "salvi25", "quote": "N = 900", "location": "Abstract"},
+        {"source": "salvi25", "quote": "debate for 10 min on a randomly assigned topic", "location": "Fig. 1 caption"},
+        {"source": "salvi25", "quote": "participants correctly identified their opponent's identity in about three out of four cases", "location": "Results, Perceived opponent; human opponents 52.0%"}
+      ]
+    },
+    {
+      "id": "axb09",
+      "track": "AI × Business",
+      "format": "choice",
+      "concept": "AI disclosure",
+      "title": "The cost of an AI label",
+      "scene": "A news site plans to tag headlines 'AI-generated' whenever AI was involved, including true headlines its staff wrote and checked.",
+      "question": "How do readers treat true headlines that carry the label?",
+      "options": ["No change; they judge the content", "Rate them less accurate and share less", "Trust them more for the transparency", "Treat them like a 'false' label"],
+      "answer": 1,
+      "answerTitle": "Less believed and less shared",
+      "explain": "Across 4,976 participants, the label cut perceived accuracy and sharing whether headlines were true or false, human- or AI-made. The effect was three times smaller than a 'false' label.",
+      "implication": "If you label AI use, state what the AI did; vague labels read as full automation and penalize accurate content.",
+      "boundary": "Headlines shown to US and UK online participants; the penalty disappeared when labels came with weak or medium definitions of AI involvement.",
+      "sources": ["altay24"],
+      "study": {"design": "Two preregistered online experiments", "n": "4,976 participants (US, UK)"},
+      "follow": [
+        {"q": "Why the penalty?", "a": "Readers expected AI-labeled headlines to be written entirely by AI. Without a definition, they leaned toward assuming full automation."},
+        {"q": "Can wording fix it?", "a": "In Study 2 the labels had no significant effect when readers got weak or medium definitions. The penalty remained with no definition or a strong one."},
+        {"q": "Are human-made headlines hit too?", "a": "Yes. Human-made headlines wrongly labeled as AI-generated were also rated lower."}
+      ],
+      "evidence": [
+        {"source": "altay24", "quote": "The impact of labeling headlines as AI-generated was three times smaller than labeling them as false.", "location": "Abstract"},
+        {"source": "altay24", "quote": "regardless of whether the headlines were true or false, and created by humans or AI", "location": "Abstract"},
+        {"source": "altay24", "quote": "expectations that headlines labeled as AI-generated have been entirely written by AI", "location": "Abstract"},
+        {"source": "altay24", "quote": "the labels had no statistically significant effects when participants were given weak and medium definitions", "location": "Study 2 results"},
+        {"source": "altay24", "quote": "we recruited 1,976 participants in the United States via Prolific ... we recruited 3,003 participants in the United States and United Kingdom", "location": "Methods, Studies 1 and 2 (N = 4,976 in abstract)"}
+      ]
+    },
+    {
+      "id": "axb10",
+      "track": "AI × Business",
+      "format": "choice",
+      "concept": "Overreliance",
+      "title": "Make them think first",
+      "scene": "People make decisions with help from an AI that is usually right but sometimes wrong. Designers compare plain AI explanations with designs that force users to engage before relying on the AI.",
+      "question": "Which design best cut agreement with wrong AI advice?",
+      "options": ["Plain explanations with each suggestion", "Forcing users to engage before relying", "Neither design made a difference"],
+      "answer": 1,
+      "answerTitle": "Forcing functions worked, but users disliked them",
+      "explain": "Among 199 participants, cognitive forcing designs significantly reduced overreliance compared with simple explainable-AI designs. The most effective designs received the least favorable ratings.",
+      "implication": "On high-stakes calls, have reviewers record their own judgment before AI output appears, and plan for user pushback.",
+      "boundary": "One online decision task; benefits were larger for people higher in Need for Cognition, who enjoy effortful thinking.",
+      "sources": ["bucinca21"],
+      "study": {"design": "Online experiment", "n": "199 participants"},
+      "follow": [
+        {"q": "Who benefited most?", "a": "Participants higher in Need for Cognition, who enjoy effortful thinking, benefited more from the interventions."},
+        {"q": "What is the catch?", "a": "People gave the least favorable ratings to the designs that reduced overreliance most, a tradeoff between performance and user preference."},
+        {"q": "What were the forcing designs?", "a": "Three interventions built to compel people to engage more thoughtfully with the AI's suggestions and explanations before relying on them."}
+      ],
+      "evidence": [
+        {"source": "bucinca21", "quote": "(N=199)", "location": "Abstract"},
+        {"source": "bucinca21", "quote": "significantly reduced overreliance compared to the simple explainable AI approaches", "location": "Abstract"},
+        {"source": "bucinca21", "quote": "people assigned the least favorable subjective ratings to the designs that reduced the overreliance the most", "location": "Abstract"},
+        {"source": "bucinca21", "quote": "cognitive forcing interventions benefited participants higher in Need for Cognition more", "location": "Abstract"},
+        {"source": "bucinca21", "quote": "designed three cognitive forcing interventions to compel people", "location": "Abstract"}
+      ]
+    },
+    {
+      "id": "axb11",
+      "track": "AI × Business",
+      "format": "multi",
+      "concept": "Recommender trust",
+      "title": "Your spouse versus the algorithm",
+      "scene": "People rate a set of jokes. Then a stranger, a friend, a family member or a recommender system predicts which new jokes they will find funny.",
+      "question": "Which TWO findings did the study report?",
+      "options": ["The algorithm beat strangers, friends and family", "Spouses and family beat the algorithm", "People preferred relying on human recommenders", "People found the algorithm easier to understand", "The algorithm only beat strangers"],
+      "multiAnswers": [0, 2],
+      "answerTitle": "More accurate, yet people preferred humans",
+      "explain": "Recommender systems outperformed strangers, friends and family at predicting joke ratings. People still resisted relying on them, partly because human recommendations felt easier to understand.",
+      "implication": "When launching a recommender, explain in plain terms why it suggests each item; accuracy alone will not win adoption.",
+      "boundary": "Joke preferences, a taste domain where humans have many advantages; product or hiring recommendations were not tested.",
+      "sources": ["yeomans19"],
+      "study": {"design": "Experiments comparing human and algorithmic recommenders", "n": "Participants rating jokes (several studies)"},
+      "follow": [
+        {"q": "Why jokes?", "a": "The authors chose a domain where human recommenders have many advantages, which makes the algorithm's win a hard test."},
+        {"q": "Why did people resist?", "a": "Partly because they believed the human recommendation process was easier to understand than the algorithm's."},
+        {"q": "What do the authors recommend?", "a": "Accuracy is not enough. Recommender systems must also be understood if people are to rely on them."}
+      ],
+      "evidence": [
+        {"source": "yeomans19", "quote": "Recommender systems outperformed humans, whether the humans were strangers, friends, or family", "location": "Abstract (Crossref; fetch-tool summary wording)"},
+        {"source": "yeomans19", "quote": "people were averse to relying on the algorithms, partly because they believed the human recommendation process was easier to understand", "location": "Abstract (Crossref; fetch-tool summary wording)"},
+        {"source": "yeomans19", "quote": "a domain where humans have many advantages", "location": "Abstract (Crossref; fetch-tool summary wording)"},
+        {"source": "yeomans19", "quote": "accuracy alone is not enough for recommender systems; they must also be understood", "location": "Abstract (Crossref; fetch-tool summary wording)"}
+      ]
+    },
+    {
+      "id": "axb12",
+      "track": "AI × Business",
+      "format": "choice",
+      "concept": "Algorithmic bias",
+      "title": "The ad that skipped women",
+      "scene": "A firm runs a gender-neutral ad promoting STEM careers and lets the platform's algorithm deliver it cost-effectively. Fewer women than men end up seeing it.",
+      "question": "What best explains the gap?",
+      "options": ["The algorithm learned women click less", "Showing ads to young women costs more", "The advertiser targeted men by mistake", "Women rarely use the platform"],
+      "answer": 1,
+      "answerTitle": "Young women cost more to reach",
+      "explain": "Younger women are a prized audience and more expensive to show ads to, so a cost-optimizing algorithm delivered fewer STEM ads to them through crowding out.",
+      "implication": "Audit who actually sees your recruiting ads and set reach targets by group rather than pure cost optimization.",
+      "boundary": "One field test of STEM career ads, with the same pattern on other major platforms; it studies ad delivery, not hiring outcomes.",
+      "sources": ["lambrecht19"],
+      "study": {"design": "Field test of ad delivery", "n": "One STEM career ad campaign"},
+      "follow": [
+        {"q": "Was anyone trying to discriminate?", "a": "No. The ad was intended to be gender neutral; the gap came from an algorithm that simply optimized cost-effectiveness."},
+        {"q": "Is this one platform's quirk?", "a": "The authors report the same regularity extends to other major digital platforms."},
+        {"q": "What does crowding out mean here?", "a": "Other advertisers value younger women highly, so reaching them costs more, and a cost-minimizing campaign reaches fewer of them."}
+      ],
+      "evidence": [
+        {"source": "lambrecht19", "quote": "fewer women saw the ad than men", "location": "Abstract"},
+        {"source": "lambrecht19", "quote": "younger women are a prized demographic and are more expensive to show ads to", "location": "Abstract"},
+        {"source": "lambrecht19", "quote": "An algorithm that simply optimizes cost-effectiveness in ad delivery", "location": "Abstract"},
+        {"source": "lambrecht19", "quote": "this empirical regularity extends to other major digital platforms", "location": "Abstract"}
+      ]
+    },
+    {
+      "id": "axb13",
+      "track": "AI × Business",
+      "format": "forecast",
+      "concept": "Customer spillovers",
+      "title": "Do customers notice the AI?",
+      "scene": "A firm rolls out a generative-AI assistant that suggests replies to its customer-support agents, in stages across 5,172 agents.",
+      "question": "How likely is this claim to match what the study found?",
+      "forecast": {"claim": "After agents got AI assistance, customers became less likely to ask for a manager.", "truth": true},
+      "answerTitle": "Customers got politer and escalated less",
+      "explain": "With AI assistance, customers were more polite and less likely to ask to speak to a manager, alongside a 15% average rise in issues resolved per hour.",
+      "implication": "Track escalation rates and customer tone in AI pilots; part of the payoff may show up in supervisors' time.",
+      "boundary": "One firm's customer-support chat operation with a staggered rollout, not random assignment of agents.",
+      "sources": ["bry25"],
+      "study": {"design": "Staggered rollout (quasi-experiment)", "n": "5,172 support agents"},
+      "follow": [
+        {"q": "Which problems gained most?", "a": "Gains were largest for moderately rare problems, where agents had less experience but the system still had enough training data."},
+        {"q": "Did agents learn from it?", "a": "The authors find AI assistance facilitated worker learning and improved English fluency, especially among international agents."},
+        {"q": "Did the job get better?", "a": "The authors report AI assistance improved the experience of work along several dimensions."}
+      ],
+      "evidence": [
+        {"source": "bry25", "quote": "customers are more polite and less likely to ask to speak to a manager", "location": "Abstract"},
+        {"source": "bry25", "quote": "increases worker productivity, as measured by issues resolved per hour, by 15% on average", "location": "Abstract"},
+        {"source": "bry25", "quote": "the gains from AI adoption are largest for moderately rare problems", "location": "Abstract"},
+        {"source": "bry25", "quote": "AI assistance facilitates worker learning and improves English fluency, particularly among international agents", "location": "Abstract"},
+        {"source": "bry25", "quote": "AI assistance improves the experience of work along several dimensions", "location": "Abstract"},
+        {"source": "bry25", "quote": "using data from 5,172 customer-support agents", "location": "Abstract"}
+      ]
+    },
+    {
+      "id": "axb14",
+      "track": "AI × Business",
+      "format": "estimate",
+      "concept": "Inside the frontier",
+      "title": "How much faster with GPT-4?",
+      "scene": "BCG consultants work on 18 realistic tasks for a fictional footwear company, such as new product ideas and a press release. Some are randomly given GPT-4.",
+      "question": "How much faster did consultants with AI finish?",
+      "estimate": {"target": 25.1, "min": 0, "max": 70, "tolerance": 6, "label": "Speed gain on inside-frontier tasks", "unit": "%"},
+      "answerTitle": "25.1% faster, with more tasks done",
+      "explain": "Consultants with GPT-4 completed 12.2% more tasks and worked 25.1% faster. Graded quality rose 29.9% with GPT-4 alone and 33.9% with prompt training.",
+      "implication": "Pilot AI on drafting and ideation first, and measure speed, completion and blind-graded quality together.",
+      "boundary": "One firm's consultants on designed tasks for a fictional company; on a task outside the frontier, AI users were less often correct.",
+      "sources": ["dell26"],
+      "study": {"design": "Preregistered field experiment", "n": "758 BCG consultants"},
+      "follow": [
+        {"q": "Who gained most?", "a": "The bottom-half-skill consultants benefited most, though above-average consultants also benefited meaningfully."},
+        {"q": "Did prompt training matter?", "a": "Somewhat. Quality rose 33.9% with a prompt-engineering overview versus 29.9% with GPT-4 alone."},
+        {"q": "Is there a downside?", "a": "Yes. On a task built to sit outside AI's frontier, correctness fell from about 84.5% without AI to 70.6% and 60% with it."}
+      ],
+      "evidence": [
+        {"source": "dell26", "quote": "completing them 25.1% more quickly on average", "location": "Abstract (p. 1)"},
+        {"source": "dell26", "quote": "these coefficients indicate a 12.2% increase in completion rates", "location": "Results (p. 8)"},
+        {"source": "dell26", "quote": "representing a 33.9% increase, with GPT only producing", "location": "Results (p. 6; GPT-only 29.9% in same passage)"},
+        {"source": "dell26", "quote": "Propose at least 10 ideas for a new shoe targeting an underserved market or sport.", "location": "Task description (p. 6)"},
+        {"source": "dell26", "quote": "Draft a press release marketing copy for your product.", "location": "Task description (p. 6)"},
+        {"source": "dell26", "quote": "the most significant beneficiaries of using AI are the bottom-half-skill subjects", "location": "Results (p. 8)"},
+        {"source": "dell26", "quote": "those who were above average also benefited meaningfully through the use of the AI system", "location": "Results (p. 9)"},
+        {"source": "dell26", "quote": "correct about this exercise about 84.5% of the time ... scored at 60% and 70.6%", "location": "Outside-frontier results (p. 10)"},
+        {"source": "dell26", "quote": "Preregistered field experiment with 758 BCG consultants", "location": "Design (new_sources.json, journal PDF)"}
+      ]
+    },
+    {
+      "id": "rollout1",
+      "track": "AI × Business",
+      "format": "choice",
+      "case": {"id": "rollout", "title": "Rolling out an AI assistant", "step": 1, "of": 4},
+      "concept": "Targeted rollout",
+      "title": "Who gets the assistant first?",
+      "scene": "You run a 400-agent support center and can license a generative-AI reply assistant for 100 agents this quarter. Your goal is the largest gain in issues resolved.",
+      "question": "Which agents should get the first licenses?",
+      "options": ["Newest, least experienced agents", "Top-rated, most experienced agents", "A random sample across tenure", "Team leads, who coach others"],
+      "answer": 0,
+      "answerTitle": "Start with less experienced agents",
+      "explain": "In a rollout to 5,172 agents, issues resolved per hour rose 15% on average. Less experienced and lower-skilled agents improved speed and quality; top agents gained little.",
+      "implication": "Target early licenses at newer and lower-performing staff, and report gains by tenure tier.",
+      "boundary": "Customer-support chat at one firm; gains were largest on moderately rare problems where the system had enough training data.",
+      "sources": ["bry25"],
+      "study": {"design": "Staggered rollout (quasi-experiment)", "n": "5,172 support agents"},
+      "follow": [
+        {"q": "Why not the stars?", "a": "The most experienced and highest-skilled agents saw only small gains in speed and small declines in quality."},
+        {"q": "How was productivity measured?", "a": "Issues resolved per hour, which rose 15% on average with access to the assistant."},
+        {"q": "Why do the exact tier gains not appear here?", "a": "Subgroup percentages were not in the journal text we could read, so this item uses the direction the abstract reports."}
+      ],
+      "evidence": [
+        {"source": "bry25", "quote": "increases worker productivity, as measured by issues resolved per hour, by 15% on average", "location": "Abstract"},
+        {"source": "bry25", "quote": "Less experienced and lower-skilled workers improve both the speed and quality of their output", "location": "Abstract"},
+        {"source": "bry25", "quote": "the most experienced and highest-skilled workers see small gains in speed and small declines in quality", "location": "Abstract"},
+        {"source": "bry25", "quote": "the gains from AI adoption are largest for moderately rare problems", "location": "Abstract"}
+      ]
+    },
+    {
+      "id": "rollout2",
+      "track": "AI × Business",
+      "format": "forecast",
+      "case": {"id": "rollout", "title": "Rolling out an AI assistant", "step": 2, "of": 4},
+      "concept": "Expert spillback",
+      "title": "Will your stars get better too?",
+      "scene": "Licenses now extend to your most experienced, highest-skilled agents. A director predicts the assistant will lift their work just as it did for newer agents.",
+      "question": "How likely is this claim to match what the study found?",
+      "forecast": {"claim": "For the most experienced, highest-skilled agents, AI assistance improved both speed and quality.", "truth": false},
+      "answerTitle": "Top agents: slightly faster, slightly lower quality",
+      "explain": "In the same rollout, the most experienced and highest-skilled agents saw small gains in speed and small declines in quality.",
+      "implication": "Let top performers tune or skip suggestions, and monitor their quality scores after rollout.",
+      "boundary": "One firm's support chat; the declines for top agents were small, and other occupations may differ.",
+      "sources": ["bry25"],
+      "study": {"design": "Staggered rollout (quasi-experiment)", "n": "5,172 support agents"},
+      "follow": [
+        {"q": "Did anyone gain on both?", "a": "Yes. Less experienced and lower-skilled agents improved both the speed and quality of their output."},
+        {"q": "Does the AI help experts at all?", "a": "Slightly. They saw small gains in speed, offset by small declines in quality."},
+        {"q": "Did customers react?", "a": "Customers were more polite and less likely to ask to speak to a manager."}
+      ],
+      "evidence": [
+        {"source": "bry25", "quote": "the most experienced and highest-skilled workers see small gains in speed and small declines in quality", "location": "Abstract"},
+        {"source": "bry25", "quote": "Less experienced and lower-skilled workers improve both the speed and quality of their output", "location": "Abstract"},
+        {"source": "bry25", "quote": "customers are more polite and less likely to ask to speak to a manager", "location": "Abstract"}
+      ]
+    },
+    {
+      "id": "rollout3",
+      "track": "AI × Business",
+      "format": "delegate",
+      "case": {"id": "rollout", "title": "Rolling out an AI assistant", "step": 3, "of": 4},
+      "concept": "Jagged frontier",
+      "title": "Which tasks go to GPT-4?",
+      "scene": "Next, your strategy team gets GPT-4. Their work ranges from brainstorming product ideas to a brand recommendation that hinges on details buried in interview notes.",
+      "question": "Assign each task.",
+      "delegate": {
+        "choices": ["AI drafts, human checks", "Human alone", "AI alone"],
+        "tasks": [
+          {"text": "Propose ten product ideas for an underserved market", "answer": 0, "why": "Inside the frontier, consultants with GPT-4 finished 12.2% more tasks, 25.1% faster, with higher graded quality."},
+          {"text": "Draft press-release copy for the new product", "answer": 0, "why": "This was one of the inside-frontier tasks, where AI users produced higher-quality work."},
+          {"text": "Pick the brand to grow from interview notes and spreadsheets", "answer": 1, "why": "On this outside-frontier task, correctness fell from about 84.5% without AI to 70.6% and 60% with GPT-4."}
+        ]
+      },
+      "answerTitle": "Use AI inside the frontier, not outside",
+      "explain": "Inside the frontier, AI users completed 12.2% more tasks and worked 25.1% faster. On the outside-frontier case, correctness fell from about 84.5% to 70.6% and 60%.",
+      "implication": "Test each task type for convincing AI errors before rollout; keep humans in charge where those errors appear.",
+      "boundary": "One designed outside-frontier task for a fictional company; the frontier moves as models change.",
+      "sources": ["dell26"],
+      "study": {"design": "Preregistered field experiment", "n": "758 BCG consultants"},
+      "follow": [
+        {"q": "Did prompt training help on the hard task?", "a": "No. The group with a prompt-engineering overview was correct about 60% of the time, below GPT-4 alone at 70.6%."},
+        {"q": "How was the hard task built?", "a": "Success required a careful review of interview notes that held the key details, then advice to the CEO on which brand held the most growth potential."},
+        {"q": "Who were the workers?", "a": "758 BCG consultants, randomized to no AI, GPT-4, or GPT-4 with a prompt-engineering overview."}
+      ],
+      "evidence": [
+        {"source": "dell26", "quote": "completing them 25.1% more quickly on average", "location": "Abstract (p. 1)"},
+        {"source": "dell26", "quote": "these coefficients indicate a 12.2% increase in completion rates", "location": "Results (p. 8)"},
+        {"source": "dell26", "quote": "correct about this exercise about 84.5% of the time", "location": "Outside-frontier results (p. 10)"},
+        {"source": "dell26", "quote": "scored at 60% and 70.6%", "location": "Outside-frontier results (p. 10); 60.0% is GPT + overview, 70.6% GPT only per new_sources.json"},
+        {"source": "dell26", "quote": "a careful review of the interview notes revealed crucial details", "location": "Outside-frontier task (p. 10)"},
+        {"source": "dell26", "quote": "Their recommendations were designed to pinpoint which brand held the most potential for growth.", "location": "Outside-frontier task (p. 10)"},
+        {"source": "dell26", "quote": "Propose at least 10 ideas for a new shoe targeting an underserved market or sport.", "location": "Inside-frontier tasks (p. 6)"},
+        {"source": "dell26", "quote": "Draft a press release marketing copy for your product.", "location": "Inside-frontier tasks (p. 6)"}
+      ]
+    },
+    {
+      "id": "rollout4",
+      "track": "AI × Business",
+      "format": "estimate",
+      "case": {"id": "rollout", "title": "Rolling out an AI assistant", "step": 4, "of": 4},
+      "concept": "Deskilling risk",
+      "title": "Learning with a crutch",
+      "scene": "HR proposes unrestricted ChatGPT-style access in new-hire training. In a related field experiment, high school students practiced math with GPT-4, then took exams without it.",
+      "question": "How did unrestricted-AI students score on unaided exams versus controls?",
+      "estimate": {"target": -17, "min": -50, "max": 50, "tolerance": 6, "label": "Change in exam grades vs students without AI", "unit": "%"},
+      "answerTitle": "17% lower on exams without AI",
+      "explain": "Practice grades rose 48% with plain GPT-4, but exam grades fell 17% versus students never given access. A tutor version with safeguards showed no measurable exam harm.",
+      "implication": "In training, use AI tutors that give hints rather than answers, and test skills without AI before certifying anyone.",
+      "boundary": "Nearly 1,000 high school math students in Turkey over four 90-minute sessions; adult workplace training was not tested.",
+      "sources": ["bastani25"],
+      "study": {"design": "Randomized field experiment", "n": "Nearly 1,000 high school students"},
+      "follow": [
+        {"q": "What were students doing with it?", "a": "Most used plain GPT-4 to obtain solutions; the most common message was 'What is the answer?'"},
+        {"q": "Did students realize the harm?", "a": "No. Students in the plain GPT-4 arm did not perceive that they performed worse or learned less."},
+        {"q": "What did the tutor version change?", "a": "It added safeguards such as hints instead of answers and teacher-provided solutions. Practice grades rose 127%, and exam scores matched controls."}
+      ],
+      "evidence": [
+        {"source": "bastani25", "quote": "48% improvement in grades for GPT Base and 127% for GPT Tutor", "location": "Abstract"},
+        {"source": "bastani25", "quote": "17% reduction in grades for GPT Base", "location": "Abstract"},
+        {"source": "bastani25", "quote": "These negative learning effects are largely mitigated by the safeguards in GPT Tutor.", "location": "Abstract"},
+        {"source": "bastani25", "quote": "statistically indistinguishable from that of the control arm", "location": "Results (GPT Tutor exam, estimate -0.004)"},
+        {"source": "bastani25", "quote": "nearly a thousand high school math students", "location": "Abstract"},
+        {"source": "bastani25", "quote": "a large high school in Turkey", "location": "Methods"},
+        {"source": "bastani25", "quote": "four 90-min sessions", "location": "Methods"},
+        {"source": "bastani25", "quote": "the vast majority of students are using GPT Base to obtain solutions", "location": "Results; most common message 'What is the answer?'"},
+        {"source": "bastani25", "quote": "they did not perceive that they performed worse or learned less", "location": "Results"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1510 @@
+{
+ "sources": {
+  "cohn19": {
+   "id": "cohn19",
+   "authors": "Cohn, Maréchal, Tannenbaum & Zünd",
+   "authors_full": "Alain Cohn, Michel André Maréchal, David Tannenbaum, Christian Lukas Zünd",
+   "year": 2019,
+   "title": "Civic honesty around the globe",
+   "venue": "Science",
+   "volume": "365(6448)",
+   "pages": "70-73",
+   "doi": "10.1126/science.aau8712",
+   "url": "https://doi.org/10.1126/science.aau8712",
+   "kind": "peer-reviewed",
+   "takeaway": "Lost wallets were reported to their owners more often when they held more money, in 38 of 40 countries.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (author-hosted published article) plus Crossref abstract",
+    "text_url": "https://davetannenbaum.github.io/documents/Cohn2019.pdf"
+   },
+   "flags": [
+    "Cross-country rankings rest on owner email responses; Yang et al. (2023, PNAS 120(29), e2213824120, doi:10.1073/pnas.2213824120) report email response rates were inversely related to collectivism and that a China replication found higher wallet recovery than email responses implied. Items here use the within-country money effect, not country rankings."
+   ]
+  },
+  "abeler19": {
+   "id": "abeler19",
+   "authors": "Abeler, Nosenzo & Raymond",
+   "authors_full": "Johannes Abeler, Daniele Nosenzo, Collin Raymond",
+   "year": 2019,
+   "title": "Preferences for Truth-Telling",
+   "venue": "Econometrica",
+   "volume": "87(4)",
+   "pages": "1115-1153",
+   "doi": "10.3982/ECTA14673",
+   "url": "https://doi.org/10.3982/ECTA14673",
+   "kind": "peer-reviewed",
+   "takeaway": "Across 90 experiments people lie surprisingly little, forgoing about three-quarters of the potential gains from lying.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (published Econometrica version with journal header) plus Econometric Society abstract",
+    "text_url": "https://econreadinggroup.github.io/assets/Abeler%20et%20al.%20(2019,%20ECTA).pdf"
+   }
+  },
+  "gachter16": {
+   "id": "gachter16",
+   "authors": "Gächter & Schulz",
+   "authors_full": "Simon Gächter, Jonathan F. Schulz",
+   "year": 2016,
+   "title": "Intrinsic honesty and the prevalence of rule violations across societies",
+   "venue": "Nature",
+   "volume": "531(7595)",
+   "pages": "496-499",
+   "doi": "10.1038/nature17160",
+   "url": "https://doi.org/10.1038/nature17160",
+   "kind": "peer-reviewed",
+   "takeaway": "Students from societies with more corruption, tax evasion and political fraud bent the rules more in a private die task, but were no more likely to cheat maximally.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text of the Europe PMC author manuscript (not the typeset version) plus Crossref metadata",
+    "text_url": "https://theigc.org/wp-content/uploads/2016/02/Gaechter-Schulz_Nature2016.pdf"
+   },
+   "flags": [
+    "Numbers read from the author manuscript; confirm against the typeset Nature version before display if possible."
+   ]
+  },
+  "fischbacher13": {
+   "id": "fischbacher13",
+   "authors": "Fischbacher & Föllmi-Heusi",
+   "authors_full": "Urs Fischbacher, Franziska Föllmi-Heusi",
+   "year": 2013,
+   "title": "Lies in Disguise: An Experimental Study on Cheating",
+   "venue": "Journal of the European Economic Association",
+   "volume": "11(3)",
+   "pages": "525-547",
+   "doi": "10.1111/jeea.12014",
+   "url": "https://doi.org/10.1111/jeea.12014",
+   "kind": "peer-reviewed",
+   "takeaway": "In a private die-roll task, about 39% of subjects were honest, at most 22% lied fully, and some lied without maximizing income.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Journal abstract (IDEAS/RePEc record of the JEEA article); design details checked against the 2008 working-paper version (TWI Research Paper 40), not the version of record",
+    "text_url": "https://ideas.repec.org/a/bla/jeurec/v11y2013i3p525-547.html"
+   }
+  },
+  "hallsworth17": {
+   "id": "hallsworth17",
+   "authors": "Hallsworth, List, Metcalfe & Vlaev",
+   "authors_full": "Michael Hallsworth, John A. List, Robert D. Metcalfe, Ivo Vlaev",
+   "year": 2017,
+   "title": "The behavioralist as tax collector: Using natural field experiments to enhance tax compliance",
+   "venue": "Journal of Public Economics",
+   "volume": "148",
+   "pages": "14-31",
+   "doi": "10.1016/j.jpubeco.2017.02.003",
+   "url": "https://doi.org/10.1016/j.jpubeco.2017.02.003",
+   "kind": "peer-reviewed",
+   "takeaway": "Adding social norm and public-services messages to UK tax reminder letters raised payment of overdue tax at little cost.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Journal abstract (EconPapers record of the JPubE article); design details from the deposited author version (WRAP, dated 30 Nov 2016), whose text and tables disagree on one effect size, so no effect sizes are used",
+    "text_url": "https://econpapers.repec.org/RePEc:eee:pubeco:v:148:y:2017:i:c:p:14-31"
+   }
+  },
+  "bail18": {
+   "id": "bail18",
+   "authors": "Bail et al.",
+   "authors_full": "Christopher A. Bail, Lisa P. Argyle, Taylor W. Brown, John P. Bumpus, Haohan Chen, M. B. Fallin Hunzaker, Jaemin Lee, Marcus Mann, Friedolin Merhout, Alexander Volfovsky",
+   "year": 2018,
+   "title": "Exposure to opposing views on social media can increase political polarization",
+   "venue": "Proceedings of the National Academy of Sciences",
+   "volume": "115(37)",
+   "pages": "9216-9221",
+   "doi": "10.1073/pnas.1804840115",
+   "url": "https://doi.org/10.1073/pnas.1804840115",
+   "kind": "peer-reviewed",
+   "takeaway": "Republicans paid to follow a liberal Twitter bot for a month became more conservative; Democrats' shift was small and not significant.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (Europe PMC XML of PMC6140520) plus Crossref abstract",
+    "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6140520/fullTextXML"
+   }
+  },
+  "allcott20": {
+   "id": "allcott20",
+   "authors": "Allcott, Braghieri, Eichmeyer & Gentzkow",
+   "authors_full": "Hunt Allcott, Luca Braghieri, Sarah Eichmeyer, Matthew Gentzkow",
+   "year": 2020,
+   "title": "The Welfare Effects of Social Media",
+   "venue": "American Economic Review",
+   "volume": "110(3)",
+   "pages": "629-676",
+   "doi": "10.1257/aer.20190658",
+   "url": "https://doi.org/10.1257/aer.20190658",
+   "kind": "peer-reviewed",
+   "takeaway": "Four weeks off Facebook reduced polarization and news knowledge and raised subjective well-being.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "AEA abstract of the published article plus full text of the authors' final manuscript dated 8 Nov 2019 (no journal header)",
+    "text_url": "https://web.stanford.edu/~gentzkow/research/facebook.pdf"
+   },
+   "flags": [
+    "Effect sizes (SD units, minutes, WTA) were read in the authors' final manuscript dated Nov 2019, not the typeset AER pages; direction of every effect is confirmed by the AER abstract."
+   ]
+  },
+  "pennycook21": {
+   "id": "pennycook21",
+   "authors": "Pennycook et al.",
+   "authors_full": "Gordon Pennycook, Ziv Epstein, Mohsen Mosleh, Antonio A. Arechar, Dean Eckles, David G. Rand",
+   "year": 2021,
+   "title": "Shifting attention to accuracy can reduce misinformation online",
+   "venue": "Nature",
+   "volume": "592(7855)",
+   "pages": "590-595",
+   "doi": "10.1038/s41586-021-03344-2",
+   "url": "https://doi.org/10.1038/s41586-021-03344-2",
+   "kind": "peer-reviewed",
+   "takeaway": "A single private prompt to rate a headline's accuracy modestly raised the quality of news Twitter users shared.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (nature.com article page) plus Crossref metadata",
+    "text_url": "https://www.nature.com/articles/s41586-021-03344-2"
+   },
+   "flags": [
+    "Accuracy-prompt effects are small and debated: a preregistered direct replication of the authors' earlier study (Roozenbeek, Freeman & van der Linden 2021, Psychological Science 32(7), 1169-1178, doi:10.1177/09567976211024535) failed at its first stage (n = 701, p = .67) and found only a small, uncorrected interaction after more data. The item states the effect as modest."
+   ]
+  },
+  "vosoughi18": {
+   "id": "vosoughi18",
+   "authors": "Vosoughi, Roy & Aral",
+   "authors_full": "Soroush Vosoughi, Deb Roy, Sinan Aral",
+   "year": 2018,
+   "title": "The spread of true and false news online",
+   "venue": "Science",
+   "volume": "359(6380)",
+   "pages": "1146-1151",
+   "doi": "10.1126/science.aap9559",
+   "url": "https://doi.org/10.1126/science.aap9559",
+   "kind": "peer-reviewed",
+   "takeaway": "False news spread farther and faster than true news on Twitter, and humans rather than bots drove the gap.",
+   "verification": {
+    "status": "verified_abstract",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Abstract (Europe PMC / PubMed record) plus Crossref metadata; full text not accessible, so the widely cited 70% retweet figure is not used",
+    "text_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1126/science.aap9559&resultType=core&format=json"
+   }
+  },
+  "bursztyn20": {
+   "id": "bursztyn20",
+   "authors": "Bursztyn, González & Yanagizawa-Drott",
+   "authors_full": "Leonardo Bursztyn, Alessandra L. González, David Yanagizawa-Drott",
+   "year": 2020,
+   "title": "Misperceived Social Norms: Women Working Outside the Home in Saudi Arabia",
+   "venue": "American Economic Review",
+   "volume": "110(10)",
+   "pages": "2997-3029",
+   "doi": "10.1257/aer.20180975",
+   "url": "https://doi.org/10.1257/aer.20180975",
+   "kind": "peer-reviewed",
+   "takeaway": "Saudi men privately supported women working outside the home but underestimated peers' support; correcting beliefs raised wives' job search.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (author-hosted PDF with AER 110(10) header and DOI) plus Crossref abstract",
+    "text_url": "https://home.uchicago.edu/bursztyn/Misperceived_Norms.pdf"
+   }
+  },
+  "lees20": {
+   "id": "lees20",
+   "authors": "Lees & Cikara",
+   "authors_full": "Jeffrey Lees, Mina Cikara",
+   "year": 2020,
+   "title": "Inaccurate group meta-perceptions drive negative out-group attributions in competitive contexts",
+   "venue": "Nature Human Behaviour",
+   "volume": "4(3)",
+   "pages": "279-286",
+   "doi": "10.1038/s41562-019-0766-4",
+   "url": "https://doi.org/10.1038/s41562-019-0766-4",
+   "kind": "peer-reviewed",
+   "takeaway": "Partisans overestimate how negatively the other side views their group's actions; correcting this reduced attributions of obstructionism.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Journal abstract (Springer page) plus full text of the Harvard DASH manuscript version; Crossref API request failed, metadata matched on the publisher page",
+    "text_url": "https://dash.harvard.edu/server/api/core/bitstreams/fda14585-409f-44d1-8955-82808aeac786/content"
+   },
+   "flags": [
+    "Crossref API returned an error; bibliographic data taken from the Springer Nature page (online 11 Nov 2019, issue March 2020). Experiment-level numbers come from the DASH manuscript, not the typeset article."
+   ]
+  },
+  "mellers14": {
+   "id": "mellers14",
+   "authors": "Mellers et al.",
+   "authors_full": "Barbara Mellers, Lyle Ungar, Jonathan Baron, Jaime Ramos, Burcu Gurcay, Katrina Fincher, Sydney E. Scott, Don Moore, Pavel Atanasov, Samuel A. Swift, Terry Murray, Eric Stone, Philip E. Tetlock",
+   "year": 2014,
+   "title": "Psychological Strategies for Winning a Geopolitical Forecasting Tournament",
+   "venue": "Psychological Science",
+   "volume": "25(5)",
+   "pages": "1106-1115",
+   "doi": "10.1177/0956797614524255",
+   "url": "https://doi.org/10.1177/0956797614524255",
+   "kind": "peer-reviewed",
+   "takeaway": "Probability training, teaming and tracking top performers each improved geopolitical forecast accuracy.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Full text (eScholarship copy) plus Crossref abstract",
+    "text_url": "https://escholarship.org/content/qt4rg4n9vr/qt4rg4n9vr_noSplash_4ff67e56b3dac616e0163b75090705e6.pdf"
+   },
+   "flags": [
+    "The paper reports test statistics, not percentage accuracy gains; no percentages are derived here."
+   ]
+  },
+  "moore08": {
+   "id": "moore08",
+   "authors": "Moore & Healy",
+   "authors_full": "Don A. Moore, Paul J. Healy",
+   "year": 2008,
+   "title": "The trouble with overconfidence",
+   "venue": "Psychological Review",
+   "volume": "115(2)",
+   "pages": "502-517",
+   "doi": "10.1037/0033-295X.115.2.502",
+   "url": "https://doi.org/10.1037/0033-295X.115.2.502",
+   "kind": "peer-reviewed",
+   "takeaway": "On hard tasks people overestimate their own score yet think they are worse than others; on easy tasks the reverse.",
+   "verification": {
+    "status": "verified_full_text",
+    "checked": "2026-10-31",
+    "metadata": "matched Crossref record",
+    "text_read": "Published version (author-hosted PDF) as recorded in audit/new_sources.json; abstract quotes verbatim",
+    "text_url": "https://doi.org/10.1037/0033-295X.115.2.502"
+   }
+  }
+ },
+ "challenges": [
+  {
+   "id": "civic-wallet-rank",
+   "format": "rank",
+   "track": "Culture & Society",
+   "concept": "Civic honesty",
+   "title": "The wallet with more cash",
+   "scene": "Researchers handed 'lost' wallets to staff at banks, hotels, post offices and police stations. In the US, UK and Poland, wallets held no money, US$13.45, or US$94.15.",
+   "question": "Rank the wallets by how often staff contacted the owner.",
+   "options": [
+    "No money",
+    "US$13.45 in cash",
+    "US$94.15 in cash"
+   ],
+   "rankAnswer": [
+    2,
+    1,
+    0
+   ],
+   "rankLabel": "Share of wallets reported to the owner",
+   "rankValues": [
+    "46%",
+    "61%",
+    "72%"
+   ],
+   "answerTitle": "More money, more wallets returned",
+   "explain": "Reporting rose from 46% with no money to 61% with US$13.45 and 72% with US$94.15. Across all 40 countries, money raised reporting from 40% to 51%.",
+   "implication": "When designing controls, make the owner and the stakes visible; people resist taking more when it would clearly feel like theft.",
+   "boundary": "Wallets handed to counter staff in 355 cities; return was measured by owner emails, a measure later questioned for cross-country rankings.",
+   "sources": [
+    "cohn19"
+   ],
+   "follow": [
+    {
+     "q": "Did the key in the wallet matter?",
+     "a": "Yes. In the US, UK and Poland, wallets with a key were 9.2 percentage points more likely to be reported, which the authors read as concern for the owner."
+    },
+    {
+     "q": "Did this hold in every country?",
+     "a": "The money effect appeared in 38 of 40 countries, and no country showed a significant drop in reporting when money was added."
+    },
+    {
+     "q": "How large was the study?",
+     "a": "17,303 wallets were turned in across 355 cities in 40 countries, typically five to eight of each country's largest cities."
+    }
+   ],
+   "study": {
+    "design": "Field experiment",
+    "n": "17,303 wallets, 355 cities, 40 countries"
+   },
+   "evidence": [
+    {
+     "source": "cohn19",
+     "quote": "rising from 40% in the NoMoney condition to 51% in the Money condition",
+     "location": "Main text, results"
+    },
+    {
+     "source": "cohn19",
+     "quote": "46% with no money, 61% with US$13.45, and 72% with US$94.15 (BigMoney 'topped out at 72%')",
+     "location": "Main text, BigMoney condition (US, UK, Poland pooled); fetch-tool rendering"
+    },
+    {
+     "source": "cohn19",
+     "quote": "We observed this pattern for 38 of our 40 countries",
+     "location": "Main text"
+    },
+    {
+     "source": "cohn19",
+     "quote": "Recipients were 9.2 percentage points more likely to report wallets that included a key (P = 0.0001, pooled)",
+     "location": "Main text, Money-NoKey condition; fetch-tool paraphrase"
+    },
+    {
+     "source": "cohn19",
+     "quote": "17,303 wallets ... 355 cities in 40 countries; banks, cultural venues, post offices, hotels, and police stations, courts, or other public offices",
+     "location": "Main text, design"
+    }
+   ]
+  },
+  {
+   "id": "civic-wallet-experts",
+   "format": "forecast",
+   "track": "Judgment",
+   "concept": "Forecasting honesty",
+   "title": "What the experts expected",
+   "scene": "Before the wallet results were public, researchers asked 279 US economists and 299 US laypeople how adding cash to a lost wallet would change return rates.",
+   "question": "Did most economists foresee that more cash means more returns?",
+   "forecast": {
+    "claim": "Most surveyed economists predicted that more money in a wallet would raise return rates.",
+    "truth": false
+   },
+   "answerTitle": "Only 29% of economists predicted the increase",
+   "explain": "Among 279 economists, 49% predicted a decrease and 29% an increase; among 299 laypeople only 18% predicted the increase that actually occurred.",
+   "implication": "Pilot honesty controls before scaling them; expert intuition about how people respond to temptation got the direction wrong here.",
+   "boundary": "Predictions came from US survey samples; actual behavior came from the 40-country field experiment with wallets handed to counter staff.",
+   "sources": [
+    "cohn19"
+   ],
+   "follow": [
+    {
+     "q": "What did laypeople predict?",
+     "a": "They expected reporting to fall as money increased, from 73% with no money to 65% with a modest sum and 55% with a substantial sum."
+    },
+    {
+     "q": "Were economists closer than laypeople?",
+     "a": "Their errors were smaller, but they predicted roughly flat rates of 69%, 69% and 66% rather than the rise that occurred."
+    },
+    {
+     "q": "What actually happened?",
+     "a": "In the US, UK and Poland, reporting rose from 46% with no money to 61% with US$13.45 and 72% with US$94.15."
+    }
+   ],
+   "study": {
+    "design": "Field experiment plus prediction surveys",
+    "n": "279 economists, 299 laypeople"
+   },
+   "evidence": [
+    {
+     "source": "cohn19",
+     "quote": "Economists (n = 279, US): predicted 69% (no money), 69% (US$13.45), and 66% (US$94.15); 49% predicted a decrease, and 29% correctly predicted an increase",
+     "location": "Main text, prediction survey; fetch-tool rendering"
+    },
+    {
+     "source": "cohn19",
+     "quote": "this sample also did not expect reporting rates to increase for wallets with larger amounts of money",
+     "location": "Main text"
+    },
+    {
+     "source": "cohn19",
+     "quote": "Nonexperts (n = 299, US): predicted reporting would fall ... from 73% (no money) to 65% (modest) to 55% (substantial). 64% predicted a decrease, and 18% correctly predicted an increase",
+     "location": "Main text, prediction survey; fetch-tool rendering"
+    }
+   ]
+  },
+  {
+   "id": "truth-telling-gains",
+   "format": "estimate",
+   "track": "Culture & Society",
+   "concept": "Truth-telling",
+   "title": "How much do people lie?",
+   "scene": "Across 90 experiments, people privately rolled a die or flipped a coin and reported the result. Higher reports paid more, and nobody could check.",
+   "question": "What share of the possible gains from lying did people leave on the table?",
+   "estimate": {
+    "target": 75,
+    "min": 0,
+    "max": 100,
+    "tolerance": 10,
+    "label": "Share of potential lying gains forgone",
+    "unit": "%"
+   },
+   "answerTitle": "About three-quarters of possible gains forgone",
+   "explain": "Pooling 270,616 decisions by 44,390 subjects, the average standardized report was only 0.234: subjects forgo about three-quarters of the potential gains from lying.",
+   "implication": "For self-reported claims such as expenses or hours, assume most people report honestly and aim checks at the minority who inflate.",
+   "boundary": "Lab and online reporting tasks with modest stakes; raising incentives changed behavior very little within these studies.",
+   "sources": [
+    "abeler19"
+   ],
+   "follow": [
+    {
+     "q": "Why do people pass up free money?",
+     "a": "The authors' new experiments point to two main motives: a preference for being honest and a preference for being seen as honest."
+    },
+    {
+     "q": "Do bigger stakes produce more lying?",
+     "a": "Barely. Subjects continued to refrain from lying maximally when stakes increased, and incentives affected behavior only very little."
+    },
+    {
+     "q": "How large is the evidence base?",
+     "a": "90 experimental studies from economics, psychology and sociology, covering 270,616 decisions by 44,390 subjects."
+    }
+   ],
+   "study": {
+    "design": "Meta-study plus new experiments",
+    "n": "44,390 subjects in 90 studies"
+   },
+   "evidence": [
+    {
+     "source": "abeler19",
+     "quote": "This means that subjects forego about three-quarters of the potential gains from lying.",
+     "location": "Section 2 (meta study)"
+    },
+    {
+     "source": "abeler19",
+     "quote": "we find that the average standardized report is only 0.234",
+     "location": "Section 2"
+    },
+    {
+     "source": "abeler19",
+     "quote": "we collect data on 270,616 decisions by 44,390 subjects",
+     "location": "Section 2"
+    },
+    {
+     "source": "abeler19",
+     "quote": "Subjects continue to refrain from lying maximally when stakes are increased.",
+     "location": "Section 2"
+    },
+    {
+     "source": "abeler19",
+     "quote": "a preference for being seen as honest and a preference for being honest are the main motivations for truth-telling",
+     "location": "Abstract"
+    }
+   ]
+  },
+  {
+   "id": "lies-in-disguise",
+   "format": "estimate",
+   "track": "Culture & Society",
+   "concept": "Partial lying",
+   "title": "Honest, liar, or in between",
+   "scene": "Lab participants rolled a die in private and reported the number for cash. Nobody could verify any individual roll.",
+   "question": "What share of participants did researchers estimate were fully honest?",
+   "estimate": {
+    "target": 39,
+    "min": 0,
+    "max": 100,
+    "tolerance": 8,
+    "label": "Estimated share of honest participants",
+    "unit": "%"
+   },
+   "answerTitle": "About 39% honest, at most 22% full liars",
+   "explain": "The authors estimate that 39% of subjects were honest and at most 22% lied completely; others lied without maximizing their income.",
+   "implication": "Design expense or time reporting so moderate inflation, not only extreme claims, meets a check or a reminder.",
+   "boundary": "One-shot lab die task; the shares are inferred from the distribution of reports, not from observing any individual's lie.",
+   "sources": [
+    "fischbacher13"
+   ],
+   "follow": [
+    {
+     "q": "How can they know who lied?",
+     "a": "They cannot see individual rolls. They compare the distribution of reports with what a fair die produces, which bounds the shares of honest and fully dishonest people."
+    },
+    {
+     "q": "Why lie only a little?",
+     "a": "The authors point to a wish to keep a favorable self-image, including being seen as honest and not greedy."
+    },
+    {
+     "q": "Why does partial lying matter for managers?",
+     "a": "Because some people lie without maximizing income, controls that only flag the most extreme claims miss part of the dishonesty the study documents."
+    }
+   ],
+   "study": {
+    "design": "Lab experiment",
+    "n": "Swiss university students"
+   },
+   "evidence": [
+    {
+     "source": "fischbacher13",
+     "quote": "39% of the subjects were honest and maximally 22% of them were lying completely.",
+     "location": "Abstract (JEEA, via IDEAS)"
+    },
+    {
+     "source": "fischbacher13",
+     "quote": "the abstract reports that some participants lied without maximizing their income, and that additional experiments point to a desire to keep a favorable self-image, including honesty and not being greedy",
+     "location": "Abstract (JEEA, via IDEAS); paraphrase"
+    },
+    {
+     "source": "fischbacher13",
+     "quote": "Students from the University of Zurich and ETH Zurich, recruited via ORSEE",
+     "location": "Working-paper version (TWI RPS 40, 2008), design section; used only for the subject pool"
+    }
+   ]
+  },
+  {
+   "id": "rule-violations-honesty",
+   "format": "forecast",
+   "track": "Culture & Society",
+   "concept": "Rule environments",
+   "title": "Corruption and the die cup",
+   "scene": "Students in 23 countries rolled a die twice in a cup and were paid for reporting the first roll. Their countries differed in corruption, tax evasion and political fraud.",
+   "question": "Where did the extra dishonesty in high-violation countries come from?",
+   "forecast": {
+    "claim": "In high rule-violation societies, the extra dishonesty came mainly from people claiming the maximum payoff.",
+    "truth": false
+   },
+   "answerTitle": "More rule-bending, not more maximal cheating",
+   "explain": "Mean claims were 3.17 in low-violation pools and 3.53 in high-violation pools, near the 3.47 'justified dishonesty' benchmark; the share claiming the maximum was unrelated to rule violations.",
+   "implication": "Where rule-breaking is common, expect small self-justified stretching more than brazen fraud; remove ambiguity people use to rationalize.",
+   "boundary": "2,568 students in 23 countries; a cross-society correlation measured years after the country index, not a causal test of institutions.",
+   "sources": [
+    "gachter16"
+   ],
+   "follow": [
+    {
+     "q": "What is 'justified dishonesty'?",
+     "a": "Reporting the higher of the two rolls instead of the first, a self-justifiable lie. Its benchmark average is 3.47, close to the 3.53 claimed in high-violation societies."
+    },
+    {
+     "q": "How many people were fully honest?",
+     "a": "An estimated 48.9% on average, ranging from 4.3% to 87% across subject pools, with fewer fully honest people in high-violation societies."
+    },
+    {
+     "q": "How was rule violation measured?",
+     "a": "A country index combining political fraud, tax evasion and corruption, based on data from 2003; the experiments ran at least eight years later."
+    }
+   ],
+   "study": {
+    "design": "Cross-country lab experiment",
+    "n": "2,568 students, 23 countries"
+   },
+   "evidence": [
+    {
+     "source": "gachter16",
+     "quote": "Mean claim: 3.17 MU in low-PRV pools versus 3.53 MU in high-PRV pools (t = 5.84, P < 0.001). The Justified Dishonesty benchmark is 3.47 MU.",
+     "location": "Results; fetch-tool rendering of author manuscript"
+    },
+    {
+     "source": "gachter16",
+     "quote": "Income maximisers (claiming 5) ranged from 0.3% to 38.3% and were unrelated to PRV",
+     "location": "Results; fetch-tool rendering"
+    },
+    {
+     "source": "gachter16",
+     "quote": "Bending the rules is to report the higher of the two rolls, rather than the first roll as required.",
+     "location": "Main text"
+    },
+    {
+     "source": "gachter16",
+     "quote": "We focus on three broad types of rule violations: political fraud, tax evasion, and corruption.",
+     "location": "Main text"
+    },
+    {
+     "source": "gachter16",
+     "quote": "Fully honest people ... averaged 48.9% across pools, ranging from 4.3% to 87%",
+     "location": "Results; fetch-tool rendering"
+    },
+    {
+     "source": "gachter16",
+     "quote": "2,568 students from 23 countries, all nationals of their country",
+     "location": "Methods; fetch-tool rendering"
+    },
+    {
+     "source": "gachter16",
+     "quote": "the experiments ran at least eight years after the PRV measurement ... the earliest year being 2003",
+     "location": "Abstract and Methods; fetch-tool rendering"
+    }
+   ]
+  },
+  {
+   "id": "tax-letter-norms",
+   "format": "multi",
+   "track": "Culture & Society",
+   "concept": "Norm messaging",
+   "title": "One sentence in a tax letter",
+   "scene": "The UK tax authority sent reminder letters to over 200,000 people with overdue tax. Letters varied one added message: social norms, public services, or loss versus gain framing.",
+   "question": "Which two findings did these field experiments report?",
+   "options": [
+    "Social norm messages raised payment rates",
+    "Loss framing beat gain framing",
+    "Injunctive norms beat descriptive norms",
+    "Public-services messages raised payment rates",
+    "Norm messages backfired overall"
+   ],
+   "multiAnswers": [
+    0,
+    3
+   ],
+   "answerTitle": "Norm and public-services lines raised payments",
+   "explain": "Across more than 200,000 UK taxpayers, adding social norm messages to standard reminders increased payment of overdue tax; public-services messages also helped, and loss framing did no better.",
+   "implication": "In compliance reminders, state accurately what most peers do and what the money funds, and test wording on real payment data.",
+   "boundary": "UK taxpayers with overdue Self Assessment debts; outcomes were short-run payment, which accelerated revenue rather than proving lasting compliance.",
+   "sources": [
+    "hallsworth17"
+   ],
+   "follow": [
+    {
+     "q": "Which kind of norm worked better?",
+     "a": "Descriptive norms, which state what most people do, appeared more effective than injunctive norms about what people ought to do."
+    },
+    {
+     "q": "Did loss framing help?",
+     "a": "No. The authors found no evidence that loss framing is more effective than gain framing."
+    },
+    {
+     "q": "Was it expensive?",
+     "a": "No. The authors report that the experiments accelerated the collection of tax revenue at little cost."
+    }
+   ],
+   "study": {
+    "design": "Two natural field experiments",
+    "n": "Over 200,000 UK taxpayers"
+   },
+   "evidence": [
+    {
+     "source": "hallsworth17",
+     "quote": "Using administrative data from >200,000 individuals in the United Kingdom, we show that including social norm messages in standard reminder letters increases payment rates for overdue tax.",
+     "location": "Abstract"
+    },
+    {
+     "source": "hallsworth17",
+     "quote": "We find no evidence that loss framing is more effective than gain framing.",
+     "location": "Abstract"
+    },
+    {
+     "source": "hallsworth17",
+     "quote": "Descriptive norms appear to be more effective than injunctive norms.",
+     "location": "Abstract"
+    },
+    {
+     "source": "hallsworth17",
+     "quote": "Messages referring to public services or financial information also significantly increased payment rates.",
+     "location": "Abstract"
+    },
+    {
+     "source": "hallsworth17",
+     "quote": "The field experiments accelerated the collection of tax revenue at little cost.",
+     "location": "Abstract"
+    },
+    {
+     "source": "hallsworth17",
+     "quote": "Self Assessment taxpayers who had not paid by July 31, 2011",
+     "location": "Deposited author version, Experiment 1 design; fetch-tool paraphrase"
+    }
+   ]
+  },
+  {
+   "id": "opposing-views-bot",
+   "format": "forecast",
+   "track": "Culture & Society",
+   "concept": "Backfire exposure",
+   "title": "Follow the other side",
+   "scene": "Researchers paid frequent Twitter users who identified as Democrats or Republicans to follow, for one month, a bot retweeting elected officials and opinion leaders from the other party.",
+   "question": "Did a month of opposing views moderate Republicans?",
+   "forecast": {
+    "claim": "Republicans who followed a liberal bot became more conservative afterward.",
+    "truth": true
+   },
+   "answerTitle": "Republicans moved right; Democrats barely moved",
+   "explain": "For Republicans the intent-to-treat effect was 0.12 points toward conservatism on a seven-point scale, rising to 0.60 among full compliers; the Democrats' shift was small and not significant.",
+   "implication": "Do not expect that feeding a divided team the other side's messages builds understanding; structure direct, cooperative contact instead.",
+   "boundary": "Party-identified US adults using Twitter at least three times weekly, paid to follow a bot for one month in late 2017.",
+   "sources": [
+    "bail18"
+   ],
+   "follow": [
+    {
+     "q": "How many people took part?",
+     "a": "1,652 respondents were recruited (901 Democrats, 751 Republicans); 697 Democrats and 542 Republicans were analyzed."
+    },
+    {
+     "q": "What happened to Democrats?",
+     "a": "They became slightly more liberal, but the intent-to-treat effect of 0.02 points was not statistically significant."
+    },
+    {
+     "q": "Why did Republicans move right?",
+     "a": "The authors could not identify the mechanism. They discuss more political exposure, exposure to women and minority voices, and an anti-elite reaction as possibilities."
+    }
+   ],
+   "study": {
+    "design": "Field experiment",
+    "n": "1,652 recruited Twitter users"
+   },
+   "evidence": [
+    {
+     "source": "bail18",
+     "quote": "Republicans who followed a liberal Twitter bot became substantially more conservative posttreatment.",
+     "location": "Abstract"
+    },
+    {
+     "source": "bail18",
+     "quote": "Republicans: intent-to-treat effect of 0.12 points (p = 0.008) ... 0.60 (fully compliant) on a seven-point scale",
+     "location": "Results; fetch-tool rendering of PMC full text"
+    },
+    {
+     "source": "bail18",
+     "quote": "Democrats: intent-to-treat effect of -0.02 points (p = 0.45)",
+     "location": "Results; fetch-tool rendering"
+    },
+    {
+     "source": "bail18",
+     "quote": "1,652 pretreatment respondents (901 Democrats, 751 Republicans), all of whom used Twitter at least three times a week; analyzed 697 Democrats and 542 Republicans",
+     "location": "Methods; fetch-tool rendering"
+    },
+    {
+     "source": "bail18",
+     "quote": "Bot-following lasted 1 month ... from a mid-October 2017 survey",
+     "location": "Methods; fetch-tool rendering"
+    },
+    {
+     "source": "bail18",
+     "quote": "The authors could not identify the mechanism behind the Republican backfire effect",
+     "location": "Discussion/limitations; fetch-tool paraphrase"
+    }
+   ]
+  },
+  {
+   "id": "facebook-deactivation",
+   "format": "multi",
+   "track": "Culture & Society",
+   "concept": "Social media welfare",
+   "title": "Four weeks without Facebook",
+   "scene": "Before the 2018 US midterm election, researchers randomly paid some Facebook users to deactivate their accounts for four weeks and compared them with users who kept using it.",
+   "question": "Which two effects did deactivation produce?",
+   "options": [
+    "Lower political polarization",
+    "Higher subjective well-being",
+    "Better factual news knowledge",
+    "Heavier Facebook use once reactivated"
+   ],
+   "multiAnswers": [
+    0,
+    1
+   ],
+   "answerTitle": "Less polarized and happier, but less informed",
+   "explain": "Deactivation lowered the polarization index by 0.16 standard deviations and raised well-being by 0.09, but news knowledge fell by 0.19.",
+   "implication": "Before limiting staff social media, weigh gains in mood and calmer politics against lower awareness of current news.",
+   "boundary": "Four weeks of paid deactivation among US Facebook users recruited through ads, in the run-up to a national election.",
+   "chart": {
+    "labels": [
+     "Polarization",
+     "Well-being",
+     "News knowledge",
+     "Later Facebook use"
+    ],
+    "values": [
+     -0.16,
+     0.09,
+     -0.19,
+     -0.61
+    ],
+    "unit": " SD",
+    "highlight": 0,
+    "note": "Values reported in Allcott et al. (2020), introduction (authors' final manuscript); effects in standard deviations, treatment minus control."
+   },
+   "sources": [
+    "allcott20"
+   ],
+   "follow": [
+    {
+     "q": "How much time did it free up?",
+     "a": "Deactivating Facebook freed up about 60 minutes per day for the average person in the treatment group."
+    },
+    {
+     "q": "Did people go back to Facebook afterward?",
+     "a": "Less than before: post-experiment Facebook use was 0.61 standard deviations lower in treatment than in control."
+    },
+    {
+     "q": "What did people need to be paid?",
+     "a": "The median willingness to accept to deactivate for four weeks was $100; the mean was $180."
+    }
+   ],
+   "study": {
+    "design": "Randomized field experiment",
+    "n": "1,661 US Facebook users"
+   },
+   "evidence": [
+    {
+     "source": "allcott20",
+     "quote": "(ii) reduced both factual news knowledge and political polarization; (iii) increased subjective well-being; and (iv) caused a large persistent reduction in post-experiment Facebook use.",
+     "location": "Abstract (AER)"
+    },
+    {
+     "source": "allcott20",
+     "quote": "Our overall index of political polarization fell by 0.16 standard deviations.",
+     "location": "Introduction (final manuscript)"
+    },
+    {
+     "source": "allcott20",
+     "quote": "Our overall index of subjective well-being improved by 0.09 standard deviations.",
+     "location": "Introduction (final manuscript)"
+    },
+    {
+     "source": "allcott20",
+     "quote": "Our overall index of news knowledge fell by 0.19 standard deviations.",
+     "location": "Introduction (final manuscript)"
+    },
+    {
+     "source": "allcott20",
+     "quote": "Our overall index of post-experiment Facebook use is 0.61 standard deviations lower in Treatment than in Control.",
+     "location": "Introduction (final manuscript)"
+    },
+    {
+     "source": "allcott20",
+     "quote": "Deactivating Facebook freed up 60 minutes per day for the average person in our Treatment group.",
+     "location": "Introduction (final manuscript)"
+    },
+    {
+     "source": "allcott20",
+     "quote": "the median and mean willingness-to-accept to deactivate Facebook for weeks 1-4 were $100 and $180, respectively",
+     "location": "Introduction (final manuscript)"
+    },
+    {
+     "source": "allcott20",
+     "quote": "1,661 subjects in the impact evaluation sample",
+     "location": "Section 3 (final manuscript)"
+    }
+   ]
+  },
+  {
+   "id": "accuracy-prompt",
+   "format": "forecast",
+   "track": "Culture & Society",
+   "concept": "Accuracy prompts",
+   "title": "One question before sharing",
+   "scene": "Researchers sent 5,379 Twitter users a private message asking them to rate the accuracy of a single non-political headline, then tracked the news they shared.",
+   "question": "Did one accuracy question improve what people shared?",
+   "forecast": {
+    "claim": "The single accuracy prompt raised the average quality of news users shared.",
+    "truth": true
+   },
+   "answerTitle": "A small but real lift in quality",
+   "explain": "On days users tweeted, the average quality of shared news rose 4.8%; counting all user-days, the gain was 2.1%.",
+   "implication": "Add a light accuracy prompt before staff forward external content internally, and expect modest rather than dramatic gains.",
+   "boundary": "One private message on Twitter; gains were a few percent, and a replication of the authors' earlier survey version found weaker effects.",
+   "sources": [
+    "pennycook21"
+   ],
+   "follow": [
+    {
+     "q": "Why would people share news they doubt?",
+     "a": "In the survey studies, headline truth had little effect on sharing intentions despite a large effect on accuracy judgments; the authors argue attention is focused elsewhere."
+    },
+    {
+     "q": "What happened in the survey experiments?",
+     "a": "Discernment between true and false headlines in sharing was 2.0 times larger with the prompt in Study 3 and 2.4 times larger in Study 4."
+    },
+    {
+     "q": "Has the accuracy prompt replicated?",
+     "a": "Partly. A preregistered replication of the authors' 2020 study failed at its first stage and found only a small effect after more data (Roozenbeek et al. 2021)."
+    }
+   ],
+   "study": {
+    "design": "Field experiment on Twitter plus survey experiments",
+    "n": "5,379 Twitter users"
+   },
+   "evidence": [
+    {
+     "source": "pennycook21",
+     "quote": "the veracity of headlines has little effect on sharing intentions, despite having a large effect on judgments of accuracy",
+     "location": "Abstract"
+    },
+    {
+     "source": "pennycook21",
+     "quote": "5,379 Twitter users ... rate the accuracy of a single non-political headline",
+     "location": "Study 7; fetch-tool rendering"
+    },
+    {
+     "source": "pennycook21",
+     "quote": "Average quality of shared news rose 4.8%, and total quality rose 9.0%, for user-days when users would tweet. Including all user-days, the increases were 2.1% and 4.0%.",
+     "location": "Study 7 results; fetch-tool rendering"
+    },
+    {
+     "source": "pennycook21",
+     "quote": "Study 3: Discernment was 2.0 times larger in the treatment group. Study 4: 2.4 times larger",
+     "location": "Survey experiments; fetch-tool rendering"
+    },
+    {
+     "source": "pennycook21",
+     "quote": "The first stage of the replication test (n = 701) was unsuccessful (p =.67) ... we found a small but significant interaction",
+     "location": "Roozenbeek, Freeman & van der Linden (2021), abstract; cited in flags, not a game source"
+    }
+   ]
+  },
+  {
+   "id": "false-news-spread",
+   "format": "choice",
+   "track": "Culture & Society",
+   "concept": "Rumor diffusion",
+   "title": "Who spreads the falsehood",
+   "scene": "Researchers traced about 126,000 fact-checked true and false stories that roughly 3 million Twitter users shared more than 4.5 million times between 2006 and 2017.",
+   "question": "What explains why false stories spread faster than true ones?",
+   "options": [
+    "Bots pushed false stories harder than true ones",
+    "People shared false stories more than true ones",
+    "False stories spread no faster overall",
+    "Only false political stories spread faster"
+   ],
+   "answer": 1,
+   "answerTitle": "People, not bots, drove the faster spread",
+   "explain": "Across about 126,000 stories, falsehood spread farther and faster in all categories; bots accelerated true and false news at the same rate, so humans drove the gap.",
+   "implication": "Counter workplace rumors by addressing human sharing, such as fast, specific official updates, rather than relying on filtering automated accounts.",
+   "boundary": "Twitter from 2006 to 2017, stories verified by fact-checkers; it describes diffusion patterns and tests no intervention.",
+   "sources": [
+    "vosoughi18"
+   ],
+   "follow": [
+    {
+     "q": "Which topics showed the largest gap?",
+     "a": "The effects were more pronounced for false political news than for other categories of information."
+    },
+    {
+     "q": "Why might people share falsehoods more?",
+     "a": "False news was more novel than true news, and the authors suggest people are more likely to share novel information."
+    },
+    {
+     "q": "Did bots matter at all?",
+     "a": "Bots accelerated true and false news at the same rate, so they did not explain why falsehood outran the truth."
+    }
+   ],
+   "study": {
+    "design": "Observational diffusion study",
+    "n": "~126,000 stories, ~3 million users"
+   },
+   "evidence": [
+    {
+     "source": "vosoughi18",
+     "quote": "~126,000 stories tweeted by ~3 million people more than 4.5 million times",
+     "location": "Abstract"
+    },
+    {
+     "source": "vosoughi18",
+     "quote": "Falsehood diffused significantly farther, faster, deeper, and more broadly than the truth in all categories of information",
+     "location": "Abstract"
+    },
+    {
+     "source": "vosoughi18",
+     "quote": "robots accelerated the spread of true and false news at the same rate",
+     "location": "Abstract"
+    },
+    {
+     "source": "vosoughi18",
+     "quote": "humans, not robots, are more likely to spread it",
+     "location": "Abstract"
+    },
+    {
+     "source": "vosoughi18",
+     "quote": "the effects were more pronounced for false political news",
+     "location": "Abstract"
+    },
+    {
+     "source": "vosoughi18",
+     "quote": "false news was more novel than true news",
+     "location": "Abstract"
+    }
+   ]
+  },
+  {
+   "id": "misperceived-norms-support",
+   "format": "estimate",
+   "track": "Culture & Society",
+   "concept": "Pluralistic ignorance",
+   "title": "The silent majority in Riyadh",
+   "scene": "Researchers anonymously asked 500 married Saudi men aged 18 to 35 whether women should be allowed to work outside the home, and to guess how many peers agreed.",
+   "question": "What share of the men privately agreed?",
+   "estimate": {
+    "target": 87,
+    "min": 0,
+    "max": 100,
+    "tolerance": 8,
+    "label": "Share privately supporting women working outside the home",
+    "unit": "%"
+   },
+   "answerTitle": "87% agreed, but guessed only 63% of peers did",
+   "explain": "87% agreed, yet on average they guessed that 63% of other session participants agreed; 72% underestimated support, by 24 points on average.",
+   "implication": "Before assuming a change lacks support, poll private views anonymously and share the actual numbers with the group.",
+   "boundary": "500 married men aged 18 to 35 in Riyadh, in sessions of about 30; beliefs concerned other men in the same session.",
+   "sources": [
+    "bursztyn20",
+    "plural93"
+   ],
+   "follow": [
+    {
+     "q": "Were men just telling researchers what they wanted?",
+     "a": "Unlikely. A list experiment in a national survey found 80% support versus 82% by direct question, suggesting little social desirability bias."
+    },
+    {
+     "q": "What happened when men learned the true figure?",
+     "a": "In the control group 23.5% chose to sign their wives up for a job-matching service; with the information, 32.0% did."
+    },
+    {
+     "q": "Is this pattern seen elsewhere?",
+     "a": "Yes. Prentice and Miller (1993) found students believed they were more uncomfortable with campus drinking than the average student."
+    }
+   ],
+   "study": {
+    "design": "Survey and field experiment",
+    "n": "500 married Saudi men"
+   },
+   "evidence": [
+    {
+     "source": "bursztyn20",
+     "quote": "87 percent of the experimental participants agreed with the statement",
+     "location": "Section on main experiment"
+    },
+    {
+     "source": "bursztyn20",
+     "quote": "63 percent (67 percent) of other session participants agree",
+     "location": "Section on main experiment"
+    },
+    {
+     "source": "bursztyn20",
+     "quote": "72% of participants strictly underestimated support, with an average wedge of 24 percentage points",
+     "location": "Section on main experiment; fetch-tool paraphrase"
+    },
+    {
+     "source": "bursztyn20",
+     "quote": "500 Saudi males between the ages of 18 and 35, living across Riyadh ... 17 sessions of about 30 participants each",
+     "location": "Experimental design"
+    },
+    {
+     "source": "bursztyn20",
+     "quote": "a share of 80% using the list method, close to the 82% from direct questioning",
+     "location": "National survey robustness; fetch-tool paraphrase"
+    },
+    {
+     "source": "bursztyn20",
+     "quote": "In the control condition, 23.5 percent of participants prefer to sign up their wives ... 32.0%",
+     "location": "Results"
+    },
+    {
+     "source": "plural93",
+     "quote": "Students believed that they were more uncomfortable with campus alcohol practices than was the average student.",
+     "location": "Abstract (existing source record)"
+    }
+   ]
+  },
+  {
+   "id": "misperceived-norms-action",
+   "format": "choice",
+   "track": "Culture & Society",
+   "concept": "Correcting norms",
+   "title": "From belief to job applications",
+   "scene": "Saudi husbands who underestimated peers' support for women working outside the home were shown the true figure. Months later, researchers checked whether their wives had applied for outside jobs.",
+   "question": "What happened to wives' job applications three to five months later?",
+   "options": [
+    "Rose from about 6% to about 16%",
+    "No change: beliefs moved, behavior did not",
+    "Rose from about 6% to about 45%",
+    "Fell, because of social backlash"
+   ],
+   "answer": 0,
+   "answerTitle": "Applications nearly tripled, 5.8% to 16.2%",
+   "explain": "Wives of informed men applied for outside jobs at 16.2% versus 5.8%, and interviewed at 5.8% versus 1.1%.",
+   "implication": "Share accurate peer-support data to unlock stalled behavior, then track actual outcomes for months, not just stated intentions.",
+   "boundary": "Employment itself rose from 7.4% to 9.4%, not significant; one city, one cohort of married men.",
+   "chart": {
+    "labels": [
+     "Applied, control",
+     "Applied, informed",
+     "Interviewed, control",
+     "Interviewed, informed"
+    ],
+    "values": [
+     5.8,
+     16.2,
+     1.1,
+     5.8
+    ],
+    "unit": "%",
+    "highlight": 1,
+    "note": "Values reported in Bursztyn, González & Yanagizawa-Drott (2020), follow-up survey results."
+   },
+   "sources": [
+    "bursztyn20"
+   ],
+   "follow": [
+    {
+     "q": "What did men do right after?",
+     "a": "In the control group 23.5% chose to sign their wives up for a job-matching service; with the information, 32.0% did."
+    },
+    {
+     "q": "Did employment increase?",
+     "a": "Not significantly: current outside-the-home employment rose from 7.4% to 9.4% (p = 0.235)."
+    },
+    {
+     "q": "How wrong were the original beliefs?",
+     "a": "72% of men underestimated peers' support, by 24 percentage points on average."
+    }
+   ],
+   "study": {
+    "design": "Field experiment with follow-up",
+    "n": "500 married Saudi men"
+   },
+   "evidence": [
+    {
+     "source": "bursztyn20",
+     "quote": "Applied for an outside-the-home job: rose from 5.8% to 16.2% (p = 0.001). Interviewed for such a job: rose from 1.1% to 5.8% (p = 0.006).",
+     "location": "3-5 month follow-up; fetch-tool rendering"
+    },
+    {
+     "source": "bursztyn20",
+     "quote": "Current outside-the-home employment rose from 7.4% to 9.4%, which is not significant (p = 0.235)",
+     "location": "Follow-up; fetch-tool rendering"
+    },
+    {
+     "source": "bursztyn20",
+     "quote": "In the control condition, 23.5 percent of participants prefer to sign up their wives ... 32.0%",
+     "location": "Results"
+    },
+    {
+     "source": "bursztyn20",
+     "quote": "72% of participants strictly underestimated support, with an average wedge of 24 percentage points",
+     "location": "Main experiment; fetch-tool paraphrase"
+    }
+   ]
+  },
+  {
+   "id": "meta-perception-causal",
+   "format": "causal",
+   "track": "Culture & Society",
+   "concept": "Meta-perceptions",
+   "title": "They hate us, or do they?",
+   "scene": "Democrats and Republicans predicted how the other party would react to their own party's actions. Predictions were too negative, and the most inaccurate saw the other side as obstructionist.",
+   "question": "What best shows the inaccuracy itself drives obstructionism beliefs?",
+   "options": [
+    "Randomly correcting the beliefs reduced obstructionism ratings",
+    "Strong partisans were both inaccurate and hostile",
+    "The bias also appeared in a national sample",
+    "Inaccuracy tracked heavy political news use"
+   ],
+   "answer": 0,
+   "dag": {
+    "alt": "Partisanship may drive both inaccurate meta-perceptions and obstructionism beliefs; a randomized correction changes meta-perceptions directly and tests the questioned link.",
+    "height": 200,
+    "nodes": [
+     {
+      "id": "part",
+      "label": "Partisanship",
+      "x": 90,
+      "y": 40
+     },
+     {
+      "id": "meta",
+      "label": "Meta-percept",
+      "x": 240,
+      "y": 110
+     },
+     {
+      "id": "obs",
+      "label": "Obstruction",
+      "x": 420,
+      "y": 110
+     },
+     {
+      "id": "fix",
+      "label": "Correction",
+      "x": 90,
+      "y": 170
+     }
+    ],
+    "edges": [
+     [
+      "part",
+      "meta"
+     ],
+     [
+      "part",
+      "obs"
+     ],
+     [
+      "meta",
+      "obs",
+      "q"
+     ],
+     [
+      "fix",
+      "meta"
+     ]
+    ]
+   },
+   "answerTitle": "Correcting beliefs cut obstructionism attributions",
+   "explain": "Across 4,282 participants people overestimated out-group negativity; in an experiment with 1,122 people, showing true out-group reactions significantly reduced perceived obstructionism.",
+   "implication": "In a divided team, collect each side's actual reactions to a proposal and share them before anyone assumes deliberate blocking.",
+   "boundary": "Found in competitive, not cooperative, contexts; the correction showed no credible persistence at an exploratory one-week follow-up.",
+   "sources": [
+    "lees20"
+   ],
+   "follow": [
+    {
+     "q": "Does this happen in cooperative settings?",
+     "a": "No. The negativity bias appeared across competitive but not cooperative intergroup contexts."
+    },
+    {
+     "q": "Who benefited most from the correction?",
+     "a": "The intervention was more effective for people whose meta-perceptions were more inaccurate."
+    },
+    {
+     "q": "How far off were the predictions?",
+     "a": "In the correction experiment, average inaccuracy was 22 points on a 100-point scale."
+    }
+   ],
+   "study": {
+    "design": "Online experiments and survey",
+    "n": "4,282 US participants"
+   },
+   "evidence": [
+    {
+     "source": "lees20",
+     "quote": "people consistently overestimated out-group negativity towards the collective behaviour of their in-group",
+     "location": "Abstract"
+    },
+    {
+     "source": "lees20",
+     "quote": "greater inaccuracy was associated with increased belief that the out-group is motivated by purposeful obstructionism",
+     "location": "Abstract"
+    },
+    {
+     "source": "lees20",
+     "quote": "an intervention that informed participants of the inaccuracy of their beliefs reduced negative out-group attributions",
+     "location": "Abstract"
+    },
+    {
+     "source": "lees20",
+     "quote": "Across seven experiments and one survey (N=4282) ... competitive (but not cooperative) intergroup contexts",
+     "location": "Abstract (DASH manuscript)"
+    },
+    {
+     "source": "lees20",
+     "quote": "and was more effective for those whose GMPs were more inaccurate",
+     "location": "Abstract (DASH manuscript)"
+    },
+    {
+     "source": "lees20",
+     "quote": "Exp. 6 (N = 1,122): truth intervention b = -4.08, P = 0.027; average GMP inaccuracy 22 points (SD 22) on a 100-point scale; no credible persistence at an exploratory one-week follow-up",
+     "location": "Experiment 6; fetch-tool rendering of DASH manuscript"
+    }
+   ]
+  },
+  {
+   "id": "forecast-teams-rank",
+   "format": "rank",
+   "track": "Judgment",
+   "concept": "Team forecasting",
+   "title": "Alone, crowd, or team",
+   "scene": "In a two-year geopolitical forecasting tournament, volunteers were randomly assigned to forecast independently, in a crowd-belief condition, or in collaborative teams.",
+   "question": "Rank the three conditions from most to least accurate.",
+   "options": [
+    "Independent forecasters",
+    "Crowd-belief forecasters",
+    "Team forecasters"
+   ],
+   "rankAnswer": [
+    2,
+    1,
+    0
+   ],
+   "rankLabel": "Forecast accuracy (Brier scores)",
+   "rankValues": [
+    "Least accurate",
+    "Beat independents, t(1120) = 5.92",
+    "Beat crowd-belief, t(1036) = 5.52"
+   ],
+   "answerTitle": "Teams beat crowd-belief, which beat independents",
+   "explain": "Team forecasters were more accurate than crowd-belief forecasters, t(1036) = 5.52, who in turn outperformed independent forecasters, t(1120) = 5.92.",
+   "implication": "For risk forecasts, have analysts work in teams that share reasoning, and score their forecasts for accuracy over time.",
+   "boundary": "Geopolitical questions scored with Brier scores; volunteers in one tournament; the paper reports test statistics, not percentage gains.",
+   "sources": [
+    "mellers14"
+   ],
+   "follow": [
+    {
+     "q": "What happened to the best performers?",
+     "a": "The top 2% from Year 1, 60 forecasters, formed five superforecaster teams of 12 and outperformed all other groups by a wide margin."
+    },
+    {
+     "q": "How big was the tournament?",
+     "a": "Year 1 began with 2,246 participants; of 199 questions posted, 85 (Year 1) and 114 (Year 2) closed and were scored."
+    },
+    {
+     "q": "How is accuracy scored?",
+     "a": "With Brier scores, where 0 is the best score and 2 is the worst."
+    }
+   ],
+   "study": {
+    "design": "Randomized forecasting tournament",
+    "n": "2,246 forecasters (Year 1)"
+   },
+   "evidence": [
+    {
+     "source": "mellers14",
+     "quote": "Team forecasters were more accurate than crowd-belief forecasters, and crowd-belief forecasters outperformed independent forecasters.",
+     "location": "Results"
+    },
+    {
+     "source": "mellers14",
+     "quote": "Team forecasters beat crowd-belief forecasters, t(1036) = 5.52, p < .001; crowd-belief beat independents, t(1120) = 5.92, p < .001",
+     "location": "Results (audit/new_sources.json)"
+    },
+    {
+     "source": "mellers14",
+     "quote": "Superforecasters outperformed all other groups by a wide margin",
+     "location": "Results"
+    },
+    {
+     "source": "mellers14",
+     "quote": "top 2% from Year 1 ... 60 forecasters (5 from each condition), placed in five superforecaster teams of 12",
+     "location": "Method; fetch-tool rendering"
+    },
+    {
+     "source": "mellers14",
+     "quote": "Year 1 began with 2,246 participants ... 199 geopolitical outcomes ... 85 (Year 1) and 114 (Year 2) closed",
+     "location": "Method; fetch-tool rendering"
+    },
+    {
+     "source": "mellers14",
+     "quote": "0 is the best score, and 2 is the worst score",
+     "location": "Method"
+    }
+   ]
+  },
+  {
+   "id": "forecast-training",
+   "format": "choice",
+   "track": "Judgment",
+   "concept": "Probability training",
+   "title": "Forty-five minutes of training",
+   "scene": "Before forecasting geopolitical events, tournament volunteers were randomly given about 45 minutes of probability training, scenario training, or no training.",
+   "question": "Which training produced the more accurate forecasts?",
+   "options": [
+    "Probability training",
+    "Scenario training",
+    "Neither beat no training",
+    "Both worked equally well"
+   ],
+   "answer": 0,
+   "answerTitle": "Probability training beat scenario training",
+   "explain": "Probability training was more effective than scenario training, t(1053) = 2.23, p = .026, and training was one of three interventions that raised accuracy.",
+   "implication": "Give forecasting and planning staff short training in probabilistic reasoning, and check its value with scored forecasts.",
+   "boundary": "Geopolitical forecasts by tournament volunteers; the paper reports significance tests, not percentage gains, so the size is uncertain.",
+   "sources": [
+    "mellers14"
+   ],
+   "follow": [
+    {
+     "q": "How long was the training?",
+     "a": "Approximately 45 minutes."
+    },
+    {
+     "q": "Does training replace teamwork?",
+     "a": "No. The authors report that training, teaming and tracking top performers each increased forecast accuracy."
+    },
+    {
+     "q": "Who were the forecasters?",
+     "a": "Volunteers in a two-year geopolitical forecasting tournament; Year 1 began with 2,246 participants."
+    }
+   ],
+   "study": {
+    "design": "Randomized forecasting tournament",
+    "n": "2,246 forecasters (Year 1)"
+   },
+   "evidence": [
+    {
+     "source": "mellers14",
+     "quote": "Probability training was more effective than scenario training, t(1053) = 2.23, p = .026.",
+     "location": "Results"
+    },
+    {
+     "source": "mellers14",
+     "quote": "Training, teaming, and tracking are psychological interventions that dramatically increased the accuracy of forecasts.",
+     "location": "Abstract"
+    },
+    {
+     "source": "mellers14",
+     "quote": "approximately 45 min",
+     "location": "Method (training)"
+    },
+    {
+     "source": "mellers14",
+     "quote": "Year 1 began with 2,246 participants",
+     "location": "Method; fetch-tool rendering"
+    }
+   ]
+  },
+  {
+   "id": "overconfidence-hard-task",
+   "format": "choice",
+   "track": "Judgment",
+   "concept": "Overconfidence",
+   "title": "After the hard exam",
+   "scene": "Your team just took a very hard certification exam. Before scores come out, each person estimates their own score and their rank among peers.",
+   "question": "What pattern does the evidence predict on a hard task?",
+   "options": [
+    "Overestimate own score, think they beat peers",
+    "Overestimate own score, think they trail peers",
+    "Underestimate own score, think they beat peers",
+    "Accurate on both"
+   ],
+   "answer": 1,
+   "answerTitle": "Overestimate their score, yet rank themselves low",
+   "explain": "In 18 rounds of trivia quizzes with 82 students, people on difficult tasks overestimated their actual performance but believed they were worse than others; easy tasks reversed both.",
+   "implication": "After hard tasks, do not read low self-rankings as humility; compare absolute self-estimates with actual scores before staffing decisions.",
+   "boundary": "Trivia quizzes with clear difficulty differences among 82 Carnegie Mellon students; overprecision is a separate bias.",
+   "sources": [
+    "moore08"
+   ],
+   "follow": [
+    {
+     "q": "What are the three kinds of overconfidence?",
+     "a": "Overestimation of one's actual performance, overplacement relative to others, and excessive precision in one's beliefs."
+    },
+    {
+     "q": "What happens on easy tasks?",
+     "a": "People underestimate their actual performance but mistakenly believe they are better than others."
+    },
+    {
+     "q": "How were beliefs measured?",
+     "a": "Participants reported distributions over their own and others' scores and were paid with an incentive-compatible scheme, about $20."
+    }
+   ],
+   "study": {
+    "design": "Lab experiment plus theory",
+    "n": "82 students"
+   },
+   "evidence": [
+    {
+     "source": "moore08",
+     "quote": "On difficult tasks, people overestimate their actual performances but also mistakenly believe that they are worse than others",
+     "location": "Abstract"
+    },
+    {
+     "source": "moore08",
+     "quote": "on easy tasks, people underestimate their actual performances but mistakenly believe they are better than others",
+     "location": "Abstract"
+    },
+    {
+     "source": "moore08",
+     "quote": "overestimation of one's actual performance ... overplacement of one's performance relative to others ... excessive precision in one's beliefs",
+     "location": "Abstract"
+    },
+    {
+     "source": "moore08",
+     "quote": "82 Carnegie Mellon students; 18 rounds of 10-item trivia quizzes; elicited distributions over own and others' scores; incentive-compatible payment (~$20)",
+     "location": "Method (audit/new_sources.json)"
+    }
+   ]
+  }
+ ]
+}
