@@ -668,6 +668,24 @@ body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:con
 @media (max-width:1199px){.rev-art{right:0}}
 @media (max-width:640px){.rev-art{width:96px;height:60px;top:-2px}}
 @media (min-width:821px){.paths .path:not(:first-child) .art{width:132px;height:82px;margin:-8px 0 4px -8px}}
+
+/* hero demo on the same dark plate as the reveal's evidence: the page's one bold surface */
+.try-dark{background:#14203a;color:#fff;border-color:#14203a;box-shadow:0 30px 60px -30px rgba(20,32,58,.55);--sunk:rgba(255,255,255,.12)}
+.try-dark .kicker{color:#f0b43c}
+.try-dark h2{color:#fff}
+.try-dark .try-read b{color:#a9b9ff}.try-dark .try-read b.empty{color:#c9d2e6}.try-dark .try-read span{color:#c9d2e6}
+.try-dark .axis span,.try-dark .try-src{color:#b9c4dd}
+.try-dark .try-result{color:#e8ecf5}
+.try-dark input[type=range]::-webkit-slider-runnable-track{background:linear-gradient(to right,#8ea4ff var(--fill,50%),rgba(255,255,255,.2) var(--fill,50%))}
+.try-dark input[type=range]::-moz-range-track{background:rgba(255,255,255,.2)}
+.try-dark input[type=range]::-webkit-slider-thumb{background:#14203a;border-color:#a9b9ff}
+.try-dark .btn-you:disabled{background:rgba(255,255,255,.1);color:#b9c4dd;opacity:1}
+.try-dark .btn-solid{background:#fff;color:#14203a}
+.try-dark .link-btn{color:#c9d2e6}
+.try-dark .axis-svg .ax-track{stroke:rgba(255,255,255,.2)}.try-dark .axis-svg .ax-band{fill:rgba(240,180,60,.22);stroke:#f0b43c}.try-dark .axis-svg .ax-gap{stroke:#fff}
+.try-dark .axis-svg .ax-you{fill:#a9b9ff}.try-dark .axis-svg .ax-ev{fill:#f0b43c}.try-dark .axis-svg .ax-tick{fill:#b9c4dd}
+.try-dark :focus-visible{outline-color:#f0b43c}
+.try-dark .try-result{margin-top:16px;font-size:19px}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="#" data-home="1" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -988,7 +1006,7 @@ function heroTry() {
   const c = BY_ID.ai01; if (!c || !isLive(SOURCE[c.sources[0]])) return '';
   const h = st.hero, e = c.estimate, v = h.value, src = SOURCE[c.sources[0]];
   const gap = v === null ? 0 : Math.abs(v - e.target);
-  return `<section class="panel try" aria-labelledby="try-q">
+  return `<section class="panel try try-dark" aria-labelledby="try-q">
     <span class="kicker">Try one now</span>
     <h2 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h2>
     ${h.done ? `<div class="try-axis">${gapAxis({ min: e.min, max: e.max, unit: '%', you: v, ev: e.target, band: e.tolerance, evLabel: 'Study', id: 'hero' })}</div>`

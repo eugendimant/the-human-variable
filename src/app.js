@@ -149,7 +149,7 @@ function heroTry() {
   const c = BY_ID.ai01; if (!c || !isLive(SOURCE[c.sources[0]])) return '';
   const h = st.hero, e = c.estimate, v = h.value, src = SOURCE[c.sources[0]];
   const gap = v === null ? 0 : Math.abs(v - e.target);
-  return `<section class="panel try" aria-labelledby="try-q">
+  return `<section class="panel try try-dark" aria-labelledby="try-q">
     <span class="kicker">Try one now</span>
     <h2 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h2>
     ${h.done ? `<div class="try-axis">${gapAxis({ min: e.min, max: e.max, unit: '%', you: v, ev: e.target, band: e.tolerance, evLabel: 'Study', id: 'hero' })}</div>`
