@@ -1,6 +1,5 @@
-import re
 """Tutor: grounding, caching, budgets, fallbacks. No network: the transport is replaced."""
-import json, threading, time
+import json, re, threading, time
 import pytest
 from server import tutor as T
 from server.classroom import CHALLENGES
@@ -351,7 +350,7 @@ def test_review26_form_matches_the_question():
     assert t.curated('what happened in the control centres', 'bz08')['answer'].startswith('In the four centers without a fine')
     assert not t.curated('did the control group change?', 'bz08')['answer'].startswith('Yes')
     assert t.curated('Was there a control group?', 'bz08')['answer'].startswith('Yes')
-    assert 'does not cover' in t.curated('Also, were experts better than laypeople?', 'bz07')['answer']
+    assert 'does not cover' in t.curated('Also, were experts better than laypeople?', 'bz07')['answer'] or t.curated('Also, were experts better than laypeople?', 'bz07')['answer'].startswith('Here is the comparison')
 
 
 def test_audit31_comparison_and_counterfactual_answers():
@@ -359,7 +358,7 @@ def test_audit31_comparison_and_counterfactual_answers():
     from server import tutor as t
     assert ' No. ' not in t.curated('Are AI images better than human ones?', 'axe10')['answer']
     assert ' Yes. ' not in t.curated('Is AI better than humans at decisions?', 'axb01')['answer']
-    assert 'does not cover' in t.curated('Were experts more accurate than laypeople?', 'axb04')['answer']
+    assert t.curated('Were experts more accurate than laypeople?', 'axb04')['answer'].startswith('Here is the comparison this study made')
     for cid in t.CHALLENGES:
         if t.CHALLENGES[cid].get('retired'): continue
         assert 'tested one version' not in t.curated('What if it had been done differently?', cid)['answer']
@@ -380,8 +379,15 @@ def test_format_names_agree_everywhere():
 
 
 def test_audit31b_whatif_never_borrows_on_one_stray_word():
-    """Audit 31b, M1: a what-if borrows a follow-up only when its own question shares two distinctive words; 15 generic what-ifs on every decision."""
+    """Audit 31b, M1: a what-if never borrows a follow-up on a shared word; it states the design, the scope and the finding."""
     from server import tutor as t
     Q = ['What would happen if managers used AI?', 'What if participants knew they were observed?', 'What if parents had not been fined?', 'What if students used GPT-4 Tutor?', 'What if the price was lower?', 'What if they deactivated for longer?', 'What if the sample were larger?', 'What if bots were removed?']
     bad = [(cid, q, t.curated(q, cid)['answer'][:60]) for cid, c in t.CHALLENGES.items() if not c.get('retired') for q in Q if re.match(r"(Very little|Often|Not for|Barely|The reverse|NIS)", t.curated(q, cid)['answer'])]
     assert not bad, bad[:5]
+
+
+def test_audit31c_comparisons_the_study_makes_are_never_called_absent():
+    """Audit 31c, M1: no comparison answer claims the study does not cover it."""
+    from server import tutor as t
+    for cid, q in [('ai02', 'Was writing quality better with ChatGPT than without?'), ('social12', 'Did Black applicants get fewer callbacks than White applicants?'), ('biz05', 'Did below-average homes use more energy than before?'), ('ai07', 'Were AI-assisted stories more novel than the others?'), ('civic-wallet-rank', 'Were wallets with more money returned more often than empty ones?'), ('false-news-spread', 'Are bots worse than people at spreading lies?')]:
+        assert 'does not cover' not in t.curated(q, cid)['answer'], (cid, q)

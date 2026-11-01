@@ -622,3 +622,8 @@ Regression audit of iteration 31 found 4 introduced Majors and 7 Minors; all fix
 - **m2** the projector strip's count label anchors left at the right edge; R31 now flags SVG text running past the right of its drawing area.
 - **m3** rank values sit above their dots, clear of the leader and both end ticks.
 - Python `strip_yn` and the page's `stripYN` now agree on a digit after "Yes.".
+
+### Audit 31c (2026-11-01) and fixes
+1 introduced Major, 4 Minors.
+- **M1** the compare guard (every distinctive word must appear in the study's text) asserted "does not cover that comparison" for comparisons the study makes (paraphrase words such as "without", "applicant", "empty"). A word-presence test cannot prove absence, so the reply never claims it: "Here is the comparison this study made: …" (golden diff: only that sentence changed, on the experts-vs-laypeople probe and three others).
+- **m1** "what would happen with X" goes back to the subgroup and other routes; "what would happen to X" stays a what-if. **m2** the projector count label sits above its own bar, with headroom under the study label. **m3/m4** test docstrings fixed.

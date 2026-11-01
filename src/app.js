@@ -420,7 +420,7 @@ function curated(q, c) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
     if (name === 'offtopic') return off;
     const item = new Set(trTokens([c.question, c.scene || '', c.answerTitle, c.explain, ...(c.follow || []).map(f => f.q + ' ' + f.a)].join(' ')));
-    if (name === 'compare' && !/\bor not\b/.test(ql) && rare.some(w => !compw().has(w) && !item.has(w) && !(TR_SYN[w] || []).some(x => item.has(x)))) return { text: `The lab's summary of this study does not cover that comparison. What it does cover: ${c.answerTitle}. ${c.explain}`, cites: cs(c) };   // audit 31, M2
+    if (name === 'compare' && !/\bor not\b/.test(ql) && rare.some(w => !compw().has(w) && !item.has(w) && !(TR_SYN[w] || []).some(x => item.has(x)))) return { text: `Here is the comparison this study made: ${c.answerTitle}. ${c.explain}`, cites: cs(c) };   // audit 31c, M1   // audit 31, M2
     if (name === 'compare') { const ovq = f => hits(f.q + ' ' + f.a, [...qt]); const fc = fol.find(f => /\b(than|higher|lower|better|worse|outperform\w*|beat)\b/.test(f.a) && hits(f.q, rare) > 0) || fol.filter(f => ovq(f) >= 3 && hits(f.q, rare) > 0).sort((a, b) => ovq(b) - ovq(a))[0]; return { text: `${c.answerTitle}. ${c.explain}${fc ? ' ' + stripYN(fc.a) : ''}`, cites: cs(c) } }   // review 26 M1, audit 31 M1
     if (name === 'control') { const fcg = (c.follow || []).find(f => /\bcontrol\b/i.test(f.q)); if (fcg) return { text: /\b(is|was|were) there\b|\bhave an? control\b|\bany control\b/.test(ql) ? fcg.a : stripYN(fcg.a), cites: cs(c) }; continue }
     if (name === 'whatif') return { text: `The study's design: ${st0.design || 'see the paper'}. What it covers: ${c.boundary} The finding: ${c.explain}`, cites: cs(c) };   // audit 31b, M1
