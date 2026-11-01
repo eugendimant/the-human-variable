@@ -81,7 +81,7 @@
   ],
   "options": [
    "Loose norms generated more behavioral variation",
-   "The average of what others did explained choices",
+   "Polarized norms pulled choices toward the middle",
    "The spread of behavior shaped choices",
    "Tight norms produced the most extreme choices"
   ]
@@ -122,7 +122,7 @@
    "Own side fears rejection; other lacks interest"
   ],
   "options": [
-   "Both sides feared rejection; neither lacked interest",
+   "Each side blamed its own lack of interest",
    "Each side said it feared open conflict",
    "Own side fears rejection; other lacks interest"
   ]
@@ -173,12 +173,12 @@
  },
  "axb02": {
   "keyed": [
-   "Could not change the model at all"
+   "Had to use the model’s forecasts unchanged"
   ],
   "options": [
    "Could adjust each forecast by up to 10",
-   "Could adjust each forecast, though by up to 2",
-   "Could not change the model at all"
+   "Could adjust each forecast by up to 2",
+   "Had to use the model’s forecasts unchanged"
   ]
  },
  "axb05": {

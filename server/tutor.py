@@ -107,7 +107,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     locked = {'answer': 'That study opens after your instructor reveals it in class.', 'citations': [], 'mode': 'locked'}
     off = {'answer': 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', 'citations': [], 'mode': 'curated'}
     # a question that names a study by an author's surname goes to that study
-    if c and re.search(r"\bshould (my|our|we|i)\b.*\b(put|use|add|keep|have|let|deploy|adopt|rely|trust|hire|switch|roll)\b", ql):
+    if c and re.search(r"\bshould (my|our|we|i)\b.*\b(put|use|add|keep|have|let|deploy|adopt|rely|trust|switch|roll)\b", ql) and not re.search(r"\b(ethic|fair|moral|right|wrong|ok|okay|allowed|legal|hire|fire|lay off|cut jobs|fewer)\b", ql):   # a recommendation question goes to the manager's action; ethics and staffing questions do not
         return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
     if c:
         fol = c.get('follow', [])   # the item's own follow-up, asked word for word, else the nearest one above 0.6 overlap
@@ -146,13 +146,16 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'signif': return out(f"{c['explain']}", c)   # the main contrast first, before any secondary measure
             if name == 'task': return out(f"{c.get('scene', '')} Design: {st.get('design', 'see the paper')}.", c)
             if name == 'meaning':
-                w = re.search(r"mean(?:t)? by ['\"]?(\w+)|does (?:the )?(?:word |term )?['\"]?(\w+)['\"]? mean|^what(?:.s| is) (?:an? |the )?(\w+)\??$", ql); w = next((g for g in (w.groups() if w else ()) if g), '')
+                w = re.search(r"mean(?:t)? by ['\"]?(\w+)|does (?:the )?(?:word |term )?['\"]?(\w+)['\"]? mean", ql); w = next((g for g in (w.groups() if w else ()) if g), '')
                 pre = lambda s: bool(w) and any(x.startswith(stem(w)) for x in tokens(s))   # ECU matches ECUs
                 fm = [f for f in fol if pre(f['q'])]
                 if fm: return out(fm[0]['a'], c)
                 if pre(c['answerTitle'] + ' ' + c['explain'] + ' ' + c.get('scene', '')): return out(f"In this study: {c.get('scene', '')} {c['answerTitle']}. {c['explain']}", c)
-                fa2 = [f for f in fol if pre(f['a'])]
-                if fa2: return out(fa2[0]['a'], c)
+                continue
+            if name == 'define':   # "what is an ECU?": the study's own text, never a follow-up that happens to share the word
+                m = re.search(r"^what(?:.s| is) (?:an? |the )?(\w+)\??$", ql); w = m.group(1) if m else ''
+                if w and stem(w) not in GENERIC and any(x.startswith(stem(w)) for x in tokens(c['answerTitle'] + ' ' + c['explain'] + ' ' + c.get('scene', ''))):
+                    return out(f"In this study: {c.get('scene', '')} {c['answerTitle']}. {c['explain']}", c)
                 continue
             if name == 'contest':   # both sides of a contested finding, as the explanation states them
                 fd = [f for f in fol if re.search(r'\b(design|differ|contrast|both)', f['q'] + ' ' + f['a'], re.I)]

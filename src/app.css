@@ -707,3 +707,6 @@ p,li,dd{text-wrap:pretty}
 .hb-track.efx{background:none;overflow:visible}.hb-track.efx::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--sunk)}
 .dotv{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--ink-2);z-index:2}.dotv.ev{background:var(--ev)}.dotv.ns{background:transparent;box-shadow:inset 0 0 0 2px var(--ev)}
 .plate .hb-track.efx::before{background:rgba(255,255,255,.25)}.plate .dotv{background:#c9d2e6}.plate .dotv.ev{background:#f0b43c}.plate .dotv.ns{background:#14203a;box-shadow:inset 0 0 0 2px #f0b43c}
+.in-lab.at-left{right:auto;left:3px}
+.dotv.ns:not(.ev){box-shadow:inset 0 0 0 2px var(--rule-strong)}.plate .dotv.ns:not(.ev){box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
+.rec-col>.rec-panel:first-child{border-top:0;padding-top:4px}

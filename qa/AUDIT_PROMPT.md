@@ -9,7 +9,7 @@ Inputs: the diff at DIFF; a full copy of the project at SNAPSHOT (work only ther
 
 Do all of these:
 1. Read the diff. For each change, ask what it could break elsewhere and check it against every invariant in the register.
-2. Content: for every changed item, every number matches its stored quotes; options are unique; keyed texts match tests/keyed_options.json; nothing refers to options by position.
+2. Content: for every changed item, every number matches its stored quotes; options are unique; keyed texts match tests/keyed_options.json; nothing refers to options by position; every new or changed distractor is FALSE according to the item's own quotes, explanation and follow-ups (a distractor that states the paper's finding scores a right answer wrong).
 3. Both pages: play every changed item plus at least six others at 390 and 1440 on the offline file AND on the hosted page (start the server). On the hosted page, after playing one decision of every format, RELOAD and open every view (home, record, Library, All decisions) and check for page errors and empty views.
 4. Classroom: console, projector (open and revealed) and a phone for every changed format.
 5. Tutor: 40+ natural questions across 15 decisions through server/tutor.py curated(), compared with the previous version where useful.

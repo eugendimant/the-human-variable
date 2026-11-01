@@ -27,11 +27,12 @@ bank['tutorRoutes'] = {
   ['duration', r'\b(how long|last(ed)?|persist\w*|fade\w*|long[- ]term|over time|stick)\b'],
   ['subgroup', r'\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\w*|good writers|junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\b'],
   ['signif', r'\b(significan\w*|statistically|by chance|just noise|p[- ]?value)\b'],
-  ['meaning', r'\b(what does (the )?(word |term )?[\'\"]?(\w+)[\'\"]? mean|what is meant by|what do (they|you) mean by)\b|^what(.s| is) (an? |the )?\w+\??$'],
+  ['meaning', r'\b(what does (the )?(word |term )?[\'\"]?(\w+)[\'\"]? mean|what is meant by|what do (they|you) mean by)\b'],
   ['why', r'(^why\b|\bwhy (would|does|did|do|is|are|was|were)\b)'],
   ['design', r'\b(how (was|were|did)|design|method|ran|sample|participants|conducted|setup|set up|randomi[sz]\w*|control group)\b'],
   ['pilot', r'\b((check|test|audit|evaluate|assess) (my|our)( own)?|my own|our own|test (this|it)|pilot|in (my|our) (company|team|firm|organi[sz]ation)|roll ?out|measure (it|this))\b'],
   ['size', r'\b(big|size|large|how much|practice|magnitude)\b'],
+  ['define', r'^what(.s| is) (an? |the )?(\w+)\??$'],
   ['transfer', r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\w*|believe|trust (it|this|a|the)|lab (game|study|experiment)|artificial)']],
  'subgroupFollow': r'^(who\b.*\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\b)',
 }

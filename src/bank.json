@@ -3183,7 +3183,7 @@
    "options": [
     "Loose norms generated more behavioral variation",
     "The spread of behavior shaped choices",
-    "The average of what others did explained choices",
+    "Polarized norms pulled choices toward the middle",
     "Tight norms produced the most extreme choices"
    ],
    "answerTitle": "The spread of others’ behavior changed choices",
@@ -3582,7 +3582,7 @@
    "options": [
     "Own side fears rejection; other lacks interest",
     "Each side said it feared open conflict",
-    "Both sides feared rejection; neither lacked interest"
+    "Each side blamed its own lack of interest"
    ],
    "answer": 0,
    "answerTitle": "The misreading can be mutual",
@@ -3981,8 +3981,8 @@
    "scene": "In an incentivized task, people forecast students' math percentiles. They may use an imperfect model that outperforms human forecasts, but each group gets different rules for adjusting it.",
    "question": "Which group chose to use the model least often?",
    "options": [
-    "Could adjust each forecast, though by up to 2",
-    "Could not change the model at all",
+    "Could adjust each forecast by up to 2",
+    "Had to use the model’s forecasts unchanged",
     "Could adjust each forecast by up to 10"
    ],
    "answerTitle": "Any control beats none; size barely matters",
@@ -9197,7 +9197,7 @@
    ],
    [
     "meaning",
-    "\\b(what does (the )?(word |term )?[\\'\\\"]?(\\w+)[\\'\\\"]? mean|what is meant by|what do (they|you) mean by)\\b|^what(.s| is) (an? |the )?\\w+\\??$"
+    "\\b(what does (the )?(word |term )?[\\'\\\"]?(\\w+)[\\'\\\"]? mean|what is meant by|what do (they|you) mean by)\\b"
    ],
    [
     "why",
@@ -9214,6 +9214,10 @@
    [
     "size",
     "\\b(big|size|large|how much|practice|magnitude)\\b"
+   ],
+   [
+    "define",
+    "^what(.s| is) (an? |the )?(\\w+)\\??$"
    ],
    [
     "transfer",

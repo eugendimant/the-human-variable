@@ -261,3 +261,15 @@ REVIEW24 = [('should my call center put humans on top of the chatbot or not?', '
 def test_offline_tutor_review24(q, cid, want):
     """Review 24, minor 2: recommendations go to the action, numbers to the follow-up that holds them, money to the incentive answer."""
     a = T.curated(q, cid)['answer']; assert want in a and not a.startswith('Yes. With'), a[:120]
+
+
+def test_everyday_questions_keep_their_answers():
+    """Invariant I16 (regression audit 29, M3): a route change must not silently redirect everyday questions on any decision.
+    If this fails, read the listed changes; if each is an improvement, regenerate with `python3 tools/tutor_golden.py`."""
+    import json, sys
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(root / 'tools'))
+    import tutor_golden
+    gold = json.loads((root / 'tests/tutor_golden.json').read_text()); now = tutor_golden.snapshot()
+    diff = [(cid, q, gold.get(cid, {}).get(q), a) for cid, qa in now.items() for q, a in qa.items() if gold.get(cid, {}).get(q) != a]
+    assert not diff, diff[:12]

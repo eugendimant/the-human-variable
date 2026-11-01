@@ -78,3 +78,13 @@ bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
 b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
 C['ai11']['answerTitle'] = 'People relied on algorithms less for matters of taste'
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# audit 29, M1 and M2: a distractor must be false by the item's own evidence; the two new ones were the papers' findings
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+swap('social01', 'The average of what others did explained choices', 'Polarized norms pulled choices toward the middle')
+swap('social14', 'Both sides feared rejection; neither lacked interest', 'Each side blamed its own lack of interest')
+swap('axb02', 'Could adjust each forecast, though by up to 2', 'Could adjust each forecast by up to 2 points')
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+swap('axb02', 'Could adjust each forecast by up to 2 points', 'Could adjust each forecast by up to 2')
+swap('axb02', 'Could not change the model at all', 'Had to use the model’s forecasts unchanged')
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
