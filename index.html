@@ -712,6 +712,7 @@ p,li,dd{text-wrap:pretty}
 .rc-dot{position:relative;display:block;height:24px;margin:24px 24px 0 0}.rc-dot::before{content:"";position:absolute;left:0;width:var(--v);top:11px;height:2px;background:var(--rule)}.rc-dot::after{content:"";position:absolute;left:0;right:0;top:8px;height:8px;border-left:1.5px solid var(--rule);border-right:1.5px solid var(--rule)}.rc-dot i{position:absolute;top:5px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--ev)}.rc-dot b{position:absolute;top:-18px;transform:translateX(-50%);font-size:15px;font-weight:750;color:var(--ev-ink);font-variant-numeric:tabular-nums}   /* value above its dot, clear of the leader and end ticks (review 26, audit 31b) */
 .plate .rc-dot::before{background:rgba(255,255,255,.3)}.plate .rc-dot::after{border-color:rgba(255,255,255,.3)}.plate .rc-dot i{background:#f0b43c}.plate .rc-dot b{color:#f0b43c}
 .hb-track i.room{background:#5b6b86}   /* the room in slate; blue is the player's own call (review 27, rule 18) */
+.tutor-suggest{margin-top:12px}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="#" data-home="1" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -1266,8 +1267,9 @@ function tutorPanel(c) {
   const t = st.tutor;
   return `<div class="tutor" aria-labelledby="tutor-h"><h2 id="tutor-h">Ask your own question</h2>
     <form class="tutor-line" data-form="tutor"><label class="sr-only" for="tutor-in">Your question about this study</label><input id="tutor-in" maxlength="300" placeholder="For example: would this hold in a sales team?" autocomplete="off"><button class="btn btn-quiet" ${t.busy ? 'disabled' : ''}>${t.busy ? 'Thinking' : 'Ask'}</button></form>
-    <div class="tutor-chips">${['How big is this effect in practice?', 'Would this hold with AI tools today?', 'How would I test this in my company?'].map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>
+    ${t.suggest && t.suggest.length ? '' : `<div class="tutor-chips">${['How big is this effect in practice?', 'Would this hold with AI tools today?', 'How would I test this in my company?'].map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>`}
     ${t.text ? `<div class="tutor-answer" aria-live="polite">${esc(t.text)}${t.cites.length ? '\n\n' + t.cites.map(x => `<cite>${esc(x)}</cite>`).join(' ') : ''}</div>` : ''}
+    ${t.suggest && t.suggest.length ? `<div class="tutor-chips tutor-suggest">${t.suggest.map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>` : ''}
     <p class="small">${TUTOR_AI ? 'AI answers use only the lab’s checked sources. Check details in the source.' : 'Answers come from the lab’s checked summaries.'}</p></div>`;
 }
 // Offline tutor. The same routing table and order as server/tutor.py curated (BANK.tutorRoutes), so both tutors agree.
@@ -1292,7 +1294,7 @@ function curated(q, c) {
   const qt = new Set(trTokens(q)), topic = [...qt].filter(w => !TR_GENERIC.has(w)), ql = q.toLowerCase(); let fol = c.follow || [];
   const cs = x => [cite(x.sources[0])], off = { text: 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', cites: [] };
   if (/\bshould (my|our|we|i)\b (?!(believe|buy|take|worry|care|be (worried|concerned|afraid))\b)\w+/.test(ql) && !/\b(is|would|be) (this|it|that)( be)? (really |even |actually )?(ethic\w*|fair|moral\w*|right|wrong|ok|okay|allowed|legal)\b|\bit'?s (really )?(fair|ok|okay|allowed|legal)\b|\bare we allowed\b|\bthe right thing\b|\bunethical\b|\b(ethic\w*|unfair\w*|immoral\w*|legal(ity)?)\b|\b(fire[ds]?|lay(ing)? off|cut (jobs|staff|headcount)|replace (staff|workers|people))\b|\bhire (fewer|less)\b|\bfewer (staff|people|workers|agents|employees|consultants|writers|hires|humans|jobs|reps|analysts)\b/.test(ql)) return { text: `${c.implication}\n\nWhy: ${c.explain}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };   // a recommendation question goes to the manager's action
-  const exact = fol.find(f => trNorm(f.q) === trNorm(q)); if (exact) return { text: exact.a, cites: cs(c) };
+  const bare = ql.trim().replace(new RegExp('^' + TR_FILL), ''); const exact = fol.find(f => trNorm(f.q) === trNorm(q) || trNorm(f.q) === trNorm(bare)); if (exact) return { text: exact.a, cites: cs(c) };
   if (/\b(ethic\w*|unethical|moral\w*|fair to|unfair\w*|allowed|legal\w*)\b|\bis (it|this|that) (really )?(fair|right|wrong|ok|okay)\b/.test(ql)) { const jq = f => { const ft = new Set(trTokens(f.q)); return [...ft].filter(w => qt.has(w)).length / Math.max(1, new Set([...ft, ...qt]).size) }; const fe = fol.find(f => /\b(ethic\w*|unethical|moral\w*|fair|unfair\w*|allowed|legal\w*)\b/i.test(f.q) && jq(f) >= 0.3); if (fe) return { text: fe.a, cites: cs(c) } }
   if (/\b(ethic\w*|unethical|moral\w*|fair to|unfair\w*|allowed|legal\w*)\b|\bis (it|this|that) (really )?(fair|right|wrong|ok|okay)\b/.test(ql)) return { text: `The study measures what happened, not what is right; that call is yours. What it covers: ${c.boundary}\n\nWhat a manager can do with it: ${c.implication}`, cites: cs(c) };
   if (isOpen(ql)) fol = fol.filter(f => !/^(Yes|No)\b/.test(f.a));
@@ -1303,12 +1305,12 @@ function curated(q, c) {
   if (named.length) { const ov = x => topic.filter(w => trTokens([x.answerTitle, x.explain, x.question].join(' ')).includes(w)).length; const b = named.sort((a, z) => ov(z) - ov(a))[0]; return { text: `${b.explain}\n\n${b.implication}`, cites: cs(b) } }
   const st0 = c.study || {}, rare = topic.filter(w => !TR_COMMON.has(w)), hits = (s, ws) => { const ts = new Set(trTokens(s)); return ws.filter(w => ts.has(w)).length };
   if (c.delegate) { const ov = tk => trTokens(tk.text).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const tk = c.delegate.tasks.slice().sort((a, b) => ov(b) - ov(a))[0]; if (tk && tk.why && (ov(tk) >= 2 || (ov(tk) >= 1 && /\bwhy\b/.test(ql)))) return { text: tk.why, cites: cs(c) } }   // a question about one task gets that task's evidence
-  let whyq = false;
+  let whyq = false, defq = false;
   for (const [name, rx] of TR.routes) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
     if (name === 'offtopic') return off;
     const item = new Set(trTokens([c.question, c.scene || '', c.answerTitle, c.explain, ...(c.follow || []).map(f => f.q + ' ' + f.a)].join(' ')));
-    if (name === 'compare' && !/\bor not\b/.test(ql) && rare.some(w => !compw().has(w) && !item.has(w) && !(TR_SYN[w] || []).some(x => item.has(x)))) return { text: `I could not match that exact comparison to this study's summary. Here is what the study found: ${c.answerTitle}. ${c.explain}`, cites: cs(c) };   // audit 31c, M1   // audit 31, M2
+    if (name === 'compare' && !/\bor not\b/.test(ql) && rare.some(w => !compw().has(w) && !item.has(w) && !(TR_SYN[w] || []).some(x => item.has(x)))) return { text: `I could not match that exact comparison to this study’s summary. Here is what the study found: ${c.answerTitle}. ${c.explain}`, cites: cs(c) };   // audit 31c, M1   // audit 31, M2
     if (name === 'compare') { const ovq = f => hits(f.q + ' ' + f.a, [...qt]); const fc = fol.find(f => /\b(than|higher|lower|better|worse|outperform\w*|beat)\b/.test(f.a) && hits(f.q, rare) > 0) || fol.filter(f => ovq(f) >= 3 && hits(f.q, rare) > 0).sort((a, b) => ovq(b) - ovq(a))[0]; return { text: `${c.answerTitle}. ${c.explain}${fc ? ' ' + stripYN(fc.a) : ''}`, cites: cs(c) } }   // review 26 M1, audit 31 M1
     if (name === 'control') { const fcg = (c.follow || []).find(f => /\bcontrol\b/i.test(f.q)); if (fcg) return { text: /\b(is|was|were) there\b|\bhave an? control\b|\bany control\b/.test(ql) ? fcg.a : stripYN(fcg.a), cites: cs(c) }; continue }
     if (name === 'whatif') return { text: `The study's design: ${st0.design || 'see the paper'}. What it covers: ${c.boundary} The finding: ${c.explain}`, cites: cs(c) };   // audit 31b, M1
@@ -1317,7 +1319,7 @@ function curated(q, c) {
     if (name === 'signif') return { text: c.explain, cites: cs(c) };   // the main contrast first
     if (name === 'task') return { text: `${c.scene || ''}\n\nDesign: ${st0.design || 'see the paper'}.`, cites: cs(c) };
     if (name === 'meaning') { const m = ql.match(/mean(?:t)? by ['"]?(\w+)|does (?:the )?(?:word |term )?['"]?(\w+)['"]? mean/), w = m ? (m[1] || m[2] || '') : ''; const sw = w ? trStem(w) : ''; const pre = s => !!sw && trTokens(s).some(x => x.startsWith(sw)); const fm = fol.find(f => pre(f.q)); if (fm) return { text: fm.a, cites: cs(c) }; if (pre(c.answerTitle + ' ' + c.explain + ' ' + (c.scene || ''))) return { text: `In this study: ${c.scene || ''}\n\n${c.answerTitle}. ${c.explain}`, cites: cs(c) }; continue }
-    if (name === 'define') { const m = ql.match(/^what(?:.s| is) (?:an? |the )?(\w+)\??$/), w = m ? m[1] : '', sw = w ? trStem(w) : ''; const fdq = sw && !TR_GENERIC.has(sw) && fol.find(f => /\bmean\b|^what (is|are) (an? |the )?\w+\??$|^why call/.test(f.q.toLowerCase()) && trTokens(f.q).some(x => x.startsWith(sw))); if (fdq) return { text: fdq.a, cites: cs(c) }; if (sw && !TR_GENERIC.has(sw) && trTokens(c.answerTitle + ' ' + c.explain + ' ' + (c.scene || '')).some(x => x.startsWith(sw))) return { text: `In this study: ${c.scene || ''}\n\n${c.answerTitle}. ${c.explain}`, cites: cs(c) }; continue }
+    if (name === 'define') { const m = ql.match(/^what(?:.s| is) (?:an? |the )?(\w+)\??$/), w = m ? m[1] : '', sw = w ? trStem(w) : ''; const fdq = sw && !TR_GENERIC.has(sw) && fol.find(f => /\bmean\b|^what (is|are) (an? |the )?\w+\??$|^why call/.test(f.q.toLowerCase()) && trTokens(f.q).some(x => x.startsWith(sw))); if (fdq) return { text: fdq.a, cites: cs(c) }; if (sw && !TR_GENERIC.has(sw) && trTokens(c.answerTitle + ' ' + c.explain + ' ' + (c.scene || '')).some(x => x.startsWith(sw))) return { text: `In this study: ${c.scene || ''}\n\n${c.answerTitle}. ${c.explain}`, cites: cs(c) }; defq = true; continue }
     if (name === 'contest') { const fd = fol.find(f => /\b(design|differ|contrast|both)/i.test(f.q + ' ' + f.a)); return { text: `${c.explain}${fd ? '\n\n' + fd.a : ''}\n\n${c.implication}`, cites: cs(c) } }   // both sides of a contested finding
     if (name === 'why') { const has2 = s => trTokens(s).some(w => rare.includes(w)), whys = fol.filter(f => /^why/i.test(f.q)); const fw = whys.find(f => has2(f.q + ' ' + f.a)) || (whys.length === 1 && /\b(didn.?t|did not|fail)/.test(ql) && /\b(not|no|never|fail\w*|n't|miss\w*|hid\w*|mask\w*|appear\w*)\b/.test(whys[0].a) ? whys[0] : null) || fol.find(f => /\b(because|read (this|it)? ?as|reason|motive|concern|suggest)/i.test(f.a) && has2(f.a)); if (fw) return { text: fw.a, cites: cs(c) }; whyq = true; continue }
     if (name === 'authors') return { text: `${c.sources.map(id => SOURCE[id] ? `${SOURCE[id].authors} (${SOURCE[id].year}), ${SOURCE[id].venue}` : '').filter(Boolean).join('; ')}. Design: ${st0.design || 'see the paper'}.`, cites: cs(c) };
@@ -1339,13 +1341,9 @@ function curated(q, c) {
     if (name === 'transfer') return { text: `${c.boundary}\n\nThe study itself: ${c.explain}`, cites: cs(c) };
   }
   const QTY = /^(how (large|big|much|many|fast|long|often|high|low)|what (size|share|percent\w*|amount))\b/;
-  const fq = fol.filter(f => hits(f.q, rare) && !(whyq && QTY.test(f.q.toLowerCase()))).sort((a, b) => (hits(b.q, rare) - hits(a.q, rare)) || (hits(b.q, [...qt]) - hits(a.q, [...qt])))[0]; if (fq) return { text: yn(fq), cites: cs(c) };   // review 26, M1: a why question never gets a quantity follow-up
-  if (whyq) return { text: `${c.explain} What a manager does with it: ${c.implication}`, cites: cs(c) };   // no route: a distinctive word shared with one follow-up question
-  const own = new Set(trTokens([c.answerTitle, c.explain].join(' '))), rareA = rare.filter(w => !own.has(w));
-  const fa = fol.filter(f => hits(f.a, rareA)).sort((a, b) => hits(b.a, rareA) - hits(a.a, rareA))[0]; if (fa) return { text: yn(fa), cites: cs(c) };   // a distinctive word found only in a follow-up answer
-  if (fol.length) { const ov = f => trTokens(f.q + ' ' + f.a).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const sc = f => 2 * trTokens(f.q).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length + trTokens(f.a).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const f0 = fol.slice().sort((a, b) => sc(b) - sc(a))[0]; if (ov(f0) >= 2) return { text: yn(f0), cites: cs(c) } }   // the follow-up's own question weighs double
-  // no study named and no route: answer about the decision on screen, never about another study on word overlap
-  if (rare.length) return { text: `The lab's summary of this study does not cover that detail. What it does cover: ${c.answerTitle}. ${c.explain}`, cites: cs(c) };   // say so, rather than pass the summary off as an answer
+  const fillT = new Set(trTokens(TR.filler.join(' '))), core = rare.filter(w => !fillT.has(w)), shared = f => { const ft = trTokens(f.q); return core.filter(w => ft.includes(w) || (TR_SYN[w] || []).some(x => ft.includes(x))).length }; const fq = defq ? null : fol.filter(f => (shared(f) >= 2 || (shared(f) > 0 && 3 * shared(f) >= 2 * core.length)) && !(whyq && QTY.test(f.q.toLowerCase()))).sort((a, b) => (hits(b.q, rare) - hits(a.q, rare)) || (hits(b.q, [...qt]) - hits(a.q, [...qt])))[0]; if (fq) return { text: yn(fq), cites: cs(c) };   // a follow-up is borrowed only when its own question shares two distinctive words
+  if (whyq) return { text: `${c.explain} What a manager does with it: ${c.implication}`, cites: cs(c) };
+  if (rare.length) return { text: `I could not match that question to this study’s summary. Here is what the study found: ${c.answerTitle}. ${c.explain} Its summary answers the questions below.`, cites: cs(c), suggest: (c.follow || []).map(f => f.q).slice(0, 3) };   // a weak match is not an answer (review 27)
   return { text: `${c.answerTitle}. ${c.explain}\n\nWhat a manager does with it: ${c.implication}`, cites: cs(c) };
 }
 async function ask(q) {
@@ -1357,10 +1355,10 @@ async function ask(q) {
       const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 15000);
       const res = await fetch(TUTOR_REMOTE, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Client-Id': clientId() }, body: JSON.stringify({ question: q, challenge: c.id, client: clientId() }), signal: ctl.signal });
       clearTimeout(to); const d = await res.json();
-      if (res.ok && typeof d.answer === 'string' && d.answer.trim()) { st.tutor = { busy: false, text: d.answer.slice(0, 1600), cites: (d.citations || []).map(x => x.label).slice(0, 4) }; render(); return }
+      if (res.ok && typeof d.answer === 'string' && d.answer.trim()) { st.tutor = { busy: false, text: d.answer.slice(0, 1600), cites: (d.citations || []).map(x => x.label).slice(0, 4), suggest: Array.isArray(d.suggest) ? d.suggest.slice(0, 3).map(String) : null }; render(); return }
     } catch { }
   }
-  const a = curated(q, c); st.tutor = { busy: false, text: a.text, cites: a.cites }; render();
+  const a = curated(q, c); st.tutor = { busy: false, text: a.text, cites: a.cites, suggest: a.suggest || null }; render();
 }
 function clientId() { let id = store.get('thv:client', null); if (!id) { id = Math.random().toString(36).slice(2, 12); store.set('thv:client', id) } return id }
 

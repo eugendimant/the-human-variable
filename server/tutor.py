@@ -126,7 +126,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
     if c:
         fol = c.get('follow', [])   # the item's own follow-up, asked word for word, else the nearest one above 0.6 overlap
-        exact = [f for f in fol if _norm(f['q']) == _norm(question)]
+        bare = re.sub('^' + _FILL, '', ql.strip())   # "Okay, was it expensive?" is the follow-up "Was it expensive?"
+        exact = [f for f in fol if _norm(f['q']) in (_norm(question), _norm(bare))]
         jac = lambda f: len(set(tokens(f['q'])) & qt) / max(1, len(set(tokens(f['q'])) | qt))
         if exact: return out(exact[0]['a'], c)
         if re.search(r"\b(ethic\w*|unethical|moral\w*|fair to|unfair\w*|allowed|legal\w*)\b|\bis (it|this|that) (really )?(fair|right|wrong|ok|okay)\b", ql):
@@ -154,12 +155,12 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             ov = lambda tk: len(qt & set(tokens(tk['text'])))
             tk = max(c['delegate']['tasks'], key=ov)
             if tk.get('why') and (ov(tk) >= 2 or (ov(tk) >= 1 and re.search(r'\bwhy\b', ql))): return out(tk['why'], c)
-        whyq = False
+        whyq = defq = False
         for name, rx in R['routes']:
             if not re.search(rx, ql): continue
             if name == 'offtopic': return off
             item = set(tokens(' '.join([c['question'], c.get('scene', ''), c['answerTitle'], c['explain']] + [f['q'] + ' ' + f['a'] for f in c.get('follow', [])])))
-            if name == 'compare' and not re.search(r'\bor not\b', ql) and [w for w in rare - COMPW if w not in item and not any(x in item for x in SYN.get(w, ()))]: return out(f"I could not match that exact comparison to this study's summary. Here is what the study found: {c['answerTitle']}. {c['explain']}", c)   # a word-presence test cannot prove a comparison is absent, so never claim it is (audit 31c, M1); never borrow a stray follow-up either   # every distinctive word of the comparison must be in the study, or it is not a comparison the study makes (audit 31, M2)
+            if name == 'compare' and not re.search(r'\bor not\b', ql) and [w for w in rare - COMPW if w not in item and not any(x in item for x in SYN.get(w, ()))]: return out(f"I could not match that exact comparison to this study’s summary. Here is what the study found: {c['answerTitle']}. {c['explain']}", c)   # a word-presence test cannot prove a comparison is absent, so never claim it is (audit 31c, M1); never borrow a stray follow-up either   # every distinctive word of the comparison must be in the study, or it is not a comparison the study makes (audit 31, M2)
             if name == 'compare':   # "is X better than Y?", "... or not?": the finding, plus a follow-up on the question's own words, without its own Yes or No (review 26 M1, audit 31 M1)
                 fc = [f for f in fol if re.search(r'\b(than|higher|lower|better|worse|outperform\w*|beat)\b', f['a']) and rare & set(tokens(f['q']))]
                 fc = fc or [f for f in sorted(fol, key=lambda f: -len(qt & set(tokens(f['q'] + ' ' + f['a'])))) if len(qt & set(tokens(f['q'] + ' ' + f['a']))) >= 3 and rare & set(tokens(f['q']))][:1]
@@ -192,7 +193,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 if fdq: return out(fdq[0]['a'], c)
                 if w and stem(w) not in GENERIC and any(x.startswith(stem(w)) for x in tokens(c['answerTitle'] + ' ' + c['explain'] + ' ' + c.get('scene', ''))):
                     return out(f"In this study: {c.get('scene', '')} {c['answerTitle']}. {c['explain']}", c)
-                continue
+                defq = True; continue   # an unanswered "what is X" never borrows a follow-up on the word X
             if name == 'contest':   # both sides of a contested finding, as the explanation states them
                 fd = [f for f in fol if re.search(r'\b(design|differ|contrast|both)', f['q'] + ' ' + f['a'], re.I)]
                 return out(f"{c['explain']}" + (f" {fd[0]['a']}" if fd else '') + f" {c['implication']}", c)
@@ -231,17 +232,14 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'transfer': return out(f"{c['boundary']} The study itself: {c['explain']}", c)
         QTY = r"(how (large|big|much|many|fast|long|often|high|low)|what (size|share|percent\w*|amount))\b"
         fq = [f for f in fol if rare & set(tokens(f['q'])) and not (whyq and re.match(QTY, f['q'].lower()))]   # no route; a why question never gets a quantity follow-up that shares one word (review 26, M1)
-        if whyq and not fq: return out(f"{c['explain']} What a manager does with it: {c['implication']}", c)   # no route: a distinctive word the question shares with one follow-up question picks it
-        if fq: return out(yn(max(fq, key=lambda f: (len(rare & set(tokens(f['q']))), len(qt & set(tokens(f['q'])))))), c)   # ties go to the follow-up sharing more words
-        own = set(tokens(' '.join([c['answerTitle'], c['explain']])))
-        fa = [f for f in fol if (rare - own) & set(tokens(f['a']))]   # a distinctive word found only in a follow-up answer
-        if fa: return out(yn(max(fa, key=lambda f: len((rare - own) & set(tokens(f['a']))))), c)
-        if fol:
-            sc = lambda f: 2 * len(qt & set(tokens(f['q']))) + len(qt & set(tokens(f['a'])))   # the follow-up's own question weighs double
-            f0 = max(fol, key=sc)
-            if len(qt & set(tokens(f0['q'] + ' ' + f0['a']))) >= 2: return out(yn(f0), c)   # a word-overlap pick keeps its Yes or No only for its own question (audit 31)
-        # no study named and no route: answer about the decision on screen, never about another study on word overlap
-        if rare: return out(f"The lab's summary of this study does not cover that detail. What it does cover: {c['answerTitle']}. {c['explain']}", c)   # say so, rather than pass the summary off as an answer
+        core = rare - set(tokens(' '.join(R['filler'])))
+        shared = lambda f: {w for w in core if w in set(tokens(f['q'])) or any(x in set(tokens(f['q'])) for x in SYN.get(w, ()))}   # a synonym counts ("itself" meets "alone")
+        strong = [] if defq else [f for f in fol if not (whyq and re.match(QTY, f['q'].lower())) and len(shared(f)) >= 2 or (shared(f) and 3 * len(shared(f)) >= 2 * len(core))]   # two shared distinctive words, or two thirds of the question's own   # a follow-up is borrowed only when its own question shares two distinctive words
+        if strong: return out(yn(max(strong, key=lambda f: (len(rare & set(tokens(f['q']))), len(qt & set(tokens(f['q'])))))), c)
+        if whyq: return out(f"{c['explain']} What a manager does with it: {c['implication']}", c)   # no route: a distinctive word the question shares with one follow-up question picks it
+        if rare:   # a weak match is not an answer: give the finding and offer the summary's own questions (review 27; replaces one-word and answer-text borrowing)
+            r = out(f"I could not match that question to this study’s summary. Here is what the study found: {c['answerTitle']}. {c['explain']} Its summary answers the questions below.", c)
+            r['suggest'] = [f['q'] for f in c.get('follow', [])][:3]; return r
         return out(f"{c['answerTitle']}. {c['explain']} What a manager does with it: {c['implication']}", c)
     if not topic: return {'answer': 'Open a decision and ask about it, or name the study or topic you mean.', 'citations': [], 'mode': 'curated'}
     for d in retrieve(question, None, 4, exclude):

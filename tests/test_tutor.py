@@ -192,8 +192,8 @@ REVIEW20 = [('Does the wallet key matter?', 'civic-wallet-rank', 'Did the key in
 def test_offline_tutor_review20_distinctive_words(q, cid, fq):
     """Review 20, minor 5: a distinctive word the question shares with a follow-up picks that follow-up."""
     c = T.CHALLENGES[cid]; r = T.curated(q, cid)['answer']
-    want = [f['a'] for f in c['follow'] if f['q'] == fq] if fq else [f['a'] for f in c['follow'] if 'die' in f['a'].lower()]
-    assert r in want, r[:120]
+    want = [f['a'] for f in c['follow'] if f['q'] == fq] if fq else []
+    assert r in want or (not fq and r.startswith('I could not match') and T.curated(q, cid).get('suggest')), r[:120]   # iteration 33: a match on one word of a follow-up's answer is weak, so the reply offers the summary's questions
 
 
 def test_offline_tutor_review20_routes():
@@ -205,7 +205,7 @@ def test_offline_tutor_review20_routes():
 REVIEW21 = [('Did the people who were already good writers get anything out of it?', 'ai01', 'weaker writing skills'),
             ('Why did the combination do worse for fake reviews?', 'axb01', '69%'),
             ('Which countries were in the study?', 'civic-wallet-rank', 'cities'),
-            ('did experts see this coming', 'civic-wallet-rank', 'does not cover that detail')]
+            ('did experts see this coming', 'civic-wallet-rank', 'could not match')]
 
 
 @pytest.mark.parametrize('q,cid,want', REVIEW21)
@@ -402,3 +402,14 @@ def test_audit31d_counterfactuals_with_keep_the_whatif_answer():
     assert not bad, bad[:5]
     assert 'control' in t.curated('What would happen with no fine?', 'bz08')['answer']
     assert not t.curated('What would happen with novices?', 'rollout1')['answer'].startswith("The lab's summary of this study does not cover that detail")
+
+
+def test_weak_match_offers_the_summarys_own_questions():
+    """Iteration 33: when no route or two-word match answers a question, the reply gives the finding and offers the decision's own follow-up questions, each of which answers exactly."""
+    from server import tutor as t
+    for cid, c in t.CHALLENGES.items():
+        if c.get('retired') or not c.get('follow'): continue
+        r = t.curated('what colour were the walls in the room?', cid)
+        assert r['answer'].startswith('I could not match') and c['answerTitle'] in r['answer'], (cid, r['answer'][:80])
+        assert r['suggest'] == [f['q'] for f in c['follow']][:3]
+        for q in r['suggest']: assert t.curated(q, cid)['answer'] == next(f['a'] for f in c['follow'] if f['q'] == q)
