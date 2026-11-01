@@ -88,3 +88,9 @@ b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
 swap('axb02', 'Could adjust each forecast by up to 2 points', 'Could adjust each forecast by up to 2')
 swap('axb02', 'Could not change the model at all', 'Had to use the model’s forecasts unchanged')
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# re-audit 29b: axb02's keyed option reads with its question and matches its chart; social14 regains a two-part distractor the evidence contradicts
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+swap('axb02', 'Had to use the model’s forecasts unchanged', 'Could use the model only unchanged')
+ch = C['axb02']['chart']; ch['labels'][0] = 'Could use the model only unchanged'; ch['highlight'] = 0
+swap('social14', 'Each side said it feared open conflict', 'Own side lacks interest; other fears conflict')
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')

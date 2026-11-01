@@ -123,8 +123,8 @@
   ],
   "options": [
    "Each side blamed its own lack of interest",
-   "Each side said it feared open conflict",
-   "Own side fears rejection; other lacks interest"
+   "Own side fears rejection; other lacks interest",
+   "Own side lacks interest; other fears conflict"
   ]
  },
  "judg02": {
@@ -173,12 +173,12 @@
  },
  "axb02": {
   "keyed": [
-   "Had to use the model’s forecasts unchanged"
+   "Could use the model only unchanged"
   ],
   "options": [
    "Could adjust each forecast by up to 10",
    "Could adjust each forecast by up to 2",
-   "Had to use the model’s forecasts unchanged"
+   "Could use the model only unchanged"
   ]
  },
  "axb05": {

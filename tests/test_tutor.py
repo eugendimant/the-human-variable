@@ -273,3 +273,18 @@ def test_everyday_questions_keep_their_answers():
     gold = json.loads((root / 'tests/tutor_golden.json').read_text()); now = tutor_golden.snapshot()
     diff = [(cid, q, gold.get(cid, {}).get(q), a) for cid, qa in now.items() for q, a in qa.items() if gold.get(cid, {}).get(q) != a]
     assert not diff, diff[:12]
+
+
+AUDIT29 = [('Should we use joint evaluation when we hire?', 'bz14', 'side by side'),
+           ('Should we use blind résumés when we hire?', 'social12', 'audits'),
+           ('Should we deploy the assistant right now?', 'rollout1', 'newer'),
+           ('Should we keep using the model even when it is wrong?', 'ai09', 'error'),
+           ('Should we hire fewer writers?', 'ai01', 'what is right'),
+           ('What is polarization?', 'dimant-polarizednorms-choice', 'Tight means')]
+
+
+@pytest.mark.parametrize('q,cid,want', AUDIT29)
+def test_offline_tutor_audit29(q, cid, want):
+    """Regression audit 29b: everyday recommendation questions reach the manager's action; only clear ethics and staffing
+    phrasings go to the ethics answer; a definitional follow-up is used for "what is X"."""
+    a = T.curated(q, cid)['answer']; assert want in a, a[:120]

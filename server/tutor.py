@@ -107,7 +107,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     locked = {'answer': 'That study opens after your instructor reveals it in class.', 'citations': [], 'mode': 'locked'}
     off = {'answer': 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', 'citations': [], 'mode': 'curated'}
     # a question that names a study by an author's surname goes to that study
-    if c and re.search(r"\bshould (my|our|we|i)\b.*\b(put|use|add|keep|have|let|deploy|adopt|rely|trust|switch|roll)\b", ql) and not re.search(r"\b(ethic|fair|moral|right|wrong|ok|okay|allowed|legal|hire|fire|lay off|cut jobs|fewer)\b", ql):   # a recommendation question goes to the manager's action; ethics and staffing questions do not
+    if c and re.search(r"\bshould (my|our|we|i)\b.*\b(put|use|add|keep|have|let|deploy|adopt|rely|trust|switch|roll)\b", ql) and not re.search(r"\b(is (it|that)|would (it|that) be) (ethic\w*|fair|moral\w*|right|wrong|ok|okay|allowed|legal)\b|\b(ethic\w*|unfair\w*|immoral\w*|legal(ity)?)\b|\b(fire[ds]?|lay(ing)? off|cut (jobs|staff|headcount)|replace (staff|workers|people))\b|\bfewer (staff|people|workers|agents|employees|consultants|writers)\b", ql):   # a recommendation question goes to the manager's action; ethics and staffing questions do not
         return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
     if c:
         fol = c.get('follow', [])   # the item's own follow-up, asked word for word, else the nearest one above 0.6 overlap
@@ -154,6 +154,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 continue
             if name == 'define':   # "what is an ECU?": the study's own text, never a follow-up that happens to share the word
                 m = re.search(r"^what(?:.s| is) (?:an? |the )?(\w+)\??$", ql); w = m.group(1) if m else ''
+                fdq = [f for f in fol if w and any(x.startswith(stem(w)) for x in tokens(f['q']))]
+                if fdq: return out(fdq[0]['a'], c)
                 if w and stem(w) not in GENERIC and any(x.startswith(stem(w)) for x in tokens(c['answerTitle'] + ' ' + c['explain'] + ' ' + c.get('scene', ''))):
                     return out(f"In this study: {c.get('scene', '')} {c['answerTitle']}. {c['explain']}", c)
                 continue

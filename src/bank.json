@@ -3581,7 +3581,7 @@
    "question": "How did each group explain the hesitation?",
    "options": [
     "Own side fears rejection; other lacks interest",
-    "Each side said it feared open conflict",
+    "Own side lacks interest; other fears conflict",
     "Each side blamed its own lack of interest"
    ],
    "answer": 0,
@@ -3982,7 +3982,7 @@
    "question": "Which group chose to use the model least often?",
    "options": [
     "Could adjust each forecast by up to 2",
-    "Had to use the model’s forecasts unchanged",
+    "Could use the model only unchanged",
     "Could adjust each forecast by up to 10"
    ],
    "answerTitle": "Any control beats none; size barely matters",
@@ -4013,7 +4013,7 @@
    "theme": "ai-trust",
    "chart": {
     "labels": [
-     "Could not change the model",
+     "Could use the model only unchanged",
      "Could adjust by up to 2",
      "Could adjust by up to 5",
      "Could adjust by up to 10"
@@ -4025,7 +4025,7 @@
      71
     ],
     "unit": "%",
-    "highlight": 1,
+    "highlight": 0,
     "note": "Share who chose to use the model, Study 2."
    },
    "answer": 1

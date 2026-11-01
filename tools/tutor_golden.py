@@ -7,7 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT))
 from server import tutor as T
 BATTERY = ['What is the design?', 'What is the sample?', 'Who took part?', 'How big was the effect?', 'What should a manager do?',
            'Did it last?', 'Does this replicate?', 'Was this randomized?', 'What is the catch?', 'Who wrote this?', 'Explain it simply',
-           'Would this work in Europe?', 'Was real money at stake?', 'Who benefited most?', 'Was the difference significant?']
+           'Would this work in Europe?', 'Was real money at stake?', 'Who benefited most?', 'Was the difference significant?',
+           'Should we use this when we hire?', 'Should we roll this out right now?', 'Is it ethical to act on this?']
 def snapshot():
     return {cid: {q: T.curated(q, cid)['answer'][:90] for q in BATTERY} for cid, c in sorted(T.CHALLENGES.items()) if not c.get('retired')}
 if __name__ == '__main__':

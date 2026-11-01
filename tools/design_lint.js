@@ -54,11 +54,6 @@
       for (const m of marks) if (hit(box(texts[i]), box(m)) && !m.closest('g.ev-mark')) push('R31', name(sv), 'label on a mark: ' + texts[i].textContent.trim());
     }
   }
-  for (const tr of document.querySelectorAll('.hb-track')) {   // an in-bar label never sits on the bar's data point (audit 29)
-    const lab = tr.querySelector('.in-lab'), dot = tr.querySelector('.dotv'); if (!lab || !dot || !vis(lab)) continue;
-    const a = lab.getBoundingClientRect(), b = dot.getBoundingClientRect();
-    if (Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1) push('R31', name(tr), 'label on a data point');
-  }
   const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n;
   while ((n = tw.nextNode())) {
     const p = n.parentElement, x = n.textContent; if (!p || p.closest('script,style,svg,.sr-only') || !vis(p) || !x.trim()) continue;

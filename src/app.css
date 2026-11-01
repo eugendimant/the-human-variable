@@ -660,8 +660,6 @@ p,li,dd{text-wrap:pretty}
 .hb-row b small{font-size:12.5px;font-weight:600;opacity:.85}
 .gap-caption{max-width:40em}
 .alloc-cmp .hb-track{height:20px}
-.in-lab{position:absolute;right:8px;top:0;line-height:20px;font-style:normal;font-size:12px;font-weight:650;color:rgba(255,255,255,.75);white-space:nowrap}
-.gap:not(.has-plate) .in-lab{color:var(--muted)}
 .score-unit{font-size:17px;font-weight:700;line-height:1.25;color:var(--ink-2);margin-bottom:16px}
 .plate .rc-head{color:#c9d2e6}
 @media (max-width:560px){.meter-read{flex-direction:column;align-items:flex-start;gap:4px}}
@@ -696,7 +694,6 @@ p,li,dd{text-wrap:pretty}
 .rc-badge{justify-self:center}
 .hb-track i.grow.ns:not(.ev){background:transparent;box-shadow:inset 0 0 0 2px var(--rule-strong)}
 .plate .hb-track i.grow.ns:not(.ev){box-shadow:inset 0 0 0 2px rgba(255,255,255,.45)}
-.plate .in-lab{right:3px;top:2px;line-height:16px;padding:0 6px;border-radius:4px;background:#14203a}   /* stays legible where a bar runs under it */
 .study-line{max-width:40em}
 .rc-badge.you.same{box-shadow:none}
 .hb-track .zero{position:absolute;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--ink-2);z-index:1}
@@ -707,6 +704,5 @@ p,li,dd{text-wrap:pretty}
 .hb-track.efx{background:none;overflow:visible}.hb-track.efx::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--sunk)}
 .dotv{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--ink-2);z-index:2}.dotv.ev{background:var(--ev)}.dotv.ns{background:transparent;box-shadow:inset 0 0 0 2px var(--ev)}
 .plate .hb-track.efx::before{background:rgba(255,255,255,.25)}.plate .dotv{background:#c9d2e6}.plate .dotv.ev{background:#f0b43c}.plate .dotv.ns{background:#14203a;box-shadow:inset 0 0 0 2px #f0b43c}
-.in-lab.at-left{right:auto;left:3px}
 .dotv.ns:not(.ev){box-shadow:inset 0 0 0 2px var(--rule-strong)}.plate .dotv.ns:not(.ev){box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
 .rec-col>.rec-panel:first-child{border-top:0;padding-top:4px}
