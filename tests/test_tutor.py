@@ -1,3 +1,4 @@
+import re
 """Tutor: grounding, caching, budgets, fallbacks. No network: the transport is replaced."""
 import json, threading, time
 import pytest
@@ -362,7 +363,7 @@ def test_audit31_comparison_and_counterfactual_answers():
     for cid in t.CHALLENGES:
         if t.CHALLENGES[cid].get('retired'): continue
         assert 'tested one version' not in t.curated('What if it had been done differently?', cid)['answer']
-    assert t.curated('What if bots were removed?', 'false-news-spread')['answer'].startswith('Bots accelerated')
+    assert t.curated('What if bots were removed?', 'false-news-spread')['answer'].startswith("The study's design")
     assert t.curated('Can a company get credit through a bot?', 'axf04')['answer'].startswith('Yes, partly')
     assert '50 percent more callbacks' in t.curated('Do white names get more callbacks than Black names?', 'social12')['answer']
     assert t.curated('What would happen in Europe?', 'bz05')['answer'].startswith('What the study covers')
@@ -376,3 +377,11 @@ def test_format_names_agree_everywhere():
     js = lambda f: dict(re.findall(r"(\w+): '([^']+)'", re.search(r"FORMAT_NAME = \{([^}]*)\}", (R / f).read_text()).group(1)))
     py = dict(re.findall(r"'(\w+)': '([^']+)'", re.search(r"FORMAT_NAME = \{([^}]*)\}", (R / 'thv_streamlit/common.py').read_text()).group(1)))
     assert js('src/app.js') == js('src/classroom.js') == py
+
+
+def test_audit31b_whatif_never_borrows_on_one_stray_word():
+    """Audit 31b, M1: a what-if borrows a follow-up only when its own question shares two distinctive words; 15 generic what-ifs on every decision."""
+    from server import tutor as t
+    Q = ['What would happen if managers used AI?', 'What if participants knew they were observed?', 'What if parents had not been fined?', 'What if students used GPT-4 Tutor?', 'What if the price was lower?', 'What if they deactivated for longer?', 'What if the sample were larger?', 'What if bots were removed?']
+    bad = [(cid, q, t.curated(q, cid)['answer'][:60]) for cid, c in t.CHALLENGES.items() if not c.get('retired') for q in Q if re.match(r"(Very little|Often|Not for|Barely|The reverse|NIS)", t.curated(q, cid)['answer'])]
+    assert not bad, bad[:5]

@@ -80,7 +80,7 @@ function reveal(c, a) {
     const pts = a.points || a.hist.map((n, i) => [a.lo + (i + .5) * (a.hi - a.lo) / a.hist.length, n]), mx = Math.max(1, ...pts.map(p => p[1])), xs = pts.map(p => sx(p[0])), gap = Math.min(40, ...xs.slice(1).map((x, i) => x - xs[i]).filter(d => d > 0));
     const r = Math.min(9, (base - top) / (2 * mx), gap / 2);
     const marks = r >= 2.5 ? pts.flatMap(([v, n]) => Array.from({ length: n }, (_, k) => `<circle cx="${sx(v)}" cy="${base - r - k * 2 * r}" r="${Math.max(1.5, r - .8)}" class="ds-dot"/>`)).join('')
-      : pts.map(([v, n]) => { const h = Math.max(4, n / mx * (base - top)), bw = Math.max(2, Math.min(12, gap * .8)); return `<rect x="${sx(v) - bw / 2}" y="${base - h}" width="${bw}" height="${h}" class="ds-dot"/>${n === mx ? `<text x="${sx(v) + bw / 2 + 6}" y="${base - h + 22}" class="ds-tick">${n}</text>` : ''}` }).join('');
+      : pts.map(([v, n]) => { const h = Math.max(4, n / mx * (base - top)), bw = Math.max(2, Math.min(12, gap * .8)); return `<rect x="${sx(v) - bw / 2}" y="${base - h}" width="${bw}" height="${h}" class="ds-dot"/>${n === mx ? `<text x="${sx(v) + bw / 2 + 52 > R ? sx(v) - bw / 2 - 6 : sx(v) + bw / 2 + 6}" y="${base - h + 22}" text-anchor="${sx(v) + bw / 2 + 52 > R ? 'end' : 'start'}" class="ds-tick">${n}</text>` : ''}` }).join('');
     const b0 = band != null ? Math.max(a.lo, ev - band) : null, b1 = band != null ? Math.min(a.hi, ev + band) : null;
     const bandRect = band != null ? `<rect x="${sx(b0)}" y="${top - 8}" width="${sx(b1) - sx(b0)}" height="${base - top + 8}" class="ds-band"/>` : '';
     const ex = sx(ev), anc = ex > R - 200 ? 'end' : ex < L + 200 ? 'start' : 'middle';

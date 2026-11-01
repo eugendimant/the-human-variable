@@ -614,3 +614,11 @@ Regression audit of iteration 31 found 4 introduced Majors and 7 Minors; all fix
 - **Minors** Library "Play the other N" plays the unplayed; Library scores wait for 3 calls; rank values readable by screen readers and the track shows both ends; Streamlit says "Pick one" (new test: format names agree on page, console and Streamlit); aria hit band clamped.
 - **Pre-existing, fixed too**: social12 white/Black callbacks now answers with the finding; "as good as" and "more X than" are comparisons.
 - **Detectors**: R31 flags marks drawn outside their SVG; the lint now runs the projector with 80 answers. It caught two collisions in the new strip before commit.
+
+### Audit 31b (2026-11-01) and fixes
+1 introduced Major, 3 Minors.
+- **M1** what-if borrowed follow-ups on one stray shared word ("used", "lower", "observed"), some opening with a bare verdict. Two narrower borrowing rules were tried against a 15 × 112 what-if battery and both still produced non-sequiturs, so what-if now never borrows: it states the design, the scope and the finding. Deliberate trade, read in the golden diff: six what-ifs that a follow-up used to answer well (wallet key, loss framing, stronger résumé, health label, bots removed, visible productivity) now get the neutral design-plus-finding answer, which is true but less specific.
+- **m1** a rejected comparison now says the summary does not cover that comparison instead of falling through to a stray follow-up; the comparison's own words ("outperform", "better") no longer count as missing.
+- **m2** the projector strip's count label anchors left at the right edge; R31 now flags SVG text running past the right of its drawing area.
+- **m3** rank values sit above their dots, clear of the leader and both end ticks.
+- Python `strip_yn` and the page's `stripYN` now agree on a digit after "Yes.".

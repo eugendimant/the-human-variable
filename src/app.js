@@ -384,6 +384,7 @@ function tutorPanel(c) {
 }
 // Offline tutor. The same routing table and order as server/tutor.py curated (BANK.tutorRoutes), so both tutors agree.
 const TR = BANK.tutorRoutes || { stop: [], generic: [], suffixes: [], syn: {}, routes: [], subgroupFollow: '^who\\b' };
+let TR_COMPW_ = null; const compw = () => TR_COMPW_ || (TR_COMPW_ = new Set(trTokens('better worse outperform outperforms outperformed beat beats accurate smarter good effective useful fast faster more less fewer than')));
 const stripYN = a => { const m = String(a).match(/^(Yes|No)[.,]\s*([\s\S]*)$/); return m && /^[A-Z0-9]/.test(m[2]) ? m[2] : a };   // audit 31: keep "Yes, partly"
 const TR_STOP = new Set(TR.stop), TR_SYN = {}; for (const [k, ws] of Object.entries(TR.syn)) for (const w of ws.split(' ')) TR_SYN[w] = k.split(' ');
 function trStem(w) { for (const s of TR.suffixes) if (w.endsWith(s) && w.length - s.length >= 4) return w.slice(0, -s.length); return w }
@@ -419,10 +420,10 @@ function curated(q, c) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
     if (name === 'offtopic') return off;
     const item = new Set(trTokens([c.question, c.scene || '', c.answerTitle, c.explain, ...(c.follow || []).map(f => f.q + ' ' + f.a)].join(' ')));
-    if (name === 'compare' && !/\bor not\b/.test(ql) && rare.some(w => !item.has(w) && !(TR_SYN[w] || []).some(x => item.has(x)))) continue;   // audit 31, M2
+    if (name === 'compare' && !/\bor not\b/.test(ql) && rare.some(w => !compw().has(w) && !item.has(w) && !(TR_SYN[w] || []).some(x => item.has(x)))) return { text: `The lab's summary of this study does not cover that comparison. What it does cover: ${c.answerTitle}. ${c.explain}`, cites: cs(c) };   // audit 31, M2
     if (name === 'compare') { const ovq = f => hits(f.q + ' ' + f.a, [...qt]); const fc = fol.find(f => /\b(than|higher|lower|better|worse|outperform\w*|beat)\b/.test(f.a) && hits(f.q, rare) > 0) || fol.filter(f => ovq(f) >= 3 && hits(f.q, rare) > 0).sort((a, b) => ovq(b) - ovq(a))[0]; return { text: `${c.answerTitle}. ${c.explain}${fc ? ' ' + stripYN(fc.a) : ''}`, cites: cs(c) } }   // review 26 M1, audit 31 M1
     if (name === 'control') { const fcg = (c.follow || []).find(f => /\bcontrol\b/i.test(f.q)); if (fcg) return { text: /\b(is|was|were) there\b|\bhave an? control\b|\bany control\b/.test(ql) ? fcg.a : stripYN(fcg.a), cites: cs(c) }; continue }
-    if (name === 'whatif') { const own = new Set(trTokens([c.answerTitle, c.explain].join(' '))); const fw = (c.follow || []).find(f => hits(f.q, rare) > 0 && !/^(how (large|big|much|many|fast|long|often|high|low)|what (size|share|percent\w*|amount))\b/.test(f.q.toLowerCase())) || (c.follow || []).find(f => hits(f.a, rare.filter(w => !own.has(w))) > 0); if (fw) return { text: stripYN(fw.a), cites: cs(c) }; return { text: `The study's design: ${st0.design || 'see the paper'}. What it covers: ${c.boundary} The finding: ${c.explain}`, cites: cs(c) } }   // audit 31, M3
+    if (name === 'whatif') return { text: `The study's design: ${st0.design || 'see the paper'}. What it covers: ${c.boundary} The finding: ${c.explain}`, cites: cs(c) };   // audit 31b, M1
     if (name === 'foresight') { const fp = fol.find(f => /\b(predict\w*|expect\w*|forecast\w*|experts?|anticipat\w*)/i.test(f.q + ' ' + f.a)); if (fp) return { text: fp.a, cites: cs(c) }; continue }
     if (name === 'detect') { const fd = fol.find(f => /\b(tell|detect\w*|spot|notice[ds]?|identif(y|ied)|recogni\w*)\b/i.test(f.q)); if (fd) return { text: fd.a, cites: cs(c) }; continue }
     if (name === 'signif') return { text: c.explain, cites: cs(c) };   // the main contrast first

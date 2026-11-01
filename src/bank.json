@@ -9161,7 +9161,7 @@
    ],
    [
     "whatif",
-    "\\bwhat if\\b|\\bwhat would (have )?happen\\w*\\b(?!\\s+(in|for|at|to|with)\\b)|\\bwould (it|this|that|they|the \\w+) (have )?(work\\w*|happen\\w*|change\\w*|differ\\w*|be different) if\\b"
+    "\\bwhat if\\b|\\bwhat would (have )?happen\\w*\\b(?!\\s+(in|for|at)\\b)|\\bwould (it|this|that|they|the \\w+) (have )?(work\\w*|happen\\w*|change\\w*|differ\\w*|be different) if\\b"
    ],
    [
     "control",

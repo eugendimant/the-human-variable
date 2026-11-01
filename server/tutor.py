@@ -99,10 +99,12 @@ def _papers(c: dict) -> str:
     """Authors, year and journal of a decision's sources (titles stay with the evidence, as on the page)."""
     return '; '.join(f"{SOURCES[s]['authors']} ({SOURCES[s]['year']}), {SOURCES[s]['venue']}" for s in c['sources'] if s in SOURCES)
 
+COMPW = set(tokens('better worse outperform outperforms outperformed beat beats accurate smarter good effective useful fast faster more less fewer than'))   # the comparison's own words are not what it compares
+
 def strip_yn(a: str) -> str:
     """Drop a leading Yes or No when the rest stands as its own sentence (audit 31: never leave "but in addition..." or "partly.")."""
     m = re.match(r'(Yes|No)[.,]\s*(.*)', a, re.S)
-    return m.group(2) if m and m.group(2)[:1].isupper() else a
+    return m.group(2) if m and (m.group(2)[:1].isupper() or m.group(2)[:1].isdigit()) else a
 
 def _norm(s: str) -> str: return ' '.join(re.findall(r'[a-z0-9]+', s.lower()))
 _FILL = r"((so|and|okay|ok|but|also|hmm|well|quick question:?)[,\s]+)*"
@@ -157,7 +159,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if not re.search(rx, ql): continue
             if name == 'offtopic': return off
             item = set(tokens(' '.join([c['question'], c.get('scene', ''), c['answerTitle'], c['explain']] + [f['q'] + ' ' + f['a'] for f in c.get('follow', [])])))
-            if name == 'compare' and not re.search(r'\bor not\b', ql) and [w for w in rare if w not in item and not any(x in item for x in SYN.get(w, ()))]: continue   # every distinctive word of the comparison must be in the study, or it is not a comparison the study makes (audit 31, M2)
+            if name == 'compare' and not re.search(r'\bor not\b', ql) and [w for w in rare - COMPW if w not in item and not any(x in item for x in SYN.get(w, ()))]: return out(f"The lab's summary of this study does not cover that comparison. What it does cover: {c['answerTitle']}. {c['explain']}", c)   # audit 31b: say so, rather than borrow a stray follow-up   # every distinctive word of the comparison must be in the study, or it is not a comparison the study makes (audit 31, M2)
             if name == 'compare':   # "is X better than Y?", "... or not?": the finding, plus a follow-up on the question's own words, without its own Yes or No (review 26 M1, audit 31 M1)
                 fc = [f for f in fol if re.search(r'\b(than|higher|lower|better|worse|outperform\w*|beat)\b', f['a']) and rare & set(tokens(f['q']))]
                 fc = fc or [f for f in sorted(fol, key=lambda f: -len(qt & set(tokens(f['q'] + ' ' + f['a'])))) if len(qt & set(tokens(f['q'] + ' ' + f['a']))) >= 3 and rare & set(tokens(f['q']))][:1]
@@ -166,11 +168,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 fcg = [f for f in c.get('follow', []) if re.search(r'\bcontrol\b', f['q'], re.I)]
                 if fcg: return out(fcg[0]['a'] if re.search(r'\b(is|was|were) there\b|\bhave an? control\b|\bany control\b', ql) else strip_yn(fcg[0]['a']), c)
                 continue
-            if name == 'whatif':   # a follow-up that shares a distinctive word first, else the design, neutrally (audit 31, M3)
-                own = set(tokens(' '.join([c['answerTitle'], c['explain']])))
-                fw = [f for f in c.get('follow', []) if rare & set(tokens(f['q'])) and not re.match(r"(how (large|big|much|many|fast|long|often|high|low)|what (size|share|percent\w*|amount))\b", f['q'].lower())] or [f for f in c.get('follow', []) if (rare - own) & set(tokens(f['a']))]
-                if fw: return out(strip_yn(fw[0]['a']), c)
-                return out(f"The study's design: {st.get('design', 'see the paper')}. What it covers: {c['boundary']} The finding: {c['explain']}", c)
+            if name == 'whatif': return out(f"The study's design: {st.get('design', 'see the paper')}. What it covers: {c['boundary']} The finding: {c['explain']}", c)   # never borrow a follow-up on a shared word: two audits found non-sequiturs (audit 31b, M1)
             if name == 'foresight':
                 fp = [f for f in fol if re.search(r'\b(predict\w*|expect\w*|forecast\w*|experts?|anticipat\w*)', f['q'] + ' ' + f['a'], re.I)]
                 if fp: return out(fp[0]['a'], c)

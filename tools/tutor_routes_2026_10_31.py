@@ -14,7 +14,7 @@ bank['tutorRoutes'] = {
   ['ethics', r'\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|is it (ok|okay|right|wrong)|allowed|legal)'],
   ['models', r'\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\b'],
   ['compare', r'\b(better|worse|more accurate|less accurate|smarter|outperform\w*|beat|beats)\b.*\bthan\b|\bas (good|effective|accurate|well|useful|fast) as\b|\b(more|fewer|less) \w+ than\b|\boutperform\w*\b|\bor not\b'],   # review 26, M1: "is GPT-4 better than doctors?", "do people hate the other side or not?"
-  ['whatif', r'\bwhat if\b|\bwhat would (have )?happen\w*\b(?!\s+(in|for|at|to|with)\b)|\bwould (it|this|that|they|the \w+) (have )?(work\w*|happen\w*|change\w*|differ\w*|be different) if\b'],
+  ['whatif', r'\bwhat if\b|\bwhat would (have )?happen\w*\b(?!\s+(in|for|at)\b)|\bwould (it|this|that|they|the \w+) (have )?(work\w*|happen\w*|change\w*|differ\w*|be different) if\b'],
   ['control', r'\bcontrol (group|condition|arm|centers?|centres?|sites?|schools?|teams?|firms?|stores?|branches|participants)\b'],   # review 26, M1: "what happened in the control centres"
   ['detect', r'\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\b|\b(could|can|did|do|would) (they|people|participants|users|customers|readers|consumers|students|subjects|respondents|raters|workers) (know|reali[sz]e)\b.*\b(ai|gpt\S*|bot|chatbot|machine|model|algorithm|human|person)\b'],
   ['contest', r'\b(who is right|who.?s right|who is correct|which (one|side|study|paper) is right|who wins|(do|did) they (disagree|contradict))\b'],
