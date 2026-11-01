@@ -10,7 +10,7 @@ from collections import defaultdict
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from .classroom import BANK, CHALLENGES, ClassroomError, Forbidden, Conflict, NotFound, Store, public_challenge, ROOT
-from .tutor import PRESETS, Tutor
+from .tutor import PRESETS, Tutor, is_follow
 
 DATA = Path(os.environ.get('THV_DATA_DIR', str(ROOT / 'server' / 'data')))
 DATA.mkdir(parents=True, exist_ok=True)
@@ -187,7 +187,7 @@ class Handler(BaseHTTPRequestHandler):
                 who = self.client() or re.sub(r'[^A-Za-z0-9_-]', '', str(d.get('client', '')))[:40]   # header or body: one bucket per browser, not per network
                 if not LIMIT.allow(self.ip() + '|' + who, 'tutor'): return self.json(429, {'error': 'Ask again in a few seconds.'}, {'Retry-After': '3'})
                 q = str(d.get('question', ''))
-                cheap = not TUTOR.enabled or q.strip() in PRESETS.values()  # curated answers cost nothing upstream
+                cheap = not TUTOR.enabled or q.strip() in PRESETS.values() or is_follow(q, d.get('challenge'))  # curated answers cost nothing upstream
                 if not cheap and not LIMIT.allow(self.ip(), 'ip_tutor'): return self.json(429, {'error': 'The tutor is busy on this network. Ask again in a moment.'}, {'Retry-After': '5'})
                 cid = d.get('challenge')
                 if cid and blocked(cid): return self.json(200, {'answer': 'The tutor opens for this decision after your instructor reveals it.', 'citations': [], 'mode': 'locked'})

@@ -31,7 +31,15 @@ def tutor():
     return Tutor(str(d / 'tutor_cache.sqlite3'))
 
 STYLE = """<style>
-html, body, [class*="css"] { font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; }
+html, body, [class*="css"], .stMarkdown, .stButton button, input, textarea { font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; }
+.stApp { background: #eceff3; color: #14203a; }
+header[data-testid="stHeader"] { background: transparent; }
+h1 { font-weight: 800; letter-spacing: -0.035em; }
+.stMarkdown p { font-size: 17px; line-height: 1.5; }
+.stButton button, .stFormSubmitButton button, .stDownloadButton button { border-radius: 999px; border: 1.5px solid #14203a; background: #fff; color: #14203a; font-weight: 700; padding: .45rem 1.1rem; }
+.stButton button[kind="primary"], .stFormSubmitButton button[kind="primaryFormSubmit"] { background: #14203a; color: #fff; }
+.stButton button:hover { border-color: #2f54eb; color: #2f54eb; }
+[data-testid="stSidebar"] { background: #fff; border-right: 1px solid #cbd3dd; }
 .block-container { padding-top: 1.2rem; max-width: 1180px; }
 h1, h2, h3 { letter-spacing: -0.02em; }
 .thv-code { font-size: 64px; font-weight: 800; letter-spacing: .12em; color: #1f3cc2; line-height: 1; }

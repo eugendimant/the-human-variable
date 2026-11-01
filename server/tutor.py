@@ -106,6 +106,11 @@ def strip_yn(a: str) -> str:
     m = re.match(r'(Yes|No)[.,]\s*(.*)', a, re.S)
     return m.group(2) if m and (m.group(2)[:1].isupper() or m.group(2)[:1].isdigit()) else a
 
+def is_follow(question: str, challenge_id) -> bool:
+    """True when the question is one of the decision's own follow-up questions (as offered by the suggestion buttons)."""
+    c = CHALLENGES.get(challenge_id or '')
+    return bool(c) and any(_norm(f['q']) == _norm(question) for f in c.get('follow', []))
+
 def _norm(s: str) -> str: return ' '.join(re.findall(r'[a-z0-9]+', s.lower()))
 _FILL = r"((so|and|okay|ok|but|also|hmm|well|quick question:?)[,\s]+)*"
 def is_open(ql: str) -> bool:
@@ -234,12 +239,12 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         fq = [f for f in fol if rare & set(tokens(f['q'])) and not (whyq and re.match(QTY, f['q'].lower()))]   # no route; a why question never gets a quantity follow-up that shares one word (review 26, M1)
         core = rare - set(tokens(' '.join(R['filler'])))
         shared = lambda f: {w for w in core if w in set(tokens(f['q'])) or any(x in set(tokens(f['q'])) for x in SYN.get(w, ()))}   # a synonym counts ("itself" meets "alone")
-        strong = [] if defq else [f for f in fol if not (whyq and re.match(QTY, f['q'].lower())) and len(shared(f)) >= 2 or (shared(f) and 3 * len(shared(f)) >= 2 * len(core))]   # two shared distinctive words, or two thirds of the question's own   # a follow-up is borrowed only when its own question shares two distinctive words
+        strong = [] if defq else [f for f in fol if not (whyq and re.match(QTY, f['q'].lower())) and (len(shared(f)) >= 2 or (shared(f) and 3 * len(shared(f)) >= 2 * len(core)))]   # brackets: the why rule binds both branches (audit 33, M2)   # two shared distinctive words, or two thirds of the question's own   # a follow-up is borrowed only when its own question shares two distinctive words
         if strong: return out(yn(max(strong, key=lambda f: (len(rare & set(tokens(f['q']))), len(qt & set(tokens(f['q'])))))), c)
         if whyq: return out(f"{c['explain']} What a manager does with it: {c['implication']}", c)   # no route: a distinctive word the question shares with one follow-up question picks it
         if rare:   # a weak match is not an answer: give the finding and offer the summary's own questions (review 27; replaces one-word and answer-text borrowing)
             r = out(f"I could not match that question to this study’s summary. Here is what the study found: {c['answerTitle']}. {c['explain']} Its summary answers the questions below.", c)
-            r['suggest'] = [f['q'] for f in c.get('follow', [])][:3]; return r
+            r['suggest'] = [f['q'] for f in sorted(c.get('follow', []), key=lambda f: -len(qt & set(tokens(f['q'] + ' ' + f['a']))))][:3]; return r   # closest first (audit 33)
         return out(f"{c['answerTitle']}. {c['explain']} What a manager does with it: {c['implication']}", c)
     if not topic: return {'answer': 'Open a decision and ask about it, or name the study or topic you mean.', 'citations': [], 'mode': 'curated'}
     for d in retrieve(question, None, 4, exclude):
@@ -350,7 +355,7 @@ class Tutor:
         if len(question) < 4: return {'answer': 'Type a question of at least four characters.', 'citations': [], 'mode': 'error'}
         if challenge_id and challenge_id not in CHALLENGES: challenge_id = None
         client = re.sub(r'[^A-Za-z0-9_-]', '', str(client or 'anon'))[:40] or 'anon'
-        if question in PRESETS.values() or not self.enabled:
+        if question in PRESETS.values() or not self.enabled or is_follow(question, challenge_id):   # a decision's own stored question gets its checked answer, never a model call (audit 33, M1)
             self.calls['curated'] += 1; return curated(question, challenge_id, exclude)
         k = f"{challenge_id}|{self.norm(question)}"
         hit = None if exclude else self._cache_get(k)   # cached answers may predate a class lock

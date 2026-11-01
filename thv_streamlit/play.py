@@ -8,9 +8,10 @@ def page_html() -> str:
 def run():
     # Let the embedded game fill the window instead of a fixed-height box.
     st.markdown("""<style>
-      .block-container{padding:3.4rem 0 0 0 !important;max-width:100% !important}
-      header[data-testid="stHeader"]{background:#eceff3;border-bottom:1px solid #cbd3dd}
-      iframe{width:100% !important;height:calc(100vh - 3.5rem) !important;border:0}
+      .block-container{padding:2.6rem 0 0 0 !important;max-width:100% !important}
+      header[data-testid="stHeader"]{background:#eceff3;height:2.6rem;min-height:2.6rem;box-shadow:none}   /* a slim strip in the game's own colour that keeps only the page menu (review 27, o2) */
+      [data-testid="stDecoration"]{display:none}
+      iframe{width:100% !important;height:calc(100vh - 2.6rem) !important;border:0}
       footer{display:none}
     </style>""", unsafe_allow_html=True)
     # The embedded game is the self-study file, which carries its answers. A deployment set up for classes

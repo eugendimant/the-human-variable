@@ -4,10 +4,17 @@ primaryColor = "#2f54eb"
 backgroundColor = "#eceff3"
 secondaryBackgroundColor = "#ffffff"
 textColor = "#14203a"
-font = "sans serif"
+font = "Schibsted Grotesk, sans-serif"
+headingFont = "Schibsted Grotesk, sans-serif"
+
+[[theme.fontFaces]]
+family = "Schibsted Grotesk"
+url = "app/static/schibsted-grotesk-latin-wght-normal.woff2"
+weight = "300 800"
 
 [server]
 headless = true
+enableStaticServing = true   # the game's typeface for the class pages (review 27, o2)
 
 [browser]
 gatherUsageStats = false

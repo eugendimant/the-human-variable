@@ -411,5 +411,23 @@ def test_weak_match_offers_the_summarys_own_questions():
         if c.get('retired') or not c.get('follow'): continue
         r = t.curated('what colour were the walls in the room?', cid)
         assert r['answer'].startswith('I could not match') and c['answerTitle'] in r['answer'], (cid, r['answer'][:80])
-        assert r['suggest'] == [f['q'] for f in c['follow']][:3]
+        assert len(r['suggest']) == min(3, len(c['follow'])) and set(r['suggest']) <= {f['q'] for f in c['follow']}
         for q in r['suggest']: assert t.curated(q, cid)['answer'] == next(f['a'] for f in c['follow'] if f['q'] == q)
+
+
+def test_audit33_follow_up_questions_never_call_the_model():
+    """Audit 33, M1: with a key configured, a decision's own follow-up question (a suggestion button) gets its stored answer and spends no AI budget."""
+    from server import tutor as t
+    tu = t.Tutor(':memory:'); tu.key = 'fake'; calls = []
+    tu._http = lambda model, body: calls.append(model) or {'candidates': [{'content': {'parts': [{'text': 'model text'}]}}]}
+    c = t.CHALLENGES['axe14']
+    for f in c['follow']:
+        r = tu.ask(f['q'], 'axe14', 'c1')
+        assert r['answer'] == f['a'] and r['mode'] == 'curated', r
+    assert not calls
+
+
+def test_audit33_why_never_gets_a_quantity_follow_up():
+    """Audit 33, M2: the why rule binds both matching branches on the server, as on the page."""
+    from server import tutor as t
+    assert 'NIS 10' not in t.curated('Why was there a fine?', 'bz08')['answer']

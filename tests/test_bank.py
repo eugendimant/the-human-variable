@@ -522,3 +522,10 @@ def test_no_middle_dot_strings_in_shipped_text():
     files = list((ROOT / 'src').glob('*.js')) + list((ROOT / 'src').glob('*.html')) + list((ROOT / 'thv_streamlit').glob('*.py')) + list((ROOT / 'server').glob('*.py'))
     bad = [f.name for f in files if '·' in f.read_text()]
     assert not bad, bad
+
+
+def test_streamlit_font_matches_the_game():
+    """Review 27, o2: the class pages use the game's own typeface, served from static/; the copy must not drift."""
+    assert (ROOT / 'static/schibsted-grotesk-latin-wght-normal.woff2').read_bytes() == (ROOT / 'src/fonts/schibsted-grotesk-latin-wght-normal.woff2').read_bytes()
+    cfg = (ROOT / '.streamlit/config.toml').read_text()
+    assert 'enableStaticServing = true' in cfg and 'app/static/schibsted-grotesk-latin-wght-normal.woff2' in cfg

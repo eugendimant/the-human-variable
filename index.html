@@ -713,6 +713,8 @@ p,li,dd{text-wrap:pretty}
 .plate .rc-dot::before{background:rgba(255,255,255,.3)}.plate .rc-dot::after{border-color:rgba(255,255,255,.3)}.plate .rc-dot i{background:#f0b43c}.plate .rc-dot b{color:#f0b43c}
 .hb-track i.room{background:#5b6b86}   /* the room in slate; blue is the player's own call (review 27, rule 18) */
 .tutor-suggest{margin-top:12px}
+.theme-strip{display:none;padding:14px 22px 18px;border-top:1px solid var(--rule)}.theme-strip svg{width:100%;height:auto;display:block;font-family:"Schibsted Grotesk",system-ui}.theme-strip .ts-ax{stroke:var(--rule);stroke-width:2}.theme-strip .ts-zero{stroke:#8a96a8;stroke-dasharray:3 3}.theme-strip .ts-o{fill:#9aa6b8}.theme-strip .ts-me{fill:var(--you);stroke:#fff;stroke-width:2}.theme-strip .ts-lab{fill:var(--you-ink);font-size:15px;font-weight:700}.theme-strip .ts-tick{fill:var(--muted);font-size:13px}.theme-strip .plate-h{color:var(--ink-2)}
+@media (min-width:1200px){.theme-strip{display:block}}   /* the wide reveal's second column: this call against your other calls on the principle (review 27, o3) */
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="#" data-home="1" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -1136,7 +1138,7 @@ function dag(d, rev) {
     // Before the reveal the diagram shows only the factors in play; links would narrow the options. The reveal draws them one by one.
     if (!rev) return '';
     return `<line ${fresh ? `class="ed" style="animation-delay:${0.25 + i * 0.35}s"` : ''} x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${style === 'q' ? '#e0a01c' : '#14203a'}" stroke-width="${style === 'q' ? 4 : 2}" ${style === 'q' ? 'stroke-dasharray="7 5"' : ''} marker-end="url(#${style === 'q' ? 'ahq' : 'ah'})"/>` };
-  return `<svg class="dag" viewBox="-10 0 ${W + 20} ${H}" role="img" aria-label="${esc(rev ? d.alt : dagAlt(d))}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker><marker id="ahq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0a01c"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n0 => { const n = !rev && n0.mask ? { ...n0, label: '?', hidden: true } : n0; return `<g><rect x="${n.x - 70}" y="${n.y - 24}" width="140" height="48" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/>${dagLabel(n, innerWidth < 640 ? 21 : 17)}</g>` }).join('')}</svg>`;
+  return `<svg class="dag" viewBox="-10 0 ${W + 20} ${H}" role="img" aria-label="${esc(rev ? d.alt : dagAlt(d))}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14203a"/></marker><marker id="ahq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0a01c"/></marker></defs>${d.edges.map(edge).join('')}${d.nodes.map(n0 => { const n = !rev && n0.mask ? { ...n0, label: '?', hidden: true } : n0; return `<g>${(() => { const lab = dagLabel(n, innerWidth < 640 ? 21 : 17), hh = lab.includes('data-two') ? 30 : 24; return `<rect x="${n.x - 70}" y="${n.y - hh}" width="140" height="${2 * hh}" rx="24" fill="${n.hidden ? '#fff' : '#14203a'}" stroke="#14203a" stroke-width="1.5" ${n.hidden ? 'stroke-dasharray="4 4"' : ''}/>${lab}` })()}</g>` }).join('')}</svg>`;
 }
 
 // A node label fits its 140-wide pill: one line if it fits, else two balanced lines, shrunk only as far as needed (review 27: bz12 at 390 px)
@@ -1148,8 +1150,8 @@ function dagLabel(n, base) {
   const attrs = f => `text-anchor="middle" font-size="${f}" font-weight="650" font-family="Schibsted Grotesk,system-ui" fill="${fill}"`;
   if (wid(n.label, base) <= 128 || words.length < 2) { const f = Math.min(base, Math.floor(base * 128 / wid(n.label, base))); return `<text x="${n.x}" y="${n.y + f * .3}" ${attrs(f)}>${esc(n.label)}</text>` }
   let best = null; for (let k = 1; k < words.length; k++) { const a = words.slice(0, k).join(' '), b = words.slice(k).join(' '), m = Math.max(wid(a, base), wid(b, base)); if (!best || m < best.m) best = { a, b, m } }
-  const f = Math.min(base, Math.floor(base * 128 / best.m));
-  return `<text x="${n.x}" y="${n.y - f * .2}" ${attrs(f)}>${esc(best.a)}</text><text x="${n.x}" y="${n.y + f * 1.0}" ${attrs(f)}>${esc(best.b)}</text>`;
+  const f = Math.min(base, Math.floor(base * 128 / best.m));   // a two-line label gets a taller pill (60 high) rather than smaller type
+  return `<text data-two="1" x="${n.x}" y="${n.y - f * .42}" ${attrs(f)}>${esc(best.a)}</text><text x="${n.x}" y="${n.y + f * .8}" ${attrs(f)}>${esc(best.b)}</text>`;
 }
 
 // The gap: player's call (blue) and the evidence (amber) on one axis.
@@ -1195,13 +1197,23 @@ function gapFigure(c, rec) {
   const opt = ['choice', 'causal', 'multi'].includes(c.format), plate = !(opt && !c.chart);   // the evidence sits on a dark plate; a plain option list stays light
   const legend = opt && c.chart ? `<p class="plate-h">${esc((c.chart.note || '').replace(/\.$/, ''))}</p>` : '';   // no colour keys: every mark is labelled where it sits
   const main = opt && !c.chart ? instrument(c) : body, caption = opt && !c.chart || !cap ? '' : `<p class="gap-caption">${esc(cap)}</p>`;
-  return `<figure class="gap${plate ? ' has-plate' : ''}" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${plate ? `<div class="plate">${legend}${main}${caption}</div>` : `${legend}${main}${caption}`}${opt && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}${studyCard(c)}</figure>`;
+  return `<figure class="gap${plate ? ' has-plate' : ''}" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${plate ? `<div class="plate">${legend}${main}${caption}</div>` : `${legend}${main}${caption}`}${opt && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}${studyCard(c)}${themeStrip(c, rec)}</figure>`;
 }
 // The signature moment of a numeric reveal: your number against the study's, large, with the gap between them.
 function gapHead(you, ev, gap, youLab = 'Your call', evLab = 'The study') {
   return `<div class="gap-head"><div class="gh-cell"><span>${esc(youLab)}</span><b class="num gh-you">${esc(you)}</b></div><div class="gh-cell"><span>${esc(evLab)}</span><b class="num gh-ev">${esc(ev)}</b></div><p class="gh-gap">${esc(gap)}</p></div>`;
 }
 // The study at a glance, under the evidence: who, how, where it was published and how it was checked.
+// Wide reveals: this call beside your other calls on the same principle, on one skill scale (review 25 to 27: the empty right column; Tufte: a second comparison at the same scale)
+function themeStrip(c, rec) {
+  const th = (BANK.themes || []).find(t => t.id === c.theme); if (!th) return '';
+  const sk = r => { const b = typeof r.base === 'number' ? r.base : S.baseline(BY_ID[r.id]); return Math.max(-1, Math.min(1, b >= 1 ? 0 : (r.score - b) / (1 - b))) };
+  const others = firstTries().filter(r => r.id !== c.id && BY_ID[r.id] && BY_ID[r.id].theme === c.theme);
+  if (others.length < 2) return '';
+  const W = 520, L = 16, R = W - 16, y = 40, sx = v => L + (v + 1) / 2 * (R - L), me = sx(sk(rec));
+  const seen = {}, dots = others.map(r => { const x = sx(sk(r)), k = Math.round(x / 10), n = seen[k] = (seen[k] || 0) + 1; return `<circle cx="${x}" cy="${y + Math.min(n - 1, 2) * 12}" r="6" class="ts-o"/>` }).join('');   // calls with the same skill stack instead of hiding each other
+  return `<div class="theme-strip"><p class="plate-h">Your calls on the principle “${esc(th.title)}”, as skill points versus guessing</p><svg viewBox="0 0 ${W} 96" role="img" aria-label="${esc(`This call ${mn(Math.round(sk(rec) * 100))}; your ${others.length} other calls on this principle: ${others.map(r => mn(Math.round(sk(r) * 100))).join(', ')}`)}"><line x1="${L}" y1="${y}" x2="${R}" y2="${y}" class="ts-ax"/><line x1="${sx(0)}" y1="${y - 14}" x2="${sx(0)}" y2="${y + 14}" class="ts-zero"/>${dots}<circle cx="${me}" cy="${y}" r="8" class="ts-me"/><text x="${Math.min(R - 40, Math.max(L + 40, me))}" y="${y - 16}" text-anchor="middle" class="ts-lab">this call</text><text x="${L}" y="${y + 48}" class="ts-tick">\u2212100</text><text x="${sx(0)}" y="${y + 48}" text-anchor="middle" class="ts-tick">0, guessing</text><text x="${R}" y="${y + 48}" text-anchor="end" class="ts-tick">100</text></svg></div>`;
+}
 function studyCard(c) {
   const d = c.study || {}, s = SOURCE[c.sources[0]] || {}, rows = [['Design', d.design], ['Sample', d.n], ['Published', s.venue ? `${s.venue}, ${s.year}` : ''], ['Checked', srcStatus(s)[0]]].filter(r => r[1]);
   return `<dl class="study-card">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
@@ -1343,7 +1355,7 @@ function curated(q, c) {
   const QTY = /^(how (large|big|much|many|fast|long|often|high|low)|what (size|share|percent\w*|amount))\b/;
   const fillT = new Set(trTokens(TR.filler.join(' '))), core = rare.filter(w => !fillT.has(w)), shared = f => { const ft = trTokens(f.q); return core.filter(w => ft.includes(w) || (TR_SYN[w] || []).some(x => ft.includes(x))).length }; const fq = defq ? null : fol.filter(f => (shared(f) >= 2 || (shared(f) > 0 && 3 * shared(f) >= 2 * core.length)) && !(whyq && QTY.test(f.q.toLowerCase()))).sort((a, b) => (hits(b.q, rare) - hits(a.q, rare)) || (hits(b.q, [...qt]) - hits(a.q, [...qt])))[0]; if (fq) return { text: yn(fq), cites: cs(c) };   // a follow-up is borrowed only when its own question shares two distinctive words
   if (whyq) return { text: `${c.explain} What a manager does with it: ${c.implication}`, cites: cs(c) };
-  if (rare.length) return { text: `I could not match that question to this study’s summary. Here is what the study found: ${c.answerTitle}. ${c.explain} Its summary answers the questions below.`, cites: cs(c), suggest: (c.follow || []).map(f => f.q).slice(0, 3) };   // a weak match is not an answer (review 27)
+  if (rare.length) return { text: `I could not match that question to this study’s summary. Here is what the study found: ${c.answerTitle}. ${c.explain} Its summary answers the questions below.`, cites: cs(c), suggest: (c.follow || []).map((f, i) => ({ f, i, o: trTokens(f.q + ' ' + f.a).filter((w, j, arr) => qt.has(w) && arr.indexOf(w) === j).length })).sort((a, b) => b.o - a.o || a.i - b.i).map(x => x.f.q).slice(0, 3) };   // closest first (audit 33)   // a weak match is not an answer (review 27)
   return { text: `${c.answerTitle}. ${c.explain}\n\nWhat a manager does with it: ${c.implication}`, cites: cs(c) };
 }
 async function ask(q) {
@@ -1388,7 +1400,7 @@ function almanac() {
       const opened = rows.filter(x => x.seen), closed = rows.filter(x => !x.seen);
       // an opened principle leads with the player's own result on it (review 26: no block repeated ten times)
       const full = ({ t, cs, seen }) => { const sk = pooledSkill(first.filter(r => cs.some(c => c.id === r.id))), line = !t.principle ? (libraryLoaded ? 'Held back while a live class is running on this server.' : 'Loading…') : esc(t.principle);
-        return `<article class="theme" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p class="theme-you">You: <b class="num">${sk === null ? '–' : mn(sk)}</b> skill points versus guessing on ${seen} of ${cs.length}${seen < 3 ? ' (a few calls swing it widely)' : ''}</p><p>${line}<small class="theme-count">${pathStrip({ items: cs.map(c => c.id) }, played)}</small></p></div>
+        return `<article class="theme" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p class="theme-you">${seen >= 3 ? `You: <b class="num">${sk === null ? '–' : mn(sk)}</b> skill points versus guessing on ${seen} of ${cs.length}` : `${seen} of ${cs.length} played; your score here shows after 3 calls, as in your record by area`}</p><p>${line}<small class="theme-count">${pathStrip({ items: cs.map(c => c.id) }, played)}</small></p></div>
       <details class="theme-more"><summary>The ${cs.length} findings behind it${seen < cs.length ? `, ${seen} opened` : ''}</summary><ul class="findings">${cs.map(c => `<li><div>${played.has(c.id) && c.explain ? `<strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small>` : `<strong>${esc(c.title)}</strong><br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. The finding opens after your call.</small>`}</div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
       ${seen < cs.length ? `<button class="btn btn-line" data-theme-round="${esc(t.id)}">Play the other ${cs.length - seen}</button>` : ''}</article>` };
       // an unopened principle is one line: its name, its size, and the way in
@@ -1560,7 +1572,7 @@ function roomWait() {
 function roomLocked(c) {
   const R = st.room;
   return `<section class="play wrap"><div class="panel card room-wait" aria-live="polite">
-    <h1 class="q" tabindex="-1">${R.sent ? esc(R.sentMsg || 'Your answer is in.') : 'Sending your answer…'}</h1><p class="room-id">Live class ${esc(R.code)}, decision: ${esc(c.title.replace(/[?!.]$/, ''))}.</p>
+    <h1 class="q" tabindex="-1">${R.sent ? esc(R.sentMsg || 'Your answer is in.') : 'Sending your answer…'}</h1><p class="room-id">Live class ${esc(R.code)}, decision: ${esc(c.title)}${/[?!.]$/.test(c.title) ? '' : /^(do|does|did|is|are|was|were|can|could|will|would|should|what|which|who|how|why|when|where)\b/i.test(c.title) ? '?' : '.'}</p>
     <p class="scene">The evidence appears for everyone when your instructor reveals it.</p><p class="kicker" id="room-live">${roomLine()}</p><button class="btn btn-quiet" data-act="leave-room">Leave the live class</button></div></section>`;   // no badge above the headline (review 27, rule 2)
 }
 function classPanel(c, a) {
@@ -1721,7 +1733,7 @@ if (PUBLIC) { TUTOR_REMOTE = '/api/tutor'; refreshLock() }
 if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; TUTOR_AI = true; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }
-try { document.fonts && document.fonts.ready.then(() => { for (const k in TW) delete TW[k]; if (Object.keys(TW).length === 0 && document.querySelector('svg.dag')) render() }) } catch { }   // labels measured in the real font once it has loaded
+try { document.fonts && document.fonts.ready.then(() => { const old = { ...TW }; for (const k in TW) delete TW[k]; const moved = Object.keys(old).some(k => { const i = k.indexOf('|'); return Math.abs(textWidth(k.slice(i + 1), +k.slice(0, i)) - old[k]) > .5 }); if (moved && document.querySelector('svg.dag')) { const f = document.activeElement && document.activeElement.matches('h1, h2') ? document.activeElement.id || document.activeElement.className : null; render(); if (f) { const e = document.getElementById(f) || document.querySelector('.' + String(f).split(' ')[0]); e && e.focus() } } }) } catch { }   // redraw only if the real font measures differently, and keep focus (audit 33)
 if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else { const v = fromHash(location.hash); if (v !== 'play') st.view = v; render(); if (PARAM.get('play')) notice('That decision link is out of date. Pick a decision from the list.') }
 if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records, curated }; // test hook (offline file only)
 })();
