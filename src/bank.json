@@ -9204,10 +9204,6 @@
     "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students)|sample size|who took part|population)\\b"
    ],
    [
-    "numbers",
-    "\\b(how many|what share|what percent\\w*|what proportion|what fraction|how much (more|less|higher|lower))\\b"
-   ],
-   [
     "catch",
     "\\b(catch|backfire|downside|drawback|limit\\w*|risk|caveat|fail\\w*|weakness|criticis\\w*|question(ed)? this|later work)\\b"
    ],
@@ -9222,6 +9218,10 @@
    [
     "subgroup",
     "\\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\\w*|good writers|junior|senior|novices?|newcomers?|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b"
+   ],
+   [
+    "numbers",
+    "\\b(how many|what share|what percent\\w*|what proportion|what fraction|how much (more|less|higher|lower))\\b"
    ],
    [
     "signif",
@@ -9342,6 +9342,7 @@
    "help",
    "here",
    "human",
+   "identity",
    "kind",
    "larg",
    "learn",

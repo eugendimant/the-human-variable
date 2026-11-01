@@ -455,7 +455,7 @@ function curated(q, c) {
     if (name === 'summary') return { text: `${c.answerTitle}. ${c.explain}\n\nWhat a manager does with it: ${c.implication}`, cites: cs(c) };
     if (name === 'duration') { const fl = fol.find(f => /\b(long|last|later|weeks?|months?|years?|fade|persist|after)\b/i.test(f.q + ' ' + f.a)); return { text: fl ? fl.a : `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) } }
     if (name === 'ethics') return { text: `The study measures what happened, not what is right; that call is yours. What it covers: ${c.boundary}\n\nWhat a manager can do with it: ${c.implication}`, cites: cs(c) };
-    if (name === 'subgroup') { const fh = fol.find(f => new RegExp(TR.subgroupFollow, 'i').test(f.q)); if (fh) return { text: fh.a, cites: cs(c) }; return { text: `The lab's summary of this study does not break results down that way. What it covers: ${c.boundary}`, cites: cs(c) } }
+    if (name === 'subgroup') { const fh = fol.find(f => new RegExp(TR.subgroupFollow, 'i').test(f.q)); if (fh) return { text: fh.a, cites: cs(c) }; if (new RegExp(TR.routes.find(r => r[0] === 'numbers')[1], 'i').test(ql) && /\d/.test(c.explain)) return { text: c.explain, cites: cs(c) }; return { text: `The lab's summary of this study does not break results down that way. What it covers: ${c.boundary}`, cites: cs(c) } }
     if (name === 'design' && !/\b(my|our)\b/.test(ql)) return { text: `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\n${c.explain}`, cites: cs(c) };
     if (name === 'pilot') return { text: `Run a small randomized pilot: give the change to some teams or customers and not to others, fix one outcome metric in advance, and compare after a set period. For this finding: ${c.implication}\n\nWhat the study measured: ${c.explain}`, cites: cs(c) };
     if (name === 'size') return { text: `${c.explain}\n\nIn practice: ${c.implication}`, cites: cs(c) };
@@ -486,7 +486,7 @@ function clientId() { let id = store.get('thv:client', null); if (!id) { id = Ma
 // ----- atlas -----
 function atlas() {
   const q = st.atlasQuery.trim().toLowerCase();
-  const m = ALL.filter(c => (st.atlasTrack === 'All' || c.track === st.atlasTrack) && (st.atlasFormat === 'All' || FORMAT_NAME[c.format] === st.atlasFormat) && (!q || [c.title, c.scene, c.question, c.concept, c.explain, cite(c.sources[0])].join(' ').toLowerCase().includes(q)));
+  const m = ALL.filter(c => (st.atlasTrack === 'All' || c.track === st.atlasTrack) && (st.atlasFormat === 'All' || FORMAT_NAME[c.format] === st.atlasFormat) && (!q || [c.title, c.scene, c.question, c.concept, c.explain, cite(c.sources[0])].join(' ').toLowerCase().replace(/[\u2018\u2019]/g, "'").includes(q.replace(/[\u2018\u2019]/g, "'"))));
   return `<section class="atlas-head wrap">${libHead()}
     <div class="atlas-tools"><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Search</span><input id="atlas-q" type="search" value="${esc(st.atlasQuery)}" placeholder="Try defaults, Dimant, algorithm, norms" autocomplete="off"></label>
     <label class="sr-only" for="atlas-track">Area</label><select id="atlas-track" class="seg">${['All', ...TRACKS].map(t => `<option value="${esc(t)}" ${st.atlasTrack === t ? 'selected' : ''}>${t === 'All' ? 'All areas' : esc(t)}</option>`).join('')}</select>
@@ -548,7 +548,7 @@ function record() {
   if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record.</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
     <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? mn(sess ?? meanScore) : '–'}</b><span class="score-unit">skill points<br>versus guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing (the dashed line in the trend), 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
-      ${gapLine ? `<p class="cal-sum">Calibration: ${gapLine}.</p>` : ''}<dl class="score-meta">${sess !== null ? `<div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div>` : ''}</dl></div>
+      ${gapLine ? `<p class="cal-sum">Calibration: ${gapLine.charAt(0).toLowerCase() + gapLine.slice(1)}.</p>` : ''}${sess !== null ? `<dl class="score-meta"><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl>` : ''}</div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">
       <div class="rec-col"><div class="panel rec-panel"><h2>Calibration</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${n < 3 ? '<small>Score shows after 3 calls</small>' : mn(sc)}<span class="bar-score"><b class="zero"></b><i style="${n < 3 ? "width:0" : sbar(sc)}"></i></span></span></li>`).join('')}</ul></div>` : ''}</div>
@@ -660,18 +660,18 @@ async function roomPoll() {
 function roomLine() { const R = st.room; return `${R.participants ?? '–'} joined. ${R.phase === 'open' ? (R.responses ?? 0) + ' answered so far.' : ''}` }
 async function roomSubmit(c, rec) {
   const R = st.room; R.sent = false; render();
-  let wait = 800;
+  let wait = 800, busy = false;
   for (let k = 0; k < 6; k++) {   // about 20 s in all, honouring Retry-After (review 28)
     try {
       const r = await fetch(`/api/rooms/${R.code}/responses`, { method: 'POST', headers: roomHeaders(true), body: JSON.stringify({ token: R.token, answer: rec.response, confidence: rec.confidence }) });
-      const d = await r.json();
+      const ra = +r.headers.get('Retry-After') || 2, st0 = r.status; let d = {}; try { d = await r.json() } catch { }
       if (r.ok) { R.sent = true; R.sentMsg = d.accepted ? 'Your answer is in.' : d.message; render(); clearTimeout(R.timer); roomPoll(); return }   // refresh the room count now, not at the next poll
       if (r.status === 409 || r.status === 400 || r.status === 403) { R.sent = true; R.sentMsg = d.error; render(); return }
-      wait = r.status === 429 ? Math.max(800, 1000 * (+r.headers.get('Retry-After') || 2)) : 800 * (k + 1);
-    } catch { wait = 800 * (k + 1) }
-    await new Promise(z => setTimeout(z, wait + Math.random() * 400));
+      wait = st0 === 429 ? Math.max(800, 1000 * ra) : 800 * (k + 1); busy = st0 === 429;
+    } catch { wait = 800 * (k + 1); busy = false }
+    if (k < 5) await new Promise(z => setTimeout(z, wait + Math.random() * 400));
   }
-  R.sentMsg = 'Could not reach the class server. Check your connection; your answer is saved on this device.'; R.sent = true; render();
+  R.sentMsg = busy ? 'The class server is busy. Your answer is saved on this device; lock it again in a moment.' : 'Could not reach the class server. Check your connection; your answer is saved on this device.'; R.sent = true; render();
 }
 function roomWait() {
   const R = st.room;

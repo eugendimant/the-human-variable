@@ -233,6 +233,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'subgroup':
                 fh = [f for f in fol if re.search(R['subgroupFollow'], f['q'], re.I)]
                 if fh: return out(fh[0]['a'], c)
+                if re.search(R['routes'][[n for n, _ in R['routes']].index('numbers')][1], ql) and re.search(r'\d', c['explain']): return out(c['explain'], c)   # a share or count the explanation states (review 28)
                 return out(f"The lab's summary of this study does not break results down that way. What it covers: {c['boundary']}", c)
             if name == 'design' and not re.search(r'\b(my|our)\b', ql): return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" {c['explain']}", c)
             if name == 'pilot': return out(f"Run a small randomized pilot: give the change to some teams or customers and not to others, fix one outcome metric in advance, and compare after a set period. For this finding: {c['implication']} What the study measured: {c['explain']}", c)

@@ -235,3 +235,23 @@ def test_instructor_controls_survive_a_student_flood(base, monkeypatch):
     statuses = [req(base, f'/api/rooms/{code}/responses', {'token': 'x', 'answer': 0}, client=f's{i}')[0] for i in range(400)]
     assert 429 in statuses                       # the network's student bucket is spent
     assert req(base, f'/api/rooms/{code}/control', {'action': 'end'}, key=key, client='instN')[0] == 200
+
+
+def test_random_code_joins_are_capped_per_address(base, monkeypatch):
+    """Audit 35, m1: joins have their own bucket, but an address trying random codes is still capped."""
+    import random, string
+    monkeypatch.setattr(app, 'LIMIT', app.Limiter())
+    codes = [req(base, f"/api/rooms/{''.join(random.choices(string.ascii_uppercase, k=5))}/join", {}, client=f'r{i}')[0] for i in range(400)]
+    assert 429 in codes, codes[-5:]
+
+
+def test_a_full_class_joins_then_answers_behind_one_address(base, tmp_path, monkeypatch):
+    """Review 28, m12: 120 joins from one network do not use up the answer budget."""
+    monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 'full.sqlite3')); monkeypatch.setattr(app, 'LIMIT', app.Limiter())
+    _, room, _ = req(base, '/api/rooms', {'title': 'full'}, client='inst9'); code, key = room['code'], room['secret']
+    c = next(x for x in cl.CHALLENGES.values() if x['format'] == 'choice')
+    assert req(base, f'/api/rooms/{code}/control', {'action': 'open', 'challenge': c['id']}, key=key, client='inst9')[0] == 200
+    joins = [req(base, f'/api/rooms/{code}/join', {}, client=f'j{i}') for i in range(120)]
+    assert [s for s, _, _ in joins].count(200) == 120
+    sub = [req(base, f'/api/rooms/{code}/responses', {'token': b['token'], 'answer': 0, 'confidence': 60}, client=f'j{i}')[0] for i, (_, b, _) in enumerate(joins)]
+    assert sub.count(200) == 120, sub.count(429)

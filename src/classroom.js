@@ -41,8 +41,8 @@ function setup() {
 }
 
 function picker() {
-  const q = filter.q.toLowerCase();
-  const list = LIVE.filter(c => (filter.track === 'All' || c.track === filter.track) && (filter.format === 'All' || FORMAT_NAME[c.format] === filter.format) && (!q || (c.title + ' ' + c.question + ' ' + c.concept + ' ' + BANK.sources[c.sources[0]].authors).toLowerCase().includes(q)));
+  const q = filter.q.toLowerCase().replace(/[\u2018\u2019]/g, "'");   // curly and straight apostrophes match (audit 35)
+  const list = LIVE.filter(c => (filter.track === 'All' || c.track === filter.track) && (filter.format === 'All' || FORMAT_NAME[c.format] === filter.format) && (!q || (c.title + ' ' + c.question + ' ' + c.concept + ' ' + BANK.sources[c.sources[0]].authors).toLowerCase().replace(/[\u2018\u2019]/g, "'").includes(q)));
   const played = new Set(state?.played || []);
   return `<div class="panel" style="padding:18px"><h2 style="font-size:18px;margin:0 0 10px">Choose a decision</h2>
     <div class="atlas-tools" style="margin:0 0 12px"><label class="search"><span class="sr-only">Search decisions</span><input id="f-q" type="search" value="${esc(filter.q)}" placeholder="Search title, idea or author"></label>

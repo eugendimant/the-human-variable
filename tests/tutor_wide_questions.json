@@ -1325,6 +1325,26 @@
   [
    "Why a tournament?",
    "forecast-teams-rank"
+  ],
+  [
+   "How much more did the weaker writers gain?",
+   "ai01"
+  ],
+  [
+   "How many weeks did the boomerang last?",
+   "biz05"
+  ],
+  [
+   "what share of new hires were women?",
+   "social13"
+  ],
+  [
+   "how many parents were late before the fine?",
+   "bz08"
+  ],
+  [
+   "can I trust heatmap explanations from our vendor?",
+   "axf05"
   ]
  ],
  "every_decision": [
@@ -1364,7 +1384,10 @@
   "what does this mean for my team?",
   "what can I learn for my comms team?",
   "were these students?",
-  "what did the meta-analysis find?"
+  "what did the meta-analysis find?",
+  "How many weeks did it last?",
+  "What share of people chose it?",
+  "How much more did the weaker workers gain?"
  ],
  "lead_ins": {
   "prefixes": [

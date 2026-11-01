@@ -70,7 +70,7 @@ class Limiter:
     # Per-client buckets (X-Client-Id, a random id each browser keeps) plus a generous per-IP ceiling,
     # because a whole class often shares one campus NAT address.
     RULES = {'read': (4.0, 20), 'write': (2.0, 12), 'create': (10 / 3600, 10), 'tutor': (0.5, 6),
-             'ip_read': (150.0, 400), 'ip_write': (60.0, 200), 'join': (1.0, 130), 'ip_tutor': (2.0, 30)}  # join burst covers a full class (120) behind one NAT
+             'ip_read': (150.0, 400), 'ip_write': (60.0, 200), 'join': (1.0, 130), 'ip_join': (5.0, 300), 'ip_tutor': (2.0, 30)}  # join burst covers a full class (120) behind one NAT
     def __init__(self): self.b = defaultdict(lambda: [0.0, 0.0]); self.lock = threading.Lock()
     def allow(self, ip: str, name: str) -> bool:
         rate, burst = self.RULES[name]; now = time.time()
@@ -200,7 +200,7 @@ class Handler(BaseHTTPRequestHandler):
             m = CODE_RE.match(p)
             instructor = bool(m and m.group(2) == '/control' and self.key() and STORE.is_admin(m.group(1), self.key()))
             if m and m.group(2) == '/join':   # joins have their own bucket only, so a class joining behind one NAT does not use up the answer budget (review 28)
-                if not LIMIT.allow(self.ip() + '|join|' + m.group(1), 'join'): return self.json(429, {'error': 'Too many joins from this network. Wait a moment.'}, {'Retry-After': '5'})
+                if not LIMIT.allow(self.ip(), 'ip_join') or not LIMIT.allow(self.ip() + '|join|' + m.group(1), 'join'): return self.json(429, {'error': 'Too many joins from this network. Wait a moment.'}, {'Retry-After': '5'})
                 return self.json(200, STORE.join(m.group(1)))
             if instructor:   # the instructor's controls have their own bucket, so students on the same campus NAT cannot throttle them
                 if not LIMIT.allow(self.ip() + '|instructor', 'write'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})

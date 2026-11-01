@@ -44,7 +44,8 @@ def run():
     left, right = st.columns([3, 2])
     with right:
         q = st.text_input('Search decisions', '')
-        opts = [c for c in cl.CHALLENGES.values() if q.lower() in (c['title'] + ' ' + c['question'] + ' ' + c['concept']).lower()]
+        ap = lambda t: t.lower().replace('\u2018', "'").replace('\u2019', "'")   # curly and straight apostrophes match (audit 35)
+        opts = [c for c in cl.CHALLENGES.values() if ap(q) in ap(c['title'] + ' ' + c['question'] + ' ' + c['concept'])]
         pick = st.selectbox('Decision', [c['id'] for c in opts], format_func=lambda i: f"{cl.CHALLENGES[i]['title']} ({FORMAT_NAME[cl.CHALLENGES[i]['format']]})") if opts else None
         if st.button('Open for answers', type='primary', disabled=not pick): S.control(I['code'], I['secret'], 'open', pick); st.rerun()
         joining = S.state(I['code']).get('joining', True)
