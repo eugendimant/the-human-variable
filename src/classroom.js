@@ -63,10 +63,10 @@ function stage() {
     ${c.format === 'forecast' ? `<blockquote class="claim">${esc(c.forecast.claim)}</blockquote>` : ''}
     ${c.format === 'causal' && c.dag ? `<p class="kicker proj-factors">Factors in play: ${c.dag.nodes.map(n => n.mask && s.phase !== 'revealed' ? '?' : esc(n.label)).join(', ')}</p>` : ''}
     ${['choice', 'causal', 'multi'].includes(c.format) ? `<ol class="present-opts">${order(c).map(o => `<li>${esc(o.t)}</li>`).join('')}</ol>` : ''}
-    ${c.format === 'rank' ? `<ul class="present-opts">${shuffle(c.options.map((_, i) => i), rng(hash(c.id + (hash(S.code) >>> 0)))).map(i => `<li>${esc(c.options[i])}</li>`).join('')}</ul>` : ''}${c.format === 'allocate' ? `<ul class="present-opts">${order(c).map(o => `<li>${esc(o.t)}</li>`).join('')}</ul>` : ''}
+    ${c.format === 'rank' && s.phase !== 'revealed' ? `<ul class="present-opts">${shuffle(c.options.map((_, i) => i), rng(hash(c.id + (hash(S.code) >>> 0)))).map(i => `<li>${esc(c.options[i])}</li>`).join('')}</ul>` : ''}${c.format === 'allocate' && s.phase !== 'revealed' ? `<ul class="present-opts">${order(c).map(o => `<li>${esc(o.t)}</li>`).join('')}</ul>` : ''}
     ${c.format === 'delegate' ? `<p class="kicker">Route each task to: ${c.delegate.choices.map(esc).join(', ')}</p><ul class="present-opts">${c.delegate.tasks.map(t => `<li>${esc(t.text)}</li>`).join('')}</ul>` : ''}
     <div class="count-row"><b class="num" id="resp-count">${s.responses}</b><span>of ${s.participants} participants answered</span><span class="meter-bar"><i style="width:${s.participants ? Math.round(100 * s.responses / s.participants) : 0}%"></i></span></div>
-    <div class="next-row">${controls}</div>
+    <div class="next-row proj-controls">${controls}</div>
     ${s.phase === 'revealed' && s.aggregate ? (c.answerTitle ? reveal(c, s.aggregate) : '<p class="kicker">Loading the evidence…</p>') : ''}</div>`;
 }
 

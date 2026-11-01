@@ -183,10 +183,10 @@
  },
  "axb10": {
   "keyed": [
-   "Making users engage before the AI’s answer appears"
+   "Engaging users before the AI answers"
   ],
   "options": [
-   "Making users engage before the AI’s answer appears",
+   "Engaging users before the AI answers",
    "Plain explanations with each suggestion",
    "Showing the AI’s confidence with each suggestion"
   ]

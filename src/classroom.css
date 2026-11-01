@@ -73,3 +73,4 @@ p,li{text-wrap:pretty}
 .rv-unit{font-size:.45em;font-weight:650;letter-spacing:0;color:var(--ink-2,#3a4660);white-space:nowrap}
 body.projector .proj-exit{opacity:0}   /* hidden on the projected screen until hover or keyboard focus (review 29, m9) */
 body.projector .proj-hide{display:none}   /* instructor chrome stays off the projected screen (review 30, m14) */
+body.projector .proj-controls{opacity:0;transition:opacity .15s}body.projector .proj-controls:hover,body.projector .proj-controls:focus-within{opacity:1}   /* instructor controls stay off the projected screen until pointed at or tabbed to (review 31) */

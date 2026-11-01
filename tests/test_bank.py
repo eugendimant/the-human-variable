@@ -565,3 +565,18 @@ def test_pick_two_keys_are_not_the_two_shortest_or_longest():
         if set(by[:2]) == k: short.append(c['id'])
         if set(by[-2:]) == k: long_.append(c['id'])
     assert len(short) <= 1 and len(long_) <= 1, (short, long_)
+
+
+def test_percent_numbers_are_quoted_as_percents():
+    """Review 31, m1: a percentage in player text must match a number in the item's quotes that is not a count or a duration ("3%" passed on "3–15 months")."""
+    ev = json.loads((ROOT / 'src/evidence.json').read_text()); bad = []
+    for c in LIVE:
+        q = ' '.join(x.get('quote', x.get('printed', '')) for x in ev.get(c['id'], [])).lower().replace(',', '').replace('−', '-')
+        UNIT = r'(?:[-\u2013]\d+(?:\.\d+)?)?\s*(?:months?|years?|weeks?|days?|hours?|minutes?|seconds?|participants|people|subjects|respondents|students|workers|households|countries|cities|experiments|studies)\b'
+        pcts = [abs(float(m.group(1))) for m in re.finditer(r'(?<![\w.])(-?\d+(?:\.\d+)?)', q) if not re.match(UNIT, q[m.end():])]   # any number except a count or a duration
+        pcts += [abs(float(x)) * 100 for x in re.findall(r'(?<![\d.])(0?\.\d+)', q)]   # shares written as decimals
+        text = ' '.join([c.get('explain', ''), c.get('answerTitle', '')] + [f['a'] for f in c.get('follow', [])]).replace(',', '').replace('−', '-')
+        for n in re.findall(r'(-?\d+(?:\.\d+)?)\s*%', text):
+            v = abs(float(n))
+            if not any(abs(p - v) <= 0.5 or round(p) == round(v) for p in pcts): bad.append((c['id'], n + '%'))
+    assert not bad, bad

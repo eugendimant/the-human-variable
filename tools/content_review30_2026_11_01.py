@@ -22,7 +22,8 @@ c = C['dimant-hate-choice']
 c['explain'] = c['explain'].replace('Expectations differed: people predicted opponents would contribute less.',
     'What set the political divide apart was expectation: people expected less from opponents, and Dimant traces the gap to these beliefs rather than to preferences.')
 # review 30, m10: the key names the family of forcing designs the paper analyses together
-swap('axb10', 'Making users answer before seeing the AI', 'Making users engage before the AI’s answer appears')
+swap('axb10', 'Making users answer before seeing the AI', 'Engaging users before the AI answers')
+swap('axb10', 'Making users engage before the AI’s answer appears', 'Engaging users before the AI answers')   # audit 39: not the longest option
 # review 30, m11 and m12: implications stay honest
 c = C['dimant-enforcers-rank']
 c['implication'] = c['implication'].replace('When you build a speak-up channel, tell staff that most colleagues object to taking bribes;', 'When you build a speak-up channel and your own survey shows that most colleagues object to taking bribes, say so;')
@@ -40,6 +41,9 @@ C['bz13']['boundary'] = C['bz13']['boundary'].replace('When workers clearly saw 
 PH = {'part': (70, 40), 'fix': (290, 40), 'meta': (250, 165), 'obs': (110, 290)}
 for n in C['meta-perception-causal']['dag']['nodes']:
     if n['id'] in PH: n['px'], n['py'] = PH[n['id']]
+
+ch = C['social15']['chart']; ch['note'] = ch['note'].replace('allies got no more than a group-mate', 'allies got about as much as a group-mate')   # audit 39: 14.97 against 13.54 is not "no more"
+C['social15']['explain'] = C['social15']['explain'].replace('yet gave allies no more money (14.97% versus 13.54%)', 'yet gave allies about the same (14.97% versus 13.54%)')
 
 bp.write_text(json.dumps(B, ensure_ascii=False, indent=1) + '\n')
 kp = ROOT / 'tests/keyed_options.json'; K = json.loads(kp.read_text())

@@ -732,3 +732,5 @@ p,li,dd{text-wrap:pretty}
 .est-meter .meter-read{flex-wrap:wrap}
 
 .lib-note{color:var(--ink-2);font-size:15px;margin:0 0 8px}
+.alloc-cmp b.num.ns{color:var(--muted)}
+.plate .alloc-cmp b.num.ns{color:#b9c4dd}

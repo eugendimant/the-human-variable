@@ -1405,6 +1405,22 @@
   [
    "Did they write an email to customers?",
    "ai01"
+  ],
+  [
+   "Write me a résumé",
+   "ai01"
+  ],
+  [
+   "Van drivers: would this work for them?",
+   "ai01"
+  ],
+  [
+   "Is 40% realistic for my legal team drafting contracts?",
+   "ai01"
+  ],
+  [
+   "Is it legal to do this?",
+   "ai01"
   ]
  ],
  "every_decision": [

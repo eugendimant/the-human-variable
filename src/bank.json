@@ -2769,7 +2769,7 @@
    "follow": [
     {
      "q": "What was the default?",
-     "a": "New hires were enrolled at a 3% contribution rate, invested entirely in the money market fund."
+     "a": "New hires were enrolled at the plan’s default contribution rate, invested entirely in the money market fund."
     },
     {
      "q": "Who gained the most?",
@@ -3691,7 +3691,7 @@
    ],
    "answer": 1,
    "answerTitle": "Closer to allies, but no more generous to them",
-   "explain": "In Dimant’s experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a group-mate who shared only a painting preference (about 39%), yet gave allies no more money (14.97% versus 13.54%). A painting out-group still received 11.99%; from political opponents, people took 22.9%.",
+   "explain": "In Dimant’s experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a group-mate who shared only a painting preference (about 39%), yet gave allies about the same (14.97% versus 13.54%). A painting out-group still received 11.99%; from political opponents, people took 22.9%.",
    "implication": "When teams distrust each other, measure how they actually treat each other, not only how they feel about each other.",
    "boundary": "Incentivized behavioral experiments with US Trump supporters and opponents, plus a sports-identity comparison.",
    "sources": [
@@ -3741,7 +3741,7 @@
     ],
     "unit": "%",
     "highlight": 0,
-    "note": "Share of the endowment given; allies got no more than a group-mate who shared only a painting preference."
+    "note": "Share of the endowment given; allies got about as much as a group-mate who shared only a painting preference."
    }
   },
   {
@@ -4406,7 +4406,7 @@
    "options": [
     "Showing the AI’s confidence with each suggestion",
     "Plain explanations with each suggestion",
-    "Making users engage before the AI’s answer appears"
+    "Engaging users before the AI answers"
    ],
    "answer": 2,
    "answerTitle": "Forcing functions worked, but users disliked them",
@@ -6367,7 +6367,7 @@
     "truth": false
    },
    "answerTitle": "No message worked; forecasters still overestimated effects",
-   "explain": "Across 4,931 participants, none of the 7 nudges raised mask-wearing intentions or pledges in either party. Forecasters overestimated the effects overall (z = 4.40, p < 0.001), most of all for Democrats.",
+   "explain": "Across 4,931 participants, none of the 7 nudges raised mask-wearing intentions or pledges in either party. Forecasters reliably overestimated the effects, most of all for Democrats.",
    "implication": "Treat expert predictions about which message works as hypotheses. Run a small randomized test before scaling a compliance campaign.",
    "boundary": "One topic (COVID-19 mask-wearing), US Democrats and Republicans, and seven short messages.",
    "sources": [
@@ -6703,7 +6703,7 @@
    "scene": "US adults read about a coworker accepting a bribe and chose how much evidence to submit, which set how likely the coworker was to be punished. The bribe either created inequity or restored equity; half also learned what most previous participants thought of taking bribes.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Norm information raised punishment of unfair bribes",
-   "explain": "Norm information raised the chosen probability of punishment from 73.3% to 82.8% when the bribe created inequity (P < 0.005), and from 57.9% to 67.2% when it restored equity (marginal, P = 0.074). Inequity-creating bribes drew more punishment overall (77.8% vs 62.3%, P < 0.001).",
+   "explain": "Norm information raised the chosen probability of punishment from 73.3% to 82.8% when the bribe created inequity, a reliable difference, and from 57.9% to 67.2% when it restored equity, a weaker difference. Inequity-creating bribes drew more punishment overall (77.8% vs 62.3%).",
    "implication": "When you build a speak-up channel and your own survey shows that most colleagues object to taking bribes, say so; in the study this raised willingness to act most for deals that create unfair advantages.",
    "boundary": "Bribery vignette with 225 US adults, alongside a main behavioral study with 1,240 punishers from a representative US sample.",
    "sources": [
@@ -7181,7 +7181,7 @@
    "concept": "Word-of-machine effect",
    "title": "Whose recommendation will customers trust?",
    "scene": "Your retail site can show product picks from an AI engine or from a human expert. Eight experiments tested which source consumers prefer.",
-   "question": "For each recommendation, which source should customers see?",
+   "question": "For each recommendation, which source will customers prefer?",
    "delegate": {
     "choices": [
      "AI recommender",
@@ -7841,9 +7841,9 @@
    "title": "How much should editors touch it?",
    "scene": "Your team will publish persuasive AI-written articles. A survey experiment of 8,221 US adults tested GPT-3 articles with different amounts of human prompt editing and curation.",
    "question": "How likely is it that the study found this?",
-   "answerTitle": "About 53%, against 47% for the originals",
-   "explain": "Editing the prompt and choosing the best of three outputs reached 52.7% agreement, above the human-written originals and well above unedited GPT-3.",
-   "implication": "Budget editor time for prompt design and picking among several drafts rather than line-editing one draft.",
+   "answerTitle": "Edited prompts matched the originals: 46% against 47%",
+   "explain": "With an edited prompt, GPT-3 articles reached 46.4% agreement, level with the human-written originals: the difference was small and not statistically significant. Picking the best of three outputs per topic after the fact reached 52.7%, the authors’ upper bound for a propagandist who curates.",
+   "implication": "Expect AI drafts from a well-built prompt to persuade about as well as a human writer’s; test several drafts on a small sample before scaling any one.",
    "boundary": "GPT-3 articles on six claims from propaganda campaigns, read once.",
    "sources": [
     "goldstein24"
@@ -7858,17 +7858,17 @@
      "a": "Researchers gave GPT-3 the researcher-written thesis statement instead of an excerpt and edited the example articles on unrelated topics."
     },
     {
-     "q": "Was prompt editing alone enough?",
-     "a": "Nearly. Editing the prompt alone brought it level with the originals; the small remaining difference was not statistically significant."
+     "q": "What did the study measure?",
+     "a": "Whether each of 8,221 US respondents agreed or strongly agreed with an article’s thesis, against a group shown no article."
     },
     {
      "q": "How much did curation matter?",
-     "a": "Picking the best of three drafts added agreement beyond what prompt editing alone achieved."
+     "a": "Picking, per topic, the draft that performed best reached 52.7%. That pick used the measured agreement itself, so an editor choosing before publication should expect less."
     }
    ],
    "theme": "persuasion",
    "forecast": {
-    "claim": "With an edited prompt and the best of three drafts, GPT-3 articles drew at least as much agreement as the human-written originals.",
+    "claim": "With an edited prompt alone, GPT-3 articles drew about as much agreement as the human-written originals.",
     "truth": true
    },
    "chart": {
@@ -7876,17 +7876,17 @@
      "No article",
      "Original propaganda",
      "AI article, unedited",
-     "AI article, curated"
+     "AI article, edited prompt"
     ],
     "values": [
      24.4,
      47.4,
      43.5,
-     52.7
+     46.4
     ],
     "unit": "%",
     "highlight": 3,
-    "note": "Share agreeing with the article’s main claim."
+    "note": "Share agreeing with the article’s main claim. Best of three drafts, picked after the fact: 52.7%."
    }
   },
   {
@@ -9097,7 +9097,7 @@
    ],
    [
     "ethics",
-    "\\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|is it (ok|okay|right|wrong)|allowed|legal)"
+    "\\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|(we|i) should (replace|fire|cut|lay off|hire fewer|downsize)|is it (ok|okay|right|wrong)|allowed|legal(?! (team|department|counsel|staff|work)))"
    ],
    [
     "models",
