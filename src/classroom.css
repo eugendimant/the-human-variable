@@ -59,7 +59,7 @@ body.projector .play-grid>.card:not(:has(.rv)) .count-row .meter-bar{width:70%}
 
 @media (max-width:640px){.rv-head{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-h1,h2,h3{text-wrap:balance}
+h1,h2,h3{text-wrap:wrap}
 p,li{text-wrap:pretty}
 .rv .kicker{max-width:40em}
 .stage-meta{margin:6px 0 14px;color:var(--ink-2,#36425e);font-size:15px}

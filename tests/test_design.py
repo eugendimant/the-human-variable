@@ -19,7 +19,7 @@ def test_design_detectors_fire_on_injected_tells():
     from playwright.sync_api import sync_playwright
     import design_lint
     html = """<html><body style="font:16px sans-serif">
-      <div class="hero"><span>Label</span><h1 style="font-size:80px;width:500px">Predict what people do. Then see the evidence of it all now, every single day of the week.</h1></div>
+      <div class="hero"><span>Label</span><h1 style="font-size:80px;width:500px;text-wrap:balance">Predict what people do. Then see the evidence of it all now, every single day of the week.</h1></div>
       <p style="text-transform:uppercase">all caps text</p>
       <div style="width:300px;height:60px;background:linear-gradient(red,blue)">g</div>
       <div style="backdrop-filter:blur(4px)">glass</div>
@@ -117,3 +117,29 @@ def test_lint_states_use_real_routes():
     routes = set(re.findall(r"'(#\w+)'", re.search(r"const HASH = \{([^}]*)\}", (R / 'src/app.js').read_text()).group(1)))
     used = set(re.findall(r"URL \+ '(#\w+)'", (R / 'tools/design_lint.py').read_text()))
     assert used and used <= routes, used - routes
+
+
+def test_two_beat_slogan_headline_is_caught():
+    """Owner, 2026-11-01: "Do X. Then Y." headlines are an AI tell."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content('<h1>Predict what people do. Then see the evidence.</h1>')
+        hit = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R14']
+        pg.set_content('<h1>How much less time did they take?</h1>')
+        clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R14']; b.close()
+    assert hit and not clean
+
+
+def test_squeezed_heading_is_caught():
+    """Owner, 2026-11-01: a heading capped narrower than its column wraps early and leaves the space empty."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content('<div style="width:900px"><h1 style="max-width:12ch;font-size:40px">How did unrestricted AI students score on unaided exams?</h1></div>')
+        hit = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R33']
+        pg.set_content('<div style="width:900px"><h1 style="font-size:40px">How did unrestricted AI students score on unaided exams versus controls in the study?</h1></div>')
+        clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R33']; b.close()
+    assert hit and not clean, (hit, clean)

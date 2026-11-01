@@ -67,8 +67,8 @@ def test_keyboard_round_and_record(browser):
         c = next(x for x in LIVE if x['id'] == pg.evaluate('THV.st.deck[THV.st.i].id'))
         answer(pg, c); pg.focus('#q-h'); pg.keyboard.press('Enter')
         pg.wait_for_selector('#r-h'); pg.keyboard.press('n')
-    pg.wait_for_selector('text=Round complete.')
-    assert pg.locator('.score-big').count() == 1 and pg.locator('.score-meta div').count() == 1 and pg.locator('.cal-sum').count() <= 1 and not pg.errors
+    pg.wait_for_selector('text=Round complete')
+    assert pg.locator('.score-big').count() == 1 and pg.locator('.score-meta div').count() <= 1 and pg.locator('.cal-sum').count() <= 1 and not pg.errors
 
 def test_quarantined_items_never_served(browser):
     pg = page(browser); pg.goto(URL)

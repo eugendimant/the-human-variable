@@ -37,7 +37,7 @@
     if (e.tagName === 'P' && t.length > 160 && r.width / fs > 40) push('R18', name(e), Math.round(r.width / fs) + 'em wide');
     if (t && s.textAlign === 'justify') push('R18', name(e), 'justified');
     const wrap = s.textWrap || s.textWrapStyle || '';
-    if (/^H[1-3]$/.test(e.tagName) && !/balance|pretty/.test(wrap)) push('R19', name(e), 'heading wrap ' + wrap);
+    if (/^H[1-3]$/.test(e.tagName) && /balance/.test(wrap)) push('R19', name(e), 'heading wrap balance leaves the line short');   // owner, 2026-11-01: headings fill each line (rule 11)
     if (e.tagName === 'P' && t.length > 160 && !/pretty|balance/.test(wrap)) push('R19', name(e), 'paragraph wrap ' + wrap);
   }
   for (const tx of document.querySelectorAll('svg text')) {   // rule 9 for SVG text, at its rendered size
@@ -62,6 +62,7 @@
     if (/[→›»]\s*$/.test(x) && p.closest('button,a')) push('R12', name(p), x.trim());
     if (/—|\s–\s/.test(x)) push('R13', name(p), x.trim());
     if (/\b(not just|isn['’]t just|more than just|unlock|seamless|elevate|dive into|game[- ]changer|empower|supercharge|revolutioni[sz]e|cutting[- ]edge|harness the power)\b/i.test(x)) push('R14', name(p), x.trim());
+    if (p.matches('h1,h2,h3,.hero *') && /[.!]\s+Then\s/.test(x)) push('R14', name(p), 'two-beat slogan: ' + x.trim().slice(0, 60));   // "Do X. Then Y." headlines (owner, 2026-11-01)
     if (/^\s*0\d\s*$/.test(x)) push('R15', name(p), x.trim());
   }
   const headish = [...document.querySelectorAll('h1,h2,h3')].concat(all.filter(e => !/^H[1-6]$/.test(e.tagName) && !e.matches('.num, .num *') && /\S\s+\S/.test(own(e)) && own(e).length > 3 && parseFloat(getComputedStyle(e).fontSize) >= 20 && +getComputedStyle(e).fontWeight >= 650));
@@ -107,6 +108,13 @@
   // R31: a label wider than the pill it sits in (review 27: causal node labels at 390 px)
   for (const g of document.querySelectorAll('svg g')) { const rc = g.querySelector(':scope > rect'), ts = g.querySelectorAll(':scope > text'); if (!rc || !ts.length || !vis(g)) continue; let rb; try { rb = rc.getBBox() } catch (e) { continue }
     for (const t of ts) { const tb = t.getBBox(); if (tb.x < rb.x - 1 || tb.x + tb.width > rb.x + rb.width + 1) { push('R31', name(g), 'label wider than its box: ' + t.textContent.trim().slice(0, 24)); break } } }
+  // R33: a heading that wraps while its own line box stops well short of the space it has (owner, 2026-11-01: "fill the space; no line break where there shouldn't be one")
+  for (const h of document.querySelectorAll('h1, h2, h3, .q, .reveal-title, .study-line')) { if (!vis(h) || h.closest('svg, .sr-only')) continue;
+    const cs = getComputedStyle(h), lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.2, r = h.getBoundingClientRect(); if (r.height < lh * 1.8) continue;
+    const par = h.parentElement, pcs = getComputedStyle(par), avail = par.getBoundingClientRect().width - parseFloat(pcs.paddingLeft) - parseFloat(pcs.paddingRight);
+    const rg = document.createRange(); rg.selectNodeContents(h); const used = Math.max(...[...rg.getClientRects()].map(x => x.right)) - r.left;
+    const capped = cs.maxWidth !== 'none' || /grid|flex/.test(pcs.display) === false;   // in a grid or flex row the track sets the width; elsewhere the parent does
+    if (cs.display !== 'inline' && capped && !(/grid|flex/.test(pcs.display) && cs.maxWidth === 'none') && r.width < avail * .82 && avail - used > parseFloat(cs.fontSize) * 4) push('R33', name(h), 'wraps with ' + Math.round(avail - used) + 'px unused: ' + h.textContent.trim().slice(0, 40)) }
   // R31 for HTML: two pieces of visible text drawn on top of each other (review 26: a grid override stacked a label on a strip on phones)
   const pinned = e => { for (let a = e; a && a !== document.body; a = a.parentElement) { const ps = getComputedStyle(a).position; if (ps === 'fixed' || ps === 'sticky') return true } return false };   // pinned bars float over the page by design
   { const leaves = [...document.querySelectorAll('body *')].filter(e => !e.closest('svg,.sr-only,[aria-hidden=true] svg') && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) && vis(e) && !e.closest('[hidden]') && !(e.closest('details:not([open])') && !e.closest('summary')) && (!e.checkVisibility || e.checkVisibility({ contentVisibilityAuto: true, opacityProperty: true, visibilityProperty: true })) && !pinned(e))

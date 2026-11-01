@@ -154,19 +154,28 @@ function pathStrip(p, done) {
   const k = p.items.length, w = 3, g = 3;   // a word-sized graphic beside the count
   return `<svg class="strip" viewBox="0 0 ${k * (w + g) - g} 12" width="${k * (w + g) - g}" height="12" aria-hidden="true">${p.items.map((id, i) => `<rect x="${i * (w + g)}" y="0" width="${w}" height="12" class="${done.has(id) ? 'on' : ''}"/>`).join('')}</svg>`;
 }
+// The home page's one bold element: the game in a single gesture, on a measuring scale the width of the page.
+// Ticks every point, labels every ten; after the lock the study's value, its band and the gap are drawn on the same scale.
+function ruler(min, max, you, ev, band, unit = '%') {
+  const pos = v => (v - min) / (max - min) * 100, ticks = [], span = max - min;
+  const major = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000].find(m => span / m <= 8) || span, minor = [major / 10, major / 5, major / 2, major].find(m => span / m <= 120 && Number.isInteger(m * 1000) ) || major;
+  const on = (v, m) => Math.abs(v / m - Math.round(v / m)) < 1e-6;
+  for (let v = Math.ceil(min / minor - 1e-9) * minor; v <= max + 1e-9; v += minor) { const vv = +v.toFixed(6); const lab = on(vv, major) && Math.min(vv - min, max - vv) >= major * .6 || Math.abs(vv - min) < 1e-9 || Math.abs(vv - max) < 1e-9; ticks.push(`<i class="${on(vv, major) || lab ? 'l' : on(vv, major / 2) ? 'm' : ''}" style="left:${pos(vv)}%"></i>${lab ? `<em class="${Math.abs(vv - min) < 1e-9 ? 'e0' : Math.abs(vv - max) < 1e-9 ? 'e1' : ''}" style="left:${pos(vv)}%">${esc(mn(vv + unit))}</em>` : ''}`) }   // both ends always labelled; a round value too close to an end gives way
+  const has = x => x !== null && x !== undefined;
+  const lo = has(ev) && has(band) ? Math.max(min, ev - band) : null, hi = has(ev) && has(band) ? Math.min(max, ev + band) : null;
+  const gap = has(you) && has(ev) ? Math.abs(you - ev) : null, a = has(gap) ? Math.min(you, ev) : 0, b = has(gap) ? Math.max(you, ev) : 0;
+  return `<div class="ruler-scale" aria-hidden="true">${ticks.join('')}${has(lo) ? `<span class="r-band" style="left:${pos(lo)}%;width:${pos(hi) - pos(lo)}%"></span>` : ''}${has(gap) && gap > 0 ? `<span class="r-gap" style="left:${pos(a)}%;width:${pos(b) - pos(a)}%"><b>${+gap.toFixed(2)}${unit === '%' ? ' points' : ' ' + unit}</b></span>` : ''}${has(you) && has(ev) ? `<span class="r-mark you" style="left:${pos(you)}%"><b>You ${esc(mn(you + unit))}</b></span>` : ''}${has(ev) ? `<span class="r-mark ev" style="left:${pos(ev)}%"><b>Study ${esc(mn(ev + unit))}</b></span>` : ''}</div>`;
+}
 function heroTry() {
   const c = BY_ID.ai01; if (!c || !isLive(SOURCE[c.sources[0]])) return '';
   const h = st.hero, e = c.estimate, v = h.value, src = SOURCE[c.sources[0]];
   const gap = v === null ? 0 : Math.abs(v - e.target);
-  return `<section class="panel try try-dark" aria-labelledby="try-q">
-    <h2 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h2>
-    ${h.done ? `<div class="try-axis">${gapAxis({ min: e.min, max: e.max, unit: '%', you: v, ev: e.target, band: e.tolerance, evLabel: 'Study', id: 'hero' })}</div>`
-      : `<div class="try-read"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${v === null ? 'Slide to answer' : v + '%'}</b><span class="hero-unit" ${v === null ? 'hidden' : ''}>less time</span></div>
-    <label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
-    <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">
-    <div class="axis"><span>${e.min}%</span><span>${e.max}%</span></div>`}
-    <p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} points off.`}` : ''}</p>
-    <div class="try-foot">${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}<span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
+  return `<section class="try-ruler" aria-labelledby="try-q">
+    <div class="tr-head"><h1 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h1>
+    <p class="tr-read ${h.done ? 'ev' : ''}"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${h.done ? e.target + '%' : v === null ? '' : v + '%'}</b><span class="hero-unit">${h.done ? 'less time, the study' : v === null ? 'Slide the scale to answer' : 'less time, your call'}</span></p></div>
+    <div class="ruler ${h.done ? 'done' : ''}">${h.done ? ruler(e.min, e.max, v, e.target, e.tolerance) : `${ruler(e.min, e.max, null, null, null)}<label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
+    <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">`}</div>
+    <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} points off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}<span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
   </section>`;
 }
 
@@ -178,12 +187,9 @@ function home() {
   const paths = (BANK.paths || []).map(p => ({ ...p, items: p.ids.filter(id => ALL.some(c => c.id === id)) })).filter(p => p.items.length);
   const done = new Set(records.map(r => r.id));
   const resume = paths.find(p => { const n = p.items.filter(id => done.has(id)).length; return n > 0 && n < p.items.length });
-  return `${resume ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button></div>` : ''}<section class="hero wrap"><div class="hero-grid">
-    <div><h1>Predict what people do. Then see the evidence.</h1>
-    <p class="hero-lede">Bet on the outcome of a real experiment on AI, work and human behavior. Then see how far your call landed from the result, and what a manager should do about it.</p>
-    <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button>${location.protocol.startsWith('http') ? '<button class="link-btn" data-act="join">Join a live class</button>' : ''}</div>
-    <p class="hero-meta">${ALL.length} decisions from ${nSrc} peer-reviewed studies. Original concept by Eugen Dimant.</p></div>
-    ${heroTry()}</div></section>
+  return `${resume ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button></div>` : ''}<section class="hero wrap">${heroTry()}
+    <div class="hero-foot"><div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button>${location.protocol.startsWith('http') ? '<button class="link-btn" data-act="join">Join a live class</button>' : ''}</div>
+    <p class="hero-meta">${ALL.length} decisions, each from a peer-reviewed experiment on AI, work and behavior. Original concept by Eugen Dimant.</p></div></section>
   <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
     <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${pathStrip(p, done)}${pi === 0 ? 'Start here. ' : ''}${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
@@ -206,14 +212,13 @@ function instrument(c) {
   }
   if (c.format === 'estimate') {
     const e = c.estimate, v = r ?? Math.round((e.min + e.max) / 2);
-    return `<div class="meter"><div class="meter-read"><span class="kicker" id="est-label">${esc(e.label)}</span><b class="${r === null ? 'empty' : ''}" id="est-read">${r === null ? 'Slide to answer' : r + (e.unit ?? '%')}</b></div>
-      <input type="range" id="est" aria-labelledby="est-label" min="${e.min}" max="${e.max}" step="${e.step || 1}" value="${v}" class="${r === null ? 'untouched' : ''}" style="--fill:${r === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%" ${rev ? 'disabled' : ''}>
-      <div class="axis"><span>${e.min}${e.unit ?? '%'}</span><span>${e.max}${e.unit ?? '%'}</span></div></div>`;
+    return `<div class="meter est-meter"><div class="meter-read"><span class="est-label" id="est-label">${esc(e.label)}</span><b class="${r === null ? 'empty' : ''}" id="est-read">${r === null ? 'Slide the scale' : esc(mn(r + (e.unit ?? '%')))}</b></div>
+      <div class="ruler">${ruler(e.min, e.max, null, null, null, e.unit ?? '%')}<input type="range" id="est" aria-labelledby="est-label" min="${e.min}" max="${e.max}" step="${e.step || 1}" value="${v}" class="${r === null ? 'untouched' : ''}" style="--fill:${r === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%" ${rev ? 'disabled' : ''}></div></div>`;   // the same measuring scale as the home page (redesign, round 36)
   }
   if (c.format === 'forecast') {
-    return `<div class="meter"><div class="meter-read"><span class="kicker" id="fc-label">Probability the claim is true</span><b class="${st.touched ? '' : 'empty'}" id="fc-read">${st.touched ? r + '%' : 'Slide to answer'}</b></div>
-      <input type="range" id="fc" aria-labelledby="fc-label" min="0" max="100" step="5" value="${r}" class="${st.touched ? '' : 'untouched'}" style="--fill:${st.touched ? r : 0}%" ${rev ? 'disabled' : ''}>
-      <div class="axis"><span>0%, certainly false</span><span>100%, certainly true</span></div></div>`;
+    return `<div class="meter est-meter"><div class="meter-read"><span class="est-label" id="fc-label">Probability the claim is true</span><b class="${st.touched ? '' : 'empty'}" id="fc-read">${st.touched ? r + '%' : 'Slide the scale'}</b></div>
+      <div class="ruler">${ruler(0, 100, null, null, null, '%')}<input type="range" id="fc" aria-labelledby="fc-label" min="0" max="100" step="5" value="${r}" class="${st.touched ? '' : 'untouched'}" style="--fill:${st.touched ? r : 0}%" ${rev ? 'disabled' : ''}></div>
+      <div class="axis"><span>certainly false</span><span>certainly true</span></div></div>`;
   }
   if (c.format === 'rank') {
     return `<p class="hint">First place goes at the top. Use the arrows to reorder.</p><ol class="rank-list">${r.map((oi, k) => `<li class="rank-item"><span class="pos">${k + 1}</span><span>${esc(c.options[oi])}</span><span class="rank-move"><button data-rank="${k}" data-dir="-1" aria-label="Move ${esc(c.options[oi])} up" ${k === 0 || rev ? 'disabled' : ''}>↑</button><button data-rank="${k}" data-dir="1" aria-label="Move ${esc(c.options[oi])} down" ${k === r.length - 1 || rev ? 'disabled' : ''}>↓</button></span></li>`).join('')}</ol>`;
@@ -268,7 +273,7 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
   const anchor = x => x < L + (narrow ? 40 : 60) ? 'start' : x > R - (narrow ? 40 : 60) ? 'end' : 'middle';
   const lab = (x, txt, color, up) => `<text x="${Math.min(R, Math.max(L, x))}" y="${up ? y - 22 : y + 36}" text-anchor="${anchor(x)}" font-size="${fs}" font-weight="750" class="${color}" font-family="Schibsted Grotesk,system-ui">${esc(txt)}</text>`;
   return `<svg class="axis-svg" viewBox="0 0 ${W} 118" role="img" aria-label="${has(you) ? 'Your call ' + fmt(you) : 'No call yet'}${has(ev) ? ', evidence ' + fmt(ev) : ''}${has(band) && has(ev) ? ', hit band ' + fmt(+(Math.max(min, ev - band)).toFixed(1)) + ' to ' + fmt(+(Math.min(max, ev + band)).toFixed(1)) : ''}">
-    <line x1="${L}" y1="${y}" x2="${R}" y2="${y}" class="ax-track" stroke-width="8" stroke-linecap="round"/>
+    <line x1="${L}" y1="${y}" x2="${R}" y2="${y}" class="ax-track" stroke-width="2"/>${(() => { const span = max - min, major = [1, 2, 5, 10, 20, 25, 50, 100, 200, 500].find(m => span / m <= 8) || span, minor = major / (major % 5 === 0 ? 5 : 2), out = []; for (let v = Math.ceil(min / minor) * minor; v <= max + 1e-9; v += minor) { const isM = Math.abs(v / major - Math.round(v / major)) < 1e-9; out.push(`<line x1="${sx(v)}" y1="${y - (isM ? 9 : 5)}" x2="${sx(v)}" y2="${y + (isM ? 9 : 5)}" class="ax-tickm${isM ? ' maj' : ''}"/>`) } return out.join('') })()}
     ${has(band) && has(ev) ? `<rect x="${sx(Math.max(min, ev - band))}" y="${y - 9}" width="${sx(Math.min(max, ev + band)) - sx(Math.max(min, ev - band))}" height="18" rx="4" class="ax-band" stroke-width="1.2"/>` : ''}
     ${has(you) && has(ev) ? `<line x1="${sx(you)}" y1="${y}" x2="${sx(ev)}" y2="${y}" class="ax-gap" stroke-width="2.5" stroke-dasharray="3 4"/>` : ''}
     ${has(you) ? `<circle cx="${sx(you)}" cy="${y}" r="12" fill="#2f54eb" stroke="#fff" stroke-width="3"/>${lab(sx(you), 'You ' + fmt(you), 'ax-you', true)}` : ''}
@@ -350,15 +355,15 @@ function play() {
   const rev = st.phase === 'reveal', rec = st.session.filter(r => r.id === c.id).slice(-1)[0] || { score: 0, correct: false, confidence: null, response: null, detail: {}, missed: true };
   const steps = st.deck.map((_, k) => `<i class="${k < st.i || (k === st.i && rev) ? 'done' : k === st.i ? 'now' : ''}"></i>`).join('');
   const top = `<div class="focus-top"><button class="x" data-act="leave" aria-label="${st.room ? 'Leave the live class' : 'Leave the round'}"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="steps" aria-hidden="true">${steps}</div>${st.room ? `<span class="count">Live class ${esc(st.room.code || '')}</span>` : `<span class="count num" aria-live="polite">${st.i + 1} of ${st.deck.length}</span>`}</div>`;
-  const label = `<p class="eyebrow-line">${c.case ? `<span class="tag tag-you">${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}</span>` : ''}<span class="fmt">${FORMAT_NAME[c.format]}</span><span class="track">${esc(c.track)}</span></p>`;
+  const label = c.case ? `<p class="case-line">${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}</p>` : '';
   if (!rev) {
     const ready = lockReady(c);
     const conf = noConf(c) ? '' : `<div class="conf-row"><label for="conf">${confQuestion(c)}</label>${(() => { const mn = c.format === 'choice' || c.format === 'causal' ? Math.round(100 / c.options.length / 5) * 5 : 0; return `<input type="range" id="conf" min="${mn}" max="100" step="5" value="${st.conf}" class="${st.confTouched ? '' : 'untouched'}" style="--fill:${st.confTouched ? (st.conf - mn) / (100 - mn) * 100 : 0}%"><output id="conf-read" class="num ${st.confTouched ? '' : 'empty'}" for="conf">${st.confTouched ? st.conf + '%' : '?'}</output>` })()}</div>`;
     const verb = { estimate: 'estimate', allocate: 'split', rank: 'ranking', delegate: 'routing', forecast: 'forecast' }[c.format] || 'answer';
     return `<section class="focus">${top}<article class="focus-card" aria-labelledby="q-h">${CLASS_LOCK && !st.room && !BY_ID[c.id].answerTitle ? '<p class="lock-note" role="note">A live class is running on this server, so results for decisions it has not reached open after it reveals them. You can still make your call now.</p>' : ''}
-      <p class="scene">${esc(c.scene)}</p>
-      ${c.format === 'forecast' ? `<h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1><p class="hint fc-ask">How likely is it that the study found this?</p>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}<p class="study-line"><span class="fmt">${FORMAT_NAME[c.format]}</span>, ${esc(c.track)}${c.case ? `, ${esc(c.case.title)} step ${c.case.step} of ${c.case.of}` : ''}. ${esc(studyLine(c))}</p>${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : ''}
-      ${instrument(c)}${conf}</article>
+      <div class="q-col"><p class="scene">${esc(c.scene)}</p>
+      ${c.format === 'forecast' ? `<h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1><p class="hint fc-ask">How likely is it that the study found this?</p>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}<p class="study-line">${c.case ? `${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}. ` : ''}${esc([(c.study || {}).design, `${SOURCE[c.sources[0]].venue} ${SOURCE[c.sources[0]].year}`].filter(Boolean).join(', '))}.</p>${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : ''}
+      </div><div class="a-col">${instrument(c)}${conf}</div></article>
       <div class="actionbar"><div class="actionbar-in"><span class="kicker">${lockHint(c)}</span><button class="btn btn-you btn-lg" data-act="lock" id="lock-btn" ${ready ? '' : 'disabled'}>Lock my ${verb}</button></div></div></section>`;
   }
   const tabs = [['questions', 'Questions'], ['scope', 'Scope'], ['source', 'Source'], ['note', 'Your note']];
@@ -371,7 +376,7 @@ function play() {
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
-      <p class="verdict">${rec.missed ? '<strong>You did not answer this one.</strong>' : `<strong class="${rec.correct ? 'v-ok' : ''}">${rec.correct ? 'You called it.' : c.format !== 'forecast' && rec.score >= .5 && rec.score > (typeof rec.base === 'number' ? rec.base : S.baseline(c)) ? 'Close.' : 'The evidence surprised you.'}</strong> <span class="num">Score ${mn(pct(rec.score))}</span>`}</p>${label}${!rec.missed && rec.confidence !== null ? `<p class="conf-line">You were ${rec.confidence}% sure and ${rec.correct ? 'right' : rec.score > 0 ? 'partly right, not exact' : 'missed'}. Your record tracks how well your confidence matches your hits.</p>` : ''}
+      <p class="verdict">${rec.missed ? '<strong>You did not answer this one.</strong>' : `<strong class="${rec.correct ? 'v-ok' : ''}">${rec.correct ? 'Matches the study.' : c.format !== 'forecast' && rec.score >= .5 && rec.score > (typeof rec.base === 'number' ? rec.base : S.baseline(c)) ? 'Partly right.' : 'Not what the study found.'}</strong> <span class="num">Score ${mn(pct(rec.score))}</span>${rec.confidence !== null ? `<span class="conf-in">${rec.confidence}% sure</span>` : ''}`}</p>${c.case ? label : ''}
       ${rec.missed ? '' : gapFigure(c, rec)}
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
       <p class="reveal-body">${esc(c.explain)}</p>
@@ -545,8 +550,8 @@ function record() {
   }
   const played = byTrack.filter(t => t[1]);
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
-  if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record.</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
-  return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
+  if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
+  return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete' : 'Your record'}</h1>
     <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? mn(sess ?? meanScore) : '–'}</b><span class="score-unit">skill points<br>versus guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing (the dashed line in the trend), 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
       ${gapLine ? `<p class="cal-sum">Calibration: ${gapLine.charAt(0).toLowerCase() + gapLine.slice(1)}.</p>` : ''}${sess !== null ? `<dl class="score-meta"><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl>` : ''}</div>
     ${summary}</section>
@@ -786,13 +791,13 @@ document.addEventListener('click', e => {
 });
 document.addEventListener('input', e => {
   const el = e.target, c = card();
-  if (el.id === 'hero-range') { st.hero.value = +el.value; setRange(el); const hr = qs('#hero-read'); hr.textContent = el.value + '%'; hr.classList.remove('empty'); const hu = qs('.hero-unit'); if (hu) hu.hidden = false; qs('[data-act="hero-lock"]').disabled = false; return }
+  if (el.id === 'hero-range') { st.hero.value = +el.value; setRange(el); const hr = qs('#hero-read'); hr.textContent = el.value + '%'; hr.classList.remove('empty'); const hu = qs('.hero-unit'); if (hu) hu.textContent = 'less time, your call'; if (hu) hu.hidden = false; qs('[data-act="hero-lock"]').disabled = false; return }
   if (el.id === 'conf') { st.conf = +el.value; st.confTouched = true; setRange(el); const o = qs('#conf-read'); o.textContent = st.conf + '%'; o.classList.remove('empty'); syncLock(); return }
   if (!c || st.phase !== 'predict') {
     if (el.id === 'atlas-q') { st.atlasQuery = el.value; const tmp = document.createElement('div'); tmp.innerHTML = atlas(); qs('#atlas-grid').replaceWith(tmp.querySelector('#atlas-grid')); qs('#atlas-count').textContent = tmp.querySelector('#atlas-count').textContent }
     return;
   }
-  if (el.id === 'est') { st.resp = +el.value; setRange(el); qs('#est-read').textContent = st.resp + (c.estimate.unit ?? '%'); qs('#est-read').classList.remove('empty'); syncLock(); return }
+  if (el.id === 'est') { st.resp = +el.value; setRange(el); qs('#est-read').textContent = mn(st.resp + (c.estimate.unit ?? '%')); qs('#est-read').classList.remove('empty'); syncLock(); return }
   if (el.id === 'fc') { st.resp = +el.value; st.touched = true; setRange(el); qs('#fc-read').textContent = st.resp + '%'; qs('#fc-read').classList.remove('empty'); syncLock(); return }
   if (el.dataset.alloc !== undefined) {
     // The points always add up to the total: raising one option takes points from the others in proportion.

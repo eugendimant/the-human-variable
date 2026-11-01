@@ -24,7 +24,7 @@ Sources:
 8. **No crushed tracking.** Letter spacing no tighter than −0.035 em at any size; small text keeps default spacing (no wide tracking). *Detector R17.*
 9. **No text below 12 px; body text 16 px or more.** *Detector R16.*
 10. **Lines of about 65 to 75 characters**; no justified text. *Detector R18.*
-11. **Balanced headings, no orphans.** Headings use `text-wrap: balance`, long paragraphs `text-wrap: pretty`. *Detector R19.*
+11. **Headings fill the line.** Headings wrap only when a line is full (`text-wrap: wrap`, never `balance`, which leaves lines short and space empty; owner, 2026-11-01). No width caps on headings narrower than their column (*detector R33*). Long paragraphs use `text-wrap: pretty`. *Detector R19.*
 12. **A hero headline of three lines or fewer** at desktop width. *Detector R20.*
 
 ## Colour and surface
