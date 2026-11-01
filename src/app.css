@@ -236,13 +236,14 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .search{flex:1 1 320px;display:flex;align-items:center;gap:10px;height:48px;border:1px solid var(--rule);border-radius:999px;padding:0 16px;background:var(--surface)}
 .search input{flex:1;border:0;background:transparent;height:100%;outline:none;min-width:0}
 .search:focus-within{outline:3px solid var(--you);outline-offset:2px}
-.atlas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;padding-bottom:64px}
-.entry{text-align:left;padding:18px;border-radius:var(--r-panel);border:1px solid var(--rule);background:var(--surface);display:flex;flex-direction:column;gap:10px;min-height:190px}
-.entry:hover{border-color:var(--rule-strong)}
-.entry .entry-title{display:block;margin:0;font-weight:750;font-size:18px;line-height:1.2;letter-spacing:-.015em}
-.entry p{margin:0;color:var(--ink-2);font-size:var(--t6);line-height:1.45;flex:1}
-.entry .meta{display:flex;gap:6px;flex-wrap:wrap}
-.entry .cite{font-size:var(--t7);color:var(--muted)}
+/* All decisions: a ruled index, one entry per decision; format and area as a phrase, your best score in ink (review 28: rules 2, 4, 18) */
+.atlas-grid{display:block;padding-bottom:64px}
+.entry{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;row-gap:4px;width:100%;text-align:left;padding:16px 0;border:0;border-top:1px solid var(--rule);border-radius:0;background:none}
+.entry:hover .entry-title{color:var(--you-ink)}
+.entry .entry-title{grid-column:1;font-weight:750;font-size:18px;line-height:1.25;letter-spacing:-.015em}
+.entry .entry-best{grid-column:2;grid-row:1;font-weight:700;color:var(--ink);white-space:nowrap}
+.entry .entry-q{grid-column:1/-1;color:var(--ink-2);font-family:var(--serif);font-size:17px;line-height:1.45;max-width:68ch}
+.entry .entry-meta{grid-column:1/-1;font-size:var(--t7);color:var(--muted)}
 
 /* Record */
 .rec-head{padding-top:clamp(36px,5vw,64px);padding-bottom:8px}
@@ -713,3 +714,5 @@ p,li,dd{text-wrap:pretty}
 .tutor-suggest{margin-top:12px}
 .theme-strip{display:none;padding:14px 22px 18px;border-top:1px solid var(--rule)}.theme-strip svg{width:100%;height:auto;display:block;font-family:"Schibsted Grotesk",system-ui}.theme-strip .ts-ax{stroke:var(--rule);stroke-width:2}.theme-strip .ts-zero{stroke:#8a96a8;stroke-dasharray:3 3}.theme-strip .ts-o{fill:#9aa6b8}.theme-strip .ts-me{fill:var(--you);stroke:#fff;stroke-width:2}.theme-strip .ts-lab{fill:var(--you-ink);font-size:17px;font-weight:700}.theme-strip .ts-tick{fill:var(--muted);font-size:15px}.theme-strip .plate-h{color:var(--ink-2)}
 @media (min-width:1200px){.theme-strip{display:block}}   /* the wide reveal's second column: this call against your other calls on the principle (review 27, o3) */
+.cal-sum{font-size:17px;font-weight:650;margin:18px 0 0}
+.hb-ends{margin-top:-2px}.hb-scale{position:relative;display:block;height:16px;font-size:12.5px;color:var(--muted)}.hb-scale em{position:absolute;font-style:normal;top:0}.hb-scale em:first-child{left:0}.hb-scale em:last-child{right:0}.hb-scale em[style]{transform:translateX(-50%)}.plate .hb-scale{color:#b9c4dd}

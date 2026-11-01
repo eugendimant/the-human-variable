@@ -513,7 +513,7 @@ def test_player_text_uses_curly_quotes():
         elif isinstance(o, list):
             for v in o: yield from walk(v, key)
         elif isinstance(o, str): yield o
-    bad = [(c['id'], s[:60]) for c in LIVE for s in walk(c) if '"' in s]
+    bad = [(c['id'], s[:60]) for c in LIVE for s in walk(c) if '"' in s or "'" in s]   # straight apostrophes too (review 28)
     assert not bad, bad[:5]
 
 

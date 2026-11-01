@@ -107,3 +107,13 @@ def test_label_wider_than_its_pill_is_caught():
         pg.set_content('<svg viewBox="0 0 400 100" width="400" height="100"><g><rect x="130" y="20" width="140" height="48"/><text x="200" y="50" text-anchor="middle" font-size="14">Pay gap</text></g></svg>')
         clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31']; b.close()
     assert hit and not clean, (hit, clean)
+
+
+def test_lint_states_use_real_routes():
+    """Review 28: a lint state whose hash is not a real route silently lints the home page."""
+    import re
+    from pathlib import Path
+    R = Path(__file__).resolve().parents[1]
+    routes = set(re.findall(r"'(#\w+)'", re.search(r"const HASH = \{([^}]*)\}", (R / 'src/app.js').read_text()).group(1)))
+    used = set(re.findall(r"URL \+ '(#\w+)'", (R / 'tools/design_lint.py').read_text()))
+    assert used and used <= routes, used - routes

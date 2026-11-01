@@ -657,3 +657,13 @@ Golden diff read by class: 7,076 wording changes on the not-covered line; 158 we
 
 ### Audit 34 (2026-11-01): no introduced Major or Blocking; 6 Minors fixed
 Locked-screen titles keep their own punctuation only; the theme strip stacks ties under "this call" in 5-point columns with a "+n" count past three, and its type is sized for 1200 px (lint now checks the strip at 1200); the Streamlit primary button keeps white on blue when hovered; the AI-key test stubs the bound transport (it could not fail before) and checks a free question does reach the model; suggestion order is pinned by a test and by page/server parity.
+
+### Iteration 35 (2026-11-01): review 28 fixes
+- **Verdict**: "Close." only above what a blind call earns; partial credit reads "partly right, not exact", not "missed".
+- **All decisions** is a ruled index (title, question, format and area as a phrase, source; best score in ink); the lint state for it used a dead hash ('#atlas') and silently linted the home page; it now uses '#studies' and a test checks every lint hash is a real route.
+- **Record**: "Calibration: 44 points more confident than accurate." as one sentence.
+- **Figures**: the allocate effect track prints its scale at both ends and at zero; the theme strip explains its marks in words and states how this call compares with the player's average.
+- **Tutor**: "can we trust X from our vendor/tool/model" is a recommendation; "how many / what share / what percent" answers with the explanation when it states numbers. Golden diff: apostrophe-only changes, the retired social20, and the renamed contagion follow-up.
+- **Content**: curly apostrophes and single quotes in all player text (test extended; both tutors tokenize curly and straight alike); rollout3's scene neutral; social20 retired (it asks for a method); the contagion follow-up no longer cites a year from another paper, and the GEB header line is gone from its evidence; genai3's locations say the values come from Table 1; a duplicate social01 quote with a missing space removed.
+- **Classroom**: joins use only their own bucket; answer retries honour Retry-After for about 20 s.
+- **Kept, with reason**: social01's chart shows the variances the paper reports and calls "much larger"; it stays as the paper states it (RULE 0).

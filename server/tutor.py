@@ -22,7 +22,7 @@ TOK = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
 
 def tokens(s: str) -> list[str]:
     import unicodedata   # Köbis and Kobis, Zünd and Zund match
-    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
+    s = unicodedata.normalize('NFKD', str(s).replace('\u2019', "'").replace('\u2018', "'")).encode('ascii', 'ignore').decode()   # curly and straight apostrophes tokenize alike, as in the page
     out = [stem(t) for t in TOK.findall(s.lower()) if t not in STOP and (len(t) > 2 or t.isdigit() or t == 'ai')]
     return out + [s for t in out for s in SYN.get(t, ())]
 
@@ -127,7 +127,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     locked = {'answer': 'That study opens after your instructor reveals it in class.', 'citations': [], 'mode': 'locked'}
     off = {'answer': 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', 'citations': [], 'mode': 'curated'}
     # a question that names a study by an author's surname goes to that study
-    if c and re.search(r"\bshould (my|our|we|i)\b (?!(believe|buy|take|worry|care|be (worried|concerned|afraid))\b)\w+", ql) and not re.search(r"\b(is|would|be) (this|it|that)( be)? (really |even |actually )?(ethic\w*|fair|moral\w*|right|wrong|ok|okay|allowed|legal)\b|\bit'?s (really )?(fair|ok|okay|allowed|legal)\b|\bare we allowed\b|\bthe right thing\b|\bunethical\b|\b(ethic\w*|unfair\w*|immoral\w*|legal(ity)?)\b|\b(fire[ds]?|lay(ing)? off|cut (jobs|staff|headcount)|replace (staff|workers|people))\b|\bhire (fewer|less)\b|\bfewer (staff|people|workers|agents|employees|consultants|writers|hires|humans|jobs|reps|analysts)\b", ql):   # a recommendation question goes to the manager's action; ethics and staffing questions do not
+    if c and re.search(r"\bcan (i|we) (trust|rely on|count on|use)\b.*\b(our|my|a|the|this) (\w+ )?(vendor|supplier|tool|provider|system|model)s?\b|\bshould (my|our|we|i)\b (?!(believe|buy|take|worry|care|be (worried|concerned|afraid))\b)\w+", ql) and not re.search(r"\b(is|would|be) (this|it|that)( be)? (really |even |actually )?(ethic\w*|fair|moral\w*|right|wrong|ok|okay|allowed|legal)\b|\bit'?s (really )?(fair|ok|okay|allowed|legal)\b|\bare we allowed\b|\bthe right thing\b|\bunethical\b|\b(ethic\w*|unfair\w*|immoral\w*|legal(ity)?)\b|\b(fire[ds]?|lay(ing)? off|cut (jobs|staff|headcount)|replace (staff|workers|people))\b|\bhire (fewer|less)\b|\bfewer (staff|people|workers|agents|employees|consultants|writers|hires|humans|jobs|reps|analysts)\b", ql):   # a recommendation question goes to the manager's action; ethics and staffing questions do not
         return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
     if c:
         fol = c.get('follow', [])   # the item's own follow-up, asked word for word, else the nearest one above 0.6 overlap
@@ -217,6 +217,9 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'models':
                 fm = [f for f in fol if re.search(r'\b(GPT|Claude|Llama|Gemini|ChatGPT|Bing|DALL|Midjourney)', f['a'])] or [f for f in fol if re.search(r'\b(models?|tools?)\b', f['q'], re.I)]
                 if fm: return out(fm[0]['a'], c)
+                continue
+            if name == 'numbers':
+                if re.search(r'\d', c['explain']): return out(c['explain'], c)
                 continue
             if name == 'who': return out(f"Who was studied: {st.get('n') or 'see the paper'}. Design: {st.get('design', 'see the paper')}. What the study covers: {c['boundary']}", c)
             if name == 'catch':

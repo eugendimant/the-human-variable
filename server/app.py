@@ -199,14 +199,14 @@ class Handler(BaseHTTPRequestHandler):
                 return self.json(201, STORE.create(d.get('title', '')))
             m = CODE_RE.match(p)
             instructor = bool(m and m.group(2) == '/control' and self.key() and STORE.is_admin(m.group(1), self.key()))
+            if m and m.group(2) == '/join':   # joins have their own bucket only, so a class joining behind one NAT does not use up the answer budget (review 28)
+                if not LIMIT.allow(self.ip() + '|join|' + m.group(1), 'join'): return self.json(429, {'error': 'Too many joins from this network. Wait a moment.'}, {'Retry-After': '5'})
+                return self.json(200, STORE.join(m.group(1)))
             if instructor:   # the instructor's controls have their own bucket, so students on the same campus NAT cannot throttle them
                 if not LIMIT.allow(self.ip() + '|instructor', 'write'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
             elif not self.allowed('write'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
             if m:
                 code, sub = m.group(1), m.group(2)
-                if sub == '/join':
-                    if not LIMIT.allow(self.ip() + '|join|' + code, 'join'): return self.json(429, {'error': 'Too many joins from this network. Wait a moment.'}, {'Retry-After': '5'})
-                    return self.json(200, STORE.join(code))
                 if sub == '/responses': return self.json(200, STORE.submit(code, d.get('token', ''), d.get('answer'), d.get('confidence')))
                 if sub == '/control': return self.json(200, STORE.control(code, self.key(), str(d.get('action', '')), d.get('challenge')))
             self.json(404, {'error': 'Not found'})

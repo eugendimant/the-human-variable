@@ -2262,11 +2262,6 @@
    "source": "contagion19",
    "quote": "we observe that behavioral contagion is asymmetric only where social proximity is high, with the difference being highly significant according to the equality of proportion statistic (88.2% vs. 34.8%, p<0.001).",
    "location": "Author's pre-publication version of the same article (numbers identical to the published paper): Dimant, author's pre-publication version No. 8263 (April 2020): https://www.ifo.de/DocDL/cesifo1_wp8263.pdf [PDF page 18]"
-  },
-  {
-   "source": "contagion19",
-   "quote": "Games and Economic Behavior 132 (2022) 59–72",
-   "location": "Bicchieri, Dimant, Gaechter & Nosenzo (2022), GEB 132:59-72, published version (open access), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/14rF-R8gkZQk9PpYxfztuAZI80ZuFpi-_/view [PDF page 1]"
   }
  ],
  "dimant-deviant-choice": [
@@ -3244,11 +3239,6 @@
   }
  ],
  "social01": [
-  {
-   "quote": "we recruited a sample of about 1,200U.S. participants who are representative in terms of age, gender, and ethnicity",
-   "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2252",
-   "source": "norms24"
-  },
   {
    "quote": "each participant can contribute up to four tokens",
    "location": "Full text, author PDF (michelegelfand.com), Management Science 71(3), p. 2251",
@@ -4306,12 +4296,12 @@
   {
    "source": "yin24",
    "quote": "AI-generated messages made recipients feel more heard than human-generated messages",
-   "location": "Abstract (5.74 vs 5.17; P < 0.001)"
+   "location": "Abstract (the statement); the values (5.74 vs 5.17; P < 0.001) are from Table 1"
   },
   {
    "source": "yin24",
    "quote": "recipients felt less heard when they realized that a message came from AI (vs. human)",
-   "location": "Abstract (5.13 vs 5.81; P < 0.001)"
+   "location": "Abstract (the statement); the values (5.13 vs 5.81; P < 0.001) are from Table 1"
   },
   {
    "source": "yin24",

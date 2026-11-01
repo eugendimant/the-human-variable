@@ -199,7 +199,7 @@
   "options": [
    "Making users answer before seeing the AI",
    "Plain explanations with each suggestion",
-   "Showing the AI's confidence with each suggestion"
+   "Showing the AI’s confidence with each suggestion"
   ]
  },
  "axb11": {
@@ -382,23 +382,23 @@
  "dimant-contagion-multi": {
   "keyed": [
    "Anti-social behavior was more contagious than pro-social",
-   "Closeness amplified bad behavior's spread more than good"
+   "Closeness amplified bad behavior’s spread more than good"
   ],
   "options": [
    "Anti-social behavior was more contagious than pro-social",
-   "Closeness amplified bad behavior's spread more than good",
+   "Closeness amplified bad behavior’s spread more than good",
    "Closeness made people copy good and bad choices equally",
    "Pro-social individuals were the most easily swayed by their peers"
   ]
  },
  "dimant-deviant-choice": {
   "keyed": [
-   "Penalty plus “most think it's right,” cheap compliance"
+   "Penalty plus “most think it’s right,” cheap compliance"
   ],
   "options": [
    "Norm message alone",
    "Penalty plus “most others comply,” with costly compliance",
-   "Penalty plus “most think it's right,” cheap compliance",
+   "Penalty plus “most think it’s right,” cheap compliance",
    "Weak penalty alone"
   ]
  },
@@ -420,7 +420,7 @@
   "options": [
    "Genuine unwillingness to cooperate with opponents",
    "Low expectations of the other side’s cooperation",
-   "Stronger love for one's own side",
+   "Stronger love for one’s own side",
    "Too little information about the other side"
   ]
  },

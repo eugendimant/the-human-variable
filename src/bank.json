@@ -2452,7 +2452,7 @@
     "Gains were largest for the most creative writers"
    ],
    "answerTitle": "A creativity trade-off",
-   "explain": "Doshi and Hauser's 293 writers produced stories rated 8.1% more novel and 9.0% more useful with access to up to five AI ideas. Those stories were also more similar to each other, a shift worth 8.9% of the similarity range.",
+   "explain": "Doshi and Hauser’s 293 writers produced stories rated 8.1% more novel and 9.0% more useful with access to up to five AI ideas. Those stories were also more similar to each other, a shift worth 8.9% of the similarity range.",
    "implication": "Evaluate distinctiveness across your full campaign, not only each asset.",
    "boundary": "Online writers produced eight-sentence stories with no AI ideas, one AI idea, or up to five AI ideas.",
    "sources": [
@@ -2476,7 +2476,7 @@
     },
     {
      "q": "Who benefited most?",
-     "a": "Writers who scored lowest on a creativity test: with up to five AI ideas, their stories' novelty rose 10.7%. The most creative writers saw little effect."
+     "a": "Writers who scored lowest on a creativity test: with up to five AI ideas, their stories’ novelty rose 10.7%. The most creative writers saw little effect."
     }
    ],
    "format": "multi",
@@ -2524,9 +2524,9 @@
    ],
    "answer": 0,
    "answerTitle": "Seeing the model err drove people away from it",
-   "explain": "In Dietvorst, Simmons and Massey's Study 1, 65% of participants who saw no forecasts bet on the model. After seeing both the model's and their own forecasts, only 23% did, although people made 15 to 29% more error than the model.",
+   "explain": "In Dietvorst, Simmons and Massey’s Study 1, 65% of participants who saw no forecasts bet on the model. After seeing both the model’s and their own forecasts, only 23% did, although people made 15 to 29% more error than the model.",
    "implication": "Communicate expected error rates and compare human and model performance symmetrically.",
-   "boundary": "Incentivized forecasts of MBA students' performance and US states' airline-passenger ranks, by lab and online participants.",
+   "boundary": "Incentivized forecasts of MBA students’ performance and US states’ airline-passenger ranks, by lab and online participants.",
    "sources": [
     "diet15"
    ],
@@ -2544,7 +2544,7 @@
     },
     {
      "q": "How much better was the model?",
-     "a": "Human forecasts had 15 to 29% more error than the model when predicting MBA students' performance, and 90 to 97% more when ranking states by airline passengers."
+     "a": "Human forecasts had 15 to 29% more error than the model when predicting MBA students’ performance, and 90 to 97% more when ranking states by airline passengers."
     },
     {
      "q": "Was real money at stake?",
@@ -2567,7 +2567,7 @@
     "labels": [
      "Saw no forecast results",
      "Saw own results only",
-     "Saw the model's results only",
+     "Saw the model’s results only",
      "Saw both sets of results"
     ],
     "values": [
@@ -2614,7 +2614,7 @@
     },
     {
      "q": "When did the preference fade?",
-     "a": "It weakened when people had to choose between the algorithm's estimate and their own, rather than weighing advice from an outside source."
+     "a": "It weakened when people had to choose between the algorithm’s estimate and their own, rather than weighing advice from an outside source."
     }
    ],
    "format": "forecast",
@@ -2659,7 +2659,7 @@
    "answerTitle": "People relied on algorithms less for matters of taste",
    "explain": "Castelo, Bos and Lehmann ran four online lab studies with over 1,400 participants and two field studies with over 56,000. People trusted and used algorithms less for tasks that seem subjective; making a task seem more objective raised reliance.",
    "implication": "For taste-based recommendations, explain the measurable inputs the algorithm uses, which makes the task seem more objective.",
-   "boundary": "Online lab and field studies of consumers' reliance on algorithms for tasks seen as subjective or objective.",
+   "boundary": "Online lab and field studies of consumers’ reliance on algorithms for tasks seen as subjective or objective.",
    "sources": [
     "cast19"
    ],
@@ -2709,7 +2709,7 @@
    "answer": 0,
    "answerTitle": "People fear AI ignores what makes them unique",
    "explain": "Longoni, Bonezzi and Morewedge traced resistance to uniqueness neglect: consumers doubt an AI provider can account for their unique characteristics and circumstances. Resistance was stronger among people who saw themselves as more unique and disappeared when AI care was framed as personalized.",
-   "implication": "Present AI as supporting a clinician's or advisor's decision, and say how it adapts to each person's case.",
+   "implication": "Present AI as supporting a clinician’s or advisor’s decision, and say how it adapts to each person’s case.",
    "boundary": "Consumers choosing between AI and human providers of medical care, in real and hypothetical choices.",
    "sources": [
     "long19"
@@ -2728,7 +2728,7 @@
     },
     {
      "q": "What removed the resistance?",
-     "a": "It disappeared when AI care was framed as personalized, when the care was for someone else, or when AI supported a human provider's decision instead of replacing it."
+     "a": "It disappeared when AI care was framed as personalized, when the care was for someone else, or when AI supported a human provider’s decision instead of replacing it."
     },
     {
      "q": "What drives the resistance?",
@@ -2777,7 +2777,7 @@
     },
     {
      "q": "What kind of company was it?",
-     "a": "A large, publicly traded Fortune 500 firm in health care and insurance. The plan's economic features did not change, only the default."
+     "a": "A large, publicly traded Fortune 500 firm in health care and insurance. The plan’s economic features did not change, only the default."
     }
    ],
    "format": "estimate",
@@ -3012,7 +3012,7 @@
    ],
    "answer": 1,
    "answerTitle": "Subtraction is often missed",
-   "explain": "In Adams, Converse, Hales and Klotz's experiment 4, only 21% of uncued participants listed any subtractive idea for improving a mini-golf hole. Reminded that they could add or subtract, 48% did.",
+   "explain": "In Adams, Converse, Hales and Klotz’s experiment 4, only 21% of uncued participants listed any subtractive idea for improving a mini-golf hole. Reminded that they could add or subtract, 48% did.",
    "implication": "Make “What can we remove?” mandatory in process reviews.",
    "boundary": "Eight experiments with puzzles and design tasks in which removing an element was an advantageous change.",
    "sources": [
@@ -3237,7 +3237,7 @@
     ],
     "unit": "",
     "highlight": 1,
-    "note": "Variance of contributions after seeing others' choices."
+    "note": "Variance of contributions after seeing others’ choices."
    }
   },
   {
@@ -3255,9 +3255,9 @@
    ],
    "answer": 1,
    "answerTitle": "Private views and public beliefs diverge",
-   "explain": "In all four of Prentice and Miller's studies, students rated their peers as more comfortable with campus drinking than they were themselves. Over a semester, men shifted their own attitudes toward that mistaken norm; women did not.",
+   "explain": "In all four of Prentice and Miller’s studies, students rated their peers as more comfortable with campus drinking than they were themselves. Over a semester, men shifted their own attitudes toward that mistaken norm; women did not.",
    "implication": "Elicit private views before public discussion.",
-   "boundary": "Four studies of college students' own attitudes toward campus alcohol use and their estimates of peers' attitudes.",
+   "boundary": "Four studies of college students’ own attitudes toward campus alcohol use and their estimates of peers’ attitudes.",
    "sources": [
     "plural93"
    ],
@@ -3271,7 +3271,7 @@
    "follow": [
     {
      "q": "Who was studied?",
-     "a": "College students, across four studies, who rated their own comfort with campus drinking and estimated the average student's comfort."
+     "a": "College students, across four studies, who rated their own comfort with campus drinking and estimated the average student’s comfort."
     },
     {
      "q": "Did beliefs change over time?",
@@ -3307,7 +3307,7 @@
    "answer": 2,
    "answerTitle": "Each party holds several distinct views",
    "explain": "Among 996 US respondents, Panizza, Dimant, Kimbrough and Vostroknutov recovered several views within each party. Agreement ranged from 95% of Democrats including the same view on same-sex rights in their drawings to only 50% of Republicans on gun policy.",
-   "implication": "Before engaging a stakeholder group, map the distinct views inside it and estimate each view's share.",
+   "implication": "Before engaging a stakeholder group, map the distinct views inside it and estimate each view’s share.",
    "boundary": "One incentivized online survey of 996 US respondents on seven political issues, compared with a standard single-norm measure.",
    "sources": [
     "plural24"
@@ -3364,7 +3364,7 @@
    "scene": "In an online health community, researchers built networks that were either clustered (neighbors share neighbors) or random (more long-range ties), then seeded a health behavior.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Reinforcement can beat reach",
-   "explain": "In Centola's online experiment with 1,528 participants, a health behavior reached 53.77% of people in clustered networks but only 38.26% in random networks, and it spread more than four times faster through the clustered ones.",
+   "explain": "In Centola’s online experiment with 1,528 participants, a health behavior reached 53.77% of people in clustered networks but only 38.26% in random networks, and it spread more than four times faster through the clustered ones.",
    "implication": "Launch hard-to-adopt practices inside tightly connected teams, so each person hears about them from several colleagues.",
    "boundary": "1,528 anonymous online participants in constructed networks deciding whether to register for a health forum.",
    "sources": [
@@ -3586,9 +3586,9 @@
    ],
    "answer": 0,
    "answerTitle": "The misreading can be mutual",
-   "explain": "Across seven studies, Shelton and Richeson found that White and Black participants wanted more contact with the other group but believed it did not. Each explained its own hesitation by fear of racial rejection and the other side's by lack of interest.",
+   "explain": "Across seven studies, Shelton and Richeson found that White and Black participants wanted more contact with the other group but believed it did not. Each explained its own hesitation by fear of racial rejection and the other side’s by lack of interest.",
    "implication": "Have managers make the first cross-group introduction, so neither side has to risk reaching out first.",
-   "boundary": "Seven studies of White and Black participants' interest in interracial contact and how they explained avoidance.",
+   "boundary": "Seven studies of White and Black participants’ interest in interracial contact and how they explained avoidance.",
    "sources": [
     "contact05"
    ],
@@ -3779,7 +3779,7 @@
    "follow": [
     {
      "q": "Which nudges were tested?",
-     "a": "A default nudge and a norm nudge that gave descriptive information about others' behavior."
+     "a": "A default nudge and a norm nudge that gave descriptive information about others’ behavior."
     },
     {
      "q": "How large was the evidence base?",
@@ -3819,9 +3819,9 @@
    ],
    "answer": 3,
    "answerTitle": "Keep the whole distribution",
-   "explain": "Dimant's method elicits, with incentives, each person's belief about the full distribution of views instead of the mean or most common view, so a unified team and one split into opposing camps can be told apart.",
+   "explain": "Dimant’s method elicits, with incentives, each person’s belief about the full distribution of views instead of the mean or most common view, so a unified team and one split into opposing camps can be told apart.",
    "implication": "In culture surveys, ask each person how views are spread across colleagues, not only what the typical view is.",
-   "boundary": "A short methods paper presenting an incentive-compatible survey tool that measures each person's perceived norm distribution.",
+   "boundary": "A short methods paper presenting an incentive-compatible survey tool that measures each person’s perceived norm distribution.",
    "sources": [
     "measure23"
    ],
@@ -3853,7 +3853,9 @@
     "design": "Methods paper (measurement tool)",
     "n": ""
    },
-   "permuted": true
+   "permuted": true,
+   "retired": true,
+   "retiredReason": "Review 28: the question asks for the paper’s method, so there is no result to predict."
   },
   {
    "id": "judg05",
@@ -3865,7 +3867,7 @@
    "question": "In the deaths frame, what share chose the gamble?",
    "answerTitle": "78% gambled once the frame was losses",
    "explain": "With identical outcomes, 72% chose the sure option when it was framed as lives saved; 78% chose the gamble when the same options were framed as deaths.",
-   "implication": "In investment memos, state each option's outcomes as both gains and losses before the team decides.",
+   "implication": "In investment memos, state each option’s outcomes as both gains and losses before the team decides.",
    "boundary": "Stanford and UBC students choosing between hypothetical public-health programs in a classroom questionnaire.",
    "sources": [
     "frame81"
@@ -3980,7 +3982,7 @@
    "format": "choice",
    "concept": "Algorithm aversion",
    "title": "Control over the model",
-   "scene": "In an incentivized task, people forecast students' math percentiles. They may use an imperfect model that outperforms human forecasts, but each group gets different rules for adjusting it.",
+   "scene": "In an incentivized task, people forecast students’ math percentiles. They may use an imperfect model that outperforms human forecasts, but each group gets different rules for adjusting it.",
    "question": "Which group chose to use the model least often?",
    "options": [
     "Could adjust each forecast by up to 2",
@@ -4050,7 +4052,7 @@
    },
    "answerTitle": "Up to 24.7% less crime",
    "explain": "Simulations showed crime reductions up to 24.7% with no change in jailing rates, or jailing cuts up to 41.9% with no rise in crime.",
-   "implication": "Audit high-volume screening decisions with a prediction model and estimate how many errors you could cut at today's approval rate.",
+   "implication": "Audit high-volume screening decisions with a prediction model and estimate how many errors you could cut at today’s approval rate.",
    "boundary": "Policy simulations on past bail cases; crime outcomes exist only for released defendants.",
    "sources": [
     "kleinberg18"
@@ -4061,7 +4063,7 @@
    },
    "follow": [
     {
-     "q": "Couldn't the model just copy judges' choices?",
+     "q": "Couldn’t the model just copy judges’ choices?",
      "a": "Crime is observed only for defendants judges released. The authors use methods such as quasi-random assignment of cases to judges to compare fairly."
     },
     {
@@ -4081,7 +4083,7 @@
    "format": "estimate",
    "concept": "Mechanical prediction",
    "title": "The formula versus the expert",
-   "scene": "A meta-analysis compares expert clinicians' predictions about human health and behavior with predictions from statistical formulas.",
+   "scene": "A meta-analysis compares expert clinicians’ predictions about human health and behavior with predictions from statistical formulas.",
    "question": "On average, how much more accurate were the formulas?",
    "estimate": {
     "target": 10,
@@ -4105,7 +4107,7 @@
    "follow": [
     {
      "q": "Did experience help the experts?",
-     "a": "No. The formula advantage held across judgment tasks, types of judges, judges' experience and types of data."
+     "a": "No. The formula advantage held across judgment tasks, types of judges, judges’ experience and types of data."
     },
     {
      "q": "Do interviews give experts an edge?",
@@ -4289,7 +4291,7 @@
     },
     {
      "q": "Can AI text seem more human than human?",
-     "a": "Yes. Text optimized against people's cues was judged human 65.7% of the time, versus 51.7% for real human text."
+     "a": "Yes. Text optimized against people’s cues was judged human 65.7% of the time, versus 51.7% for real human text."
     },
     {
      "q": "Which cues misled people?",
@@ -4369,7 +4371,7 @@
    "scene": "In experiments, people rated true and false headlines. Some carried an “AI-generated” label, including true headlines written by people.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Less believed and less shared",
-   "explain": "Across 4,976 participants, the label cut perceived accuracy and sharing whether headlines were true or false, human- or AI-made. The effect was three times smaller than a 'false' label.",
+   "explain": "Across 4,976 participants, the label cut perceived accuracy and sharing whether headlines were true or false, human- or AI-made. The effect was three times smaller than a ‘false’ label.",
    "implication": "If you label AI use, state what the AI did; vague labels read as full automation and penalize accurate content.",
    "boundary": "Headlines shown to US and UK online participants; the penalty disappeared when labels came with weak or medium definitions of AI involvement.",
    "sources": [
@@ -4408,7 +4410,7 @@
    "scene": "People make decisions with help from an AI that is usually right but sometimes wrong. Designers test different ways of presenting its advice.",
    "question": "Which design best cut agreement with wrong AI advice?",
    "options": [
-    "Showing the AI's confidence with each suggestion",
+    "Showing the AI’s confidence with each suggestion",
     "Plain explanations with each suggestion",
     "Making users answer before seeing the AI"
    ],
@@ -4435,7 +4437,7 @@
     },
     {
      "q": "What were the forcing designs?",
-     "a": "Three interventions built to compel people to engage more thoughtfully with the AI's suggestions and explanations before relying on them."
+     "a": "Three interventions built to compel people to engage more thoughtfully with the AI’s suggestions and explanations before relying on them."
     }
    ],
    "theme": "ai-trust",
@@ -4474,11 +4476,11 @@
    "follow": [
     {
      "q": "Why jokes?",
-     "a": "The authors chose a domain where human recommenders have many advantages, which makes the algorithm's win a hard test."
+     "a": "The authors chose a domain where human recommenders have many advantages, which makes the algorithm’s win a hard test."
     },
     {
      "q": "Why did people resist?",
-     "a": "Partly because they believed the human recommendation process was easier to understand than the algorithm's."
+     "a": "Partly because they believed the human recommendation process was easier to understand than the algorithm’s."
     },
     {
      "q": "What do the authors recommend?",
@@ -4494,7 +4496,7 @@
    "format": "choice",
    "concept": "Algorithmic bias",
    "title": "Who saw the STEM ad?",
-   "scene": "A firm runs a gender-neutral ad promoting STEM careers and lets the platform's algorithm deliver it cost-effectively. Fewer women than men end up seeing it.",
+   "scene": "A firm runs a gender-neutral ad promoting STEM careers and lets the platform’s algorithm deliver it cost-effectively. Fewer women than men end up seeing it.",
    "question": "What best explains the gap?",
    "options": [
     "Women scrolled past the ads more often",
@@ -4520,7 +4522,7 @@
      "a": "No. The ad was intended to be gender neutral; the gap came from an algorithm that simply optimized cost-effectiveness."
     },
     {
-     "q": "Is this one platform's quirk?",
+     "q": "Is this one platform’s quirk?",
      "a": "The authors report the same regularity extends to other major digital platforms."
     },
     {
@@ -4545,7 +4547,7 @@
    },
    "answerTitle": "Customers got politer and escalated less",
    "explain": "With AI assistance, customers were more polite and less likely to ask to speak to a manager, alongside a 15% average rise in issues resolved per hour.",
-   "implication": "Track escalation rates and customer tone in AI pilots; part of the payoff may show up in supervisors' time.",
+   "implication": "Track escalation rates and customer tone in AI pilots; part of the payoff may show up in supervisors’ time.",
    "boundary": "One firm’s customer-support chat operation, with a staggered rollout across agents.",
    "sources": [
     "bry25"
@@ -4589,7 +4591,7 @@
    "answerTitle": "25.1% faster, with more tasks done",
    "explain": "Consultants with GPT-4 completed 12.2% more tasks and worked 25.1% faster. Graded quality rose 33.9% with GPT-4 and a prompt-engineering overview, and 29.9% with GPT-4 alone.",
    "implication": "Pilot AI on drafting and ideation first, and measure speed, completion and blind-graded quality together.",
-   "boundary": "One firm's consultants on designed tasks for a fictional company; on a task outside the frontier, AI users were less often correct.",
+   "boundary": "One firm’s consultants on designed tasks for a fictional company; on a task outside the frontier, AI users were less often correct.",
    "sources": [
     "dell26"
    ],
@@ -4683,7 +4685,7 @@
    "answerTitle": "Top agents: slightly faster, slightly lower quality",
    "explain": "Across 5,172 customer-support agents, Brynjolfsson, Li and Raymond found that the most experienced, highest-skilled agents gained little from the AI assistant: small improvements in speed, alongside small declines in the quality of their output.",
    "implication": "Let top performers tune or skip suggestions, and monitor their quality scores after rollout.",
-   "boundary": "One firm's support chat; the declines for top agents were small, and other occupations may differ.",
+   "boundary": "One firm’s support chat; the declines for top agents were small, and other occupations may differ.",
    "sources": [
     "bry25"
    ],
@@ -4719,7 +4721,7 @@
    },
    "concept": "Jagged frontier",
    "title": "Which tasks go to GPT-4?",
-   "scene": "Next, your strategy team gets GPT-4. Their work ranges from brainstorming product ideas to a brand recommendation that hinges on details buried in interview notes.",
+   "scene": "Next, your strategy team gets GPT-4. Their work ranges from brainstorming product ideas to picking the brand to grow from interview notes and spreadsheets.",
    "question": "Assign each task.",
    "delegate": {
     "choices": [
@@ -4807,7 +4809,7 @@
    "follow": [
     {
      "q": "What were students doing with it?",
-     "a": "Most used plain GPT-4 to obtain solutions; the most common message was 'What is the answer?'"
+     "a": "Most used plain GPT-4 to obtain solutions; the most common message was ‘What is the answer?’"
     },
     {
      "q": "Did students realize the harm?",
@@ -4869,11 +4871,11 @@
    "format": "forecast",
    "concept": "Ad ROI precision",
    "title": "The noisy ROI test",
-   "scene": "Your CFO wants a randomized test to prove a digital campaign's return before renewing it. Individual customers' weekly sales swing wildly.",
+   "scene": "Your CFO wants a randomized test to prove a digital campaign’s return before renewing it. Individual customers’ weekly sales swing wildly.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Over 100 percentage points wide",
    "explain": "The median confidence interval on return on investment was over 100 percentage points wide, because individual sales are very noisy relative to ad effects.",
-   "implication": "Pool several experiments or measure lower-variance outcomes before asking one test to settle a campaign's ROI.",
+   "implication": "Pool several experiments or measure lower-variance outcomes before asking one test to settle a campaign’s ROI.",
    "boundary": "Digital ads for major US retailers and brokerages; the experiments were unbiased, the limit was statistical precision.",
    "sources": [
     "lewis15"
@@ -4919,7 +4921,7 @@
     "unit": "%"
    },
    "answerTitle": "Savings rates rose from 3.5% to 13.6%",
-   "explain": "In the first implementation, participants' savings rates increased from 3.5 percent to 13.6 percent over 40 months, and 78 percent of those offered the plan joined.",
+   "explain": "In the first implementation, participants’ savings rates increased from 3.5 percent to 13.6 percent over 40 months, and 78 percent of those offered the plan joined.",
    "implication": "Offer a sign-up that raises retirement contributions at each future raise, so take-home pay never falls.",
    "boundary": "Early company implementations with employees who chose to join.",
    "sources": [
@@ -4963,7 +4965,7 @@
    },
    "answerTitle": "Fewer than one in three finished on time",
    "explain": "Only 29.7% finished by their best-guess date, against an average prediction of 33.9 days, and fewer than half (48.7%) finished by their worst-case date.",
-   "implication": "Set project deadlines from how long similar past projects actually took, not from the team's step-by-step plan.",
+   "implication": "Set project deadlines from how long similar past projects actually took, not from the team’s step-by-step plan.",
    "boundary": "Study 1 tracked psychology honors students on their theses; one task type, one university.",
    "sources": [
     "buehler94"
@@ -4995,7 +4997,7 @@
    "concept": "Remote work productivity",
    "title": "Shirking from home?",
    "scene": "Ctrip, a 16,000-employee Chinese travel agency, asked call-center staff to volunteer for home working, then randomly assigned volunteers to home or office for nine months.",
-   "question": "By how much did home workers' performance change?",
+   "question": "By how much did home workers’ performance change?",
    "estimate": {
     "target": 13,
     "min": -30,
@@ -5007,7 +5009,7 @@
    "answerTitle": "Performance rose 13%",
    "explain": "Home working led to a 13% performance increase, 9% of it from working more minutes per shift, and attrition roughly halved.",
    "implication": "Pilot remote work on roles with measurable output, assign it randomly, and judge it on output rather than presence.",
-   "boundary": "Volunteer call-center staff with easily measured output; home workers' promotion rate, given performance, fell.",
+   "boundary": "Volunteer call-center staff with easily measured output; home workers’ promotion rate, given performance, fell.",
    "sources": [
     "bloom15"
    ],
@@ -5022,7 +5024,7 @@
     },
     {
      "q": "Was there any downside?",
-     "a": "Yes. Conditional on performance, home workers' promotion rate fell."
+     "a": "Yes. Conditional on performance, home workers’ promotion rate fell."
     }
    ],
    "study": {
@@ -5147,7 +5149,7 @@
     "truth": true
    },
    "answerTitle": "Lateness nearly doubled and stayed high",
-   "explain": "In Gneezy and Rustichini's six fined day-care centers, late pickups settled at almost twice the pre-fine rate and stayed there after the fine ended (center 1: 7.25 a week before, 15.25 after). The four control centers did not change.",
+   "explain": "In Gneezy and Rustichini’s six fined day-care centers, late pickups settled at almost twice the pre-fine rate and stayed there after the fine ended (center 1: 7.25 a week before, 15.25 after). The four control centers did not change.",
    "implication": "Before fining a behavior, ask whether the fine turns a social obligation into a price people will happily pay.",
    "boundary": "A small fine in ten day-care centers over 20 weeks; four control centers showed no change.",
    "sources": [
@@ -5203,7 +5205,7 @@
    "answerTitle": "The photo matched a 25% rate cut",
    "explain": "Showing fewer example loans, not suggesting a particular use, or including a photo of an attractive woman each raised demand about as much as a 25% interest-rate reduction.",
    "implication": "Test creative content against price in randomized offers before giving up margin on discounts, and review creative for fairness: in consumer credit, imagery that sways borrowers raises consumer-protection questions.",
-   "boundary": "Direct-mail offers of short-term consumer credit in South Africa; one lender's former clients.",
+   "boundary": "Direct-mail offers of short-term consumer credit in South Africa; one lender’s former clients.",
    "sources": [
     "bertrand10"
    ],
@@ -5313,8 +5315,8 @@
    "format": "causal",
    "concept": "Pay transparency",
    "title": "When salaries go public",
-   "scene": "A new website published University of California employees' pay. Researchers told a random subset of staff about the site, then surveyed everyone on job satisfaction and job search.",
-   "question": "What did learning about peers' pay do?",
+   "scene": "A new website published University of California employees’ pay. Researchers told a random subset of staff about the site, then surveyed everyone on job satisfaction and job search.",
+   "question": "What did learning about peers’ pay do?",
    "options": [
     "Above-median earners: more satisfied",
     "Above-median earners: happier, job hunting less",
@@ -5327,7 +5329,7 @@
    "implication": "Before publishing pay data, prepare clear explanations of pay differences for below-median staff, who carry the morale cost.",
    "boundary": "University of California employees; outcomes were self-reported satisfaction and job-search intentions.",
    "dag": {
-    "alt": "A random notice about the website changes who knows peers' pay, which affects satisfaction. Unobserved traits such as ability and fit drive both pay rank and satisfaction, which is why a simple survey correlation between rank and satisfaction is confounded.",
+    "alt": "A random notice about the website changes who knows peers’ pay, which affects satisfaction. Unobserved traits such as ability and fit drive both pay rank and satisfaction, which is why a simple survey correlation between rank and satisfaction is confounded.",
     "height": 200,
     "nodes": [
      {
@@ -5400,7 +5402,7 @@
     },
     {
      "q": "Does pay level or pay rank matter more?",
-     "a": "Rank. Responses tracked a worker's rank in the pay distribution more closely than relative pay level."
+     "a": "Rank. Responses tracked a worker’s rank in the pay distribution more closely than relative pay level."
     }
    ],
    "study": {
@@ -5419,7 +5421,7 @@
    "scene": "For a month, Indian manufacturing workers in production teams were randomly paid either the same flat daily wage or different wages based on their baseline productivity rank.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Output fell 0.45 SD; attendance fell 18 points",
-   "explain": "When coworkers' productivity was difficult to observe, pay inequality reduced output by 0.45 standard deviations and attendance by 18 percentage points, and weakened cooperation.",
+   "explain": "When coworkers’ productivity was difficult to observe, pay inequality reduced output by 0.45 standard deviations and attendance by 18 percentage points, and weakened cooperation.",
    "implication": "If pay differs within a team, make the productivity basis visible to everyone before the gap takes effect.",
    "boundary": "When workers clearly saw that higher-paid peers were more productive, pay gaps had no discernible effect.",
    "sources": [
@@ -5432,7 +5434,7 @@
     },
     {
      "q": "What happened to teamwork?",
-     "a": "Pay inequality also lowered coworkers' ability to cooperate in their own self-interest."
+     "a": "Pay inequality also lowered coworkers’ ability to cooperate in their own self-interest."
     },
     {
      "q": "How long did the experiment run?",
@@ -5455,7 +5457,7 @@
    "format": "choice",
    "concept": "Joint evaluation",
    "title": "Two ways to compare candidates",
-   "scene": "Evaluators chose workers for a task and were paid on the chosen worker's future performance. Some saw candidates one at a time; others compared candidates side by side.",
+   "scene": "Evaluators chose workers for a task and were paid on the chosen worker’s future performance. Some saw candidates one at a time; others compared candidates side by side.",
    "question": "Which procedure made evaluators rely more on individual performance?",
    "options": [
     "Seeing candidates one at a time",
@@ -5463,7 +5465,7 @@
    ],
    "answer": 1,
    "answerTitle": "Side-by-side review focused choices on performance",
-   "explain": "In Bohnet, van Geen and Bazerman's incentivized experiment, evaluators who compared candidates side by side relied more on individual performance, while those judging one at a time leaned more on gender stereotypes, so joint evaluation paid evaluators the most.",
+   "explain": "In Bohnet, van Geen and Bazerman’s incentivized experiment, evaluators who compared candidates side by side relied more on individual performance, while those judging one at a time leaned more on gender stereotypes, so joint evaluation paid evaluators the most.",
    "implication": "Compare shortlisted candidates side by side on the same criteria instead of scoring each one in isolation.",
    "boundary": "Incentivized lab hiring task with clear performance scores; real hiring information is noisier.",
    "sources": [
@@ -5577,7 +5579,7 @@
    "track": "Culture & Society",
    "concept": "Civic honesty",
    "title": "Lost wallets, different contents",
-   "scene": "Researchers handed 'lost' wallets to staff at banks, hotels, post offices and police stations. In the US, UK and Poland, wallets held no money, US$13.45, or US$94.15.",
+   "scene": "Researchers handed ‘lost’ wallets to staff at banks, hotels, post offices and police stations. In the US, UK and Poland, wallets held no money, US$13.45, or US$94.15.",
    "question": "Rank the wallets by how often staff contacted the owner.",
    "options": [
     "US$94.15 in cash",
@@ -5613,7 +5615,7 @@
     },
     {
      "q": "How large was the study?",
-     "a": "17,303 wallets were turned in across 355 cities in 40 countries, typically five to eight of each country's largest cities."
+     "a": "17,303 wallets were turned in across 355 cities in 40 countries, typically five to eight of each country’s largest cities."
     }
    ],
    "study": {
@@ -5716,7 +5718,7 @@
    "follow": [
     {
      "q": "Why do people pass up free money?",
-     "a": "The authors' new experiments point to two main motives: a preference for being honest and a preference for being seen as honest."
+     "a": "The authors’ new experiments point to two main motives: a preference for being honest and a preference for being seen as honest."
     },
     {
      "q": "Do bigger stakes produce more lying?",
@@ -5788,7 +5790,7 @@
     "truth": false
    },
    "answerTitle": "More rule-bending, not more maximal cheating",
-   "explain": "Mean claims were 3.17 in low-violation pools and 3.53 in high-violation pools, near the 3.47 'justified dishonesty' benchmark; the share claiming the maximum was unrelated to rule violations.",
+   "explain": "Mean claims were 3.17 in low-violation pools and 3.53 in high-violation pools, near the 3.47 ‘justified dishonesty’ benchmark; the share claiming the maximum was unrelated to rule violations.",
    "implication": "Where rule-breaking is common, expect small self-justified stretching more than brazen fraud; remove ambiguity people use to rationalize.",
    "boundary": "2,568 students in 23 countries; a cross-society correlation with a country index measured years earlier.",
    "sources": [
@@ -5796,7 +5798,7 @@
    ],
    "follow": [
     {
-     "q": "What is 'justified dishonesty'?",
+     "q": "What is ‘justified dishonesty’?",
      "a": "Reporting the higher of the two rolls instead of the first, a self-justifiable lie. Its benchmark average is 3.47, close to the 3.53 claimed in high-violation societies."
     },
     {
@@ -5887,8 +5889,8 @@
     "truth": true
    },
    "answerTitle": "Republicans moved right; Democrats barely moved",
-   "explain": "For Republicans the intent-to-treat effect was 0.12 points toward conservatism on a seven-point scale, rising to 0.60 among full compliers; the Democrats' shift was small and not significant.",
-   "implication": "Do not expect that feeding a divided team the other side's messages builds understanding.",
+   "explain": "For Republicans the intent-to-treat effect was 0.12 points toward conservatism on a seven-point scale, rising to 0.60 among full compliers; the Democrats’ shift was small and not significant.",
+   "implication": "Do not expect that feeding a divided team the other side’s messages builds understanding.",
    "boundary": "Party-identified US adults using Twitter at least three times weekly, paid to follow a bot for one month in late 2017.",
    "sources": [
     "bail18"
@@ -6012,7 +6014,7 @@
    "follow": [
     {
      "q": "How was the Twitter test run?",
-     "a": "In Study 7, 5,379 Twitter users who had recently shared links to misleading, hyperpartisan sites got a private message asking them to rate one non-political headline's accuracy; the researchers then tracked what they shared."
+     "a": "In Study 7, 5,379 Twitter users who had recently shared links to misleading, hyperpartisan sites got a private message asking them to rate one non-political headline’s accuracy; the researchers then tracked what they shared."
     },
     {
      "q": "Why would people share news they doubt?",
@@ -6123,7 +6125,7 @@
    "concept": "Correcting norms",
    "title": "From belief to job applications",
    "scene": "Half of a group of married Saudi men were randomly shown the true share of their session peers who privately supported women working outside the home. Months later, researchers checked whether their wives had applied for outside jobs.",
-   "question": "What happened to wives' job applications three to five months later?",
+   "question": "What happened to wives’ job applications three to five months later?",
    "options": [
     "Fell, because of social backlash",
     "Fell slightly as husbands pushed back",
@@ -6182,7 +6184,7 @@
    "track": "Culture & Society",
    "concept": "Meta-perceptions",
    "title": "They hate us, or do they?",
-   "scene": "Democrats and Republicans predicted how the other party would react to their own party's actions. Predictions were too negative, and the most inaccurate saw the other side as obstructionist.",
+   "scene": "Democrats and Republicans predicted how the other party would react to their own party’s actions. Predictions were too negative, and the most inaccurate saw the other side as obstructionist.",
    "question": "What best shows the inaccuracy itself drives obstructionism beliefs?",
    "options": [
     "Randomly correcting beliefs cut obstructionism ratings",
@@ -6243,7 +6245,7 @@
    },
    "answerTitle": "Correcting beliefs cut obstructionism attributions",
    "explain": "Across 4,282 participants, people overestimated out-group negativity; in an experiment with 1,122 people, showing true out-group reactions significantly reduced perceived obstructionism.",
-   "implication": "In a divided team, collect each side's actual reactions to a proposal and share them before anyone assumes deliberate blocking.",
+   "implication": "In a divided team, collect each side’s actual reactions to a proposal and share them before anyone assumes deliberate blocking.",
    "boundary": "Found in competitive intergroup contexts; the correction was tested in one online experiment with 1,122 participants.",
    "sources": [
     "lees20"
@@ -6388,7 +6390,7 @@
    "follow": [
     {
      "q": "What are the three kinds of overconfidence?",
-     "a": "Overestimation of one's actual performance, overplacement relative to others, and excessive precision in one's beliefs."
+     "a": "Overestimation of one’s actual performance, overplacement relative to others, and excessive precision in one’s beliefs."
     },
     {
      "q": "What happens on easy tasks?",
@@ -6396,7 +6398,7 @@
     },
     {
      "q": "How were beliefs measured?",
-     "a": "Participants reported distributions over their own and others' scores and were paid with an incentive-compatible scheme, about $20."
+     "a": "Participants reported distributions over their own and others’ scores and were paid with an incentive-compatible scheme, about $20."
     }
    ],
    "study": {
@@ -6412,7 +6414,7 @@
    "track": "Judgment",
    "concept": "Forecasting nudges",
    "title": "Will the mask messages work?",
-   "scene": "Researchers tested seven messages (moral frames, mortality, scientific evidence, the economy) to raise mask-wearing among 4,931 US Republicans and Democrats. Beforehand, 1,034 forecasters predicted each message's effect.",
+   "scene": "Researchers tested seven messages (moral frames, mortality, scientific evidence, the economy) to raise mask-wearing among 4,931 US Republicans and Democrats. Beforehand, 1,034 forecasters predicted each message’s effect.",
    "question": "How likely is it that the study found this?",
    "forecast": {
     "claim": "At least one of the seven messages increased mask-wearing intentions among Democrats or Republicans.",
@@ -6432,7 +6434,7 @@
     },
     {
      "q": "Who was in the forecasting pool?",
-     "a": "1,034 forecasters: 611 laypeople from a representative US panel and 103 from the authors' networks, plus 199 academics and 121 practitioners."
+     "a": "1,034 forecasters: 611 laypeople from a representative US panel and 103 from the authors’ networks, plus 199 academics and 121 practitioners."
     },
     {
      "q": "Did forecasters at least rank the messages correctly?",
@@ -6459,7 +6461,7 @@
    },
    "answerTitle": "None of the four messages changed behavior",
    "explain": "Among 1,200 MTurk participants, misreporting (winning reports above the 16.67% that honest reporting would produce) hovered around 30 percentage points under every message, with null effects and tight confidence intervals.",
-   "implication": "Before adding an honesty statement to expense or reporting forms, test whether it actually shifts employees' beliefs about the norm.",
+   "implication": "Before adding an honesty statement to expense or reporting forms, test whether it actually shifts employees’ beliefs about the norm.",
    "boundary": "One-line messages before a die-reporting game with undetectable lies, in a high-powered preregistered study.",
    "sources": [
     "requiem20"
@@ -6586,8 +6588,8 @@
    "track": "Culture & Society",
    "concept": "Peer transparency",
    "title": "The open dashboard problem",
-   "scene": "Penn students played repeated rounds of a charity game: give to, take from, or leave a donation. One group could see peers' past choices; another could not.",
-   "question": "By about how much did donations fall when peers' choices were visible?",
+   "scene": "Penn students played repeated rounds of a charity game: give to, take from, or leave a donation. One group could see peers’ past choices; another could not.",
+   "question": "By about how much did donations fall when peers’ choices were visible?",
    "estimate": {
     "target": 20,
     "min": 0,
@@ -6610,7 +6612,7 @@
     },
     {
      "q": "How strongly did people copy bad behavior?",
-     "a": "Without proximity, each ECU a peer took cut a participant's own donation by about 0.24 ECU. Seeing peers give had no significant effect."
+     "a": "Without proximity, each ECU a peer took cut a participant’s own donation by about 0.24 ECU. Seeing peers give had no significant effect."
     },
     {
      "q": "Were the groups different at the start?",
@@ -6638,7 +6640,7 @@
    "options": [
     "Pro-social individuals were the most easily swayed by their peers",
     "Anti-social behavior was more contagious than pro-social",
-    "Closeness amplified bad behavior's spread more than good",
+    "Closeness amplified bad behavior’s spread more than good",
     "Closeness made people copy good and bad choices equally"
    ],
    "multiAnswers": [
@@ -6666,8 +6668,8 @@
      "a": "Norm-based interventions: the paper argues its results help design policies that encourage pro-social and reduce anti-social behavior."
     },
     {
-     "q": "Does the 2022 proximity study say the same?",
-     "a": "Both studies give closeness a central role. Here closeness meant answering personal questions more like the observed peer, and close peers’ bad choices spread most. The 2022 study varied a minimal shared-identity cue; its result is a decision of its own in the lab."
+     "q": "Does the shared-identity study say the same?",
+     "a": "Both studies give closeness a central role. Here closeness meant answering personal questions more like the observed peer, and close peers’ bad choices spread most. The shared-identity study varied a minimal shared-identity cue; its result is a decision of its own in the lab."
     }
    ],
    "study": {
@@ -6701,12 +6703,12 @@
    "options": [
     "Penalty plus “most others comply,” with costly compliance",
     "Weak penalty alone",
-    "Penalty plus “most think it's right,” cheap compliance",
+    "Penalty plus “most think it’s right,” cheap compliance",
     "Norm message alone"
    ],
    "answer": 2,
    "answerTitle": "Penalty plus normative message, only when compliance is cheap",
-   "explain": "With 418 Penn participants, Bicchieri, Dimant and Xiao show that weak punishment plus a normative message raised trustees' returns to 42.7%, against 28.7% at baseline, when stakes were low. At high stakes, punishment plus empirical information cut returns to 22.2% versus 36.5%.",
+   "explain": "With 418 Penn participants, Bicchieri, Dimant and Xiao show that weak punishment plus a normative message raised trustees’ returns to 42.7%, against 28.7% at baseline, when stakes were low. At high stakes, punishment plus empirical information cut returns to 22.2% versus 36.5%.",
    "implication": "When a sanction is modest and compliance is costly, do not justify it with “everyone complies”; explain why the rule is right.",
    "boundary": "Lab trust game combining a weak penalty with norm messages at two levels of compliance cost.",
    "sources": [
@@ -6815,7 +6817,7 @@
    "scene": "To boost charity giving, an experiment let another person observe each decision to give to a charity or take from its account. In some versions the observer simply watched, with no rewards or consequences attached.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Watching alone did little and could backfire",
-   "explain": "Bolton, Dimant and Schmidt show, with 1,650 online participants, that being watched alone backfired: the charity account shrank 28.3% under observation against 18.4% unobserved. Asking people first about others' behavior turned this into a 9.3% gain.",
+   "explain": "Bolton, Dimant and Schmidt show, with 1,650 online participants, that being watched alone backfired: the charity account shrank 28.3% under observation against 18.4% unobserved. Asking people first about others’ behavior turned this into a 9.3% gain.",
    "implication": "Do not rely on visibility alone in giving or compliance drives; pair it with a clear statement of what is expected.",
    "boundary": "Give-or-take charity games in the lab and online (1,650 decision makers online), where a decision maker chose with or without a passive observer watching.",
    "sources": [
@@ -6882,7 +6884,7 @@
     },
     {
      "q": "Did the information change behavior?",
-     "a": "Yes. Exposure to information suggesting lying is more socially acceptable increased lying. Views on what is right moved only with information about peers' views, not their actions."
+     "a": "Yes. Exposure to information suggesting lying is more socially acceptable increased lying. Views on what is right moved only with information about peers’ views, not their actions."
     },
     {
      "q": "How large were the samples?",
@@ -6904,7 +6906,7 @@
    "format": "choice",
    "track": "Culture & Society",
    "concept": "Engagement incentives",
-   "title": "Sharing what you don't believe",
+   "title": "Sharing what you don’t believe",
    "scene": "In a multi-round sharing task, participants chose whether to share factual news or conspiracy theories, including ones they did not believe.",
    "question": "What drove sharing of conspiracy theories people knew were false?",
    "options": [
@@ -7016,18 +7018,18 @@
    "format": "choice",
    "track": "Culture & Society",
    "concept": "Partisan cooperation",
-   "title": "Why won't they cooperate?",
+   "title": "Why won’t they cooperate?",
    "scene": "Across 15 behavioral experiments with over 8,600 people, participants decided how much to help, harm or cooperate with others who supported or opposed Donald Trump.",
    "question": "What mainly explained weaker cooperation across the political divide?",
    "options": [
     "Genuine unwillingness to cooperate with opponents",
     "Too little information about the other side",
-    "Stronger love for one's own side",
+    "Stronger love for one’s own side",
     "Low expectations of the other side’s cooperation"
    ],
    "answer": 3,
    "answerTitle": "Expectations, more than unwillingness, drove the gap",
-   "explain": "In Dimant's public goods games, the share of conditional cooperators dropped by a similar amount for a Trump opponent (72.8% to 59.0%) and for a painting-preference outgroup (73.2% to 62.4%). Expectations differed: people predicted opponents would contribute less.",
+   "explain": "In Dimant’s public goods games, the share of conditional cooperators dropped by a similar amount for a Trump opponent (72.8% to 59.0%) and for a painting-preference outgroup (73.2% to 62.4%). Expectations differed: people predicted opponents would contribute less.",
    "implication": "In politically mixed teams, share evidence that colleagues on the other side do cooperate before launching joint projects.",
    "boundary": "Incentivized experiments on US polarization around Donald Trump, compared with other social identities.",
    "sources": [
@@ -7096,7 +7098,7 @@
    "follow": [
     {
      "q": "What do tight, loose and polarized mean?",
-     "a": "Tight means low variance in others' behavior, loose means high variance, and polarized means u-shaped behavior clustered at two extremes."
+     "a": "Tight means low variance in others’ behavior, loose means high variance, and polarized means u-shaped behavior clustered at two extremes."
     },
     {
      "q": "Whose behavior is hardest to predict?",
@@ -7124,7 +7126,7 @@
     ],
     "unit": "",
     "highlight": 1,
-    "note": "Variance of contributions after seeing others' choices."
+    "note": "Variance of contributions after seeing others’ choices."
    }
   },
   {
@@ -7246,9 +7248,9 @@
       "why": "For practical attributes, people believe AI recommenders are more competent than humans."
      },
      {
-      "text": "Pick a practical product fitted to one buyer's unique tastes",
+      "text": "Pick a practical product fitted to one buyer’s unique tastes",
       "answer": 1,
-      "why": "The preference for AI reversed for utilitarian goals when the pick had to match a person's unique preferences (Study 5)."
+      "why": "The preference for AI reversed for utilitarian goals when the pick had to match a person’s unique preferences (Study 5)."
      },
      {
       "text": "Pick a vacation spot chosen for sensory pleasure",
@@ -7333,8 +7335,8 @@
    "format": "estimate",
    "concept": "AI empathy",
    "title": "Doctor or chatbot?",
-   "scene": "Health professionals, blinded to the source, compared physicians' answers to patient questions on Reddit's r/AskDocs with ChatGPT's answers to the same 195 questions.",
-   "question": "In what share of evaluations did raters prefer the chatbot's answer?",
+   "scene": "Health professionals, blinded to the source, compared physicians’ answers to patient questions on Reddit’s r/AskDocs with ChatGPT’s answers to the same 195 questions.",
+   "question": "In what share of evaluations did raters prefer the chatbot’s answer?",
    "estimate": {
     "target": 78.6,
     "min": 0,
@@ -7344,7 +7346,7 @@
     "unit": "%"
    },
    "answerTitle": "Raters preferred the chatbot in 78.6%",
-   "explain": "Across 585 evaluations, raters preferred the chatbot 78.6% of the time. Good or very good quality: 78.5% of chatbot answers versus 22.1% of physicians'.",
+   "explain": "Across 585 evaluations, raters preferred the chatbot 78.6% of the time. Good or very good quality: 78.5% of chatbot answers versus 22.1% of physicians’.",
    "implication": "Pilot AI-drafted replies in patient or customer messaging, with staff review before sending.",
    "boundary": "Public forum answers by volunteer physicians, rated for quality and empathy by a team of licensed health care professionals.",
    "sources": [
@@ -7427,7 +7429,7 @@
    },
    "answerTitle": "Uncertainty pushed people away from algorithms",
    "explain": "Across nine studies (N = 4,820), people were less likely to use the best algorithm in more unpredictable domains. They favored methods with a chance of a near-perfect answer.",
-   "implication": "In volatile forecasting, such as demand or markets, report the model's track record against human forecasts, not its average error alone.",
+   "implication": "In volatile forecasting, such as demand or markets, report the model’s track record against human forecasts, not its average error alone.",
    "boundary": "Nine forecasting experiments with 4,820 participants who chose between their own forecasts and an algorithm’s, under low and high uncertainty.",
    "sources": [
     "dietvorst20"
@@ -7497,14 +7499,14 @@
    "format": "forecast",
    "concept": "Job replacement",
    "title": "Robot or rival: who replaces you?",
-   "scene": "Experiments asked people how they felt about workers being replaced by another person versus by robots or software, for others' jobs and for their own.",
+   "scene": "Experiments asked people how they felt about workers being replaced by another person versus by robots or software, for others’ jobs and for their own.",
    "question": "How likely is it that the study found this?",
    "forecast": {
     "claim": "When imagining their own job loss, people preferred being replaced by a robot rather than by another person.",
     "truth": true
    },
    "answerTitle": "For their own job, people preferred the robot",
-   "explain": "Granulo, Fuchs and Puntoni found that people prefer other workers to be replaced by humans rather than robots but reverse that preference for their own job. Losing out to a machine threatens self-worth less, though it threatens one's economic future more.",
+   "explain": "Granulo, Fuchs and Puntoni found that people prefer other workers to be replaced by humans rather than robots but reverse that preference for their own job. Losing out to a machine threatens self-worth less, though it threatens one’s economic future more.",
    "implication": "When automating roles, address economic security directly; do not assume staff will be less upset than with outsourcing to people.",
    "boundary": "Online experiments in which people imagined jobs, their own or others’, being taken over by robots or by other workers.",
    "sources": [
@@ -7520,10 +7522,10 @@
     },
     {
      "q": "Is robot replacement less threatening overall?",
-     "a": "No. It was associated with a greater perceived threat to one's economic future."
+     "a": "No. It was associated with a greater perceived threat to one’s economic future."
     },
     {
-     "q": "What about other people's jobs?",
+     "q": "What about other people’s jobs?",
      "a": "As observers, people tended to prefer that workers be replaced by other humans rather than robots."
     }
    ],
@@ -7772,7 +7774,7 @@
    "format": "multi",
    "concept": "Bot disclosure",
    "title": "The sales bot",
-   "scene": "A company randomly assigned over 6,200 customers to structured outbound sales calls from AI chatbots or human agents, varying whether the bot's identity was disclosed.",
+   "scene": "A company randomly assigned over 6,200 customers to structured outbound sales calls from AI chatbots or human agents, varying whether the bot’s identity was disclosed.",
    "question": "Which two results did the field experiment find?",
    "options": [
     "Disclosure made calls longer",
@@ -7803,7 +7805,7 @@
     },
     {
      "q": "What softened the penalty?",
-     "a": "A late disclosure timing strategy and customers' prior AI experience mitigated the negative effect."
+     "a": "A late disclosure timing strategy and customers’ prior AI experience mitigated the negative effect."
     },
     {
      "q": "How did bots compare with new hires?",
@@ -7826,7 +7828,7 @@
    "concept": "Creativity and sameness",
    "title": "Artists adopt AI images",
    "scene": "Your creative lead wants text-to-image AI for the design team. A study tracked 53,000+ artists on a major art-sharing platform, 5,800 of whom adopted such tools.",
-   "question": "Which two changes followed artists' adoption of AI?",
+   "question": "Which two changes followed artists’ adoption of AI?",
    "options": [
     "Average content novelty rose",
     "Favorites per view rose",
@@ -7938,7 +7940,7 @@
     ],
     "unit": "%",
     "highlight": 3,
-    "note": "Share agreeing with the article's main claim."
+    "note": "Share agreeing with the article’s main claim."
    }
   },
   {
@@ -7981,7 +7983,7 @@
    },
    "answerTitle": "AI helps people feel heard; the label undercuts it",
    "explain": "AI replies made people feel more heard than human replies (5.74 vs 5.17), but an AI label lowered feeling heard (5.13 vs 5.81 for a human label).",
-   "implication": "Keep the label, but expect a dip; measure customers' attitudes toward AI and have staff personalize sensitive replies.",
+   "implication": "Keep the label, but expect a dip; measure customers’ attitudes toward AI and have staff personalize sensitive replies.",
    "boundary": "One online experiment with Bing Chat and one-off replies.",
    "sources": [
     "yin24"
@@ -8092,7 +8094,7 @@
     },
     {
      "q": "Is the top effect inflated?",
-     "a": "Somewhat. After a shrinkage correction for the winner's curse, the authors still estimate +2.7 percentage points, a 9.3% lift."
+     "a": "Somewhat. After a shrinkage correction for the winner’s curse, the authors still estimate +2.7 percentage points, a 9.3% lift."
     },
     {
      "q": "How large was the average effect?",
@@ -8269,7 +8271,7 @@
     },
     {
      "q": "How was GPT-4 alone tested?",
-     "a": "Researchers ran one fixed zero-shot prompt three times per case and graded the outputs blind, alongside the physicians' answers. Its median score was 92%."
+     "a": "Researchers ran one fixed zero-shot prompt three times per case and graded the outputs blind, alongside the physicians’ answers. Its median score was 92%."
     }
    ],
    "theme": "ai-work",
@@ -9202,6 +9204,10 @@
    [
     "who",
     "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students)|sample size|who took part|population)\\b"
+   ],
+   [
+    "numbers",
+    "\\b(how many|what share|what percent\\w*|what proportion|what fraction|how much (more|less|higher|lower))\\b"
    ],
    [
     "catch",
