@@ -24,6 +24,8 @@ def wide():
         for f in T.CHALLENGES[cid].get('follow', []):
             if re.match(r'(Yes|No)\b', f['a']):
                 for pre in ('So ', 'And ', 'Okay, ', 'But '): q = pre + f['q'][0].lower() + f['q'][1:]; out[cid][q] = T.curated(q, cid)['answer'][:60]
+        L = W.get('lead_ins')   # audit 30b: open questions behind a lead-in never get a Yes/No follow-up
+        if L: out[cid].update({p + q: T.curated(p + q, cid)['answer'][:60] for p in L['prefixes'] for q in L['questions']})
     return out
 if __name__ == '__main__':
     (ROOT / 'tests/tutor_golden.json').write_text(json.dumps(snapshot(), ensure_ascii=False, indent=0) + '\n')

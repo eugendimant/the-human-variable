@@ -537,6 +537,630 @@
 [
 "List the main results",
 "civic-wallet-rank"
+],
+[
+"I'm curious what managers thought beforehand",
+"bz07"
+],
+[
+"In this study, did performance suffer?",
+"bz07"
+],
+[
+"Performance effects?",
+"bz07"
+],
+[
+"Give me the main result",
+"bz07"
+],
+[
+"What were the main findings?",
+"bz07"
+],
+[
+"So, what did managers expect?",
+"bz07"
+],
+[
+"Hmm, did performance suffer?",
+"bz07"
+],
+[
+"Quick question: did performance suffer?",
+"bz07"
+],
+[
+"Is hybrid work fair to managers?",
+"bz07"
+],
+[
+"Bloom et al. found what about quitting?",
+"ai01"
+],
+[
+"Bloom's hybrid study: what happened to quits?",
+"ai01"
+],
+[
+"Experts?",
+"judg05"
+],
+[
+"Remind me why the frame flips choices",
+"judg05"
+],
+[
+"In the study, who answered?",
+"judg05"
+],
+[
+"Please explain whether experts fall for it",
+"judg05"
+],
+[
+"Curious: were the stakes real?",
+"judg09"
+],
+[
+"The stakes, were they real?",
+"judg09"
+],
+[
+"Tell me if the stakes were real",
+"judg09"
+],
+[
+"Okay so is this the reflection effect?",
+"judg09"
+],
+[
+"I want to know if the AI won more debates",
+"axb08"
+],
+[
+"Did participants realize they were debating a machine?",
+"axb08"
+],
+[
+"I'd like to know how the human debaters did",
+"axb08"
+],
+[
+"Do you know whether humans or AI wrote more accurate tweets?",
+"axe11"
+],
+[
+"I'd like to know how humans did against GPT-3",
+"axe11"
+],
+[
+"Could readers tell AI from human tweets?",
+"axe11"
+],
+[
+"And were AI tweets judged faster?",
+"axe11"
+],
+[
+"Did people know the advice came from an algorithm?",
+"ai10"
+],
+[
+"Did experts know it was an algorithm?",
+"ai10"
+],
+[
+"So did experts behave the same way?",
+"ai10"
+],
+[
+"Did students know the AI was hurting them?",
+"rollout4"
+],
+[
+"Did students realize the harm?",
+"rollout4"
+],
+[
+"Well, did students realize the harm?",
+"rollout4"
+],
+[
+"Is it ethical to use a bot to deliver bad news?",
+"axf04"
+],
+[
+"Why is it unethical according to the authors?",
+"axf04"
+],
+[
+"What ethical concerns do the authors raise?",
+"axf04"
+],
+[
+"Do the authors raise any ethical issues?",
+"axf04"
+],
+[
+"Did consumers know the agent was a bot?",
+"axf04"
+],
+[
+"Is it fair to fine parents?",
+"bz08"
+],
+[
+"So was there a control group?",
+"bz08"
+],
+[
+"Control group?",
+"bz08"
+],
+[
+"What helped people notice subtractions?",
+"biz07"
+],
+[
+"Could people tell subtraction was an option?",
+"biz07"
+],
+[
+"Did people know they could remove pieces?",
+"biz07"
+],
+[
+"List the main findings",
+"biz01"
+],
+[
+"Shea found what?",
+"ai01"
+],
+[
+"What was the default?",
+"biz01"
+],
+[
+"Does anchoring show up in calculations too?",
+"biz11"
+],
+[
+"But are experts immune?",
+"biz11"
+],
+[
+"Experts immune or not?",
+"biz11"
+],
+[
+"Which games were these?",
+"social15"
+],
+[
+"Was this about politics alone?",
+"social15"
+],
+[
+"So did people go back to Facebook afterward?",
+"facebook-deactivation"
+],
+[
+"What were the main results?",
+"facebook-deactivation"
+],
+[
+"And did employment increase?",
+"misperceived-norms-action"
+],
+[
+"Employment went up?",
+"misperceived-norms-action"
+],
+[
+"Did the men know what their peers thought?",
+"misperceived-norms-action"
+],
+[
+"Did the person know it was a machine writing?",
+"ai01"
+],
+[
+"Did writers know a human graded them?",
+"ai01"
+],
+[
+"I'm curious what managers thought beforehand",
+"bz07"
+],
+[
+"In this study, did performance suffer?",
+"bz07"
+],
+[
+"Performance effects?",
+"bz07"
+],
+[
+"Give me the main result",
+"bz07"
+],
+[
+"What were the main findings?",
+"bz07"
+],
+[
+"So, what did managers expect?",
+"bz07"
+],
+[
+"Hmm, did performance suffer?",
+"bz07"
+],
+[
+"Quick question: did performance suffer?",
+"bz07"
+],
+[
+"Is hybrid work fair to managers?",
+"bz07"
+],
+[
+"Bloom et al. found what about quitting?",
+"ai01"
+],
+[
+"Bloom's hybrid study: what happened to quits?",
+"ai01"
+],
+[
+"Experts?",
+"judg05"
+],
+[
+"Remind me why the frame flips choices",
+"judg05"
+],
+[
+"In the study, who answered?",
+"judg05"
+],
+[
+"Please explain whether experts fall for it",
+"judg05"
+],
+[
+"Curious: were the stakes real?",
+"judg09"
+],
+[
+"The stakes, were they real?",
+"judg09"
+],
+[
+"Tell me if the stakes were real",
+"judg09"
+],
+[
+"Okay so is this the reflection effect?",
+"judg09"
+],
+[
+"I want to know if the AI won more debates",
+"axb08"
+],
+[
+"Did participants realize they were debating a machine?",
+"axb08"
+],
+[
+"I'd like to know how the human debaters did",
+"axb08"
+],
+[
+"Do you know whether humans or AI wrote more accurate tweets?",
+"axe11"
+],
+[
+"I'd like to know how humans did against GPT-3",
+"axe11"
+],
+[
+"Could readers tell AI from human tweets?",
+"axe11"
+],
+[
+"And were AI tweets judged faster?",
+"axe11"
+],
+[
+"Did people know the advice came from an algorithm?",
+"ai10"
+],
+[
+"Did experts know it was an algorithm?",
+"ai10"
+],
+[
+"So did experts behave the same way?",
+"ai10"
+],
+[
+"Did students know the AI was hurting them?",
+"rollout4"
+],
+[
+"Did students realize the harm?",
+"rollout4"
+],
+[
+"Well, did students realize the harm?",
+"rollout4"
+],
+[
+"Is it ethical to use a bot to deliver bad news?",
+"axf04"
+],
+[
+"Why is it unethical according to the authors?",
+"axf04"
+],
+[
+"What ethical concerns do the authors raise?",
+"axf04"
+],
+[
+"Do the authors raise any ethical issues?",
+"axf04"
+],
+[
+"Did consumers know the agent was a bot?",
+"axf04"
+],
+[
+"Is it fair to fine parents?",
+"bz08"
+],
+[
+"So was there a control group?",
+"bz08"
+],
+[
+"Control group?",
+"bz08"
+],
+[
+"What helped people notice subtractions?",
+"biz07"
+],
+[
+"Could people tell subtraction was an option?",
+"biz07"
+],
+[
+"Did people know they could remove pieces?",
+"biz07"
+],
+[
+"List the main findings",
+"biz01"
+],
+[
+"Shea found what?",
+"ai01"
+],
+[
+"What was the default?",
+"biz01"
+],
+[
+"Does anchoring show up in calculations too?",
+"biz11"
+],
+[
+"But are experts immune?",
+"biz11"
+],
+[
+"Experts immune or not?",
+"biz11"
+],
+[
+"Which games were these?",
+"social15"
+],
+[
+"Was this about politics alone?",
+"social15"
+],
+[
+"So did people go back to Facebook afterward?",
+"facebook-deactivation"
+],
+[
+"What were the main results?",
+"facebook-deactivation"
+],
+[
+"And did employment increase?",
+"misperceived-norms-action"
+],
+[
+"Employment went up?",
+"misperceived-norms-action"
+],
+[
+"Did the men know what their peers thought?",
+"misperceived-norms-action"
+],
+[
+"Did the person know it was a machine writing?",
+"ai01"
+],
+[
+"Did writers know a human graded them?",
+"ai01"
+],
+[
+"I'd like to know which conspiracy theories were included?",
+"judg09"
+],
+[
+"I'd like to know which conspiracy theories were included?",
+"civic-wallet-rank"
+],
+[
+"I'd like to know which conspiracy theories were included?",
+"bz08"
+],
+[
+"I'd like to know which conspiracy theories were included?",
+"bz07"
+],
+[
+"I'd like to know which conspiracy theories were included?",
+"axb08"
+],
+[
+"I'd like to know which conspiracy theories were included?",
+"axe11"
+],
+[
+"I'd like to know what happened to the control group?",
+"judg09"
+],
+[
+"I'd like to know what happened to the control group?",
+"civic-wallet-rank"
+],
+[
+"I'd like to know what happened to the control group?",
+"bz08"
+],
+[
+"I'd like to know what happened to the control group?",
+"bz07"
+],
+[
+"I'd like to know what happened to the control group?",
+"axb08"
+],
+[
+"I'd like to know what happened to the control group?",
+"axe11"
+],
+[
+"I'd like to know which group did best?",
+"judg09"
+],
+[
+"I'd like to know which group did best?",
+"civic-wallet-rank"
+],
+[
+"I'd like to know which group did best?",
+"bz08"
+],
+[
+"I'd like to know which group did best?",
+"bz07"
+],
+[
+"I'd like to know which group did best?",
+"axb08"
+],
+[
+"I'd like to know which group did best?",
+"axe11"
+],
+[
+"I'd like to know who gained the most?",
+"judg09"
+],
+[
+"I'd like to know who gained the most?",
+"civic-wallet-rank"
+],
+[
+"I'd like to know who gained the most?",
+"bz08"
+],
+[
+"I'd like to know who gained the most?",
+"bz07"
+],
+[
+"I'd like to know who gained the most?",
+"axb08"
+],
+[
+"I'd like to know who gained the most?",
+"axe11"
+],
+[
+"I'd like to know what did managers expect?",
+"judg09"
+],
+[
+"I'd like to know what did managers expect?",
+"civic-wallet-rank"
+],
+[
+"I'd like to know what did managers expect?",
+"bz08"
+],
+[
+"I'd like to know what did managers expect?",
+"bz07"
+],
+[
+"I'd like to know what did managers expect?",
+"axb08"
+],
+[
+"I'd like to know what did managers expect?",
+"axe11"
+],
+[
+"I'd like to know how did the human participants do?",
+"judg09"
+],
+[
+"I'd like to know how did the human participants do?",
+"civic-wallet-rank"
+],
+[
+"I'd like to know how did the human participants do?",
+"bz08"
+],
+[
+"I'd like to know how did the human participants do?",
+"bz07"
+],
+[
+"I'd like to know how did the human participants do?",
+"axb08"
+],
+[
+"I'd like to know how did the human participants do?",
+"axe11"
+],
+[
+"Bloom et al. found what about quitting?",
+"ai01"
+],
+[
+"Bloom's hybrid study: what happened to quits?",
+"ai01"
+],
+[
+"Shea found what?",
+"ai01"
+],
+[
+"Did participants realize they were debating a machine?",
+"axb08"
 ]
 ],
 "every_decision": [
@@ -561,5 +1185,28 @@
 "Card or cash, which worked?",
 "What are the moral implications?",
 "Did people know?"
+],
+"lead_ins": {
+"prefixes": [
+"I'd like to know ",
+"I want to know ",
+"Can you tell me ",
+"Please tell me ",
+"I wonder ",
+"In this study, ",
+"Curious: "
+],
+"questions": [
+"which conspiracy theories were included?",
+"what demographic info did the model get?",
+"what happened to the control group?",
+"which group did best?",
+"how big was the effect?",
+"who gained the most?",
+"what did managers expect?",
+"how did the human participants do?",
+"what was the sample?",
+"why did it work?"
 ]
+}
 }

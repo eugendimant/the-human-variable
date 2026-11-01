@@ -54,3 +54,7 @@ bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
 b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
 C['social15']['chart']['note'] = 'Share of the endowment given or taken.'   # provenance of the 11.99% stays in the evidence record (owner rule: preprints verify, players see the version of record)
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# audit 30b: the chart title says the falls are relative
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['bz07']['chart']['note'] = 'Relative fall in quit rates (share of the control rate), by group.'
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')

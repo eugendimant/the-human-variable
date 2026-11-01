@@ -15,7 +15,7 @@ def states(every=False):
     yield 'library', URL + '#library', None
     yield 'all-decisions', URL + '#atlas', None
     yield 'record-empty', URL + '#record', None
-    for c in (LIVE if every else [next(x for x in LIVE if x['id'] == cid) for cid in ONE.values()] + [x for x in LIVE if x['format'] in ('allocate', 'delegate', 'rank') and x['id'] not in ONE.values()]):   # at phone width: one per format plus every allocate, delegate and rank item   # every decision at desktop width (review 23)
+    for c in (LIVE if every else [next(x for x in LIVE if x['id'] == cid) for cid in ONE.values()] + [x for x in LIVE if x['format'] in ('allocate', 'delegate', 'rank', 'estimate') and x['id'] not in ONE.values()]):   # at phone width: one per format plus every allocate, delegate and rank item   # every decision at desktop width (review 23)
         yield f"predict-{c['id']}", URL + '?play=' + c['id'], None
         yield f"reveal-{c['id']}", URL + '?play=' + c['id'], c
     yield 'record', URL, 'record'

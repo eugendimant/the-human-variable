@@ -289,3 +289,16 @@ def test_record_is_identical_offline_and_hosted(browser, tmp_path):
             assert txt == offline(recs), (txt, offline(recs))
     finally:
         srv.shutdown()
+
+
+def test_page_tutor_agrees_with_server_on_every_probe(browser):
+    """Invariant I9 at audit scale: the page's offline tutor gives the server's answer on every audit probe and lead-in question."""
+    import json as _j
+    from server import tutor as _T
+    W = _j.loads((Path(__file__).parent / 'tutor_wide_questions.json').read_text())
+    pairs = [tuple(x) for x in W['probes']] + [(p + q, cid) for cid in ('ai01', 'axb08', 'bz07', 'civic-wallet-rank', 'judg09', 'bz08') for p in W['lead_ins']['prefixes'] for q in W['lead_ins']['questions']]
+    pairs = [(q, cid) for q, cid in pairs if cid in _T.CHALLENGES and not _T.CHALLENGES[cid].get('retired')]
+    pg = page(browser); pg.goto(URL); pg.wait_for_timeout(300)
+    page_ans = pg.evaluate("ps => ps.map(([q, id]) => THV.curated(q, THV.ALL.find(c => c.id === id)).text)", pairs)
+    bad = [(q, cid, a[:60]) for (q, cid), a in zip(pairs, page_ans) if a.replace('\n\n', ' ').split()[:10] != _T.curated(q, cid)['answer'].split()[:10]]
+    assert not bad, (len(bad), bad[:8]); pg.close()

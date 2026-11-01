@@ -5131,7 +5131,7 @@
     ],
     "unit": "%",
     "highlight": 0,
-    "note": "Fall in quit rates under hybrid work, by group."
+    "note": "Relative fall in quit rates (share of the control rate), by group."
    }
   },
   {
@@ -9143,7 +9143,7 @@
    ],
    [
     "detect",
-    "\\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\\b|\\b(know|reali[sz]e)\\b.*\\b(ai|gpt\\S*|bot|chatbot|machine|model|algorithm|human|person)\\b"
+    "\\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\\b|\\b(could|can|did|do|would) (they|people|participants|users|customers|readers|consumers|students|subjects|respondents|raters|workers) (know|reali[sz]e)\\b.*\\b(ai|gpt\\S*|bot|chatbot|machine|model|algorithm|human|person)\\b"
    ],
    [
     "contest",

@@ -92,7 +92,7 @@ def names(question: str, cid: str) -> bool:
     words = lambda s: {w for w in re.findall(r'[a-z]+', __import__('unicodedata').normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()) if len(w) >= 4 and w not in STOP}
     q = words(question)   # whole surnames, unstemmed: "bill" must not match "Biller-Andorno"
     rest = question.strip().split(' ', 1)[1] if ' ' in question.strip() else ''
-    q = {w for w in q if w not in WORD_SURNAMES or re.search(r'\b' + w.capitalize() + r'\b', rest)}   # the question's first word does not count (audit 30)   # "the reminder card" is not Card et al.
+    q = {w for w in q if w not in WORD_SURNAMES or (re.search(r'\b' + w.capitalize() + r'\b', rest) or re.match(w.capitalize() + r"(\s+et al|['’]s\b|\s+and\s+[A-Z]|\s*\()", question.strip()))}   # the question's first word does not count (audit 30)   # "the reminder card" is not Card et al.
     return any(words(SOURCES[s]['authors']) - {'with', 'others'} & q for s in CHALLENGES[cid]['sources'] if s in SOURCES)
 
 def _papers(c: dict) -> str:
@@ -100,6 +100,11 @@ def _papers(c: dict) -> str:
     return '; '.join(f"{SOURCES[s]['authors']} ({SOURCES[s]['year']}), {SOURCES[s]['venue']}" for s in c['sources'] if s in SOURCES)
 
 def _norm(s: str) -> str: return ' '.join(re.findall(r'[a-z0-9]+', s.lower()))
+_FILL = r"((so|and|okay|ok|but|also|hmm|well|quick question:?)[,\s]+)*"
+def is_open(ql: str) -> bool:
+    q = ql.strip()
+    if re.match(_FILL + r"((can|could|would|will) you )?(tell|list|describe|explain)\b", q): return True
+    return bool(re.search(r"\b(what|which|who|whom|whose|how|why|when|where)\b", q)) and not re.match(_FILL + r"(is|are|was|were|do|does|did|can|could|will|would|has|have|had|should|shall|may|might|must)\b", q)
 
 def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     """Offline answers. With a decision on screen, answer about it unless the question names another study.
@@ -121,7 +126,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             fe = [f for f in fol if re.search(r"\b(ethic\w*|unethical|moral\w*|fair|unfair\w*|allowed|legal\w*)\b", f['q'], re.I) and jac(f) >= 0.3]   # the item's own ethics follow-up (audit 30)
             if fe: return out(fe[0]['a'], c)
             return out(f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", c)   # an ethics question never gets a follow-up that happens to share its words (review 25, M2)
-        openq = bool(re.search(r"^((so|and|okay|ok|but|also|hmm|well|quick question:?)[,\s]+)*(what|which|who|whom|whose|how|why|when|where|tell|list|describe|explain)\b", ql.strip()))   # audit 30: drop Yes/No answers only for clearly open questions, after filler words
+        openq = is_open(ql)
         fol = [f for f in fol if not openq or not re.match(r'(Yes|No)\b', f['a'])]
         if fol and jac(max(fol, key=jac)) >= 0.6: return out(max(fol, key=jac)['a'], c)
         has = lambda w: any(w == x or (min(len(w), len(x)) >= 3 and (w.startswith(x) or x.startswith(w))) for x in qt)
@@ -134,7 +139,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         best = max(open_, key=lambda x: len(topic & set(tokens(' '.join([CHALLENGES[x]['answerTitle'], CHALLENGES[x]['explain'], CHALLENGES[x]['question']])))))
         return out(f"{CHALLENGES[best]['explain']} {CHALLENGES[best]['implication']}", CHALLENGES[best])
     if c:
-        fol = [f for f in c.get('follow', []) if not re.search(r"^((so|and|okay|ok|but|also|hmm|well|quick question:?)[,\s]+)*(what|which|who|whom|whose|how|why|when|where|tell|list|describe|explain)\b", ql.strip()) or not re.match(r'(Yes|No)\b', f['a'])]
+        fol = [f for f in c.get('follow', []) if not is_open(ql) or not re.match(r'(Yes|No)\b', f['a'])]
         st = c.get('study', {})
         rare = topic - COMMON
         if c.get('delegate'):   # a question about one task ("why did X do worse on Y", "accuracy on the hotel reviews"): that task's evidence

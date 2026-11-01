@@ -13,7 +13,7 @@ bank['tutorRoutes'] = {
   ['action', r'\b(what should (i|we|my \w+( team)?|our \w+( team)?) do|what do (i|we) do|next steps?|monday( morning)?|what would you do|how (do|should|can) (i|we) (use|apply|act on) (this|it))\b'],
   ['ethics', r'\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|is it (ok|okay|right|wrong)|allowed|legal)'],
   ['models', r'\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\b'],
-  ['detect', r'\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\b|\b(know|reali[sz]e)\b.*\b(ai|gpt\S*|bot|chatbot|machine|model|algorithm|human|person)\b'],
+  ['detect', r'\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\b|\b(could|can|did|do|would) (they|people|participants|users|customers|readers|consumers|students|subjects|respondents|raters|workers) (know|reali[sz]e)\b.*\b(ai|gpt\S*|bot|chatbot|machine|model|algorithm|human|person)\b'],
   ['contest', r'\b(who is right|who.?s right|who is correct|which (one|side|study|paper) is right|who wins|(do|did) they (disagree|contradict))\b'],
   ['authors', r'\b(who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\b'],
   ['voluntary', r'\b(voluntary|volunteer\w*|randomly assigned|chose to|opt(ed)? in|self[- ]selected|vignette|real (bribe|job|firm|company)|real world|in the field|lab or field)\b'],
