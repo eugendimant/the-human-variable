@@ -3,7 +3,7 @@ from pathlib import Path
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]
-FORMAT_NAME = {'choice': 'Call it', 'causal': 'Find the cause', 'multi': 'Pick two', 'estimate': 'Estimate', 'forecast': 'Forecast',
+FORMAT_NAME = {'choice': 'Pick one', 'causal': 'Find the cause', 'multi': 'Pick two', 'estimate': 'Estimate', 'forecast': 'Forecast',
                'rank': 'Rank', 'allocate': 'Allocate', 'delegate': 'Delegate'}
 
 def secret(name: str, default: str = '') -> str:

@@ -66,4 +66,4 @@ p,li{text-wrap:pretty}
 .rv-lead{font-size:clamp(26px,2.6vw,40px);line-height:1.1;letter-spacing:-.02em;margin:0 0 18px}
 
 /* projector estimate: class answers as a dot strip on the study's axis (review 26) */
-.dot-strip{width:100%;height:auto;display:block;margin:6px 0 4px;font-family:Schibsted Grotesk,system-ui}.dot-strip .ds-dot{fill:var(--you)}.dot-strip .ds-band{fill:rgba(224,160,28,.16)}.dot-strip .ds-axis{stroke:#9aa6b8;stroke-width:1.5}.dot-strip .ds-ev{stroke:#b07800;stroke-width:3}.dot-strip .ds-evl{fill:#8a5d00;font-size:20px;font-weight:750}.dot-strip .ds-med{stroke:#14203a;stroke-width:2}.dot-strip .ds-medl,.dot-strip .ds-tick{fill:#4a5568;font-size:17px}
+.dot-strip{width:100%;height:auto;display:block;margin:6px 0 4px;font-family:Schibsted Grotesk,system-ui}.dot-strip .ds-dot{fill:var(--you)}.dot-strip .ds-band{fill:rgba(224,160,28,.16)}.dot-strip .ds-axis{stroke:#9aa6b8;stroke-width:1.5}.dot-strip .ds-ev{stroke:#b07800;stroke-width:3}.dot-strip .ds-evl{fill:#8a5d00;font-size:28px;font-weight:750}.dot-strip .ds-med{stroke:#14203a;stroke-width:2}.dot-strip .ds-medl,.dot-strip .ds-tick{fill:#4a5568;font-size:24px}

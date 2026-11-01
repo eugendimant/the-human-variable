@@ -38,10 +38,23 @@ def live(errors):
             inst.goto(base + '/classroom'); grab(inst, 'console-setup', 1440)
             inst.fill('#title', 'Lint class'); inst.click('text=Create the session'); code = inst.text_content('.join-code').strip(); grab(inst, 'console-lobby', 1440)
             ph = b.new_page(viewport={'width': 390, 'height': 844}); ph.goto(base + '/?room=' + code); ph.wait_for_selector('.room-wait'); grab(ph, 'phone-wait', 390)
-            for f in ('rank', 'allocate', 'delegate', 'choice'):
+            import urllib.request, random
+            def post(path, d, cid):
+                r = urllib.request.Request(base + path, data=json.dumps(d).encode(), headers={'Content-Type': 'application/json', 'X-Client-Id': cid})
+                for _ in range(5):
+                    try:
+                        with urllib.request.urlopen(r) as fh: return json.loads(fh.read())
+                    except urllib.error.HTTPError as e:
+                        if e.code != 429: raise
+                        import time; time.sleep(1)
+            toks = [(f'lint{i:03d}', post(f'/api/rooms/{code}/join', {}, f'lint{i:03d}')['token']) for i in range(80)]   # a full room, so stacked marks are drawn at class size (audit 31)
+            for f in ('rank', 'allocate', 'delegate', 'choice', 'estimate'):
                 c = next(x for x in cl.CHALLENGES.values() if x['format'] == f)
                 inst.locator('[data-act=picker]:visible').first.click() if inst.locator('[data-act=picker]:visible').count() else None
                 inst.click(f'[data-open="{c["id"]}"]'); ph.wait_for_selector('#lock-btn', timeout=10000); grab(ph, f'phone-{f}', 390); grab(inst, f'console-open-{f}', 1440)
+                if f == 'estimate':
+                    e = c['estimate']; stp = e.get('step', 1)
+                    for i, (cid_, tk) in enumerate(toks): post(f'/api/rooms/{code}/responses', {'token': tk, 'answer': e['target'] if i % 3 else e['min'] + round(random.random() * (e['max'] - e['min']) / stp) * stp, 'confidence': 60}, cid_)
                 inst.locator('[data-act=projector]:visible').first.click(); grab(inst, f'projector-open-{f}', 1440); inst.locator('[data-act=projector]:visible').first.click()
                 inst.click('text=Reveal to the room'); inst.wait_for_selector('.rv'); grab(inst, f'console-revealed-{f}', 1440)
                 inst.locator('[data-act=projector]:visible').first.click(); grab(inst, f'projector-revealed-{f}', 1440); inst.locator('[data-act=projector]:visible').first.click()

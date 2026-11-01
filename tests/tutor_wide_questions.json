@@ -1205,6 +1205,74 @@
   [
    "How did the colour of the behaviour change?",
    "bz07"
+  ],
+  [
+   "Are AI images better than human ones?",
+   "axe10"
+  ],
+  [
+   "Did students with GPT-4 do better than without?",
+   "rollout4"
+  ],
+  [
+   "Is AI better than humans at decisions?",
+   "axb01"
+  ],
+  [
+   "Were experts more accurate than laypeople?",
+   "axb04"
+  ],
+  [
+   "What would happen if the wallet had a key?",
+   "civic-wallet-rank"
+  ],
+  [
+   "What if they learned about the chance to lie later?",
+   "dimant-notalie-causal"
+  ],
+  [
+   "What if they had used health as the label?",
+   "axb05"
+  ],
+  [
+   "What if bots were removed?",
+   "false-news-spread"
+  ],
+  [
+   "What if the bot had not disclosed itself?",
+   "axe14"
+  ],
+  [
+   "What would happen in Europe?",
+   "bz05"
+  ],
+  [
+   "Did participants care about accuracy at all?",
+   "dimant-conspiracy-choice"
+  ],
+  [
+   "Can a company get credit through a bot?",
+   "axf04"
+  ],
+  [
+   "Do white names get more callbacks than Black names?",
+   "social12"
+  ],
+  [
+   "Is active choice as good as opt-out?",
+   "bz15"
+  ],
+  [
+   "What if workers could see who was more productive?",
+   "bz13"
+  ],
+  [
+   "What if the resume was stronger?",
+   "social12"
+  ],
+  [
+   "What if the letter had used loss framing?",
+   "tax-letter-norms"
   ]
  ],
  "every_decision": [

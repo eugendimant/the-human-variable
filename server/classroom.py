@@ -217,7 +217,9 @@ class Store:
             lo, hi = (c['estimate']['min'], c['estimate']['max']) if f == 'estimate' else (0, 100)
             bins = 10; w = (hi - lo) / bins; hist = [0] * bins
             for a in ans: hist[min(bins - 1, int((a - lo) / w))] += 1
-            out.update({'hist': hist, 'lo': lo, 'hi': hi, 'median': statistics.median(ans) if ans else None, 'mean': round(statistics.mean(ans), 1) if ans else None})
+            pts = {}
+            for a in ans: pts[a] = pts.get(a, 0) + 1
+            out.update({'points': sorted([v, k] for v, k in pts.items()), 'hist': hist, 'lo': lo, 'hi': hi, 'median': statistics.median(ans) if ans else None, 'mean': round(statistics.mean(ans), 1) if ans else None})
         elif f == 'rank':
             k = len(c['options']); pos = [0.0] * k
             for a in ans:

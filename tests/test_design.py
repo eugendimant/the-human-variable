@@ -81,3 +81,16 @@ def test_html_text_overlap_detector():
         pg.set_content('<p>You: 54 skill points</p><p>AI at work strip</p>')
         clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31']; b.close()
     assert hit and not clean, (hit, clean)
+
+
+def test_clipped_svg_mark_detector():
+    """Audit 31: a mark stacked past the top of its SVG is caught."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content('<svg viewBox="0 0 900 200" width="900" height="200"><circle cx="100" cy="-60" r="5"/></svg>')
+        hit = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31']
+        pg.set_content('<svg viewBox="0 0 900 200" width="900" height="200"><circle cx="100" cy="60" r="5"/></svg>')
+        clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31']; b.close()
+    assert hit and not clean, (hit, clean)

@@ -99,6 +99,11 @@ def _papers(c: dict) -> str:
     """Authors, year and journal of a decision's sources (titles stay with the evidence, as on the page)."""
     return '; '.join(f"{SOURCES[s]['authors']} ({SOURCES[s]['year']}), {SOURCES[s]['venue']}" for s in c['sources'] if s in SOURCES)
 
+def strip_yn(a: str) -> str:
+    """Drop a leading Yes or No when the rest stands as its own sentence (audit 31: never leave "but in addition..." or "partly.")."""
+    m = re.match(r'(Yes|No)[.,]\s*(.*)', a, re.S)
+    return m.group(2) if m and m.group(2)[:1].isupper() else a
+
 def _norm(s: str) -> str: return ' '.join(re.findall(r'[a-z0-9]+', s.lower()))
 _FILL = r"((so|and|okay|ok|but|also|hmm|well|quick question:?)[,\s]+)*"
 def is_open(ql: str) -> bool:
@@ -128,7 +133,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             return out(f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", c)   # an ethics question never gets a follow-up that happens to share its words (review 25, M2)
         openq = is_open(ql)
         fol = [f for f in fol if not openq or not re.match(r'(Yes|No)\b', f['a'])]
-        yn = lambda f: f['a'] if not (qt - set(tokens(f['q'])) - GENERIC - set(tokens(' '.join(R['filler'])))) else re.sub(r'^(Yes|No)[.,]\s*', '', f['a'])   # a near match keeps its Yes or No only when the question adds no word of its own ("did the control group change?" is not "was there a control group?", review 26)
+        yn = lambda f: f['a'] if not (qt - set(tokens(f['q'])) - GENERIC - set(tokens(' '.join(R['filler'])))) else strip_yn(f['a'])   # a near match keeps its Yes or No only when the question adds no word of its own ("did the control group change?" is not "was there a control group?", review 26)
         if fol and jac(max(fol, key=jac)) >= 0.6: return out(yn(max(fol, key=jac)), c)
         has = lambda w: any(w == x or (min(len(w), len(x)) >= 3 and (w.startswith(x) or x.startswith(w))) for x in qt)
         sub = [f for f in fol if len(set(tokens(f['q']))) >= 2 and all(has(w) for w in tokens(f['q']))]   # every content word of a follow-up appears in the question (fix ~ fixed)
@@ -151,16 +156,21 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         for name, rx in R['routes']:
             if not re.search(rx, ql): continue
             if name == 'offtopic': return off
-            if name == 'compare' and rare and 2 * len(rare & set(tokens(' '.join([c['question'], c.get('scene', ''), c['answerTitle'], c['explain']] + [f['q'] + ' ' + f['a'] for f in c.get('follow', [])])))) < len(rare): continue   # a comparison the study does not make ("were experts better than laypeople?") is not answered with its finding
-            if name == 'compare':   # "is X better than Y?", "... or not?": the finding, plus a follow-up that states a comparison on the question's own words (review 26, M1)
-                fc = [f for f in fol if re.search(r'\b(than|higher|lower|better|worse|outperform\w*|beat)\b', f['a']) and rare & set(tokens(f['q'] + ' ' + f['a']))]
-                fc = fc or [f for f in sorted(fol, key=lambda f: -len(qt & set(tokens(f['q'] + ' ' + f['a'])))) if len(qt & set(tokens(f['q'] + ' ' + f['a']))) >= 3][:1]   # else the follow-up sharing three or more of the question's words (GPT-4 alone vs physicians)
-                return out(f"{c['answerTitle']}. {c['explain']}" + (f" {fc[0]['a']}" if fc else ''), c)
-            if name == 'control':   # the item's control-group follow-up; an open question gets it without the leading Yes or No
+            item = set(tokens(' '.join([c['question'], c.get('scene', ''), c['answerTitle'], c['explain']] + [f['q'] + ' ' + f['a'] for f in c.get('follow', [])])))
+            if name == 'compare' and not re.search(r'\bor not\b', ql) and [w for w in rare if w not in item and not any(x in item for x in SYN.get(w, ()))]: continue   # every distinctive word of the comparison must be in the study, or it is not a comparison the study makes (audit 31, M2)
+            if name == 'compare':   # "is X better than Y?", "... or not?": the finding, plus a follow-up on the question's own words, without its own Yes or No (review 26 M1, audit 31 M1)
+                fc = [f for f in fol if re.search(r'\b(than|higher|lower|better|worse|outperform\w*|beat)\b', f['a']) and rare & set(tokens(f['q']))]
+                fc = fc or [f for f in sorted(fol, key=lambda f: -len(qt & set(tokens(f['q'] + ' ' + f['a'])))) if len(qt & set(tokens(f['q'] + ' ' + f['a']))) >= 3 and rare & set(tokens(f['q']))][:1]
+                return out(f"{c['answerTitle']}. {c['explain']}" + (f" {strip_yn(fc[0]['a'])}" if fc else ''), c)
+            if name == 'control':   # the item's control-group follow-up; Yes or No only answers "was there a control group?"
                 fcg = [f for f in c.get('follow', []) if re.search(r'\bcontrol\b', f['q'], re.I)]
-                if fcg: return out(fcg[0]['a'] if re.search(r'\b(is|was|were) there\b|\bhave an? control\b|\bany control\b', ql) else re.sub(r'^(Yes|No)[.,]\s*', '', fcg[0]['a']), c)   # Yes or No only answers "was there a control group?"
+                if fcg: return out(fcg[0]['a'] if re.search(r'\b(is|was|were) there\b|\bhave an? control\b|\bany control\b', ql) else strip_yn(fcg[0]['a']), c)
                 continue
-            if name == 'whatif': return out(f"The study tested one version. Design: {st.get('design', 'see the paper')}. What it covers: {c['boundary']} The finding: {c['explain']}", c)
+            if name == 'whatif':   # a follow-up that shares a distinctive word first, else the design, neutrally (audit 31, M3)
+                own = set(tokens(' '.join([c['answerTitle'], c['explain']])))
+                fw = [f for f in c.get('follow', []) if rare & set(tokens(f['q'])) and not re.match(r"(how (large|big|much|many|fast|long|often|high|low)|what (size|share|percent\w*|amount))\b", f['q'].lower())] or [f for f in c.get('follow', []) if (rare - own) & set(tokens(f['a']))]
+                if fw: return out(strip_yn(fw[0]['a']), c)
+                return out(f"The study's design: {st.get('design', 'see the paper')}. What it covers: {c['boundary']} The finding: {c['explain']}", c)
             if name == 'foresight':
                 fp = [f for f in fol if re.search(r'\b(predict\w*|expect\w*|forecast\w*|experts?|anticipat\w*)', f['q'] + ' ' + f['a'], re.I)]
                 if fp: return out(fp[0]['a'], c)
@@ -224,14 +234,14 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         QTY = r"(how (large|big|much|many|fast|long|often|high|low)|what (size|share|percent\w*|amount))\b"
         fq = [f for f in fol if rare & set(tokens(f['q'])) and not (whyq and re.match(QTY, f['q'].lower()))]   # no route; a why question never gets a quantity follow-up that shares one word (review 26, M1)
         if whyq and not fq: return out(f"{c['explain']} What a manager does with it: {c['implication']}", c)   # no route: a distinctive word the question shares with one follow-up question picks it
-        if fq: return out(max(fq, key=lambda f: (len(rare & set(tokens(f['q']))), len(qt & set(tokens(f['q'])))))['a'], c)   # ties go to the follow-up sharing more words
+        if fq: return out(yn(max(fq, key=lambda f: (len(rare & set(tokens(f['q']))), len(qt & set(tokens(f['q'])))))), c)   # ties go to the follow-up sharing more words
         own = set(tokens(' '.join([c['answerTitle'], c['explain']])))
         fa = [f for f in fol if (rare - own) & set(tokens(f['a']))]   # a distinctive word found only in a follow-up answer
-        if fa: return out(max(fa, key=lambda f: len((rare - own) & set(tokens(f['a']))))['a'], c)
+        if fa: return out(yn(max(fa, key=lambda f: len((rare - own) & set(tokens(f['a']))))), c)
         if fol:
             sc = lambda f: 2 * len(qt & set(tokens(f['q']))) + len(qt & set(tokens(f['a'])))   # the follow-up's own question weighs double
             f0 = max(fol, key=sc)
-            if len(qt & set(tokens(f0['q'] + ' ' + f0['a']))) >= 2: return out(f0['a'], c)
+            if len(qt & set(tokens(f0['q'] + ' ' + f0['a']))) >= 2: return out(yn(f0), c)   # a word-overlap pick keeps its Yes or No only for its own question (audit 31)
         # no study named and no route: answer about the decision on screen, never about another study on word overlap
         if rare: return out(f"The lab's summary of this study does not cover that detail. What it does cover: {c['answerTitle']}. {c['explain']}", c)   # say so, rather than pass the summary off as an answer
         return out(f"{c['answerTitle']}. {c['explain']} What a manager does with it: {c['implication']}", c)

@@ -351,3 +351,28 @@ def test_review26_form_matches_the_question():
     assert not t.curated('did the control group change?', 'bz08')['answer'].startswith('Yes')
     assert t.curated('Was there a control group?', 'bz08')['answer'].startswith('Yes')
     assert 'does not cover' in t.curated('Also, were experts better than laypeople?', 'bz07')['answer']
+
+
+def test_audit31_comparison_and_counterfactual_answers():
+    """Audit 31: a comparison answer never carries a follow-up's own Yes or No; a comparison the study does not make is not answered with its finding; a what-if never claims the study tested one version."""
+    from server import tutor as t
+    assert ' No. ' not in t.curated('Are AI images better than human ones?', 'axe10')['answer']
+    assert ' Yes. ' not in t.curated('Is AI better than humans at decisions?', 'axb01')['answer']
+    assert 'does not cover' in t.curated('Were experts more accurate than laypeople?', 'axb04')['answer']
+    for cid in t.CHALLENGES:
+        if t.CHALLENGES[cid].get('retired'): continue
+        assert 'tested one version' not in t.curated('What if it had been done differently?', cid)['answer']
+    assert t.curated('What if bots were removed?', 'false-news-spread')['answer'].startswith('Bots accelerated')
+    assert t.curated('Can a company get credit through a bot?', 'axf04')['answer'].startswith('Yes, partly')
+    assert '50 percent more callbacks' in t.curated('Do white names get more callbacks than Black names?', 'social12')['answer']
+    assert t.curated('What would happen in Europe?', 'bz05')['answer'].startswith('What the study covers')
+
+
+def test_format_names_agree_everywhere():
+    """Audit 31 (RULE G): a format's name is the same on the page, the console and the Streamlit app."""
+    import re
+    from pathlib import Path
+    R = Path(__file__).resolve().parents[1]
+    js = lambda f: dict(re.findall(r"(\w+): '([^']+)'", re.search(r"FORMAT_NAME = \{([^}]*)\}", (R / f).read_text()).group(1)))
+    py = dict(re.findall(r"'(\w+)': '([^']+)'", re.search(r"FORMAT_NAME = \{([^}]*)\}", (R / 'thv_streamlit/common.py').read_text()).group(1)))
+    assert js('src/app.js') == js('src/classroom.js') == py
