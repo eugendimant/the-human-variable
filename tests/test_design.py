@@ -132,6 +132,19 @@ def test_two_beat_slogan_headline_is_caught():
     assert hit and not clean
 
 
+def test_plural_after_one_is_caught():
+    """Audit 36: "You were 1 points off." shipped on the home page."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content('<p>You were 1 points off.</p>')
+        hit = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R14']
+        pg.set_content('<p>You were 1 point off. You were 11 points off. 2.1 points.</p>')
+        clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R14']; b.close()
+    assert hit and not clean
+
+
 def test_squeezed_heading_is_caught():
     """Owner, 2026-11-01: a heading capped narrower than its column wraps early and leaves the space empty."""
     from playwright.sync_api import sync_playwright

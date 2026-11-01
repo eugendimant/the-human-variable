@@ -63,6 +63,7 @@
     if (/—|\s–\s/.test(x)) push('R13', name(p), x.trim());
     if (/\b(not just|isn['’]t just|more than just|unlock|seamless|elevate|dive into|game[- ]changer|empower|supercharge|revolutioni[sz]e|cutting[- ]edge|harness the power)\b/i.test(x)) push('R14', name(p), x.trim());
     if (p.matches('h1,h2,h3,.hero *') && /[.!]\s+Then\s/.test(x)) push('R14', name(p), 'two-beat slogan: ' + x.trim().slice(0, 60));   // "Do X. Then Y." headlines (owner, 2026-11-01)
+    if (/(^|[^\d.,])1 (points|decisions|studies|players|answers|people|calls|steps)\b/.test(x)) push('R14', name(p), 'plural after 1: ' + x.trim().slice(0, 60));   // "1 points" (audit 36)
     if (/^\s*0\d\s*$/.test(x)) push('R15', name(p), x.trim());
   }
   const headish = [...document.querySelectorAll('h1,h2,h3')].concat(all.filter(e => !/^H[1-6]$/.test(e.tagName) && !e.matches('.num, .num *') && /\S\s+\S/.test(own(e)) && own(e).length > 3 && parseFloat(getComputedStyle(e).fontSize) >= 20 && +getComputedStyle(e).fontWeight >= 650));

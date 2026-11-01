@@ -12,6 +12,7 @@ for c in LIVE: ONE.setdefault(c['format'], c['id'])
 
 def states(every=False):
     yield 'home', URL, None
+    for v in (41, 39, 40, 0, 60): yield f'home-done-{v}', URL, f'hero:{v}'   # the locked try-it, near the study value and at both ends (audit 36)
     yield 'library', URL + '#library', None
     yield 'all-decisions', URL + '#studies', None   # the real hash (review 28: '#atlas' silently linted the home page)
     yield 'record-empty', URL + '#record', None
@@ -73,7 +74,9 @@ def run():
             for name, url, act in states(every=every_state):
                 pg = b.new_page(viewport={'width': w, 'height': h}); pg.on('pageerror', lambda e: errors.append((name, str(e))))
                 pg.goto(url); pg.wait_for_timeout(250)
-                if act == 'theme-strip':
+                if isinstance(act, str) and act.startswith('hero:'):
+                    pg.evaluate("v=>{const r=document.querySelector('#hero-range');r.value=v;r.dispatchEvent(new Event('input',{bubbles:true}))}", int(act[5:])); pg.click('[data-act=hero-lock]')
+                elif act == 'theme-strip':
                     th = LIVE[0]['theme']; same = [x for x in LIVE if x.get('theme') == th][:5]
                     for x in same:
                         pg.goto(URL + '?play=' + x['id']); pg.wait_for_timeout(200); answer(pg, x); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')

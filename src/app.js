@@ -156,15 +156,16 @@ function pathStrip(p, done) {
 }
 // The home page's one bold element: the game in a single gesture, on a measuring scale the width of the page.
 // Ticks every point, labels every ten; after the lock the study's value, its band and the gap are drawn on the same scale.
-function ruler(min, max, you, ev, band, unit = '%') {
+function ruler(min, max, you, ev, band, unit = '%', step = 1) {
   const pos = v => (v - min) / (max - min) * 100, ticks = [], span = max - min;
-  const major = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000].find(m => span / m <= 8) || span, minor = [major / 10, major / 5, major / 2, major].find(m => span / m <= 120 && Number.isInteger(m * 1000) ) || major;
-  const on = (v, m) => Math.abs(v / m - Math.round(v / m)) < 1e-6;
-  for (let v = Math.ceil(min / minor - 1e-9) * minor; v <= max + 1e-9; v += minor) { const vv = +v.toFixed(6); const lab = on(vv, major) && Math.min(vv - min, max - vv) >= major * .6 || Math.abs(vv - min) < 1e-9 || Math.abs(vv - max) < 1e-9; ticks.push(`<i class="${on(vv, major) || lab ? 'l' : on(vv, major / 2) ? 'm' : ''}" style="left:${pos(vv)}%"></i>${lab ? `<em class="${Math.abs(vv - min) < 1e-9 ? 'e0' : Math.abs(vv - max) < 1e-9 ? 'e1' : ''}" style="left:${pos(vv)}%">${esc(mn(vv + unit))}</em>` : ''}`) }   // both ends always labelled; a round value too close to an end gives way
+  const on = (v, m) => Math.abs(v / m - Math.round(v / m)) < 1e-6, MAJ = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000];
+  const major = MAJ.find(m => span / m <= 8 && on(min, m) && on(max, m)) || MAJ.find(m => span / m <= 8) || span;   // labels land on both ends when a round step allows it
+  const minor = [major / 10, major / 5, major / 2, major].find(m => span / m <= 120 && m >= step - 1e-9 && on(m, step) && Number.isInteger(m * 1000)) || major;   // never finer than the slider's own step
+  for (let v = Math.ceil(min / minor - 1e-9) * minor; v <= max + 1e-9; v += minor) { const vv = +v.toFixed(6); const lab = on(vv, major) && Math.min(vv - min, max - vv) >= major * .9 || Math.abs(vv - min) < 1e-9 || Math.abs(vv - max) < 1e-9; const end = Math.abs(vv - min) < 1e-9 || Math.abs(vv - max) < 1e-9, show = lab && (ev === null || ev === undefined || end && Math.abs(pos(vv) - pos(ev)) >= 16); ticks.push(`<i class="${on(vv, major) || lab ? 'l' : on(vv, major / 2) ? 'm' : ''}" style="left:${pos(vv)}%"></i>${show ? `<em class="${Math.abs(vv - min) < 1e-9 ? 'e0' : Math.abs(vv - max) < 1e-9 ? 'e1' : ''}" style="left:${pos(vv)}%">${esc(mn(vv + unit))}</em>` : ''}`) }   // both ends always labelled; a round value too close to an end gives way
   const has = x => x !== null && x !== undefined;
   const lo = has(ev) && has(band) ? Math.max(min, ev - band) : null, hi = has(ev) && has(band) ? Math.min(max, ev + band) : null;
   const gap = has(you) && has(ev) ? Math.abs(you - ev) : null, a = has(gap) ? Math.min(you, ev) : 0, b = has(gap) ? Math.max(you, ev) : 0;
-  return `<div class="ruler-scale" aria-hidden="true">${ticks.join('')}${has(lo) ? `<span class="r-band" style="left:${pos(lo)}%;width:${pos(hi) - pos(lo)}%"></span>` : ''}${has(gap) && gap > 0 ? `<span class="r-gap" style="left:${pos(a)}%;width:${pos(b) - pos(a)}%"><b>${+gap.toFixed(2)}${unit === '%' ? ' points' : ' ' + unit}</b></span>` : ''}${has(you) && has(ev) ? `<span class="r-mark you" style="left:${pos(you)}%"><b>You ${esc(mn(you + unit))}</b></span>` : ''}${has(ev) ? `<span class="r-mark ev" style="left:${pos(ev)}%"><b>Study ${esc(mn(ev + unit))}</b></span>` : ''}</div>`;
+  return `<div class="ruler-scale" aria-hidden="true">${ticks.join('')}${has(lo) ? `<span class="r-band" style="left:${pos(lo)}%;width:${pos(hi) - pos(lo)}%"></span>` : ''}${has(gap) && gap > 0 ? `<span class="r-gap" style="left:${pos(a)}%;width:${pos(b) - pos(a)}%"><b>${+gap.toFixed(2)}${unit === '%' ? (gap === 1 ? ' point' : ' points') : ' ' + unit}</b></span>` : ''}${has(you) && has(ev) ? `<span class="r-mark you" style="left:${pos(you)}%"><b>You ${esc(mn(you + unit))}</b></span>` : ''}${has(ev) ? `<span class="r-mark ev" style="left:${pos(ev)}%"></span><em class="ev-lab ${pos(ev) < 12 ? 'e0' : pos(ev) > 88 ? 'e1' : ''}" style="left:${pos(ev)}%">Study ${esc(mn(ev + unit))}</em>` : ''}</div>`;   // once the study value is shown it takes the axis row (ends stay unless it sits on one), so it never collides with the player's label above
 }
 function heroTry() {
   const c = BY_ID.ai01; if (!c || !isLive(SOURCE[c.sources[0]])) return '';
@@ -172,10 +173,10 @@ function heroTry() {
   const gap = v === null ? 0 : Math.abs(v - e.target);
   return `<section class="try-ruler" aria-labelledby="try-q">
     <div class="tr-head"><h1 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h1>
-    <p class="tr-read ${h.done ? 'ev' : ''}"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${h.done ? e.target + '%' : v === null ? '' : v + '%'}</b><span class="hero-unit">${h.done ? 'less time, the study' : v === null ? 'Slide the scale to answer' : 'less time, your call'}</span></p></div>
+    <p class="tr-read ${h.done ? 'ev' : ''}"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${h.done ? e.target + '%' : v === null ? '00%' : v + '%'}</b><span class="hero-unit">${h.done ? 'less time, the study' : v === null ? 'Slide the scale to answer' : 'less time, your call'}</span></p></div>
     <div class="ruler ${h.done ? 'done' : ''}">${h.done ? ruler(e.min, e.max, v, e.target, e.tolerance) : `${ruler(e.min, e.max, null, null, null)}<label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
     <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">`}</div>
-    <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} points off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}<span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
+    <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} ${gap === 1 ? 'point' : 'points'} off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}<span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
   </section>`;
 }
 
@@ -189,7 +190,7 @@ function home() {
   const resume = paths.find(p => { const n = p.items.filter(id => done.has(id)).length; return n > 0 && n < p.items.length });
   return `${resume ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button></div>` : ''}<section class="hero wrap">${heroTry()}
     <div class="hero-foot"><div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button>${location.protocol.startsWith('http') ? '<button class="link-btn" data-act="join">Join a live class</button>' : ''}</div>
-    <p class="hero-meta">${ALL.length} decisions, each from a peer-reviewed experiment on AI, work and behavior. Original concept by Eugen Dimant.</p></div></section>
+    <p class="hero-meta">${ALL.length} decisions on AI, work and behavior, drawn from ${nSrc} peer-reviewed studies. Original concept by Eugen Dimant.</p></div></section>
   <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
     <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${pathStrip(p, done)}${pi === 0 ? 'Start here. ' : ''}${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
@@ -213,11 +214,11 @@ function instrument(c) {
   if (c.format === 'estimate') {
     const e = c.estimate, v = r ?? Math.round((e.min + e.max) / 2);
     return `<div class="meter est-meter"><div class="meter-read"><span class="est-label" id="est-label">${esc(e.label)}</span><b class="${r === null ? 'empty' : ''}" id="est-read">${r === null ? 'Slide the scale' : esc(mn(r + (e.unit ?? '%')))}</b></div>
-      <div class="ruler">${ruler(e.min, e.max, null, null, null, e.unit ?? '%')}<input type="range" id="est" aria-labelledby="est-label" min="${e.min}" max="${e.max}" step="${e.step || 1}" value="${v}" class="${r === null ? 'untouched' : ''}" style="--fill:${r === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%" ${rev ? 'disabled' : ''}></div></div>`;   // the same measuring scale as the home page (redesign, round 36)
+      <div class="ruler">${ruler(e.min, e.max, null, null, null, e.unit ?? '%', e.step || 1)}<input type="range" id="est" aria-labelledby="est-label" min="${e.min}" max="${e.max}" step="${e.step || 1}" value="${v}" class="${r === null ? 'untouched' : ''}" style="--fill:${r === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%" ${rev ? 'disabled' : ''}></div></div>`;   // the same measuring scale as the home page (redesign, round 36)
   }
   if (c.format === 'forecast') {
     return `<div class="meter est-meter"><div class="meter-read"><span class="est-label" id="fc-label">Probability the claim is true</span><b class="${st.touched ? '' : 'empty'}" id="fc-read">${st.touched ? r + '%' : 'Slide the scale'}</b></div>
-      <div class="ruler">${ruler(0, 100, null, null, null, '%')}<input type="range" id="fc" aria-labelledby="fc-label" min="0" max="100" step="5" value="${r}" class="${st.touched ? '' : 'untouched'}" style="--fill:${st.touched ? r : 0}%" ${rev ? 'disabled' : ''}></div>
+      <div class="ruler">${ruler(0, 100, null, null, null, '%', 5)}<input type="range" id="fc" aria-labelledby="fc-label" min="0" max="100" step="5" value="${r}" class="${st.touched ? '' : 'untouched'}" style="--fill:${st.touched ? r : 0}%" ${rev ? 'disabled' : ''}></div>
       <div class="axis"><span>certainly false</span><span>certainly true</span></div></div>`;
   }
   if (c.format === 'rank') {
@@ -362,7 +363,7 @@ function play() {
     const verb = { estimate: 'estimate', allocate: 'split', rank: 'ranking', delegate: 'routing', forecast: 'forecast' }[c.format] || 'answer';
     return `<section class="focus">${top}<article class="focus-card" aria-labelledby="q-h">${CLASS_LOCK && !st.room && !BY_ID[c.id].answerTitle ? '<p class="lock-note" role="note">A live class is running on this server, so results for decisions it has not reached open after it reveals them. You can still make your call now.</p>' : ''}
       <div class="q-col"><p class="scene">${esc(c.scene)}</p>
-      ${c.format === 'forecast' ? `<h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1><p class="hint fc-ask">How likely is it that the study found this?</p>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}<p class="study-line">${c.case ? `${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}. ` : ''}${esc([(c.study || {}).design, `${SOURCE[c.sources[0]].venue} ${SOURCE[c.sources[0]].year}`].filter(Boolean).join(', '))}.</p>${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : ''}
+      ${c.format === 'forecast' ? `<h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1><p class="hint fc-ask">How likely is it that the study found this?</p>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}<p class="study-line">${c.case ? `${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}. ` : ''}${esc([(c.study || {}).design, /^(none|not (stated|confirmed))/i.test((c.study || {}).n || 'none') ? '' : c.study.n, `${SOURCE[c.sources[0]].venue} ${SOURCE[c.sources[0]].year}`].filter(Boolean).map(x => x.replace(/\.$/, '')).join('. '))}.</p>${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : ''}
       </div><div class="a-col">${instrument(c)}${conf}</div></article>
       <div class="actionbar"><div class="actionbar-in"><span class="kicker">${lockHint(c)}</span><button class="btn btn-you btn-lg" data-act="lock" id="lock-btn" ${ready ? '' : 'disabled'}>Lock my ${verb}</button></div></div></section>`;
   }
