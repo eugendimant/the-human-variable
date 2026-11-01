@@ -288,3 +288,15 @@ def test_offline_tutor_audit29(q, cid, want):
     """Regression audit 29b: everyday recommendation questions reach the manager's action; only clear ethics and staffing
     phrasings go to the ethics answer; a definitional follow-up is used for "what is X"."""
     a = T.curated(q, cid)['answer']; assert want in a, a[:120]
+
+
+def test_wide_question_batteries_keep_their_answers():
+    """Invariant I16, widened after audits 29b and 29c: about 7,000 'what is X' and 'should we / is it' questions keep their answers.
+    The router is frozen: a change shows up here as an explicit list to review, then `python3 tools/tutor_golden.py`."""
+    import json, sys
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(root / 'tools'))
+    import tutor_golden
+    gold = json.loads((root / 'tests/tutor_golden_wide.json').read_text()); now = tutor_golden.wide()
+    diff = [(cid, q, gold.get(cid, {}).get(q), a) for cid, qa in now.items() for q, a in qa.items() if gold.get(cid, {}).get(q) != a]
+    assert not diff, (len(diff), diff[:10])

@@ -11,5 +11,13 @@ BATTERY = ['What is the design?', 'What is the sample?', 'Who took part?', 'How 
            'Should we use this when we hire?', 'Should we roll this out right now?', 'Is it ethical to act on this?']
 def snapshot():
     return {cid: {q: T.curated(q, cid)['answer'][:90] for q in BATTERY} for cid, c in sorted(T.CHALLENGES.items()) if not c.get('retired')}
+def wide():
+    """The audit-29 batteries: 'what is X' on every decision, and 'should we / is it' phrasings on 30 decisions (about 7,000 pairs)."""
+    W = json.loads((ROOT / 'tests/tutor_wide_questions.json').read_text()); live = [cid for cid, c in sorted(T.CHALLENGES.items()) if not c.get('retired')]
+    out = {cid: {q: T.curated(q, cid)['answer'][:60] for q in W['what_is']} for cid in live}
+    for cid in W['ids_should']:
+        if cid in T.CHALLENGES: out.setdefault(cid, {}).update({q: T.curated(q, cid)['answer'][:60] for q in W['should_ethics']})
+    return out
 if __name__ == '__main__':
-    (ROOT / 'tests/tutor_golden.json').write_text(json.dumps(snapshot(), ensure_ascii=False, indent=0) + '\n'); print('written')
+    (ROOT / 'tests/tutor_golden.json').write_text(json.dumps(snapshot(), ensure_ascii=False, indent=0) + '\n')
+    (ROOT / 'tests/tutor_golden_wide.json').write_text(json.dumps(wide(), ensure_ascii=False, separators=(',', ':')) + '\n'); print('written')
