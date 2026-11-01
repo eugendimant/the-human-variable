@@ -19,6 +19,7 @@ def states(every=False):
         yield f"predict-{c['id']}", URL + '?play=' + c['id'], None
         yield f"reveal-{c['id']}", URL + '?play=' + c['id'], c
     yield 'record', URL, 'record'
+    yield 'library-played', URL, 'library-played'   # review 26: the library changes once principles open
 
 def live(errors):
     """Console (setup, lobby, open, revealed), projector (open, revealed) and a phone, on a real server."""
@@ -58,10 +59,10 @@ def run():
             for name, url, act in states(every=every_state):
                 pg = b.new_page(viewport={'width': w, 'height': h}); pg.on('pageerror', lambda e: errors.append((name, str(e))))
                 pg.goto(url); pg.wait_for_timeout(250)
-                if act == 'record':
+                if act in ('record', 'library-played'):
                     for cid in list(ONE.values())[:4]:
                         pg.goto(URL + '?play=' + cid); pg.wait_for_timeout(200); answer(pg, next(x for x in LIVE if x['id'] == cid)); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
-                    pg.goto(URL + '#record'); pg.wait_for_timeout(300)
+                    pg.goto(URL + ('#record' if act == 'record' else '#library')); pg.wait_for_timeout(300)
                 elif act:
                     try: answer(pg, act); pg.click('#lock-btn', timeout=5000); pg.wait_for_selector('#r-h', timeout=5000)
                     except Exception as e: errors.append((name, 'could not play to the reveal: ' + str(e).splitlines()[0])); pg.close(); continue

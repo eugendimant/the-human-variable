@@ -337,3 +337,17 @@ def test_know_questions_do_not_reach_unrelated_follow_ups():
     for q, cid in [('Did people know they were in an experiment?', 'bz08'), ('Did participants know how much they would earn?', 'biz08'),
                    ('Did participants know how much they would earn?', 'axb08'), ('Did people know they were in an experiment?', 'axb05')]:
         a = T.curated(q, cid)['answer']; assert not a.startswith(('Yes.', 'Often.')), (cid, a[:80])
+
+
+def test_review26_form_matches_the_question():
+    """Review 26, M1: a why, what-if or comparison question is not answered by a follow-up that only shares one word."""
+    from server import tutor as t
+    a = t.curated('So is GPT-4 better than doctors?', 'axf06')['answer']
+    assert 'seconds' not in a and '92%' in a
+    for q in ('Why did parents come later after a fine?', 'what if the fine had been much bigger'):
+        assert 'NIS 10' not in t.curated(q, 'bz08')['answer'], q
+    assert 'lever for a manager' not in t.curated('So do people hate the other side or not?', 'dimant-hate-choice')['answer'] and 'Expectations' in t.curated('So do people hate the other side or not?', 'dimant-hate-choice')['answer']
+    assert t.curated('what happened in the control centres', 'bz08')['answer'].startswith('In the four centers without a fine')
+    assert not t.curated('did the control group change?', 'bz08')['answer'].startswith('Yes')
+    assert t.curated('Was there a control group?', 'bz08')['answer'].startswith('Yes')
+    assert 'does not cover' in t.curated('Also, were experts better than laypeople?', 'bz07')['answer']

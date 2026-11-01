@@ -16,7 +16,7 @@ const TRACK_NOTE = {
   'Culture & Society': 'Norms, polarization, contagion',
   'Judgment': 'Forecasts, anchors, confidence'
 };
-const FORMAT_NAME = { choice: 'Call it', causal: 'Find the cause', multi: 'Pick two', estimate: 'Estimate', forecast: 'Forecast', rank: 'Rank', allocate: 'Allocate', delegate: 'Delegate' };
+const FORMAT_NAME = { choice: 'Pick one', causal: 'Find the cause', multi: 'Pick two', estimate: 'Estimate', forecast: 'Forecast', rank: 'Rank', allocate: 'Allocate', delegate: 'Delegate' };
 
 // ---------- helpers ----------
 const qs = s => document.querySelector(s);
@@ -264,7 +264,8 @@ function dag(d, rev) {
 }
 
 // The gap: player's call (blue) and the evidence (amber) on one axis.
-function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id = 'g', fmt = x => x + unit, evText = null }) {
+function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id = 'g', fmt: fmt0 = x => x + unit, evText = null }) {
+  const fmt = x => mn(fmt0(x));   // every number on the plate takes a true minus (review 26, I12)
   const narrow = innerWidth < 640, W = narrow ? 360 : 640, fs = narrow ? 14 : 19, L = 18, R = W - 18, y = 52, sx = v => L + (v - min) / (max - min) * (R - L);
   const has = v => v !== null && v !== undefined;
   const anchor = x => x < L + (narrow ? 40 : 60) ? 'start' : x > R - (narrow ? 40 : 60) ? 'end' : 'middle';
@@ -275,13 +276,13 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
     ${has(you) && has(ev) ? `<line x1="${sx(you)}" y1="${y}" x2="${sx(ev)}" y2="${y}" class="ax-gap" stroke-width="2.5" stroke-dasharray="3 4"/>` : ''}
     ${has(you) ? `<circle cx="${sx(you)}" cy="${y}" r="12" fill="#2f54eb" stroke="#fff" stroke-width="3"/>${lab(sx(you), 'You ' + fmt(you), 'ax-you', true)}` : ''}
     ${has(ev) ? `<g class="ev-mark" id="${id}-ev" data-from="${has(you) ? sx(you) - sx(ev) : 0}"><circle cx="${sx(ev)}" cy="${y}" r="12" fill="#e0a01c" stroke="#fff" stroke-width="3"/>${lab(sx(ev), evText ?? evLabel + ' ' + fmt(ev), 'ax-ev', false)}</g>` : ''}
-    ${has(band) && has(ev) ? (() => { const m = narrow ? 134 : 140, bx = Math.min(R - m, Math.max(L + m, sx(ev))); return `<text x="${bx}" y="114" font-size="${narrow ? 15 : 17}" text-anchor="middle" class="ax-band-lab" font-family="Schibsted Grotesk,system-ui">hit band ${esc(mn(fmt(+(Math.max(min, ev - band)).toFixed(1))))} to ${esc(mn(fmt(+(Math.min(max, ev + band)).toFixed(1))))}</text>` })() : ''}
+    ${has(band) && has(ev) ? (() => { const m = narrow ? 134 : 140, bx = Math.min(R - m, Math.max(L + m, sx(ev))); return `<text x="${bx}" y="114" font-size="${narrow ? 15 : 17}" text-anchor="middle" class="ax-band-lab" font-family="Schibsted Grotesk,system-ui">hit band ${esc(fmt(+(Math.max(min, ev - band)).toFixed(1)))} to ${esc(fmt(+(Math.min(max, ev + band)).toFixed(1)))}</text>` })() : ''}
     <text x="${L}" y="114" font-size="${narrow ? 14 : 16}" class="ax-tick" font-family="Schibsted Grotesk,system-ui">${esc(fmt(min))}</text><text x="${R}" y="114" font-size="${narrow ? 14 : 16}" class="ax-tick" text-anchor="end" font-family="Schibsted Grotesk,system-ui">${esc(fmt(max))}</text></svg>`;
 }
 
 function gapFigure(c, rec) {
   const r = rec.response; let body = '', cap = '';
-  if (c.format === 'estimate') { const e = c.estimate; const u = (e.unit ?? '%') === '%' ? ' points' : e.unit, f = x => x + (e.unit ?? '%'); body = gapHead(f(r), f(e.target), rec.detail.gap <= e.tolerance ? 'Inside the band' : `${rec.detail.gap}${u} off`) + gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); cap = c.chart ? '' : srcLine(c) }
+  if (c.format === 'estimate') { const e = c.estimate; const u = (e.unit ?? '%') === '%' ? ' points' : e.unit, f = x => mn(x + (e.unit ?? '%')); body = (e.label ? `<p class="plate-h">${esc(e.label)}</p>` : '') + gapHead(f(r), f(e.target), rec.detail.gap <= e.tolerance ? 'Inside the band' : `${rec.detail.gap}${u} off`) + gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); cap = c.chart ? '' : srcLine(c) }
   else if (c.format === 'forecast') { body = gapHead(r + '%', c.forecast.truth ? 'True' : 'False', `${Math.abs(r - (c.forecast.truth ? 100 : 0))} points from the truth`, 'You gave it', 'The claim') + `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = `A confident correct call earns 100, saying 50% earns 50, and a confident miss goes below zero.${c.chart ? '' : ' ' + srcLine(c)}` }
   else if (c.format === 'rank') {
     const truth = c.rankAnswer, ties = c.rankTies || [];
@@ -289,7 +290,8 @@ function gapFigure(c, rec) {
     // Items the study did not separate share a rank, shown as "2=".
     // A pair the study did not separate is marked on the lower row; its order is not scored.
     const tieUp = t => t > 0 && tied(truth[t - 1], truth[t]);
-    body = `<div class="rc-cols" aria-hidden="true"><span>Measured order, top first</span><span class="k-ev">Study</span><span class="k-you">You</span></div><ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li class="${tieUp(t) ? 'tie' : ''}"><span class="rc-name">${esc(c.options[oi])}${c.rankValues ? `<small>${esc(c.rankValues[oi])}${tieUp(t) ? ', not separated from the row above' : ''}</small>` : tieUp(t) ? '<small>Not separated from the row above</small>' : ''}</span><span class="rc-badge ev" title="Measured rank">${t + 1}</span><span class="rc-badge you ${k === t || (tieUp(t) && k === t - 1) || (tieUp(t + 1) && k === t + 1) ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol>`;   // column heads over the numbers: no colour key
+    const pctVals = c.rankValues && c.rankValues.every(v => /^[\u2212-]?\d+(\.\d+)?%$/.test(v)) ? c.rankValues.map(v => parseFloat(v.replace('\u2212', '-'))) : null;   // percentages share one 0 to 100 axis: plot them (review 26)
+    body = `${pctVals && c.chart && c.chart.note ? `<p class="plate-h">${esc(c.chart.note.replace(/\.$/, ''))}, 0 to 100%</p>` : ''}<div class="rc-cols" aria-hidden="true"><span>Measured order, top first</span><span class="k-ev">Study</span><span class="k-you">You</span></div><ol class="rank-cmp">${truth.map((oi, t) => { const k = r.indexOf(oi); return `<li class="${tieUp(t) ? 'tie' : ''}"><span class="rc-name">${esc(c.options[oi])}${pctVals ? `<span class="rc-dot" aria-hidden="true" style="--v:${pctVals[oi]}%"><i style="left:${pctVals[oi]}%"></i><b style="left:${pctVals[oi]}%">${esc(mn(c.rankValues[oi]))}</b></span>${tieUp(t) ? '<small>Not separated from the row above</small>' : ''}` : c.rankValues ? `<small>${esc(c.rankValues[oi])}${tieUp(t) ? ', not separated from the row above' : ''}</small>` : tieUp(t) ? '<small>Not separated from the row above</small>' : ''}</span><span class="rc-badge ev" title="Measured rank">${t + 1}</span><span class="rc-badge you ${k === t || (tieUp(t) && k === t - 1) || (tieUp(t + 1) && k === t + 1) ? 'same' : ''}" title="Your rank">${k + 1}</span></li>` }).join('')}</ol>`;   // column heads over the numbers: no colour key
     cap = `${rec.detail.agree} of ${rec.detail.total} scored pairs in the measured order.${ties.length ? ' Rows marked as not separated were not told apart by the study, so their order is not scored.' : ''}${c.chart && !c.rankValues ? '' : ' ' + srcLine(c)}`
   }
   else if (c.format === 'allocate') {
@@ -405,15 +407,20 @@ function curated(q, c) {
   if (/\b(ethic\w*|unethical|moral\w*|fair to|unfair\w*|allowed|legal\w*)\b|\bis (it|this|that) (really )?(fair|right|wrong|ok|okay)\b/.test(ql)) return { text: `The study measures what happened, not what is right; that call is yours. What it covers: ${c.boundary}\n\nWhat a manager can do with it: ${c.implication}`, cites: cs(c) };
   if (isOpen(ql)) fol = fol.filter(f => !/^(Yes|No)\b/.test(f.a));
   const jac = f => { const ft = new Set(trTokens(f.q)); const inter = [...ft].filter(w => qt.has(w)).length; return inter / Math.max(1, new Set([...ft, ...qt]).size) };
-  const near = fol.slice().sort((a, b) => jac(b) - jac(a))[0]; if (near && jac(near) >= 0.6) return { text: near.a, cites: cs(c) };
-  const has = w => [...qt].some(x => w === x || (Math.min(w.length, x.length) >= 3 && (w.startsWith(x) || x.startsWith(w)))); const sub = fol.filter(f => { const ft = trTokens(f.q); return new Set(ft).size >= 2 && ft.every(has) }).sort((a, b) => trTokens(b.q).length - trTokens(a.q).length)[0]; if (sub) return { text: sub.a, cites: cs(c) };
+  const near = fol.slice().sort((a, b) => jac(b) - jac(a))[0]; const ynSkip = new Set(trTokens(TR.filler.join(' '))); const yn = f => [...qt].every(w => trTokens(f.q).includes(w) || TR_GENERIC.has(w) || ynSkip.has(w)) ? f.a : f.a.replace(/^(Yes|No)[.,]\s*/, ''); if (near && jac(near) >= 0.6) return { text: yn(near), cites: cs(c) };
+  const has = w => [...qt].some(x => w === x || (Math.min(w.length, x.length) >= 3 && (w.startsWith(x) || x.startsWith(w)))); const sub = fol.filter(f => { const ft = trTokens(f.q); return new Set(ft).size >= 2 && ft.every(has) }).sort((a, b) => trTokens(b.q).length - trTokens(a.q).length)[0]; if (sub) return { text: yn(sub), cites: cs(c) };
   const named = trNames(q, c) ? [] : ALL.filter(x => x.explain && !x.sources.some(s => c.sources.includes(s)) && trNames(q, x));
   if (named.length) { const ov = x => topic.filter(w => trTokens([x.answerTitle, x.explain, x.question].join(' ')).includes(w)).length; const b = named.sort((a, z) => ov(z) - ov(a))[0]; return { text: `${b.explain}\n\n${b.implication}`, cites: cs(b) } }
   const st0 = c.study || {}, rare = topic.filter(w => !TR_COMMON.has(w)), hits = (s, ws) => { const ts = new Set(trTokens(s)); return ws.filter(w => ts.has(w)).length };
   if (c.delegate) { const ov = tk => trTokens(tk.text).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const tk = c.delegate.tasks.slice().sort((a, b) => ov(b) - ov(a))[0]; if (tk && tk.why && (ov(tk) >= 2 || (ov(tk) >= 1 && /\bwhy\b/.test(ql)))) return { text: tk.why, cites: cs(c) } }   // a question about one task gets that task's evidence
+  let whyq = false;
   for (const [name, rx] of TR.routes) {
     if (!new RegExp(rx, 'i').test(ql)) continue;
     if (name === 'offtopic') return off;
+    if (name === 'compare' && rare.length && 2 * hits([c.question, c.scene || '', c.answerTitle, c.explain, ...(c.follow || []).map(f => f.q + ' ' + f.a)].join(' '), rare) < rare.length) continue;
+    if (name === 'compare') { const ovq = f => hits(f.q + ' ' + f.a, [...qt]); const fc = fol.find(f => /\b(than|higher|lower|better|worse|outperform\w*|beat)\b/.test(f.a) && hits(f.q + ' ' + f.a, rare) > 0) || fol.filter(f => ovq(f) >= 3).sort((a, b) => ovq(b) - ovq(a))[0]; return { text: `${c.answerTitle}. ${c.explain}${fc ? ' ' + fc.a : ''}`, cites: cs(c) } }   // review 26, M1
+    if (name === 'control') { const fcg = (c.follow || []).find(f => /\bcontrol\b/i.test(f.q)); if (fcg) return { text: /\b(is|was|were) there\b|\bhave an? control\b|\bany control\b/.test(ql) ? fcg.a : fcg.a.replace(/^(Yes|No)[.,]\s*/, ''), cites: cs(c) }; continue }
+    if (name === 'whatif') return { text: `The study tested one version. Design: ${st0.design || 'see the paper'}. What it covers: ${c.boundary} The finding: ${c.explain}`, cites: cs(c) };
     if (name === 'foresight') { const fp = fol.find(f => /\b(predict\w*|expect\w*|forecast\w*|experts?|anticipat\w*)/i.test(f.q + ' ' + f.a)); if (fp) return { text: fp.a, cites: cs(c) }; continue }
     if (name === 'detect') { const fd = fol.find(f => /\b(tell|detect\w*|spot|notice[ds]?|identif(y|ied)|recogni\w*)\b/i.test(f.q)); if (fd) return { text: fd.a, cites: cs(c) }; continue }
     if (name === 'signif') return { text: c.explain, cites: cs(c) };   // the main contrast first
@@ -421,7 +428,7 @@ function curated(q, c) {
     if (name === 'meaning') { const m = ql.match(/mean(?:t)? by ['"]?(\w+)|does (?:the )?(?:word |term )?['"]?(\w+)['"]? mean/), w = m ? (m[1] || m[2] || '') : ''; const sw = w ? trStem(w) : ''; const pre = s => !!sw && trTokens(s).some(x => x.startsWith(sw)); const fm = fol.find(f => pre(f.q)); if (fm) return { text: fm.a, cites: cs(c) }; if (pre(c.answerTitle + ' ' + c.explain + ' ' + (c.scene || ''))) return { text: `In this study: ${c.scene || ''}\n\n${c.answerTitle}. ${c.explain}`, cites: cs(c) }; continue }
     if (name === 'define') { const m = ql.match(/^what(?:.s| is) (?:an? |the )?(\w+)\??$/), w = m ? m[1] : '', sw = w ? trStem(w) : ''; const fdq = sw && !TR_GENERIC.has(sw) && fol.find(f => /\bmean\b|^what (is|are) (an? |the )?\w+\??$|^why call/.test(f.q.toLowerCase()) && trTokens(f.q).some(x => x.startsWith(sw))); if (fdq) return { text: fdq.a, cites: cs(c) }; if (sw && !TR_GENERIC.has(sw) && trTokens(c.answerTitle + ' ' + c.explain + ' ' + (c.scene || '')).some(x => x.startsWith(sw))) return { text: `In this study: ${c.scene || ''}\n\n${c.answerTitle}. ${c.explain}`, cites: cs(c) }; continue }
     if (name === 'contest') { const fd = fol.find(f => /\b(design|differ|contrast|both)/i.test(f.q + ' ' + f.a)); return { text: `${c.explain}${fd ? '\n\n' + fd.a : ''}\n\n${c.implication}`, cites: cs(c) } }   // both sides of a contested finding
-    if (name === 'why') { const has2 = s => trTokens(s).some(w => rare.includes(w)), whys = fol.filter(f => /^why/i.test(f.q)); const fw = whys.find(f => has2(f.q + ' ' + f.a)) || (whys.length === 1 && /\b(didn.?t|did not|fail)/.test(ql) && /\b(not|no|never|fail\w*|n't|miss\w*|hid\w*|mask\w*|appear\w*)\b/.test(whys[0].a) ? whys[0] : null) || fol.find(f => /\b(because|read (this|it)? ?as|reason|motive|concern|suggest)/i.test(f.a) && has2(f.a)); if (fw) return { text: fw.a, cites: cs(c) }; continue }
+    if (name === 'why') { const has2 = s => trTokens(s).some(w => rare.includes(w)), whys = fol.filter(f => /^why/i.test(f.q)); const fw = whys.find(f => has2(f.q + ' ' + f.a)) || (whys.length === 1 && /\b(didn.?t|did not|fail)/.test(ql) && /\b(not|no|never|fail\w*|n't|miss\w*|hid\w*|mask\w*|appear\w*)\b/.test(whys[0].a) ? whys[0] : null) || fol.find(f => /\b(because|read (this|it)? ?as|reason|motive|concern|suggest)/i.test(f.a) && has2(f.a)); if (fw) return { text: fw.a, cites: cs(c) }; whyq = true; continue }
     if (name === 'authors') return { text: `${c.sources.map(id => SOURCE[id] ? `${SOURCE[id].authors} (${SOURCE[id].year}), ${SOURCE[id].venue}` : '').filter(Boolean).join('; ')}. Design: ${st0.design || 'see the paper'}.`, cites: cs(c) };
     if (name === 'voluntary') return { text: `Design: ${st0.design || 'see the paper'}.${st0.n ? ` Sample: ${st0.n}.` : ''}\n\nSetting: ${c.scene}\n\nWhat the study covers: ${c.boundary}`, cites: cs(c) };
     if (name === 'stakes') { const fm = fol.find(f => /(\$|\bmoney\b|\bpaid\b|\bbonus|\bincentiv)/i.test(f.q + ' ' + f.a)); if (fm) return { text: fm.a, cites: cs(c) } }
@@ -440,7 +447,9 @@ function curated(q, c) {
     if (name === 'size') return { text: `${c.explain}\n\nIn practice: ${c.implication}`, cites: cs(c) };
     if (name === 'transfer') return { text: `${c.boundary}\n\nThe study itself: ${c.explain}`, cites: cs(c) };
   }
-  const fq = fol.filter(f => hits(f.q, rare)).sort((a, b) => (hits(b.q, rare) - hits(a.q, rare)) || (hits(b.q, [...qt]) - hits(a.q, [...qt])))[0]; if (fq) return { text: fq.a, cites: cs(c) };   // no route: a distinctive word shared with one follow-up question
+  const QTY = /^(how (large|big|much|many|fast|long|often|high|low)|what (size|share|percent\w*|amount))\b/;
+  const fq = fol.filter(f => hits(f.q, rare) && !(whyq && QTY.test(f.q.toLowerCase()))).sort((a, b) => (hits(b.q, rare) - hits(a.q, rare)) || (hits(b.q, [...qt]) - hits(a.q, [...qt])))[0]; if (fq) return { text: fq.a, cites: cs(c) };   // review 26, M1: a why question never gets a quantity follow-up
+  if (whyq) return { text: `${c.explain} What a manager does with it: ${c.implication}`, cites: cs(c) };   // no route: a distinctive word shared with one follow-up question
   const own = new Set(trTokens([c.answerTitle, c.explain].join(' '))), rareA = rare.filter(w => !own.has(w));
   const fa = fol.filter(f => hits(f.a, rareA)).sort((a, b) => hits(b.a, rareA) - hits(a.a, rareA))[0]; if (fa) return { text: fa.a, cites: cs(c) };   // a distinctive word found only in a follow-up answer
   if (fol.length) { const ov = f => trTokens(f.q + ' ' + f.a).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const sc = f => 2 * trTokens(f.q).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length + trTokens(f.a).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const f0 = fol.slice().sort((a, b) => sc(b) - sc(a))[0]; if (ov(f0) >= 2) return { text: f0.a, cites: cs(c) } }   // the follow-up's own question weighs double
@@ -485,13 +494,23 @@ function almanac() {
   const themes = BANK.themes || [], played = new Set(records.map(r => r.id));
   return `<section class="atlas-head wrap">${libHead()}
 </section>
-    <section class="wrap" style="padding-bottom:64px">${themes.map(t => { const cs = ALL.filter(c => c.theme === t.id); if (!cs.length) return ''; const seen = cs.filter(c => played.has(c.id)).length;
-      // predict first: a principle and its findings open once the player has made calls on them
-      const line = !t.principle ? (libraryLoaded ? 'Held back while a live class is running on this server.' : 'Loading…') : seen ? esc(t.principle) : `Make a call on any of these ${cs.length} decisions to open the principle.`;
-      return `<article class="theme" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p class="${seen ? '' : 'locked'}">${line}<small class="theme-count">${pathStrip({ items: cs.map(c => c.id) }, played)}${seen} of ${cs.length} played</small></p></div>
-      <details class="theme-more"><summary>The ${cs.length} findings behind it${seen && seen < cs.length ? `, ${seen} opened` : ''}</summary><ul class="findings">${cs.map(c => `<li><div>${played.has(c.id) && c.explain ? `<strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small>` : `<strong>${esc(c.title)}</strong><br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. The finding opens after your call.</small>`}</div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
-      <button class="btn btn-line" data-theme-round="${esc(t.id)}">Play these ${cs.length}</button></article>` }).join('')}</section>`;
+    <section class="wrap" style="padding-bottom:64px">${(() => {
+      const first = firstTries(), rows = themes.map(t => ({ t, cs: ALL.filter(c => c.theme === t.id) })).filter(x => x.cs.length).map(x => ({ ...x, seen: x.cs.filter(c => played.has(c.id)).length }));
+      const opened = rows.filter(x => x.seen), closed = rows.filter(x => !x.seen);
+      // an opened principle leads with the player's own result on it (review 26: no block repeated ten times)
+      const full = ({ t, cs, seen }) => { const sk = pooledSkill(first.filter(r => cs.some(c => c.id === r.id))), line = !t.principle ? (libraryLoaded ? 'Held back while a live class is running on this server.' : 'Loading…') : esc(t.principle);
+        return `<article class="theme" id="theme-${esc(t.id)}"><div class="theme-head"><h2>${esc(t.title)}</h2><p class="theme-you">You: <b class="num">${sk === null ? '–' : mn(sk)}</b> skill points versus guessing on ${seen} of ${cs.length}</p><p>${line}<small class="theme-count">${pathStrip({ items: cs.map(c => c.id) }, played)}</small></p></div>
+      <details class="theme-more"><summary>The ${cs.length} findings behind it${seen < cs.length ? `, ${seen} opened` : ''}</summary><ul class="findings">${cs.map(c => `<li><div>${played.has(c.id) && c.explain ? `<strong>${esc(c.answerTitle)}.</strong> ${esc(c.explain)}<br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. ${esc(c.boundary)}</small>` : `<strong>${esc(c.title)}</strong><br><small>${esc(cite(c.sources[0]))}, ${esc(SOURCE[c.sources[0]].venue)}. The finding opens after your call.</small>`}</div><button class="btn btn-quiet" data-play="${esc(c.id)}">Play</button></li>`).join('')}</ul></details>
+      ${seen < cs.length ? `<button class="btn btn-line" data-theme-round="${esc(t.id)}">Play the other ${cs.length - seen}</button>` : ''}</article>` };
+      // an unopened principle is one line: its name, its size, and the way in
+      const one = ({ t, cs }) => `<li class="theme-row" id="theme-${esc(t.id)}"><h2>${esc(t.title)}</h2><span class="theme-n">${cs.length} decisions</span><button class="btn btn-line" data-theme-round="${esc(t.id)}">Play these ${cs.length}</button></li>`;
+      return opened.map(full).join('') + (closed.length ? `<section class="theme-closed"><h2 class="theme-closed-h">${opened.length ? 'Not opened yet' : 'Principles open after your first call on them'}</h2><ul class="theme-rows">${closed.map(one).join('')}</ul></section>` : '');
+    })()}</section>`;
 }
+
+// Pooled skill above guessing: (mean score - mean chance level) / (1 - mean chance level), on first tries only.
+function pooledSkill(xs) { if (!xs.length) return null; const raw = xs.reduce((a, r) => a + r.score, 0) / xs.length, base = xs.reduce((a, r) => a + (typeof r.base === 'number' ? r.base : S.baseline(BY_ID[r.id])), 0) / xs.length; return pct(base >= 1 ? 0 : (raw - base) / (1 - base)) }
+const firstTries = () => { const seen = new Set(); return records.filter(r => BY_ID[r.id] && !seen.has(r.id) && seen.add(r.id)) };
 
 // ----- record -----
 function record() {
@@ -500,7 +519,7 @@ function record() {
   const cal = S.calibration(all.map(r => S.toCalibrationRecord(BY_ID[r.id], r)));
   // Headline figures are skill above guessing, so formats with different chance levels compare fairly.
   // Pooled: (mean score - mean chance level) / (1 - mean chance level), so one confident miss cannot swamp a set of good calls.
-  const avg = xs => { if (!xs.length) return null; const raw = xs.reduce((a, r) => a + r.score, 0) / xs.length, base = xs.reduce((a, r) => a + (typeof r.base === 'number' ? r.base : S.baseline(BY_ID[r.id])), 0) / xs.length; return pct(base >= 1 ? 0 : (raw - base) / (1 - base)) };
+  const avg = pooledSkill;
   const meanScore = avg(all);
   // How the headline moved, call by call (pooled skill over the calls so far), so the big number has a history.
   const series = all.slice(-40).map((_, k, xs) => avg(xs.slice(0, k + 1)));
@@ -518,8 +537,8 @@ function record() {
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record.</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete.' : 'Your record.'}</h1>
-    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? Math.abs(sess ?? meanScore) : '–'}</b><span class="score-unit">skill points<br>${(sess ?? meanScore ?? 0) < 0 ? 'below' : 'above'} guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing (the dashed line in the trend), 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
-      <dl class="score-meta"><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl></div>
+    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? mn(sess ?? meanScore) : '–'}</b><span class="score-unit">skill points<br>versus guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing (the dashed line in the trend), 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
+      <dl class="score-meta"><div><dt>Calibration</dt><dd>${gapLine || '–'}</dd></div>${sess !== null ? `<div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div>` : ''}</dl></div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">
       <div class="rec-col"><div class="panel rec-panel"><h2>Calibration</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${n < 3 ? '<small>Score shows after 3 calls</small>' : mn(sc)}<span class="bar-score"><b class="zero"></b><i style="${n < 3 ? "width:0" : sbar(sc)}"></i></span></span></li>`).join('')}</ul></div>` : ''}</div>

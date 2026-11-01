@@ -316,11 +316,11 @@
  },
  "false-news-spread": {
   "keyed": [
-   "People shared false stories more than true ones"
+   "Novel false stories drew more human shares"
   ],
   "options": [
    "Bots pushed false stories harder than true ones",
-   "People shared false stories more than true ones",
+   "Novel false stories drew more human shares",
    "Platform ranking pushed false stories up",
    "The gap appeared for political stories, not others"
   ]
@@ -374,7 +374,7 @@
   ],
   "options": [
    "A taste for risk drives both the belief and lying",
-   "People who planned to lie projected their own choice onto others",
+   "Beliefs about lying were fixed and the task did not move them",
    "Temptation distorts the belief to justify lying",
    "The belief reflects general cynicism, not the task"
   ]

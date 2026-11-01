@@ -7,12 +7,15 @@ bank['tutorRoutes'] = {
  'stop': 'a an and are as at be been but by can could did do does for from had has have how i if in into is it its me more most my no not of on or our should so than that the their them then there these they this those to too up us was we were what when where which who why will with would you your about after also any because before being both each few just much many only other over same some such very study studies research researchers paper finding findings result results effect effects people thing find found show shows showed tell report reported'.split(),
  'generic': 'answer answers explain explanation number numbers mean means happen happened result outcome replicate replicated replication randomized randomised random sample design method control group size big large apply work hold today still test pilot conclusion conclude takeaway summary summarize key main point matter matters important relevant relevance implication implications manager managers lesson lessons tell more detail details five write better bill boss simple plain terms please could you'.split(),
  'suffixes': ['ations', 'ation', 'ments', 'ment', 'ions', 'ion', 'ing', 'ers', 'ed', 'es', 'er', 'e', 's', 'ly'],
- 'syn': {'experienc skill': 'junior senior novic newer newcom veteran tenur rooki junio senio', 'less': 'reduct reduc decreas fell lower cut drop', 'rose': 'increas rais higher grew improv', 'ai': 'bot chatbot', 'alon': 'itself'},
+ 'syn': {'experienc skill': 'junior senior novic newer newcom veteran tenur rooki junio senio', 'less': 'reduct reduc decreas fell lower cut drop', 'rose': 'increas rais higher grew improv', 'ai': 'bot chatbot', 'alon': 'itself', 'cent': 'centr', 'physician': 'doctor doc', 'color': 'colour', 'behavior': 'behaviour', 'behavioral': 'behavioural', 'organiz': 'organis', 'favor': 'favour', 'labor': 'labour', 'program': 'programm', 'analyz': 'analys', 'optimiz': 'optimis', 'personaliz': 'personalis', 'recogniz': 'recognis'},   # British spellings meet US ones (review 26, M1)
  'routes': [
   ['offtopic', r'\b(poem|haiku|limerick|joke|weather|recipe|capital of|song|lyrics|horoscope|stock (tip|price)|share price|world cup|super bowl|tax return|homework|movie|write (me )?(code|python|javascript|an essay)|translate|bitcoin)\b'],
   ['action', r'\b(what should (i|we|my \w+( team)?|our \w+( team)?) do|what do (i|we) do|next steps?|monday( morning)?|what would you do|how (do|should|can) (i|we) (use|apply|act on) (this|it))\b'],
   ['ethics', r'\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|is it (ok|okay|right|wrong)|allowed|legal)'],
   ['models', r'\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\b'],
+  ['compare', r'\b(better|worse|more accurate|less accurate|smarter|outperform\w*|beat|beats)\b.*\bthan\b|\boutperform\w*\b|\bor not\b'],   # review 26, M1: "is GPT-4 better than doctors?", "do people hate the other side or not?"
+  ['whatif', r'\bwhat if\b|\bwhat would (have )?happen\w*\b|\bwould (it|this|that|they|the \w+) (have )?(work\w*|happen\w*|change\w*|differ\w*|be different) if\b'],
+  ['control', r'\bcontrol (group|condition|arm|centers?|centres?|sites?|schools?|teams?|firms?|stores?|branches|participants)\b'],   # review 26, M1: "what happened in the control centres"
   ['detect', r'\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\b|\b(could|can|did|do|would) (they|people|participants|users|customers|readers|consumers|students|subjects|respondents|raters|workers) (know|reali[sz]e)\b.*\b(ai|gpt\S*|bot|chatbot|machine|model|algorithm|human|person)\b'],
   ['contest', r'\b(who is right|who.?s right|who is correct|which (one|side|study|paper) is right|who wins|(do|did) they (disagree|contradict))\b'],
   ['authors', r'\b(who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\b'],
@@ -34,6 +37,7 @@ bank['tutorRoutes'] = {
   ['size', r'\b(big|size|large|how much|practice|magnitude)\b'],
   ['define', r'^what(.s| is) (an? |the )?(\w+)\??$'],
   ['transfer', r'\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\w*|believe|trust (it|this|a|the)|lab (game|study|experiment)|artificial)']],
+ 'filler': ['okay', 'also', 'hmm', 'well', 'quick', 'question', 'please', 'tell', 'know', 'like', 'want', 'just', 'actually', 'really', 'curious', 'wonder', 'wondering', 'whether', 'study', 'this'],   # words that do not change what a Yes or No answers (review 26)
  'subgroupFollow': r'^(who\b.*\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\b)',
 }
 p.write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n')

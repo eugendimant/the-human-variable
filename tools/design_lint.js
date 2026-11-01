@@ -23,7 +23,7 @@
     if (/repeating-/.test(s.backgroundImage)) push('R08', name(e), 'stripe fill');
     if (/gradient/.test(s.backgroundImage) && s.backgroundSize && !/^(auto|auto auto|100% 100%)$/.test(s.backgroundSize)) push('R08', name(e), 'patterned background ' + s.backgroundSize);
     if (t.length > 60 && r.width < 150 && r.width > 0) push('R18', name(e), 'squeezed text, ' + Math.round(r.width) + 'px wide');
-    if (!t && !e.children.length && !e.closest('.hbars') && r.width >= 4 && r.width <= 14 && Math.abs(r.width - r.height) < 1 && parseFloat(s.borderRadius) >= r.width / 2 - .5 && !['INPUT', 'BUTTON'].includes(e.tagName) && s.backgroundColor !== 'rgba(0, 0, 0, 0)') push('R09', name(e), 'dot');
+    if (!t && !e.children.length && !e.closest('.hbars, .rc-dot, [role=img]') && r.width >= 4 && r.width <= 14 && Math.abs(r.width - r.height) < 1 && parseFloat(s.borderRadius) >= r.width / 2 - .5 && !['INPUT', 'BUTTON'].includes(e.tagName) && s.backgroundColor !== 'rgba(0, 0, 0, 0)') push('R09', name(e), 'dot');
     for (const pe of ['::before', '::after']) {
       const ps = getComputedStyle(e, pe); if (!ps.content || ps.content === 'none' || ps.content === 'normal') continue;
       const w = parseFloat(ps.width), h = parseFloat(ps.height);
@@ -72,7 +72,9 @@
   }
   const h1 = [...document.querySelectorAll('.hero h1')].find(vis);   // the hero headline only
   if (h1 && innerWidth >= 1200) { const hs = getComputedStyle(h1), lh = parseFloat(hs.lineHeight) || parseFloat(hs.fontSize) * 1.2, lines = Math.round(h1.getBoundingClientRect().height / lh); if (lines > 3) push('R20', name(h1), lines + ' lines') }
-  const boxed = e => { const s = getComputedStyle(e), r = e.getBoundingClientRect(); return r.width > 120 && r.height > 50 && ((parseFloat(s.borderTopWidth) > 0 && s.borderTopStyle !== 'none' && parseFloat(s.borderBottomWidth) > 0 && parseFloat(s.borderLeftWidth) > 0) || s.boxShadow !== 'none') };
+  const bgOf = e => { while (e) { const b = getComputedStyle(e).backgroundColor; if (b && b !== 'transparent' && !/rgba\([^)]*,\s*0\)$/.test(b)) return b; e = e.parentElement } return 'rgb(255, 255, 255)' };
+  const tinted = e => { const s = getComputedStyle(e), b = s.backgroundColor; return !e.matches('button,input,select,textarea,a,label,summary,svg,img,canvas,svg *') && b && b !== 'transparent' && !/rgba\([^)]*,\s*0\)$/.test(b) && e.parentElement && b !== bgOf(e.parentElement) && parseFloat(s.borderTopLeftRadius) > 0 };   // a filled, rounded box with no border is a tile too (review 26)
+  const boxed = e => { const s = getComputedStyle(e), r = e.getBoundingClientRect(); return r.width > 120 && r.height > 50 && ((parseFloat(s.borderTopWidth) > 0 && s.borderTopStyle !== 'none' && parseFloat(s.borderBottomWidth) > 0 && parseFloat(s.borderLeftWidth) > 0) || s.boxShadow !== 'none' || tinted(e)) };
   const nested = new Set();
   for (const e of all) { if (!boxed(e)) continue; let a = e.parentElement; while (a && a !== document.body) { if (boxed(a)) { nested.add(name(e) + ' inside ' + name(a)); break } a = a.parentElement } }
   nested.forEach(x => push('R21', x, 'card in card'));
@@ -97,6 +99,13 @@
   for (const e of document.querySelectorAll('.plate-h')) if (vis(e) && /\((19|20)\d\d\)/.test(vt(e))) push('R27', name(e), 'chart title carries a citation: ' + vt(e).slice(0, 50));
   for (const h of document.querySelectorAll('.hbars')) if (vis(h) && /(^|\s)[−-]\d/.test(h.innerText) && !h.querySelector('.zero')) push('R29', name(h), 'signed values without a zero line');
   for (const h of document.querySelectorAll('.hbars')) if (vis(h) && /(^|\s)-\d/.test(h.innerText)) push('R13', name(h), 'hyphen used as a minus sign');
+  for (const h of document.querySelectorAll('svg text, .num, .gap-head b, .big, [class*=stat] b')) if (vis(h) && /(^|[\s(])-\d/.test(h.textContent)) push('R13', name(h), 'hyphen used as a minus sign: ' + h.textContent.trim().slice(0, 30));   // review 26: SVG and display numbers too
   for (const h of document.querySelectorAll('.hbars:not(.alloc-cmp)')) if (vis(h) && h.querySelectorAll('i.ev').length > 1) push('R29', name(h), h.querySelectorAll('i.ev').length + ' highlighted bars');
+  // R31 for HTML: two pieces of visible text drawn on top of each other (review 26: a grid override stacked a label on a strip on phones)
+  const pinned = e => { for (let a = e; a && a !== document.body; a = a.parentElement) { const ps = getComputedStyle(a).position; if (ps === 'fixed' || ps === 'sticky') return true } return false };   // pinned bars float over the page by design
+  { const leaves = [...document.querySelectorAll('body *')].filter(e => !e.closest('svg,.sr-only,[aria-hidden=true] svg') && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()) && vis(e) && !e.closest('[hidden]') && !(e.closest('details:not([open])') && !e.closest('summary')) && (!e.checkVisibility || e.checkVisibility({ contentVisibilityAuto: true, opacityProperty: true, visibilityProperty: true })) && !pinned(e))
+      .map(e => { const rg = document.createRange(); rg.selectNodeContents(e); const r = rg.getBoundingClientRect(); return { e, r } }).filter(x => x.r.width > 2 && x.r.height > 2);
+    const ov = (a, b) => Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) * Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
+    for (let i = 0; i < leaves.length; i++) for (let j = i + 1; j < leaves.length; j++) { const A = leaves[i], B = leaves[j]; if (A.e.contains(B.e) || B.e.contains(A.e)) continue; const o = ov(A.r, B.r); if (o > 0.25 * Math.min(A.r.width * A.r.height, B.r.width * B.r.height) ) push('R31', name(A.e) + ' / ' + name(B.e), 'text overlaps text: ' + A.e.textContent.trim().slice(0, 24) + ' / ' + B.e.textContent.trim().slice(0, 24)) } }
   return out;
 }

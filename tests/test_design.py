@@ -42,3 +42,42 @@ def test_design_detectors_fire_on_injected_tells():
     want = {'R01', 'R03', 'R04', 'R05', 'R06', 'R07', 'R08', 'R09', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R19', 'R20', 'R26', 'R27', 'R28'}
     assert {'R08', 'R18', 'R31'} <= rules   # patterned backgrounds and squeezed text (review 22)
     assert want <= rules, sorted(want - rules)
+
+
+def test_hyphen_minus_detector_reads_svg_and_display_numbers():
+    """Review 26: a hyphen standing in for a minus inside an SVG plate or a display number is caught."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content('<svg width="200" height="60"><text x="10" y="30" font-size="14">Study -17%</text></svg><div class="gap-head"><b class="num">-50%</b></div>')
+        hits = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R13']
+        pg.set_content('<svg width="200" height="60"><text x="10" y="30" font-size="14">Study −17%</text></svg><p>2019-2020 and a well-known fact</p>')
+        clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R13']; b.close()
+    assert len(hits) >= 2 and not clean, (hits, clean)
+
+
+def test_nested_tile_detector_sees_borderless_tinted_tiles():
+    """Review 26: a filled, rounded box with no border inside a plate is a tile in a tile (rule 3)."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content('<div style="background:#14203a;border-radius:8px;padding:20px;width:600px"><div style="background:rgba(255,255,255,.07);border-radius:8px;width:400px;height:60px">task</div></div>')
+        hit = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R21']
+        pg.set_content('<div style="background:#14203a;border-radius:8px;padding:20px;width:600px"><div style="border-top:1px solid #333;width:400px;height:60px">task</div></div>')
+        clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R21']; b.close()
+    assert hit and not clean, (hit, clean)
+
+
+def test_html_text_overlap_detector():
+    """Review 26: HTML text drawn over other text is caught; text side by side is not."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content('<div style="position:relative;height:40px"><p style="position:absolute;top:0;margin:0">You: -54 skill points</p><p style="position:absolute;top:2px;left:4px;margin:0">AI at work strip</p></div>')
+        hit = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31']
+        pg.set_content('<p>You: 54 skill points</p><p>AI at work strip</p>')
+        clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31']; b.close()
+    assert hit and not clean, (hit, clean)

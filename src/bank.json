@@ -3003,7 +3003,7 @@
    "concept": "Innovation",
    "tag": "19 / PROCESS",
    "title": "Fixing a slow process",
-   "scene": "In experiments, people were asked to improve things such as a Lego structure, a mini-golf hole or a written essay, and could change them by adding or by removing elements.",
+   "scene": "In experiments, people were asked to improve things such as a Lego structure, a mini-golf hole or a written essay, and could change them however they liked.",
    "question": "Which kind of fix do people tend to miss?",
    "options": [
     "Adding a review step",
@@ -6039,7 +6039,7 @@
    "question": "What explains why false stories spread faster than true ones?",
    "options": [
     "The gap appeared for political stories, not others",
-    "People shared false stories more than true ones",
+    "Novel false stories drew more human shares",
     "Bots pushed false stories harder than true ones",
     "Platform ranking pushed false stories up"
    ],
@@ -6493,7 +6493,7 @@
    "scene": "In an incentivized experiment, people could misreport a private outcome for money and were asked what most others do. Researchers varied whether people learned of the chance to misreport before or after stating that belief.",
    "question": "What best explains the link between believing most people lie and misreporting?",
    "options": [
-    "People who planned to lie projected their own choice onto others",
+    "Beliefs about lying were fixed and the task did not move them",
     "A taste for risk drives both the belief and lying",
     "The belief reflects general cynicism, not the task",
     "Temptation distorts the belief to justify lying"
@@ -7541,7 +7541,7 @@
     "claim": "In the live ad test, the human-made image beat the AI-generated images on click-through rate.",
     "truth": false
    },
-   "answerTitle": "No: AI images won by up to 50%",
+   "answerTitle": "An AI image beat the human one by up to 50%",
    "explain": "In the field study, an AI-generated image achieved an up to 50% higher click-through rate than a human-made image, and 254,400 human evaluations showed AI images can surpass human ones.",
    "implication": "A/B test AI-generated creative against your current images before commissioning new shoots; cost and speed favor the trial.",
    "boundary": "The 50% figure is an upper bound from one field test; results vary by model and image.",
@@ -9122,7 +9122,20 @@
    "less": "reduct reduc decreas fell lower cut drop",
    "rose": "increas rais higher grew improv",
    "ai": "bot chatbot",
-   "alon": "itself"
+   "alon": "itself",
+   "cent": "centr",
+   "physician": "doctor doc",
+   "color": "colour",
+   "behavior": "behaviour",
+   "behavioral": "behavioural",
+   "organiz": "organis",
+   "favor": "favour",
+   "labor": "labour",
+   "program": "programm",
+   "analyz": "analys",
+   "optimiz": "optimis",
+   "personaliz": "personalis",
+   "recogniz": "recognis"
   },
   "routes": [
    [
@@ -9140,6 +9153,18 @@
    [
     "models",
     "\\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\\b"
+   ],
+   [
+    "compare",
+    "\\b(better|worse|more accurate|less accurate|smarter|outperform\\w*|beat|beats)\\b.*\\bthan\\b|\\boutperform\\w*\\b|\\bor not\\b"
+   ],
+   [
+    "whatif",
+    "\\bwhat if\\b|\\bwhat would (have )?happen\\w*\\b|\\bwould (it|this|that|they|the \\w+) (have )?(work\\w*|happen\\w*|change\\w*|differ\\w*|be different) if\\b"
+   ],
+   [
+    "control",
+    "\\bcontrol (group|condition|arm|centers?|centres?|sites?|schools?|teams?|firms?|stores?|branches|participants)\\b"
    ],
    [
     "detect",
@@ -9225,6 +9250,28 @@
     "transfer",
     "\\b(today|still|hold|generali[sz]e|apply|transfer|work (for|in)|everywhere|replicat\\w*|believe|trust (it|this|a|the)|lab (game|study|experiment)|artificial)"
    ]
+  ],
+  "filler": [
+   "okay",
+   "also",
+   "hmm",
+   "well",
+   "quick",
+   "question",
+   "please",
+   "tell",
+   "know",
+   "like",
+   "want",
+   "just",
+   "actually",
+   "really",
+   "curious",
+   "wonder",
+   "wondering",
+   "whether",
+   "study",
+   "this"
   ],
   "subgroupFollow": "^(who\\b.*\\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\\b)",
   "wordSurnames": [

@@ -31,6 +31,7 @@ Scores in this file come only from independent reviewers: fresh agents that did 
 | 23 | iteration 27 | 84 | 0 | 2 |
 | 24 | iteration 28 | 81 | 1 | 0 |
 | 25 | iteration 29 | 84 | 0 | 2 |
+| 26 | iteration 30 | 86 | 0 | 1 |
 
 The target is 95 from an independent reviewer. It has not been reached yet; the loop continues.
 
