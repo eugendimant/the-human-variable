@@ -160,17 +160,6 @@
    "The nudges closed the partisan gap on most measures"
   ]
  },
- "social20": {
-  "keyed": [
-   "Ask each person how views are spread across colleagues"
-  ],
-  "options": [
-   "Ask each person how views are spread across colleagues",
-   "Ask each team’s manager to describe the norm",
-   "Compare how often each team breaks the rule",
-   "Survey a larger sample and compare averages"
-  ]
- },
  "axb02": {
   "keyed": [
    "Could use the model only unchanged"
@@ -504,6 +493,17 @@
    "AI replies feel more heard; the label erodes it",
    "Human replies feel more heard; the label matters little",
    "Labeling replies as AI raises trust and feeling heard"
+  ]
+ },
+ "social20": {
+  "keyed": [
+   "Ask each person how views are spread across colleagues"
+  ],
+  "options": [
+   "Ask each person how views are spread across colleagues",
+   "Ask each team’s manager to describe the norm",
+   "Compare each team’s most common answer",
+   "Compare how often each team breaks the rule"
   ]
  }
 }

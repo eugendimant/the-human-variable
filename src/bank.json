@@ -3814,7 +3814,7 @@
    "options": [
     "Ask each team’s manager to describe the norm",
     "Compare how often each team breaks the rule",
-    "Survey a larger sample and compare averages",
+    "Compare each team’s most common answer",
     "Ask each person how views are spread across colleagues"
    ],
    "answer": 3,
@@ -3853,9 +3853,7 @@
     "design": "Methods paper (measurement tool)",
     "n": ""
    },
-   "permuted": true,
-   "retired": true,
-   "retiredReason": "Review 28: the question asks for the paper’s method, so there is no result to predict."
+   "permuted": true
   },
   {
    "id": "judg05",

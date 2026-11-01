@@ -2179,6 +2179,26 @@
 "Should we roll this out right now?": "Track between-group gaps as a separate metric when testing interventions, since average co",
 "Is it ethical to act on this?": "The study measures what happened, not what is right; that call is yours. What it covers: D"
 },
+"social20": {
+"What is the design?": "Design: Methods paper (measurement tool). Dimant’s method elicits, with incentives, each p",
+"What is the sample?": "Design: Methods paper (measurement tool). Dimant’s method elicits, with incentives, each p",
+"Who took part?": "Who was studied: see the paper. Design: Methods paper (measurement tool). What the study c",
+"How big was the effect?": "Dimant’s method elicits, with incentives, each person’s belief about the full distribution",
+"What should a manager do?": "Keep the whole distribution. Dimant’s method elicits, with incentives, each person’s belie",
+"Did it last?": "Design: Methods paper (measurement tool). What the study covers: A short methods paper pre",
+"Does this replicate?": "A short methods paper presenting an incentive-compatible survey tool that measures each pe",
+"Was this randomized?": "Design: Methods paper (measurement tool). Dimant’s method elicits, with incentives, each p",
+"What is the catch?": "What the study covers: A short methods paper presenting an incentive-compatible survey too",
+"Who wrote this?": "Dimant (2023), Economics Letters. Design: Methods paper (measurement tool).",
+"Explain it simply": "Keep the whole distribution. Dimant’s method elicits, with incentives, each person’s belie",
+"Would this work in Europe?": "What the study covers: A short methods paper presenting an incentive-compatible survey too",
+"Was real money at stake?": "The method is incentive-compatible, so respondents are rewarded for reporting their real b",
+"Who benefited most?": "Keep the whole distribution. Dimant’s method elicits, with incentives, each person’s belie",
+"Was the difference significant?": "Dimant’s method elicits, with incentives, each person’s belief about the full distribution",
+"Should we use this when we hire?": "In culture surveys, ask each person how views are spread across colleagues, not only what ",
+"Should we roll this out right now?": "In culture surveys, ask each person how views are spread across colleagues, not only what ",
+"Is it ethical to act on this?": "The study measures what happened, not what is right; that call is yours. What it covers: A"
+},
 "tax-letter-norms": {
 "What is the design?": "Design: Two natural field experiments. Sample: Over 200,000 UK taxpayers. Across more than",
 "What is the sample?": "Design: Two natural field experiments. Sample: Over 200,000 UK taxpayers. Across more than",

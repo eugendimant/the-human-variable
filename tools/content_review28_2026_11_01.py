@@ -7,9 +7,12 @@ B = json.loads(bp.read_text()); E = json.loads(ep.read_text()); C = {c['id']: c 
 
 # m11: rollout3's scene no longer points at the task outside the frontier
 C['rollout3']['scene'] = C['rollout3']['scene'].replace('a brand recommendation that hinges on details buried in interview notes', 'picking the brand to grow from interview notes and spreadsheets')
-# m10: social20 asks for a method, not a prediction; it leaves play (the paper stays in the Library through its other decisions)
-C['social20']['retired'] = True
-C['social20']['retiredReason'] = 'Review 28: the question asks for the paper’s method, so there is no result to predict.'
+# m10: social20 (Dimant 2023, the method paper) stays in play: it is the lab's one decision on how to measure a norm, and dropping it would drop the paper.
+# Its strawman distractor becomes the rival the paper itself names: the most common answer, which hides the spread just as the average does.
+B['retired'] = [r for r in B.get('retired', []) if r['id'] != 'social20']
+c = C['social20']
+for k in ('retired', 'retiredReason'): c.pop(k, None)
+if 'Survey a larger sample and compare averages' in c['options']: c['options'][c['options'].index('Survey a larger sample and compare averages')] = 'Compare each team\u2019s most common answer'
 # m8: the contagion follow-up names the later study without a year it cannot cite
 f = C['dimant-contagion-multi']['follow'][3]
 for old in ('Does the 2022 proximity study say the same?', 'Does the later proximity study say the same?'): f['q'] = f['q'].replace(old, 'Does the shared-identity study say the same?')
