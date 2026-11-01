@@ -393,12 +393,12 @@
  },
  "dimant-deviant-choice": {
   "keyed": [
-   "Penalty plus \"most think it's right,\" cheap compliance"
+   "Penalty plus “most think it's right,” cheap compliance"
   ],
   "options": [
    "Norm message alone",
-   "Penalty plus \"most others comply,\" with costly compliance",
-   "Penalty plus \"most think it's right,\" cheap compliance",
+   "Penalty plus “most others comply,” with costly compliance",
+   "Penalty plus “most think it's right,” cheap compliance",
    "Weak penalty alone"
   ]
  },

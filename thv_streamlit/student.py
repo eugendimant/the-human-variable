@@ -84,7 +84,7 @@ def run():
         if c['id'] in done:
             st.subheader(done[c['id']]); st.write('The evidence appears for everyone when your instructor reveals it.'); return
         if s['phase'] == 'closed': st.subheader('Answers are closed. Waiting for the reveal.'); return
-        st.caption(f"{c['track']} · {FORMAT_NAME[c['format']]}")
+        st.caption(f"{FORMAT_NAME[c['format']]}, {c['track']}")
         st.write(c['scene']); st.subheader(c['question'])
         with st.form(key='f' + c['id']):
             r = response_widgets(c, c['id'], R['code'])

@@ -59,7 +59,7 @@ def run():
             s = S.state(I['code'], admin=True)
             if not s['challenge']: st.info('Nothing open yet. Pick a decision on the right.'); return
             c = cl.CHALLENGES[s['challenge']]
-            st.caption(f"{c['track']} · {FORMAT_NAME[c['format']]} · {s['phase']}")
+            st.caption(f"{FORMAT_NAME[c['format']]}, {c['track']}, {s['phase']}")
             st.subheader(c['question'])
             if c.get('options') and s['phase'] in ('open', 'closed'):
                 from .common import option_order

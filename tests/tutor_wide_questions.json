@@ -1342,7 +1342,17 @@
   "What would happen with more money?",
   "What would happen with women?",
   "What would happen with novices?",
-  "Did women get more callbacks than men?"
+  "Did women get more callbacks than men?",
+  "should we publish salaries?",
+  "should we set a default?",
+  "should we give everyone ChatGPT?",
+  "should we train staff first?",
+  "should we offer remote work?",
+  "should we cut our product range?",
+  "what does this mean for my team?",
+  "what can I learn for my comms team?",
+  "were these students?",
+  "what did the meta-analysis find?"
  ],
  "lead_ins": {
   "prefixes": [

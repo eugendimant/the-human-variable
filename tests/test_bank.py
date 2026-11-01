@@ -502,3 +502,23 @@ def test_follow_ups_do_not_name_other_items_authors():
                 hit = {w for w in own[e['id']] - own[c['id']] if re.search(r'\b' + w + r'\b', f['a'])}
                 if hit: bad.append((c['id'], e['id'], sorted(hit)))
     assert not bad, bad
+
+
+def test_player_text_uses_curly_quotes():
+    """Review 27, m9: player-facing strings use curly double quotes; evidence quotes stay verbatim."""
+    def walk(o, key=''):
+        if isinstance(o, dict):
+            for k, v in o.items():
+                if k != 'quote': yield from walk(v, k)
+        elif isinstance(o, list):
+            for v in o: yield from walk(v, key)
+        elif isinstance(o, str): yield o
+    bad = [(c['id'], s[:60]) for c in LIVE for s in walk(c) if '"' in s]
+    assert not bad, bad[:5]
+
+
+def test_no_middle_dot_strings_in_shipped_text():
+    """Review 27, m4 (rule 22, RULE G): no 'A · B' strings in pages, Streamlit or server copy."""
+    files = list((ROOT / 'src').glob('*.js')) + list((ROOT / 'src').glob('*.html')) + list((ROOT / 'thv_streamlit').glob('*.py')) + list((ROOT / 'server').glob('*.py'))
+    bad = [f.name for f in files if '·' in f.read_text()]
+    assert not bad, bad

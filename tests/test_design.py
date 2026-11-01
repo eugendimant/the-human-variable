@@ -94,3 +94,16 @@ def test_clipped_svg_mark_detector():
         pg.set_content('<svg viewBox="0 0 900 200" width="900" height="200"><circle cx="100" cy="60" r="5"/></svg>')
         clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31']; b.close()
     assert hit and not clean, (hit, clean)
+
+
+def test_label_wider_than_its_pill_is_caught():
+    """Review 27: a node label that overflows its pill is caught; one that fits is not."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content('<svg viewBox="0 0 400 100" width="400" height="100"><g><rect x="130" y="20" width="140" height="48"/><text x="200" y="50" text-anchor="middle" font-size="21">Learned of a random notice today</text></g></svg>')
+        hit = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31']
+        pg.set_content('<svg viewBox="0 0 400 100" width="400" height="100"><g><rect x="130" y="20" width="140" height="48"/><text x="200" y="50" text-anchor="middle" font-size="14">Pay gap</text></g></svg>')
+        clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31']; b.close()
+    assert hit and not clean, (hit, clean)

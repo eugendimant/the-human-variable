@@ -3500,7 +3500,7 @@
      "a": "No. Better credentials raised callbacks much less for African-American names than for White names."
     },
     {
-     "q": "Did \"Equal Opportunity Employer\" ads differ?",
+     "q": "Did “Equal Opportunity Employer” ads differ?",
      "a": "No. Employers who listed that label in their ads discriminated as much as other employers."
     }
    ],
@@ -3926,7 +3926,7 @@
    "format": "delegate",
    "concept": "Human-AI synergy",
    "title": "Who should have the final say?",
-   "scene": "You are designing workflows for two AI-supported tasks. A meta-analysis of 106 experiments shows when humans plus AI beat either one working alone.",
+   "scene": "You are designing workflows for two AI-supported tasks. A meta-analysis of 106 experiments shows when humans plus AI beat either one working alone. The two tasks below are the worked examples the authors use to illustrate that pattern.",
    "question": "For each task, who should do the work?",
    "delegate": {
     "choices": [
@@ -3988,7 +3988,7 @@
     "Could adjust each forecast by up to 10"
    ],
    "answerTitle": "Any control beats none; size barely matters",
-   "explain": "In Study 2, 47% used the unchangeable model versus 68% to 71% when they could adjust it by 2, 5 or 10 percentiles. The two adjustable groups did not differ meaningfully, so their order is not scored.",
+   "explain": "In Study 2, 47% used the unchangeable model versus 68% to 71% when they could adjust it by 2, 5 or 10 percentiles. The adjustable groups (68% to 71%) did not differ meaningfully.",
    "implication": "Let staff make small, bounded adjustments to model outputs instead of mandating the outputs unchanged.",
    "boundary": "Online and lab forecasting of student test percentiles with small bonuses.",
    "sources": [
@@ -4366,7 +4366,7 @@
    "format": "forecast",
    "concept": "AI disclosure",
    "title": "The cost of an AI label",
-   "scene": "In experiments, people rated true and false headlines. Some carried an \"AI-generated\" label, including true headlines written by people.",
+   "scene": "In experiments, people rated true and false headlines. Some carried an “AI-generated” label, including true headlines written by people.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Less believed and less shared",
    "explain": "Across 4,976 participants, the label cut perceived accuracy and sharing whether headlines were true or false, human- or AI-made. The effect was three times smaller than a 'false' label.",
@@ -4608,7 +4608,7 @@
     },
     {
      "q": "Is there a downside?",
-     "a": "Yes. The same study built a task outside the frontier, where AI users did worse; the \"Leading with AI\" case covers that result."
+     "a": "Yes. The same study built a task outside the frontier, where AI users did worse; the “Leading with AI” case covers that result."
     }
    ],
    "theme": "ai-work"
@@ -5041,7 +5041,7 @@
    "question": "What happened to the gap between sellers and buyers?",
    "answerTitle": "Under careful procedures, the mug gap disappeared",
    "explain": "Sellers’ median of $7.12 against buyers’ $2.87 in the original markets gave way to no gap under Plott and Zeiler’s procedures. Isoni, Loomes and Sugden later confirmed this for mugs but found a persistent gap for lotteries.",
-   "implication": "Before pricing on an \"owners overvalue\" story, test it with clear instructions and practice; the effect depends on how the choice is elicited.",
+   "implication": "Before pricing on an “owners overvalue” story, test it with clear instructions and practice; the effect depends on how the choice is elicited.",
    "boundary": "Student markets for mugs under two elicitation procedures, with the follow-up debate extending to lotteries.",
    "sources": [
     "kahneman90",
@@ -6489,7 +6489,7 @@
    "format": "causal",
    "track": "Business",
    "concept": "Motivated beliefs",
-   "title": "\"Everyone does it,\" they say",
+   "title": "“Everyone does it,” they say",
    "scene": "In an incentivized experiment, people could misreport a private outcome for money and were asked what most others do. Researchers varied whether people learned of the chance to misreport before or after stating that belief.",
    "question": "What best explains the link between believing most people lie and misreporting?",
    "options": [
@@ -6512,7 +6512,7 @@
      },
      {
       "id": "belief",
-      "label": "\"Most lie\"",
+      "label": "“Most lie”",
       "x": 260,
       "y": 40
      },
@@ -6541,7 +6541,7 @@
    },
    "answerTitle": "Temptation reshapes beliefs to excuse lying",
    "explain": "Bicchieri, Dimant and Sonderegger show belief distortion: among people asked what others do, knowing a chance to lie was coming raised the share believing most people lie from 38.1% to 62.7%, and winning reports from 21.4% to 40.5%.",
-   "implication": "Do not treat \"everyone games it\" survey answers as facts; check them against actual compliance data and publish what peers really do.",
+   "implication": "Do not treat “everyone games it” survey answers as facts; check them against actual compliance data and publish what peers really do.",
    "boundary": "Incentivized experiment in which lying paid money and beliefs concerned the other participants.",
    "sources": [
     "notalie23"
@@ -6699,15 +6699,15 @@
    "scene": "In a trust game, researchers added a weak penalty for returning too little, alone or with a message about what most others do or what most think is right. The cost of complying also varied.",
    "question": "Which combination raised reciprocity?",
    "options": [
-    "Penalty plus \"most others comply,\" with costly compliance",
+    "Penalty plus “most others comply,” with costly compliance",
     "Weak penalty alone",
-    "Penalty plus \"most think it's right,\" cheap compliance",
+    "Penalty plus “most think it's right,” cheap compliance",
     "Norm message alone"
    ],
    "answer": 2,
    "answerTitle": "Penalty plus normative message, only when compliance is cheap",
    "explain": "With 418 Penn participants, Bicchieri, Dimant and Xiao show that weak punishment plus a normative message raised trustees' returns to 42.7%, against 28.7% at baseline, when stakes were low. At high stakes, punishment plus empirical information cut returns to 22.2% versus 36.5%.",
-   "implication": "When a sanction is modest and compliance is costly, do not justify it with \"everyone complies\"; explain why the rule is right.",
+   "implication": "When a sanction is modest and compliance is costly, do not justify it with “everyone complies”; explain why the rule is right.",
    "boundary": "Lab trust game combining a weak penalty with norm messages at two levels of compliance cost.",
    "sources": [
     "deviant21"
@@ -7035,7 +7035,7 @@
    ],
    "follow": [
     {
-     "q": "What does \"grim expectations\" mean here?",
+     "q": "What does “grim expectations” mean here?",
      "a": "Pessimistic beliefs about how cooperative the opposing faction would be, held before any interaction took place."
     },
     {
@@ -8208,7 +8208,7 @@
     "+2.9 pp",
     "−11.3 pp",
     "+4.4 pp",
-    "73.0%",
+    "Baseline, 73.0%",
     "−9.1 pp"
    ],
    "answerTitle": "Explanations did not rescue the biased model",
@@ -9145,7 +9145,7 @@
    ],
    [
     "action",
-    "\\b(what should (i|we|my \\w+( team)?|our \\w+( team)?) do|what do (i|we) do|next steps?|monday( morning)?|what would you do|how (do|should|can) (i|we) (use|apply|act on) (this|it))\\b"
+    "\\b(what should (i|we|my \\w+( team)?|our \\w+( team)?) do|what do (i|we) do|next steps?|monday( morning)?|what would you do|how (do|should|can) (i|we) (use|apply|act on) (this|it)|mean for (my|our|me|us)\\b|for (my|our) (\\w+ )?(team|company|firm|organi[sz]ation|business|unit|department|staff|people|managers?)\\b|learn (for|from) (this|it|my|our))\\b"
    ],
    [
     "ethics",
@@ -9201,7 +9201,7 @@
    ],
    [
     "who",
-    "\\b(who (was|were) (studied|in it|tested|the participants)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students)|sample size|who took part|population)\\b"
+    "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students)|sample size|who took part|population)\\b"
    ],
    [
     "catch",
@@ -9209,7 +9209,7 @@
    ],
    [
     "summary",
-    "\\b(summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|main (results?|findings?)|in (one|a) sentence|one[- ]liner|define|definition of|(does|did|do) (it|this|that|the [\\w ]{1,30}) work(?=\\W*$)|did it work|what (did|was) (it|they) find|what was found)\\b"
+    "\\b(what did (the|this|they|it) (\\w+[- ]?)?(study |paper |analysis )?(find|show)|summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|main (results?|findings?)|in (one|a) sentence|one[- ]liner|define|definition of|(does|did|do) (it|this|that|the [\\w ]{1,30}) work(?=\\W*$)|did it work|what (did|was) (it|they) find|what was found)\\b"
    ],
    [
     "duration",
