@@ -261,7 +261,7 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .hist li{display:grid;grid-template-columns:1fr auto;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:var(--t6)}
 .hist small{color:var(--muted);font-size:12.5px;display:block}
 .bar-score{display:inline-block;width:64px;height:6px;border-radius:4px;background:var(--rule);position:relative;vertical-align:middle;margin-left:8px}
-.bar-score i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--ink)}
+.bar-score i{position:absolute;left:50%;top:0;bottom:0;border-radius:4px;background:var(--ink)}.bar-score .zero{position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--ink-2)}
 .tools{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 64px}
 
 /* Modal, toast */

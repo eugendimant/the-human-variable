@@ -200,9 +200,9 @@ def test_offline_tutor_matches_server_rules(browser):
     bad2 = pg.evaluate("""qs => { const out = []; for (const c of THV.ALL) for (const q of qs) { const r = THV.curated(q, c); if (/outside what this lab/.test(r.text) || !r.cites.length) out.push([c.id, q]) } return out }""", phr)
     assert not bad2, (len(bad2), bad2[:10])   # review 15, M1: natural phrasings stay on the decision
     r = pg.evaluate("THV.curated('What is the capital of France?', THV.ALL[0]).text"); assert 'outside' in r
-    from tests.test_tutor import REVIEW20, REVIEW21, REVIEW22, REVIEW23, REVIEW24
+    from tests.test_tutor import REVIEW20, REVIEW21, REVIEW22, REVIEW23, REVIEW24, REVIEW25
     from server import tutor as _T
-    for q, cid, _ in REVIEW20 + REVIEW21 + REVIEW22 + REVIEW23 + REVIEW24 + [('Should I believe a lab game?', 'ai01', 0), ('Does the norm nudge work?', 'social16', 0)]:   # review 20: page and server agree
+    for q, cid, _ in REVIEW20 + REVIEW21 + REVIEW22 + REVIEW23 + REVIEW24 + REVIEW25 + [('Should I believe a lab game?', 'ai01', 0), ('Does the norm nudge work?', 'social16', 0)]:   # review 20: page and server agree
         pt = pg.evaluate("([q, id]) => THV.curated(q, THV.ALL.find(c => c.id === id)).text", [q, cid])
         assert pt.replace('\n\n', ' ').split()[:12] == _T.curated(q, cid)['answer'].split()[:12], (q, pt[:80])
     assert not pg.errors, pg.errors; pg.close()
@@ -258,5 +258,34 @@ def test_served_views_survive_a_reload_after_every_format(browser, tmp_path):
             assert len(pg.inner_text('main').strip()) > 200, view
         assert not errs, errs
         ctx.close()
+    finally:
+        srv.shutdown()
+
+
+def test_record_is_identical_offline_and_hosted(browser, tmp_path):
+    """Invariant I13, generalised after review 25 (M1): records made on the hosted page read the same there after a reload as on the
+    offline file, which has every answer; checked for one decision of every format and for blind constant routing on every delegate item."""
+    from server import app, classroom as cl
+    app.STORE = cl.Store(tmp_path / 'p.sqlite3'); app.LIMIT = app.Limiter()
+    srv = app.Server(('127.0.0.1', 0), app.Handler); threading.Thread(target=srv.serve_forever, daemon=True).start()
+    base = f'http://127.0.0.1:{srv.server_address[1]}'
+    def hosted(plays):
+        ctx = browser.new_context(viewport={'width': 1440, 'height': 900}); pg = ctx.new_page()
+        for c, act in plays:
+            pg.goto(base + '/?play=' + c['id']); pg.wait_for_timeout(150); act(pg, c)
+            pg.click('#lock-btn'); pg.wait_for_selector('#r-h', timeout=10000)
+        pg.goto(base + '/#record'); pg.reload(); pg.wait_for_timeout(600)
+        txt, recs = pg.inner_text('.score-strip'), pg.evaluate("localStorage.getItem('thv:v2:records')"); ctx.close(); return txt, recs
+    def offline(recs):
+        ctx = browser.new_context(viewport={'width': 1440, 'height': 900}); pg = ctx.new_page(); pg.goto(URL)
+        pg.evaluate("r => localStorage.setItem('thv:v2:records', r)", recs); pg.goto(URL + '#record'); pg.reload(); pg.wait_for_timeout(600)
+        txt = pg.inner_text('.score-strip'); ctx.close(); return txt
+    def route0(pg, c):
+        for k in range(len(c['delegate']['tasks'])): pg.click(f'[data-deleg="{k}"][data-pick="0"]')
+        if pg.locator('#conf').count(): pg.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}")
+    try:
+        for plays in ([(c, answer) for c in one_of_each()], [(c, route0) for c in LIVE if c['format'] == 'delegate']):
+            txt, recs = hosted(plays)
+            assert txt == offline(recs), (txt, offline(recs))
     finally:
         srv.shutdown()

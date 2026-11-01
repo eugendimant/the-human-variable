@@ -486,3 +486,19 @@ def test_page_scripts_parse():
     for f in sorted((ROOT / 'src').glob('*.js')):
         r = subprocess.run(['node', '--check', str(f)], capture_output=True, text=True)
         assert r.returncode == 0, (f.name, r.stderr[-400:])
+
+
+def test_follow_ups_do_not_name_other_items_authors():
+    """Review 25, minor 1: a follow-up that names another live item's authors tends to state that item's answer; neither is allowed."""
+    import unicodedata
+    S = BANK['sources']
+    surn = lambda sid: {w for w in re.findall(r'[A-Za-z]+', unicodedata.normalize('NFKD', S[sid]['authors']).encode('ascii', 'ignore').decode()) if len(w) >= 4 and w[0].isupper() and w not in ('With', 'Others')}
+    own = {c['id']: set().union(*[surn(s) for s in c['sources'] if s in S]) for c in LIVE}
+    bad = []
+    for c in LIVE:
+        for f in c.get('follow', []):
+            for e in LIVE:
+                if e['id'] == c['id'] or set(e['sources']) & set(c['sources']): continue
+                hit = {w for w in own[e['id']] - own[c['id']] if re.search(r'\b' + w + r'\b', f['a'])}
+                if hit: bad.append((c['id'], e['id'], sorted(hit)))
+    assert not bad, bad

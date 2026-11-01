@@ -13,7 +13,7 @@ bank['tutorRoutes'] = {
   ['action', r'\b(what should (i|we|my \w+( team)?|our \w+( team)?) do|what do (i|we) do|next steps?|monday( morning)?|what would you do|how (do|should|can) (i|we) (use|apply|act on) (this|it))\b'],
   ['ethics', r'\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|is it (ok|okay|right|wrong)|allowed|legal)'],
   ['models', r'\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\b'],
-  ['detect', r'\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\b'],
+  ['detect', r'\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e|know|reali[sz]e)\b'],
   ['contest', r'\b(who is right|who.?s right|who is correct|which (one|side|study|paper) is right|who wins|(do|did) they (disagree|contradict))\b'],
   ['authors', r'\b(who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\b'],
   ['voluntary', r'\b(voluntary|volunteer\w*|randomly assigned|chose to|opt(ed)? in|self[- ]selected|vignette|real (bribe|job|firm|company)|real world|in the field|lab or field)\b'],
@@ -45,5 +45,6 @@ for c in bank['challenges']:
     if c.get('retired'): continue
     df.update({w for f in c.get('follow', []) for w in tutor.tokens(f['q'])})
 manual = [tutor.stem(w) for w in 'effect effects study studies finding findings paper research people data work worked works'.split()]
+bank['tutorRoutes']['wordSurnames'] = ['bail', 'bloom', 'card', 'list', 'west', 'powers', 'grove', 'miller', 'rand', 'tong', 'fang', 'shea', 'rouse', 'ross', 'healy']   # surnames that are also English words: they name a study only when capitalised (review 25, M2)
 bank['tutorRoutes']['common'] = sorted({w for w, n in df.items() if n >= 3} | set(manual))
 p.write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('routes', len(bank['tutorRoutes']['common']))

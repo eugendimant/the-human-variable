@@ -300,3 +300,24 @@ def test_wide_question_batteries_keep_their_answers():
     gold = json.loads((root / 'tests/tutor_golden_wide.json').read_text()); now = tutor_golden.wide()
     diff = [(cid, q, gold.get(cid, {}).get(q), a) for cid, qa in now.items() for q, a in qa.items() if gold.get(cid, {}).get(q) != a]
     assert not diff, (len(diff), diff[:10])
+
+
+REVIEW25 = [('Did the reminder card help?', 'dimant-opioid-forecast', 'Mas, Moretti'),
+            ('Is it ethical to use a bot to change beliefs?', 'axb15', 'what is right'),
+            ('Did people know they were arguing with GPT-4?', 'axb08', 'three of four')]
+
+
+@pytest.mark.parametrize('q,cid,want', REVIEW25)
+def test_offline_tutor_review25(q, cid, want):
+    """Review 25, M2: an English-word surname names a study only when capitalised; ethics questions get the ethics answer first;
+    a non-yes/no question never gets a Yes/No follow-up."""
+    a = T.curated(q, cid)['answer']
+    if want == 'Mas, Moretti': assert want not in a, a[:120]
+    else: assert want in a, a[:120]
+
+
+def test_no_yes_no_answer_to_an_open_question():
+    """Review 25, M2 (class): over every decision, a question that is not yes/no never gets an answer opening with Yes or No."""
+    qs = ['Which conspiracy theories were included?', 'What demographic info did the model get?', 'Tell me about the study', 'What happened to the control group?', 'Which group did best?']
+    bad = [(cid, q) for cid in T.CHALLENGES for q in qs if not T.CHALLENGES[cid].get('retired') and T.curated(q, cid)['answer'].split('.')[0] in ('Yes', 'No')]
+    assert not bad, bad[:10]

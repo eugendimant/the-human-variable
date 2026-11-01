@@ -42,11 +42,6 @@
   },
   {
    "source": "vaccaro24",
-   "quote": "Decision tasks: significantly negative (g = -0.27); creation tasks: positive (g = 0.19 ... P = 0.180)",
-   "location": "Results, task type"
-  },
-  {
-   "source": "vaccaro24",
    "quote": "performed significantly better than humans alone",
    "location": "Results (g = 0.64)"
   },
@@ -59,6 +54,16 @@
    "source": "vaccaro24",
    "quote": "But when the AI alone outperformed the human alone, performance losses occurred in the combined system relative to the AI alone, with a negative effect size for human–AI synergy of g = −0.54",
    "location": "Results, moderators; Nature Human Behaviour, published article (Europe PMC full text, PMC11659167)"
+  },
+  {
+   "source": "vaccaro24",
+   "quote": "Among decision tasks—those in which participants decided between a finite set of options—the pooled effect size for human–AI synergy was significantly negative (g = −0.27; t104 = −3.20; two-tailed P = 0.002; 95% CI, −0.44 to −0.10), which indicates performance losses from combining humans and AI.",
+   "location": "Results, task type; Nature Human Behaviour, published article (Europe PMC full text, PMC11659167)"
+  },
+  {
+   "source": "vaccaro24",
+   "quote": "In contrast, among creation tasks—those in which participants created some sort of open-response content—the pooled effect size for human–AI synergy was positive (g = 0.19; t104 = 1.35; two-tailed P = 0.180; 95% CI, −0.09 to 0.48), pointing to synergy between humans and AI.",
+   "location": "Results, task type; Nature Human Behaviour, published article (Europe PMC full text, PMC11659167)"
   }
  ],
  "axb02": [
@@ -3596,6 +3601,11 @@
    "source": "hate23",
    "quote": "I quantify this phenomenon via five preregistered studies in the context of Donald J. Trump, comprising 15 well-powered behavioral experiments and a diverse set of over 8,600 participants.",
    "location": "Dimant (2024), Management Science, published version (Articles in Advance PDF, INFORMS download stamp 24 Feb 2023), author-hosted via eugendimant.github.io: https://drive.google.com/file/d/15aVL3kOh-A6L0XJbgJblNEazKpsypdUC/view [PDF page 2]"
+  },
+  {
+   "source": "hate23",
+   "quote": "regardless of whether their partners held the same (13.54%, green bar bottom-right panel, p=0.78) or different (11.99%, red bar bottom-right panel, p=0.56) painting preferences.",
+   "location": "Section on prosocial and antisocial behavior; author’s public working-paper version (Jan 2021, CESS Nuffield), used to complete the sentence that the published-version quote truncates"
   }
  ],
  "social16": [

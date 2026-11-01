@@ -2552,7 +2552,7 @@
     },
     {
      "q": "Why do other studies find people prefer algorithms?",
-     "a": "Designs differ. Here people watched the model make errors before choosing; in Logg, Minson and Moore (2019) people weighed advice labeled as an algorithm’s without seeing it fail, and leaned on it more."
+     "a": "Designs differ. Here people watched the model make errors before choosing. Studies in which advice is only labeled as coming from an algorithm, and never seen to fail, test a different situation; one of them is a decision of its own in the lab."
     }
    ],
    "format": "choice",
@@ -3691,7 +3691,7 @@
    ],
    "answer": 1,
    "answerTitle": "Closer to allies, but no more generous to them",
-   "explain": "In Dimant’s experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a group-mate who shared only a painting preference (about 39%), yet gave allies no more money (14.97% versus 13.54%). From opponents, they took 22.9%.",
+   "explain": "In Dimant’s experiments, Trump supporters and opponents felt far closer to their own side (78.1%) than to a group-mate who shared only a painting preference (about 39%), yet gave allies no more money (14.97% versus 13.54%). A painting out-group still received 11.99%; from political opponents, people took 22.9%.",
    "implication": "When teams distrust each other, measure how they actually treat each other, not only how they feel about each other.",
    "boundary": "Incentivized behavioral experiments with US Trump supporters and opponents, plus a sports-identity comparison.",
    "sources": [
@@ -3734,15 +3734,17 @@
     "labels": [
      "Gave to allies",
      "Gave to a painting group-mate",
-     "Took from opponents"
+     "Gave to a painting out-group",
+     "Took from political opponents"
     ],
     "values": [
      14.97,
      13.54,
+     11.99,
      22.9
     ],
     "unit": "%",
-    "highlight": 2,
+    "highlight": 3,
     "note": "Share of the endowment given or taken."
    }
   },
@@ -6665,7 +6667,7 @@
     },
     {
      "q": "Does the 2022 proximity study say the same?",
-     "a": "It fits. Here closeness meant answering personal questions more like the observed peer, and close peers' bad choices spread most. In Bicchieri, Dimant, Gächter and Nosenzo (2022), a minimal shared-identity cue made people copy good examples as well as bad ones, which halted the erosion of compliance."
+     "a": "Both studies give closeness a central role. Here closeness meant answering personal questions more like the observed peer, and close peers’ bad choices spread most. The 2022 study varied a minimal shared-identity cue; its result is a decision of its own in the lab."
     }
    ],
    "study": {
@@ -7999,7 +8001,7 @@
     },
     {
      "q": "What about colleagues who use AI?",
-     "a": "How colleagues judge people who use AI is a separate decision in the lab (Reif et al. 2025)."
+     "a": "How colleagues judge people who use AI is a separate decision in the lab."
     }
    ],
    "theme": "ai-trust",
@@ -9141,7 +9143,7 @@
    ],
    [
     "detect",
-    "\\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\\b"
+    "\\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e|know|reali[sz]e)\\b"
    ],
    [
     "contest",
@@ -9225,6 +9227,23 @@
    ]
   ],
   "subgroupFollow": "^(who\\b.*\\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\\b)",
+  "wordSurnames": [
+   "bail",
+   "bloom",
+   "card",
+   "list",
+   "west",
+   "powers",
+   "grove",
+   "miller",
+   "rand",
+   "tong",
+   "fang",
+   "shea",
+   "rouse",
+   "ross",
+   "healy"
+  ],
   "common": [
    "accuracy",
    "acros",
