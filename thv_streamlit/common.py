@@ -39,6 +39,7 @@ h1 { font-weight: 800; letter-spacing: -0.035em; }
 .stButton button, .stFormSubmitButton button, .stDownloadButton button { border-radius: 999px; border: 1.5px solid #14203a; background: #fff; color: #14203a; font-weight: 700; padding: .45rem 1.1rem; }
 .stButton button[kind="primary"], .stFormSubmitButton button[kind="primaryFormSubmit"] { background: #14203a; color: #fff; }
 .stButton button:hover { border-color: #2f54eb; color: #2f54eb; }
+.stButton button[kind="primary"]:hover, .stFormSubmitButton button:hover { background: #1f3cc2; border-color: #1f3cc2; color: #fff; }   /* white on blue keeps 6:1 (audit 34) */
 [data-testid="stSidebar"] { background: #fff; border-right: 1px solid #cbd3dd; }
 .block-container { padding-top: 1.2rem; max-width: 1180px; }
 h1, h2, h3 { letter-spacing: -0.02em; }

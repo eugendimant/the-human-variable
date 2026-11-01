@@ -86,6 +86,9 @@ def run():
                     except Exception as e: errors.append((name, 'could not play to the reveal: ' + str(e).splitlines()[0])); pg.close(); continue
                 pg.wait_for_timeout(600 if every_state else 1300)
                 for r, where, d in pg.evaluate(JS): hits.append((r, f'{name}@{w}', where, d))
+                if act == 'theme-strip' and w == 1440:   # the strip appears from 1200 px, where it is drawn smallest (audit 34)
+                    pg.set_viewport_size({'width': 1200, 'height': 900}); pg.wait_for_timeout(400)
+                    for r, where, d in pg.evaluate(JS): hits.append((r, f'{name}@1200', where, d))
                 pg.close()
         b.close()
     hits += live(errors)

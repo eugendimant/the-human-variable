@@ -419,15 +419,23 @@ def test_audit33_follow_up_questions_never_call_the_model():
     """Audit 33, M1: with a key configured, a decision's own follow-up question (a suggestion button) gets its stored answer and spends no AI budget."""
     from server import tutor as t
     tu = t.Tutor(':memory:'); tu.key = 'fake'; calls = []
-    tu._http = lambda model, body: calls.append(model) or {'candidates': [{'content': {'parts': [{'text': 'model text'}]}}]}
+    tu.transport = lambda model, body: (calls.append(model), (200, {'candidates': [{'content': {'parts': [{'text': 'model text'}]}}]}))[1]   # the bound transport, so the test fails if the model is called (audit 34, m5)
     c = t.CHALLENGES['axe14']
     for f in c['follow']:
         r = tu.ask(f['q'], 'axe14', 'c1')
-        assert r['answer'] == f['a'] and r['mode'] == 'curated', r
+        assert r['answer'] == f['a'] and r['mode'] == 'curated' and 'note' not in r, r
     assert not calls
+    r = tu.ask('Would this hold for a bank call centre staffed overnight?', 'axe14', 'c1'); assert calls, 'a free question should reach the stubbed model'
 
 
 def test_audit33_why_never_gets_a_quantity_follow_up():
     """Audit 33, M2: the why rule binds both matching branches on the server, as on the page."""
     from server import tutor as t
     assert 'NIS 10' not in t.curated('Why was there a fine?', 'bz08')['answer']
+
+
+def test_suggestions_come_closest_first():
+    """Audit 34, m6: the suggestion buttons are ordered by word overlap with the question (ties keep bank order)."""
+    from server import tutor as t
+    r = t.curated('what colour were the lateness charts?', 'bz08')
+    assert r['suggest'][0] == 'How fast did lateness rise?', r['suggest']

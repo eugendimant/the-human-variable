@@ -303,4 +303,6 @@ def test_page_tutor_agrees_with_server_on_every_probe(browser):
     pairs += [(q, c['id']) for c in _T.CHALLENGES.values() if not c.get('retired') for q in W['every_decision']]   # review 26: every decision, full text
     page_ans = page_ans + pg.evaluate("ps => ps.map(([q, id]) => THV.curated(q, THV.ALL.find(c => c.id === id)).text)", pairs[len(page_ans):])
     bad = [(q, cid, a[:60], _T.curated(q, cid)['answer'][:60]) for (q, cid), a in zip(pairs, page_ans) if a.split() != _T.curated(q, cid)['answer'].split()]
+    sug = pg.evaluate("ps => ps.map(([q, id]) => THV.curated(q, THV.ALL.find(c => c.id === id)).suggest || null)", pairs[:400])   # audit 34: the suggestion buttons, in the same order
+    bad += [(q, cid, 'suggest', s) for (q, cid), s in zip(pairs[:400], sug) if s != _T.curated(q, cid).get('suggest')]
     assert not bad, (len(bad), bad[:8]); pg.close()
