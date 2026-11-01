@@ -1336,7 +1336,13 @@
   "List the main results",
   "Card or cash, which worked?",
   "What are the moral implications?",
-  "Did people know?"
+  "Did people know?",
+  "What would happen with no fine?",
+  "What would have happened with no treatment?",
+  "What would happen with more money?",
+  "What would happen with women?",
+  "What would happen with novices?",
+  "Did women get more callbacks than men?"
  ],
  "lead_ins": {
   "prefixes": [

@@ -627,3 +627,9 @@ Regression audit of iteration 31 found 4 introduced Majors and 7 Minors; all fix
 1 introduced Major, 4 Minors.
 - **M1** the compare guard (every distinctive word must appear in the study's text) asserted "does not cover that comparison" for comparisons the study makes (paraphrase words such as "without", "applicant", "empty"). A word-presence test cannot prove absence, so the reply never claims it: "Here is the comparison this study made: …" (golden diff: only that sentence changed, on the experts-vs-laypeople probe and three others).
 - **m1** "what would happen with X" goes back to the subgroup and other routes; "what would happen to X" stays a what-if. **m2** the projector count label sits above its own bar, with headroom under the study label. **m3/m4** test docstrings fixed.
+
+### Audit 31d (2026-11-01) and fixes
+1 introduced Major, 2 Minors, all fixed with the auditor's tested patterns.
+- **M1** excluding every "what would happen with …" from the what-if route sent counterfactuals ("with no fine", "with no treatment") to "does not cover" or to a stray number. The exclusion now applies only when a subgroup term follows "with". Eight counterfactual phrasings on every decision are now a test; six new questions joined the every-decision golden battery (672 new frozen answers).
+- **m1** the subgroup route reads plurals ("novices", "newcomers"). **m2** an unmatched comparison now says so about the matcher, not the study: "I could not match that exact comparison to this study's summary. Here is what the study found: …".
+- Golden diff: 113 wording changes on that sentence only; nothing else moved.

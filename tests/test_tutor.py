@@ -350,7 +350,7 @@ def test_review26_form_matches_the_question():
     assert t.curated('what happened in the control centres', 'bz08')['answer'].startswith('In the four centers without a fine')
     assert not t.curated('did the control group change?', 'bz08')['answer'].startswith('Yes')
     assert t.curated('Was there a control group?', 'bz08')['answer'].startswith('Yes')
-    assert 'does not cover' in t.curated('Also, were experts better than laypeople?', 'bz07')['answer'] or t.curated('Also, were experts better than laypeople?', 'bz07')['answer'].startswith('Here is the comparison')
+    assert 'does not cover' in t.curated('Also, were experts better than laypeople?', 'bz07')['answer'] or t.curated('Also, were experts better than laypeople?', 'bz07')['answer'].startswith('I could not match')
 
 
 def test_audit31_comparison_and_counterfactual_answers():
@@ -358,7 +358,7 @@ def test_audit31_comparison_and_counterfactual_answers():
     from server import tutor as t
     assert ' No. ' not in t.curated('Are AI images better than human ones?', 'axe10')['answer']
     assert ' Yes. ' not in t.curated('Is AI better than humans at decisions?', 'axb01')['answer']
-    assert t.curated('Were experts more accurate than laypeople?', 'axb04')['answer'].startswith('Here is the comparison this study made')
+    assert t.curated('Were experts more accurate than laypeople?', 'axb04')['answer'].startswith('I could not match that exact comparison')
     for cid in t.CHALLENGES:
         if t.CHALLENGES[cid].get('retired'): continue
         assert 'tested one version' not in t.curated('What if it had been done differently?', cid)['answer']
@@ -391,3 +391,14 @@ def test_audit31c_comparisons_the_study_makes_are_never_called_absent():
     from server import tutor as t
     for cid, q in [('ai02', 'Was writing quality better with ChatGPT than without?'), ('social12', 'Did Black applicants get fewer callbacks than White applicants?'), ('biz05', 'Did below-average homes use more energy than before?'), ('ai07', 'Were AI-assisted stories more novel than the others?'), ('civic-wallet-rank', 'Were wallets with more money returned more often than empty ones?'), ('false-news-spread', 'Are bots worse than people at spreading lies?')]:
         assert 'does not cover' not in t.curated(q, cid)['answer'], (cid, q)
+
+
+def test_audit31d_counterfactuals_with_keep_the_whatif_answer():
+    """Audit 31d, M1: "what would happen with no fine / no treatment / more money" stays a what-if on every decision; only subgroup terms after "with" leave it."""
+    from server import tutor as t
+    Q = ['What would happen with no fine?', 'What would have happened with no treatment?', 'What would happen with no nudge?', 'What would happen with a bigger fine?', 'What would happen with more money?', 'What would happen with a different message?', 'What would happen with a longer deactivation?', 'What would happen with a bigger sample?']
+    live = [cid for cid, c in t.CHALLENGES.items() if not c.get('retired')]
+    bad = [(cid, q) for cid in live for q in Q if not t.curated(q, cid)['answer'].startswith("The study's design")]
+    assert not bad, bad[:5]
+    assert 'control' in t.curated('What would happen with no fine?', 'bz08')['answer']
+    assert not t.curated('What would happen with novices?', 'rollout1')['answer'].startswith("The lab's summary of this study does not cover that detail")

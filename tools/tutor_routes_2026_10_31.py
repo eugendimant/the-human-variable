@@ -14,7 +14,7 @@ bank['tutorRoutes'] = {
   ['ethics', r'\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|is it (ok|okay|right|wrong)|allowed|legal)'],
   ['models', r'\b(which|what) (ai )?(models?|tools?|systems?|chatbots?|llms?)\b'],
   ['compare', r'\b(better|worse|more accurate|less accurate|smarter|outperform\w*|beat|beats)\b.*\bthan\b|\bas (good|effective|accurate|well|useful|fast) as\b|\b(more|fewer|less) \w+ than\b|\boutperform\w*\b|\bor not\b'],   # review 26, M1: "is GPT-4 better than doctors?", "do people hate the other side or not?"
-  ['whatif', r'\bwhat if\b|\bwhat would (have )?happen\w*\b(?!\s+(in|for|at|with)\b)|\bwould (it|this|that|they|the \w+) (have )?(work\w*|happen\w*|change\w*|differ\w*|be different) if\b'],
+  ['whatif', r'\bwhat if\b|\bwhat would (have )?happen\w*\b(?!\s+(in|for|at)\b)(?!\s+with\s+(\w+\s+)?(women|men|gender|older|younger|novices?|newcomers?|experienced|junior|senior|weaker|stronger|less skilled|(low|high)[- ]skill\w*)\b)|\bwould (it|this|that|they|the \w+) (have )?(work\w*|happen\w*|change\w*|differ\w*|be different) if\b'],
   ['control', r'\bcontrol (group|condition|arm|centers?|centres?|sites?|schools?|teams?|firms?|stores?|branches|participants)\b'],   # review 26, M1: "what happened in the control centres"
   ['detect', r'\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\b|\b(could|can|did|do|would) (they|people|participants|users|customers|readers|consumers|students|subjects|respondents|raters|workers) (know|reali[sz]e)\b.*\b(ai|gpt\S*|bot|chatbot|machine|model|algorithm|human|person)\b'],
   ['contest', r'\b(who is right|who.?s right|who is correct|which (one|side|study|paper) is right|who wins|(do|did) they (disagree|contradict))\b'],
@@ -28,7 +28,7 @@ bank['tutorRoutes'] = {
   ['catch', r'\b(catch|backfire|downside|drawback|limit\w*|risk|caveat|fail\w*|weakness|criticis\w*|question(ed)? this|later work)\b'],
   ['summary', r'\b(summar\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|main (results?|findings?)|in (one|a) sentence|one[- ]liner|define|definition of|(does|did|do) (it|this|that|the [\w ]{1,30}) work(?=\W*$)|did it work|what (did|was) (it|they) find|what was found)\b'],
   ['duration', r'\b(how long|last(ed)?|persist\w*|fade\w*|long[- ]term|over time|stick)\b'],
-  ['subgroup', r'\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\w*|good writers|junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\b'],
+  ['subgroup', r'\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\w*|good writers|junior|senior|novices?|newcomers?|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\b'],
   ['signif', r'\b(significan\w*|statistically|by chance|just noise|p[- ]?value)\b'],
   ['meaning', r'\b(what does (the )?(word |term )?[\'\"]?(\w+)[\'\"]? mean|what is meant by|what do (they|you) mean by)\b'],
   ['why', r'(^why\b|\bwhy (would|does|did|do|is|are|was|were)\b)'],

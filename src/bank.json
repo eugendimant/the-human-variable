@@ -9161,7 +9161,7 @@
    ],
    [
     "whatif",
-    "\\bwhat if\\b|\\bwhat would (have )?happen\\w*\\b(?!\\s+(in|for|at|with)\\b)|\\bwould (it|this|that|they|the \\w+) (have )?(work\\w*|happen\\w*|change\\w*|differ\\w*|be different) if\\b"
+    "\\bwhat if\\b|\\bwhat would (have )?happen\\w*\\b(?!\\s+(in|for|at)\\b)(?!\\s+with\\s+(\\w+\\s+)?(women|men|gender|older|younger|novices?|newcomers?|experienced|junior|senior|weaker|stronger|less skilled|(low|high)[- ]skill\\w*)\\b)|\\bwould (it|this|that|they|the \\w+) (have )?(work\\w*|happen\\w*|change\\w*|differ\\w*|be different) if\\b"
    ],
    [
     "control",
@@ -9217,7 +9217,7 @@
    ],
    [
     "subgroup",
-    "\\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\\w*|good writers|junior|senior|novice|newcomer|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b"
+    "\\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\\w*|good writers|junior|senior|novices?|newcomers?|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b"
    ],
    [
     "signif",
