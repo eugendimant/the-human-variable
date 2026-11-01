@@ -475,8 +475,8 @@
 "Was real money at stake?": "Design: Series of consumer experiments. Sample: Studies 1-4, 5, 6, 7a-7b. What the study c",
 "Who benefited most?": "AI for practical picks; humans for taste. Across Studies 1 to 7b, people saw AI as more co",
 "Was the difference significant?": "Across Studies 1 to 7b, people saw AI as more competent for utilitarian attributes and les",
-"Should we use this when we hire?": "Label AI picks for practical product attributes; present taste-based picks as expert recom",
-"Should we roll this out right now?": "Label AI picks for practical product attributes; present taste-based picks as expert recom",
+"Should we use this when we hire?": "Label AI picks for practical product attributes; where an expert actually reviews taste-ba",
+"Should we roll this out right now?": "Label AI picks for practical product attributes; where an expert actually reviews taste-ba",
 "Is it ethical to act on this?": "The study measures what happened, not what is right; that call is yours. What it covers: C"
 },
 "axe04": {
@@ -1186,18 +1186,18 @@
 "How big was the effect?": "When coworkers’ productivity was difficult to observe, pay inequality reduced output by 0.",
 "What should a manager do?": "Output fell 0.45 SD; attendance fell 18 points. When coworkers’ productivity was difficult",
 "Did it last?": "About one month, in Indian manufacturing.",
-"Does this replicate?": "When workers clearly saw that higher-paid peers were more productive, pay gaps had no disc",
+"Does this replicate?": "One month of randomized daily pay among Indian manufacturing workers in production teams, ",
 "Was this randomized?": "Design: Randomized field experiment. Sample: Indian manufacturing workers, one month. When",
-"What is the catch?": "What the study covers: When workers clearly saw that higher-paid peers were more productiv",
+"What is the catch?": "What the study covers: One month of randomized daily pay among Indian manufacturing worker",
 "Who wrote this?": "Breza, Kaur & Shamdasani (2018), The Quarterly Journal of Economics. Design: Randomized fi",
 "Explain it simply": "Output fell 0.45 SD; attendance fell 18 points. When coworkers’ productivity was difficult",
-"Would this work in Europe?": "What the study covers: When workers clearly saw that higher-paid peers were more productiv",
+"Would this work in Europe?": "What the study covers: One month of randomized daily pay among Indian manufacturing worker",
 "Was real money at stake?": "No. When workers could clearly perceive that higher-paid peers were more productive, pay d",
 "Who benefited most?": "Output fell 0.45 SD; attendance fell 18 points. When coworkers’ productivity was difficult",
 "Was the difference significant?": "When coworkers’ productivity was difficult to observe, pay inequality reduced output by 0.",
 "Should we use this when we hire?": "If pay differs within a team, make the productivity basis visible to everyone before the g",
 "Should we roll this out right now?": "If pay differs within a team, make the productivity basis visible to everyone before the g",
-"Is it ethical to act on this?": "The study measures what happened, not what is right; that call is yours. What it covers: W"
+"Is it ethical to act on this?": "The study measures what happened, not what is right; that call is yours. What it covers: O"
 },
 "bz14": {
 "What is the design?": "Design: Incentivized lab experiment. Sample: Evaluators choosing among candidates. In Bohn",
@@ -1375,8 +1375,8 @@
 "Was real money at stake?": "Design: Vignette experiment (Study 2). Sample: 225 US adults across 10 states. What the st",
 "Who benefited most?": "Norm information raised punishment of unfair bribes. Norm information raised the chosen pr",
 "Was the difference significant?": "Norm information raised the chosen probability of punishment from 73.3% to 82.8% when the ",
-"Should we use this when we hire?": "When you build a speak-up channel, tell staff that most colleagues object to taking bribes",
-"Should we roll this out right now?": "When you build a speak-up channel, tell staff that most colleagues object to taking bribes",
+"Should we use this when we hire?": "When you build a speak-up channel and your own survey shows that most colleagues object to",
+"Should we roll this out right now?": "When you build a speak-up channel and your own survey shows that most colleagues object to",
 "Is it ethical to act on this?": "The study measures what happened, not what is right; that call is yours. What it covers: B"
 },
 "dimant-hate-choice": {

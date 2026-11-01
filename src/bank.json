@@ -2936,7 +2936,7 @@
    "options": [
     "Some already-efficient households raised usage",
     "The smiley made above-average households use more",
-    "Above-average homes did not change their usage",
+    "Above-average homes raised their usage",
     "A smiley face kept efficient homes steady"
    ],
    "answerTitle": "A norm message can backfire",
@@ -3526,7 +3526,7 @@
    "tag": "39 / HIRING",
    "title": "Screens at auditions",
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
-   "question": "Orchestras put candidates behind a screen. What did the authors estimate for women?",
+   "question": "What did the authors estimate for women?",
    "answerTitle": "Favorable to women, with some imprecise estimates",
    "explain": "Goldin and Rouse estimate that the screen raised by 50 percent the chance a woman advanced from certain preliminary rounds, and that blind auditions explain about 30 percent of the rise in women among new hires. Some estimates have large standard errors.",
    "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
@@ -3733,19 +3733,15 @@
    "chart": {
     "labels": [
      "Given to allies",
-     "Given to a painting group-mate",
-     "Given to a painting out-group",
-     "Taken from political opponents"
+     "Given to a painting group-mate"
     ],
     "values": [
      14.97,
-     13.54,
-     11.99,
-     22.9
+     13.54
     ],
     "unit": "%",
-    "highlight": 3,
-    "note": "Share of the endowment moved: given to the first three, taken from political opponents."
+    "highlight": 0,
+    "note": "Share of the endowment given; allies got no more than a group-mate who shared only a painting preference."
    }
   },
   {
@@ -3760,7 +3756,7 @@
     "The interventions improved prosociality",
     "The nudges closed the partisan gap on most measures",
     "Measured polarization gaps persisted",
-    "The norm nudge worked; the default did not"
+    "The default failed; norms worked"
    ],
    "answerTitle": "General improvement, persistent gap",
    "explain": "With a default nudge, Dimant shows that taking from political opponents fell from about 20% of the endowment to essentially 0%, and giving to allies rose from about 10–15% to 25–35%. The ally-opponent difference stayed highly significant (p < 0.001).",
@@ -4410,7 +4406,7 @@
    "options": [
     "Showing the AI’s confidence with each suggestion",
     "Plain explanations with each suggestion",
-    "Making users answer before seeing the AI"
+    "Making users engage before the AI’s answer appears"
    ],
    "answer": 2,
    "answerTitle": "Forcing functions worked, but users disliked them",
@@ -5365,7 +5361,7 @@
    "answerTitle": "Output fell 0.45 SD; attendance fell 18 points",
    "explain": "When coworkers’ productivity was difficult to observe, pay inequality reduced output by 0.45 standard deviations and attendance by 18 percentage points, and weakened cooperation.",
    "implication": "If pay differs within a team, make the productivity basis visible to everyone before the gap takes effect.",
-   "boundary": "When workers clearly saw that higher-paid peers were more productive, pay gaps had no discernible effect.",
+   "boundary": "One month of randomized daily pay among Indian manufacturing workers in production teams, including teams where coworkers’ productivity was easy to observe.",
    "sources": [
     "breza18"
    ],
@@ -5880,7 +5876,7 @@
    "scene": "Before the 2018 US midterm election, researchers randomly paid some Facebook users to deactivate their accounts for four weeks and compared them with users who kept using it.",
    "question": "Which two effects did deactivation produce?",
    "options": [
-    "Better factual news knowledge",
+    "Better news knowledge",
     "Heavier Facebook use once reactivated",
     "Lower political polarization",
     "Higher subjective well-being"
@@ -6143,26 +6139,34 @@
       "id": "part",
       "label": "Partisanship",
       "x": 90,
-      "y": 40
+      "y": 40,
+      "px": 70,
+      "py": 40
      },
      {
       "id": "meta",
       "label": "Belief gap",
       "x": 240,
-      "y": 110
+      "y": 110,
+      "px": 250,
+      "py": 165
      },
      {
       "id": "obs",
       "label": "Obstruction",
       "x": 420,
-      "y": 110
+      "y": 110,
+      "px": 110,
+      "py": 290
      },
      {
       "id": "fix",
       "label": "Correction",
       "x": 90,
       "y": 170,
-      "mask": true
+      "mask": true,
+      "px": 290,
+      "py": 40
      }
     ],
     "edges": [
@@ -6700,7 +6704,7 @@
    "question": "How likely is it that the study found this?",
    "answerTitle": "Norm information raised punishment of unfair bribes",
    "explain": "Norm information raised the chosen probability of punishment from 73.3% to 82.8% when the bribe created inequity (P < 0.005), and from 57.9% to 67.2% when it restored equity (marginal, P = 0.074). Inequity-creating bribes drew more punishment overall (77.8% vs 62.3%, P < 0.001).",
-   "implication": "When you build a speak-up channel, tell staff that most colleagues object to taking bribes; in the study this raised willingness to act most for deals that create unfair advantages.",
+   "implication": "When you build a speak-up channel and your own survey shows that most colleagues object to taking bribes, say so; in the study this raised willingness to act most for deals that create unfair advantages.",
    "boundary": "Bribery vignette with 225 US adults, alongside a main behavioral study with 1,240 punishers from a representative US sample.",
    "sources": [
     "enforcers23"
@@ -6971,7 +6975,7 @@
    ],
    "answer": 3,
    "answerTitle": "Expectations, more than unwillingness, drove the gap",
-   "explain": "In Dimant’s public goods games, the share of conditional cooperators dropped by a similar amount for a Trump opponent (72.8% to 59.0%) and for a painting-preference outgroup (73.2% to 62.4%). Expectations differed: people predicted opponents would contribute less.",
+   "explain": "In Dimant’s public goods games, the share of conditional cooperators dropped by a similar amount for a Trump opponent (72.8% to 59.0%) and for a painting-preference outgroup (73.2% to 62.4%). What set the political divide apart was expectation: people expected less from opponents, and Dimant traces the gap to these beliefs rather than to preferences.",
    "implication": "In politically mixed teams, share evidence that colleagues on the other side do cooperate before launching joint projects.",
    "boundary": "Incentivized experiments on US polarization around Donald Trump, compared with other social identities.",
    "sources": [
@@ -7203,7 +7207,7 @@
    },
    "answerTitle": "AI for practical picks; humans for taste",
    "explain": "Across Studies 1 to 7b, people saw AI as more competent for utilitarian attributes and less competent for hedonic ones, and the preference for AI reversed when a practical pick had to fit one person’s unique tastes.",
-   "implication": "Label AI picks for practical product attributes; present taste-based picks as expert recommendations supported by AI.",
+   "implication": "Label AI picks for practical product attributes; where an expert actually reviews taste-based picks, present them as expert recommendations supported by AI.",
    "boundary": "Consumer experiments on recommendations, measuring how competent people judged AI and human recommenders.",
    "sources": [
     "longoni22"
@@ -7775,7 +7779,7 @@
     "Average content novelty rose",
     "Favorites per view rose",
     "Prior originality decided who gained",
-    "Output volume rose",
+    "Adopters’ output volume rose",
     "Visual novelty increased"
    ],
    "multiAnswers": [
@@ -9085,7 +9089,7 @@
   "routes": [
    [
     "offtopic",
-    "\\b(poem|haiku|limerick|joke|weather|recipe|capital of|song|lyrics|horoscope|stock (tip|price)|share price|world cup|super bowl|tax return|homework|movie|write (me )?(code|python|javascript|an essay)|translate|bitcoin)\\b"
+    "\\b(poem|haiku|limerick|joke|weather|recipe|capital of|song|lyrics|horoscope|stock (tip|price)|share price|world cup|super bowl|tax return|homework|movie|(^(please )?|(can|could|would|will) you (please )?|help me |i need you to )(write|draft) (me |us )?(my |a |an |the )?([a-z]+ ){0,2}(code|python|javascript|essay|cover letter|r[eé]sum[eé]|cv|email|speech|blog post|linkedin post|sales pitch|pitch|ad copy|script)|translate|bitcoin)\\b"
    ],
    [
     "action",

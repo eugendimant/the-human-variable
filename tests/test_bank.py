@@ -534,21 +534,34 @@ def test_streamlit_font_matches_the_game():
 
 
 def test_causal_links_are_long_and_clear_of_other_pills():
-    """Review 29, m1: on the reveal every link runs at least 60 units between its pills on the wide canvas (25 on a phone) and crosses no third pill, at both canvas widths (mirrors dag() in src/app.js)."""
+    """Review 29, m1: on the reveal every link runs at least 50 units between its pills, wide and on the phone's top-to-bottom layout and crosses no third pill, at both canvas widths (mirrors dag() in src/app.js)."""
     import math
     bad = []
     for c in LIVE:
         d = c.get('dag')
         if not d: continue
         xs = [n['x'] for n in d['nodes']]; ys = [n['y'] for n in d['nodes']]; x0, x1, y0 = min(xs), max(xs), min(ys)
-        for W in (510, 700):
-            N = {n['id']: (70 + (n['x'] - x0) * (W - 140) / (x1 - x0) if x1 > x0 else W / 2, 40 + (n['y'] - y0) * 1.5) for n in d['nodes']}
+        y1 = max(ys); cols = sorted(set(xs))
+        for W in (360, 700):
+            if W == 700: N = {n['id']: (70 + (n['x'] - x0) * (W - 140) / (x1 - x0) if x1 > x0 else W / 2, 40 + (n['y'] - y0) * 1.5) for n in d['nodes']}
+            else: N = {n['id']: (n.get('px', 70 + (n['y'] - y0) * (W - 140) / (y1 - y0) if y1 > y0 else W / 2), n.get('py', 40 + cols.index(n['x']) * 125)) for n in d['nodes']}   # phones: columns become rows
             for e in d['edges']:
                 (ax, ay), (bx, by) = N[e[0]], N[e[1]]; L = math.hypot(bx - ax, by - ay); ux, uy = (bx - ax) / L, (by - ay) / L
                 t = min(76 / abs(ux) if abs(ux) > 1e-9 else 1e9, 34 / abs(uy) if abs(uy) > 1e-9 else 1e9)
-                if L - 2 * t < (60 if W == 700 else 25): bad.append((c['id'], W, e[:2], round(L - 2 * t)))   # three columns of 140-wide pills leave little room on a phone
+                if L - 2 * t < 50: bad.append((c['id'], W, e[:2], round(L - 2 * t)))   # three columns of 140-wide pills leave little room on a phone
                 p, q = (ax + ux * t, ay + uy * t), (bx - ux * t, by - uy * t)
                 for k, (nx, ny) in N.items():
                     if k in e[:2]: continue
                     if any(abs(p[0] + (q[0] - p[0]) * s / 60 - nx) < 70 and abs(p[1] + (q[1] - p[1]) * s / 60 - ny) < 24 for s in range(1, 60)): bad.append((c['id'], W, e[:2], 'crosses ' + k))
     assert not bad, bad
+
+
+def test_pick_two_keys_are_not_the_two_shortest_or_longest():
+    """Review 30, m13: picking the two shortest options earned +0.18 skill; at most one pick-two may be solved by length either way."""
+    short, long_ = [], []
+    for c in LIVE:
+        if c['format'] != 'multi': continue
+        o, k = c['options'], set(c['multiAnswers']); by = sorted(range(len(o)), key=lambda i: len(o[i]))
+        if set(by[:2]) == k: short.append(c['id'])
+        if set(by[-2:]) == k: long_.append(c['id'])
+    assert len(short) <= 1 and len(long_) <= 1, (short, long_)

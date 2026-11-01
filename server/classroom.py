@@ -277,7 +277,11 @@ def public_challenge(c: dict) -> dict:
     """Everything a participant needs to answer, nothing that reveals the answer."""
     keep = ('id', 'track', 'title', 'scene', 'question', 'options', 'format', 'rankLabel', 'dag', 'case', 'study')  # concept can name the result
     out = {k: c[k] for k in keep if k in c}
-    if c['format'] == 'estimate': out['estimate'] = {k: c['estimate'][k] for k in ('min', 'max', 'label', 'unit', 'step', 'tolerance') if k in c['estimate']}
+    if c['format'] == 'estimate':
+        out['estimate'] = {k: c['estimate'][k] for k in ('min', 'max', 'label', 'unit', 'step', 'tolerance') if k in c['estimate']}
+        n = str((c.get('study') or {}).get('n', ''))
+        if any(abs(float(m) - c['estimate']['target']) <= c['estimate']['tolerance'] for m in re.findall(r'-?\d+(?:\.\d+)?', n.replace(',', ''))):
+            out['study'] = {k: v for k, v in c['study'].items() if k != 'n'}   # a sample whose numbers sit in the scoring band stays off the wire, as off the screen (review 30)
     if c['format'] == 'forecast': out['forecast'] = {'claim': c['forecast']['claim']}
     if c['format'] == 'allocate': out['allocate'] = {k: c['allocate'][k] for k in ('total', 'step', 'label', 'prefix', 'suffix') if k in c['allocate']}  # allow-list: nothing that names the best arm
     if c['format'] == 'delegate': out['delegate'] = {'choices': c['delegate']['choices'], 'tasks': [{'text': t['text']} for t in c['delegate']['tasks']]}

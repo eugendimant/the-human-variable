@@ -439,3 +439,13 @@ def test_suggestions_come_closest_first():
     from server import tutor as t
     r = t.curated('what colour were the lateness charts?', 'bz08')
     assert r['suggest'][0] == 'How fast did lateness rise?', r['suggest']
+
+
+def test_writing_requests_are_declined_but_study_questions_are_not():
+    """Review 29/30 and audit 38: requests to write something are declined; study questions that mention a letter or email are answered."""
+    from server import tutor as T
+    off = 'That is outside what this lab covers'
+    for q in ('Can you write me a cover letter?', 'write me a persuasive sales pitch', 'help me draft an email to my boss', 'Write my cover letter', 'write a linkedin post about this'):
+        assert T.curated(q, 'ai01')['answer'].startswith(off), q
+    for q, c in (('Did the résumés include a cover letter?', 'social12'), ('Did they write an email to customers?', 'ai01'), ('Did the tax letter work?', 'tax-letter-norms')):
+        assert not T.curated(q, c)['answer'].startswith(off), q

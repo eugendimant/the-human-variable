@@ -43,7 +43,7 @@ h1 { font-weight: 800; letter-spacing: -0.035em; }
 [data-testid="stSidebar"] { background: #fff; border-right: 1px solid #cbd3dd; }
 .block-container { padding-top: 1.2rem; max-width: 1180px; }
 h1, h2, h3 { letter-spacing: -0.02em; }
-.thv-code { font-size: 64px; font-weight: 800; letter-spacing: .12em; color: #1f3cc2; line-height: 1; }
+.thv-code { font-size: 64px; font-weight: 800; letter-spacing: .12em; color: #14203a; line-height: 1; }
 .thv-claim { background: #e2e7ed; padding: 12px 16px; border-radius: 10px; font-size: 18px; }
 .thv-ev { color: #7d5200; font-weight: 700; }
 </style>"""

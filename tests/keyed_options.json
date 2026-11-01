@@ -59,7 +59,7 @@
   ],
   "options": [
    "A smiley face kept efficient homes steady",
-   "Above-average homes did not change their usage",
+   "Above-average homes raised their usage",
    "Some already-efficient households raised usage",
    "The smiley made above-average households use more"
   ]
@@ -155,8 +155,8 @@
   ],
   "options": [
    "Measured polarization gaps persisted",
+   "The default failed; norms worked",
    "The interventions improved prosociality",
-   "The norm nudge worked; the default did not",
    "The nudges closed the partisan gap on most measures"
   ]
  },
@@ -183,10 +183,10 @@
  },
  "axb10": {
   "keyed": [
-   "Making users answer before seeing the AI"
+   "Making users engage before the AI’s answer appears"
   ],
   "options": [
-   "Making users answer before seeing the AI",
+   "Making users engage before the AI’s answer appears",
    "Plain explanations with each suggestion",
    "Showing the AI’s confidence with each suggestion"
   ]
@@ -297,7 +297,7 @@
    "Lower political polarization"
   ],
   "options": [
-   "Better factual news knowledge",
+   "Better news knowledge",
    "Heavier Facebook use once reactivated",
    "Higher subjective well-being",
    "Lower political polarization"
@@ -473,13 +473,13 @@
  },
  "genai1": {
   "keyed": [
-   "Favorites per view rose",
-   "Output volume rose"
+   "Adopters’ output volume rose",
+   "Favorites per view rose"
   ],
   "options": [
+   "Adopters’ output volume rose",
    "Average content novelty rose",
    "Favorites per view rose",
-   "Output volume rose",
    "Prior originality decided who gained",
    "Visual novelty increased"
   ]

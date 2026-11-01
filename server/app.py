@@ -112,7 +112,11 @@ class Handler(BaseHTTPRequestHandler):
         n = int(self.headers.get('Content-Length') or 0)
         if n < 0 or n > 8192: raise ClassroomError('Request too large')
         if n and 'application/json' not in (self.headers.get('Content-Type') or ''): raise ClassroomError('Send JSON')
-        d = json.loads(self.rfile.read(n) or b'{}')
+        try: raw = self.rfile.read(n)
+        except (TimeoutError, OSError): raise ClassroomError('The request body arrived too slowly')   # review 30, m16: a slow body was a 500
+        if len(raw) < n: raise ClassroomError('The request body was cut off')
+        try: d = json.loads(raw or b'{}')
+        except ValueError: raise ClassroomError('Send valid JSON')
         if not isinstance(d, dict): raise ClassroomError('Send a JSON object')
         return d
 

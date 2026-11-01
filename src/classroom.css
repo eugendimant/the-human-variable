@@ -13,7 +13,7 @@ ul.present-opts{list-style:none;padding-left:0}ul.present-opts li{border-top:1px
 .count-row{display:flex;align-items:center;gap:12px;margin:18px 0 4px;flex-wrap:wrap}
 .count-row b{font-size:46px;letter-spacing:-.03em;line-height:1}
 .meter-bar{flex:1 1 160px;height:8px;border-radius:4px;background:var(--rule);position:relative;overflow:hidden}
-.meter-bar i{position:absolute;inset:0 auto 0 0;background:var(--you);transition:width .4s}
+.meter-bar i{position:absolute;inset:0 auto 0 0;background:#5b6b86;transition:width .4s}
 .rv{margin-top:24px;border-top:1px solid var(--rule);padding-top:20px}
 .rv-head{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:24px;margin-bottom:18px}
 .rv-chip{display:block;font-style:normal;font-size:15px;font-weight:650;color:var(--ink,#14203a);margin-top:2px}
@@ -72,3 +72,4 @@ p,li{text-wrap:pretty}
 .rp-badge.top{background:#e0a01c;border-color:#e0a01c}   /* only the study's top place is coloured (rule 29) */
 .rv-unit{font-size:.45em;font-weight:650;letter-spacing:0;color:var(--ink-2,#3a4660);white-space:nowrap}
 body.projector .proj-exit{opacity:0}   /* hidden on the projected screen until hover or keyboard focus (review 29, m9) */
+body.projector .proj-hide{display:none}   /* instructor chrome stays off the projected screen (review 30, m14) */

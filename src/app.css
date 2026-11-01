@@ -135,7 +135,7 @@ a{color:var(--you-ink);text-underline-offset:3px}
 .meter{padding:6px 0 4px}
 .meter-read{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
 .meter-read b{font-size:clamp(36px,4vw,54px);letter-spacing:-.03em;line-height:1;color:var(--you-ink);font-variant-numeric:tabular-nums}
-.meter-read b.empty{font-size:18px;font-weight:650;letter-spacing:0;color:var(--muted)}
+.meter-read b.empty{visibility:hidden}   /* the read-out keeps its size before the first touch; the action bar carries the instruction */
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:36px;background:transparent;margin:0}
 input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:4px;background:linear-gradient(to right,var(--you) var(--fill,50%),var(--rule) var(--fill,50%))}
 input[type=range]::-moz-range-track{height:6px;border-radius:4px;background:var(--rule)}
@@ -384,8 +384,8 @@ body.in-play{background:var(--paper)}
 .opts-recap{margin-top:16px}
 .reveal .reveal-body{font-size:clamp(19px,1.7vw,22px)}
 .action-note{margin:0 0 34px;font-family:var(--serif);font-size:19px;line-height:1.5}
-.action-note strong{font-family:var(--sans,inherit);font-weight:750;color:var(--you-ink)}
-.action-note h2{font-size:var(--t6);margin:0 0 4px;color:var(--you-ink)}
+.action-note strong{font-family:var(--sans,inherit);font-weight:750;color:var(--ink)}
+.action-note h2{font-size:var(--t6);margin:0 0 4px;color:var(--ink)}
 .action-note p{margin:0;font-family:var(--serif);font-size:19px;line-height:1.5}
 .deep{border-top:1px solid var(--rule);padding-top:8px}
 .tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -4px 8px;padding:4px}
@@ -546,7 +546,7 @@ body.projector{background:#0f1830}
 body.projector .join-banner{background:#16223f;border-color:#2a3a63;color:#fff}
 body.projector .join-banner .kicker{color:#b9c4dd}
 body.projector .join-url{color:#fff}
-body.projector .join-code{color:#f0b43c}
+body.projector .join-code{color:#fff}
 body.projector .proj-exit{background:#fff;color:#14203a}
 body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:content-box}
 .deleg-cmp li.ok>span:first-child::before{content:"✓";color:var(--good);font-weight:800;margin-right:8px}

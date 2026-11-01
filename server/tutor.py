@@ -93,7 +93,8 @@ def names(question: str, cid: str) -> bool:
     q = words(question)   # whole surnames, unstemmed: "bill" must not match "Biller-Andorno"
     rest = question.strip().split(' ', 1)[1] if ' ' in question.strip() else ''
     q = {w for w in q if w not in WORD_SURNAMES or (re.search(r'\b' + w.capitalize() + r'\b', rest) or re.match(w.capitalize() + r"(\s+et al|['’]s\b|\s+and\s+[A-Z]|\s*\()", question.strip()))}   # the question's first word does not count (audit 30)   # "the reminder card" is not Card et al.
-    return any(words(SOURCES[s]['authors']) - {'with', 'others'} & q for s in CHALLENGES[cid]['sources'] if s in SOURCES)
+    short = lambda a: {w.capitalize() for w in re.findall(r'[a-z]+', __import__('unicodedata').normalize('NFKD', a).encode('ascii', 'ignore').decode().lower()) if len(w) == 3}   # three-letter surnames (Noy) count only when capitalised (review 30)
+    return any(words(SOURCES[s]['authors']) - {'with', 'others'} & q or any(re.search(r'\b' + w + r'\b', question) for w in short(SOURCES[s]['authors'])) for s in CHALLENGES[cid]['sources'] if s in SOURCES)
 
 def _papers(c: dict) -> str:
     """Authors, year and journal of a decision's sources (titles stay with the evidence, as on the page)."""
@@ -127,7 +128,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     locked = {'answer': 'That study opens after your instructor reveals it in class.', 'citations': [], 'mode': 'locked'}
     off = {'answer': 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', 'citations': [], 'mode': 'curated'}
     # a question that names a study by an author's surname goes to that study
-    if c and re.search(r"\bcan (i|we) (trust|rely on|count on|use)\b.*\b(our|my|a|the|this) (\w+ )?(vendor|supplier|tool|provider|system|model)s?\b|\bshould (my|our|we|i)\b (?!(believe|buy|take|worry|care|be (worried|concerned|afraid))\b)\w+|\bdoes (this|that|it) mean\b.{0,60}\bshould\b", ql) and not re.search(r"\b(is|would|be) (this|it|that)( be)? (really |even |actually )?(ethic\w*|fair|moral\w*|right|wrong|ok|okay|allowed|legal)\b|\bit'?s (really )?(fair|ok|okay|allowed|legal)\b|\bare we allowed\b|\bthe right thing\b|\bunethical\b|\b(ethic\w*|unfair\w*|immoral\w*|legal(ity)?)\b|\b(fire[ds]?|lay(ing)? off|cut (jobs|staff|headcount)|replace (staff|workers|people))\b|\bhire (fewer|less)\b|\bfewer (staff|people|workers|agents|employees|consultants|writers|hires|humans|jobs|reps|analysts)\b", ql):   # a recommendation question goes to the manager's action; ethics and staffing questions do not
+    if c and re.search(r"\bcan (i|we) (trust|rely on|count on|use)\b.*\b(our|my|a|the|this) (\w+ )?(vendor|supplier|tool|provider|system|model)s?\b|\bshould (my|our|we|i)\b (?!(believe|buy|take|worry|care|be (worried|concerned|afraid))\b)\w+|\bdoes (this|that|it) mean (that )?(we|i|my|our|managers?|companies|firms|organi[sz]ations?|doctors|clinicians|hospitals|teams?|employers|leaders)\b.{0,40}\bshould\b(?! (hold|generali[sz]e|apply|work|be trusted))", ql) and not re.search(r"\b(is|would|be) (this|it|that)( be)? (really |even |actually )?(ethic\w*|fair|moral\w*|right|wrong|ok|okay|allowed|legal)\b|\bit'?s (really )?(fair|ok|okay|allowed|legal)\b|\bare we allowed\b|\bthe right thing\b|\bunethical\b|\b(ethic\w*|unfair\w*|immoral\w*|legal(ity)?)\b|\b(fire[ds]?|lay(ing)? off|cut (jobs|staff|headcount)|replace (our |my )?(staff|workers|people|writers|agents|analysts|reps))\b|\bhire (fewer|less)\b|\bfewer (staff|people|workers|agents|employees|consultants|writers|hires|humans|jobs|reps|analysts)\b", ql):   # a recommendation question goes to the manager's action; ethics and staffing questions do not
         return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
     if c:
         fol = c.get('follow', [])   # the item's own follow-up, asked word for word, else the nearest one above 0.6 overlap
@@ -150,7 +151,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     if named:
         open_ = [x for x in named if not (exclude and exclude(x))]
         if not open_: return locked
-        best = max(open_, key=lambda x: len(topic & set(tokens(' '.join([CHALLENGES[x]['answerTitle'], CHALLENGES[x]['explain'], CHALLENGES[x]['question']])))))
+        best = max(open_, key=lambda x: len(topic & set(tokens(' '.join([CHALLENGES[x].get('title', ''), CHALLENGES[x]['answerTitle'], CHALLENGES[x]['explain'], CHALLENGES[x]['question'], CHALLENGES[x].get('scene', '')])))))   # the topic word picks among one author's papers (review 30)
         s0 = SOURCES.get(CHALLENGES[best]['sources'][0], {})
         return out(f"From {s0.get('authors', 'another study')} ({s0.get('year', '')}): {CHALLENGES[best]['explain']} {CHALLENGES[best]['implication']}", CHALLENGES[best])   # say which study it switched to (review 29)
     if c:

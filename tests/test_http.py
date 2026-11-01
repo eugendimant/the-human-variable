@@ -257,3 +257,21 @@ def test_a_full_class_joins_then_answers_behind_one_address(base, tmp_path, monk
     assert [s for s, _, _ in joins].count(200) == 120
     sub = [req(base, f'/api/rooms/{code}/responses', {'token': b['token'], 'answer': 0, 'confidence': 60}, client=f'j{i}')[0] for i, (_, b, _) in enumerate(joins)]
     assert sub.count(200) == 120, sub.count(429)
+
+
+def test_cut_off_body_is_a_400_not_a_500(base):
+    """Review 30, m16: a body shorter than its Content-Length returned 500."""
+    import socket
+    host, port = base.rsplit('/', 1)[1].split(':')
+    s = socket.create_connection((host, int(port)), timeout=20)
+    s.sendall(b'POST /api/tutor HTTP/1.1\r\nHost: x\r\nContent-Type: application/json\r\nContent-Length: 60\r\n\r\n{"question": "wh')
+    s.shutdown(socket.SHUT_WR); data = s.recv(200); s.close()
+    assert data.startswith(b'HTTP/1.') and b' 400 ' in data.split(b'\r\n')[0], data[:80]
+
+
+def test_public_bank_carries_no_in_band_sample(base):
+    """Review 30, optional 3: the served bank drops an estimate's sample when it prints a number inside the scoring band (judg09, bz04)."""
+    s, r, _ = req(base, '/api/challenges')
+    by = {c['id']: c for c in r['challenges']}
+    for cid in ('judg09', 'bz04'):
+        if cid in by: assert 'n' not in (by[cid].get('study') or {}), cid

@@ -1373,6 +1373,38 @@
   [
    "How many debates were there in total?",
    "axb08"
+  ],
+  [
+   "Can you write me a cover letter?",
+   "ai01"
+  ],
+  [
+   "write me a persuasive sales pitch",
+   "ai01"
+  ],
+  [
+   "Did the résumés include a cover letter?",
+   "social12"
+  ],
+  [
+   "Does this mean the effect should hold for coders?",
+   "ai01"
+  ],
+  [
+   "Does this mean that we should replace our writers?",
+   "ai01"
+  ],
+  [
+   "what does Noy find?",
+   "rollout4"
+  ],
+  [
+   "what did Bicchieri find about proximity?",
+   "dimant-hate-choice"
+  ],
+  [
+   "Did they write an email to customers?",
+   "ai01"
   ]
  ],
  "every_decision": [
