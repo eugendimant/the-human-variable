@@ -35,3 +35,22 @@ q = {'source': 'hate23', 'quote': 'regardless of whether their partners held the
      'location': 'Section on prosocial and antisocial behavior; author’s public working-paper version (Jan 2021, CESS Nuffield), used to complete the sentence that the published-version quote truncates'}
 if not any(e.get('quote') == q['quote'] for e in ev['social15']): ev['social15'].append(q)
 bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n'); ep.write_text(json.dumps(ev, ensure_ascii=False, indent=1) + '\n')
+# lint R27 (new): a chart's title states its measure; the citation lives in the source line under the figure
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+NOTES = {'ai10': 'Weight on the advice, by its label (Experiment 1A).',
+         'biz01': 'Share enrolled in the savings plan at 3 to 15 months of tenure.',
+         'biz11': 'Median estimate of the share of African countries in the UN, by the number the wheel showed.',
+         'judg05': 'Share choosing the sure option, by frame.',
+         'bz07': 'Fall in quit rates under hybrid work, by group.',
+         'facebook-deactivation': 'Effect of deactivating Facebook, in standard deviations (treatment minus control).',
+         'misperceived-norms-action': 'Share of wives who applied for and interviewed for jobs outside the home, follow-up survey.',
+         'judg09': 'Share choosing the gamble, gains against losses.'}
+for k, v in NOTES.items(): C[k]['chart']['note'] = v
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+# audit 30, minor 5: the chart says where its third value was read
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['social15']['chart']['note'] = 'Share of the endowment given or taken; the painting out-group value is read in the author\u2019s public working-paper version.'
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')
+b = json.loads(bp.read_text()); C = {c['id']: c for c in b['challenges']}
+C['social15']['chart']['note'] = 'Share of the endowment given or taken.'   # provenance of the 11.99% stays in the evidence record (owner rule: preprints verify, players see the version of record)
+bp.write_text(json.dumps(b, ensure_ascii=False, indent=1) + '\n')

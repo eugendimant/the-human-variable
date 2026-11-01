@@ -1,7 +1,7 @@
 """Regenerate tests/tutor_golden.json: the offline tutor's answer (first 90 characters) to a fixed battery of everyday questions on
 every live decision. A route change that alters any of these answers fails tests/test_tutor.py until the change is reviewed and this
 file is regenerated deliberately (invariant I16, regression audit 29)."""
-import json, sys
+import json, re, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT))
 from server import tutor as T
@@ -17,6 +17,13 @@ def wide():
     out = {cid: {q: T.curated(q, cid)['answer'][:60] for q in W['what_is']} for cid in live}
     for cid in W['ids_should']:
         if cid in T.CHALLENGES: out.setdefault(cid, {}).update({q: T.curated(q, cid)['answer'][:60] for q in W['should_ethics']})
+    for q, cid in W.get('probes', []):   # audit 30 and review 25 phrasings
+        if cid in T.CHALLENGES: out.setdefault(cid, {})[q] = T.curated(q, cid)['answer'][:60]
+    for cid in live:   # audit 30: questions asked of every decision, and every Yes/No follow-up asked after a filler word
+        out[cid].update({q: T.curated(q, cid)['answer'][:60] for q in W.get('every_decision', [])})
+        for f in T.CHALLENGES[cid].get('follow', []):
+            if re.match(r'(Yes|No)\b', f['a']):
+                for pre in ('So ', 'And ', 'Okay, ', 'But '): q = pre + f['q'][0].lower() + f['q'][1:]; out[cid][q] = T.curated(q, cid)['answer'][:60]
     return out
 if __name__ == '__main__':
     (ROOT / 'tests/tutor_golden.json').write_text(json.dumps(snapshot(), ensure_ascii=False, indent=0) + '\n')

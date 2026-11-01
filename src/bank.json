@@ -2635,7 +2635,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Logg, Minson & Moore (2019), Experiment 1A, weight on advice."
+    "note": "Weight on the advice, by its label (Experiment 1A)."
    },
    "forecast": {
     "claim": "People moved further toward identical advice when it was labeled as other people’s rather than an algorithm’s.",
@@ -2802,7 +2802,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Madrian & Shea (2001), cohorts at 3 to 15 months of tenure, as reported by Cribb & Emmerson (2020)."
+    "note": "Share enrolled in the savings plan at 3 to 15 months of tenure."
    },
    "study": {
     "design": "Natural experiment in one firm",
@@ -3166,7 +3166,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Tversky & Kahneman (1974), p. 1128."
+    "note": "Median estimate of the share of African countries in the UN, by the number the wheel showed."
    },
    "study": {
     "design": "Classroom experiment"
@@ -3913,7 +3913,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Tversky & Kahneman (1981), p. 453; N = 152 and 155."
+    "note": "Share choosing the sure option, by frame."
    },
    "study": {
     "design": "Survey experiment",
@@ -5131,7 +5131,7 @@
     ],
     "unit": "%",
     "highlight": 0,
-    "note": "Bloom, Han & Liang (2024), Nature. Quit rates: overall 7.20% to 4.80% (P = 0.043); women 9.2% to 4.2%; non-managers 8.59% to 5.33%."
+    "note": "Fall in quit rates under hybrid work, by group."
    }
   },
   {
@@ -5964,7 +5964,7 @@
     ],
     "unit": " SD",
     "highlight": 0,
-    "note": "Values reported in Allcott et al. (2020, AER), read in the authors' accepted manuscript; effects in standard deviations, treatment minus control."
+    "note": "Effect of deactivating Facebook, in standard deviations (treatment minus control)."
    },
    "sources": [
     "allcott20"
@@ -6150,7 +6150,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Values reported in Bursztyn, González & Yanagizawa-Drott (2020), follow-up survey results."
+    "note": "Share of wives who applied for and interviewed for jobs outside the home, follow-up survey."
    },
    "sources": [
     "bursztyn20"
@@ -7162,7 +7162,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Kahneman & Tversky (1979), Problem 3 (p. 266) and Problem 3prime (Table I, p. 268)."
+    "note": "Share choosing the gamble, gains against losses."
    },
    "study": {
     "design": "Hypothetical choice problems",
@@ -9143,7 +9143,7 @@
    ],
    [
     "detect",
-    "\\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e|know|reali[sz]e)\\b"
+    "\\b(could|can|did|do) (they|people|participants|users|customers|readers) (tell|detect|spot|notice|identify|recogni[sz]e)\\b|\\b(know|reali[sz]e)\\b.*\\b(ai|gpt\\S*|bot|chatbot|machine|model|algorithm|human|person)\\b"
    ],
    [
     "contest",
@@ -9183,7 +9183,7 @@
    ],
    [
     "summary",
-    "\\b(summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|in (one|a) sentence|one[- ]liner|define|definition of|(does|did|do) (it|this|that|the [\\w ]{1,30}) work(?=\\W*$)|did it work|what (did|was) (it|they) find|what was found)\\b"
+    "\\b(summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|main (results?|findings?)|in (one|a) sentence|one[- ]liner|define|definition of|(does|did|do) (it|this|that|the [\\w ]{1,30}) work(?=\\W*$)|did it work|what (did|was) (it|they) find|what was found)\\b"
    ],
    [
     "duration",

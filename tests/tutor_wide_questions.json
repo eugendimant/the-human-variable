@@ -232,5 +232,334 @@
 "manylabs-anchoring",
 "overconfidence-hard-task",
 "dimant-notalie-causal"
+],
+"probes": [
+[
+"Did the moral messages work?",
+"dimant-masks-forecast"
+],
+[
+"Which message worked best, the moral one or the science one?",
+"dimant-masks-forecast"
+],
+[
+"So did forecasters overestimate?",
+"dimant-masks-forecast"
+],
+[
+"Were women allowed to work outside the home?",
+"misperceived-norms-support"
+],
+[
+"How many men thought women should be allowed to work?",
+"misperceived-norms-support"
+],
+[
+"And is this pattern seen elsewhere?",
+"misperceived-norms-support"
+],
+[
+"What happened when men learned the true figure?",
+"misperceived-norms-support"
+],
+[
+"Was the AI allowed to see the debater's profile?",
+"axb08"
+],
+[
+"Did people know they were arguing with GPT-4?",
+"axb08"
+],
+[
+"Did participants realize they faced an AI?",
+"axb08"
+],
+[
+"Could people tell they faced an AI?",
+"axb08"
+],
+[
+"How often did personalized GPT-4 win?",
+"axb08"
+],
+[
+"What did West find?",
+"axb08"
+],
+[
+"Is it ethical to use a bot to change beliefs?",
+"axb15"
+],
+[
+"So did the effect fade?",
+"axb15"
+],
+[
+"Okay, did it change other beliefs too?",
+"axb15"
+],
+[
+"What does Rand say about this?",
+"axb15"
+],
+[
+"Did the reminder card help?",
+"dimant-opioid-forecast"
+],
+[
+"What did the cards do?",
+"dimant-opioid-forecast"
+],
+[
+"How much did cost per pill fall?",
+"dimant-opioid-forecast"
+],
+[
+"Is it fair to pay veterans to return pills?",
+"dimant-opioid-forecast"
+],
+[
+"Did the painting out-group get anything?",
+"social15"
+],
+[
+"How much did people take from opponents?",
+"social15"
+],
+[
+"Was it unfair to take money from the other side?",
+"social15"
+],
+[
+"Did people give more to allies?",
+"social15"
+],
+[
+"What about colleagues who use AI?",
+"genai3"
+],
+[
+"How do colleagues judge people who use AI?",
+"genai3"
+],
+[
+"Was the AI better at reading emotions?",
+"genai3"
+],
+[
+"Why do other studies find people prefer algorithms?",
+"ai09"
+],
+[
+"What did Logg find?",
+"ai09"
+],
+[
+"Was real money at stake?",
+"ai09"
+],
+[
+"Does the 2022 proximity study say the same?",
+"dimant-contagion-multi"
+],
+[
+"What did Bicchieri find?",
+"dimant-contagion-multi"
+],
+[
+"Was the fine legal?",
+"bz08"
+],
+[
+"Did the parents think it was morally ok to be late?",
+"bz08"
+],
+[
+"Why did lateness rise after the fine?",
+"bz08"
+],
+[
+"Were people allowed to cheat?",
+"axf01"
+],
+[
+"Did the machine follow unethical instructions?",
+"axf01"
+],
+[
+"Do AI agents carry out cheating requests?",
+"axf01"
+],
+[
+"Was it unethical for participants to delegate?",
+"axf01"
+],
+[
+"Did AI help on legal tasks?",
+"rollout3"
+],
+[
+"Was the ad delivery unfair to women?",
+"axb12"
+],
+[
+"Did the reminder card list the steps?",
+"dimant-opioid-forecast"
+],
+[
+"Did the honesty messages reduce lying?",
+"dimant-requiem-forecast"
+],
+[
+"Can people tell AI images apart?",
+"axe10"
+],
+[
+"Did readers know which tweets were AI?",
+"axe11"
+],
+[
+"Did customers realize they were talking to a bot?",
+"axe14"
+],
+[
+"Tell me about the study",
+"biz01"
+],
+[
+"What happened to the control group?",
+"bz05"
+],
+[
+"Which group did best?",
+"forecast-teams-rank"
+],
+[
+"Did the authors discuss ethical concerns?",
+"axf04"
+],
+[
+"Do the authors see an ethical problem?",
+"axf04"
+],
+[
+"Were people allowed to choose whether to delegate?",
+"axf01"
+],
+[
+"Were participants allowed to modify the model?",
+"axb02"
+],
+[
+"Is the comparison fair to the human forecasters?",
+"ai09"
+],
+[
+"Did moral frames raise mask-wearing?",
+"dimant-masks-forecast"
+],
+[
+"Which conspiracy theories were included?",
+"axb15"
+],
+[
+"Why did the AI label lower feeling heard?",
+"genai3"
+],
+[
+"How big was the effect?",
+"social15"
+],
+[
+"What did the painting out-group receive?",
+"social15"
+],
+[
+"Who was in the forecasting pool?",
+"dimant-masks-forecast"
+],
+[
+"What does the 2022 study find?",
+"dimant-contagion-multi"
+],
+[
+"Which study is the labeled-advice decision?",
+"ai09"
+],
+[
+"Did the cards save money?",
+"dimant-opioid-forecast"
+],
+[
+"How should I test this in my company?",
+"dimant-opioid-forecast"
+],
+[
+"What is the catch?",
+"axb15"
+],
+[
+"Did people know the chatbot was an AI?",
+"axb15"
+],
+[
+"Did people know the reply came from Bing?",
+"genai3"
+],
+[
+"Could customers tell the recommendation came from AI?",
+"axe01"
+],
+[
+"Did people realize the profile was AI-written?",
+"axb07"
+],
+[
+"Did the reminder card help?",
+"dimant-opioid-forecast"
+],
+[
+"Tell me about the bail algorithm study",
+"ai09"
+],
+[
+"Is it ethical to use a bot to change beliefs?",
+"axb15"
+],
+[
+"Which conspiracy theories were included?",
+"axb15"
+],
+[
+"Did people know they were arguing with GPT-4?",
+"axb08"
+],
+[
+"List the main results",
+"civic-wallet-rank"
+]
+],
+"every_decision": [
+"Did participants know how much they would earn?",
+"Did people know they were in an experiment?",
+"Did people realize the advice came from a model?",
+"So did it work?",
+"And did it last?",
+"Okay, was it significant?",
+"But did it replicate?",
+"Quick question: did it work?",
+"Did it work?",
+"Was it significant?",
+"Is this ethical?",
+"Were participants allowed to choose?",
+"Is it legal to do this at work?",
+"Did it last?",
+"So was there a control group?",
+"Also, were experts better than laypeople?",
+"Hmm, did it backfire?",
+"List the main results",
+"Card or cash, which worked?",
+"What are the moral implications?",
+"Did people know?"
 ]
 }

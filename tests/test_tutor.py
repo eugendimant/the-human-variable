@@ -321,3 +321,19 @@ def test_no_yes_no_answer_to_an_open_question():
     qs = ['Which conspiracy theories were included?', 'What demographic info did the model get?', 'Tell me about the study', 'What happened to the control group?', 'Which group did best?']
     bad = [(cid, q) for cid in T.CHALLENGES for q in qs if not T.CHALLENGES[cid].get('retired') and T.curated(q, cid)['answer'].split('.')[0] in ('Yes', 'No')]
     assert not bad, bad[:10]
+
+
+def test_filler_words_keep_yes_no_follow_ups():
+    """Audit 30, M1: "So did the effect fade?" still gets the decision's own Yes/No follow-up (at least 97% of all such phrasings)."""
+    import re
+    qs = [(pre + f['q'][0].lower() + f['q'][1:], cid, f['a']) for cid, c in T.CHALLENGES.items() if not c.get('retired')
+          for f in c.get('follow', []) if re.match(r'(Yes|No)\b', f['a']) for pre in ('So ', 'And ', 'Okay, ', 'But ')]
+    ok = sum(T.curated(q, cid)['answer'] == a for q, cid, a in qs)
+    assert ok >= 0.97 * len(qs), (ok, len(qs))
+
+
+def test_know_questions_do_not_reach_unrelated_follow_ups():
+    """Audit 30, M2: "did participants know ..." never gets a follow-up about detection or an unrelated Yes."""
+    for q, cid in [('Did people know they were in an experiment?', 'bz08'), ('Did participants know how much they would earn?', 'biz08'),
+                   ('Did participants know how much they would earn?', 'axb08'), ('Did people know they were in an experiment?', 'axb05')]:
+        a = T.curated(q, cid)['answer']; assert not a.startswith(('Yes.', 'Often.')), (cid, a[:80])

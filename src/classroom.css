@@ -15,7 +15,7 @@ ul.present-opts{list-style:none;padding-left:0}ul.present-opts li{border-top:1px
 .meter-bar{flex:1 1 160px;height:8px;border-radius:4px;background:var(--rule);position:relative;overflow:hidden}
 .meter-bar i{position:absolute;inset:0 auto 0 0;background:var(--you);transition:width .4s}
 .rv{margin-top:24px;border-top:1px solid var(--rule);padding-top:20px}
-.rv-head{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-bottom:18px}
+.rv-head{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:24px;margin-bottom:18px}
 .rv-chip{display:block;font-style:normal;font-size:15px;font-weight:650;color:var(--ink,#14203a);margin-top:2px}
 .rv-head div{display:grid}
 .rv-head b{font-size:38px;letter-spacing:-.03em;line-height:1.05}
