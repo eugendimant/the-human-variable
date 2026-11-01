@@ -306,3 +306,13 @@ def test_page_tutor_agrees_with_server_on_every_probe(browser):
     sug = pg.evaluate("ps => ps.map(([q, id]) => THV.curated(q, THV.ALL.find(c => c.id === id)).suggest || null)", pairs[:400])   # audit 34: the suggestion buttons, in the same order
     bad += [(q, cid, 'suggest', s) for (q, cid), s in zip(pairs[:400], sug) if s != _T.curated(q, cid).get('suggest')]
     assert not bad, (len(bad), bad[:8]); pg.close()
+
+
+def test_estimate_study_line_shows_no_number_in_band(browser):
+    """Audit 37: the rendered study line (sample included) never prints a number inside an estimate's scoring band (invariant I4)."""
+    import re
+    pg = page(browser); bad = []
+    for c in [x for x in LIVE if x['format'] == 'estimate']:
+        pg.goto(URL + '?play=' + c['id']); txt = pg.inner_text('.study-line').replace(',', '')
+        bad += [(c['id'], m) for m in re.findall(r'-?\d+(?:\.\d+)?', txt) if abs(float(m) - c['estimate']['target']) <= c['estimate']['tolerance']]
+    assert not bad, bad

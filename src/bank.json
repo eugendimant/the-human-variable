@@ -2364,8 +2364,8 @@
      "a": "Participants with weaker writing skills benefited most, so the gap between stronger and weaker workers narrowed."
     },
     {
-     "q": "What kind of tasks were they?",
-     "a": "Occupation-specific, incentivized writing tasks, each typical of the participant’s own job."
+     "q": "Did quality improve too?",
+     "a": "Yes. Graders rated the ChatGPT group’s work higher as well; how much higher is a separate decision in this game."
     }
    ],
    "format": "estimate",
@@ -2936,7 +2936,7 @@
    "options": [
     "Some already-efficient households raised usage",
     "The smiley made above-average households use more",
-    "Descriptive feedback alone kept low users steady",
+    "Above-average homes did not change their usage",
     "A smiley face kept efficient homes steady"
    ],
    "answerTitle": "A norm message can backfire",
@@ -3526,7 +3526,7 @@
    "tag": "39 / HIRING",
    "title": "Screens at auditions",
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
-   "question": "How did the authors characterize their evidence?",
+   "question": "Orchestras put candidates behind a screen. What did the authors estimate for women?",
    "answerTitle": "Favorable to women, with some imprecise estimates",
    "explain": "Goldin and Rouse estimate that the screen raised by 50 percent the chance a woman advanced from certain preliminary rounds, and that blind auditions explain about 30 percent of the rise in women among new hires. Some estimates have large standard errors.",
    "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
@@ -3564,12 +3564,12 @@
    },
    "permuted": true,
    "options": [
-    "Favorable to women, precisely estimated",
-    "Mixed by round, precisely estimated",
-    "Favorable to women, with imprecise estimates",
-    "Unfavorable to women, mostly in early rounds"
+    "About 50% likelier to advance from some rounds; several estimates imprecise",
+    "About 50% likelier to advance, with precise estimates throughout",
+    "Advancement unchanged by the screen",
+    "Less likely to advance once screened"
    ],
-   "answer": 2
+   "answer": 0
   },
   {
    "id": "social14",
@@ -3732,10 +3732,10 @@
    "permuted": true,
    "chart": {
     "labels": [
-     "Gave to allies",
-     "Gave to a painting group-mate",
-     "Gave to a painting out-group",
-     "Took from political opponents"
+     "Given to allies",
+     "Given to a painting group-mate",
+     "Given to a painting out-group",
+     "Taken from political opponents"
     ],
     "values": [
      14.97,
@@ -3745,7 +3745,7 @@
     ],
     "unit": "%",
     "highlight": 3,
-    "note": "Share of the endowment given or taken."
+    "note": "Share of the endowment moved: given to the first three, taken from political opponents."
    }
   },
   {
@@ -4767,6 +4767,10 @@
     {
      "q": "Who were the workers?",
      "a": "758 BCG consultants, randomized to no AI, GPT-4, or GPT-4 with a prompt-engineering overview."
+    },
+    {
+     "q": "What is the jagged frontier?",
+     "a": "The authors’ name for the uneven edge of what AI does well. Tasks that look alike can sit on either side of it: inside, GPT-4 made consultants faster and better; on the task just outside, those using GPT-4 reached the right answer less often."
     }
    ],
    "theme": "ai-work"
@@ -5185,7 +5189,7 @@
     ],
     "unit": "",
     "highlight": 2,
-    "note": "Average late pickups per week at one day-care center."
+    "note": "Late pickups per week at center 1, one of the six fined centers."
    }
   },
   {
@@ -5310,7 +5314,7 @@
   {
    "id": "bz12",
    "track": "Business",
-   "format": "causal",
+   "format": "choice",
    "concept": "Pay transparency",
    "title": "When salaries go public",
    "scene": "A new website published University of California employees’ pay. Researchers told a random subset of staff about the site, then surveyed everyone on job satisfaction and job search.",
@@ -5326,66 +5330,6 @@
    "explain": "Card, Mas, Moretti and Saez found that below-median University of California earners told about the salary website became 4.3 percentage points more likely to report being very likely to seek a new job, a 20% rise. Above-median earners were unaffected.",
    "implication": "Before publishing pay data, prepare clear explanations of pay differences for below-median staff, who carry the morale cost.",
    "boundary": "University of California employees; outcomes were self-reported satisfaction and job-search intentions.",
-   "dag": {
-    "alt": "A random notice about the website changes who knows peers’ pay, which affects satisfaction. Unobserved traits such as ability and fit drive both pay rank and satisfaction, which is why a simple survey correlation between rank and satisfaction is confounded.",
-    "height": 200,
-    "nodes": [
-     {
-      "id": "note",
-      "label": "Random notice",
-      "x": 70,
-      "y": 150
-     },
-     {
-      "id": "know",
-      "label": "Knows peer pay",
-      "x": 240,
-      "y": 150
-     },
-     {
-      "id": "rank",
-      "label": "Pay rank",
-      "x": 240,
-      "y": 50
-     },
-     {
-      "id": "sat",
-      "label": "Satisfaction",
-      "x": 430,
-      "y": 100
-     },
-     {
-      "id": "fit",
-      "label": "Ability, fit",
-      "x": 400,
-      "y": 30,
-      "hidden": true
-     }
-    ],
-    "edges": [
-     [
-      "note",
-      "know"
-     ],
-     [
-      "know",
-      "sat",
-      "q"
-     ],
-     [
-      "rank",
-      "sat"
-     ],
-     [
-      "fit",
-      "rank"
-     ],
-     [
-      "fit",
-      "sat"
-     ]
-    ]
-   },
    "sources": [
     "card12"
    ],
@@ -7087,7 +7031,7 @@
    ],
    "answer": 0,
    "answerTitle": "Contributions split toward the extremes",
-   "explain": "With 1,203 US adults, Dimant and colleagues show that a polarized, two-camp norm produced far more dispersed contributions than a tight norm (variance 2.68 against 1.26). In the authors’ words, in polarized environments most individuals prefer extreme actions despite the strategic risk.",
+   "explain": "With 1,203 US adults, Dimant and colleagues show that a polarized, two-camp norm produced far more dispersed contributions than a tight norm (variance 2.68 against 1.26). Reactions concentrated at the extremes: people contributed a lot or very little. When most others gave zero and the rest gave the maximum of four, 46% still contributed more than the risk-free two.",
    "implication": "Report the spread of team behavior, not only the average; a split norm pulls people toward one camp or the other.",
    "boundary": "Two-player contribution game with 1,203 US adults, with the distribution of others’ behavior set by design.",
    "sources": [
@@ -7693,7 +7637,7 @@
     ],
     "unit": "",
     "highlight": 0,
-    "note": "Mean laziness ratings of otherwise identical targets. Values reported in Reif, Larrick & Soll 2025, Study 2."
+    "note": "Mean laziness rating, higher means lazier; the three targets differ only in the help described. Values reported in Reif, Larrick & Soll 2025, Study 2."
    },
    "answerTitle": "AI users were judged lazier for the same work",
    "explain": "In Study 2 (n = 1,203), targets helped by AI were rated lazier (2.50) than those helped by non-AI sources (2.16) or with no help mentioned (2.02), and less competent.",
@@ -7954,7 +7898,7 @@
    "concept": "AI disclosure",
    "title": "Label the AI-written reply?",
    "scene": "In an experiment, people described a personal situation and got a reply from Bing Chat or from a person. Some replies were labeled as AI-written, others as human.",
-   "question": "What does the experiment predict for labeled AI replies?",
+   "question": "What did the experiment find for labeled AI replies?",
    "options": [
     "Labeling replies as AI raises trust and feeling heard",
     "Human replies feel more heard; the label matters little",

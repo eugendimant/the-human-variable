@@ -1345,6 +1345,34 @@
   [
    "can I trust heatmap explanations from our vendor?",
    "axf05"
+  ],
+  [
+   "What did Allcott find with Opower?",
+   "biz05"
+  ],
+  [
+   "Does this mean doctors should not use AI?",
+   "axf05"
+  ],
+  [
+   "Write my cover letter",
+   "ai01"
+  ],
+  [
+   "What was the biased model biased about?",
+   "axf05"
+  ],
+  [
+   "Did the quality also improve or only speed?",
+   "ai01"
+  ],
+  [
+   "What is the jagged frontier?",
+   "rollout3"
+  ],
+  [
+   "How many debates were there in total?",
+   "axb08"
   ]
  ],
  "every_decision": [

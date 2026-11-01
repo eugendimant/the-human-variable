@@ -379,11 +379,13 @@ def test_streamlit_tutor_holds_siblings():
 
 
 def test_estimate_scene_numbers_sit_outside_the_band():
-    """Review 20, minor 2 (class): no number printed in the scene, question or label lands inside the target band."""
+    """Review 20, minor 2 (class): no number printed in the scene, question, label or study line lands inside the target band."""
     bad = []
     for c in LIVE:
         if c['format'] != 'estimate': continue
-        e = c['estimate']; txt = ' '.join([c.get('scene', ''), c['question'], e.get('label', '')]).replace(',', '')
+        e = c['estimate']; n = (c.get('study') or {}).get('n') or ''
+        shown = n if not re.match(r'(none|not (stated|confirmed)|multiple studies|studies\b)', n, re.I) and not any(abs(float(m) - e['target']) <= e['tolerance'] for m in re.findall(r'-?\d+(?:\.\d+)?', n.replace(',', ''))) else ''   # mirrors sampleLine() in src/app.js (audit 37)
+        txt = ' '.join([c.get('scene', ''), c['question'], e.get('label', ''), shown]).replace(',', '')
         bad += [(c['id'], m) for m in re.findall(r'-?\d+(?:\.\d+)?', txt) if abs(float(m) - e['target']) <= e['tolerance']]
     assert not bad, bad
 
@@ -529,3 +531,24 @@ def test_streamlit_font_matches_the_game():
     assert (ROOT / 'static/schibsted-grotesk-latin-wght-normal.woff2').read_bytes() == (ROOT / 'src/fonts/schibsted-grotesk-latin-wght-normal.woff2').read_bytes()
     cfg = (ROOT / '.streamlit/config.toml').read_text()
     assert 'enableStaticServing = true' in cfg and 'app/static/schibsted-grotesk-latin-wght-normal.woff2' in cfg
+
+
+def test_causal_links_are_long_and_clear_of_other_pills():
+    """Review 29, m1: on the reveal every link runs at least 60 units between its pills on the wide canvas (25 on a phone) and crosses no third pill, at both canvas widths (mirrors dag() in src/app.js)."""
+    import math
+    bad = []
+    for c in LIVE:
+        d = c.get('dag')
+        if not d: continue
+        xs = [n['x'] for n in d['nodes']]; ys = [n['y'] for n in d['nodes']]; x0, x1, y0 = min(xs), max(xs), min(ys)
+        for W in (510, 700):
+            N = {n['id']: (70 + (n['x'] - x0) * (W - 140) / (x1 - x0) if x1 > x0 else W / 2, 40 + (n['y'] - y0) * 1.5) for n in d['nodes']}
+            for e in d['edges']:
+                (ax, ay), (bx, by) = N[e[0]], N[e[1]]; L = math.hypot(bx - ax, by - ay); ux, uy = (bx - ax) / L, (by - ay) / L
+                t = min(76 / abs(ux) if abs(ux) > 1e-9 else 1e9, 34 / abs(uy) if abs(uy) > 1e-9 else 1e9)
+                if L - 2 * t < (60 if W == 700 else 25): bad.append((c['id'], W, e[:2], round(L - 2 * t)))   # three columns of 140-wide pills leave little room on a phone
+                p, q = (ax + ux * t, ay + uy * t), (bx - ux * t, by - uy * t)
+                for k, (nx, ny) in N.items():
+                    if k in e[:2]: continue
+                    if any(abs(p[0] + (q[0] - p[0]) * s / 60 - nx) < 70 and abs(p[1] + (q[1] - p[1]) * s / 60 - ny) < 24 for s in range(1, 60)): bad.append((c['id'], W, e[:2], 'crosses ' + k))
+    assert not bad, bad

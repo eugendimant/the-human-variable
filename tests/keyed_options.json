@@ -59,7 +59,7 @@
   ],
   "options": [
    "A smiley face kept efficient homes steady",
-   "Descriptive feedback alone kept low users steady",
+   "Above-average homes did not change their usage",
    "Some already-efficient households raised usage",
    "The smiley made above-average households use more"
   ]
@@ -108,13 +108,13 @@
  },
  "social13": {
   "keyed": [
-   "Favorable to women, with imprecise estimates"
+   "About 50% likelier to advance from some rounds; several estimates imprecise"
   ],
   "options": [
-   "Favorable to women, precisely estimated",
-   "Favorable to women, with imprecise estimates",
-   "Mixed by round, precisely estimated",
-   "Unfavorable to women, mostly in early rounds"
+   "About 50% likelier to advance from some rounds; several estimates imprecise",
+   "About 50% likelier to advance, with precise estimates throughout",
+   "Advancement unchanged by the screen",
+   "Less likely to advance once screened"
   ]
  },
  "social14": {

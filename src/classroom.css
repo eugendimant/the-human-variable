@@ -3,7 +3,7 @@
 .join-banner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 24px}
 .join-text{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .join-url{font-size:clamp(20px,2.4vw,32px);letter-spacing:-.02em}
-.join-code{font-size:clamp(40px,6vw,76px);letter-spacing:.12em;line-height:1;color:var(--you-ink);font-variant-numeric:tabular-nums}
+.join-code{font-size:clamp(40px,6vw,76px);letter-spacing:.12em;line-height:1;color:#14203a;font-variant-numeric:tabular-nums}
 .qr{width:132px;height:132px;flex:none}
 .pick-list{max-height:52vh;overflow:auto;padding-right:6px}
 .pick-list li{align-items:center}
@@ -46,7 +46,7 @@ body.projector .play-grid>.card>.rv{grid-column:2;grid-row:1/span 30}
 /* rank reveal: the study's order as large numbered badges, the room's average beside each */
 .rank-proj{list-style:none;margin:8px 0 6px;padding:0;display:grid;gap:10px}
 .rank-proj li{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--rule,#cbd3dd)}
-.rp-badge{width:40px;height:40px;border-radius:50%;background:#e0a01c;color:#14203a;font-weight:800;display:grid;place-items:center;font-size:20px}
+.rp-badge{width:40px;height:40px;border-radius:50%;background:none;border:2px solid #14203a;color:#14203a;font-weight:800;display:grid;place-items:center;font-size:20px}
 .rp-name{font-weight:650}.rp-room{color:#56617a;font-size:.9em;white-space:nowrap}.rp-room b{color:#36425e;font-size:1.15em}
 body.projector .rp-badge{width:56px;height:56px;font-size:28px}
 
@@ -68,3 +68,7 @@ p,li{text-wrap:pretty}
 /* projector estimate: class answers as a dot strip on the study's axis (review 26) */
 .dot-strip{width:100%;height:auto;display:block;margin:6px 0 4px;font-family:Schibsted Grotesk,system-ui}.dot-strip .ds-dot{fill:#5b6b86}.dot-strip .ds-band{fill:rgba(224,160,28,.16)}.dot-strip .ds-axis{stroke:#9aa6b8;stroke-width:1.5}.dot-strip .ds-ev{stroke:#b07800;stroke-width:3}.dot-strip .ds-evl{fill:#8a5d00;font-size:28px;font-weight:750}.dot-strip .ds-med{stroke:#14203a;stroke-width:2}.dot-strip .ds-medl,.dot-strip .ds-tick{fill:#4a5568;font-size:24px}
 /* the room is drawn in slate; blue stays the player's own call (review 27, rule 18) */
+
+.rp-badge.top{background:#e0a01c;border-color:#e0a01c}   /* only the study's top place is coloured (rule 29) */
+.rv-unit{font-size:.45em;font-weight:650;letter-spacing:0;color:var(--ink-2,#3a4660);white-space:nowrap}
+body.projector .proj-exit{opacity:0}   /* hidden on the projected screen until hover or keyboard focus (review 29, m9) */

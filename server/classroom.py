@@ -43,7 +43,7 @@ def answer_text(c, a):
         if f == 'delegate':
             ch = c['delegate']['choices']; return '; '.join(f"{t['text']}: {ch[v]}" for t, v in zip(c['delegate']['tasks'], a))
         if f == 'forecast': return f'{a}% true'
-        if f == 'estimate': return f"{a}{c['estimate'].get('unit', '')}"
+        if f == 'estimate': return f"{a}{c['estimate'].get('unit', '%')}"
     except (IndexError, KeyError, TypeError): pass
     return ''
 
@@ -244,7 +244,8 @@ class Store:
         val = (bool(rows), allowed); self._lock = (now, val); return val
 
     def open_challenges(self) -> set:
-        """Decisions currently open or closed-but-unrevealed in a session active in the last six hours (cached for 2 s)."""
+        """Decisions currently open or closed-but-unrevealed in a session active in the last six hours (cached for 2 s).
+        Settled (tests/test_http.py): an open question stays held while the console is quiet, since an instructor may talk for longer than the lock's idle window."""
         now = time.time(); hit = getattr(self, '_open', None)
         if hit and now - hit[0] < 2: return hit[1]
         rows = self.db().execute("SELECT challenge FROM sessions WHERE phase IN ('open','closed') AND beat > ?", (now - 6 * 3600,)).fetchall()   # instructor activity only, as for the lock

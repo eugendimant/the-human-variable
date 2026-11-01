@@ -127,7 +127,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     locked = {'answer': 'That study opens after your instructor reveals it in class.', 'citations': [], 'mode': 'locked'}
     off = {'answer': 'That is outside what this lab covers. Ask about this study: how it was run, how big the effect was, or how to test it in your organization.', 'citations': [], 'mode': 'curated'}
     # a question that names a study by an author's surname goes to that study
-    if c and re.search(r"\bcan (i|we) (trust|rely on|count on|use)\b.*\b(our|my|a|the|this) (\w+ )?(vendor|supplier|tool|provider|system|model)s?\b|\bshould (my|our|we|i)\b (?!(believe|buy|take|worry|care|be (worried|concerned|afraid))\b)\w+", ql) and not re.search(r"\b(is|would|be) (this|it|that)( be)? (really |even |actually )?(ethic\w*|fair|moral\w*|right|wrong|ok|okay|allowed|legal)\b|\bit'?s (really )?(fair|ok|okay|allowed|legal)\b|\bare we allowed\b|\bthe right thing\b|\bunethical\b|\b(ethic\w*|unfair\w*|immoral\w*|legal(ity)?)\b|\b(fire[ds]?|lay(ing)? off|cut (jobs|staff|headcount)|replace (staff|workers|people))\b|\bhire (fewer|less)\b|\bfewer (staff|people|workers|agents|employees|consultants|writers|hires|humans|jobs|reps|analysts)\b", ql):   # a recommendation question goes to the manager's action; ethics and staffing questions do not
+    if c and re.search(r"\bcan (i|we) (trust|rely on|count on|use)\b.*\b(our|my|a|the|this) (\w+ )?(vendor|supplier|tool|provider|system|model)s?\b|\bshould (my|our|we|i)\b (?!(believe|buy|take|worry|care|be (worried|concerned|afraid))\b)\w+|\bdoes (this|that|it) mean\b.{0,60}\bshould\b", ql) and not re.search(r"\b(is|would|be) (this|it|that)( be)? (really |even |actually )?(ethic\w*|fair|moral\w*|right|wrong|ok|okay|allowed|legal)\b|\bit'?s (really )?(fair|ok|okay|allowed|legal)\b|\bare we allowed\b|\bthe right thing\b|\bunethical\b|\b(ethic\w*|unfair\w*|immoral\w*|legal(ity)?)\b|\b(fire[ds]?|lay(ing)? off|cut (jobs|staff|headcount)|replace (staff|workers|people))\b|\bhire (fewer|less)\b|\bfewer (staff|people|workers|agents|employees|consultants|writers|hires|humans|jobs|reps|analysts)\b", ql):   # a recommendation question goes to the manager's action; ethics and staffing questions do not
         return out(f"{c['implication']} Why: {c['explain']} What the study covers: {c['boundary']}", c)
     if c:
         fol = c.get('follow', [])   # the item's own follow-up, asked word for word, else the nearest one above 0.6 overlap
@@ -144,14 +144,15 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         yn = lambda f: f['a'] if not (qt - set(tokens(f['q'])) - GENERIC - set(tokens(' '.join(R['filler'])))) else strip_yn(f['a'])   # a near match keeps its Yes or No only when the question adds no word of its own ("did the control group change?" is not "was there a control group?", review 26)
         if fol and jac(max(fol, key=jac)) >= 0.6: return out(yn(max(fol, key=jac)), c)
         has = lambda w: any(w == x or (min(len(w), len(x)) >= 3 and (w.startswith(x) or x.startswith(w))) for x in qt)
-        sub = [f for f in fol if len(set(tokens(f['q']))) >= 2 and all(has(w) for w in tokens(f['q']))]   # every content word of a follow-up appears in the question (fix ~ fixed)
+        sub = [f for f in fol if len(set(tokens(f['q']))) >= 2 and all(has(w) for w in tokens(f['q']))]   # never on one shared word: review 29's one-word variant borrowed 'cost' and 'card' answers for significance questions in the golden diff   # every content word of a follow-up appears in the question (fix ~ fixed)
         if sub: return out(yn(max(sub, key=lambda f: len(set(tokens(f['q']))))), c)
     named = [] if c and names(question, c['id']) else [cid for cid in CHALLENGES if (not c or not set(CHALLENGES[cid]['sources']) & set(c['sources'])) and names(question, cid)]
     if named:
         open_ = [x for x in named if not (exclude and exclude(x))]
         if not open_: return locked
         best = max(open_, key=lambda x: len(topic & set(tokens(' '.join([CHALLENGES[x]['answerTitle'], CHALLENGES[x]['explain'], CHALLENGES[x]['question']])))))
-        return out(f"{CHALLENGES[best]['explain']} {CHALLENGES[best]['implication']}", CHALLENGES[best])
+        s0 = SOURCES.get(CHALLENGES[best]['sources'][0], {})
+        return out(f"From {s0.get('authors', 'another study')} ({s0.get('year', '')}): {CHALLENGES[best]['explain']} {CHALLENGES[best]['implication']}", CHALLENGES[best])   # say which study it switched to (review 29)
     if c:
         fol = [f for f in c.get('follow', []) if not is_open(ql) or not re.match(r'(Yes|No)\b', f['a'])]
         st = c.get('study', {})

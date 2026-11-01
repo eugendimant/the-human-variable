@@ -81,6 +81,8 @@ def test_tutor_endpoint_curated(base, tmp_path, monkeypatch):
     monkeypatch.setattr(app, 'STORE', cl.Store(tmp_path / 't.sqlite3'))
     s, r, _ = req(base, '/api/tutor', {'question': 'How would I test this in my company?', 'challenge': next(iter(cl.CHALLENGES)), 'client': 'abc'})
     assert s == 200 and r['answer'] and r['mode'] in ('curated', 'ai', 'cache')
+    s, r, _ = req(base, '/api/tutor', {'question': 'Why?', 'challenge': {'id': 'x'}, 'client': 'abd'})
+    assert s == 400   # review 29, m14: a non-string id was a 500
 
 def test_served_pages_carry_no_answers(base):
     import re
