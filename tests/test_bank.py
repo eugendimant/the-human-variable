@@ -207,7 +207,8 @@ def test_no_constant_guess_pays_across_estimates():
     assert best <= 0.35, best
 
 def _reveal_text(e):
-    return ' '.join([e['explain'], e['implication'], e['answerTitle'], (e.get('chart') or {}).get('note', '')] + [f['a'] for f in e['follow']] + [t.get('why', '') for t in (e.get('delegate') or {}).get('tasks', [])])
+    ch = e.get('chart') or {}
+    return ' '.join([e['explain'], e['implication'], e['answerTitle'], ch.get('note', ''), ' '.join(map(str, ch.get('values', [])))] + [f['a'] for f in e['follow']] + [t.get('why', '') for t in (e.get('delegate') or {}).get('tasks', [])])
 
 def test_siblings_do_not_leak_each_other():
     """Review 7, minor 3: decisions built on the same paper can meet in any round, so neither reveal may carry the other's key number."""
@@ -573,7 +574,7 @@ def test_percent_numbers_are_quoted_as_percents():
     for c in LIVE:
         q = ' '.join(x.get('quote', x.get('printed', '')) for x in ev.get(c['id'], [])).lower().replace(',', '').replace('−', '-')
         UNIT = r'(?:[-\u2013]\d+(?:\.\d+)?)?\s*(?:months?|years?|weeks?|days?|hours?|minutes?|seconds?|participants|people|subjects|respondents|students|workers|households|countries|cities|experiments|studies)\b'
-        pcts = [abs(float(m.group(1))) for m in re.finditer(r'(?<![\w.])(-?\d+(?:\.\d+)?)', q) if not re.match(UNIT, q[m.end():])]   # any number except a count or a duration
+        pcts = [abs(float(m.group(1))) for m in re.finditer(r'(?<![\w.])(-?\d+(?:\.\d+)?)', q) if not re.match(UNIT, q[m.end():]) and not re.search(r'(\bn\s*=|sample of|\bz\s*=|\bp\s*[<=>]|\b[rt]\(\d*\)\s*=|\b(19|20)$)\s*$', q[max(0, m.start() - 14):m.start()]) and not re.fullmatch(r'(19|20)\d\d', m.group(1))]   # not a count, duration, sample size, test statistic or year (audit 40)
         pcts += [abs(float(x)) * 100 for x in re.findall(r'(?<![\d.])(0?\.\d+)', q)]   # shares written as decimals
         text = ' '.join([c.get('explain', ''), c.get('answerTitle', '')] + [f['a'] for f in c.get('follow', [])]).replace(',', '').replace('−', '-')
         for n in re.findall(r'(-?\d+(?:\.\d+)?)\s*%', text):

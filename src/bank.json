@@ -2768,8 +2768,8 @@
    "unit": "",
    "follow": [
     {
-     "q": "What was the default?",
-     "a": "New hires were enrolled at the plan’s default contribution rate, invested entirely in the money market fund."
+     "q": "How fast did enrollment build?",
+     "a": "Under automatic enrollment, 86% of employees were in the 401(k) after 3 to 15 months, against 37% of those not enrolled automatically."
     },
     {
      "q": "Who gained the most?",
@@ -7875,17 +7875,15 @@
     "labels": [
      "No article",
      "Original propaganda",
-     "AI article, unedited",
      "AI article, edited prompt"
     ],
     "values": [
      24.4,
      47.4,
-     43.5,
      46.4
     ],
     "unit": "%",
-    "highlight": 3,
+    "highlight": 2,
     "note": "Share agreeing with the article’s main claim. Best of three drafts, picked after the fact: 52.7%."
    }
   },

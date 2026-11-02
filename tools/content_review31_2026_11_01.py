@@ -37,5 +37,14 @@ c = C['dimant-enforcers-rank']; c['explain'] = (c['explain'].replace(' when the 
 # m12: axe01 asks what the study measured: which source customers prefer
 C['axe01']['question'] = C['axe01']['question'].replace('For each recommendation, which source should customers see?', 'For each recommendation, which source will customers prefer?')
 
+# audit 40: the unedited bar (43.5) is axe04's answer, so genai2's chart drops it; biz01's default follow-up asks what the paper does report
+ch = C['genai2']['chart']
+if 'AI article, unedited' in ch['labels']:
+    i = ch['labels'].index('AI article, unedited'); ch['labels'].pop(i); v = ch['values'].pop(i)
+    ch['highlight'] = ch['labels'].index('AI article, edited prompt')
+for f in C['biz01']['follow']:
+    if f['q'] == 'What was the default?':
+        f['q'] = 'How fast did enrollment build?'; f['a'] = 'Under automatic enrollment, 86% of employees were in the 401(k) after 3 to 15 months, against 37% of those not enrolled automatically.'
+
 bp.write_text(json.dumps(B, ensure_ascii=False, indent=1) + '\n'); ep.write_text(json.dumps(E, ensure_ascii=False, indent=1) + '\n')
 print('review 31 content applied')

@@ -316,3 +316,12 @@ def test_estimate_study_line_shows_no_number_in_band(browser):
         pg.goto(URL + '?play=' + c['id']); txt = pg.inner_text('.study-line').replace(',', '')
         bad += [(c['id'], m) for m in re.findall(r'-?\d+(?:\.\d+)?', txt) if abs(float(m) - c['estimate']['target']) <= c['estimate']['tolerance']]
     assert not bad, bad
+
+
+def test_allocate_effect_labels_keep_their_grid_place(browser):
+    """Audit 40: a non-significant label lost its grid class and fell onto its own row at full number size."""
+    for c in [x for x in LIVE if x['format'] == 'allocate']:
+        pg = page(browser); pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+        sizes = pg.eval_on_selector_all('.alloc-cmp b.num.ev', 'e => e.map(x => getComputedStyle(x).fontSize)')
+        assert sizes and len(set(sizes)) == 1, (c['id'], sizes)
+        assert pg.locator('.alloc-cmp b.num:not(.ev):not(.you)').count() == 0, c['id']

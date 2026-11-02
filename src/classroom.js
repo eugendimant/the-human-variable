@@ -72,7 +72,7 @@ function stage() {
 
 function reveal(c, a) {
   const f = c.format; let chart = '';
-  const bars = (labels, vals, ev, suffix = '', show = null, scale = null, chips = null) => { const mx = scale || Math.max(1, ...vals); return `<div class="rv-bars">${labels.map((l, i) => `<div class="rv-row"><span>${esc(l)}${chips ? `<em class="rv-chip">${esc(chips[i])}</em>` : ''}</span><span class="rv-track"><i style="width:${vals[i] / mx * 100}%" class="${ev.includes(i) ? 'ev' : ''}"></i></span><b class="num">${show ? show[i] : vals[i] + suffix}</b></div>`).join('')}</div>` };
+  const bars = (labels, vals, ev, suffix = '', show = null, scale = null, chips = null) => { const mx = scale || Math.max(1, ...vals); return `<div class="rv-bars">${labels.map((l, i) => `<div class="rv-row"><span>${esc(l)}${chips ? `<em class="rv-chip">${esc(chips[i])}</em>` : ''}</span><span class="rv-track"><i style="width:${(vals[i] || 0) / mx * 100}%" class="${ev.includes(i) ? 'ev' : ''}"></i></span><b class="num">${show ? show[i] : vals[i] == null ? '–' : vals[i] + suffix}</b></div>`).join('')}</div>` };
   if (a.counts) { const o = order(c); chart = bars(o.map(x => x.t), o.map(x => a.counts[x.i]), o.map((x, k) => (f === 'multi' ? c.multiAnswers.includes(x.i) : x.i === c.answer) ? k : -1).filter(k => k >= 0), '', o.map(x => `${a.counts[x.i]} of ${a.n}`), Math.max(1, a.n)) }
   // The class's answers as stacked dots on one axis, with the study's value and the hit band marked on it (review 26, Tufte: one scale, the comparison drawn)
   const dotStrip = (a, ev, band, unit, evText) => { const W = 900, L = 24, R = W - 24, base = 180, top = 72, sx = v => L + (Math.min(a.hi, Math.max(a.lo, v)) - a.lo) / (a.hi - a.lo) * (R - L), m = x => String(x).replace(/^-/, '\u2212') + unit;
