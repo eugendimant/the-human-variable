@@ -89,7 +89,7 @@ WORD_SURNAMES = set(R.get('wordSurnames', []))   # words too common across follo
 
 def names(question: str, cid: str) -> bool:
     """Does the question name a study behind this decision (an author surname)?"""
-    words = lambda s: {w for w in re.findall(r'[a-z]+', __import__('unicodedata').normalize('NFKD', s.replace('\u2019', "'")).encode('ascii', 'ignore').decode().lower()) if len(w) >= 4 and w not in STOP}
+    words = lambda s: {w for w in re.findall(r'[a-z]+', __import__('unicodedata').normalize('NFKD', re.sub('[\u2018\u2019]', "'", s)).encode('ascii', 'ignore').decode().lower()) if len(w) >= 4 and w not in STOP}
     q = words(question)   # whole surnames, unstemmed: "bill" must not match "Biller-Andorno"
     rest = question.strip().split(' ', 1)[1] if ' ' in question.strip() else ''
     q = {w for w in q if w not in WORD_SURNAMES or (re.search(r'\b' + w.capitalize() + r'\b', rest) or re.match(w.capitalize() + r"(\s+et al|['’]s\b|\s+and\s+[A-Z]|\s*\()", question.strip()))}   # the question's first word does not count (audit 30)   # "the reminder card" is not Card et al.

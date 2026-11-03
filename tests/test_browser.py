@@ -343,3 +343,13 @@ def test_balance_follows_resize(browser):
     assert not pg.evaluate("document.querySelector('.reveal').classList.contains('meta-right')")
     assert pg.evaluate("getComputedStyle(document.querySelector('.reveal>.rev-meta .study-card')).display") == 'none'
     ctx.close()
+
+
+def test_moved_study_card_sits_under_the_figure(browser):
+    """Audit 47: the balanced card landed in a grid row below the left column, so it moved sideways only; it must sit right under the figure."""
+    pg = page(browser); out = []
+    for c in LIVE:
+        pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+        r = pg.evaluate("(()=>{const rv=document.querySelector('.reveal');if(!rv.classList.contains('meta-right'))return null;return document.querySelector('.reveal>.rev-meta').getBoundingClientRect().top-document.querySelector('.reveal>figure.gap').getBoundingClientRect().bottom})()")
+        if r is not None: out.append((c['id'], r))
+    assert out and all(0 <= r <= 40 for _, r in out), [x for x in out if not 0 <= x[1] <= 40]
