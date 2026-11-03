@@ -22,7 +22,7 @@ C['forecast-teams-rank']['rankLabel'] = C['forecast-teams-rank']['rankLabel'].re
 ch = C['facebook-deactivation']['chart']
 if ch.get('unit') == ' SD': ch['unit'] = ''   # the note names the unit once
 # m8: both of facebook-deactivation's proofs carry the evidence colour
-ch['highlight'] = [0, 1]
+ch['highlight'] = 0   # rule 29 (one amber mark per chart) wins over review 33 m8; the headline's first finding carries the colour
 # m11 (RULE G): chart notes state the measure; citations stay in the source line
 for c in B['challenges']:
     n = (c.get('chart') or {}).get('note')
@@ -32,6 +32,9 @@ o = C['social13']['options']
 if 'Advancement unchanged by the screen' in o: o[o.index('Advancement unchanged by the screen')] = 'Little change in who advanced; several estimates imprecise'
 # m13: the allocate instruction leaves the heading (the instrument says how to answer)
 for cid in ('axb08', 'axf01'): rep(cid, 'question', ' Spread 100 points by how likely each is.', '')
+
+ch = C['dimant-enforcers-rank']['chart']; ch['note'] = ch['note'].replace('Outlined: the equalizing-bribe difference (P = 0.074).', 'Outlined: the equalizing-bribe difference, the weaker of the two.')
+ch = C['axf06']['chart']; ch['note'] = ch['note'].replace(' was not significant (P = .60).', ' was not statistically significant.')
 
 bp.write_text(json.dumps(B, ensure_ascii=False, indent=1) + '\n')
 kp = ROOT / 'tests/keyed_options.json'; K = json.loads(kp.read_text())

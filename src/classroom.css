@@ -33,7 +33,7 @@ body.projector .side,body.projector header.bar{display:none}
 body.projector .play-grid{grid-template-columns:1fr!important}
 body.projector .wrap{max-width:1500px}
 body.projector .play-grid>.card{font-size:clamp(18px,1.6vw,26px)}
-body.projector .stage-h{font-size:clamp(32px,3.4vw,56px)}
+body.projector .stage-h{font-size:min(clamp(32px,3.4vw,56px),5.4vh)}
 body.projector .play-grid>.card .scene{font-size:clamp(18px,1.5vw,24px)}
 body.projector .rv-row,body.projector .present-opts li,body.projector .rv-row b{font-size:clamp(18px,1.6vw,26px)}
 body.projector .proj-exit{display:inline-flex}.join-end{display:flex;align-items:center;gap:16px}body.projector .proj-exit:hover,body.projector .proj-exit:focus{opacity:1}

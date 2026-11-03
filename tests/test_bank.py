@@ -585,12 +585,14 @@ def test_percent_numbers_are_quoted_as_percents():
 
 def test_no_statistical_notation_in_player_text():
     """Review 31 m11 and review 32 m2: z, P, g, d, D, r, t values and standard errors stay in the Source tab; player text says it in words."""
-    R = re.compile(r'\b[pPgdDrzt]\s*[=<>]\s*[-−.\d]|standard errors?\b|\bSDs?\b|\bt\(\d')
+    R = re.compile(r'\b[pPgdDrztnN]\s*[=<>]\s*[-−.\d]|standard errors?\b|\bSDs?\b|\bt\(\d|\bn\.s\.')   # review 33 m2: sample sizes, n.s. and t values too
     bad = []
     for c in LIVE:
         for k in ('explain', 'answerTitle', 'scene', 'implication', 'question'):
             if R.search(c.get(k, '')): bad.append((c['id'], k))
         bad += [(c['id'], 'follow: ' + f['q']) for f in c.get('follow', []) if R.search(f['a'])]
+        ch = c.get('chart') or {}; extra = [ch.get('unit', ''), ch.get('note', '')] + list(c.get('rankValues') or []) + list((c.get('allocate') or {}).get('valueLabels') or [])
+        bad += [(c['id'], 'chart: ' + x) for x in extra if R.search(str(x))]
     assert not bad, bad
 
 

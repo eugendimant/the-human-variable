@@ -2869,7 +2869,7 @@
    "scene": "A famous US study found hotel guests reused more towels when a sign said most guests do, especially guests of the same room. Researchers repeated the test in two German hotels.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Both signs helped; the norm sign did no better",
-   "explain": "Bohner and Schlüter repeated the test in two German hotels. In the first (N = 724), norm signs combined reached 81.9% reuse against 83.7% for the standard environmental sign; in the second hotel, the environmental sign reached 93.3% versus 76.5% for the norm signs combined.",
+   "explain": "Bohner and Schlüter repeated the test in two German hotels. In the first, with 724 observations, norm signs combined reached 81.9% reuse against 83.7% for the standard environmental sign; in the second hotel, the environmental sign reached 93.3% versus 76.5% for the norm signs combined.",
    "implication": "Before rolling out a famous nudge, test it against the plain message you would otherwise use as well as against doing nothing.",
    "boundary": "Two hotels in Germany; later meta-analyses report modest, consistent effects of norm messages across studies.",
    "sources": [
@@ -3566,7 +3566,7 @@
    "options": [
     "About 50% likelier to advance from some rounds; several estimates imprecise",
     "About 50% likelier to advance, with precise estimates throughout",
-    "Advancement unchanged by the screen",
+    "Little change in who advanced; several estimates imprecise",
     "Less likely to advance once screened"
    ],
    "answer": 0
@@ -4301,7 +4301,7 @@
    "concept": "AI persuasion",
    "title": "Who argues your case?",
    "scene": "In 10-minute online debates on assigned topics, people faced either a human or GPT-4. Some opponents also received basic demographic details about the person they debated. The options below are compared with debates between two people.",
-   "question": "Which opponent shifted agreement most? Spread 100 points by how likely each is.",
+   "question": "Which opponent shifted agreement most?",
    "options": [
     "GPT-4",
     "GPT-4 with demographic profile",
@@ -4346,9 +4346,9 @@
      0
     ],
     "valueLabels": [
-     "+21.9% (n.s.)",
+     "+21.9% (not significant)",
      "+81.2%",
-     "−15.7% (n.s.)"
+     "−15.7% (not significant)"
     ],
     "valueName": "change in odds of higher agreement than in human-human debates (non-significant changes count as zero)",
     "best": [
@@ -5280,7 +5280,7 @@
     "truth": true
    },
    "answerTitle": "No effect of signing first",
-   "explain": "Across five conceptual replications (n = 4,559) and a preregistered direct replication (n = 1,235), the authors observed no effect of signing first on honest reporting. PNAS retracted the 2012 paper in 2021.",
+   "explain": "Across five conceptual replications with 4,559 participants and a preregistered direct replication with 1,235, the authors observed no effect of signing first on honest reporting. PNAS retracted the 2012 paper in 2021.",
    "implication": "Before rolling out a published nudge, check for replications and retractions, then pilot it on your own forms.",
    "boundary": "Tests one form-design nudge on experimental self-reports.",
    "sources": [
@@ -5902,7 +5902,7 @@
      -0.19,
      -0.61
     ],
-    "unit": " SD",
+    "unit": "",
     "highlight": 0,
     "note": "Effect of deactivating Facebook, in standard deviations (treatment minus control)."
    },
@@ -6235,11 +6235,11 @@
     0,
     1
    ],
-   "rankLabel": "Forecast accuracy (Brier scores)",
+   "rankLabel": "Forecast accuracy",
    "rankValues": [
-    "Beat independents, t(1120) = 5.92",
+    "More accurate than independents",
     "Least accurate",
-    "Beat crowd-belief, t(1036) = 5.52"
+    "More accurate than crowd-belief"
    ],
    "answerTitle": "Teams beat crowd-belief, which beat independents",
    "explain": "In a tournament that began with 2,246 forecasters, teams were clearly more accurate than forecasters who saw the crowd’s beliefs, who in turn clearly beat forecasters working alone.",
@@ -6747,7 +6747,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Average chosen probability that the coworker is punished, Study 2 vignette. Outlined: the equalizing-bribe difference (P = 0.074).",
+    "note": "Average chosen probability that the coworker is punished, Study 2 vignette. Outlined: the equalizing-bribe difference, the weaker of the two.",
     "ns": [
      2,
      3
@@ -6863,7 +6863,7 @@
    ],
    "answer": 1,
    "answerTitle": "Expected engagement drove sharing of known falsehoods",
-   "explain": "Ren, Dimant and Schweitzer (N = 4,128) show that engagement drives sharing. When conspiracy posts earned more feedback, the share of people sharing them rose from 17% to 33% over four rounds, while the control group did not change significantly (21% to 17%).",
+   "explain": "With 4,128 participants, Ren, Dimant and Schweitzer show that engagement drives sharing. When conspiracy posts earned more feedback, the share of people sharing them rose from 17% to 33% over four rounds, while the control group did not change significantly (21% to 17%).",
    "implication": "Do not reward internal posts by raw engagement; recognize accuracy and sourcing, especially when reorganization rumors circulate.",
    "boundary": "A pilot and three preregistered experiments with a simulated social-media sharing task.",
    "sources": [
@@ -7374,7 +7374,7 @@
     "truth": true
    },
    "answerTitle": "Uncertainty pushed people away from algorithms",
-   "explain": "Across nine studies (N = 4,820), people were less likely to use the best algorithm in more unpredictable domains. They favored methods with a chance of a near-perfect answer.",
+   "explain": "Across nine studies with 4,820 participants, people were less likely to use the best algorithm in more unpredictable domains. They favored methods with a chance of a near-perfect answer.",
    "implication": "In volatile forecasting, such as demand or markets, report the model’s track record against human forecasts, not its average error alone.",
    "boundary": "Nine forecasting experiments with 4,820 participants who chose between their own forecasts and an algorithm’s, under low and high uncertainty.",
    "sources": [
@@ -7645,7 +7645,7 @@
     "decimals": 2
    },
    "answerTitle": "AI users were judged lazier for the same work",
-   "explain": "In Study 2 (n = 1,203), targets helped by AI were rated lazier (2.50) than those helped by non-AI sources (2.16) or with no help mentioned (2.02), and less competent.",
+   "explain": "In Study 2, with 1,203 participants, targets helped by AI were rated lazier (2.50) than those helped by non-AI sources (2.16) or with no help mentioned (2.02), and less competent.",
    "implication": "Before reading ratings as performance, train reviewers on AI-use bias and judge output against the same rubric.",
    "boundary": "Four preregistered vignette experiments with 4,439 online participants rating colleagues and candidates who used AI or other help.",
    "sources": [
@@ -7798,7 +7798,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Rate of earning a favorite per view. Values reported in Zhou & Lee 2024, Results."
+    "note": "Rate of earning a favorite per view."
    },
    "answerTitle": "More work, more favorites, less visual novelty",
    "explain": "Adopters produced more and their favorites per view rose from 2% to 3%. Average content novelty and visual novelty both declined.",
@@ -7924,7 +7924,7 @@
     ],
     "unit": "",
     "highlight": 2,
-    "note": "Feeling heard, 7-point scale; source and label manipulated separately. Values reported in Yin, Jia & Wakslak 2024, Results."
+    "note": "Feeling heard, 7-point scale; source and label manipulated separately."
    },
    "answerTitle": "AI helps people feel heard; the label undercuts it",
    "explain": "AI replies made people feel more heard than human replies (5.74 vs 5.17), but an AI label lowered feeling heard (5.13 vs 5.81 for a human label).",
@@ -7961,7 +7961,7 @@
    "concept": "Unethical delegation",
    "title": "How should staff instruct the machine?",
    "scene": "Online participants privately rolled a die ten times and earned more for reporting higher numbers. They delegated the reports to a machine through one of three interfaces. About 95% reported honestly when they reported themselves.",
-   "question": "Which interface kept people most honest? Spread 100 points by how likely each is.",
+   "question": "Which interface kept people most honest?",
    "options": [
     "Machine set on a dial from accuracy to profit",
     "Machine follows if-then rules you write",
@@ -8238,7 +8238,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Median diagnostic reasoning score per case; the physicians’ 2-point difference was not significant (P = .60)."
+    "note": "Median diagnostic reasoning score per case; the physicians’ 2-point difference was not statistically significant."
    }
   },
   {
