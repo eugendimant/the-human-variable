@@ -89,3 +89,10 @@ Run each through the loop and an independent reviewer before calling it done.
 - The key-less tutor is a grounded router, not a generator. Extend `tools/tutor_routes_2026_10_31.py` and the golden batteries; never let it borrow an answer on one shared word (tried again in iteration 38 and dropped after the golden diff).
 - Open verification items: bz01's 73%, 222% and 316% figures need the published Marketing Science PDF; dimant-opioid-forecast figures should be rechecked against the Health Economics version of record; axb08's figures follow the version of record, whose page was blocked to the last reviewer (the preprint reports 820 and 81.7%).
 - Nothing has been published or deployed.
+
+## Where it stands after iteration 54 (2026-11-03)
+
+- Review 37: 86/100, 0 Blocking, 0 Major. Reviews 29–37 range 85–88.
+- Fixed since iteration 47: stranded live-class answers (resend button, auto-resend with backoff, answers name their decision, server refuses an earlier decision), receipt check, study's answer marked at zero picks with words, grey non-significant labels, rank amber on the top place, readable class panel, printed decimals.
+- Open (review 37): projector rank reveal height, dimant-hate-choice figure vs headline, band label vs axis end, repeated numbers on estimate/forecast reveals, decoding sentences in figures, tutor misses, dead space and hero prompt on wide pages, phone causal pills before the call.
+- Owner decisions pending: GitHub repo + license; direction (confidence scoring per decision vs a bolder visual identity).
