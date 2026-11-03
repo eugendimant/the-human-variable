@@ -462,3 +462,30 @@ def test_non_significant_allocate_values_are_not_amber(browser):
         pg = page(browser); pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
         got = pg.evaluate("[...document.querySelectorAll('.alloc-cmp b.num.ev')].map(e=>[e.textContent, e.classList.contains('ns')])")
         assert got and all(ns == ('significant' in t) for t, ns in got), (c['id'], got)
+
+def test_half_right_pick_two_is_not_called_wrong(browser):
+    """Audit 51, m3: one keyed and one unkeyed pick scores the baseline and is labelled as such, not 'Not what the study found.'"""
+    c = next(x for x in LIVE if x['id'] == 'social16')
+    pg = page(browser); pg.goto(URL + '?play=' + c['id'])
+    good, bad = c['options'][c['multiAnswers'][0]], next(o for i, o in enumerate(c['options']) if i not in c['multiAnswers'])
+    pg.locator('.opt', has_text=good).first.click(); pg.locator('.opt', has_text=bad).first.click()
+    pg.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+    v = pg.text_content('.verdict strong'); assert v == 'Some right, no better than guessing.', v
+
+def test_class_panel_names_the_evidence_row_for_rank_and_allocate(browser, tmp_path):
+    """Audit 51, m1 and m2: rank and allocate class bars carry words on the keyed row, as readable text."""
+    srv, inst, ctx, ph, _, app = _room(browser, tmp_path, 'tags')
+    try:
+        from server import classroom as cl
+        for f, word in (('allocate', 'worked best'), ('rank', 'top place')):
+            c = next(x for x in cl.CHALLENGES.values() if x['format'] == f)
+            inst.click('[data-act="lobby"]') if inst.locator('[data-act="lobby"]').count() else None
+            inst.fill('#f-q', c['title'][:18]); inst.wait_for_timeout(300); inst.click(f'[data-open="{c["id"]}"]')
+            ph.wait_for_selector('#lock-btn', timeout=10000); answer(ph, next(x for x in LIVE if x['id'] == c['id'])); ph.click('#lock-btn')
+            ph.wait_for_selector('text=Your answer is in', timeout=10000); assert _count(inst, '1')
+            inst.click("text=Reveal to the room"); ph.wait_for_selector('#class-h', timeout=10000)
+            assert ph.locator('.hbars:not(.alloc-cmp)[role="img"]').count() == 0
+            assert ph.locator('.hb-row', has=ph.locator('.ev-note', has_text=word)).count() >= 1, f
+        ctx.close()
+    finally:
+        srv.shutdown()

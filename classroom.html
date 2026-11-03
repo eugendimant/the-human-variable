@@ -542,7 +542,7 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
 .gap .hb-track i.you{background:var(--you)}
 .gap .hb-row>b{font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .gap .hb-row{grid-template-columns:minmax(0,1fr) 84px}
-.plate-h{font-size:var(--t7);font-weight:750;color:var(--ev-ink);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.plate-h{font-size:var(--t7);font-weight:750;color:var(--ev-ink);margin:0 0 10px}
 
 
 /* projector: a dark stage around white cards */
@@ -757,7 +757,6 @@ p,li,dd{text-wrap:pretty}
 .room-acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .nw{white-space:nowrap}
 .hb-track.ev-row{box-shadow:inset 0 0 0 2px var(--ev)}
-.plate-h:has(.nw){display:block}   /* a title with a kept-whole compound flows as one line of text (review 36, m1) */
 .rc-dot i{background:#8a96a8}.rc-dot b{color:var(--ink-2)}.rc-dot.top i{background:var(--ev)}.rc-dot.top b{color:var(--ev-ink)}
 .plate .rc-dot i{background:#b9c4dd}.plate .rc-dot b{color:#fff}.plate .rc-dot.top i{background:#f0b43c}.plate .rc-dot.top b{color:#f0b43c}
 .rc-dot em{position:absolute;top:22px;font-style:normal;font-size:13px;color:var(--muted)}.rc-dot .rc-e0{left:0}.rc-dot .rc-e1{right:0;transform:translateX(50%)}.plate .rc-dot em{color:#b9c4dd}
@@ -3273,7 +3272,7 @@ function reveal(c, a) {
   else if (a.hist) { const ev = f === 'estimate' ? c.estimate.target : c.forecast.truth ? 100 : 0, w = (a.hi - a.lo) / a.hist.length; chart = bars(a.hist.map((_, i) => `${Math.round(a.lo + i * w)} to ${Math.round(a.lo + (i + 1) * w)}`), a.hist, [Math.min(a.hist.length - 1, Math.floor((ev - a.lo) / w))], '', null, Math.max(1, a.n)) + `<p class="kicker">Class median ${a.median}. Evidence: ${f === 'estimate' ? c.estimate.target + (c.estimate.unit ?? '%') : c.forecast.truth ? 'the claim is true' : 'the claim is false'}.</p>` }
   if (a.meanPosition) { const tieOf = i => (c.rankTies || []).find(t => t.includes(i)), place = k => { const g = tieOf(c.rankAnswer[k]); return g ? Math.min(...g.map(x => c.rankAnswer.indexOf(x))) : k };   // tied options share the higher place, "1=" (review 29, m8)
     chart = `<ol class="rank-proj">${c.rankAnswer.map((i, k) => `<li><span class="rp-badge${place(k) === 0 ? ' top' : ''}">${place(k) + 1}${tieOf(i) ? '=' : ''}</span><span class="rp-name">${esc(c.options[i])}</span><span class="rp-room">Room’s average rank <b class="num">${a.meanPosition[i] == null ? '–' : Number(a.meanPosition[i]).toFixed(1)}</b></span></li>`).join('')}</ol><p class="kicker">Numbered in the study’s measured order; 1 is the top place.${(c.rankTies || []).length ? ' Not separated by the study: ' + c.rankTies.map(t => t.map(i => esc(c.options[i])).join(' and ')).join('; ') + '.' : ''}</p>`; }
-  if (a.meanShare) { const o = order(c), best = c.allocate.best || [c.allocate.values.indexOf(Math.max(...c.allocate.values))]; chart = bars(o.map(x => x.t), o.map(x => a.meanShare[x.i]), o.map((x, k) => best.includes(x.i) ? k : -1).filter(k => k >= 0), ' pts', null, 100) + `<p class="kicker">Average share of the budget. Reported effects: ${c.options.map((o, i) => { const v = String(c.allocate.valueLabels ? c.allocate.valueLabels[i] : c.allocate.values[i]); return esc(o) + (/^baseline$/i.test(v) ? ' (baseline)' : ' ' + esc(v.replace('(n.s.)', ', not significant').replace(' ,', ','))) }).join('; ')}.</p>` }
+  if (a.meanShare) { const o = order(c), best = c.allocate.best || [c.allocate.values.indexOf(Math.max(...c.allocate.values))]; chart = bars(o.map(x => x.t), o.map(x => a.meanShare[x.i]), o.map((x, k) => best.includes(x.i) ? k : -1).filter(k => k >= 0), ' pts', null, 100, null, 'worked best') + `<p class="kicker">Average share of the budget. Reported effects: ${c.options.map((o, i) => { const v = String(c.allocate.valueLabels ? c.allocate.valueLabels[i] : c.allocate.values[i]); return esc(o) + (/^baseline$/i.test(v) ? ' (baseline)' : ' ' + esc(v.replace('(n.s.)', ', not significant').replace(' ,', ','))) }).join('; ')}.</p>` }
   if (a.taskCounts) { const right = c.delegate.tasks.map((t, i) => [t.answer, ...(t.also || [])].reduce((x, j) => x + (a.taskCounts[i][j] || 0), 0)), tot = a.taskCounts.map(r => Object.values(r).reduce((x, y) => x + (y || 0), 0)), n = Math.max(1, ...tot);
     chart = bars(c.delegate.tasks.map(t => t.text), right, [], '', right.map((r, i) => `${r} of ${tot[i]}`), n, c.delegate.tasks.map(t => 'Evidence: ' + [t.answer, ...(t.also || [])].map(j => c.delegate.choices[j]).join(' or '))) }
   const s = BANK.sources[c.sources[0]];

@@ -542,7 +542,7 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
 .gap .hb-track i.you{background:var(--you)}
 .gap .hb-row>b{font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .gap .hb-row{grid-template-columns:minmax(0,1fr) 84px}
-.plate-h{font-size:var(--t7);font-weight:750;color:var(--ev-ink);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.plate-h{font-size:var(--t7);font-weight:750;color:var(--ev-ink);margin:0 0 10px}
 
 
 /* projector: a dark stage around white cards */
@@ -757,7 +757,6 @@ p,li,dd{text-wrap:pretty}
 .room-acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .nw{white-space:nowrap}
 .hb-track.ev-row{box-shadow:inset 0 0 0 2px var(--ev)}
-.plate-h:has(.nw){display:block}   /* a title with a kept-whole compound flows as one line of text (review 36, m1) */
 .rc-dot i{background:#8a96a8}.rc-dot b{color:var(--ink-2)}.rc-dot.top i{background:var(--ev)}.rc-dot.top b{color:var(--ev-ink)}
 .plate .rc-dot i{background:#b9c4dd}.plate .rc-dot b{color:#fff}.plate .rc-dot.top i{background:#f0b43c}.plate .rc-dot.top b{color:#f0b43c}
 .rc-dot em{position:absolute;top:22px;font-style:normal;font-size:13px;color:var(--muted)}.rc-dot .rc-e0{left:0}.rc-dot .rc-e1{right:0;transform:translateX(50%)}.plate .rc-dot em{color:#b9c4dd}
@@ -1330,7 +1329,7 @@ function play() {
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
-      <p class="verdict">${rec.missed ? '<strong>You did not answer this one.</strong>' : `<strong class="${rec.correct ? 'v-ok' : ''}">${rec.correct ? 'Matches the study.' : (['multi', 'delegate'].includes(c.format) ? rec.score > 0 && rec.score > (typeof rec.base === 'number' ? rec.base : S.baseline(c)) : c.format !== 'forecast' && rec.score >= .5 && rec.score > (typeof rec.base === 'number' ? rec.base : S.baseline(c))) ? 'Partly right.' : 'Not what the study found.'}</strong> <span class="num">Score ${mn(pct(rec.score))}</span>${rec.confidence !== null ? `<span class="conf-in">${rec.confidence}% sure</span>` : ''}`}</p>${c.case ? label : ''}
+      <p class="verdict">${rec.missed ? '<strong>You did not answer this one.</strong>' : `<strong class="${rec.correct ? 'v-ok' : ''}">${rec.correct ? 'Matches the study.' : (['multi', 'delegate'].includes(c.format) ? rec.score > 0 && rec.score > (typeof rec.base === 'number' ? rec.base : S.baseline(c)) : c.format !== 'forecast' && rec.score >= .5 && rec.score > (typeof rec.base === 'number' ? rec.base : S.baseline(c))) ? 'Partly right.' : ['multi', 'delegate'].includes(c.format) && rec.score > 0 ? 'Some right, no better than guessing.' : 'Not what the study found.'}</strong> <span class="num">Score ${mn(pct(rec.score))}</span>${rec.confidence !== null ? `<span class="conf-in">${rec.confidence}% sure</span>` : ''}`}</p>${c.case ? label : ''}
       ${rec.missed ? '' : gapFigure(c, rec)}
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
       <p class="reveal-body">${esc(c.explain)}</p>
@@ -1662,11 +1661,11 @@ function roomLocked(c) {
 }
 function classPanel(c, a) {
   const f = c.format; let body = '';
-  const hbars = (labels, vals, ev, show, tag) => { const mx = Math.max(1, ...vals); return `<div class="hbars" role="img" aria-label="Class answers">${labels.map((l, i) => `<div class="hb-row"><span class="hb-label">${esc(l)}${tag && ev && ev.includes(i) ? ` <em class="ev-note">${tag}</em>` : ''}</span><span class="hb-track${ev && ev.includes(i) ? ' ev-row' : ''}"><i class="grow ${ev && ev.includes(i) ? 'ev' : 'room'}" style="width:${Math.max(1.5, vals[i] / mx * 100)}%"></i></span><b class="num">${show ? show[i] : vals[i]}</b></div>`).join('')}</div>` };
+  const hbars = (labels, vals, ev, show, tag) => { const mx = Math.max(1, ...vals); return `<div class="hbars">${labels.map((l, i) => `<div class="hb-row"><span class="hb-label">${esc(l)}${tag && ev && ev.includes(i) ? ` <em class="ev-note">${tag}</em>` : ''}</span><span class="hb-track${ev && ev.includes(i) ? ' ev-row' : ''}"><i class="grow ${ev && ev.includes(i) ? 'ev' : 'room'}" style="width:${Math.max(1.5, vals[i] / mx * 100)}%"></i></span><b class="num">${show ? show[i] : vals[i]}</b></div>`).join('')}</div>` };
   if (a.counts) { const o = optionOrder(c); body = hbars(o.map(x => x.t), o.map(x => a.counts[x.i]), o.map((x, k) => (f === 'multi' ? c.multiAnswers.includes(x.i) : x.i === c.answer) ? k : -1).filter(k => k >= 0), null, f === 'multi' ? 'in the study' : 'the study’s answer') }   // marked even when nobody picked it (review 36, M1)
   else if (a.hist) { const lo = a.lo, hi = a.hi, w = (hi - lo) / a.hist.length, mx = Math.max(1, ...a.hist), ev = f === 'estimate' ? c.estimate.target : (c.forecast.truth ? 100 : 0); body = `<svg viewBox="0 0 340 130" role="img" aria-label="Class distribution, median ${a.median}">${a.hist.map((h, i) => `<rect x="${10 + i * 32}" y="${100 - h / mx * 80}" width="28" height="${h / mx * 80}" rx="3" fill="#5b6b86" fill-opacity=".8"/>`).join('')}<line x1="${10 + (ev - lo) / (hi - lo) * 320}" y1="10" x2="${10 + (ev - lo) / (hi - lo) * 320}" y2="104" stroke="#e0a01c" stroke-width="3"/><text x="10" y="122" font-size="12" fill="#56617a">${lo}</text><text x="330" y="122" font-size="12" fill="#56617a" text-anchor="end">${hi}</text><text x="${Math.min(300, 14 + (ev - lo) / (hi - lo) * 320)}" y="20" font-size="12" font-weight="700" fill="#7d5200">Evidence</text></svg><p class="gap-caption">Class median ${a.median}${f === 'estimate' ? (c.estimate.unit ?? '%') : '%'}.</p>` }
-  else if (a.meanPosition) body = '<p class="plate-h">The room’s average rank, 1 is the top</p>' + hbars(c.options, a.meanPosition.map(p => p == null ? 0 : +(c.options.length + 1 - p).toFixed(2)), ((c.rankTies || []).find(g => g.includes(c.rankAnswer[0])) || [c.rankAnswer[0]]), a.meanPosition.map(p => p == null ? '–' : Number(p).toFixed(1)));
-  else if (a.meanShare) body = hbars(c.options, a.meanShare, (c.allocate.best || [c.allocate.values.indexOf(Math.max(...c.allocate.values))]), a.meanShare.map(v => v == null ? '–' : v + ' pts'));   // the same unit as the player's own split (review 30, m15)
+  else if (a.meanPosition) body = '<p class="plate-h">The room’s average rank, 1 is the top</p>' + hbars(c.options, a.meanPosition.map(p => p == null ? 0 : +(c.options.length + 1 - p).toFixed(2)), ((c.rankTies || []).find(g => g.includes(c.rankAnswer[0])) || [c.rankAnswer[0]]), a.meanPosition.map(p => p == null ? '–' : Number(p).toFixed(1)), 'the study’s top place');   // words on the keyed row (audit 51, m1)
+  else if (a.meanShare) body = hbars(c.options, a.meanShare, (c.allocate.best || [c.allocate.values.indexOf(Math.max(...c.allocate.values))]), a.meanShare.map(v => v == null ? '–' : v + ' pts'), 'worked best');   // the same unit as the player's own split (review 30, m15)
   else if (a.taskCounts) body = `<p class="plate-h">Classmates who routed each task as the evidence suggests</p><ul class="hist">${c.delegate.tasks.map((t, i) => `<li><span>${esc(short(t.text, 60))}</span><span class="num">${[t.answer, ...(t.also || [])].reduce((x, j) => x + (a.taskCounts[i][j] || 0), 0)} of ${a.n}</span></li>`).join('')}</ul>`;
   return `<section class="panel gap" aria-labelledby="class-h"><h2 id="class-h">The room, ${a.n} ${a.n === 1 ? 'answer' : 'answers'}</h2><p class="gap-caption" style="margin:0 0 8px">Average score ${a.meanScore === null || a.meanScore === undefined ? '–' : mn(a.meanScore)}. ${a.shareCorrect ?? 0}% matched the evidence${a.meanConfidence !== null ? `, at ${a.meanConfidence}% average confidence` : ''}.</p>${body}</section>`;
 }

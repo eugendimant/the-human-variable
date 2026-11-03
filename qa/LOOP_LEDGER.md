@@ -823,3 +823,11 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Review 36 m5.** Rank charts: amber only on the top place's dot and value; the last track labels its ends 0% and 100%.
 - **Review 36 o1.** The projector's repeated "Where would this fail in your organization?" is gone.
 - **Gates.** 341 passed; design lint by rule {}; build current.
+
+## Iteration 53 (2026-11-03): audit 51 minors
+
+- **m1.** Rank and allocate class bars name the keyed row ("the study's top place", "worked best") on the phone and console.
+- **m2.** The phone's class bars are text, not `role="img"`, so the evidence words reach screen readers.
+- **m3.** A half-right pick-two or delegate answer reads "Some right, no better than guessing."; test `test_half_right_pick_two_is_not_called_wrong`.
+- **m4.** `.plate-h` is a block in its own rule; the appended override is gone.
+- **Gates.** 343 passed; design lint by rule {}; build current.
