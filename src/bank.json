@@ -6747,7 +6747,7 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Average chosen probability that the coworker is punished, Study 2 vignette. Outlined: the equalizing-bribe difference, the weaker of the two.",
+    "note": "Chosen probability that the coworker is punished, Study 2. Outlined: the equalizing-bribe gap, not significant at 5%.",
     "ns": [
      2,
      3
@@ -9096,7 +9096,7 @@
    ],
    [
     "ethics",
-    "\\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|(we|i) should (replace|fire|cut|lay off|hire fewer|downsize)|(we|i) (can|could) (cut|reduce|replace|lay off|shed) (our |the |\\w+ )?(headcount|staff|jobs|people|workers|employees|team)|is it (ok|okay|right|wrong)|allowed|legal(?! (team|department|counsel|staff|work)))"
+    "\\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|(we|i) should (replace|fire|cut|lay off|hire fewer|downsize)|(we|i) (can|could) (cut|reduce|replace|lay off|shed) (our |the |\\w+ )?(headcount|staff|jobs|people|workers|employees|team)|(can|could|should) (we|i) (cut|reduce|replace|lay off|shed) (our |the |\\w+ )?(headcount|staff|jobs|people|workers|employees|team)|is it (ok|okay|right|wrong)|allowed|legal(?! (team|department|counsel|staff|work)))"
    ],
    [
     "models",

@@ -749,4 +749,5 @@ p,li,dd{text-wrap:pretty}
 .reveal>.deep .deep-text,.reveal>.deep .src,.reveal>.deep .note-box{max-width:68ch}   /* the full-width tabs keep a readable measure (audit 42) */
 @media (max-width:700px){.hb-scale em.z-near{display:none}}   /* on phones the end label wins when zero sits close to it (the zero tick stays) */
 .rc-badge.evn{background:none;border:2px solid var(--ev-ink,#8a5a00);color:var(--ev-ink,#8a5a00)}   /* one amber mark per chart: the top place (review 33, m7) */
-.gap>.rev-meta{padding:0 22px 18px}.gap>.rev-meta .study-card{padding:14px 0 0}
+@media (min-width:1200px){.reveal.meta-right>.rev-meta{grid-column:2}}
+.plate .rc-badge.evn{border-color:#f0b43c;color:#f0b43c}   /* readable outline on the dark plate (audit 45) */

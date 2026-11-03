@@ -325,3 +325,21 @@ def test_allocate_effect_labels_keep_their_grid_place(browser):
         sizes = pg.eval_on_selector_all('.alloc-cmp b.num.ev', 'e => e.map(x => getComputedStyle(x).fontSize)')
         assert sizes and len(set(sizes)) == 1, (c['id'], sizes)
         assert pg.locator('.alloc-cmp b.num:not(.ev):not(.you)').count() == 0, c['id']
+
+
+def test_outlined_rank_badges_are_readable_on_the_plate(browser):
+    """Audit 45: the outlined study places used the dark evidence ink on the dark plate (2.4:1); axe files them as incomplete, so check the colour."""
+    c = next(x for x in LIVE if x['id'] == 'forecast-teams-rank')
+    pg = page(browser); pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+    cols = pg.eval_on_selector_all('.plate .rc-badge.evn', 'e => e.map(x => getComputedStyle(x).color)')
+    assert cols and set(cols) == {'rgb(240, 180, 60)'}, cols
+
+
+def test_balance_follows_resize(browser):
+    """Audit 45: the wide-reveal balance is a class recomputed on resize, so a phone never shows the moved study card."""
+    c = next(x for x in LIVE if x['id'] == 'axb01')
+    ctx = browser.new_context(viewport={'width': 1440, 'height': 900}); pg = ctx.new_page(); pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+    pg.set_viewport_size({'width': 390, 'height': 844}); pg.wait_for_timeout(400)
+    assert not pg.evaluate("document.querySelector('.reveal').classList.contains('meta-right')")
+    assert pg.evaluate("getComputedStyle(document.querySelector('.reveal>.rev-meta .study-card')).display") == 'none'
+    ctx.close()

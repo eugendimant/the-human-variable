@@ -387,7 +387,7 @@ function play() {
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">
       <h1 class="reveal-title" id="r-h" tabindex="-1">${esc(c.answerTitle)}</h1>
-      <p class="verdict">${rec.missed ? '<strong>You did not answer this one.</strong>' : `<strong class="${rec.correct ? 'v-ok' : ''}">${rec.correct ? 'Matches the study.' : (['multi', 'delegate'].includes(c.format) ? rec.score > 0 : c.format !== 'forecast' && rec.score >= .5 && rec.score > (typeof rec.base === 'number' ? rec.base : S.baseline(c))) ? 'Partly right.' : 'Not what the study found.'}</strong> <span class="num">Score ${mn(pct(rec.score))}</span>${rec.confidence !== null ? `<span class="conf-in">${rec.confidence}% sure</span>` : ''}`}</p>${c.case ? label : ''}
+      <p class="verdict">${rec.missed ? '<strong>You did not answer this one.</strong>' : `<strong class="${rec.correct ? 'v-ok' : ''}">${rec.correct ? 'Matches the study.' : (['multi', 'delegate'].includes(c.format) ? rec.score > 0 && rec.score >= (typeof rec.base === 'number' ? rec.base : S.baseline(c)) : c.format !== 'forecast' && rec.score >= .5 && rec.score > (typeof rec.base === 'number' ? rec.base : S.baseline(c))) ? 'Partly right.' : 'Not what the study found.'}</strong> <span class="num">Score ${mn(pct(rec.score))}</span>${rec.confidence !== null ? `<span class="conf-in">${rec.confidence}% sure</span>` : ''}`}</p>${c.case ? label : ''}
       ${rec.missed ? '' : gapFigure(c, rec)}
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
       <p class="reveal-body">${esc(c.explain)}</p>
@@ -751,12 +751,14 @@ function render(moveFocus) {
   if (moveFocus && (st.phase === 'reveal' || st.hero.done)) animateReveal();
   if (moveFocus) { scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' }); const h = qs('#view h1'); if (h) { if (!h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }) } }
 }
-function balanceReveal() {   // the shorter column takes the study card and the principle strip (review 33, m9)
+function balanceReveal() {   // the shorter column takes the study card and the principle strip (review 33, m9); a class, not a DOM move, so reading order stays put (audit 45)
+  const rv = qs('.reveal'); if (!rv) return; rv.classList.remove('meta-right');
   const fig = qs('.reveal>figure.gap'), meta = qs('.reveal>.rev-meta'), left = qs('.reveal>.action-note');
-  if (!fig || !meta || !left || innerWidth < 1200) return;
+  if (!fig || !meta || !left || innerWidth < 1200 || qs('.reveal>section.gap')) return;   // a live-class panel already lengthens the right column
   const fb = fig.getBoundingClientRect().bottom, lb = left.getBoundingClientRect().bottom, mh = meta.getBoundingClientRect().height;
-  if (lb - fb > mh * .5) { fig.append(meta) }
+  if (lb - fb > mh * .5) rv.classList.add('meta-right');
 }
+let balT; addEventListener('resize', () => { clearTimeout(balT); balT = setTimeout(balanceReveal, 150) });
 function animateReveal() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   // the study's number counts up from the player's call: the one orchestrated moment of the reveal

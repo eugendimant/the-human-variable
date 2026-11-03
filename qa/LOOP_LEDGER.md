@@ -771,3 +771,8 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - Wide reveal (m9): when the figure ends well above the left column's text, the study card and principle strip move under the figure (measured after render, at 1200 px and up).
 - Projector open view (m10): the heading also scales with the screen's height. Allocate headings no longer carry the instruction (m13); the question screen says "Spread 100 points…" under the heading. social13's key is no longer the only hedged option (m12).
 - Not done: tutor phrasings in m6, rank track ticks (m7), o1 to o4.
+
+### Regression audit 45 (fresh agent, diff deef225..6932bf7), fixed in iteration 46
+- Introduced, Major: the outlined rank badges used the dark evidence ink on the dark plate (2.37:1; axe files them as incomplete). Fixed: plate amber outline and numeral; a browser test checks the colour.
+- Minor, fixed: the wide-reveal balance moved the study card in the DOM (wrong screen-reader order, no resize handling, a live-class panel ignored); it is now a class (`meta-right`) that places the block in the right column by CSS, recomputed on resize and skipped when a room panel is present (test: 1440 to 390 hides the card again). "Partly right" on pick-two and delegate now also needs the score at or above guessing (judg02 and 1-of-3 routings no longer read "Partly right"). The projector's open allocate view shows the "Spread 100 points…" line. "Can we cut headcount with AI?" takes the staffing answer. dimant-enforcers-rank's chart note says the equalizing difference was not statistically significant at the 5% level (similar in size, not weaker).
+- Not fixed: the projector's open view for allocate and delegate still clips at 1280×720.

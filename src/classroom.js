@@ -61,6 +61,7 @@ function stage() {
   return `<div class="panel card">
     <p class="scene">${esc(c.scene)}</p><h2 class="q stage-h" tabindex="-1">${esc(c.question)}</h2><p class="stage-meta"><strong>${{ open: 'Answers are open.', closed: 'Answers are stopped.', revealed: 'Revealed.', lobby: 'Waiting screen.' }[s.phase]}</strong> ${FORMAT_NAME[c.format]}, ${esc(c.track)}${c.case ? `, case step ${c.case.step} of ${c.case.of}` : ''}.</p>
     ${c.format === 'forecast' ? `<blockquote class="claim">${esc(c.forecast.claim)}</blockquote>` : ''}
+    ${c.format === 'allocate' && s.phase !== 'revealed' ? `<p class="kicker">Spread ${(c.allocate && c.allocate.total) || 100} points by how likely each option is to be the one that worked best.</p>` : ''}
     ${c.format === 'causal' && c.dag ? `<p class="kicker proj-factors">Factors in play: ${c.dag.nodes.map(n => n.mask && s.phase !== 'revealed' ? '?' : esc(n.label)).join(', ')}</p>` : ''}
     ${['choice', 'causal', 'multi'].includes(c.format) ? `<ol class="present-opts proj-prelist">${order(c).map(o => `<li>${esc(o.t)}</li>`).join('')}</ol>` : ''}
     ${c.format === 'rank' && s.phase !== 'revealed' ? `<ul class="present-opts">${shuffle(c.options.map((_, i) => i), rng(hash(c.id + (hash(S.code) >>> 0)))).map(i => `<li>${esc(c.options[i])}</li>`).join('')}</ul>` : ''}${c.format === 'allocate' && s.phase !== 'revealed' ? `<ul class="present-opts">${order(c).map(o => `<li>${esc(o.t)}</li>`).join('')}</ul>` : ''}

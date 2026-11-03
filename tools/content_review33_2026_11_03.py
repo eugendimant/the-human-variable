@@ -33,7 +33,8 @@ if 'Advancement unchanged by the screen' in o: o[o.index('Advancement unchanged 
 # m13: the allocate instruction leaves the heading (the instrument says how to answer)
 for cid in ('axb08', 'axf01'): rep(cid, 'question', ' Spread 100 points by how likely each is.', '')
 
-ch = C['dimant-enforcers-rank']['chart']; ch['note'] = ch['note'].replace('Outlined: the equalizing-bribe difference (P = 0.074).', 'Outlined: the equalizing-bribe difference, the weaker of the two.')
+ch = C['dimant-enforcers-rank']['chart']; ch['note'] = ch['note'].replace('Outlined: the equalizing-bribe difference (P = 0.074).', 'Outlined: the equalizing-bribe difference, not statistically significant at the usual 5% level.').replace('Outlined: the equalizing-bribe difference, the weaker of the two.', 'Outlined: the equalizing-bribe difference, not statistically significant at the usual 5% level.')
+ch['note'] = ch['note'].replace('Average chosen probability that the coworker is punished, Study 2 vignette. Outlined: the equalizing-bribe difference, not statistically significant at the usual 5% level.', 'Chosen probability that the coworker is punished, Study 2. Outlined: the equalizing-bribe gap, not significant at 5%.')   # audit 45: similar in size, weaker in evidence; short enough for the plate (R18)
 ch = C['axf06']['chart']; ch['note'] = ch['note'].replace(' was not significant (P = .60).', ' was not statistically significant.')
 
 bp.write_text(json.dumps(B, ensure_ascii=False, indent=1) + '\n')
