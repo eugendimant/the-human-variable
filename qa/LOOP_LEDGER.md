@@ -795,3 +795,11 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Content (tools/content_review35_2026_11_03.py).** dimant-enforcers-rank equity gap stated as similar and not statistically significant; manylabs-anchoring measure in plain words; axb08 title no longer breaks at "human-human"; forecast-training scope; axe05 raters on the author team; rollout2 scope cut to the setting.
 - **Gates.** 335 tests (2 tutor goldens regenerated after reading the diff: only the four edited scope lines changed); design lint by rule {}; build current.
 - **Open from review 35.** m1 verdict at skill 0, m6, m7, m9, m11, m12, m13, m14, m15, m16; m3 stays open until the full text settles it.
+
+## Regression audit 49 (fresh agent, diff since iteration 47): 3 introduced Majors, fixed in iteration 50
+
+- **M1.** A stranded answer could be filed under the next decision (cid read when the retry gave up; the POST named no decision). Fix: the POST carries `challenge`, `Store.submit` returns 409 for an earlier decision, the phone drops a stranded answer when the class moves on, and the retry loop stops when the decision changes. Test `test_stranded_answer_never_lands_on_the_next_decision` (live-fired: the old code filed ai09's answer under ai11) and `test_an_answer_for_an_earlier_decision_is_refused`.
+- **M2.** Auto-resend never fired on an unchanged room (`same` polls carry no phase). Fix: the check reads the stored state after every good poll; one quiet POST per try, backoff 5–60 s, 10 tries, then the button alone. Test `test_stranded_room_answer_goes_out_on_its_own` (live-fired: fails on the old code).
+- **M3.** The reconnecting notice overflowed at 390 px. Fix: the header shows "Reconnecting…" alone and `.count` may shrink.
+- **Minors.** Focus stays in the card after a resend (asserted in the test); the notice is announced once; "Not counted." after answers close; dimant-enforcers-rank implication matches the explanation; forecast-training scope from the stored quote; axb08 compounds kept whole by the page, not by U+2011; the review 35 content script no longer pins keyed options.
+- **Gates.** 338 passed; design lint by rule {}; build current.

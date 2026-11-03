@@ -354,33 +354,71 @@ def test_moved_study_card_sits_under_the_figure(browser):
         if r is not None: out.append((c['id'], r))
     assert out and all(0 <= r <= 40 for _, r in out), [x for x in out if not 0 <= x[1] <= 40]
 
-def test_stranded_room_answer_can_be_sent_again(browser, tmp_path):
-    """Review 35, M1: an answer that fails for the whole retry window keeps a resend button and goes through once the network returns."""
+def _room(browser, tmp_path, name):
     from server import app, classroom as cl
-    app.STORE = cl.Store(tmp_path / 'r.sqlite3')
+    app.STORE = cl.Store(tmp_path / (name + '.sqlite3'))
     srv = app.Server(('127.0.0.1', 0), app.Handler); threading.Thread(target=srv.serve_forever, daemon=True).start()
     base = f'http://127.0.0.1:{srv.server_address[1]}'
+    inst = page(browser); inst.goto(base + '/classroom'); inst.fill('#title', name); inst.click('text=Create the session')
+    code = inst.text_content('.join-code').strip()
+    ctx = browser.new_context(viewport={'width': 390, 'height': 844}); ph = ctx.new_page(); ph.goto(base + '/?room=' + code); ph.wait_for_selector('.room-wait')
+    return srv, inst, ctx, ph, [x for x in cl.CHALLENGES.values() if x['format'] == 'choice'], app
+
+def _lock(ph):
+    ph.locator('.opt').first.click()
+    ph.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); ph.click('#lock-btn')
+
+def _count(inst, want):
+    for _ in range(60):
+        if (inst.text_content('#resp-count') or '').strip() == want: return True
+        inst.wait_for_timeout(250)
+    return False
+
+def test_stranded_room_answer_can_be_sent_again(browser, tmp_path):
+    """Review 35, M1: an answer that fails for the whole retry window keeps a resend button and goes through by hand."""
+    srv, inst, ctx, ph, ch, _ = _room(browser, tmp_path, 'resend')
     try:
-        inst = page(browser); inst.goto(base + '/classroom'); inst.fill('#title', 'Resend class'); inst.click('text=Create the session')
-        code = inst.text_content('.join-code').strip()
-        ctx = browser.new_context(viewport={'width': 390, 'height': 844}); ph = ctx.new_page(); ph.goto(base + '/?room=' + code)
-        ph.wait_for_selector('.room-wait')
-        c = next(x for x in cl.CHALLENGES.values() if x['format'] == 'choice')
-        inst.click(f'[data-open="{c["id"]}"]')
-        ph.wait_for_selector('.opt', timeout=10000)
-        ph.route('**/responses', lambda r: r.abort())
-        ph.locator('.opt').first.click()
-        ph.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); ph.click('#lock-btn')
+        inst.click(f'[data-open="{ch[0]["id"]}"]'); ph.wait_for_selector('.opt', timeout=10000)
+        ph.route('**/responses', lambda r: r.abort()); _lock(ph)
         ph.wait_for_selector('[data-act="resend"]', timeout=40000)
         assert 'Not sent yet' in ph.text_content('.room-wait h1') and 'did not reach the class' in ph.text_content('.room-wait')
-        ph.unroute('**/responses')
-        ph.click('[data-act="resend"]')
+        ph.unroute('**/responses'); ph.click('[data-act="resend"]')
         ph.wait_for_selector('text=Your answer is in', timeout=10000)
-        assert ph.locator('[data-act="resend"]').count() == 0
-        for _ in range(40):
-            if (inst.text_content('#resp-count') or '').strip() == '1': break
-            inst.wait_for_timeout(250)
-        assert inst.text_content('#resp-count').strip() == '1'
+        assert ph.locator('[data-act="resend"]').count() == 0 and _count(inst, '1')
+        assert ph.evaluate("document.activeElement.tagName") == 'H1'   # audit 49, m2: focus stays in the card
+        ctx.close()
+    finally:
+        srv.shutdown()
+
+def test_stranded_room_answer_goes_out_on_its_own(browser, tmp_path):
+    """Audit 49, M2: with nothing else changing in the room, the answer is resent once the network returns, without the button."""
+    srv, inst, ctx, ph, ch, _ = _room(browser, tmp_path, 'auto')
+    try:
+        inst.click(f'[data-open="{ch[0]["id"]}"]'); ph.wait_for_selector('.opt', timeout=10000)
+        ph.route('**/responses', lambda r: r.abort()); _lock(ph)
+        ph.wait_for_selector('[data-act="resend"]', timeout=40000)
+        ph.unroute('**/responses')
+        ph.wait_for_selector('text=Your answer is in', timeout=30000)
+        assert _count(inst, '1')
+        ctx.close()
+    finally:
+        srv.shutdown()
+
+def test_stranded_answer_never_lands_on_the_next_decision(browser, tmp_path):
+    """Audit 49, M1: the instructor opens the next decision while an answer is stranded; it is dropped, and the next answer counts."""
+    srv, inst, ctx, ph, ch, app = _room(browser, tmp_path, 'moved')
+    try:
+        inst.click(f'[data-open="{ch[0]["id"]}"]'); ph.wait_for_selector('.opt', timeout=10000)
+        ph.route('**/responses', lambda r: r.fulfill(status=429, headers={'Retry-After': '1'}, body='{"error":"busy"}')); _lock(ph)
+        ph.wait_for_timeout(2500)   # the instructor moves on while the phone is still retrying (audit 49's sequence)
+        code = app.STORE.db().execute('SELECT code FROM sessions').fetchone()[0]
+        secret = inst.evaluate("JSON.parse(sessionStorage.getItem('thv:session')).secret")
+        app.STORE.control(code, secret, 'open', ch[1]['id']); ph.unroute('**/responses')
+        ph.wait_for_selector('.opt', timeout=15000); ph.wait_for_timeout(3000)
+        rows = app.STORE.db().execute('SELECT challenge FROM responses').fetchall()
+        assert rows == [], rows
+        _lock(ph); ph.wait_for_selector('text=Your answer is in', timeout=10000)
+        assert [r[0] for r in app.STORE.db().execute('SELECT challenge FROM responses').fetchall()] == [ch[1]['id']]
         ctx.close()
     finally:
         srv.shutdown()

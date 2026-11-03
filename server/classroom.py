@@ -157,9 +157,10 @@ class Store:
         if not r: raise Forbidden('Join the session first')
         return r[0]
 
-    def submit(self, code: str, token: str, answer, confidence=None) -> dict:
+    def submit(self, code: str, token: str, answer, confidence=None, challenge=None) -> dict:
         r = self._row(code); num = self._participant(code, token)
         if r[4] != 'open': raise Conflict('Responses are closed for this decision')
+        if challenge is not None and challenge != r[3]: raise Conflict('The class has moved on; that answer was for an earlier decision')   # never filed under another decision (audit 49, M1)
         c = CHALLENGES[r[3]]
         if not scoring.valid(c, answer): raise ClassroomError('That answer does not fit this decision')
         if c['format'] not in ('forecast', 'allocate'):  # both are probability statements already

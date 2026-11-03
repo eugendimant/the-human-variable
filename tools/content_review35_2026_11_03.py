@@ -16,20 +16,18 @@ ch = C['manylabs-anchoring']['chart']; ch['note'] = ch['note'].replace('Anchorin
 # m6: the title does not break at "human-human"
 for c in ('axb08',):
     a = C[c].get('allocate') or {}
-    if a.get('valueName'): a['valueName'] = a['valueName'].replace('human-human', 'human‑human')
+    if a.get('valueName'): a['valueName'] = a['valueName'].replace('human‑human', 'human-human')   # audit 49, m7: the font lacks U+2011; the page keeps compounds whole instead
 # m17: say what the scope covers; answer the follow-up
 rep('forecast-training', 'boundary', 'the paper reports significance tests for the training effect', 'with tests of the training effect across seasons') if 'the paper reports significance tests for the training effect' in C['forecast-training']['boundary'] else None
 
 rep('forecast-training', 'boundary', 'volunteers; with tests of the training effect', 'volunteers, with tests of the training effect')
+rep('forecast-training', 'boundary', 'Geopolitical forecasts by tournament volunteers, with tests of the training effect across seasons.', 'Geopolitical forecasts by volunteers in a two-year tournament.')   # audit 49, m6: grounded in the stored quote
+rep('dimant-enforcers-rank', 'implication', 'in the study this raised willingness to act most for deals that create unfair advantages.', 'in the study this reliably raised willingness to act against deals that create unfair advantages.')   # audit 49, m5
 # m18: who rated the answers
 rep('axe05', 'boundary', 'rated for quality and empathy by a team of licensed health care professionals.', 'rated for quality and empathy by licensed health care professionals on the author team.')
 # m17: the boundary states the setting once, without repeating the explanation
 rep('rollout2', 'boundary', 'One firm’s support chat; the declines for top agents were small, and other occupations may differ.', 'One firm’s customer-support chat.')
 
 bp.write_text(json.dumps(B, ensure_ascii=False, indent=1) + '\n')
-kp = ROOT / 'tests/keyed_options.json'; K = json.loads(kp.read_text())
-for c in B['challenges']:
-    if c['id'] in K and c.get('options'):
-        K[c['id']] = {'keyed': sorted(c['options'][i] for i in (c['multiAnswers'] if c['format'] == 'multi' else [c['answer']])), 'options': sorted(c['options'])}
-kp.write_text(json.dumps(K, ensure_ascii=False, indent=1) + '\n')
+# audit 49, m8: keyed options are pinned by hand only (invariant I11)
 print('review 35 content applied')

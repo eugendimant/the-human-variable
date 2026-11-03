@@ -4350,7 +4350,7 @@
      "+81.2%",
      "−15.7% (not significant)"
     ],
-    "valueName": "change in odds of higher agreement than in human‑human debates (non-significant changes count as zero)",
+    "valueName": "change in odds of higher agreement than in human-human debates (non-significant changes count as zero)",
     "best": [
      1
     ]
@@ -6286,7 +6286,7 @@
    "answerTitle": "Probability training beat scenario training",
    "explain": "In a tournament that began with 2,246 forecasters, about 45 minutes of probability training beat scenario training, and training was one of three interventions that raised accuracy.",
    "implication": "Give forecasting and planning staff short training in probabilistic reasoning, and check its value with scored forecasts.",
-   "boundary": "Geopolitical forecasts by tournament volunteers, with tests of the training effect across seasons.",
+   "boundary": "Geopolitical forecasts by volunteers in a two-year tournament.",
    "sources": [
     "mellers14"
    ],
@@ -6704,7 +6704,7 @@
    "question": "How likely is it that the study found this?",
    "answerTitle": "Norm information raised punishment of unfair bribes",
    "explain": "Norm information raised the chosen probability of punishment from 73.3% to 82.8% when the bribe created inequity, a reliable difference, and from 57.9% to 67.2% when it restored equity, a similar gap that was not statistically significant. Inequity-creating bribes drew more punishment overall (77.8% vs 62.3%).",
-   "implication": "When you build a speak-up channel and your own survey shows that most colleagues object to taking bribes, say so; in the study this raised willingness to act most for deals that create unfair advantages.",
+   "implication": "When you build a speak-up channel and your own survey shows that most colleagues object to taking bribes, say so; in the study this reliably raised willingness to act against deals that create unfair advantages.",
    "boundary": "Bribery vignette with 225 US adults, alongside a main behavioral study with 1,240 punishers from a representative US sample.",
    "sources": [
     "enforcers23"

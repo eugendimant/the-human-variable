@@ -360,7 +360,7 @@ body.in-play{background:var(--paper)}
 .x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--ink-2);flex:none}
 .x:hover{background:var(--sunk)}
 .focus-top .steps{flex:1}
-.focus-top .count{font-size:var(--t6);font-weight:650;color:var(--muted);flex:none}
+.focus-top .count{font-size:var(--t6);font-weight:650;color:var(--muted);flex:0 1 auto;min-width:0;text-align:right}
 .focus-card{padding:clamp(8px,2vw,16px) 0 0}
 .eyebrow-line{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0 14px;font-size:var(--t6);color:var(--muted)}
 .eyebrow-line .fmt{font-weight:750;color:var(--you-ink)}
@@ -753,3 +753,4 @@ p,li,dd{text-wrap:pretty}
 .plate .rc-badge.evn{border-color:#f0b43c;color:#f0b43c}   /* readable outline on the dark plate (audit 45) */
 .alloc-cmp .hb-row.two>b.ev{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25}   /* "(not significant)" wraps instead of clipping (review 34, m1) */
 .room-acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.nw{white-space:nowrap}

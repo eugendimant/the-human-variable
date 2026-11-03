@@ -220,7 +220,7 @@ class Handler(BaseHTTPRequestHandler):
             elif not self.allowed('write'): return self.json(429, {'error': 'Too many requests. Wait a moment.'}, {'Retry-After': '2'})
             if m:
                 code, sub = m.group(1), m.group(2)
-                if sub == '/responses': return self.json(200, STORE.submit(code, d.get('token', ''), d.get('answer'), d.get('confidence')))
+                if sub == '/responses': return self.json(200, STORE.submit(code, d.get('token', ''), d.get('answer'), d.get('confidence'), d.get('challenge')))
                 if sub == '/control': return self.json(200, STORE.control(code, self.key(), str(d.get('action', '')), d.get('challenge')))
             self.json(404, {'error': 'Not found'})
         except ClassroomError as e: self.json(e.status, {'error': str(e)})

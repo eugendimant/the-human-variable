@@ -287,3 +287,14 @@ def test_console_reads_have_their_own_bucket(base):
     s_forged = req(base, f"/api/rooms/{room['code']}", key='not-the-key', client='phone10')[0]
     assert s_student == 429 and s_console == 200 and s_forged == 429, (s_student, s_console, s_forged)   # audit 43: a forged key falls through to the shared bucket
     app.LIMIT.b.pop(('127.0.0.1', 'ip_read'), None)
+
+def test_an_answer_for_an_earlier_decision_is_refused(base):
+    """Audit 49, M1: a late retry names its decision, so it is never filed under the next one."""
+    s, room, _ = req(base, '/api/rooms', {'title': 'Moved on'}); code, key = room['code'], room['secret']
+    a, b = [x for x in cl.CHALLENGES.values() if x['format'] == 'choice'][:2]
+    req(base, f'/api/rooms/{code}/control', {'action': 'open', 'challenge': a['id']}, key=key, client='mo-i')
+    t = req(base, f'/api/rooms/{code}/join', {}, client='mo1')[1]['token']
+    req(base, f'/api/rooms/{code}/control', {'action': 'open', 'challenge': b['id']}, key=key, client='mo-i')
+    s, d, _ = req(base, f'/api/rooms/{code}/responses', {'token': t, 'challenge': a['id'], 'answer': 0, 'confidence': 60}, client='mo1')
+    assert s == 409 and 'moved on' in d['error']
+    assert req(base, f'/api/rooms/{code}/responses', {'token': t, 'challenge': b['id'], 'answer': 0, 'confidence': 60}, client='mo1')[1]['accepted']

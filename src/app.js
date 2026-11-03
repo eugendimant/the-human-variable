@@ -308,7 +308,7 @@ function gapFigure(c, rec) {
   }
   else if (c.format === 'allocate') {
     const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, hi = Math.max(...a.values), evNum = k => { const m = String(a.valueLabels ? a.valueLabels[k] : a.values[k]).replace('−', '-').match(/-?\d+(\.\d+)?/); return m ? Math.max(0, parseFloat(m[0])) : 0 }, evNs = k => /n\.s\./.test(String(a.valueLabels ? a.valueLabels[k] : '')), evSigned = k => { const m = String(a.valueLabels ? a.valueLabels[k] : a.values[k]).replace('−', '-').match(/-?\d+(\.\d+)?/); return m ? parseFloat(m[0]) : 0 }, evLo = Math.min(0, ...c.options.map((_, k) => evSigned(k))), evHi = Math.max(1, ...c.options.map((_, k) => evSigned(k))), evSpan = evHi - evLo, evZero = -evLo / evSpan * 100, evMax = Math.max(1, ...c.options.map((_, k) => evNum(k))), isBest = k => a.best ? a.best.includes(k) : a.values[k] === hi;
-    body = `${a.valueName ? `<p class="plate-h">Your points, and the study\u2019s ${esc(a.valueName.replace(/ \(non-significant[^)]*\)/, ''))}</p>` : ''}<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${optionOrder(c).map(({ t: o, i: k }, pos) => `<div class="hb-row two"><span class="hb-label">${esc(o)}${isBest(k) ? ' <em class="ev-note">worked best</em>' : ''}</span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num you">${pct(r[k] / tot)} pts</b><span class="hb-track efx">${evLo < 0 ? `<b class="zero" style="left:${evZero}%"></b>` : ''}<i class="dotv${isBest(k) ? ' ev' : ''}${evNs(k) ? ' ns' : ''}" style="left:${(evSigned(k) - evLo) / evSpan * 100}%"></i></span><b class="num ev${evNs(k) ? ' ns' : ''}">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</b></div>`).join('')}${(() => { const u = String((a.valueLabels || a.values).find(v => /\d/.test(String(v))) || '').match(/%|pp|points?/) || [''], f = v => mn((Math.round(v * 10) / 10) + (u[0] === '%' ? '%' : u[0] ? ' ' + u[0] : '')); return `<div class="hb-row hb-ends" aria-hidden="true"><span class="hb-scale" style="grid-area:t">${evLo < 0 && evZero <= 9 ? '<em></em>' : `<em>${f(evLo)}</em>`}${evLo < 0 && evHi > 0 ? `<em class="${evZero < 25 || evZero > 75 ? 'z-near' : ''}" style="left:${evZero}%">0</em>` : ''}${evLo < 0 && evZero >= 91 ? '<em></em>' : `<em>${f(evHi)}</em>`}</span></div>` })()}</div>`;   // the effect track's scale, at both ends (review 28)   // your points over the study's measured result, per option
+    body = `${a.valueName ? `<p class="plate-h">Your points, and the study\u2019s ${esc(a.valueName.replace(/ \(non-significant[^)]*\)/, '')).replace(/\b(\w+-\w+)\b/g, '<span class="nw">$1</span>')}</p>` : ''}<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${optionOrder(c).map(({ t: o, i: k }, pos) => `<div class="hb-row two"><span class="hb-label">${esc(o)}${isBest(k) ? ' <em class="ev-note">worked best</em>' : ''}</span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num you">${pct(r[k] / tot)} pts</b><span class="hb-track efx">${evLo < 0 ? `<b class="zero" style="left:${evZero}%"></b>` : ''}<i class="dotv${isBest(k) ? ' ev' : ''}${evNs(k) ? ' ns' : ''}" style="left:${(evSigned(k) - evLo) / evSpan * 100}%"></i></span><b class="num ev${evNs(k) ? ' ns' : ''}">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</b></div>`).join('')}${(() => { const u = String((a.valueLabels || a.values).find(v => /\d/.test(String(v))) || '').match(/%|pp|points?/) || [''], f = v => mn((Math.round(v * 10) / 10) + (u[0] === '%' ? '%' : u[0] ? ' ' + u[0] : '')); return `<div class="hb-row hb-ends" aria-hidden="true"><span class="hb-scale" style="grid-area:t">${evLo < 0 && evZero <= 9 ? '<em></em>' : `<em>${f(evLo)}</em>`}${evLo < 0 && evHi > 0 ? `<em class="${evZero < 25 || evZero > 75 ? 'z-near' : ''}" style="left:${evZero}%">0</em>` : ''}${evLo < 0 && evZero >= 91 ? '<em></em>' : `<em>${f(evHi)}</em>`}</span></div>` })()}</div>`;   // the effect track's scale, at both ends (review 28)   // your points over the study's measured result, per option
     cap = `Score ${mn(pct(rec.score))}: 100 when all points sit on the option that worked best. ${srcLine(c)}`
   }
   else if (c.format === 'delegate') { body = `<p class="plate-h">Each task, routed as the evidence suggests; you matched ${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}${t.why ? `<small class="deleg-why">${esc(t.why)}</small>` : ''}</span><span class="chip-row"><span class="chip you">You: ${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">Evidence: ${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = '' }
@@ -366,7 +366,7 @@ function play() {
   if (st.room && st.room.phase === 'revealed' && !st.session.some(r => r.id === c.id && r.room === st.room.code) && c.answerTitle) { st.phase = 'reveal' }
   const rev = st.phase === 'reveal', rec = st.session.filter(r => r.id === c.id).slice(-1)[0] || { score: 0, correct: false, confidence: null, response: null, detail: {}, missed: true };
   const steps = st.deck.map((_, k) => `<i class="${k < st.i || (k === st.i && rev) ? 'done' : k === st.i ? 'now' : ''}"></i>`).join('');
-  const top = `<div class="focus-top"><button class="x" data-act="leave" aria-label="${st.room ? 'Leave the live class' : 'Leave the round'}"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="steps" aria-hidden="true">${steps}</div>${st.room ? `<span class="count" id="room-conn" aria-live="polite">Live class ${esc(st.room.code || '')}${st.room.misses ? ', reconnecting…' : ''}</span>` : `<span class="count num" aria-live="polite">${st.i + 1} of ${st.deck.length}</span>`}</div>`;
+  const top = `<div class="focus-top"><button class="x" data-act="leave" aria-label="${st.room ? 'Leave the live class' : 'Leave the round'}"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="steps" aria-hidden="true">${steps}</div>${st.room ? `<span class="count" id="room-conn" aria-live="polite">${st.room.misses ? 'Reconnecting…' : `Live class ${esc(st.room.code || '')}`}</span>` : `<span class="count num" aria-live="polite">${st.i + 1} of ${st.deck.length}</span>`}</div>`;
   const label = c.case ? `<p class="case-line">${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}</p>` : '';
   if (!rev) {
     const ready = lockReady(c);
@@ -663,7 +663,6 @@ async function roomPoll() {
     if (r.status === 404) { st.room = null; st.view = 'home'; render(true); modal('<h2>This live session has ended</h2><p>Your instructor ended the class. Your answers stay in your record on this device.</p><button class="btn btn-solid" data-close="1">Close</button>', 'Class ended'); return }   // a dialog, so the end is not missed
     if (!r.ok) throw Error('poll ' + r.status);   // a 429 or error body is not class state: keep the current card and answer
     const d = await r.json(); if (R.misses) { const rc = qs('#room-conn'); if (rc) rc.textContent = 'Live class ' + R.code } R.misses = 0;   // the question screen says when the phone lost the class (review 35, m10)
-    if (R.failed && !R.resending && d.phase === 'open' && d.challenge === R.failed.cid) { R.resending = true; const f = R.failed; roomSubmit(f.c, f.rec).finally(() => { R.resending = false }) }   // retry a stranded answer once the server answers again
     if (!d.same && d.phase) {
       const changed = d.challenge !== R.challenge, phaseChanged = d.phase !== R.phase;
       R.etag = d.etag; R.phase = d.phase; R.agg = d.aggregate || null; R.participants = d.participants; R.responses = d.responses; R.title = d.title;
@@ -677,26 +676,34 @@ async function roomPoll() {
       }
       else { const live = qs('#room-live'); if (live) live.textContent = roomLine() }
     }
-  } catch { R.misses++; const live = qs('#room-live'); if (live) live.textContent = 'Reconnecting…'; const rc = qs('#room-conn'); if (rc) rc.textContent = 'Live class ' + R.code + ', reconnecting…' }
+    const f = R.failed;   // a stranded answer: checked on every good poll, including an unchanged room (audit 49, M2)
+    if (f && (R.challenge !== f.cid || R.phase === 'revealed')) { R.failed = null; if (st.view === 'play') render() }   // the class moved on: never file it under another decision (audit 49, M1)
+    else if (f && !R.resending && R.phase === 'open' && Date.now() >= f.next && f.tries < 10) { R.resending = true; roomSubmit(f.c, f.rec, true).finally(() => { if (st.room) st.room.resending = false }) }
+  } catch { R.misses++; if (R.misses === 1) { const live = qs('#room-live'); if (live) live.textContent = 'Reconnecting…'; const rc = qs('#room-conn'); if (rc) rc.textContent = 'Reconnecting…' } }   // announced once, not on every failed poll (audit 49, m3)
   clearTimeout(R.timer); R.timer = setTimeout(roomPoll, document.hidden ? 6000 : Math.min(8000, 2000 * (1 + R.misses)));
 }
 function roomLine() { const R = st.room; return `${R.participants ?? '–'} joined. ${R.phase === 'open' ? (R.responses ?? 0) + ' answered so far.' : ''}` }
-async function roomSubmit(c, rec) {
-  const R = st.room; R.sent = false; R.failed = null; render();
+async function roomSubmit(c, rec, auto = false) {
+  const R = st.room, prev = R.failed;
+  if (!auto) { R.sent = false; R.failed = null; render(); roomFocus() }
   let wait = 800, busy = false;
-  for (let k = 0; k < 6; k++) {   // about 20 s in all, honouring Retry-After (review 28)
+  for (let k = 0; k < (auto ? 1 : 6); k++) {   // about 20 s in all, honouring Retry-After (review 28); one quiet try per poll once stranded
+    if (st.room !== R || R.challenge !== c.id) return;   // the instructor moved on: the answer belongs to its own decision only
     try {
-      const r = await fetch(`/api/rooms/${R.code}/responses`, { method: 'POST', headers: roomHeaders(true), body: JSON.stringify({ token: R.token, answer: rec.response, confidence: rec.confidence }) });
+      const r = await fetch(`/api/rooms/${R.code}/responses`, { method: 'POST', headers: roomHeaders(true), body: JSON.stringify({ token: R.token, challenge: c.id, answer: rec.response, confidence: rec.confidence }) });
       const ra = +r.headers.get('Retry-After') || 2, st0 = r.status; let d = {}; try { d = await r.json() } catch { }
-      if (r.ok) { R.sent = true; R.sentMsg = d.accepted ? 'Your answer is in.' : d.message; render(); clearTimeout(R.timer); roomPoll(); return }   // refresh the room count now, not at the next poll
-      if (r.status === 409 || r.status === 400 || r.status === 403) { R.sent = true; R.sentMsg = d.error; render(); return }
+      if (r.ok) { R.failed = null; R.sent = true; R.sentMsg = d.accepted ? 'Your answer is in.' : d.message; render(); roomFocus(); clearTimeout(R.timer); roomPoll(); return }   // refresh the room count now, not at the next poll
+      if (r.status === 409 || r.status === 400 || r.status === 403) { R.failed = null; R.sent = true; R.sentMsg = d.error; render(); roomFocus(); return }
       wait = st0 === 429 ? Math.max(800, 1000 * ra) : 800 * (k + 1); busy = st0 === 429;
     } catch { wait = 800 * (k + 1); busy = false }
-    if (k < 5) await new Promise(z => setTimeout(z, wait + Math.random() * 400));
+    if (!auto && k < 5) await new Promise(z => setTimeout(z, wait + Math.random() * 400));
   }
-  R.failed = { c, rec, cid: R.challenge };   // kept until it goes through (review 35, M1)
-  R.sentMsg = busy ? 'The class server is busy. Your answer is saved on this device and goes out again on its own, or send it now.' : 'Your answer did not reach the class. It is saved on this device and goes out again on its own when the connection returns, or send it now.'; R.sent = true; render();
+  const tries = auto && prev ? prev.tries + 1 : 0;
+  R.failed = { c, rec, cid: c.id, tries, next: Date.now() + 1000 * [5, 10, 20, 40, 60][Math.min(tries, 4)] };   // its own decision, with backoff, then the button alone (audit 49, M1 and m1)
+  const msg = busy ? 'The class server is busy. Your answer is kept on this page and goes out again on its own, or send it now.' : 'Your answer did not reach the class. It is kept on this page and goes out again on its own when the connection returns, or send it now.';
+  if (!auto || R.sentMsg !== msg || !prev) { R.sentMsg = msg; R.sent = true; render() }   // a quiet retry that fails again changes nothing on screen
 }
+function roomFocus() { const h = qs('.room-wait h1'); if (h && (document.activeElement === document.body || !document.activeElement || !document.contains(document.activeElement))) h.focus() }   // focus stays in the card after a re-render (audit 49, m2)
 function roomWait() {
   const R = st.room;
   return `<section class="play wrap"><div class="panel card room-wait" aria-live="polite">
@@ -707,8 +714,8 @@ function roomWait() {
 function roomLocked(c) {
   const R = st.room;
   return `<section class="play wrap"><div class="panel card room-wait" aria-live="polite">
-    <h1 class="q" tabindex="-1">${R.failed ? 'Not sent yet.' : R.sent ? esc(R.sentMsg || 'Your answer is in.') : 'Sending your answer…'}</h1><p class="room-id">Live class ${esc(R.code)}, decision: ${esc(c.title)}${/[?!.]$/.test(c.title) ? '' : '.'}</p>
-    <p class="scene">${R.failed ? esc(R.sentMsg) : 'The evidence appears for everyone when your instructor reveals it.'}</p><p class="kicker" id="room-live">${roomLine()}</p><div class="room-acts">${R.failed && R.phase === 'open' ? '<button class="btn btn-solid" data-act="resend">Send my answer again</button>' : ''}<button class="btn btn-quiet" data-act="leave-room">Leave the live class</button></div></div></section>`;   // a failed send gets a short headline and its reason below (review 35, M1)   // no badge above the headline (review 27, rule 2)
+    <h1 class="q" tabindex="-1">${R.failed && R.phase !== 'open' ? 'Not counted.' : R.failed ? 'Not sent yet.' : R.sent ? esc(R.sentMsg || 'Your answer is in.') : 'Sending your answer…'}</h1><p class="room-id">Live class ${esc(R.code)}, decision: ${esc(c.title)}${/[?!.]$/.test(c.title) ? '' : '.'}</p>
+    <p class="scene">${R.failed && R.phase !== 'open' ? 'Answers closed for this decision before your answer reached the class.' : R.failed ? esc(R.sentMsg) : 'The evidence appears for everyone when your instructor reveals it.'}</p><p class="kicker" id="room-live">${roomLine()}</p><div class="room-acts">${R.failed && R.phase === 'open' ? '<button class="btn btn-solid" data-act="resend">Send my answer again</button>' : ''}<button class="btn btn-quiet" data-act="leave-room">Leave the live class</button></div></div></section>`;   // a failed send gets a short headline and its reason below (review 35, M1)   // no badge above the headline (review 27, rule 2)
 }
 function classPanel(c, a) {
   const f = c.format; let body = '';
