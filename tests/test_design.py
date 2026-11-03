@@ -156,3 +156,16 @@ def test_squeezed_heading_is_caught():
         pg.set_content('<div style="width:900px"><h1 style="font-size:40px">How did unrestricted AI students score on unaided exams versus controls in the study?</h1></div>')
         clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R33']; b.close()
     assert hit and not clean, (hit, clean)
+
+
+def test_clipped_text_is_caught():
+    """Review 34: a label cut off by overflow:hidden ("(not signifi") passed every gate."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content('<b style="display:block;width:60px;overflow:hidden;white-space:nowrap">+21.9% (not significant)</b>')
+        hit = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31' and 'clipped' in h[2]]
+        pg.set_content('<b style="display:block;width:300px;overflow:hidden;white-space:nowrap">+21.9% (not significant)</b>')
+        clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31' and 'clipped' in h[2]]; b.close()
+    assert hit and not clean

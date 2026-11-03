@@ -751,3 +751,4 @@ p,li,dd{text-wrap:pretty}
 .rc-badge.evn{background:none;border:2px solid var(--ev-ink,#8a5a00);color:var(--ev-ink,#8a5a00)}   /* one amber mark per chart: the top place (review 33, m7) */
 @media (min-width:1200px){.reveal.meta-right>.rev-meta{grid-column:2}}
 .plate .rc-badge.evn{border-color:#f0b43c;color:#f0b43c}   /* readable outline on the dark plate (audit 45) */
+.alloc-cmp .hb-row.two>b.ev{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25}   /* "(not significant)" wraps instead of clipping (review 34, m1) */

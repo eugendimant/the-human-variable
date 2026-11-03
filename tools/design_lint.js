@@ -122,5 +122,8 @@
       .map(e => { const rg = document.createRange(); rg.selectNodeContents(e); const r = rg.getBoundingClientRect(); return { e, r } }).filter(x => x.r.width > 2 && x.r.height > 2);
     const ov = (a, b) => Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) * Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
     for (let i = 0; i < leaves.length; i++) for (let j = i + 1; j < leaves.length; j++) { const A = leaves[i], B = leaves[j]; if (A.e.contains(B.e) || B.e.contains(A.e)) continue; const o = ov(A.r, B.r); if (o > 0.25 * Math.min(A.r.width * A.r.height, B.r.width * B.r.height) ) push('R31', name(A.e) + ' / ' + name(B.e), 'text overlaps text: ' + A.e.textContent.trim().slice(0, 24) + ' / ' + B.e.textContent.trim().slice(0, 24)) } }
+  // R31: text clipped by its own box or an overflow-hidden ancestor (review 34: "(not signifi" on the allocate plate)
+  for (const e of document.querySelectorAll('body *')) { if (!vis(e) || e.closest('svg,.sr-only,input,textarea,select')) continue; if (![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
+    const cs = getComputedStyle(e); if (/hidden|clip/.test(cs.overflowX) && e.scrollWidth > e.clientWidth + 2 && cs.textOverflow !== 'ellipsis') push('R31', name(e), 'clipped text: ' + e.textContent.trim().slice(0, 40)) }
   return out;
 }

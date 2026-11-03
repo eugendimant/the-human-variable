@@ -37,6 +37,10 @@ ch = C['dimant-enforcers-rank']['chart']; ch['note'] = ch['note'].replace('Outli
 ch['note'] = ch['note'].replace('Average chosen probability that the coworker is punished, Study 2 vignette. Outlined: the equalizing-bribe difference, not statistically significant at the usual 5% level.', 'Chosen probability that the coworker is punished, Study 2. Outlined: the equalizing-bribe gap, not significant at 5%.')   # audit 45: similar in size, weaker in evidence; short enough for the plate (R18)
 ch = C['axf06']['chart']; ch['note'] = ch['note'].replace(' was not significant (P = .60).', ' was not statistically significant.')
 
+# review 34: axf06's non-significant contrast carries no evidence colour; axf05's rank values in points
+C['axf06']['chart']['highlight'] = None
+C['axf05']['rankValues'] = [x.replace(' pp', ' points') for x in C['axf05'].get('rankValues', [])]
+
 bp.write_text(json.dumps(B, ensure_ascii=False, indent=1) + '\n')
 kp = ROOT / 'tests/keyed_options.json'; K = json.loads(kp.read_text())
 for c in B['challenges']:
