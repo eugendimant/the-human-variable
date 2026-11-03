@@ -433,7 +433,7 @@ body.in-play{background:var(--paper)}
 
 
 .score-strip{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin:26px 0 22px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
-.score-big b{display:block;font-size:clamp(72px,10vw,128px);letter-spacing:-.03em;line-height:.9;font-weight:800}
+.score-big b{display:block;font-size:clamp(72px,10vw,128px);letter-spacing:-.03em;line-height:1;font-weight:800}
 .score-big span{font-size:var(--t6);color:var(--muted)}
 .score-meta{display:flex;gap:28px;flex-wrap:wrap;margin:0}
 .score-meta dt{font-size:var(--t7);color:var(--muted)}
@@ -498,9 +498,11 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
   .focus:has(.reveal) .focus-top{max-width:none}
   .reveal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
   .reveal>*{grid-column:1}
-  .reveal>figure.gap{grid-column:2;grid-row:1/span 20;position:sticky;top:24px;margin-top:0}
+  .reveal>figure.gap{grid-column:2;grid-row:1/span 6;margin-top:0}
   .reveal>section.gap{grid-column:2}
-  .reveal>.deep{grid-column:1}   /* the questions sit under the finding, beside the evidence */
+  .reveal>.deep{grid-column:1/-1;margin-top:40px}   /* below both columns: no dead quadrant beside the questions (review 31) */
+  .reveal>.deep .tabpanel:has(.follow){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
+  .reveal>.deep .tabpanel:has(.follow) .tutor{margin-top:0}
   .focus:has(.reveal) .actionbar-in{max-width:1240px}
   /* the question screen uses the same two columns: the question on the left, your answer beside it (owner, 2026-11-01: fill the space) */
   .focus:has(.q-col){max-width:1240px}
@@ -553,7 +555,7 @@ body.projector .proj-exit{background:#fff;color:#14203a}
 body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:content-box}
 .deleg-cmp li.ok>span:first-child::before{content:"✓";color:var(--good);font-weight:800;margin-right:8px}
 .gap:has(.deleg-cmp) .gap-legend{display:flex}
-.score-row{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}.spark{width:220px;height:56px;margin-bottom:14px}
+.score-row{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}.spark{width:278px;height:56px;margin-bottom:14px}
 /* causal diagrams sit on a faint lab grid, so the factors read as a board waiting for its links */
 .dag{background:none;border:0}
 .plate-more{margin-top:18px;padding-top:16px;border-top:1px solid var(--rule)}
@@ -736,6 +738,15 @@ p,li,dd{text-wrap:pretty}
 .lib-note{color:var(--ink-2);font-size:15px;margin:0 0 8px}
 .alloc-cmp b.num.ev.ns{color:var(--muted)}
 .plate .alloc-cmp b.num.ev.ns{color:#b9c4dd}
+
+/* phones: the finding and the manager's action come right after the verdict; the study card moves into the Source tab (review 31, m10) */
+.sc-phone{display:none}
+@media (max-width:700px){
+  .reveal{display:flex;flex-direction:column}
+  .reveal>.reveal-title{order:1}.reveal>.verdict{order:2}.reveal>.reveal-body{order:3}.reveal>.action-note{order:4}.reveal>figure.gap{order:5}.reveal>section.gap{order:6}.reveal>.deep{order:7}
+  .reveal>figure.gap .study-card{display:none}
+  .sc-phone{display:block;margin-top:14px}.sc-phone .study-card{padding:14px 0 0}
+}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="#" data-home="1" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -1223,7 +1234,7 @@ function gapFigure(c, rec) {
   else if (c.format === 'allocate') {
     const a = c.allocate, tot = r.reduce((x, y) => x + y, 0) || 1, hi = Math.max(...a.values), evNum = k => { const m = String(a.valueLabels ? a.valueLabels[k] : a.values[k]).replace('−', '-').match(/-?\d+(\.\d+)?/); return m ? Math.max(0, parseFloat(m[0])) : 0 }, evNs = k => /n\.s\./.test(String(a.valueLabels ? a.valueLabels[k] : '')), evSigned = k => { const m = String(a.valueLabels ? a.valueLabels[k] : a.values[k]).replace('−', '-').match(/-?\d+(\.\d+)?/); return m ? parseFloat(m[0]) : 0 }, evLo = Math.min(0, ...c.options.map((_, k) => evSigned(k))), evHi = Math.max(1, ...c.options.map((_, k) => evSigned(k))), evSpan = evHi - evLo, evZero = -evLo / evSpan * 100, evMax = Math.max(1, ...c.options.map((_, k) => evNum(k))), isBest = k => a.best ? a.best.includes(k) : a.values[k] === hi;
     body = `${a.valueName ? `<p class="plate-h">Your points, and the study\u2019s ${esc(a.valueName.replace(/ \(non-significant[^)]*\)/, ''))}</p>` : ''}<div class="hbars alloc-cmp" role="img" aria-label="Your points per option; the option that worked best is marked">${optionOrder(c).map(({ t: o, i: k }, pos) => `<div class="hb-row two"><span class="hb-label">${esc(o)}${isBest(k) ? ' <em class="ev-note">worked best</em>' : ''}</span><span class="hb-track"><i class="grow you" style="width:${Math.max(1.5, r[k] / tot * 100)}%"></i></span><b class="num you">${pct(r[k] / tot)} pts</b><span class="hb-track efx">${evLo < 0 ? `<b class="zero" style="left:${evZero}%"></b>` : ''}<i class="dotv${isBest(k) ? ' ev' : ''}${evNs(k) ? ' ns' : ''}" style="left:${(evSigned(k) - evLo) / evSpan * 100}%"></i></span><b class="num ev${evNs(k) ? ' ns' : ''}">${esc(a.valueLabels ? a.valueLabels[k] : a.values[k])}</b></div>`).join('')}${(() => { const u = String((a.valueLabels || a.values).find(v => /\d/.test(String(v))) || '').match(/%|pp|points?/) || [''], f = v => mn((Math.round(v * 10) / 10) + (u[0] === '%' ? '%' : u[0] ? ' ' + u[0] : '')); return `<div class="hb-row hb-ends" aria-hidden="true"><span class="hb-scale" style="grid-area:t">${evLo < 0 && evZero <= 18 ? '<em></em>' : `<em>${f(evLo)}</em>`}${evLo < 0 && evHi > 0 ? `<em style="left:${evZero}%">0</em>` : ''}${evLo < 0 && evZero >= 82 ? '<em></em>' : `<em>${f(evHi)}</em>`}</span></div>` })()}</div>`;   // the effect track's scale, at both ends (review 28)   // your points over the study's measured result, per option
-    cap = `${c.options.some((_, k) => evNs(k)) ? 'Hollow points: effects that were not statistically significant. ' : ''}Score ${mn(pct(rec.score))}: 100 when all points sit on the option that worked best. ${srcLine(c)}`
+    cap = `Score ${mn(pct(rec.score))}: 100 when all points sit on the option that worked best. ${srcLine(c)}`
   }
   else if (c.format === 'delegate') { body = `<div class="gap-head"><div class="gh-cell"><span>Tasks routed as the evidence suggests</span><b class="num gh-you">${rec.detail.right} of ${rec.detail.total}</b></div></div><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}${t.why ? `<small class="deleg-why">${esc(t.why)}</small>` : ''}</span><span class="chip-row"><span class="chip you">You: ${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">Evidence: ${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = '' }
   else if (c.chart) { body = bars(c.chart); cap = srcLine(c) }
@@ -1296,7 +1307,7 @@ function play() {
   const src = SOURCE[c.sources[0]], [stLabel, stCls] = srcStatus(src);
   const panel = tab === 'questions' ? `<div class="follow">${c.follow.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</div>${tutorPanel(c)}`
     : tab === 'scope' ? `<p class="deep-text">${esc(c.boundary)}</p>`
-    : tab === 'source' ? c.sources.map(id => { const s = SOURCE[id], [l, k] = srcStatus(s); return `<div class="src"><p class="src-title">${esc(paperTitle(s) || 'Title shown once you have played every decision built on this paper')}</p><p>${esc(s.authors)}, <i>${esc(s.venue)}</i>${s.volume ? ' ' + esc(s.volume) : ''}, ${s.year}.</p><p class="row"><span class="status ${k}">${l}</span> <button class="link-btn" data-source="${esc(id)}">More on this source</button> <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article</a></p></div>` }).join('')
+    : tab === 'source' ? c.sources.map(id => { const s = SOURCE[id], [l, k] = srcStatus(s); return `<div class="src"><p class="src-title">${esc(paperTitle(s) || 'Title shown once you have played every decision built on this paper')}</p><p>${esc(s.authors)}, <i>${esc(s.venue)}</i>${s.volume ? ' ' + esc(s.volume) : ''}, ${s.year}.</p><p class="row"><span class="status ${k}">${l}</span> <button class="link-btn" data-source="${esc(id)}">More on this source</button> <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article</a></p></div>` }).join('') + `<div class="sc-phone">${studyCard(c)}</div>`
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
   const nextLabel = st.i >= st.deck.length - 1 ? 'See how you did' : c.case && c.case.step < c.case.of ? 'Next step' : 'Next decision';
   return `<section class="focus">${top}<article class="focus-card reveal" aria-labelledby="r-h">
@@ -1465,7 +1476,7 @@ function record() {
   // How the headline moved, call by call (pooled skill over the calls so far), so the big number has a history.
   const series = all.slice(-40).map((_, k, xs) => avg(xs.slice(0, k + 1)));
   const spark = series.length < 3 ? '' : (() => { const W = 220, H = 56, lo = Math.min(-100, ...series), hi = 100, x = k => 4 + k * (W - 8) / (series.length - 1), y = v => 4 + (hi - v) / (hi - lo) * (H - 8);
-    return `<svg class="spark" viewBox="0 0 ${W} ${H}" role="img" aria-label="Skill after each of your last ${series.length} calls, from ${series[0]} to ${series[series.length - 1]}"><line x1="4" x2="${W - 4}" y1="${y(0)}" y2="${y(0)}" stroke="#9aa6b6" stroke-dasharray="3 4"/><polyline fill="none" stroke="#2f54eb" stroke-width="2.5" stroke-linejoin="round" points="${series.map((v, k) => x(k) + ',' + y(v)).join(' ')}"/><circle cx="${x(series.length - 1)}" cy="${y(series[series.length - 1])}" r="4.5" fill="#2f54eb"/></svg>` })();
+    return `<svg class="spark" viewBox="0 0 ${W + 58} ${H}" role="img" aria-label="Skill after each of your last ${series.length} calls, from ${series[0]} to ${series[series.length - 1]}"><line x1="4" x2="${W - 4}" y1="${y(0)}" y2="${y(0)}" stroke="#9aa6b6" stroke-dasharray="3 4"/><text x="${W + 2}" y="${y(0) + 4}" font-size="12" fill="#56617a">guessing</text><polyline fill="none" stroke="#2f54eb" stroke-width="2.5" stroke-linejoin="round" points="${series.map((v, k) => x(k) + ',' + y(v)).join(' ')}"/><circle cx="${x(series.length - 1)}" cy="${y(series[series.length - 1])}" r="4.5" fill="#2f54eb"/></svg>` })();
   const sess = st.session.length ? avg(st.session.filter(r => BY_ID[r.id])) : null;
   const byTrack = TRACKS.map(t => { const x = all.filter(r => BY_ID[r.id].track === t); return [t, x.length, avg(x)] });
   let summary = '';
@@ -1478,7 +1489,7 @@ function record() {
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete' : 'Your record'}</h1>
-    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? mn(sess ?? meanScore) : '–'}</b><span class="score-unit">skill points<br>versus guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing (the dashed line in the trend), 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
+    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? mn(sess ?? meanScore) : '–'}</b><span class="score-unit">skill points<br>versus guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing, 100 is perfect. A confident forecast miss costs more than a wrong pick.</span></div>
       ${gapLine ? `<p class="cal-sum">Calibration: ${gapLine.charAt(0).toLowerCase() + gapLine.slice(1)}.</p>` : ''}${sess !== null ? `<dl class="score-meta"><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl>` : ''}</div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid">
@@ -1495,7 +1506,8 @@ function calLabels(pts, sx, sy, P, W) {
   const over = (a, b) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
   return pts.slice().sort((a, b) => b.n - a.n).map(b => { const x = sx(b.meanP), y = sy(b.hitRate), r = rad(b), txt = `${b.n} call${b.n === 1 ? '' : 's'}`, w = txt.length * 6.6, h = 13;
     const opts = [[x + r + 4, y + 4, 'start'], [x - r - 4, y + 4, 'end'], [x, y - r - 5, 'middle'], [x, y + r + 13, 'middle']].map(([tx, ty, a]) => ({ tx, ty, a, bx: { x0: a === 'start' ? tx : a === 'end' ? tx - w : tx - w / 2, x1: a === 'start' ? tx + w : a === 'end' ? tx : tx + w / 2, y0: ty - h + 2, y1: ty + 2 } }));
-    const cost = o => (o.bx.x0 > P + 2 && o.bx.x1 < W - 2 && o.bx.y0 > 2 && o.bx.y1 < W - P - 2 ? 0 : 100) + 10 * dots.filter(d => hitsBox(o.bx, d)).length + 5 * placed.filter(q => over(q, o.bx)).length;
+    const diag = bx => [0, .25, .5, .75, 1].some(t => { const X = bx.x0 + (bx.x1 - bx.x0) * t, Y = sy((X - sx(0)) / (sx(100) - sx(0)) * 100); return Y > bx.y0 - 2 && Y < bx.y1 + 2 });   // the diagonal is an obstacle too (review 31, m7)
+    const cost = o => (o.bx.x0 > P + 2 && o.bx.x1 < W - 2 && o.bx.y0 > 2 && o.bx.y1 < W - P - 2 ? 0 : 100) + 10 * dots.filter(d => hitsBox(o.bx, d)).length + 5 * placed.filter(q => over(q, o.bx)).length + 4 * diag(o.bx);
     const o = opts.reduce((m, x) => cost(x) < cost(m) ? x : m); placed.push(o.bx);
     return `<text x="${o.tx}" y="${o.ty}" font-size="12" fill="#36425e" text-anchor="${o.a}">${txt}</text>` }).join('');
 }
@@ -1505,10 +1517,10 @@ function calPlot(cal) {
   return `<svg viewBox="0 0 ${W} ${W}" role="img" aria-label="Calibration plot: ${pts.map(b => `stated ${Math.round(b.meanP)}%, right ${Math.round(b.hitRate)}% over ${b.n} calls`).join('; ') || 'no data yet'}" style="max-width:420px;width:100%;display:block;margin:0 auto">
     <path d="M${P} 22 V${W - P} H${W - 22}" fill="none" stroke="#cbd3dd"/>
     ${[0, 25, 50, 75, 100].map(v => `<text x="${sx(v)}" y="${W - P + 15}" font-size="12" text-anchor="middle" fill="#56617a">${v}</text><text x="${P - 6}" y="${sy(v) + 3}" font-size="12" text-anchor="end" fill="#56617a">${v}</text>`).join('')}
-    <line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(100)}" y2="${sy(100)}" stroke="#9aa6b6" stroke-dasharray="4 4"/>
+    <line x1="${sx(0)}" y1="${sy(0)}" x2="${sx(100)}" y2="${sy(100)}" stroke="#9aa6b6" stroke-dasharray="4 4"/><text x="${sx(97)}" y="${sy(97) - 6}" font-size="12" fill="#56617a" text-anchor="end" transform="rotate(-45 ${sx(97)} ${sy(97) - 6})">as sure as right</text>
     ${pts.map(b => { const r = 5 + Math.min(10, Math.sqrt(b.n) * 2); return `<circle cx="${sx(b.meanP)}" cy="${sy(b.hitRate)}" r="${r}" fill="#2f54eb" fill-opacity=".85" stroke="#fff" stroke-width="2"/>` }).join('')}${calLabels(pts, sx, sy, P, W)}
     <text x="${(W + P) / 2}" y="${W - 4}" font-size="12" text-anchor="middle" fill="#36425e">Stated confidence (%)</text>
-    <text x="10" y="${(W - P) / 2}" font-size="12" text-anchor="middle" fill="#36425e" transform="rotate(-90 10 ${(W - P) / 2})">Share right (%)</text></svg><p class="small cal-cap">Dashed line: as sure as right. ${pts.length ? 'Each dot is a group of calls at a similar confidence; its label gives how many.' : 'Points appear after your first calls.'}</p>`;
+    <text x="10" y="${(W - P) / 2}" font-size="12" text-anchor="middle" fill="#36425e" transform="rotate(-90 10 ${(W - P) / 2})">Share right (%)</text></svg><p class="small cal-cap">${pts.length ? 'Each dot is a group of calls at a similar confidence; its label gives how many.' : 'Points appear after your first calls.'}</p>`;
 }
 
 // ----- modals -----

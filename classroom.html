@@ -433,7 +433,7 @@ body.in-play{background:var(--paper)}
 
 
 .score-strip{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin:26px 0 22px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
-.score-big b{display:block;font-size:clamp(72px,10vw,128px);letter-spacing:-.03em;line-height:.9;font-weight:800}
+.score-big b{display:block;font-size:clamp(72px,10vw,128px);letter-spacing:-.03em;line-height:1;font-weight:800}
 .score-big span{font-size:var(--t6);color:var(--muted)}
 .score-meta{display:flex;gap:28px;flex-wrap:wrap;margin:0}
 .score-meta dt{font-size:var(--t7);color:var(--muted)}
@@ -498,9 +498,11 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
   .focus:has(.reveal) .focus-top{max-width:none}
   .reveal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
   .reveal>*{grid-column:1}
-  .reveal>figure.gap{grid-column:2;grid-row:1/span 20;position:sticky;top:24px;margin-top:0}
+  .reveal>figure.gap{grid-column:2;grid-row:1/span 6;margin-top:0}
   .reveal>section.gap{grid-column:2}
-  .reveal>.deep{grid-column:1}   /* the questions sit under the finding, beside the evidence */
+  .reveal>.deep{grid-column:1/-1;margin-top:40px}   /* below both columns: no dead quadrant beside the questions (review 31) */
+  .reveal>.deep .tabpanel:has(.follow){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
+  .reveal>.deep .tabpanel:has(.follow) .tutor{margin-top:0}
   .focus:has(.reveal) .actionbar-in{max-width:1240px}
   /* the question screen uses the same two columns: the question on the left, your answer beside it (owner, 2026-11-01: fill the space) */
   .focus:has(.q-col){max-width:1240px}
@@ -553,7 +555,7 @@ body.projector .proj-exit{background:#fff;color:#14203a}
 body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:content-box}
 .deleg-cmp li.ok>span:first-child::before{content:"✓";color:var(--good);font-weight:800;margin-right:8px}
 .gap:has(.deleg-cmp) .gap-legend{display:flex}
-.score-row{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}.spark{width:220px;height:56px;margin-bottom:14px}
+.score-row{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}.spark{width:278px;height:56px;margin-bottom:14px}
 /* causal diagrams sit on a faint lab grid, so the factors read as a board waiting for its links */
 .dag{background:none;border:0}
 .plate-more{margin-top:18px;padding-top:16px;border-top:1px solid var(--rule)}
@@ -736,6 +738,15 @@ p,li,dd{text-wrap:pretty}
 .lib-note{color:var(--ink-2);font-size:15px;margin:0 0 8px}
 .alloc-cmp b.num.ev.ns{color:var(--muted)}
 .plate .alloc-cmp b.num.ev.ns{color:#b9c4dd}
+
+/* phones: the finding and the manager's action come right after the verdict; the study card moves into the Source tab (review 31, m10) */
+.sc-phone{display:none}
+@media (max-width:700px){
+  .reveal{display:flex;flex-direction:column}
+  .reveal>.reveal-title{order:1}.reveal>.verdict{order:2}.reveal>.reveal-body{order:3}.reveal>.action-note{order:4}.reveal>figure.gap{order:5}.reveal>section.gap{order:6}.reveal>.deep{order:7}
+  .reveal>figure.gap .study-card{display:none}
+  .sc-phone{display:block;margin-top:14px}.sc-phone .study-card{padding:14px 0 0}
+}
 /* Instructor console additions */
 .field{height:46px;border:1px solid var(--rule);border-radius:var(--r-ctl);padding:0 12px;background:var(--surface)}
 .join-banner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 24px}
@@ -812,6 +823,20 @@ p,li{text-wrap:pretty}
 body.projector .proj-exit{opacity:0}   /* hidden on the projected screen until hover or keyboard focus (review 29, m9) */
 body.projector .proj-hide{display:none}   /* instructor chrome stays off the projected screen (review 30, m14) */
 body.projector .proj-controls{opacity:0;transition:opacity .15s}body.projector .proj-controls:hover,body.projector .proj-controls:focus-within{opacity:1}   /* instructor controls stay off the projected screen until pointed at or tabbed to (review 31) */
+/* projector, after the reveal: the join banner shrinks to one slim line and the result fits a 1440×900 screen (review 31, m8) */
+body.projector:has(.rv) .join-banner{padding:8px 20px}
+body.projector:has(.rv) .join-code{font-size:30px;letter-spacing:.1em}
+body.projector:has(.rv) .qr{width:56px;height:56px;padding:4px}
+body.projector:has(.rv) .stage-h{font-size:clamp(26px,2.4vw,40px)}
+body.projector:has(.rv) .play-grid>.card .scene{font-size:clamp(16px,1.2vw,20px)}
+body.projector:has(.rv) .rv-row,body.projector:has(.rv) .present-opts li,body.projector:has(.rv) .rv-row b{font-size:clamp(16px,1.25vw,21px)}
+body.projector:has(.rv) .rv-head b{font-size:32px}
+body.projector:has(.rv) .play-grid>.card{padding-top:24px;padding-bottom:24px}
+/* lessons: in the console they close the reveal; on the projector they move under the question */
+.proj-left{display:none}
+body.projector:has(.rv) .proj-left{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+body.projector:has(.rv) .rv .lessons,body.projector:has(.rv) .count-row,body.projector:has(.rv) .proj-prelist{display:none}
+body.projector:has(.rv) .rv-head .kicker{white-space:nowrap}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="./">The Human Variable</a><span class="kicker" style="margin-left:auto">Instructor console</span></div></header>
@@ -3182,9 +3207,10 @@ function stage() {
     ${c.format === 'causal' && c.dag ? `<p class="kicker proj-factors">Factors in play: ${c.dag.nodes.map(n => n.mask && s.phase !== 'revealed' ? '?' : esc(n.label)).join(', ')}</p>` : ''}
     ${['choice', 'causal', 'multi'].includes(c.format) ? `<ol class="present-opts">${order(c).map(o => `<li>${esc(o.t)}</li>`).join('')}</ol>` : ''}
     ${c.format === 'rank' && s.phase !== 'revealed' ? `<ul class="present-opts">${shuffle(c.options.map((_, i) => i), rng(hash(c.id + (hash(S.code) >>> 0)))).map(i => `<li>${esc(c.options[i])}</li>`).join('')}</ul>` : ''}${c.format === 'allocate' && s.phase !== 'revealed' ? `<ul class="present-opts">${order(c).map(o => `<li>${esc(o.t)}</li>`).join('')}</ul>` : ''}
-    ${c.format === 'delegate' ? `<p class="kicker">Route each task to: ${c.delegate.choices.map(esc).join(', ')}</p><ul class="present-opts">${c.delegate.tasks.map(t => `<li>${esc(t.text)}</li>`).join('')}</ul>` : ''}
+    ${c.format === 'delegate' ? `<p class="kicker proj-prelist">Route each task to: ${c.delegate.choices.map(esc).join(', ')}</p><ul class="present-opts proj-prelist">${c.delegate.tasks.map(t => `<li>${esc(t.text)}</li>`).join('')}</ul>` : ''}
     <div class="count-row"><b class="num" id="resp-count">${s.responses}</b><span>of ${s.participants} participants answered</span><span class="meter-bar"><i style="width:${s.participants ? Math.round(100 * s.responses / s.participants) : 0}%"></i></span></div>
     <div class="next-row proj-controls">${controls}</div>
+    ${s.phase === 'revealed' && c.answerTitle ? `<div class="lessons proj-left"><div class="lesson"><h3>For a manager</h3><p>${esc(c.implication)} Where would this fail in your organization?</p></div><div class="lesson"><h3>Where the evidence comes from</h3><p>${esc(c.boundary)}</p></div></div>` : ''}
     ${s.phase === 'revealed' && s.aggregate ? (c.answerTitle ? reveal(c, s.aggregate) : '<p class="kicker">Loading the evidence…</p>') : ''}</div>`;
 }
 
@@ -3211,7 +3237,7 @@ function reveal(c, a) {
   if (a.taskCounts) { const right = c.delegate.tasks.map((t, i) => [t.answer, ...(t.also || [])].reduce((x, j) => x + (a.taskCounts[i][j] || 0), 0)), tot = a.taskCounts.map(r => Object.values(r).reduce((x, y) => x + (y || 0), 0)), n = Math.max(1, ...tot);
     chart = bars(c.delegate.tasks.map(t => t.text), right, [], '', right.map((r, i) => `${r} of ${tot[i]}`), n, c.delegate.tasks.map(t => 'Evidence: ' + [t.answer, ...(t.also || [])].map(j => c.delegate.choices[j]).join(' or '))) + `<p class="kicker">How many routed each task the way the evidence suggests.</p>` }
   const s = BANK.sources[c.sources[0]];
-  return `<div class="rv"><h3 class="reveal-title rv-lead">${esc(c.answerTitle)}</h3><div class="rv-head"><div><span class="kicker">The room</span><b class="num">${a.n}<small class="rv-unit"> ${a.n === 1 ? 'answer' : 'answers'}</small></b></div><div><span class="kicker">${({ allocate: 'Most points on the best option', delegate: 'Routed every task as the evidence suggests', rank: 'Exact order' })[c.format] || 'Matched the evidence'}</span><b class="num">${a.shareCorrect ?? 0}%</b></div><div><span class="kicker">Average score</span><b class="num">${a.meanScore === null || a.meanScore === undefined ? '–' : String(a.meanScore).replace(/^-/, '\u2212')}</b></div>${a.meanConfidence !== null && a.meanConfidence !== undefined ? `<div><span class="kicker">Average confidence</span><b class="num">${a.meanConfidence}%</b></div>` : ''}</div>${chart ? `<div class="rv-chart">${chart}</div>` : ''}
+  return `<div class="rv"><h3 class="reveal-title rv-lead">${esc(c.answerTitle)}</h3><div class="rv-head"><div><span class="kicker">The room</span><b class="num">${a.n}<small class="rv-unit"> ${a.n === 1 ? 'answer' : 'answers'}</small></b></div><div><span class="kicker">${({ allocate: 'Most points on the best option', delegate: 'Every task routed right', rank: 'Exact order' })[c.format] || 'Matched the evidence'}</span><b class="num">${a.shareCorrect ?? 0}%</b></div><div><span class="kicker">Average score</span><b class="num">${a.meanScore === null || a.meanScore === undefined ? '–' : String(a.meanScore).replace(/^-/, '\u2212')}</b></div>${a.meanConfidence !== null && a.meanConfidence !== undefined ? `<div><span class="kicker">Average confidence</span><b class="num">${a.meanConfidence}%</b></div>` : ''}</div>${chart ? `<div class="rv-chart">${chart}</div>` : ''}
     <p class="reveal-body">${esc(c.explain)}</p>
     <div class="lessons"><div class="lesson"><h3>For a manager</h3><p>${esc(c.implication)} Where would this fail in your organization?</p></div><div class="lesson"><h3>Where the evidence comes from</h3><p>${esc(c.boundary)}</p></div></div><p class="kicker">${esc(s.authors)} (${s.year}), ${esc(s.venue)}.</p></div>`;
 }

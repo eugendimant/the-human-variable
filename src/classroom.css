@@ -74,3 +74,17 @@ p,li{text-wrap:pretty}
 body.projector .proj-exit{opacity:0}   /* hidden on the projected screen until hover or keyboard focus (review 29, m9) */
 body.projector .proj-hide{display:none}   /* instructor chrome stays off the projected screen (review 30, m14) */
 body.projector .proj-controls{opacity:0;transition:opacity .15s}body.projector .proj-controls:hover,body.projector .proj-controls:focus-within{opacity:1}   /* instructor controls stay off the projected screen until pointed at or tabbed to (review 31) */
+/* projector, after the reveal: the join banner shrinks to one slim line and the result fits a 1440×900 screen (review 31, m8) */
+body.projector:has(.rv) .join-banner{padding:8px 20px}
+body.projector:has(.rv) .join-code{font-size:30px;letter-spacing:.1em}
+body.projector:has(.rv) .qr{width:56px;height:56px;padding:4px}
+body.projector:has(.rv) .stage-h{font-size:clamp(26px,2.4vw,40px)}
+body.projector:has(.rv) .play-grid>.card .scene{font-size:clamp(16px,1.2vw,20px)}
+body.projector:has(.rv) .rv-row,body.projector:has(.rv) .present-opts li,body.projector:has(.rv) .rv-row b{font-size:clamp(16px,1.25vw,21px)}
+body.projector:has(.rv) .rv-head b{font-size:32px}
+body.projector:has(.rv) .play-grid>.card{padding-top:24px;padding-bottom:24px}
+/* lessons: in the console they close the reveal; on the projector they move under the question */
+.proj-left{display:none}
+body.projector:has(.rv) .proj-left{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+body.projector:has(.rv) .rv .lessons,body.projector:has(.rv) .count-row,body.projector:has(.rv) .proj-prelist{display:none}
+body.projector:has(.rv) .rv-head .kicker{white-space:nowrap}

@@ -431,7 +431,7 @@ body.in-play{background:var(--paper)}
 
 
 .score-strip{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin:26px 0 22px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
-.score-big b{display:block;font-size:clamp(72px,10vw,128px);letter-spacing:-.03em;line-height:.9;font-weight:800}
+.score-big b{display:block;font-size:clamp(72px,10vw,128px);letter-spacing:-.03em;line-height:1;font-weight:800}
 .score-big span{font-size:var(--t6);color:var(--muted)}
 .score-meta{display:flex;gap:28px;flex-wrap:wrap;margin:0}
 .score-meta dt{font-size:var(--t7);color:var(--muted)}
@@ -496,9 +496,11 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
   .focus:has(.reveal) .focus-top{max-width:none}
   .reveal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
   .reveal>*{grid-column:1}
-  .reveal>figure.gap{grid-column:2;grid-row:1/span 20;position:sticky;top:24px;margin-top:0}
+  .reveal>figure.gap{grid-column:2;grid-row:1/span 6;margin-top:0}
   .reveal>section.gap{grid-column:2}
-  .reveal>.deep{grid-column:1}   /* the questions sit under the finding, beside the evidence */
+  .reveal>.deep{grid-column:1/-1;margin-top:40px}   /* below both columns: no dead quadrant beside the questions (review 31) */
+  .reveal>.deep .tabpanel:has(.follow){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
+  .reveal>.deep .tabpanel:has(.follow) .tutor{margin-top:0}
   .focus:has(.reveal) .actionbar-in{max-width:1240px}
   /* the question screen uses the same two columns: the question on the left, your answer beside it (owner, 2026-11-01: fill the space) */
   .focus:has(.q-col){max-width:1240px}
@@ -551,7 +553,7 @@ body.projector .proj-exit{background:#fff;color:#14203a}
 body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:content-box}
 .deleg-cmp li.ok>span:first-child::before{content:"✓";color:var(--good);font-weight:800;margin-right:8px}
 .gap:has(.deleg-cmp) .gap-legend{display:flex}
-.score-row{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}.spark{width:220px;height:56px;margin-bottom:14px}
+.score-row{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}.spark{width:278px;height:56px;margin-bottom:14px}
 /* causal diagrams sit on a faint lab grid, so the factors read as a board waiting for its links */
 .dag{background:none;border:0}
 .plate-more{margin-top:18px;padding-top:16px;border-top:1px solid var(--rule)}
@@ -734,3 +736,12 @@ p,li,dd{text-wrap:pretty}
 .lib-note{color:var(--ink-2);font-size:15px;margin:0 0 8px}
 .alloc-cmp b.num.ev.ns{color:var(--muted)}
 .plate .alloc-cmp b.num.ev.ns{color:#b9c4dd}
+
+/* phones: the finding and the manager's action come right after the verdict; the study card moves into the Source tab (review 31, m10) */
+.sc-phone{display:none}
+@media (max-width:700px){
+  .reveal{display:flex;flex-direction:column}
+  .reveal>.reveal-title{order:1}.reveal>.verdict{order:2}.reveal>.reveal-body{order:3}.reveal>.action-note{order:4}.reveal>figure.gap{order:5}.reveal>section.gap{order:6}.reveal>.deep{order:7}
+  .reveal>figure.gap .study-card{display:none}
+  .sc-phone{display:block;margin-top:14px}.sc-phone .study-card{padding:14px 0 0}
+}
