@@ -625,7 +625,9 @@ function methodsModal() {
 }
 
 // ----- export -----
-function download(name, text, mime) { const b = new Blob([text], { type: mime }); const u = URL.createObjectURL(b); const a = document.createElement('a'); a.href = u; a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000) }
+async function download(name, text, mime) {   // inside a claude.ai page the viewer's own save dialog; elsewhere a plain browser download
+  try { const d = window.claude && window.claude.use ? await window.claude.use('downloads') : null; if (d) { try { await d.save({ filename: name, data: text }) } catch (e) { if (e && e.code !== 'declined') notice('That file cannot be saved here.') } return } } catch { }
+  const b = new Blob([text], { type: mime }); const u = URL.createObjectURL(b); const a = document.createElement('a'); a.href = u; a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000) }
 function csvCell(x) { const s = String(x ?? '').replace(/^[=+@\-\t\r]/, m => "'" + m); return '"' + s.replace(/"/g, '""') + '"' }
 function exportCSV() { const head = ['decision_id', 'title', 'area', 'format', 'score_0_100', 'correct', 'confidence', 'response', 'utc_time', 'seed', 'field_note']; const rows = records.map(r => [r.id, BY_ID[r.id].title, BY_ID[r.id].track, r.format, pct(r.score), r.correct ? 1 : 0, r.confidence ?? '', JSON.stringify(r.response), r.at, r.seed, notes[r.id] || ''].map(csvCell).join(',')); download('human-variable-record.csv', [head.join(','), ...rows].join('\n'), 'text/csv;charset=utf-8') }
 
