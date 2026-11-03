@@ -1421,6 +1421,14 @@
   [
    "Is it legal to do this?",
    "ai01"
+  ],
+  [
+   "does this mean we can cut headcount by 40%?",
+   "ai01"
+  ],
+  [
+   "Can we reduce our staff now?",
+   "ai01"
   ]
  ],
  "every_decision": [

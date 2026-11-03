@@ -86,5 +86,7 @@ body.projector:has(.rv) .play-grid>.card{padding-top:24px;padding-bottom:24px}
 /* lessons: in the console they close the reveal; on the projector they move under the question */
 .proj-left{display:none}
 body.projector:has(.rv) .proj-left{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
-body.projector:has(.rv) .rv .lessons,body.projector:has(.rv) .count-row,body.projector:has(.rv) .proj-prelist{display:none}
-body.projector:has(.rv) .rv-head .kicker{white-space:nowrap}
+body.projector:has(.rv) .rv .lessons,body.projector:has(.rv) .count-row,body.projector:has(.rv) .proj-prelist,body.projector:has(.rv) .proj-factors,body.projector:has(.rv) .play-grid>.card>.scene{display:none}
+@media (min-width:1400px){body.projector:has(.rv) .rv-head .kicker{white-space:nowrap}}   /* at 1280 the labels wrap instead of running into the next cell (audit 42) */
+.proj-dag{width:100%;height:auto;display:block;margin:0 0 6px}
+.rv .reveal-body{margin-top:22px}   /* the explanation never sits flush against the last answer row (review 32, m7) */

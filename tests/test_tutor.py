@@ -228,7 +228,7 @@ def test_offline_tutor_review22(q, cid, want):
 
 
 REVIEW23 = [('why didnt the nudges work', 'dimant-requiem-forecast', 'did not change norm perceptions'),
-            ('was the difference significant', 'axf06', 'P = .60'),
+            ('was the difference significant', 'axf06', 'not statistically significant'),
             ('what should my analytics team do with this?', 'ai09', 'error rates'),
             ('what was the die task exactly', 'lies-in-disguise', 'rolled a die'),
             ('what does proxy mean here', 'axb05', 'proxy')]

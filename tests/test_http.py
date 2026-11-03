@@ -275,3 +275,14 @@ def test_public_bank_carries_no_in_band_sample(base):
     by = {c['id']: c for c in r['challenges']}
     for cid in ('judg09', 'bz04'):
         if cid in by: assert 'n' not in (by[cid].get('study') or {}), cid
+
+
+def test_console_reads_have_their_own_bucket(base):
+    """Review 32, m17: when phones on one address exhaust the shared read bucket, the instructor's console still reads."""
+    app.LIMIT.b.clear()   # earlier tests in the module spend the create bucket
+    _, room, _ = req(base, '/api/rooms', {'title': 'bucket'}, client='inst9'); key = room['secret']
+    app.LIMIT.b[('127.0.0.1', 'ip_read')] = [0.0, __import__('time').time() + 5]   # the address's shared read bucket is empty for the next few seconds
+    s_student = req(base, f"/api/rooms/{room['code']}", client='phone9')[0]
+    s_console = req(base, f"/api/rooms/{room['code']}", key=key, client='inst9')[0]
+    assert s_student == 429 and s_console == 200, (s_student, s_console)
+    app.LIMIT.b.pop(('127.0.0.1', 'ip_read'), None)

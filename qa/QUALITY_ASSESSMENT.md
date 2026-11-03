@@ -37,6 +37,7 @@ Scores in this file come only from independent reviewers: fresh agents that did 
 | 29 | iteration 37 (redesign 36 + audits 36, 37) | 87 | 0 | 0 |
 | 30 | iteration 38 | 88 | 0 | 0 |
 | 31 | iteration 39 | 87 | 0 | 1 |
+| 32 | iteration 42 | 87 | 0 | 0 |
 
 The target is 95 from an independent reviewer. It has not been reached yet; the loop continues.
 

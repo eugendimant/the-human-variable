@@ -70,7 +70,7 @@ class Limiter:
     # Per-client buckets (X-Client-Id, a random id each browser keeps) plus a generous per-IP ceiling,
     # because a whole class often shares one campus NAT address.
     RULES = {'read': (4.0, 20), 'write': (2.0, 12), 'create': (10 / 3600, 10), 'tutor': (0.5, 6),
-             'ip_read': (150.0, 400), 'ip_write': (60.0, 200), 'join': (1.0, 130), 'ip_join': (5.0, 300), 'ip_tutor': (2.0, 30)}  # join burst covers a full class (120) behind one NAT
+             'ip_read': (150.0, 400), 'ip_admin_read': (20.0, 60), 'ip_write': (60.0, 200), 'join': (1.0, 130), 'ip_join': (5.0, 300), 'ip_tutor': (2.0, 30)}  # join burst covers a full class (120) behind one NAT
     def __init__(self): self.b = defaultdict(lambda: [0.0, 0.0]); self.lock = threading.Lock()
     def allow(self, ip: str, name: str) -> bool:
         rate, burst = self.RULES[name]; now = time.time()
@@ -126,6 +126,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def allowed(self, kind: str) -> bool:
         ip = self.ip()
+        if kind == 'read' and self.key(): return LIMIT.allow(ip + '|admin', 'ip_admin_read')   # the instructor's console polls on its own per-address bucket, never squeezed by 120 phones (review 32, m17); a forged header earns at most this small bucket
         if not LIMIT.allow(ip, 'ip_' + kind): return False
         return LIMIT.allow(ip + '|' + self.client(), kind)
 

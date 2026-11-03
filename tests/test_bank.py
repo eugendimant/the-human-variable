@@ -581,3 +581,21 @@ def test_percent_numbers_are_quoted_as_percents():
             v = abs(float(n))
             if not any(abs(p - v) <= 0.5 or round(p) == round(v) for p in pcts): bad.append((c['id'], n + '%'))
     assert not bad, bad
+
+
+def test_no_statistical_notation_in_player_text():
+    """Review 31 m11 and review 32 m2: z, P, g, d, D, r, t values and standard errors stay in the Source tab; player text says it in words."""
+    R = re.compile(r'\b[pPgdDrzt]\s*[=<>]\s*[-−.\d]|standard errors?\b|\bSDs?\b|\bt\(\d')
+    bad = []
+    for c in LIVE:
+        for k in ('explain', 'answerTitle', 'scene', 'implication', 'question'):
+            if R.search(c.get(k, '')): bad.append((c['id'], k))
+        bad += [(c['id'], 'follow: ' + f['q']) for f in c.get('follow', []) if R.search(f['a'])]
+    assert not bad, bad
+
+
+def test_no_journal_headers_in_quotes():
+    """Review 31 m2 and review 32 m3: a running header or copyright line is not evidence."""
+    ev = json.loads((ROOT / 'src/evidence.json').read_text())
+    bad = [(cid, q.get('quote', '')[:60]) for cid, qs in ev.items() for q in qs if re.search(r'©|\bvol\.\s*\d+.*\bpp\.\s*\d|INFORMS\b', q.get('quote', ''))]
+    assert not bad, bad

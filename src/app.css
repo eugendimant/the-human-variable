@@ -494,9 +494,9 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
 @media (min-width:1200px){
   .focus:has(.reveal){max-width:1240px}
   .focus:has(.reveal) .focus-top{max-width:none}
-  .reveal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
+  .reveal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start;grid-auto-flow:row dense}   /* dense: a live-class panel in the right column no longer pushes the finding down (audit 42) */
   .reveal>*{grid-column:1}
-  .reveal>figure.gap{grid-column:2;grid-row:1/span 6;margin-top:0}
+  .reveal>figure.gap{grid-column:2;grid-row:1/span 7;margin-top:0}
   .reveal>section.gap{grid-column:2}
   .reveal>.deep{grid-column:1/-1;margin-top:40px}   /* below both columns: no dead quadrant beside the questions (review 31) */
   .reveal>.deep .tabpanel:has(.follow){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
@@ -507,7 +507,7 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
   .focus:has(.q-col) .actionbar-in{max-width:1240px}
   .focus-card:has(.q-col){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
   .focus-card:has(.q-col)>.lock-note{grid-column:1/-1}
-  .a-col{padding-top:8px}
+  .a-col{padding-top:8px;align-self:center}   /* the instrument sits level with the question, not stranded at the top (review 32, m10) */
 }
 
 /* numeric reveal: the two numbers are the moment */
@@ -602,7 +602,8 @@ body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:con
 .plate .gap-legend .tag{background:#f0b43c;color:#14203a}
 .study-card{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:0;padding:18px 22px 20px;border-top:1px solid var(--rule)}
 .study-card dt{font-size:var(--t7);color:var(--muted);font-weight:650;margin-bottom:2px}.study-card dd{margin:0;font-size:var(--t6);line-height:1.4;color:var(--ink)}
-.gap:not(.has-plate) .study-card{padding:16px 0 0;margin-top:16px}
+.rev-meta .study-card{padding:16px 0 0;border-top:1px solid var(--rule)}
+.rev-meta .theme-strip{padding:14px 0 0;margin-top:18px}
 @media (max-width:520px){.study-card{grid-template-columns:1fr}}
 .reveal{position:relative}
 
@@ -741,7 +742,9 @@ p,li,dd{text-wrap:pretty}
 .sc-phone{display:none}
 @media (max-width:700px){
   .reveal{display:flex;flex-direction:column}
-  .reveal>.reveal-title{order:1}.reveal>.verdict{order:2}.reveal>.reveal-body{order:3}.reveal>.action-note{order:4}.reveal>figure.gap{order:5}.reveal>section.gap{order:6}.reveal>.deep{order:7}
-  .reveal>figure.gap .study-card{display:none}
+  .reveal>.reveal-title{order:1}.reveal>.verdict,.reveal>.case-line{order:2}.reveal>.reveal-body{order:3}.reveal>.action-note{order:4}.reveal>figure.gap{order:5}.reveal>section.gap{order:6}.reveal>.deep{order:7}
+  .reveal>.rev-meta{order:7}.reveal>.deep{order:8}.reveal>.rev-meta .study-card{display:none}
   .sc-phone{display:block;margin-top:14px}.sc-phone .study-card{padding:14px 0 0}
 }
+.reveal>.deep .deep-text,.reveal>.deep .src,.reveal>.deep .note-box{max-width:68ch}   /* the full-width tabs keep a readable measure (audit 42) */
+@media (max-width:700px){.hb-scale em.z-near{display:none}}   /* on phones the end label wins when zero sits close to it (the zero tick stays) */
