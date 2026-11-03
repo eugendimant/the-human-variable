@@ -13,7 +13,8 @@ def frep(cid, old, new):
 # m1: bz16's false claim is about size, not direction ("not very sensitive" is weak, not zero)
 C['bz16']['forecast']['claim'] = C['bz16']['forecast']['claim'].replace('In real plans, more equity funds on the menu meant more money in equity.', 'In real plans, the share put into equity rose roughly in step with the share of equity funds offered.')
 # m2: statistical notation leaves player text; the Source tab carries the statistics
-rep('social16', 'explain', 'The ally-opponent difference stayed highly significant (p < 0.001).', 'The ally-opponent difference stayed large and statistically reliable.')
+rep('social16', 'explain', 'The ally-opponent difference stayed highly significant (p < 0.001).', 'The ally-opponent difference stayed statistically reliable.')
+rep('social16', 'explain', 'The ally-opponent difference stayed large and statistically reliable.', 'The ally-opponent difference stayed statistically reliable.')   # audit 43: the quote says nothing about size
 rep('axb01', 'explain', 'Across 370 effect sizes, human-AI teams did worse than the best performer alone (g = −0.23). They gained when humans beat the AI (g = 0.46) and lost when the AI was better (g = −0.54).',
     'Across 370 effect sizes, human-AI teams did worse on average than the better of the human or the AI working alone. They gained when the human was the better performer and lost when the AI was.')
 frep('axb01', 'Yes. Against humans alone, human-AI systems performed better (g = 0.64).', 'Yes. Against humans alone, human-AI systems performed better on average.')
@@ -23,7 +24,8 @@ rep('bz10', 'explain', 'found a mean effect size of virtually zero (D = 0.02), w
 rep('bz13', 'answerTitle', 'Output fell 0.45 SD;', 'Output fell 0.45 standard deviations;')
 rep('accuracy-prompt', 'explain', 'More than 80% of 192 robustness analyses gave P < 0.05.', 'The result held in more than 80% of 192 robustness analyses.')
 frep('misperceived-norms-action', 'Not significantly: current outside-the-home employment rose from 7.4% to 9.4% (p = 0.235).', 'Not reliably: current outside-the-home employment rose from 7.4% to 9.4%, a difference that was not statistically significant.')
-frep('dimant-masks-forecast', 'Predicted and observed effects for Democrats were negatively correlated (r = −0.63, p = 0.0003).', 'Predicted and observed effects for Democrats ran in opposite directions, with a correlation of −0.63.')
+frep('dimant-masks-forecast', 'Predicted and observed effects for Democrats were negatively correlated (r = −0.63, p = 0.0003).', 'Messages forecasters expected to work best for Democrats tended to do worst (a correlation of −0.63, statistically significant).')
+frep('dimant-masks-forecast', 'Predicted and observed effects for Democrats ran in opposite directions, with a correlation of −0.63.', 'Messages forecasters expected to work best for Democrats tended to do worst (a correlation of −0.63, statistically significant).')   # audit 43: a negative correlation is not opposite signs
 frep('dimant-enforcers-rank', 'vs 43.6% for lies that achieved equity (P < 0.001).', 'vs 43.6% for lies that achieved equity, a reliable difference.')
 rep('axe06', 'explain', 'raised completed tasks by 26.08% (standard error 10.3%).', 'raised completed tasks by 26.08%.')
 frep('axe11', 'P = 0.0032; the authors call the effect small.', 'a difference the authors call small.')
@@ -40,6 +42,8 @@ frep('social13', 'some estimates have large standard errors', 'some estimates ar
 for k in E: E[k] = [q for q in E[k] if 'INFORMS' not in q.get('quote', '')]   # the same header sat in two items (RULE G)
 # m4: rollout3 prints the number as quoted
 rep('rollout3', 'explain', '60.0% with GPT-4 plus a prompt overview', '60% with GPT-4 plus a prompt overview')
+for t in C['rollout3'].get('delegate', {}).get('tasks', []):
+    if t.get('why'): t['why'] = t['why'].replace('60.0%', '60%')   # audit 43: the task note too
 # m5: civic-wallet-rank's scope line names no critique it does not source
 rep('civic-wallet-rank', 'boundary', ', a measure later questioned for cross-country rankings.', '.')
 # m11: axe12's title states the measure; the citation lives in the source line; values keep their printed decimals

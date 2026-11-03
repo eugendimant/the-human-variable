@@ -90,3 +90,4 @@ body.projector:has(.rv) .rv .lessons,body.projector:has(.rv) .count-row,body.pro
 @media (min-width:1400px){body.projector:has(.rv) .rv-head .kicker{white-space:nowrap}}   /* at 1280 the labels wrap instead of running into the next cell (audit 42) */
 .proj-dag{width:100%;height:auto;display:block;margin:0 0 6px}
 .rv .reveal-body{margin-top:22px}   /* the explanation never sits flush against the last answer row (review 32, m7) */
+body.projector:has(.rv) .proj-left .lesson p{font-size:clamp(15px,1.1vw,18px);line-height:1.45}body.projector:has(.rv) .proj-left{gap:10px}

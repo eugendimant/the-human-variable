@@ -124,9 +124,16 @@ class Handler(BaseHTTPRequestHandler):
 
     def client(self) -> str: return re.sub(r'[^A-Za-z0-9_-]', '', self.headers.get('X-Client-Id', ''))[:40]
 
+    def valid_admin(self) -> bool:
+        """The key must open the room in the path; a forged header falls through to the shared buckets (audit 43)."""
+        m = CODE_RE.match(urllib.parse.urlsplit(self.path).path)
+        if not m: return False
+        try: return STORE.is_admin(m.group(1), self.key())
+        except Exception: return False
+
     def allowed(self, kind: str) -> bool:
         ip = self.ip()
-        if kind == 'read' and self.key(): return LIMIT.allow(ip + '|admin', 'ip_admin_read')   # the instructor's console polls on its own per-address bucket, never squeezed by 120 phones (review 32, m17); a forged header earns at most this small bucket
+        if kind == 'read' and self.key() and self.valid_admin(): return LIMIT.allow(ip + '|admin', 'ip_admin_read')   # the instructor's console polls on its own per-address bucket, never squeezed by 120 phones (review 32, m17); a forged header earns at most this small bucket
         if not LIMIT.allow(ip, 'ip_' + kind): return False
         return LIMIT.allow(ip + '|' + self.client(), kind)
 

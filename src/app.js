@@ -317,7 +317,7 @@ function gapFigure(c, rec) {
   const opt = ['choice', 'causal', 'multi'].includes(c.format), plate = !(opt && !c.chart);   // the evidence sits on a dark plate; a plain option list stays light
   const legend = opt && c.chart ? `<p class="plate-h">${esc((c.chart.note || '').replace(/\.$/, ''))}</p>` : '';   // no colour keys: every mark is labelled where it sits
   const main = opt && !c.chart ? instrument(c) : body, caption = opt && !c.chart || !cap ? '' : `<p class="gap-caption">${esc(cap)}</p>`;
-  return `<figure class="gap${plate ? ' has-plate' : ''}" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${plate ? `<div class="plate">${legend}${main}${caption}</div>` : `${legend}${main}${caption}`}${opt && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}</figure>`;   // the study card and the principle strip sit under the finding (review 32, m9)
+  return `<figure class="gap${plate ? ' has-plate' : ''}" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${plate ? `<div class="plate">${legend}${main}${caption}</div>` : `${legend}${main}${caption}`}${opt && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}${SHORT_FIG.has(c.format) ? themeStrip(c, rec) : ''}</figure>`;   // the study card and the principle strip sit under the finding (review 32, m9)
 }
 // The signature moment of a numeric reveal: your number against the study's, large, with the gap between them.
 function gapHead(you, ev, gap, youLab = 'Your call', evLab = 'The study') {
@@ -325,6 +325,7 @@ function gapHead(you, ev, gap, youLab = 'Your call', evLab = 'The study') {
 }
 // The study at a glance, under the evidence: who, how, where it was published and how it was checked.
 // Wide reveals: this call beside your other calls on the same principle, on one skill scale (review 25 to 27: the empty right column; Tufte: a second comparison at the same scale)
+const SHORT_FIG = new Set(['estimate', 'forecast', 'delegate']);   // short evidence figures keep the principle strip beside them; tall ones send it to the left column (audit 43)
 function themeStrip(c, rec) {
   const th = (BANK.themes || []).find(t => t.id === c.theme); if (!th) return '';
   const sk = r => { const b = typeof r.base === 'number' ? r.base : S.baseline(BY_ID[r.id]); return Math.max(-1, Math.min(1, b >= 1 ? 0 : (r.score - b) / (1 - b))) };
@@ -391,7 +392,7 @@ function play() {
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
       <p class="reveal-body">${esc(c.explain)}</p>
       <p class="action-note"><strong>For a manager:</strong> ${esc(c.implication)}</p>
-      <div class="rev-meta">${studyCard(c)}${rec.missed ? '' : themeStrip(c, rec)}</div>
+      <div class="rev-meta">${studyCard(c)}${rec.missed || SHORT_FIG.has(c.format) ? '' : themeStrip(c, rec)}</div>
       <div class="deep"><div class="tabs" role="tablist" aria-label="Go deeper">${tabs.map(([k, l]) => `<button role="tab" id="tab-${k}" aria-selected="${tab === k}" aria-controls="tabpanel" data-tab="${k}" tabindex="${tab === k ? 0 : -1}">${l}</button>`).join('')}</div><div class="tabpanel" id="tabpanel" role="tabpanel" aria-labelledby="tab-${tab}">${panel}</div></div>
     </article>
     <div class="actionbar"><div class="actionbar-in"><span class="kicker">${st.room ? `Live class ${esc(st.room.code)}. Your instructor opens the next decision.` : `${st.session.filter(r => r.correct).length} of ${st.session.length} called right, average score ${st.session.length ? mn(pct(st.session.reduce((a, r) => a + r.score, 0) / st.session.length)) : 0}`}</span>${st.room ? '' : `<button class="btn btn-solid btn-lg" data-act="next" id="next-btn">${nextLabel}</button>`}</div></div></section>`;
@@ -711,9 +712,9 @@ function classPanel(c, a) {
   const hbars = (labels, vals, ev, show) => { const mx = Math.max(1, ...vals); return `<div class="hbars" role="img" aria-label="Class answers">${labels.map((l, i) => `<div class="hb-row"><span class="hb-label">${esc(l)}</span><span class="hb-track"><i class="grow ${ev && ev.includes(i) ? 'ev' : 'room'}" style="width:${Math.max(1.5, vals[i] / mx * 100)}%"></i></span><b class="num">${show ? show[i] : vals[i]}</b></div>`).join('')}</div>` };
   if (a.counts) { const o = optionOrder(c); body = hbars(o.map(x => x.t), o.map(x => a.counts[x.i]), o.map((x, k) => (f === 'multi' ? c.multiAnswers.includes(x.i) : x.i === c.answer) ? k : -1).filter(k => k >= 0)) }
   else if (a.hist) { const lo = a.lo, hi = a.hi, w = (hi - lo) / a.hist.length, mx = Math.max(1, ...a.hist), ev = f === 'estimate' ? c.estimate.target : (c.forecast.truth ? 100 : 0); body = `<svg viewBox="0 0 340 130" role="img" aria-label="Class distribution, median ${a.median}">${a.hist.map((h, i) => `<rect x="${10 + i * 32}" y="${100 - h / mx * 80}" width="28" height="${h / mx * 80}" rx="3" fill="#5b6b86" fill-opacity=".8"/>`).join('')}<line x1="${10 + (ev - lo) / (hi - lo) * 320}" y1="10" x2="${10 + (ev - lo) / (hi - lo) * 320}" y2="104" stroke="#e0a01c" stroke-width="3"/><text x="10" y="122" font-size="12" fill="#56617a">${lo}</text><text x="330" y="122" font-size="12" fill="#56617a" text-anchor="end">${hi}</text><text x="${Math.min(300, 14 + (ev - lo) / (hi - lo) * 320)}" y="20" font-size="12" font-weight="700" fill="#7d5200">Evidence</text></svg><p class="gap-caption">Class median ${a.median}${f === 'estimate' ? (c.estimate.unit ?? '%') : '%'}.</p>` }
-  else if (a.meanPosition) body = hbars(c.options, a.meanPosition.map(p => p == null ? 0 : +(c.options.length + 1 - p).toFixed(2)), [c.rankAnswer[0]], a.meanPosition.map((p, k) => p == null ? '–' : (k === 0 ? 'avg rank ' : '') + Number(p).toFixed(1)));
+  else if (a.meanPosition) body = '<p class="plate-h">The room’s average rank, 1 is the top</p>' + hbars(c.options, a.meanPosition.map(p => p == null ? 0 : +(c.options.length + 1 - p).toFixed(2)), [c.rankAnswer[0]], a.meanPosition.map(p => p == null ? '–' : Number(p).toFixed(1)));
   else if (a.meanShare) body = hbars(c.options, a.meanShare, (c.allocate.best || [c.allocate.values.indexOf(Math.max(...c.allocate.values))]), a.meanShare.map(v => v == null ? '–' : v + ' pts'));   // the same unit as the player's own split (review 30, m15)
-  else if (a.taskCounts) body = `<ul class="hist">${c.delegate.tasks.map((t, i) => `<li><span>${esc(short(t.text, 60))}</span><span class="num">${[t.answer, ...(t.also || [])].reduce((x, j) => x + (a.taskCounts[i][j] || 0), 0)} of ${a.n}${i === 0 ? ' routed as the evidence suggests' : ''}</span></li>`).join('')}</ul>`;
+  else if (a.taskCounts) body = `<p class="plate-h">Classmates who routed each task as the evidence suggests</p><ul class="hist">${c.delegate.tasks.map((t, i) => `<li><span>${esc(short(t.text, 60))}</span><span class="num">${[t.answer, ...(t.also || [])].reduce((x, j) => x + (a.taskCounts[i][j] || 0), 0)} of ${a.n}</span></li>`).join('')}</ul>`;
   return `<section class="panel gap" aria-labelledby="class-h"><h2 id="class-h">The room, ${a.n} ${a.n === 1 ? 'answer' : 'answers'}</h2><p class="gap-caption" style="margin:0 0 8px">Average score ${a.meanScore === null || a.meanScore === undefined ? '–' : mn(a.meanScore)}. ${a.shareCorrect ?? 0}% matched the evidence${a.meanConfidence !== null ? `, at ${a.meanConfidence}% average confidence` : ''}.</p>${body}</section>`;
 }
 function joinModal() {

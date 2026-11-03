@@ -3759,7 +3759,7 @@
     "The default failed; norms worked"
    ],
    "answerTitle": "General improvement, persistent gap",
-   "explain": "With a default nudge, Dimant shows that taking from political opponents fell from about 20% of the endowment to essentially 0%, and giving to allies rose from about 10–15% to 25–35%. The ally-opponent difference stayed large and statistically reliable.",
+   "explain": "With a default nudge, Dimant shows that taking from political opponents fell from about 20% of the endowment to essentially 0%, and giving to allies rose from about 10–15% to 25–35%. The ally-opponent difference stayed statistically reliable.",
    "implication": "Track between-group gaps as a separate metric when testing interventions, since average cooperation can rise while the gap stays.",
    "boundary": "Default and norm nudges tested in incentivized giving and cooperation games with US Trump supporters and opponents.",
    "sources": [
@@ -4736,7 +4736,7 @@
      {
       "text": "Pick the brand to grow from interview notes and spreadsheets",
       "answer": 1,
-      "why": "On this outside-frontier task, correctness fell from 84.5% without AI to 70.6% with GPT-4 and 60.0% with GPT-4 plus a prompt overview."
+      "why": "On this outside-frontier task, correctness fell from 84.5% without AI to 70.6% with GPT-4 and 60% with GPT-4 plus a prompt overview."
      }
     ]
    },
@@ -6384,7 +6384,7 @@
     },
     {
      "q": "Did forecasters at least rank the messages correctly?",
-     "a": "Not for Democrats. Predicted and observed effects for Democrats ran in opposite directions, with a correlation of −0.63."
+     "a": "Not for Democrats. Messages forecasters expected to work best for Democrats tended to do worst (a correlation of −0.63, statistically significant)."
     }
    ],
    "study": {
@@ -9096,7 +9096,7 @@
    ],
    [
     "ethics",
-    "\\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|(we|i) should (replace|fire|cut|lay off|hire fewer|downsize)|(we|i) (can|could) (cut|reduce|replace|lay off|shed) (our |the |\\w+ )?(headcount|staff|jobs|people|workers|employees|team)|headcount|is it (ok|okay|right|wrong)|allowed|legal(?! (team|department|counsel|staff|work)))"
+    "\\b(ethic|fair|moral|should (we|i)(?! (believe|trust|buy|take))|(we|i) should (replace|fire|cut|lay off|hire fewer|downsize)|(we|i) (can|could) (cut|reduce|replace|lay off|shed) (our |the |\\w+ )?(headcount|staff|jobs|people|workers|employees|team)|is it (ok|okay|right|wrong)|allowed|legal(?! (team|department|counsel|staff|work)))"
    ],
    [
     "models",

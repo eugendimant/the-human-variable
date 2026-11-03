@@ -284,5 +284,6 @@ def test_console_reads_have_their_own_bucket(base):
     app.LIMIT.b[('127.0.0.1', 'ip_read')] = [0.0, __import__('time').time() + 5]   # the address's shared read bucket is empty for the next few seconds
     s_student = req(base, f"/api/rooms/{room['code']}", client='phone9')[0]
     s_console = req(base, f"/api/rooms/{room['code']}", key=key, client='inst9')[0]
-    assert s_student == 429 and s_console == 200, (s_student, s_console)
+    s_forged = req(base, f"/api/rooms/{room['code']}", key='not-the-key', client='phone10')[0]
+    assert s_student == 429 and s_console == 200 and s_forged == 429, (s_student, s_console, s_forged)   # audit 43: a forged key falls through to the shared bucket
     app.LIMIT.b.pop(('127.0.0.1', 'ip_read'), None)
