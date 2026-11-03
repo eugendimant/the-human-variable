@@ -803,3 +803,14 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **M3.** The reconnecting notice overflowed at 390 px. Fix: the header shows "Reconnecting…" alone and `.count` may shrink.
 - **Minors.** Focus stays in the card after a resend (asserted in the test); the notice is announced once; "Not counted." after answers close; dimant-enforcers-rank implication matches the explanation; forecast-training scope from the stored quote; axb08 compounds kept whole by the page, not by U+2011; the review 35 content script no longer pins keyed options.
 - **Gates.** 338 passed; design lint by rule {}; build current.
+
+## Iteration 51 (2026-11-03): review 36 fixes
+
+- **M1, fixed.** Console, projector and phone panels mark the keyed option in words ("the study's answer" / "in the study") and with an amber outline at any count. Test `test_reveal_marks_the_study_answer_nobody_picked`.
+- **m1.** axb08 title flows as one line (`.plate-h:has(.nw){display:block}`).
+- **m2.** A 2xx without a boolean `accepted` is not a receipt; the answer strands and resends. Test `test_a_page_that_is_not_the_class_server_is_not_a_receipt`.
+- **m7.** "Partly right" needs a score above the baseline.
+- **m3.** axb08 asks which opponent clearly beat human-human debates (tools/content_review36_2026_11_03.py).
+- **m12.** The Library states each principle's count once.
+- **Open.** m4 dimant-hate-choice figure, m5 rank amber and scale, m6 repeated numbers, m8 decoding sentences, m9 tutor, m10 projector rank height, m11 dead space, m13 hero prompt, m14 axe12 scale (not in the stored quotes); review 35 m6 amber non-significant labels.
+- **Gates.** 340 passed; design lint by rule {}; build current.

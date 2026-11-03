@@ -4301,7 +4301,7 @@
    "concept": "AI persuasion",
    "title": "Who argues your case?",
    "scene": "In 10-minute online debates on assigned topics, people faced either a human or GPT-4. Some opponents also received basic demographic details about the person they debated. The options below are compared with debates between two people.",
-   "question": "Which opponent shifted agreement most?",
+   "question": "Which opponent clearly beat human-human debates at shifting agreement?",
    "options": [
     "GPT-4",
     "GPT-4 with demographic profile",

@@ -99,3 +99,5 @@ body.projector .present-opts li{padding-top:8px;padding-bottom:8px}
 body.projector .play-grid>.card{padding-top:28px;padding-bottom:28px}
 body.projector .play-grid>.card:not(:has(.rv)) .scene{font-size:clamp(16px,1.25vw,20px)}
 body.projector .play-grid>.card:not(:has(.rv)) .present-opts li{font-size:clamp(17px,1.4vw,22px)}
+.rv-tag{font-style:normal;font-size:.8em;font-weight:750;color:var(--ev-ink,#7d5200);white-space:nowrap}
+.rv-track.ev-row{box-shadow:inset 0 0 0 2px var(--ev)}

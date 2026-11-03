@@ -754,3 +754,5 @@ p,li,dd{text-wrap:pretty}
 .alloc-cmp .hb-row.two>b.ev{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25}   /* "(not significant)" wraps instead of clipping (review 34, m1) */
 .room-acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .nw{white-space:nowrap}
+.hb-track.ev-row{box-shadow:inset 0 0 0 2px var(--ev)}
+.plate-h:has(.nw){display:block}   /* a title with a kept-whole compound flows as one line of text (review 36, m1) */

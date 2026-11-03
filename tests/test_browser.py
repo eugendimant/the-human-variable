@@ -422,3 +422,36 @@ def test_stranded_answer_never_lands_on_the_next_decision(browser, tmp_path):
         ctx.close()
     finally:
         srv.shutdown()
+
+def test_reveal_marks_the_study_answer_nobody_picked(browser, tmp_path):
+    """Review 36, M1: the console, projector and phone mark the keyed option in words and outline even at 0 picks."""
+    srv, inst, ctx, ph, ch, app = _room(browser, tmp_path, 'zero')
+    try:
+        c = ch[0]; inst.click(f'[data-open="{c["id"]}"]'); ph.wait_for_selector('.opt', timeout=10000)
+        wrong = next(i for i, o in enumerate(c['options']) if i != c['answer'])
+        ph.locator('.opt', has_text=c['options'][wrong]).first.click()
+        ph.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); ph.click('#lock-btn')
+        ph.wait_for_selector('text=Your answer is in', timeout=10000); assert _count(inst, '1')
+        inst.click("text=Reveal to the room"); inst.wait_for_selector('.rv-tag')
+        row = inst.locator('.rv-row', has=inst.locator('.rv-tag'))
+        assert row.count() == 1 and c['options'][c['answer']] in row.text_content() and '0 of 1' in row.text_content()
+        assert row.locator('.rv-track.ev-row').count() == 1
+        ph.wait_for_selector('#class-h', timeout=10000)
+        prow = ph.locator('.hb-row', has=ph.locator('.ev-note'))
+        assert prow.count() == 1 and c['options'][c['answer']] in prow.text_content()
+        ctx.close()
+    finally:
+        srv.shutdown()
+
+def test_a_page_that_is_not_the_class_server_is_not_a_receipt(browser, tmp_path):
+    """Review 36, m2: a 200 with an HTML body (a captive portal) leaves the answer stranded, not 'in'."""
+    srv, inst, ctx, ph, ch, _ = _room(browser, tmp_path, 'portal')
+    try:
+        inst.click(f'[data-open="{ch[0]["id"]}"]'); ph.wait_for_selector('.opt', timeout=10000)
+        ph.route('**/responses', lambda r: r.fulfill(status=200, content_type='text/html', body='<html>Sign in to Wi-Fi</html>')); _lock(ph)
+        ph.wait_for_selector('[data-act="resend"]', timeout=40000)
+        assert 'Your answer is in' not in ph.text_content('.room-wait')
+        ph.unroute('**/responses'); ph.wait_for_selector('text=Your answer is in', timeout=30000); assert _count(inst, '1')
+        ctx.close()
+    finally:
+        srv.shutdown()
