@@ -787,3 +787,11 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 ### Regression audit 47 (fresh agent, diff 6932bf7..dffb2e8), fixed in iteration 48
 - Introduced, Major: the `meta-right` class placed the study card in a grid row below the left column, so on 42 wide reveals it moved sideways only and lengthened the page. Fixed: after the class is set, the card is pulled up to sit 24 px under the figure (a measured negative margin, reset on every balance); a browser test checks every reveal that triggers it (card within 40 px of the figure).
 - Minor, fixed: a left single quote in a surname (Dell‘Acqua) now splits the same way on server and page; the player's room panel colours the whole top tie group, as the reveal and projector do; the QR note in the ledger corrected (it renders at 120 px); the lint comment says what R31's clipped-text check covers.
+
+## Iteration 49 (2026-11-03): review 35 fixes
+
+- **M1, fixed.** A live-class answer that failed for the whole retry window now keeps its data on the device, is sent again on the next good poll while the decision is open, and offers "Send my answer again". The headline reads "Not sent yet." with the reason below. Browser test `test_stranded_room_answer_can_be_sent_again` cuts `/responses`, restores it and checks the instructor count.
+- **m10.** The phone question screen's header says "reconnecting…" while polls fail.
+- **Content (tools/content_review35_2026_11_03.py).** dimant-enforcers-rank equity gap stated as similar and not statistically significant; manylabs-anchoring measure in plain words; axb08 title no longer breaks at "human-human"; forecast-training scope; axe05 raters on the author team; rollout2 scope cut to the setting.
+- **Gates.** 335 tests (2 tutor goldens regenerated after reading the diff: only the four edited scope lines changed); design lint by rule {}; build current.
+- **Open from review 35.** m1 verdict at skill 0, m6, m7, m9, m11, m12, m13, m14, m15, m16; m3 stays open until the full text settles it.

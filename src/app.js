@@ -366,7 +366,7 @@ function play() {
   if (st.room && st.room.phase === 'revealed' && !st.session.some(r => r.id === c.id && r.room === st.room.code) && c.answerTitle) { st.phase = 'reveal' }
   const rev = st.phase === 'reveal', rec = st.session.filter(r => r.id === c.id).slice(-1)[0] || { score: 0, correct: false, confidence: null, response: null, detail: {}, missed: true };
   const steps = st.deck.map((_, k) => `<i class="${k < st.i || (k === st.i && rev) ? 'done' : k === st.i ? 'now' : ''}"></i>`).join('');
-  const top = `<div class="focus-top"><button class="x" data-act="leave" aria-label="${st.room ? 'Leave the live class' : 'Leave the round'}"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="steps" aria-hidden="true">${steps}</div>${st.room ? `<span class="count">Live class ${esc(st.room.code || '')}</span>` : `<span class="count num" aria-live="polite">${st.i + 1} of ${st.deck.length}</span>`}</div>`;
+  const top = `<div class="focus-top"><button class="x" data-act="leave" aria-label="${st.room ? 'Leave the live class' : 'Leave the round'}"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="steps" aria-hidden="true">${steps}</div>${st.room ? `<span class="count" id="room-conn" aria-live="polite">Live class ${esc(st.room.code || '')}${st.room.misses ? ', reconnecting…' : ''}</span>` : `<span class="count num" aria-live="polite">${st.i + 1} of ${st.deck.length}</span>`}</div>`;
   const label = c.case ? `<p class="case-line">${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}</p>` : '';
   if (!rev) {
     const ready = lockReady(c);
@@ -662,7 +662,8 @@ async function roomPoll() {
     const r = await fetch(`/api/rooms/${R.code}?v=${encodeURIComponent(R.etag)}`, { headers: roomHeaders() });
     if (r.status === 404) { st.room = null; st.view = 'home'; render(true); modal('<h2>This live session has ended</h2><p>Your instructor ended the class. Your answers stay in your record on this device.</p><button class="btn btn-solid" data-close="1">Close</button>', 'Class ended'); return }   // a dialog, so the end is not missed
     if (!r.ok) throw Error('poll ' + r.status);   // a 429 or error body is not class state: keep the current card and answer
-    const d = await r.json(); R.misses = 0;
+    const d = await r.json(); if (R.misses) { const rc = qs('#room-conn'); if (rc) rc.textContent = 'Live class ' + R.code } R.misses = 0;   // the question screen says when the phone lost the class (review 35, m10)
+    if (R.failed && !R.resending && d.phase === 'open' && d.challenge === R.failed.cid) { R.resending = true; const f = R.failed; roomSubmit(f.c, f.rec).finally(() => { R.resending = false }) }   // retry a stranded answer once the server answers again
     if (!d.same && d.phase) {
       const changed = d.challenge !== R.challenge, phaseChanged = d.phase !== R.phase;
       R.etag = d.etag; R.phase = d.phase; R.agg = d.aggregate || null; R.participants = d.participants; R.responses = d.responses; R.title = d.title;
@@ -676,12 +677,12 @@ async function roomPoll() {
       }
       else { const live = qs('#room-live'); if (live) live.textContent = roomLine() }
     }
-  } catch { R.misses++; const live = qs('#room-live'); if (live) live.textContent = 'Reconnecting…' }
+  } catch { R.misses++; const live = qs('#room-live'); if (live) live.textContent = 'Reconnecting…'; const rc = qs('#room-conn'); if (rc) rc.textContent = 'Live class ' + R.code + ', reconnecting…' }
   clearTimeout(R.timer); R.timer = setTimeout(roomPoll, document.hidden ? 6000 : Math.min(8000, 2000 * (1 + R.misses)));
 }
 function roomLine() { const R = st.room; return `${R.participants ?? '–'} joined. ${R.phase === 'open' ? (R.responses ?? 0) + ' answered so far.' : ''}` }
 async function roomSubmit(c, rec) {
-  const R = st.room; R.sent = false; render();
+  const R = st.room; R.sent = false; R.failed = null; render();
   let wait = 800, busy = false;
   for (let k = 0; k < 6; k++) {   // about 20 s in all, honouring Retry-After (review 28)
     try {
@@ -693,7 +694,8 @@ async function roomSubmit(c, rec) {
     } catch { wait = 800 * (k + 1); busy = false }
     if (k < 5) await new Promise(z => setTimeout(z, wait + Math.random() * 400));
   }
-  R.sentMsg = busy ? 'The class server is busy. Your answer is saved on this device; lock it again in a moment.' : 'Could not reach the class server. Check your connection; your answer is saved on this device.'; R.sent = true; render();
+  R.failed = { c, rec, cid: R.challenge };   // kept until it goes through (review 35, M1)
+  R.sentMsg = busy ? 'The class server is busy. Your answer is saved on this device and goes out again on its own, or send it now.' : 'Your answer did not reach the class. It is saved on this device and goes out again on its own when the connection returns, or send it now.'; R.sent = true; render();
 }
 function roomWait() {
   const R = st.room;
@@ -705,8 +707,8 @@ function roomWait() {
 function roomLocked(c) {
   const R = st.room;
   return `<section class="play wrap"><div class="panel card room-wait" aria-live="polite">
-    <h1 class="q" tabindex="-1">${R.sent ? esc(R.sentMsg || 'Your answer is in.') : 'Sending your answer…'}</h1><p class="room-id">Live class ${esc(R.code)}, decision: ${esc(c.title)}${/[?!.]$/.test(c.title) ? '' : '.'}</p>
-    <p class="scene">The evidence appears for everyone when your instructor reveals it.</p><p class="kicker" id="room-live">${roomLine()}</p><button class="btn btn-quiet" data-act="leave-room">Leave the live class</button></div></section>`;   // no badge above the headline (review 27, rule 2)
+    <h1 class="q" tabindex="-1">${R.failed ? 'Not sent yet.' : R.sent ? esc(R.sentMsg || 'Your answer is in.') : 'Sending your answer…'}</h1><p class="room-id">Live class ${esc(R.code)}, decision: ${esc(c.title)}${/[?!.]$/.test(c.title) ? '' : '.'}</p>
+    <p class="scene">${R.failed ? esc(R.sentMsg) : 'The evidence appears for everyone when your instructor reveals it.'}</p><p class="kicker" id="room-live">${roomLine()}</p><div class="room-acts">${R.failed && R.phase === 'open' ? '<button class="btn btn-solid" data-act="resend">Send my answer again</button>' : ''}<button class="btn btn-quiet" data-act="leave-room">Leave the live class</button></div></div></section>`;   // a failed send gets a short headline and its reason below (review 35, M1)   // no badge above the headline (review 27, rule 2)
 }
 function classPanel(c, a) {
   const f = c.format; let body = '';
@@ -812,6 +814,7 @@ document.addEventListener('click', e => {
   if (a === 'erase') { if (confirm('Erase every saved call and field note in this browser? This cannot be undone.')) { records = []; notes = {}; st.session = []; store.del(REC_KEY); store.del(NOTE_KEY); store.del('thv:v1:results'); render(); notice('Record erased.') } return }
   if (a === 'methods') { methodsModal(); return }
   if (a === 'join') { joinModal(); return }
+  if (a === 'resend') { const f = st.room && st.room.failed; if (f && !st.room.resending) { st.room.resending = true; roomSubmit(f.c, f.rec).finally(() => { if (st.room) st.room.resending = false }) } return }
   if (a === 'leave-room') { clearTimeout(st.room?.timer); st.room = null; st.view = 'home'; render(true); return }
   if (a === 'about') { methodsModal(); return }
 });

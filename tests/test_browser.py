@@ -353,3 +353,34 @@ def test_moved_study_card_sits_under_the_figure(browser):
         r = pg.evaluate("(()=>{const rv=document.querySelector('.reveal');if(!rv.classList.contains('meta-right'))return null;return document.querySelector('.reveal>.rev-meta').getBoundingClientRect().top-document.querySelector('.reveal>figure.gap').getBoundingClientRect().bottom})()")
         if r is not None: out.append((c['id'], r))
     assert out and all(0 <= r <= 40 for _, r in out), [x for x in out if not 0 <= x[1] <= 40]
+
+def test_stranded_room_answer_can_be_sent_again(browser, tmp_path):
+    """Review 35, M1: an answer that fails for the whole retry window keeps a resend button and goes through once the network returns."""
+    from server import app, classroom as cl
+    app.STORE = cl.Store(tmp_path / 'r.sqlite3')
+    srv = app.Server(('127.0.0.1', 0), app.Handler); threading.Thread(target=srv.serve_forever, daemon=True).start()
+    base = f'http://127.0.0.1:{srv.server_address[1]}'
+    try:
+        inst = page(browser); inst.goto(base + '/classroom'); inst.fill('#title', 'Resend class'); inst.click('text=Create the session')
+        code = inst.text_content('.join-code').strip()
+        ctx = browser.new_context(viewport={'width': 390, 'height': 844}); ph = ctx.new_page(); ph.goto(base + '/?room=' + code)
+        ph.wait_for_selector('.room-wait')
+        c = next(x for x in cl.CHALLENGES.values() if x['format'] == 'choice')
+        inst.click(f'[data-open="{c["id"]}"]')
+        ph.wait_for_selector('.opt', timeout=10000)
+        ph.route('**/responses', lambda r: r.abort())
+        ph.locator('.opt').first.click()
+        ph.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); ph.click('#lock-btn')
+        ph.wait_for_selector('[data-act="resend"]', timeout=40000)
+        assert 'Not sent yet' in ph.text_content('.room-wait h1') and 'did not reach the class' in ph.text_content('.room-wait')
+        ph.unroute('**/responses')
+        ph.click('[data-act="resend"]')
+        ph.wait_for_selector('text=Your answer is in', timeout=10000)
+        assert ph.locator('[data-act="resend"]').count() == 0
+        for _ in range(40):
+            if (inst.text_content('#resp-count') or '').strip() == '1': break
+            inst.wait_for_timeout(250)
+        assert inst.text_content('#resp-count').strip() == '1'
+        ctx.close()
+    finally:
+        srv.shutdown()

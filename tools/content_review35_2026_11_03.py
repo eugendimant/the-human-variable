@@ -8,7 +8,8 @@ def rep(cid, field, old, new):
     C[cid][field] = C[cid][field].replace(old, new)
 
 # m2: the equity contrast is similar in size and not significant at 5%
-rep('dimant-enforcers-rank', 'explain', ' when it restored equity, a weaker difference.', ' when it restored equity, a similar gap that was not significant at the 5% level.')
+rep('dimant-enforcers-rank', 'explain', ' when it restored equity, a weaker difference.', ' when it restored equity, a similar gap that was not statistically significant.')
+rep('dimant-enforcers-rank', 'explain', 'a similar gap that was not significant at the 5% level.', 'a similar gap that was not statistically significant.')
 # m3: kept. Review 30 read the confidence option as the paper's uncertainty condition; review 35 says it was not tested. Not changed until the full text settles it (open item in the handover).
 # audit 47 / review 35: the effect-size measure in plain words
 ch = C['manylabs-anchoring']['chart']; ch['note'] = ch['note'].replace('Anchoring effect size, Cohen’s d (unweighted replication estimate per question).', 'Anchoring effect size, standardized; the original study reported one overall size.')
@@ -18,6 +19,12 @@ for c in ('axb08',):
     if a.get('valueName'): a['valueName'] = a['valueName'].replace('human-human', 'human‑human')
 # m17: say what the scope covers; answer the follow-up
 rep('forecast-training', 'boundary', 'the paper reports significance tests for the training effect', 'with tests of the training effect across seasons') if 'the paper reports significance tests for the training effect' in C['forecast-training']['boundary'] else None
+
+rep('forecast-training', 'boundary', 'volunteers; with tests of the training effect', 'volunteers, with tests of the training effect')
+# m18: who rated the answers
+rep('axe05', 'boundary', 'rated for quality and empathy by a team of licensed health care professionals.', 'rated for quality and empathy by licensed health care professionals on the author team.')
+# m17: the boundary states the setting once, without repeating the explanation
+rep('rollout2', 'boundary', 'One firm’s support chat; the declines for top agents were small, and other occupations may differ.', 'One firm’s customer-support chat.')
 
 bp.write_text(json.dumps(B, ensure_ascii=False, indent=1) + '\n')
 kp = ROOT / 'tests/keyed_options.json'; K = json.loads(kp.read_text())

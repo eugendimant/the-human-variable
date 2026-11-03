@@ -752,3 +752,4 @@ p,li,dd{text-wrap:pretty}
 @media (min-width:1200px){.reveal.meta-right>.rev-meta{grid-column:2}}
 .plate .rc-badge.evn{border-color:#f0b43c;color:#f0b43c}   /* readable outline on the dark plate (audit 45) */
 .alloc-cmp .hb-row.two>b.ev{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25}   /* "(not significant)" wraps instead of clipping (review 34, m1) */
+.room-acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center}

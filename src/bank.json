@@ -4350,7 +4350,7 @@
      "+81.2%",
      "−15.7% (not significant)"
     ],
-    "valueName": "change in odds of higher agreement than in human-human debates (non-significant changes count as zero)",
+    "valueName": "change in odds of higher agreement than in human‑human debates (non-significant changes count as zero)",
     "best": [
      1
     ]
@@ -4679,7 +4679,7 @@
    "answerTitle": "Top agents: slightly faster, slightly lower quality",
    "explain": "Across 5,172 customer-support agents, Brynjolfsson, Li and Raymond found that the most experienced, highest-skilled agents gained little from the AI assistant: small improvements in speed, alongside small declines in the quality of their output.",
    "implication": "Let top performers tune or skip suggestions, and monitor their quality scores after rollout.",
-   "boundary": "One firm’s support chat; the declines for top agents were small, and other occupations may differ.",
+   "boundary": "One firm’s customer-support chat.",
    "sources": [
     "bry25"
    ],
@@ -6286,7 +6286,7 @@
    "answerTitle": "Probability training beat scenario training",
    "explain": "In a tournament that began with 2,246 forecasters, about 45 minutes of probability training beat scenario training, and training was one of three interventions that raised accuracy.",
    "implication": "Give forecasting and planning staff short training in probabilistic reasoning, and check its value with scored forecasts.",
-   "boundary": "Geopolitical forecasts by tournament volunteers; the paper reports significance tests for the training effect.",
+   "boundary": "Geopolitical forecasts by tournament volunteers, with tests of the training effect across seasons.",
    "sources": [
     "mellers14"
    ],
@@ -6703,7 +6703,7 @@
    "scene": "US adults read about a coworker accepting a bribe and chose how much evidence to submit, which set how likely the coworker was to be punished. The bribe either created inequity or restored equity; half also learned what most previous participants thought of taking bribes.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Norm information raised punishment of unfair bribes",
-   "explain": "Norm information raised the chosen probability of punishment from 73.3% to 82.8% when the bribe created inequity, a reliable difference, and from 57.9% to 67.2% when it restored equity, a weaker difference. Inequity-creating bribes drew more punishment overall (77.8% vs 62.3%).",
+   "explain": "Norm information raised the chosen probability of punishment from 73.3% to 82.8% when the bribe created inequity, a reliable difference, and from 57.9% to 67.2% when it restored equity, a similar gap that was not statistically significant. Inequity-creating bribes drew more punishment overall (77.8% vs 62.3%).",
    "implication": "When you build a speak-up channel and your own survey shows that most colleagues object to taking bribes, say so; in the study this raised willingness to act most for deals that create unfair advantages.",
    "boundary": "Bribery vignette with 225 US adults, alongside a main behavioral study with 1,240 punishers from a representative US sample.",
    "sources": [
@@ -7294,7 +7294,7 @@
    "answerTitle": "Raters preferred the chatbot in 78.6%",
    "explain": "Across 585 evaluations, raters preferred the chatbot 78.6% of the time. Good or very good quality: 78.5% of chatbot answers versus 22.1% of physicians’.",
    "implication": "Pilot AI-drafted replies in patient or customer messaging, with staff review before sending.",
-   "boundary": "Public forum answers by volunteer physicians, rated for quality and empathy by a team of licensed health care professionals.",
+   "boundary": "Public forum answers by volunteer physicians, rated for quality and empathy by licensed health care professionals on the author team.",
    "sources": [
     "ayers23"
    ],
@@ -8282,7 +8282,7 @@
     ],
     "unit": "",
     "highlight": 4,
-    "note": "Anchoring effect size, Cohen’s d (unweighted replication estimate per question).",
+    "note": "Anchoring effect size, standardized; the original study reported one overall size.",
     "decimals": 2
    },
    "follow": [
