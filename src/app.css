@@ -756,3 +756,8 @@ p,li,dd{text-wrap:pretty}
 .nw{white-space:nowrap}
 .hb-track.ev-row{box-shadow:inset 0 0 0 2px var(--ev)}
 .plate-h:has(.nw){display:block}   /* a title with a kept-whole compound flows as one line of text (review 36, m1) */
+.rc-dot i{background:#8a96a8}.rc-dot b{color:var(--ink-2)}.rc-dot.top i{background:var(--ev)}.rc-dot.top b{color:var(--ev-ink)}
+.plate .rc-dot i{background:#b9c4dd}.plate .rc-dot b{color:#fff}.plate .rc-dot.top i{background:#f0b43c}.plate .rc-dot.top b{color:#f0b43c}
+.rc-dot em{position:absolute;top:22px;font-style:normal;font-size:13px;color:var(--muted)}.rc-dot .rc-e0{left:0}.rc-dot .rc-e1{right:0;transform:translateX(50%)}.plate .rc-dot em{color:#b9c4dd}
+.rank-cmp li:last-child .rc-dot{margin-bottom:18px}
+.plate .rank-cmp small{color:#d6def0}.plate .rank-cmp li:first-child small{color:#f0b43c}   /* rank values: the top place in amber, the rest plain (review 36, m5) */

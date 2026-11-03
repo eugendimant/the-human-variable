@@ -68,7 +68,7 @@ function stage() {
     ${c.format === 'delegate' ? `<p class="kicker proj-prelist">Route each task to: ${c.delegate.choices.map(esc).join(', ')}</p><ul class="present-opts proj-prelist">${c.delegate.tasks.map(t => `<li>${esc(t.text)}</li>`).join('')}</ul>` : ''}
     <div class="count-row"><b class="num" id="resp-count">${s.responses}</b><span>of ${s.participants} participants answered</span><span class="meter-bar"><i style="width:${s.participants ? Math.round(100 * s.responses / s.participants) : 0}%"></i></span></div>
     <div class="next-row proj-controls">${controls}</div>
-    ${s.phase === 'revealed' && c.answerTitle ? `<div class="lessons proj-left">${c.format === 'causal' && c.dag && c.dag.edges && c.dag.edges.length ? projDag(c.dag) : ''}<div class="lesson"><h3>For a manager</h3><p>${esc(c.implication)} Where would this fail in your organization?</p></div><div class="lesson"><h3>Where the evidence comes from</h3><p>${esc(c.boundary)}</p></div></div>` : ''}
+    ${s.phase === 'revealed' && c.answerTitle ? `<div class="lessons proj-left">${c.format === 'causal' && c.dag && c.dag.edges && c.dag.edges.length ? projDag(c.dag) : ''}<div class="lesson"><h3>For a manager</h3><p>${esc(c.implication)}</p></div><div class="lesson"><h3>Where the evidence comes from</h3><p>${esc(c.boundary)}</p></div></div>` : ''}
     ${s.phase === 'revealed' && s.aggregate ? (c.answerTitle ? reveal(c, s.aggregate) : '<p class="kicker">Loading the evidence…</p>') : ''}</div>`;
 }
 
@@ -107,7 +107,7 @@ function reveal(c, a) {
   const s = BANK.sources[c.sources[0]];
   return `<div class="rv"><h3 class="reveal-title rv-lead">${esc(c.answerTitle)}</h3><div class="rv-head"><div><span class="kicker">The room</span><b class="num">${a.n}<small class="rv-unit"> ${a.n === 1 ? 'answer' : 'answers'}</small></b></div><div><span class="kicker">${({ allocate: 'Most points on the best option', delegate: 'Every task routed right', rank: 'Exact order' })[c.format] || 'Matched the evidence'}</span><b class="num">${a.shareCorrect ?? 0}%</b></div><div><span class="kicker">Average score</span><b class="num">${a.meanScore === null || a.meanScore === undefined ? '–' : String(a.meanScore).replace(/^-/, '\u2212')}</b></div>${a.meanConfidence !== null && a.meanConfidence !== undefined ? `<div><span class="kicker">Average confidence</span><b class="num">${a.meanConfidence}%</b></div>` : ''}</div>${chart ? `<div class="rv-chart">${chart}</div>` : ''}
     <p class="reveal-body">${esc(c.explain)}</p>
-    <div class="lessons"><div class="lesson"><h3>For a manager</h3><p>${esc(c.implication)} Where would this fail in your organization?</p></div><div class="lesson"><h3>Where the evidence comes from</h3><p>${esc(c.boundary)}</p></div></div><p class="kicker">${esc(s.authors)} (${s.year}), ${esc(s.venue)}.</p></div>`;
+    <div class="lessons"><div class="lesson"><h3>For a manager</h3><p>${esc(c.implication)}</p></div><div class="lesson"><h3>Where the evidence comes from</h3><p>${esc(c.boundary)}</p></div></div><p class="kicker">${esc(s.authors)} (${s.year}), ${esc(s.venue)}.</p></div>`;
 }
 
 let showPicker = false;

@@ -455,3 +455,10 @@ def test_a_page_that_is_not_the_class_server_is_not_a_receipt(browser, tmp_path)
         ctx.close()
     finally:
         srv.shutdown()
+
+def test_non_significant_allocate_values_are_not_amber(browser):
+    """Review 35 m6 / review 36: labels spelled '(not significant)' carry the ns class, so only a significant result is amber."""
+    for c in [x for x in LIVE if x['format'] == 'allocate' and any('significant' in v for v in (x['allocate'].get('valueLabels') or []))]:
+        pg = page(browser); pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+        got = pg.evaluate("[...document.querySelectorAll('.alloc-cmp b.num.ev')].map(e=>[e.textContent, e.classList.contains('ns')])")
+        assert got and all(ns == ('significant' in t) for t, ns in got), (c['id'], got)

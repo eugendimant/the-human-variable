@@ -814,3 +814,12 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **m12.** The Library states each principle's count once.
 - **Open.** m4 dimant-hate-choice figure, m5 rank amber and scale, m6 repeated numbers, m8 decoding sentences, m9 tutor, m10 projector rank height, m11 dead space, m13 hero prompt, m14 axe12 scale (not in the stored quotes); review 35 m6 amber non-significant labels.
 - **Gates.** 340 passed; design lint by rule {}; build current.
+
+## Regression audit 51: no introduced Major or Blocking (4 Minors, fixed in iteration 53)
+
+## Iteration 52 (2026-11-03): open review 35/36 minors
+
+- **Review 35 m6.** Non-significant allocate labels were amber: `evNs` matched only "n.s." after review 33 renamed the labels "(not significant)". It now matches both. Test `test_non_significant_allocate_values_are_not_amber`.
+- **Review 36 m5.** Rank charts: amber only on the top place's dot and value; the last track labels its ends 0% and 100%.
+- **Review 36 o1.** The projector's repeated "Where would this fail in your organization?" is gone.
+- **Gates.** 341 passed; design lint by rule {}; build current.
