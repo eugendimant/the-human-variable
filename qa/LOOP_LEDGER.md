@@ -831,3 +831,14 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **m3.** A half-right pick-two or delegate answer reads "Some right, no better than guessing."; test `test_half_right_pick_two_is_not_called_wrong`.
 - **m4.** `.plate-h` is a block in its own rule; the appended override is gone.
 - **Gates.** 343 passed; design lint by rule {}; build current.
+
+## Iteration 54 (2026-11-03): review 37 quick minors
+
+- **m2 (I12).** axf02 prints 0.60 (decimals 2); dimant-hate-choice prints 59.0% (decimals 1).
+- **m10.** `Store.control` refuses a non-string decision id with 400; test `test_malformed_open_is_a_400`.
+- **m11.** `roomLine()` reads "Reconnecting…" while polls fail, so the lobby shows it too and keeps it across re-renders.
+- **m12.** axe05 headline "of evaluations"; biz05 note unit once; bz04 no longer sets a share against a duration (tools/content_review37_2026_11_03.py).
+- **o2.** `div.tutor` has `role="region"`.
+- **Open from review 37.** m1 projector rank height, m3 dimant-hate-choice figure, m4 band label vs axis end, m5 repeated numbers, m6 decoding sentences, m7 tutor, m8 dead space and hero prompt, m9 phone causal pills, m13 brief wording; o1, o3, o4.
+- **Loop status.** Reviews 36 and 37: 1 and 0 Majors; review 37 has none. The score holds at 85–88; the open items are design decisions for the owner.
+- **Gates.** 344 passed; design lint by rule {}; build current.

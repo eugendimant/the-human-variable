@@ -298,3 +298,8 @@ def test_an_answer_for_an_earlier_decision_is_refused(base):
     s, d, _ = req(base, f'/api/rooms/{code}/responses', {'token': t, 'challenge': a['id'], 'answer': 0, 'confidence': 60}, client='mo1')
     assert s == 409 and 'moved on' in d['error']
     assert req(base, f'/api/rooms/{code}/responses', {'token': t, 'challenge': b['id'], 'answer': 0, 'confidence': 60}, client='mo1')[1]['accepted']
+
+def test_malformed_open_is_a_400(base):
+    """Review 37, m10: an object as the decision id is refused cleanly."""
+    s, room, _ = req(base, '/api/rooms', {'title': 'Bad open'})
+    assert req(base, f"/api/rooms/{room['code']}/control", {'action': 'open', 'challenge': {'x': 1}}, key=room['secret'], client='bo1')[0] == 400

@@ -403,7 +403,7 @@ let TUTOR_REMOTE = null; // the server endpoint, when the page is served
 let TUTOR_AI = false;   // true only when the server reports a configured model
 function tutorPanel(c) {
   const t = st.tutor;
-  return `<div class="tutor" aria-labelledby="tutor-h"><h2 id="tutor-h">Ask your own question</h2>
+  return `<div class="tutor" role="region" aria-labelledby="tutor-h"><h2 id="tutor-h">Ask your own question</h2>
     <form class="tutor-line" data-form="tutor"><label class="sr-only" for="tutor-in">Your question about this study</label><input id="tutor-in" maxlength="300" placeholder="For example: would this hold in a sales team?" autocomplete="off"><button class="btn btn-quiet" ${t.busy ? 'disabled' : ''}>${t.busy ? 'Thinking' : 'Ask'}</button></form>
     ${t.suggest && t.suggest.length ? '' : `<div class="tutor-chips">${['How big is this effect in practice?', 'Would this hold with AI tools today?', 'How would I test this in my company?'].map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>`}
     ${t.text ? `<div class="tutor-answer" aria-live="polite">${esc(t.text)}${t.cites.length ? '\n\n' + t.cites.map(x => `<cite>${esc(x)}</cite>`).join(' ') : ''}</div>` : ''}
@@ -682,7 +682,8 @@ async function roomPoll() {
   } catch { R.misses++; if (R.misses === 1) { const live = qs('#room-live'); if (live) live.textContent = 'Reconnecting…'; const rc = qs('#room-conn'); if (rc) rc.textContent = 'Reconnecting…' } }   // announced once, not on every failed poll (audit 49, m3)
   clearTimeout(R.timer); R.timer = setTimeout(roomPoll, document.hidden ? 6000 : Math.min(8000, 2000 * (1 + R.misses)));
 }
-function roomLine() { const R = st.room; return `${R.participants ?? '–'} joined. ${R.phase === 'open' ? (R.responses ?? 0) + ' answered so far.' : ''}` }
+function roomLine() { const R = st.room; if (R.misses) return 'Reconnecting…';   // also in the lobby, and kept across re-renders (review 37, m11)
+  return `${R.participants ?? '–'} joined. ${R.phase === 'open' ? (R.responses ?? 0) + ' answered so far.' : ''}` }
 async function roomSubmit(c, rec, auto = false) {
   const R = st.room, prev = R.failed;
   if (!auto) { R.sent = false; R.failed = null; render(); roomFocus() }

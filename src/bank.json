@@ -2994,7 +2994,7 @@
     ],
     "unit": "",
     "highlight": 1,
-    "note": "Daily electricity use of below-average homes, kWh per day."
+    "note": "Daily electricity use of below-average homes, kWh."
    }
   },
   {
@@ -4962,7 +4962,7 @@
     "unit": "%"
    },
    "answerTitle": "Fewer than one in three finished on time",
-   "explain": "Only 29.7% finished by their best-guess date, against an average prediction of 33.9 days, and fewer than half (48.7%) finished by their worst-case date.",
+   "explain": "Only 29.7% finished by their best-guess date (on average they had predicted 33.9 days), and fewer than half (48.7%) finished by their worst-case date.",
    "implication": "Set project deadlines from how long similar past projects actually took, not from the team’s step-by-step plan.",
    "boundary": "Study 1 tracked psychology honors students on their theses; one task type, one university.",
    "sources": [
@@ -7016,7 +7016,8 @@
     ],
     "unit": "%",
     "highlight": 1,
-    "note": "Share who cooperate when they expect the partner to; the drop is about as large for a painting-taste outgroup."
+    "note": "Share who cooperate when they expect the partner to; the drop is about as large for a painting-taste outgroup.",
+    "decimals": 1
    }
   },
   {
@@ -7291,7 +7292,7 @@
     "label": "Evaluations preferring the chatbot",
     "unit": "%"
    },
-   "answerTitle": "Raters preferred the chatbot in 78.6%",
+   "answerTitle": "Raters preferred the chatbot in 78.6% of evaluations",
    "explain": "Across 585 evaluations, raters preferred the chatbot 78.6% of the time. Good or very good quality: 78.5% of chatbot answers versus 22.1% of physicians’.",
    "implication": "Pilot AI-drafted replies in patient or customer messaging, with staff review before sending.",
    "boundary": "Public forum answers by volunteer physicians, rated for quality and empathy by licensed health care professionals on the author team.",
@@ -8062,7 +8063,8 @@
     ],
     "unit": "",
     "highlight": 0,
-    "note": "Correlation of predictions with actual vaccination rates."
+    "note": "Correlation of predictions with actual vaccination rates.",
+    "decimals": 2
    }
   },
   {

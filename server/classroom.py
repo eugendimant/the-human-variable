@@ -105,7 +105,7 @@ class Store:
         self.require_admin(code, secret)
         r = self._row(code); phase = r[4]; played = json.loads(r[7])
         if action == 'open':
-            if challenge not in CHALLENGES: raise ClassroomError('Unknown decision')
+            if not isinstance(challenge, str) or challenge not in CHALLENGES: raise ClassroomError('Unknown decision')   # a malformed id is a 400, not a 500 (review 37, m10)
             if challenge not in played: played.append(challenge)
             rev = [x for x in json.loads(self.db().execute('SELECT revealed FROM sessions WHERE code=?', (code,)).fetchone()[0]) if x != challenge]
             sql, args = 'UPDATE sessions SET challenge=?, phase=?, played=?, revealed=?', [challenge, 'open', json.dumps(played), json.dumps(rev)]
