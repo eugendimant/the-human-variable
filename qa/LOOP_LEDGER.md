@@ -842,3 +842,14 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Open from review 37.** m1 projector rank height, m3 dimant-hate-choice figure, m4 band label vs axis end, m5 repeated numbers, m6 decoding sentences, m7 tutor, m8 dead space and hero prompt, m9 phone causal pills, m13 brief wording; o1, o3, o4.
 - **Loop status.** Reviews 36 and 37: 1 and 0 Majors; review 37 has none. The score holds at 85–88; the open items are design decisions for the owner.
 - **Gates.** 344 passed; design lint by rule {}; build current.
+
+## Iteration 55 (2026-11-10): review 37 design items
+
+- **m1.** Projector reveals fit 1440x900: the explanation sits in the left column, rank rows carry the measured value, "Room's average rank" is one header, the key is one line. axf05 1,176 px to 900; forecast reveals about 1,100 to 900. Test `test_projector_rank_reveal_fits_one_screen`.
+- **m4, m5.** Plate axis marks are named only ("You", "Study"); the band label reads "hit band ±N".
+- **m6.** The forecast scoring sentence left the figure (it is in the record's "How scoring works").
+- **m8.** The hero prompt sits on the slider handle; question screens are centred on tall wide viewports.
+- **m3.** dimant-hate-choice chart colours neither drop.
+- **Rules 7 and 21.** The projector's forecast claim is a plain quotation (it had an accent stripe and a box in a card, in a state the lint did not visit).
+- **Open.** m7 tutor, m9 phone causal pills, dead space right of short figures, o1, o3, o4.
+- **Gates.** 345 passed; design lint by rule {}; build current.

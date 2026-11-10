@@ -145,7 +145,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 input[type=range].untouched::-webkit-slider-thumb{border-color:var(--rule-strong)}
 input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule)}
 .axis{display:flex;justify-content:space-between;font-size:var(--t7);color:var(--muted)}
-.claim{font-family:var(--serif);font-size:20px;line-height:1.45;padding:16px 18px;border-left:3px solid var(--ink);background:var(--sunk);border-radius:0 var(--r-ctl) var(--r-ctl) 0;margin:0 0 20px}
+.claim{font-family:var(--serif);font-size:22px;line-height:1.4;margin:0 0 20px;quotes:'“' '”'}.claim::before{content:open-quote}.claim::after{content:close-quote}   /* the claim is set as a quotation: no stripe, no box in a box (rules 7 and 21) */
 .rank-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .rank-item{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;padding:10px 10px 10px 14px;border:1.5px solid var(--rule);border-radius:var(--r-ctl);background:var(--surface)}
 .rank-item .pos{font-weight:800;color:var(--you-ink);font-variant-numeric:tabular-nums}
@@ -760,3 +760,5 @@ p,li,dd{text-wrap:pretty}
 .rc-dot em{position:absolute;top:22px;font-style:normal;font-size:13px;color:var(--muted)}.rc-dot .rc-e0{left:0}.rc-dot .rc-e1{right:0;transform:translateX(50%)}.plate .rc-dot em{color:#b9c4dd}
 .rank-cmp li:last-child .rc-dot{margin-bottom:18px}
 .plate .rank-cmp small{color:#d6def0}.plate .rank-cmp li:first-child small{color:#f0b43c}   /* rank values: the top place in amber, the rest plain (review 36, m5) */
+.r-hint{position:absolute;left:50%;top:-6px;transform:translateX(-50%);font-weight:700;font-size:15px;color:var(--you-ink);white-space:nowrap;pointer-events:none}.r-hint::after{content:'';position:absolute;left:50%;top:100%;width:2px;height:6px;background:var(--you-ink);opacity:.5}
+@media (min-width:1000px) and (min-height:760px){.focus-card:has(.q-col){min-height:calc(100vh - 250px);align-content:center}}   /* the question and its instrument sit in the middle of a tall screen, not stranded at the top (review 37, m8) */

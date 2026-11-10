@@ -7,6 +7,9 @@ def rep(cid, field, old, new): C[cid][field] = C[cid][field].replace(old, new)
 # m2 (I12): printed decimals as quoted
 C['axf02']['chart']['decimals'] = 2
 C['dimant-hate-choice']['chart']['decimals'] = 1
+# m3: the figure colours neither drop: they are about equal, and the headline is about expectations
+C['dimant-hate-choice']['chart']['highlight'] = None
+C['dimant-hate-choice']['chart']['note'] = C['dimant-hate-choice']['chart']['note'].replace('Share who cooperate when they expect the partner to; the drop is about as large for a painting-taste outgroup.', 'Share who cooperate when they expect the partner to. The drop is about as large for a painting-taste outgroup as for a political one.')
 # m12: copy
 if not C['axe05']['answerTitle'].endswith('of evaluations'): rep('axe05', 'answerTitle', 'Raters preferred the chatbot in 78.6%', 'Raters preferred the chatbot in 78.6% of evaluations')
 C['biz05']['chart']['note'] = C['biz05']['chart']['note'].replace('Daily electricity use of below-average homes, kWh per day.', 'Daily electricity use of below-average homes, kWh.')

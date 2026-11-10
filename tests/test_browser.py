@@ -489,3 +489,19 @@ def test_class_panel_names_the_evidence_row_for_rank_and_allocate(browser, tmp_p
         ctx.close()
     finally:
         srv.shutdown()
+
+def test_projector_rank_reveal_fits_one_screen(browser, tmp_path):
+    """Review 37, m1: a five-row rank reveal ends inside 1440x900 on the projector."""
+    srv, inst, ctx, ph, _, app = _room(browser, tmp_path, 'rankfit')
+    try:
+        c = next(x for x in LIVE if x['id'] == 'axf05')
+        inst.set_viewport_size({'width': 1440, 'height': 900})
+        inst.fill('#f-q', c['title'][:18]); inst.wait_for_timeout(300); inst.click(f'[data-open="{c["id"]}"]')
+        ph.wait_for_selector('#lock-btn', timeout=10000); answer(ph, c); ph.click('#lock-btn'); ph.wait_for_selector('text=Your answer is in', timeout=10000)
+        assert _count(inst, '1'); inst.click("text=Reveal to the room"); inst.wait_for_selector('.rv')
+        inst.evaluate("document.querySelector('[data-act=projector]').click()"); inst.wait_for_timeout(800)
+        assert inst.evaluate('document.documentElement.scrollHeight') <= 900
+        assert inst.locator('.rp-cap').count() == 1 and inst.locator('.rp-name small').count() == 5
+        ctx.close()
+    finally:
+        srv.shutdown()

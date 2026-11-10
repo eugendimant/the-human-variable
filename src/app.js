@@ -176,8 +176,8 @@ function heroTry() {
   const gap = v === null ? 0 : Math.abs(v - e.target);
   return `<section class="try-ruler" aria-labelledby="try-q">
     <div class="tr-head"><h1 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h1>
-    <p class="tr-read ${h.done ? 'ev' : ''}"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${h.done ? e.target + '%' : v === null ? '00%' : v + '%'}</b><span class="hero-unit">${h.done ? 'less time, the study' : v === null ? 'Slide the scale to answer' : 'less time, your call'}</span></p></div>
-    <div class="ruler ${h.done ? 'done' : ''}">${h.done ? ruler(e.min, e.max, v, e.target, e.tolerance) : `${ruler(e.min, e.max, null, null, null)}<label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
+    <p class="tr-read ${h.done ? 'ev' : ''}"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${h.done ? e.target + '%' : v === null ? '00%' : v + '%'}</b><span class="hero-unit">${h.done ? 'less time, the study' : v === null ? '' : 'less time, your call'}</span></p></div>
+    <div class="ruler ${h.done ? 'done' : ''}">${h.done ? ruler(e.min, e.max, v, e.target, e.tolerance) : `${ruler(e.min, e.max, null, null, null)}${v === null ? '<span class="r-hint" aria-hidden="true">Slide to answer</span>' : ''}<label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
     <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">`}</div>
     <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} ${gap === 1 ? 'point' : 'points'} off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}<span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
   </section>`;
@@ -275,7 +275,7 @@ function dagLabel(n, base) {
 }
 
 // The gap: player's call (blue) and the evidence (amber) on one axis.
-function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id = 'g', fmt: fmt0 = x => x + unit, evText = null }) {
+function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id = 'g', fmt: fmt0 = x => x + unit, evText = null, bare = false }) {   // bare: the numerals above the axis carry the values, so the marks are named only (review 37, m5)
   const fmt = x => mn(fmt0(x));   // every number on the plate takes a true minus (review 26, I12)
   const narrow = innerWidth < 640, W = narrow ? 360 : 640, fs = narrow ? 14 : 19, L = 18, R = W - 18, y = 52, sx = v => L + (v - min) / (max - min) * (R - L);
   const has = v => v !== null && v !== undefined;
@@ -285,16 +285,16 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
     <line x1="${L}" y1="${y}" x2="${R}" y2="${y}" class="ax-track" stroke-width="2"/>${(() => { const span = max - min, major = [1, 2, 5, 10, 20, 25, 50, 100, 200, 500].find(m => span / m <= 8) || span, minor = major / (major % 5 === 0 ? 5 : 2), out = []; for (let v = Math.ceil(min / minor) * minor; v <= max + 1e-9; v += minor) { const isM = Math.abs(v / major - Math.round(v / major)) < 1e-9; out.push(`<line x1="${sx(v)}" y1="${y - (isM ? 9 : 5)}" x2="${sx(v)}" y2="${y + (isM ? 9 : 5)}" class="ax-tickm${isM ? ' maj' : ''}"/>`) } return out.join('') })()}
     ${has(band) && has(ev) ? `<rect x="${sx(Math.max(min, ev - band))}" y="${y - 9}" width="${sx(Math.min(max, ev + band)) - sx(Math.max(min, ev - band))}" height="18" rx="4" class="ax-band" stroke-width="1.2"/>` : ''}
     ${has(you) && has(ev) ? `<line x1="${sx(you)}" y1="${y}" x2="${sx(ev)}" y2="${y}" class="ax-gap" stroke-width="2.5" stroke-dasharray="3 4"/>` : ''}
-    ${has(you) ? `<circle cx="${sx(you)}" cy="${y}" r="12" fill="#2f54eb" stroke="#fff" stroke-width="3"/>${lab(sx(you), 'You ' + fmt(you), 'ax-you', true)}` : ''}
-    ${has(ev) ? `<g class="ev-mark" id="${id}-ev" data-from="${has(you) ? sx(you) - sx(ev) : 0}"><circle cx="${sx(ev)}" cy="${y}" r="12" fill="#e0a01c" stroke="#fff" stroke-width="3"/>${lab(sx(ev), evText ?? evLabel + ' ' + fmt(ev), 'ax-ev', false)}</g>` : ''}
-    ${has(band) && has(ev) ? (() => { const m = narrow ? 134 : 140, bx = Math.min(R - m, Math.max(L + m, sx(ev))); return `<text x="${bx}" y="114" font-size="${narrow ? 15 : 17}" text-anchor="middle" class="ax-band-lab" font-family="Schibsted Grotesk,system-ui">hit band ${esc(fmt(+(Math.max(min, ev - band)).toFixed(1)))} to ${esc(fmt(+(Math.min(max, ev + band)).toFixed(1)))}</text>` })() : ''}
+    ${has(you) ? `<circle cx="${sx(you)}" cy="${y}" r="12" fill="#2f54eb" stroke="#fff" stroke-width="3"/>${lab(sx(you), bare ? 'You' : 'You ' + fmt(you), 'ax-you', true)}` : ''}
+    ${has(ev) ? `<g class="ev-mark" id="${id}-ev" data-from="${has(you) ? sx(you) - sx(ev) : 0}"><circle cx="${sx(ev)}" cy="${y}" r="12" fill="#e0a01c" stroke="#fff" stroke-width="3"/>${lab(sx(ev), evText ?? (bare ? evLabel : evLabel + ' ' + fmt(ev)), 'ax-ev', false)}</g>` : ''}
+    ${has(band) && has(ev) ? (() => { const m = narrow ? 134 : 140, bx = Math.min(R - m, Math.max(L + m, sx(ev))); return `<text x="${bx}" y="114" font-size="${narrow ? 15 : 17}" text-anchor="middle" class="ax-band-lab" font-family="Schibsted Grotesk,system-ui">hit band ±${esc(String(band))}</text>` })() : ''}
     <text x="${L}" y="114" font-size="${narrow ? 14 : 16}" class="ax-tick" font-family="Schibsted Grotesk,system-ui">${esc(fmt(min))}</text><text x="${R}" y="114" font-size="${narrow ? 14 : 16}" class="ax-tick" text-anchor="end" font-family="Schibsted Grotesk,system-ui">${esc(fmt(max))}</text></svg>`;
 }
 
 function gapFigure(c, rec) {
   const r = rec.response; let body = '', cap = '';
-  if (c.format === 'estimate') { const e = c.estimate; const u = (e.unit ?? '%') === '%' ? ' points' : e.unit, f = x => mn(x + (e.unit ?? '%')); body = (e.label ? `<p class="plate-h">${esc(e.label)}</p>` : '') + gapHead(f(r), f(e.target), rec.detail.gap <= e.tolerance ? 'Inside the band' : `${rec.detail.gap}${u} off`) + gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study' }); cap = c.chart ? '' : srcLine(c) }
-  else if (c.format === 'forecast') { body = gapHead(r + '%', c.forecast.truth ? 'True' : 'False', `${Math.abs(r - (c.forecast.truth ? 100 : 0))} points from the truth`, 'You gave it', 'The claim') + `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = `A confident correct call earns 100, saying 50% earns 50, and a confident miss goes below zero.${c.chart ? '' : ' ' + srcLine(c)}` }
+  if (c.format === 'estimate') { const e = c.estimate; const u = (e.unit ?? '%') === '%' ? ' points' : e.unit, f = x => mn(x + (e.unit ?? '%')); body = (e.label ? `<p class="plate-h">${esc(e.label)}</p>` : '') + gapHead(f(r), f(e.target), rec.detail.gap <= e.tolerance ? 'Inside the band' : `${rec.detail.gap}${u} off`) + gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study', bare: true }); cap = c.chart ? '' : srcLine(c) }
+  else if (c.format === 'forecast') { body = gapHead(r + '%', c.forecast.truth ? 'True' : 'False', `${Math.abs(r - (c.forecast.truth ? 100 : 0))} points from the truth`, 'You gave it', 'The claim') + `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = c.chart ? '' : srcLine(c) }   // the scoring rule lives in the record's "How scoring works", not on every forecast (review 37, m6)
   else if (c.format === 'rank') {
     const truth = c.rankAnswer, ties = c.rankTies || [];
     const tied = (a, b) => ties.some(t => t.includes(a) && t.includes(b));
