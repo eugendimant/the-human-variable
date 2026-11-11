@@ -542,3 +542,29 @@ def test_allocate_plate_is_one_dot_plot(browser):
         assert pg.locator('.alloc-cmp b.num.you').count() == n and 'Your points' in pg.text_content('.alloc-h')
         cols = pg.evaluate("[...document.querySelectorAll('.alloc-cmp .hb-row.two')].map(r=>[!!r.querySelector('.ev-note'), getComputedStyle(r.querySelector('b.ev')).color])")
         amber = {col for best, col in cols if best}; assert all(col not in amber for best, col in cols if not best), (c['id'], cols)
+
+SWEEP_JS = """(()=>{const bar=document.querySelector('.actionbar');const br=bar?bar.getBoundingClientRect():null;const out=[];
+ scrollTo(0,document.documentElement.scrollHeight);
+ const vis=e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(e).visibility!=='hidden'};
+ if(br){for(const e of document.querySelectorAll('main *, .focus *')){if(bar.contains(e)||!vis(e)||e.children.length||(e.closest('details:not([open])')&&!e.closest('summary')))continue;const r=e.getBoundingClientRect();if(r.bottom>br.top+2&&r.top<br.bottom&&r.height<400){out.push(['under-bar',(e.textContent||'').trim().slice(0,40)]);break}}}
+ if(document.documentElement.scrollWidth>innerWidth+1)out.push(['h-overflow',document.documentElement.scrollWidth]);
+ const leaves=[...document.querySelectorAll('figure.gap *')].filter(e=>vis(e)&&!e.children.length&&(e.textContent||'').trim()&&!e.closest('svg'));
+ for(let i=0;i<leaves.length;i++)for(let j=i+1;j<leaves.length;j++){const a=leaves[i].getBoundingClientRect(),b=leaves[j].getBoundingClientRect();if(Math.min(a.right,b.right)-Math.max(a.left,b.left)>3&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>3)out.push(['text-overlap',leaves[i].textContent.trim().slice(0,25),leaves[j].textContent.trim().slice(0,25)])}
+ for(const f of document.querySelectorAll('figure.gap')){const fr=f.getBoundingClientRect();for(const e of f.querySelectorAll('*')){if(!vis(e)||e.closest('svg'))continue;const r=e.getBoundingClientRect();if(r.right>fr.right+2||r.left<fr.left-2){out.push(['outside-figure',(e.textContent||'').trim().slice(0,30)]);break}}}
+ return out.slice(0,4)})()"""
+
+def test_reveal_layout_sweep(browser):
+    """Owner report 2026-11-11: at the end of every reveal nothing sits under the action bar, no text overlaps in the figure, nothing leaves the figure, no sideways scroll.
+    Two decisions per format and every changed chart type, at five screen sizes."""
+    by = {}
+    for c in LIVE: by.setdefault(c['format'], []).append(c)
+    pick = [x for f in by.values() for x in f[:2]] + [x for x in LIVE if x['id'] in ('axb08', 'axf01', 'axe12', 'civic-wallet-rank', 'axf05', 'dimant-hate-choice')]
+    bad = {}
+    for w, h in ((1440, 900), (1320, 840), (1024, 768), (390, 844), (360, 640)):
+        pg = page(browser); pg.set_viewport_size({'width': w, 'height': h})
+        for c in pick:
+            pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h'); pg.wait_for_timeout(250)
+            r = pg.evaluate(SWEEP_JS)
+            if r: bad[f"{c['id']}@{w}x{h}"] = r
+        pg.close()
+    assert not bad, bad

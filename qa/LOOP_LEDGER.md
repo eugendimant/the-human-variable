@@ -901,3 +901,14 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Sweep.** 112 decisions x 7 viewports: no content under the action bar, no text overlap in figures, no overflow.
 - **Open.** Empty right column on wide reveals; charts with no stated scale (axe12, social01); repeated headline number on estimate reveals; social20, dimant-conspiracy-choice distractors, axe10 claim; Dimant surname routing with a topic word; projector histogram empty bins.
 - **Gates.** 366 passed after merging duplicate CSS rules (lint, bank and browser suites rerun after the merge: 215 passed); design lint by rule {}; build current.
+
+## Iteration 61 (2026-11-11): wide-reveal balance, stated scales, routing
+
+- **Empty space on wide reveals (honest metric, 1440x900, 112 reveals).** Median 163 to 103 px; reveals over 150 px 59 to 33; worst 559 to 258. `balanceReveal()` picks among four placements: a full-width study band (`meta-wide`), under the figure (`meta-right`), under the text (`meta-left`), or a tall-figure layout (`fig-tall`) where card, tabs, questions and tutor run down the text column. The principle strip leaves figures that already carry a chart or task list. A first metric counted the band as both columns and overstated the gain; `scratchpad/gaps.py` measures to the band's top.
+- **Scales.** Every bar chart ends on a round number with both ends labelled; `chart.axis` draws dots on a stated axis (axe12).
+- **Tutor.** A topic word (authors' names excluded) outranks the author count: Dimant + masks, Dimant + hate, Dietvorst + adjust (2018), Thaler.
+- **Items.** axe10 claim; dimant-conspiracy-choice distractors.
+- **Projector.** Histogram shows the span of bins in use.
+- **Gate.** `test_reveal_layout_sweep` (22 decisions x 5 screen sizes: nothing under the action bar, no text overlap in figures, nothing outside its figure, no sideways scroll).
+- **Open.** 33 reveals still leave more than 150 px empty (widen `fig-tall`); repeated headline number on estimate reveals; social20; format mix; phone and projector estimate charts differ.
+- **Gates.** 367 passed; design lint by rule {}; build current.

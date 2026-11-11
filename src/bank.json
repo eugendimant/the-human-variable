@@ -6854,12 +6854,12 @@
    "scene": "In a multi-round sharing task, participants chose whether to share factual news or conspiracy theories, including ones they did not believe.",
    "question": "What drove sharing of conspiracy theories people knew were false?",
    "options": [
-    "Habit: they shared whatever appeared first",
-    "Expected and received social engagement",
-    "A hunch that the posts might be true",
-    "Novelty: conspiracy posts felt more original"
+    "Social engagement: they expected, and got, more feedback",
+    "A wish to warn others that the posts were false",
+    "Sharing stayed flat across rounds, whatever feedback the posts earned",
+    "Fading attention: by the later rounds they shared without reading"
    ],
-   "answer": 1,
+   "answer": 0,
    "answerTitle": "Expected engagement drove sharing of known falsehoods",
    "explain": "With 4,128 participants, Ren, Dimant and Schweitzer show that engagement drives sharing. When conspiracy posts earned more feedback, the share of people sharing them rose from 17% to 33% over four rounds, while the control group did not change significantly (21% to 17%).",
    "implication": "Do not reward internal posts by raw engagement; recognize accuracy and sourcing, especially when reorganization rumors circulate.",
@@ -6886,7 +6886,6 @@
     "n": "4,128 participants"
    },
    "theme": "persuasion",
-   "permuted": true,
    "chart": {
     "labels": [
      "More feedback: round 1",
@@ -7485,7 +7484,7 @@
    "scene": "Researchers generated 10,320 marketing images with seven text-to-image models from 2,400 human-made images, then ran a live ad test with over 173,000 impressions.",
    "question": "How likely is it that the study found this?",
    "forecast": {
-    "claim": "In the live ad test, the human-made image beat the AI-generated images on click-through rate.",
+    "claim": "In the live ad test, no AI-generated image beat the human-made image on click-through rate.",
     "truth": false
    },
    "answerTitle": "An AI image beat the human one by up to 50%",
@@ -7641,7 +7640,11 @@
     "unit": "",
     "highlight": 0,
     "note": "Mean laziness rating; higher means lazier, and the three targets differ only in the help described.",
-    "decimals": 2
+    "decimals": 2,
+    "axis": [
+     1.5,
+     3
+    ]
    },
    "answerTitle": "AI users were judged lazier for the same work",
    "explain": "In Study 2, with 1,203 participants, targets helped by AI were rated lazier (2.50) than those helped by non-AI sources (2.16) or with no help mentioned (2.02), and less competent.",

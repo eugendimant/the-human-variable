@@ -158,7 +158,9 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         if not open_: return locked
         qn = set(re.findall(r'[a-z]+', question.lower()))
         prim = lambda x: len(qn & set(re.findall(r'[a-z]{4,}', SOURCES.get(CHALLENGES[x]['sources'][0], {}).get('authors', '').lower()))) if names(question, x, CHALLENGES[x]['sources'][:1]) else 0   # the decision whose main paper carries the most named authors comes first (review 38, m1)
-        best = max(open_, key=lambda x: (prim(x), len(topic & set(tokens(' '.join([CHALLENGES[x].get('title', ''), CHALLENGES[x]['answerTitle'], CHALLENGES[x]['explain'], CHALLENGES[x]['question'], CHALLENGES[x].get('scene', '')]))))))   # the topic word picks among one author's papers (review 30)
+        au = set(tokens(' '.join(SOURCES[sid]['authors'] for x in open_ for sid in CHALLENGES[x]['sources'] if sid in SOURCES)))   # the authors' own names are not topic words
+        tov = lambda x: len((topic - au) & set(tokens(' '.join([CHALLENGES[x].get('title', ''), CHALLENGES[x]['answerTitle'], CHALLENGES[x]['explain'], CHALLENGES[x]['question'], CHALLENGES[x].get('scene', '')]))))
+        best = max(open_, key=lambda x: (tov(x) > 0, prim(x), len(topic & set(tokens(' '.join([CHALLENGES[x].get('title', ''), CHALLENGES[x]['answerTitle'], CHALLENGES[x]['explain'], CHALLENGES[x]['question'], CHALLENGES[x].get('scene', '')]))))))   # the topic word picks among one author's papers (review 30)
         s0 = SOURCES.get(next((s for s in CHALLENGES[best]['sources'] if names(question, best, [s])), CHALLENGES[best]['sources'][0]), {})   # the paper that carries the name, not the decision's first source
         return out(f"From {s0.get('authors', 'another study')} ({s0.get('year', '')}): {CHALLENGES[best]['explain']} {CHALLENGES[best]['implication']}", CHALLENGES[best])   # say which study it switched to (review 29)
     if c:

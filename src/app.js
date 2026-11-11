@@ -318,7 +318,7 @@ function gapFigure(c, rec) {
   const opt = ['choice', 'causal', 'multi'].includes(c.format), plate = !(opt && !c.chart);   // the evidence sits on a dark plate; a plain option list stays light
   const legend = opt && c.chart ? `<p class="plate-h">${esc((c.chart.note || '').replace(/\.$/, ''))}</p>` : '';   // no colour keys: every mark is labelled where it sits
   const main = opt && !c.chart ? instrument(c) : body, caption = opt && !c.chart || !cap ? '' : `<p class="gap-caption">${esc(cap)}</p>`;
-  return `<figure class="gap${plate ? ' has-plate' : ''}" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${plate ? `<div class="plate">${legend}${main}${caption}</div>` : `${legend}${main}${caption}`}${opt && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}${SHORT_FIG.has(c.format) ? themeStrip(c, rec) : ''}</figure>`;   // the study card and the principle strip sit under the finding (review 32, m9)
+  return `<figure class="gap${plate ? ' has-plate' : ''}" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${plate ? `<div class="plate">${legend}${main}${caption}</div>` : `${legend}${main}${caption}`}${opt && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}${shortFig(c) ? themeStrip(c, rec) : ''}</figure>`;   // the study card and the principle strip sit under the finding (review 32, m9)
 }
 // The signature moment of a numeric reveal: your number against the study's, large, with the gap between them.
 function gapHead(you, ev, gap, youLab = 'Your call', evLab = 'The study') {
@@ -326,7 +326,8 @@ function gapHead(you, ev, gap, youLab = 'Your call', evLab = 'The study') {
 }
 // The study at a glance, under the evidence: who, how, where it was published and how it was checked.
 // Wide reveals: this call beside your other calls on the same principle, on one skill scale (review 25 to 27: the empty right column; Tufte: a second comparison at the same scale)
-const SHORT_FIG = new Set(['estimate', 'forecast', 'delegate']);   // short evidence figures keep the principle strip beside them; tall ones send it to the left column (audit 43)
+const SHORT_FIG = new Set(['estimate', 'forecast', 'delegate']);
+const shortFig = c => SHORT_FIG.has(c.format) && !(c.chart && c.format !== 'estimate') && c.format !== 'delegate';   // a figure that also carries a chart or task list is tall already: its strip goes to the text column (review 39)   // short evidence figures keep the principle strip beside them; tall ones send it to the left column (audit 43)
 function themeStrip(c, rec) {
   const th = (BANK.themes || []).find(t => t.id === c.theme); if (!th) return '';
   const sk = r => { const b = typeof r.base === 'number' ? r.base : S.baseline(BY_ID[r.id]); return Math.max(-1, Math.min(1, b >= 1 ? 0 : (r.score - b) / (1 - b))) };
@@ -347,10 +348,12 @@ function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + 
 function fmtU(v, u) { u = u || ''; return /^[$€£]/.test(u) ? u + v : v + u }   // currency before the number
 function bars(ch) {
   const share = ch.unit === '%' && ch.values.every(v => v >= 0 && v <= 100) && Math.max(...ch.values) >= 20;   // shares read on a 0 to 100 scale
-  const lo = Math.min(0, ...ch.values), hi = share ? 100 : Math.max(0, ...ch.values), span = (hi - lo) || 1, zero = -lo / span * 100;   // signed values get a zero line; losses run left
-  const lab = v => mn(fmtU(ch.decimals !== undefined ? Number(v).toFixed(ch.decimals) : v, ch.unit));
-  return `<div class="hbars" role="img" aria-label="${esc(ch.labels.map((l, i) => l + ' ' + lab(ch.values[i])).join(', '))}">${ch.values.map((v, i) => `<div class="hb-row"><span class="hb-label">${esc(ch.labels[i])}</span><span class="hb-track">${lo < 0 ? `<b class="zero" style="left:${zero}%"></b>` : ''}<i class="grow ${[].concat(ch.highlight).includes(i) ? 'ev' : ''}${(ch.ns || []).includes(i) ? ' ns' : ''}${v < 0 ? ' neg' : ''}" style="left:${(Math.min(v, 0) - lo) / span * 100}%;width:${Math.max(1.5, Math.abs(v) / span * 100)}%"></i></span><b class="num">${esc(lab(v))}</b></div>`).join('')}</div>`;
+  const nice = m => { if (m <= 0) return 1; const k = Math.pow(10, Math.floor(Math.log10(m))); return [1, 2, 2.5, 5, 10].map(f => f * k).find(x => x >= m - 1e-9) };   // the track ends on a round number, so the largest bar does not fill it by construction (review 39)
+  const ax = ch.axis, lo = ax ? ax[0] : Math.min(0, ...ch.values), hi = ax ? ax[1] : share ? 100 : nice(Math.max(0, ...ch.values)), span = (hi - lo) || 1, zero = -lo / span * 100;   // signed values get a zero line; losses run left
+  const lab = v => mn(fmtU(ch.decimals !== undefined ? Number(v).toFixed(ch.decimals) : v, ch.unit)), hl = i => [].concat(ch.highlight).includes(i);
+  return `<div class="hbars${ax ? ' dots' : ''}" role="img" aria-label="${esc(ch.labels.map((l, i) => l + ' ' + lab(ch.values[i])).join(', '))}">${ch.values.map((v, i) => `<div class="hb-row"><span class="hb-label">${esc(ch.labels[i])}</span>${ax ? `<span class="hb-track efx"><i class="dotv${hl(i) ? ' ev' : ''}" style="left:${(v - lo) / span * 100}%"></i></span>` : `<span class="hb-track">${lo < 0 ? `<b class="zero" style="left:${zero}%"></b>` : ''}<i class="grow ${hl(i) ? 'ev' : ''}${(ch.ns || []).includes(i) ? ' ns' : ''}${v < 0 ? ' neg' : ''}" style="left:${(Math.min(v, 0) - lo) / span * 100}%;width:${Math.max(1.5, Math.abs(v) / span * 100)}%"></i></span>`}<b class="num">${esc(lab(v))}</b></div>`).join('')}<div class="hb-row hb-ends" aria-hidden="true"><span class="hb-scale" style="grid-area:t"><em>${esc(lab(lo))}</em><em>${esc(lab(hi))}</em></span></div></div>`;   // every chart states the two ends of its scale
 }
+
 
 function sampleLine(c) {   // the sample on the question screen; never a number inside an estimate's scoring band (audit 37, invariant I4)
   const n = (c.study || {}).n || '';
@@ -393,7 +396,7 @@ function play() {
       ${st.room && st.room.agg ? classPanel(c, st.room.agg) : ''}
       <p class="reveal-body">${esc(c.explain)}</p>
       <p class="action-note"><strong>For a manager:</strong> ${esc(c.implication)}</p>
-      <div class="rev-meta">${studyCard(c)}${rec.missed || SHORT_FIG.has(c.format) ? '' : themeStrip(c, rec)}</div>
+      <div class="rev-meta">${studyCard(c)}${rec.missed || shortFig(c) ? '' : themeStrip(c, rec)}</div>
       <div class="deep"><div class="tabs" role="tablist" aria-label="Go deeper">${tabs.map(([k, l]) => `<button role="tab" id="tab-${k}" aria-selected="${tab === k}" aria-controls="tabpanel" data-tab="${k}" tabindex="${tab === k ? 0 : -1}">${l}</button>`).join('')}</div><div class="tabpanel" id="tabpanel" role="tabpanel" aria-labelledby="tab-${tab}">${panel}</div></div>
     </article>
     <div class="actionbar"><div class="actionbar-in"><span class="kicker">${st.room ? `Live class ${esc(st.room.code)}. Your instructor opens the next decision.` : `${st.session.filter(r => r.correct).length} of ${st.session.length} matched the study, average score ${st.session.length ? mn(pct(st.session.reduce((a, r) => a + r.score, 0) / st.session.length)) : 0}`}</span>${st.room ? '' : `<button class="btn btn-solid btn-lg" data-act="next" id="next-btn">${nextLabel}</button>`}</div></div></section>`;
@@ -442,7 +445,7 @@ function curated(q, c) {
   const near = fol.slice().sort((a, b) => jac(b) - jac(a))[0]; const ynSkip = new Set(trTokens(TR.filler.join(' '))); const yn = f => [...qt].every(w => trTokens(f.q).includes(w) || TR_GENERIC.has(w) || ynSkip.has(w)) ? f.a : stripYN(f.a); if (near && jac(near) >= 0.6) return { text: yn(near), cites: cs(c) };
   const has = w => [...qt].some(x => w === x || (Math.min(w.length, x.length) >= 3 && (w.startsWith(x) || x.startsWith(w)))); const sub = fol.filter(f => { const ft = trTokens(f.q); return new Set(ft).size >= 2 && ft.every(has) }).sort((a, b) => trTokens(b.q).length - trTokens(a.q).length)[0]; if (sub) return { text: yn(sub), cites: cs(c) };
   const named = trNames(q, c) ? [] : ALL.filter(x => x.explain && !x.sources.some(s => c.sources.includes(s)) && trNames(q, x));
-  if (named.length) { const ov = x => topic.filter(w => trTokens([x.title || '', x.answerTitle, x.explain, x.question, x.scene || ''].join(' ')).includes(w)).length; const qn = new Set(q.toLowerCase().match(/[a-z]+/g) || []), prim = x => trNames(q, x, x.sources.slice(0, 1)) ? (((SOURCE[x.sources[0]] || {}).authors || '').toLowerCase().match(/[a-z]{4,}/g) || []).filter((w, i, a) => qn.has(w) && a.indexOf(w) === i).length : 0; const b = named.sort((a, z) => prim(z) - prim(a) || ov(z) - ov(a))[0]; const s0 = SOURCE[b.sources.find(id => trNames(q, b, [id])) || b.sources[0]] || {}; return { text: `From ${s0.authors || 'another study'} (${s0.year || ''}): ${b.explain}\n\n${b.implication}`, cites: cs(b) } }
+  if (named.length) { const ov = x => topic.filter(w => trTokens([x.title || '', x.answerTitle, x.explain, x.question, x.scene || ''].join(' ')).includes(w)).length; const qn = new Set(q.toLowerCase().match(/[a-z]+/g) || []), prim = x => trNames(q, x, x.sources.slice(0, 1)) ? (((SOURCE[x.sources[0]] || {}).authors || '').toLowerCase().match(/[a-z]{4,}/g) || []).filter((w, i, a) => qn.has(w) && a.indexOf(w) === i).length : 0; const au = new Set(trTokens(named.flatMap(x => x.sources.map(id => (SOURCE[id] || {}).authors || '')).join(' '))), tov = x => { const ts = new Set(trTokens([x.title || '', x.answerTitle, x.explain, x.question, x.scene || ''].join(' '))); return topic.filter(w => !au.has(w) && ts.has(w)).length }; const b = named.sort((a, z) => (tov(z) > 0) - (tov(a) > 0) || prim(z) - prim(a) || ov(z) - ov(a))[0]; const s0 = SOURCE[b.sources.find(id => trNames(q, b, [id])) || b.sources[0]] || {}; return { text: `From ${s0.authors || 'another study'} (${s0.year || ''}): ${b.explain}\n\n${b.implication}`, cites: cs(b) } }
   const st0 = c.study || {}, rare = topic.filter(w => !TR_COMMON.has(w)), hits = (s, ws) => { const ts = new Set(trTokens(s)); return ws.filter(w => ts.has(w)).length };
   if (c.delegate) { const ov = tk => trTokens(tk.text).filter((w, i, a) => qt.has(w) && a.indexOf(w) === i).length; const tk = c.delegate.tasks.slice().sort((a, b) => ov(b) - ov(a))[0]; if (tk && tk.why && (ov(tk) >= 2 || (ov(tk) >= 1 && /\bwhy\b/.test(ql)))) return { text: tk.why, cites: cs(c) } }   // a question about one task gets that task's evidence
   let whyq = false, defq = false;
@@ -773,11 +776,15 @@ function render(moveFocus) {
   if (moveFocus) { scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' }); const h = qs('#view h1'); if (h) { if (!h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }) } }
 }
 function balanceReveal() {   // the shorter column takes the study card and the principle strip (review 33, m9); a class, not a DOM move, so reading order stays put (audit 45)
-  const rv = qs('.reveal'); if (!rv) return; rv.classList.remove('meta-right'); const m0 = qs('.reveal>.rev-meta'); if (m0) m0.style.marginTop = '';
+  const rv = qs('.reveal'); if (!rv) return; rv.classList.remove('meta-right', 'meta-wide', 'meta-left', 'fig-tall'); const m0 = qs('.reveal>.rev-meta'); if (m0) m0.style.marginTop = '';
   const fig = qs('.reveal>figure.gap'), meta = qs('.reveal>.rev-meta'), left = qs('.reveal>.action-note');
   if (!fig || !meta || !left || innerWidth < 1200 || qs('.reveal>section.gap')) return;   // a live-class panel already lengthens the right column
   const fb = fig.getBoundingClientRect().bottom, lb = left.getBoundingClientRect().bottom, mh = meta.getBoundingClientRect().height;
-  if (lb - fb > mh * .3) { rv.classList.add('meta-right'); const gap = meta.getBoundingClientRect().top - fig.getBoundingClientRect().bottom - 24; if (gap > 0) meta.style.marginTop = -gap + 'px' }   // pulled up to sit under the figure, not in a row below the left column (audit 47)
+  if (fb > lb + mh + 120) { rv.classList.add('fig-tall'); return }   // a figure much taller than the text: the card, the tabs and the question box all run down the text column beside it (review 39)
+  const gWide = Math.abs(lb - fb), gRight = Math.abs(fb + 24 + mh - lb), gLeft = Math.abs(lb + mh - fb);   // empty space each placement leaves: one band under both columns, under the figure, or under the text (review 39)
+  if (gRight < gWide && gRight <= gLeft && lb > fb) { rv.classList.add('meta-right'); const gap = meta.getBoundingClientRect().top - fig.getBoundingClientRect().bottom - 24; if (gap > 0) meta.style.marginTop = -gap + 'px' }   // pulled up to sit under the figure, not in a row below the left column (audit 47)
+  else if (gLeft < gWide && fb > lb) { rv.classList.add('meta-left'); const gap = meta.getBoundingClientRect().top - lb - 24; if (gap > 0) meta.style.marginTop = -gap + 'px' }   // a tall figure: the card sits under the text, pulled up beside the figure
+  else rv.classList.add('meta-wide');
 }
 let balT; addEventListener('resize', () => { clearTimeout(balT); balT = setTimeout(balanceReveal, 150) });
 function animateReveal() {

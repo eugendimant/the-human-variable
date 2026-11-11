@@ -393,13 +393,13 @@
  },
  "dimant-conspiracy-choice": {
   "keyed": [
-   "Expected and received social engagement"
+   "Social engagement: they expected, and got, more feedback"
   ],
   "options": [
-   "A hunch that the posts might be true",
-   "Expected and received social engagement",
-   "Habit: they shared whatever appeared first",
-   "Novelty: conspiracy posts felt more original"
+   "A wish to warn others that the posts were false",
+   "Fading attention: by the later rounds they shared without reading",
+   "Sharing stayed flat across rounds, whatever feedback the posts earned",
+   "Social engagement: they expected, and got, more feedback"
   ]
  },
  "dimant-hate-choice": {
