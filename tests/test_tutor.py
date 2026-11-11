@@ -474,3 +474,15 @@ def test_nearest_line_needs_two_distinctive_words():
     """A single shared word never borrows a sentence (review 27 stands)."""
     a = T.curated('which interface was worst', 'axf01')['answer']
     assert a.startswith('I could not match')
+
+
+@pytest.mark.parametrize('q,cid,want', [
+    ('What did Thaler find?', 'biz01', 'From Thaler & Benartzi (2004)'),
+    ('What did Thaler and Benartzi find?', 'ai01', 'From Thaler & Benartzi (2004)'),
+    ('is this peer reviewed?', 'biz01', 'Published: Madrian & Shea (2001), Quarterly Journal of Economics'),
+    ('is it causal?', 'biz01', 'Design: Natural experiment in one firm'),
+    ('how many clinicians', 'axf05', '457 clinicians'),
+])
+def test_offline_tutor_review38(q, cid, want):
+    """Review 38 m1 and m2: a surname goes to the paper that carries it; publication, design and sample questions get their line."""
+    assert want in T.curated(q, cid)['answer']

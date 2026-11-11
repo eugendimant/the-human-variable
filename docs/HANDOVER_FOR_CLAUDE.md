@@ -103,3 +103,9 @@ Run each through the loop and an independent reviewer before calling it done.
 - Since iteration 54: projector reveals fit 1440x900, plate axis without repeated numbers, hero prompt on the handle, centred question screens, tutor routes (funding, raters, scope, prereg) and nearest-sentence fallback, compact phone causal diagram.
 - Next round, in the reviewer's order: rebuild the allocate plate as one labelled dot plot; reuse the projector's dot strip on phone class panels; fit the projector to 1280x720; fill the empty right column on wide reveals. Then tutor misses and the three weak items.
 - Owner decisions pending: GitHub repo + license.
+
+## Where it stands after iteration 59 (2026-11-11)
+
+- Review 38 (iteration 56): 86/100, 0 Major. Iterations 57 to 59 fix its introduced items, rebuild the allocate plate, fit the projector to any screen, put phone class panels on stated scales, rewrite three too-easy items and fix surname routing in the tutor.
+- A copy of the project lives on Eugen's computer: `Claude Cowork/5 Tools/The Human Variable/` (source tree plus `the-human-variable.bundle`, the full git history).
+- Owner decision pending: GitHub repo + license.

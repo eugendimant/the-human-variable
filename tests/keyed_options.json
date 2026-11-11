@@ -76,14 +76,14 @@
  },
  "social01": {
   "keyed": [
-   "Loose norms generated more behavioral variation",
-   "The spread of behavior shaped choices"
+   "After a polarized norm, most people chose extreme contributions",
+   "After a tight norm, choices clustered close to the average"
   ],
   "options": [
-   "Loose norms generated more behavioral variation",
-   "Polarized norms pulled choices toward the middle",
-   "The spread of behavior shaped choices",
-   "Tight norms produced the most extreme choices"
+   "After a polarized norm, most people chose extreme contributions",
+   "After a polarized norm, most people chose the middle contribution",
+   "After a tight norm, choices clustered close to the average",
+   "Choices matched whenever the group average was the same, whatever its shape"
   ]
  },
  "social04": {
@@ -108,13 +108,13 @@
  },
  "social13": {
   "keyed": [
-   "About 50% likelier to advance from some rounds; several estimates imprecise"
+   "About 50% likelier to advance from certain preliminary rounds"
   ],
   "options": [
-   "About 50% likelier to advance from some rounds; several estimates imprecise",
-   "About 50% likelier to advance, with precise estimates throughout",
+   "About 5% likelier to advance from preliminary rounds",
+   "About 50% likelier to advance from certain preliminary rounds",
    "Less likely to advance once screened",
-   "Little change in who advanced; several estimates imprecise"
+   "No change in who advanced"
   ]
  },
  "social14": {

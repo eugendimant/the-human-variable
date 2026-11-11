@@ -3178,16 +3178,16 @@
    "concept": "Norm distributions",
    "tag": "27 / CULTURE",
    "title": "Tight, loose or split",
-   "scene": "Two teams have the same average cooperation. In one, behavior is tightly clustered around the average; in the other, it is widely spread out.",
+   "scene": "People saw how a group had behaved in a contribution game before choosing their own contribution. The group’s average was held fixed; only its shape changed: tightly clustered, widely spread, or split between the two extremes.",
    "question": "Which two results did the experiments find?",
    "options": [
-    "Loose norms generated more behavioral variation",
-    "The spread of behavior shaped choices",
-    "Polarized norms pulled choices toward the middle",
-    "Tight norms produced the most extreme choices"
+    "After a tight norm, choices clustered close to the average",
+    "After a polarized norm, most people chose extreme contributions",
+    "After a polarized norm, most people chose the middle contribution",
+    "Choices matched whenever the group average was the same, whatever its shape"
    ],
-   "answerTitle": "The spread of others’ behavior changed choices",
-   "explain": "Dimant, Gelfand, Hochleitner and Sonderegger showed about 1,200 Americans co-player behavior with the same mean but different spreads. Choices tracked the spread: contribution variance was 1.26 after a tight norm and 1.65 after a loose one.",
+   "answerTitle": "The shape of others’ behavior changed choices",
+   "explain": "Dimant, Gelfand, Hochleitner and Sonderegger showed about 1,200 Americans co-player behavior with the same mean but different spreads. Choices tracked the spread: contribution variance was 1.26 after a tight norm and 1.65 after a loose one. After a polarized norm, most people chose extreme contributions.",
    "implication": "Report the spread and clustering of team behavior alongside averages in culture and engagement dashboards.",
    "boundary": "Two-player contribution game with 1,203 US adults, varying the shape of the norm while holding its average fixed.",
    "sources": [
@@ -3225,7 +3225,6 @@
     "design": "Online experiment, two-player contribution game (6 treatments)",
     "n": "1,203 US adults (representative sample)"
    },
-   "permuted": true,
    "chart": {
     "labels": [
      "Saw a tight norm",
@@ -3527,7 +3526,7 @@
    "title": "Screens at auditions",
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
    "question": "What did the authors estimate for women?",
-   "answerTitle": "Favorable to women, with some imprecise estimates",
+   "answerTitle": "About 50% likelier to advance from certain early rounds",
    "explain": "Goldin and Rouse estimate that the screen raised by 50 percent the chance a woman advanced from certain preliminary rounds, and that blind auditions explain about 30 percent of the rise in women among new hires. Some estimates are imprecise.",
    "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
    "boundary": "Orchestra audition records; the authors report large standard errors for several estimates, and one effect ran in the opposite direction.",
@@ -3562,11 +3561,10 @@
     "design": "Panel of audition records (individual fixed effects)",
     "n": "Musicians auditioning at major US orchestras"
    },
-   "permuted": true,
    "options": [
-    "About 50% likelier to advance from some rounds; several estimates imprecise",
-    "About 50% likelier to advance, with precise estimates throughout",
-    "Little change in who advanced; several estimates imprecise",
+    "About 50% likelier to advance from certain preliminary rounds",
+    "About 5% likelier to advance from preliminary rounds",
+    "No change in who advanced",
     "Less likely to advance once screened"
    ],
    "answer": 0
@@ -5276,8 +5274,8 @@
    "scene": "A 2012 PNAS study reported that signing an honesty statement at the top of a form, rather than the bottom, reduced dishonest reports. Government agencies adopted the practice.",
    "question": "How likely is it that the study found this?",
    "forecast": {
-    "claim": "The replications found no effect of signing first on honest reporting.",
-    "truth": true
+    "claim": "A preregistered direct replication again found fewer dishonest reports when people signed first.",
+    "truth": false
    },
    "answerTitle": "No effect of signing first",
    "explain": "Across five conceptual replications with 4,559 participants and a preregistered direct replication with 1,235, the authors observed no effect of signing first on honest reporting. PNAS retracted the 2012 paper in 2021.",
@@ -9144,6 +9142,14 @@
     "\\bpre-?regist\\w*"
    ],
    [
+    "peer",
+    "\\bpeer[- ]?review\\w*|\\bwhere (was|is) (it|this|the study|the paper) published\\b|\\bwhich journal\\b"
+   ],
+   [
+    "causal",
+    "\\b(is|was) (it|this|that) (causal|a causal \\w+)\\b|\\bcorrelation or causation\\b|\\bcausal or correlational\\b"
+   ],
+   [
     "authors",
     "\\b(who (did|ran|conducted|carried out|is behind|made|performed) (the|this) [\\w-]+|who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\\b"
    ],
@@ -9169,7 +9175,7 @@
    ],
    [
     "who",
-    "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students)|sample size|who took part|population)\\b"
+    "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students|clinicians|physicians|doctors|nurses|managers|firms|teams|forecasters|respondents|users|writers|developers|consultants|households|adults)|sample size|who took part|population)\\b"
    ],
    [
     "catch",

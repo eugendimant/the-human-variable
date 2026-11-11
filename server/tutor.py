@@ -87,14 +87,14 @@ GENERIC = {stem(w) for w in R['generic']}
 COMMON = set(R.get('common', []))
 WORD_SURNAMES = set(R.get('wordSurnames', []))   # words too common across follow-ups to pick one by themselves
 
-def names(question: str, cid: str) -> bool:
+def names(question: str, cid: str, srcs=None) -> bool:
     """Does the question name a study behind this decision (an author surname)?"""
     words = lambda s: {w for w in re.findall(r'[a-z]+', __import__('unicodedata').normalize('NFKD', re.sub('[\u2018\u2019]', "'", s)).encode('ascii', 'ignore').decode().lower()) if len(w) >= 4 and w not in STOP}
     q = words(question)   # whole surnames, unstemmed: "bill" must not match "Biller-Andorno"
     rest = question.strip().split(' ', 1)[1] if ' ' in question.strip() else ''
     q = {w for w in q if w not in WORD_SURNAMES or (re.search(r'\b' + w.capitalize() + r'\b', rest) or re.match(w.capitalize() + r"(\s+et al|['’]s\b|\s+and\s+[A-Z]|\s*\()", question.strip()))}   # the question's first word does not count (audit 30)   # "the reminder card" is not Card et al.
     short = lambda a: {w.capitalize() for w in re.findall(r'[a-z]+', __import__('unicodedata').normalize('NFKD', a).encode('ascii', 'ignore').decode().lower()) if len(w) == 3}   # three-letter surnames (Noy) count only when capitalised (review 30)
-    return any(words(SOURCES[s]['authors']) - {'with', 'others'} & q or any(re.search(r'\b' + w + r'\b', rest) or re.match(w + r"(\s+et al|['’]s\b|\s+and\s+[A-Z]|\s*\()", question.strip()) for w in short(SOURCES[s]['authors'])) for s in CHALLENGES[cid]['sources'] if s in SOURCES)   # three-letter names not as a question's first word (audit 39: "Van drivers…")
+    return any(words(SOURCES[s]['authors']) - {'with', 'others'} & q or any(re.search(r'\b' + w + r'\b', rest) or re.match(w + r"(\s+et al|['’]s\b|\s+and\s+[A-Z]|\s*\()", question.strip()) for w in short(SOURCES[s]['authors'])) for s in (CHALLENGES[cid]['sources'] if srcs is None else srcs) if s in SOURCES)   # three-letter names not as a question's first word (audit 39: "Van drivers…")
 
 def _papers(c: dict) -> str:
     """Authors, year and journal of a decision's sources (titles stay with the evidence, as on the page)."""
@@ -156,8 +156,10 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
     if named:
         open_ = [x for x in named if not (exclude and exclude(x))]
         if not open_: return locked
-        best = max(open_, key=lambda x: len(topic & set(tokens(' '.join([CHALLENGES[x].get('title', ''), CHALLENGES[x]['answerTitle'], CHALLENGES[x]['explain'], CHALLENGES[x]['question'], CHALLENGES[x].get('scene', '')])))))   # the topic word picks among one author's papers (review 30)
-        s0 = SOURCES.get(CHALLENGES[best]['sources'][0], {})
+        qn = set(re.findall(r'[a-z]+', question.lower()))
+        prim = lambda x: len(qn & set(re.findall(r'[a-z]{4,}', SOURCES.get(CHALLENGES[x]['sources'][0], {}).get('authors', '').lower()))) if names(question, x, CHALLENGES[x]['sources'][:1]) else 0   # the decision whose main paper carries the most named authors comes first (review 38, m1)
+        best = max(open_, key=lambda x: (prim(x), len(topic & set(tokens(' '.join([CHALLENGES[x].get('title', ''), CHALLENGES[x]['answerTitle'], CHALLENGES[x]['explain'], CHALLENGES[x]['question'], CHALLENGES[x].get('scene', '')]))))))   # the topic word picks among one author's papers (review 30)
+        s0 = SOURCES.get(next((s for s in CHALLENGES[best]['sources'] if names(question, best, [s])), CHALLENGES[best]['sources'][0]), {})   # the paper that carries the name, not the decision's first source
         return out(f"From {s0.get('authors', 'another study')} ({s0.get('year', '')}): {CHALLENGES[best]['explain']} {CHALLENGES[best]['implication']}", CHALLENGES[best])   # say which study it switched to (review 29)
     if c:
         fol = [f for f in c.get('follow', []) if not is_open(ql) or not re.match(r'(Yes|No)\b', f['a'])]
@@ -224,6 +226,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'prereg':
                 ps = [x for x in _sents(c) if re.search(r'pre-?regist', x, re.I)]
                 return out(f"From this study’s summary: {ps[0].rstrip('.')}." if ps else f"The lab's summary does not record whether the study was preregistered; the paper states it. The paper: {_papers(c)}.", c)
+            if name == 'peer': return out(f"Published: {_papers(c)}.", c)
+            if name == 'causal': return out((f"Design: {st['design']}. " if st.get('design') else '') + f"What the study covers: {c['boundary']}", c)
             if name == 'authors': return out(f"{_papers(c)}. Design: {st.get('design', 'see the paper')}.", c)
             if name == 'voluntary': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" Setting: {c.get('scene', '')} What the study covers: {c['boundary']}", c)
             if name == 'stakes' and [f for f in fol if re.search(r'(\$|\bmoney\b|\bpaid\b|\bbonus|\bincentiv)', f['q'] + ' ' + f['a'], re.I)]: return out([f for f in fol if re.search(r'(\$|\bmoney\b|\bpaid\b|\bbonus|\bincentiv)', f['q'] + ' ' + f['a'], re.I)][0]['a'], c)

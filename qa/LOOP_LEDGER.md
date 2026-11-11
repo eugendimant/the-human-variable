@@ -880,3 +880,11 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **m7, m8.** Projector histogram bins carry the unit and the evidence row is named; delegate bars state their measure.
 - **m9.** The console shows a reconnecting note after two failed polls.
 - **Gates.** 361 passed; design lint by rule {}; build current.
+
+## Iteration 59 (2026-11-11): review 38 m1, m2, m13
+
+- **m13.** social01 (checked against CESifo WP 10233): scene no longer states the set-up as the answer; the two keys are distinct results (tight: clustered near the average; polarized: most chose extreme contributions); explanation adds the polarized result. social13: options differ in the finding. bz11: the claim is the false statement "a preregistered direct replication again found fewer dishonest reports". Keyed options pinned by hand in `tools/content_review38b_2026_11_11.py`.
+- **m1.** A surname goes to the decision whose main paper carries it, and the answer names that paper (Thaler to Thaler & Benartzi 2004).
+- **m2.** Routes `peer` and `causal`; sample-size questions for more roles. Test `test_offline_tutor_review38`.
+- **Open.** Dietvorst 2015/2018 pick; "how much money was at stake"; definition questions; ai10 units; biz05 baselines; repeated numbers; phone slider label.
+- **Gates.** 366 passed; design lint by rule {}; build current.
