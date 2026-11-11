@@ -774,6 +774,21 @@ p,li,dd{text-wrap:pretty}
 .plate .alloc-cmp .efx b.dv{color:#d6def0}.plate .alloc-cmp .hb-row:has(.ev-note) .efx b.dv{color:#f0b43c}.alloc-cmp .hb-row:has(.ev-note) .efx b.dv{color:var(--ev-ink)}.plate .alloc-cmp .efx b.dv.ns{color:#b9c4dd}
 .alloc-cmp .hb-row.hb-ends{grid-template-columns:1fr}   /* the scale runs the full width of the dot tracks (review 39, I-2) */
 .reveal.meta-wide>.rev-meta .theme-strip{max-width:560px}   /* the strip keeps its drawn size in the full-width band (review 40, I-1) */
+/* landing page: what it is, how a round works, one decision to try, then the paths (owner, 2026-11-11) */
+.intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(32px,5vw,88px);align-items:start}
+.intro h1{font-size:clamp(38px,4.7vw,68px);line-height:1}
+.intro .hero-lede{margin:clamp(18px,2vw,26px) 0 clamp(22px,2.4vw,30px);max-width:31em}
+.intro .hero-meta{margin-top:20px}
+.how-h{font-size:var(--t6);font-weight:700;letter-spacing:0;color:var(--ink-2);margin:6px 0 10px}
+.round-steps{list-style:none;margin:0;padding:0;counter-reset:rs;border-bottom:1px solid var(--rule)}
+.round-steps li{counter-increment:rs;display:grid;grid-template-columns:2.4rem minmax(0,1fr);column-gap:10px;row-gap:3px;padding:16px 0 17px;border-top:1px solid var(--rule)}
+.round-steps li::before{content:counter(rs);grid-row:1 / span 2;font-size:30px;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--you-ink);font-variant-numeric:tabular-nums}
+.round-steps strong{font-size:var(--t4);line-height:1.2;letter-spacing:-.01em}
+.round-steps span{font-family:var(--serif);font-size:17px;line-height:1.4;color:var(--ink-2)}
+.try-wrap{margin-top:clamp(40px,5vw,68px);padding-top:clamp(26px,3vw,38px);border-top:1px solid var(--rule)}
+.try-wrap .row-head{align-items:baseline;margin-bottom:14px}.try-wrap .try-src{margin-left:auto}
+.tr-q{font-size:clamp(23px,2.5vw,34px);line-height:1.14;letter-spacing:-.022em;font-weight:750;margin:0;max-width:26em}
+@media (max-width:900px){.intro{grid-template-columns:1fr}}
 /* Instructor console additions */
 .field{height:46px;border:1px solid var(--rule);border-radius:var(--r-ctl);padding:0 12px;background:var(--surface)}
 .join-banner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 24px}

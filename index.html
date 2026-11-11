@@ -774,6 +774,21 @@ p,li,dd{text-wrap:pretty}
 .plate .alloc-cmp .efx b.dv{color:#d6def0}.plate .alloc-cmp .hb-row:has(.ev-note) .efx b.dv{color:#f0b43c}.alloc-cmp .hb-row:has(.ev-note) .efx b.dv{color:var(--ev-ink)}.plate .alloc-cmp .efx b.dv.ns{color:#b9c4dd}
 .alloc-cmp .hb-row.hb-ends{grid-template-columns:1fr}   /* the scale runs the full width of the dot tracks (review 39, I-2) */
 .reveal.meta-wide>.rev-meta .theme-strip{max-width:560px}   /* the strip keeps its drawn size in the full-width band (review 40, I-1) */
+/* landing page: what it is, how a round works, one decision to try, then the paths (owner, 2026-11-11) */
+.intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(32px,5vw,88px);align-items:start}
+.intro h1{font-size:clamp(38px,4.7vw,68px);line-height:1}
+.intro .hero-lede{margin:clamp(18px,2vw,26px) 0 clamp(22px,2.4vw,30px);max-width:31em}
+.intro .hero-meta{margin-top:20px}
+.how-h{font-size:var(--t6);font-weight:700;letter-spacing:0;color:var(--ink-2);margin:6px 0 10px}
+.round-steps{list-style:none;margin:0;padding:0;counter-reset:rs;border-bottom:1px solid var(--rule)}
+.round-steps li{counter-increment:rs;display:grid;grid-template-columns:2.4rem minmax(0,1fr);column-gap:10px;row-gap:3px;padding:16px 0 17px;border-top:1px solid var(--rule)}
+.round-steps li::before{content:counter(rs);grid-row:1 / span 2;font-size:30px;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--you-ink);font-variant-numeric:tabular-nums}
+.round-steps strong{font-size:var(--t4);line-height:1.2;letter-spacing:-.01em}
+.round-steps span{font-family:var(--serif);font-size:17px;line-height:1.4;color:var(--ink-2)}
+.try-wrap{margin-top:clamp(40px,5vw,68px);padding-top:clamp(26px,3vw,38px);border-top:1px solid var(--rule)}
+.try-wrap .row-head{align-items:baseline;margin-bottom:14px}.try-wrap .try-src{margin-left:auto}
+.tr-q{font-size:clamp(23px,2.5vw,34px);line-height:1.14;letter-spacing:-.022em;font-weight:750;margin:0;max-width:26em}
+@media (max-width:900px){.intro{grid-template-columns:1fr}}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="#" data-home="1" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -1128,11 +1143,12 @@ function heroTry() {
   const h = st.hero, e = c.estimate, v = h.value, src = SOURCE[c.sources[0]];
   const gap = v === null ? 0 : Math.abs(v - e.target);
   return `<section class="try-ruler" aria-labelledby="try-q">
-    <div class="tr-head"><h1 id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</h1>
+    <div class="row-head"><h2>Try one now</h2><span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
+    <div class="tr-head"><p class="tr-q" id="try-q">Professionals were randomly given ChatGPT for short writing tasks. How much less time did they take?</p>
     <p class="tr-read ${h.done ? 'ev' : ''}"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${h.done ? e.target + '%' : v === null ? '00%' : v + '%'}</b><span class="hero-unit">${h.done ? 'less time, the study' : v === null ? '' : 'less time, your call'}</span></p></div>
     <div class="ruler ${h.done ? 'done' : ''}">${h.done ? ruler(e.min, e.max, v, e.target, e.tolerance) : `${ruler(e.min, e.max, null, null, null)}${v === null ? '<span class="r-hint" aria-hidden="true">Slide to answer</span>' : ''}<label class="sr-only" for="hero-range">Your estimate of the time saved, in percent</label>
     <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">`}</div>
-    <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} ${gap === 1 ? 'point' : 'points'} off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}<span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
+    <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `They took ${e.target}% less time. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} ${gap === 1 ? 'point' : 'points'} off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}</div>
   </section>`;
 }
 
@@ -1144,9 +1160,12 @@ function home() {
   const paths = (BANK.paths || []).map(p => ({ ...p, items: p.ids.filter(id => ALL.some(c => c.id === id)) })).filter(p => p.items.length);
   const done = new Set(records.map(r => r.id));
   const resume = paths.find(p => { const n = p.items.filter(id => done.has(id)).length; return n > 0 && n < p.items.length });
-  return `${resume ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button></div>` : ''}<section class="hero wrap">${heroTry()}
-    <div class="hero-foot"><div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button>${location.protocol.startsWith('http') ? '<button class="link-btn" data-act="join">Join a live class</button>' : ''}</div>
-    <p class="hero-meta">${ALL.length} decisions on AI, work and behavior, drawn from ${nSrc} peer-reviewed studies. Original concept by Eugen Dimant.</p></div></section>
+  return `${resume ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button></div>` : ''}<section class="hero wrap"><div class="intro"><div class="intro-main"><h1>How well do you predict what people do?</h1>
+    <p class="hero-lede">The Human Variable is a decision game for managers and students. Each round takes a situation from a published study on AI, work and behavior. You make the call first. Then you see what the researchers measured, and how close you were.</p>
+    <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button>${location.protocol.startsWith('http') ? '<button class="link-btn" data-act="join">Join a live class</button>' : ''}</div>
+    <p class="hero-meta">${ALL.length} decisions from ${nSrc} peer-reviewed studies. Original concept by Eugen Dimant.</p></div>
+    <div class="how-box"><h2 class="how-h" id="how-h">How a round works</h2><ol class="round-steps" aria-labelledby="how-h"><li><strong>Read the situation</strong><span>A case from a real study: a firm rolls out an AI assistant, a tax office rewrites a letter.</span></li><li><strong>Make your call</strong><span>Estimate, choose, rank or split a budget, and say how sure you are.</span></li><li><strong>See what the study found</strong><span>The published result, how close you were, and one action a manager can take.</span></li></ol></div></div>
+    <div class="try-wrap">${heroTry()}</div></section>
   <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
     <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${pathStrip(p, done)}${pi === 0 ? 'Start here. ' : ''}${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
