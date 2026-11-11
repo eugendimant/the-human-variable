@@ -52,3 +52,9 @@ Independent scores: 86 to 88 for the last fifteen reviews (review 31: 87). Scien
 - After `tools/tutor_routes_2026_10_31.py`, nothing else needs to run: it writes only `tutorRoutes`. The rule "rerun newer content scripts" applies only after `git checkout src/bank.json`.
 - The early scripts (`content_review1` to `content_review13`) are not safe to rerun on the current bank: they fail midway or rewrite retired items. A loop over `tools/content_review*.py` changed 249 lines of `bank.json` and `evidence.json`; `git checkout` of both files restored them.
 - The tutor's sentence splitter uses no regex lookbehind: older Safari cannot parse one, and a parse error stops the whole page script.
+
+## 2026-11-11: test layouts with a record present
+
+- The principle strip is drawn only after earlier calls on the same principle. Every layout test that starts from an empty record misses it. A layout change is checked with `test_principle_strip_keeps_its_size_with_a_record` and by measuring with a record.
+- A gap metric must not count a full-width element as part of both columns. Measure each column to its own last element.
+- Do not invent a chart axis. If the instrument's scale is not in the stored quotes, draw from zero on a round scale.

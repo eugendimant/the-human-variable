@@ -3236,7 +3236,8 @@
     ],
     "unit": "",
     "highlight": 1,
-    "note": "Variance of contributions after seeing others’ choices."
+    "note": "Variance of contributions after seeing others’ choices.",
+    "max": 3
    }
   },
   {
@@ -6653,7 +6654,7 @@
    "answer": 2,
    "answerTitle": "Penalty plus normative message, only when compliance is cheap",
    "explain": "With 418 Penn participants, Bicchieri, Dimant and Xiao show that weak punishment plus a normative message raised trustees’ returns to 42.7%, against 28.7% at baseline, when stakes were low. At high stakes, punishment plus empirical information cut returns to 22.2% versus 36.5%.",
-   "implication": "When a sanction is modest and compliance is costly, do not justify it with “everyone complies”; explain why the rule is right.",
+   "implication": "Where compliance is costly, do not back a modest sanction with “everyone complies”. Where it is cheap, pair the sanction with why the rule is right.",
    "boundary": "Lab trust game combining a weak penalty with norm messages at two levels of compliance cost.",
    "sources": [
     "deviant21"
@@ -6856,7 +6857,7 @@
    "options": [
     "Social engagement: they expected, and got, more feedback",
     "A wish to warn others that the posts were false",
-    "Sharing stayed flat across rounds, whatever feedback the posts earned",
+    "Habit: sharing did not respond to the feedback posts earned",
     "Fading attention: by the later rounds they shared without reading"
    ],
    "answer": 0,
@@ -7070,7 +7071,8 @@
     ],
     "unit": "",
     "highlight": 1,
-    "note": "Variance of contributions after seeing others’ choices."
+    "note": "Variance of contributions after seeing others’ choices.",
+    "max": 3
    }
   },
   {
@@ -7640,11 +7642,7 @@
     "unit": "",
     "highlight": 0,
     "note": "Mean laziness rating; higher means lazier, and the three targets differ only in the help described.",
-    "decimals": 2,
-    "axis": [
-     1.5,
-     3
-    ]
+    "decimals": 2
    },
    "answerTitle": "AI users were judged lazier for the same work",
    "explain": "In Study 2, with 1,203 participants, targets helped by AI were rated lazier (2.50) than those helped by non-AI sources (2.16) or with no help mentioned (2.02), and less competent.",

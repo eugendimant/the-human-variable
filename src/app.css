@@ -768,6 +768,7 @@ p,li,dd{text-wrap:pretty}
 .alloc-cmp .hb-row.two>.hb-track.efx{grid-area:t2;margin-top:28px}.alloc-cmp .hb-row.two>b.you{text-align:right;align-self:start}
 .alloc-cmp .hb-row.two+.hb-row.two{border-top:1px solid rgba(255,255,255,.12)}
 @media (max-width:700px){.alloc-cmp .hb-row.two{grid-template-columns:minmax(0,1fr) 96px}}
-.alloc-cmp .efx b.dv{position:absolute;top:-25px;transform:translateX(-50%);white-space:nowrap;font-size:13px;line-height:1.2;color:var(--ink-2)}.alloc-cmp .efx b.dv.dv-r{transform:translateX(calc(-100% + 8px))}.alloc-cmp .efx b.dv.dv-l{transform:translateX(-8px)}
+.alloc-cmp .efx b.dv{position:absolute;top:-25px;transform:translateX(-50%);white-space:nowrap;font-size:13px;line-height:1.2;color:var(--ink-2)}.alloc-cmp .efx b.dv.dv-r{transform:translateX(calc(-100% + 6px))}.alloc-cmp .efx b.dv.dv-l{transform:translateX(-6px)}
 .plate .alloc-cmp .efx b.dv{color:#d6def0}.plate .alloc-cmp .hb-row:has(.ev-note) .efx b.dv{color:#f0b43c}.alloc-cmp .hb-row:has(.ev-note) .efx b.dv{color:var(--ev-ink)}.plate .alloc-cmp .efx b.dv.ns{color:#b9c4dd}
 .alloc-cmp .hb-row.hb-ends{grid-template-columns:1fr}   /* the scale runs the full width of the dot tracks (review 39, I-2) */
+.reveal.meta-wide>.rev-meta .theme-strip{max-width:560px}   /* the strip keeps its drawn size in the full-width band (review 40, I-1) */

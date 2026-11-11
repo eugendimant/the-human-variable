@@ -912,3 +912,15 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Gate.** `test_reveal_layout_sweep` (22 decisions x 5 screen sizes: nothing under the action bar, no text overlap in figures, nothing outside its figure, no sideways scroll).
 - **Open.** 33 reveals still leave more than 150 px empty (widen `fig-tall`); repeated headline number on estimate reveals; social20; format mix; phone and projector estimate charts differ.
 - **Gates.** 367 passed; design lint by rule {}; build current.
+
+## Iteration 62 (2026-11-11): review 40
+
+- **Major I-1, fixed.** The principle strip is capped at 560 px in the full-width band. Test `test_principle_strip_keeps_its_size_with_a_record` plays five decisions per principle first; earlier tests started from an empty record and never drew the strip.
+- **I-2.** `fig-tall` is kept only when the text column then ends within 260 px of the figure.
+- **I-3, I-6.** Signed charts end on a round negative number; axis ends print without the values' decimals.
+- **I-4, I-5.** axe12 has no invented axis; social01 and dimant-polarizednorms-choice share a 0 to 3 scale (`chart.max`).
+- **Classroom.** A phone that has not answered gets a notice when answers close.
+- **Items.** dimant-conspiracy-choice distractor answers the question; dimant-deviant-choice manager line follows the finding.
+- **Lesson.** Reviews 36 to 40: 86, 86, 85, 85, 84. Three of the last four rounds introduced a defect the next review caught. Measure layout with a record present; next round is an audit pass on review 40's remaining Minors, no new layout.
+- **Open (review 40).** Allocate scale ends and zero label at 390; projector text at 720p and open-view layout; histogram bin labels; surname + topic when the author is on screen; tutor misses; dimant-hate-choice figure; ai02 follow-up and index charts; bz02 and rollout4 scenes; wording cues on choice items; Library rows.
+- **Gates.** 368 passed; design lint by rule {}; build current.
