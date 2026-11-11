@@ -195,7 +195,8 @@ function home() {
   return `${resume ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button></div>` : ''}<section class="hero wrap"><div class="intro"><div class="intro-main"><h1>How well do you predict what people do?</h1>
     <p class="hero-lede">The Human Variable is a decision game for managers and students. Each round takes a situation from a published study on AI, work and behavior. You make the call before you see what the researchers measured, and the result shows how close you were.</p>
     <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button>${location.protocol.startsWith('http') ? '<button class="link-btn" data-act="join">Join a live class</button>' : ''}</div>
-    <p class="hero-meta">${ALL.length} decisions from ${nSrc} peer-reviewed studies. Original concept by Eugen Dimant.</p></div>
+    <p class="hero-meta">${ALL.length} decisions from ${nSrc} peer-reviewed studies.</p>
+    <p class="by">Original concept by <strong>Dr. Eugen Dimant</strong>, University of Pennsylvania<br><a href="https://eugendimant.github.io" target="_blank" rel="noopener">eugendimant.github.io</a><a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a></p></div>
     <div class="how-box"><h2 class="how-h" id="how-h">How a round works</h2><ol class="round-steps" aria-labelledby="how-h"><li><strong>Read the situation</strong><span>A case from a real study: a firm rolls out an AI assistant, a tax office rewrites a letter.</span></li><li><strong>Make your call</strong><span>Estimate, choose, rank or split a budget, and say how sure you are.</span></li><li><strong>See what the study found</strong><span>The published result, how close you were, and one action a manager can take.</span></li></ol></div></div>
     <div class="try-wrap">${heroTry()}</div></section>
   <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
@@ -644,7 +645,7 @@ function methodsModal() {
     <p>Scored answers come only from peer-reviewed journal articles or scholarly books. Each source was matched against the DOI registry, and every number used in a decision was checked against the published abstract or full text. ${live.length} sources passed${q.length ? `; ${q.length} are held back until their claims can be checked` : ''}.</p>
     <p>Scenarios are teaching adaptations written for managers. They describe the study design accurately but do not replicate it. Charts appear only where the study reported the values shown.</p>
     <p>A single study is evidence about one population, task and time. Each decision states the population, task and setting the evidence comes from.</p>
-    <p>Original concept by Eugen Dimant. A teaching tool, not a validated assessment.</p>`, 'Research standard');
+    <p>Original concept by Dr. Eugen Dimant, University of Pennsylvania (<a href="https://eugendimant.github.io" target="_blank" rel="noopener">eugendimant.github.io</a>, <a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a>). A teaching tool, not a validated assessment.</p>`, 'Research standard');
 }
 
 // ----- export -----

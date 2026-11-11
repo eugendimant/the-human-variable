@@ -787,3 +787,5 @@ p,li,dd{text-wrap:pretty}
 .try-wrap .row-head{align-items:baseline;margin-bottom:14px}.try-wrap .try-src{margin-left:auto}
 .tr-q{font-size:clamp(23px,2.5vw,34px);line-height:1.14;letter-spacing:-.022em;font-weight:750;margin:0;max-width:26em}
 @media (max-width:900px){.intro{grid-template-columns:1fr}}
+.by{margin:14px 0 0;font-size:var(--t6);line-height:1.6;color:var(--ink-2)}.by strong{color:var(--ink)}
+.by a,.foot-by a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}.by a+a{margin-left:16px}.foot-by a{margin-left:10px;white-space:nowrap}
