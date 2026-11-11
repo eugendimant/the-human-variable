@@ -102,6 +102,11 @@ def _papers(c: dict) -> str:
 
 COMPW = set(tokens('better worse outperform outperforms outperformed beat beats accurate smarter good effective useful fast faster more less fewer than'))   # the comparison's own words are not what it compares
 
+def _sents(c: dict) -> list[str]:
+    """The decision's own sentences, in a fixed order: follow-up answers, explanation, scope, design."""
+    parts = [strip_yn(f['a']) for f in c.get('follow', [])] + [c['explain'], c['boundary'], (c.get('study') or {}).get('design', '')]
+    return [x.strip() for p_ in parts for x in re.sub(r'([.!?])\s+(?=[A-Z0-9])', r'\1\n', p_).split('\n') if x.strip()]
+
 def strip_yn(a: str) -> str:
     """Drop a leading Yes or No when the rest stands as its own sentence (audit 31: never leave "but in addition..." or "partly.")."""
     m = re.match(r'(Yes|No)[.,]\s*(.*)', a, re.S)
@@ -210,6 +215,14 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 fw = fw or [f for f in fol if re.search(r'\b(because|read (this|it)? ?as|reason|motive|concern|suggest)', f['a'], re.I) and (rare & set(tokens(f['a'])))]
                 if fw: return out(fw[0]['a'], c)
                 whyq = True; continue
+            if name == 'funding': return out(f"The lab's summary does not record who funded the study; the paper's acknowledgements do. The paper: {_papers(c)}.", c)
+            if name == 'raters':   # who judged the outcome: a follow-up that says so, else the scope line
+                fr = [f for f in c.get('follow', []) if re.search(r'\b(rat(ed|ers?)|evaluat\w*|judg\w*|coders?|graded)\b', f['q'], re.I)]
+                return out(strip_yn(fr[0]['a']) if fr else f"What the study covers: {c['boundary']}" + (f" Design: {st['design']}." if st.get('design') else ''), c)
+            if name == 'scope': return out(f"What the study covers: {c['boundary']}" + (f" Sample: {st['n']}." if st.get('n') else ''), c)
+            if name == 'prereg':
+                ps = [x for x in _sents(c) if re.search(r'pre-?regist', x, re.I)]
+                return out(f"From this study’s summary: {ps[0].rstrip('.')}." if ps else f"The lab's summary does not record whether the study was preregistered; the paper states it. The paper: {_papers(c)}.", c)
             if name == 'authors': return out(f"{_papers(c)}. Design: {st.get('design', 'see the paper')}.", c)
             if name == 'voluntary': return out(f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" Setting: {c.get('scene', '')} What the study covers: {c['boundary']}", c)
             if name == 'stakes' and [f for f in fol if re.search(r'(\$|\bmoney\b|\bpaid\b|\bbonus|\bincentiv)', f['q'] + ' ' + f['a'], re.I)]: return out([f for f in fol if re.search(r'(\$|\bmoney\b|\bpaid\b|\bbonus|\bincentiv)', f['q'] + ' ' + f['a'], re.I)][0]['a'], c)
@@ -230,6 +243,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'summary': return out(f"{c['answerTitle']}. {c['explain']} What a manager does with it: {c['implication']}", c)
             if name == 'duration':
                 fl = [f for f in fol if re.search(r'\b(long|last|later|weeks?|months?|years?|fade|persist|after)\b', f['q'] + ' ' + f['a'], re.I)]
+                fy = [f for f in c.get('follow', []) if re.search(r'\b(last|long|persist\w*|fade\w*)\b', f['q'], re.I)]   # "how long did it last?" still gets the item's own "Did it last?" answer, without its Yes or No (review 37)
+                if not fl and fy: return out(strip_yn(fy[0]['a']), c)
                 return out(fl[0]['a'] if fl else f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
             if name == 'ethics': return out(f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", c)
             if name == 'subgroup':
@@ -248,6 +263,10 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         strong = [] if defq else [f for f in fol if not (whyq and re.match(QTY, f['q'].lower())) and (len(shared(f)) >= 2 or (shared(f) and 3 * len(shared(f)) >= 2 * len(core)))]   # brackets: the why rule binds both branches (audit 33, M2)   # two shared distinctive words, or two thirds of the question's own   # a follow-up is borrowed only when its own question shares two distinctive words
         if strong: return out(yn(max(strong, key=lambda f: (len(rare & set(tokens(f['q']))), len(qt & set(tokens(f['q'])))))), c)
         if whyq: return out(f"{c['explain']} What a manager does with it: {c['implication']}", c)   # no route: a distinctive word the question shares with one follow-up question picks it
+        if not whyq and not defq and not re.search(r'\bwho\b', ql) and len(core) >= 2:   # the summary's own nearest sentence, only on two shared distinctive words and two thirds of the question's own (review 37, m7)
+            sh = lambda x: len(core & set(tokens(x)))
+            near = max(_sents(c), key=sh, default='')
+            if near and sh(near) >= 2 and 3 * sh(near) >= 2 * len(core): return out(f"The closest line in this study’s summary: {near}", c)
         if rare:   # a weak match is not an answer: give the finding and offer the summary's own questions (review 27; replaces one-word and answer-text borrowing)
             r = out(f"I could not match that question to this study’s summary. Here is what the study found: {c['answerTitle']}. {c['explain']} Its summary answers the questions below.", c)
             r['suggest'] = [f['q'] for f in sorted(c.get('follow', []), key=lambda f: -len(qt & set(tokens(f['q'] + ' ' + f['a']))))][:3]; return r   # closest first (audit 33)

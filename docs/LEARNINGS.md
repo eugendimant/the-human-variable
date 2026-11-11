@@ -46,3 +46,9 @@ Read this after `docs/HANDOVER_FOR_CLAUDE.md`. It records what forty iterations,
 ## 5. Where the score stands and why
 
 Independent scores: 86 to 88 for the last fifteen reviews (review 31: 87). Science, learning, gameplay, content and technical sit one or two points short; visual has sat at 12 of 15 for nine reviews. The reviewers' recurring asks are in `docs/HANDOVER_FOR_CLAUDE.md`, "Where it stands". The cheapest points are probably: a composed wide reveal (one page, not stacked panels), the phone reveal order, labels on marks in the allocate and calibration figures, a projector reveal that fits one screen, and more key-less tutor coverage for natural phrasings.
+
+## 2026-11-10: never rerun every content script
+
+- After `tools/tutor_routes_2026_10_31.py`, nothing else needs to run: it writes only `tutorRoutes`. The rule "rerun newer content scripts" applies only after `git checkout src/bank.json`.
+- The early scripts (`content_review1` to `content_review13`) are not safe to rerun on the current bank: they fail midway or rewrite retired items. A loop over `tools/content_review*.py` changed 249 lines of `bank.json` and `evidence.json`; `git checkout` of both files restored them.
+- The tutor's sentence splitter uses no regex lookbehind: older Safari cannot parse one, and a parse error stops the whole page script.

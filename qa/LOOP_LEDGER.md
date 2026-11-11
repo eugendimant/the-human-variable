@@ -853,3 +853,11 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Rules 7 and 21.** The projector's forecast claim is a plain quotation (it had an accent stripe and a box in a card, in a state the lint did not visit).
 - **Open.** m7 tutor, m9 phone causal pills, dead space right of short figures, o1, o3, o4.
 - **Gates.** 345 passed; design lint by rule {}; build current.
+
+## Iteration 56 (2026-11-10): tutor phrasings, phone causal diagram
+
+- **Review 36 m9 / review 37 m7.** New routes (funding, raters, scope, prereg), wider authors and off-topic patterns, a duration fallback to the item's own "Did it last?" answer, and a nearest-sentence fallback that needs two shared distinctive words and two thirds of the question's own. Same code in `server/tutor.py` and `src/app.js`; no regex lookbehind. 13 of about 22,000 stored answers changed, each read. Tests `test_offline_tutor_review37` (12 phrasings) and `test_nearest_line_needs_two_distinctive_words`.
+- **Review 37 m9.** Before the call the phone causal diagram is 212 px tall (was 318); no pill overlaps on the four causal items.
+- **Regression audit 55.** Started, stopped by a usage limit before it reported. To rerun with review 38.
+- **Open.** Three tutor phrasings (company fix, better or faster, worst interface), the Dietvorst 2015/2018 pick, dead space right of short figures, record dot overlap.
+- **Gates.** 358 passed; design lint by rule {}; build current.

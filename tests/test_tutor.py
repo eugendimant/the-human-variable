@@ -449,3 +449,28 @@ def test_writing_requests_are_declined_but_study_questions_are_not():
         assert T.curated(q, 'ai01')['answer'].startswith(off), q
     for q, c in (('Did the résumés include a cover letter?', 'social12'), ('Did they write an email to customers?', 'ai01'), ('Did the tax letter work?', 'tax-letter-norms')):
         assert not T.curated(q, c)['answer'].startswith(off), q
+
+
+@pytest.mark.parametrize('q,cid,want', [
+    ('who paid for this study', 'ai01', 'does not record who funded'),
+    ('who rated the answers, doctors?', 'axe05', 'licensed health care professionals'),
+    ('Were the evaluators coauthors?', 'axe05', 'on the author team'),
+    ('What does the study cover?', 'rollout2', 'One firm’s customer-support chat'),
+    ('how long did the effect last', 'axb15', 'two-month follow-up'),
+    ('what is weight on advice', 'ai10', 'Weight on advice averaged 0.45'),
+    ('what did GPT-4 do without the profile?', 'axb08', 'GPT-4 without profiles'),
+    ('was this chatgpt 3.5 or 4', 'axe05', 'GPT-3.5'),
+    ('what is a brier score', 'forecast-teams-rank', '0 is the best score'),
+    ('Was this preregistered?', 'axf01', 'preregistered'),
+    ('does expertise change it', 'ai10', 'Experienced professionals'),
+    ('what is the stock market today', 'axf01', 'outside what this lab covers'),
+])
+def test_offline_tutor_review37(q, cid, want):
+    """Review 36 m9 / review 37 m7: natural phrasings reach the summary's own line, a route, or a clear decline."""
+    assert want in T.curated(q, cid)['answer']
+
+
+def test_nearest_line_needs_two_distinctive_words():
+    """A single shared word never borrows a sentence (review 27 stands)."""
+    a = T.curated('which interface was worst', 'axf01')['answer']
+    assert a.startswith('I could not match')

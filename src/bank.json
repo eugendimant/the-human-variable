@@ -9074,6 +9074,9 @@
    "alon": "itself",
    "cent": "centr",
    "physician": "doctor doc",
+   "expert": "expertis",
+   "fixed": "fix repair remedi",
+   "persist": "last",
    "african": "black",
    "color": "colour",
    "behavior": "behaviour",
@@ -9090,7 +9093,7 @@
   "routes": [
    [
     "offtopic",
-    "\\b(poem|haiku|limerick|joke|weather|recipe|capital of|song|lyrics|horoscope|stock (tip|price)|share price|world cup|super bowl|tax return|homework|movie|(^(please )?|(can|could|would|will) you (please )?|help me |i need you to )(write|draft) (me |us )?(my |a |an |the )?([a-z]+ ){0,2}(code|python|javascript|essay|cover letter|r[eé]sum[eé]|cv|email|speech|blog post|linkedin post|sales pitch|pitch|ad copy|script)|translate|bitcoin)\\b"
+    "\\b(poem|haiku|limerick|joke|weather|recipe|capital of|song|lyrics|horoscope|stock (tip|price|market)|bitcoin|crypto\\w*|exchange rate|lottery|share price|world cup|super bowl|tax return|homework|movie|(^(please )?|(can|could|would|will) you (please )?|help me |i need you to )(write|draft) (me |us )?(my |a |an |the )?([a-z]+ ){0,2}(code|python|javascript|essay|cover letter|r[eé]sum[eé]|cv|email|speech|blog post|linkedin post|sales pitch|pitch|ad copy|script)|translate|bitcoin)\\b"
    ],
    [
     "action",
@@ -9125,8 +9128,24 @@
     "\\b(who is right|who.?s right|who is correct|which (one|side|study|paper) is right|who wins|(do|did) they (disagree|contradict))\\b"
    ],
    [
+    "funding",
+    "\\b(who (paid|pays|funded|financed|sponsored)|fund(ed|ing|ers?)\\b|sponsor\\w*)"
+   ],
+   [
+    "raters",
+    "\\bwho (rated|evaluated|judged|scored|graded|assessed|coded|reviewed)\\b|\\b(raters?|evaluators?|judges|coders|graders) (were|was|are)\\b|\\b(were|was|are) the (raters?|evaluators?|judges|coders|graders)\\b"
+   ],
+   [
+    "scope",
+    "\\bwhat does (the|this) (study|paper|experiment|research) cover\\b|\\bscope of (the|this) (study|paper)\\b"
+   ],
+   [
+    "prereg",
+    "\\bpre-?regist\\w*"
+   ],
+   [
     "authors",
-    "\\b(who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\\b"
+    "\\b(who (did|ran|conducted|carried out|is behind|made|performed) (the|this) [\\w-]+|who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\\b"
    ],
    [
     "voluntary",
@@ -9281,6 +9300,7 @@
    "find",
    "finding",
    "firm",
+   "fixed",
    "fram",
    "gain",
    "gap",
