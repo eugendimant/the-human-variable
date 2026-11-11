@@ -8210,7 +8210,7 @@
    "follow": [
     {
      "q": "Did GPT-4 save time?",
-     "a": "Not significantly. Median time per case was 519 seconds with GPT-4 and 565 without (a difference of −82 seconds, not statistically significant)."
+     "a": "Not significantly. Median time per case was 519 seconds with GPT-4 and 565 without (a model-adjusted difference of −82 seconds, not statistically significant)."
     },
     {
      "q": "Were physicians trained to prompt?",
@@ -9137,7 +9137,7 @@
    ],
    [
     "scope",
-    "\\bwhat does (the|this) (study|paper|experiment|research) cover\\b|\\bscope of (the|this) (study|paper)\\b"
+    "\\bwhat does (the|this) (study|paper|experiment|research) cover\\b|\\bscope\\b"
    ],
    [
     "prereg",

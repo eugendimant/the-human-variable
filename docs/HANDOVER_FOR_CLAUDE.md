@@ -96,3 +96,10 @@ Run each through the loop and an independent reviewer before calling it done.
 - Fixed since iteration 47: stranded live-class answers (resend button, auto-resend with backoff, answers name their decision, server refuses an earlier decision), receipt check, study's answer marked at zero picks with words, grey non-significant labels, rank amber on the top place, readable class panel, printed decimals.
 - Open (review 37): projector rank reveal height, dimant-hate-choice figure vs headline, band label vs axis end, repeated numbers on estimate/forecast reveals, decoding sentences in figures, tutor misses, dead space and hero prompt on wide pages, phone causal pills before the call.
 - Owner decisions pending: GitHub repo + license; direction (confidence scoring per decision vs a bolder visual identity).
+
+## Where it stands after iteration 57 (2026-11-11)
+
+- Review 38: 86/100, 0 Blocking, 0 Major (reviews 29–38 range 85–88; Visual 12/15 throughout).
+- Since iteration 54: projector reveals fit 1440x900, plate axis without repeated numbers, hero prompt on the handle, centred question screens, tutor routes (funding, raters, scope, prereg) and nearest-sentence fallback, compact phone causal diagram.
+- Next round, in the reviewer's order: rebuild the allocate plate as one labelled dot plot; reuse the projector's dot strip on phone class panels; fit the projector to 1280x720; fill the empty right column on wide reveals. Then tutor misses and the three weak items.
+- Owner decisions pending: GitHub repo + license.

@@ -505,3 +505,10 @@ def test_projector_rank_reveal_fits_one_screen(browser, tmp_path):
         ctx.close()
     finally:
         srv.shutdown()
+
+def test_home_prompt_leaves_with_the_first_move(browser):
+    """Review 38, I-1: 'Slide to answer' sits on the untouched handle and is gone once the slider moves."""
+    for w in (1440, 390):
+        pg = page(browser); pg.set_viewport_size({'width': w, 'height': 844}); pg.goto(URL); pg.wait_for_selector('.r-hint')
+        pg.focus('#hero-range'); pg.keyboard.press('ArrowRight')
+        assert pg.locator('.r-hint').count() == 0 and pg.text_content('#hero-read').strip().endswith('%')

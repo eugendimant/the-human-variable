@@ -20,7 +20,7 @@ bank['tutorRoutes'] = {
   ['contest', r'\b(who is right|who.?s right|who is correct|which (one|side|study|paper) is right|who wins|(do|did) they (disagree|contradict))\b'],
   ['funding', r'\b(who (paid|pays|funded|financed|sponsored)|fund(ed|ing|ers?)\b|sponsor\w*)'],   # review 36/37: funding is not in the lab's summary
   ['raters', r'\bwho (rated|evaluated|judged|scored|graded|assessed|coded|reviewed)\b|\b(raters?|evaluators?|judges|coders|graders) (were|was|are)\b|\b(were|was|are) the (raters?|evaluators?|judges|coders|graders)\b'],
-  ['scope', r'\bwhat does (the|this) (study|paper|experiment|research) cover\b|\bscope of (the|this) (study|paper)\b'],
+  ['scope', r'\bwhat does (the|this) (study|paper|experiment|research) cover\b|\bscope\b'],
   ['prereg', r'\bpre-?regist\w*'],
   ['authors', r'\b(who (did|ran|conducted|carried out|is behind|made|performed) (the|this) [\w-]+|who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\b'],
   ['voluntary', r'\b(voluntary|volunteer\w*|randomly assigned|chose to|opt(ed)? in|self[- ]selected|vignette|real (bribe|job|firm|company)|real world|in the field|lab or field)\b'],

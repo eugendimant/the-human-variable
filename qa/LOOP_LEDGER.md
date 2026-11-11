@@ -861,3 +861,12 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Regression audit 55.** Started, stopped by a usage limit before it reported. To rerun with review 38.
 - **Open.** Three tutor phrasings (company fix, better or faster, worst interface), the Dietvorst 2015/2018 pick, dead space right of short figures, record dot overlap.
 - **Gates.** 358 passed; design lint by rule {}; build current.
+
+## Iteration 57 (2026-11-11): review 38, introduced items
+
+- **I-1.** "Slide to answer" is removed on the first move; test `test_home_prompt_leaves_with_the_first_move`.
+- **I-2.** On phones the empty read-out slot shows a grey "?%" placeholder; nothing shifts under the thumb.
+- **I-8.** Raters and duration routes say when the lab's summary has no such line (379 stored answers changed, all the duration prefix); the scope route matches "scope" alone.
+- **m11, m15.** axf06 "model-adjusted difference"; "Your best: N" in the list.
+- **Open from review 38.** Projector at 1280x720 and open views; allocate plate; phone class panels; projector histogram unit and delegate caption; console poll notice; Thaler routing and tutor misses; ai10 units; biz05 baselines; weak items (social01, social13, bz11); repeated numbers; phone slider label.
+- **Gates.** 359 passed; design lint by rule {}; build current.

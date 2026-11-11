@@ -218,7 +218,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'funding': return out(f"The lab's summary does not record who funded the study; the paper's acknowledgements do. The paper: {_papers(c)}.", c)
             if name == 'raters':   # who judged the outcome: a follow-up that says so, else the scope line
                 fr = [f for f in c.get('follow', []) if re.search(r'\b(rat(ed|ers?)|evaluat\w*|judg\w*|coders?|graded)\b', f['q'], re.I)]
-                return out(strip_yn(fr[0]['a']) if fr else f"What the study covers: {c['boundary']}" + (f" Design: {st['design']}." if st.get('design') else ''), c)
+                rw = re.search(r'\b(rat(ed|ers?|ings?)|evaluat\w*|judg\w*|coders?|graded|review(ed|ers?))\b', c['boundary'] + ' ' + st.get('design', ''), re.I)   # no rater line in the summary: say so (review 38, I-8)
+                return out(strip_yn(fr[0]['a']) if fr else ('' if rw else 'The lab’s summary does not record who rated the outcome; the paper’s methods section does. ') + f"What the study covers: {c['boundary']}" + (f" Design: {st['design']}." if st.get('design') else ''), c)
             if name == 'scope': return out(f"What the study covers: {c['boundary']}" + (f" Sample: {st['n']}." if st.get('n') else ''), c)
             if name == 'prereg':
                 ps = [x for x in _sents(c) if re.search(r'pre-?regist', x, re.I)]
@@ -245,7 +246,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 fl = [f for f in fol if re.search(r'\b(long|last|later|weeks?|months?|years?|fade|persist|after)\b', f['q'] + ' ' + f['a'], re.I)]
                 fy = [f for f in c.get('follow', []) if re.search(r'\b(last|long|persist\w*|fade\w*)\b', f['q'], re.I)]   # "how long did it last?" still gets the item's own "Did it last?" answer, without its Yes or No (review 37)
                 if not fl and fy: return out(strip_yn(fy[0]['a']), c)
-                return out(fl[0]['a'] if fl else f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
+                return out(fl[0]['a'] if fl else f"The lab’s summary does not record how long the effect lasted. Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
             if name == 'ethics': return out(f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", c)
             if name == 'subgroup':
                 fh = [f for f in fol if re.search(R['subgroupFollow'], f['q'], re.I)]
