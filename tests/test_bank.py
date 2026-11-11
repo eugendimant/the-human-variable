@@ -115,6 +115,23 @@ def test_distractors_avoid_absolute_words():
 def test_gates_fire():
     assert ABSOLUTE.search('The algorithm only beat strangers')
 
+COMPARATIVE = re.compile(r"\b(more|less|fewer|higher|lower|larger|smaller|greater|stronger|weaker|better|worse|\w+er than)\b", re.I)
+def _comparative_rates(items):
+    k = [bool(COMPARATIVE.search(o)) for c in items for i, o in enumerate(c['options']) if i in _correct(c)]
+    d = [bool(COMPARATIVE.search(o)) for c in items for i, o in enumerate(c['options']) if i not in _correct(c)]
+    return sum(k) / max(1, len(k)), sum(d) / max(1, len(d))
+
+def test_comparative_words_do_not_mark_the_keyed_option():
+    """Review 40: a comparative word ("more", "lower") must not be a cue to the keyed option.
+    Its rate among keyed options stays within 12 points of its rate among distractors."""
+    k, d = _comparative_rates([c for c in LIVE if c['format'] in ('choice', 'multi', 'causal')])
+    assert abs(k - d) <= 0.12, (round(k, 3), round(d, 3))
+
+def test_comparative_gate_fires():
+    fake = [{'options': ['It was higher', 'It stayed flat', 'It fell to zero', 'No change'], 'answer': 0, 'format': 'choice'}] * 5
+    k, d = _comparative_rates(fake)
+    assert k - d > 0.12
+
 def test_titles_do_not_state_the_finding():
     """Review 2, M8: titles show before play, so they must not contain the answer's key words."""
     bad = []

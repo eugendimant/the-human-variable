@@ -141,6 +141,10 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         exact = [f for f in fol if _norm(f['q']) in (_norm(question), _norm(bare))]
         jac = lambda f: len(set(tokens(f['q'])) & qt) / max(1, len(set(tokens(f['q'])) | qt))
         if exact: return out(exact[0]['a'], c)
+        gm = re.match(r"^(?:what(?:.s| is| are| does| do)|define|explain) (an? |the )?(?:term |word )?['\"\u201c\u201d\u2018\u2019]?(.+?)['\"\u201c\u201d\u2018\u2019]?( means?| stands? for)?\??$", bare)   # "what is a p-value?": a method word gets its plain definition; "what is the p-value?" asks about this study (review 40)
+        if gm and (gm.group(3) or gm.group(1) != 'the '):
+            gd = next((d for rx, d in R.get('glossary', []) if re.fullmatch(rx, gm.group(2))), None)
+            if gd: return {'answer': gd, 'citations': [], 'mode': 'curated'}
         if re.search(r"\b(ethic\w*|unethical|moral\w*|fair to|unfair\w*|allowed|legal(?!\s+(team|department|counsel|staff|work))\w*)\b|\bis (it|this|that) (really )?(fair|right|wrong|ok|okay)\b", ql):
             fe = [f for f in fol if re.search(r"\b(ethic\w*|unethical|moral\w*|fair|unfair\w*|allowed|legal\w*)\b", f['q'], re.I) and jac(f) >= 0.3]   # the item's own ethics follow-up (audit 30)
             if fe: return out(fe[0]['a'], c)
@@ -152,7 +156,12 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         has = lambda w: any(w == x or (min(len(w), len(x)) >= 3 and (w.startswith(x) or x.startswith(w))) for x in qt)
         sub = [f for f in fol if len(set(tokens(f['q']))) >= 2 and all(has(w) for w in tokens(f['q']))]   # never on one shared word: review 29's one-word variant borrowed 'cost' and 'card' answers for significance questions in the golden diff   # every content word of a follow-up appears in the question (fix ~ fixed)
         if sub: return out(yn(max(sub, key=lambda f: len(set(tokens(f['q']))))), c)
-    named = [] if c and names(question, c['id']) else [cid for cid in CHALLENGES if (not c or not set(CHALLENGES[cid]['sources']) & set(c['sources'])) and names(question, cid)]
+    named = [cid for cid in CHALLENGES if (not c or not set(CHALLENGES[cid]['sources']) & set(c['sources'])) and names(question, cid)]
+    if c and names(question, c['id']):   # the author on screen: stay, unless the question carries a distinctive word that only that author's other paper has (review 40)
+        body = lambda x: set(tokens(' '.join([x.get('title', ''), x.get('scene', ''), x['question'], x['answerTitle'], x['explain'], x.get('implication', ''), x.get('boundary', '')] + [f['q'] + ' ' + f['a'] for f in x.get('follow', [])])))
+        au0 = set(tokens(' '.join(SOURCES[sid]['authors'] for x in [c['id']] + named for sid in CHALLENGES[x]['sources'] if sid in SOURCES)))
+        own = topic - COMMON - au0 - body(c)
+        named = [x for x in named if own & body(CHALLENGES[x])]
     if named:
         open_ = [x for x in named if not (exclude and exclude(x))]
         if not open_: return locked
@@ -228,6 +237,9 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'prereg':
                 ps = [x for x in _sents(c) if re.search(r'pre-?regist', x, re.I)]
                 return out(f"From this study’s summary: {ps[0].rstrip('.')}." if ps else f"The lab's summary does not record whether the study was preregistered; the paper states it. The paper: {_papers(c)}.", c)
+            if name == 'replicated':
+                ps = [x for x in _sents(c) if re.search(r'replicat', x, re.I) and len(x.split()) >= 5]
+                return out(f"From this study’s summary: {ps[0].rstrip('.')}." if ps else f"The lab's summary does not record whether the study has been replicated. What it covers: {c['boundary']} The paper: {_papers(c)}.", c)
             if name == 'peer': return out(f"Published: {_papers(c)}.", c)
             if name == 'causal': return out((f"Design: {st['design']}. " if st.get('design') else '') + f"What the study covers: {c['boundary']}", c)
             if name == 'authors': return out(f"{_papers(c)}. Design: {st.get('design', 'see the paper')}.", c)

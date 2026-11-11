@@ -22,6 +22,7 @@ bank['tutorRoutes'] = {
   ['raters', r'\bwho (rated|evaluated|judged|scored|graded|assessed|coded|reviewed)\b|\b(raters?|evaluators?|judges|coders|graders) (were|was|are)\b|\b(were|was|are) the (raters?|evaluators?|judges|coders|graders)\b'],
   ['scope', r'\bwhat does (the|this) (study|paper|experiment|research) cover\b|\bscope\b'],
   ['prereg', r'\bpre-?regist\w*'],
+  ['replicated', r'\b(who|has|have|had|was|were|been|anyone|any)\b.{0,40}\breplicat(ed|ions?)\b|\bdid\b.{0,30}\breplicate\b|\breplicated (by|elsewhere|since|again)\b'],   # review 40: 'who replicated it' is not a question about scope
   ['peer', r'\bpeer[- ]?review\w*|\bwhere (was|is) (it|this|the study|the paper) published\b|\bwhich journal\b'],   # review 38, m2
   ['causal', r'\b(is|was) (it|this|that) (causal|a causal \w+)\b|\bcorrelation or causation\b|\bcausal or correlational\b'],
   ['authors', r'\b(who (did|ran|conducted|carried out|is behind|made|performed) (the|this) [\w-]+|who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\b'],
@@ -58,4 +59,22 @@ for c in bank['challenges']:
 manual = [tutor.stem(w) for w in 'effect effects study studies finding findings paper research people data work worked works'.split()]
 bank['tutorRoutes']['wordSurnames'] = ['bail', 'bloom', 'card', 'list', 'west', 'powers', 'grove', 'miller', 'rand', 'tong', 'fang', 'shea', 'rouse', 'ross', 'healy']   # surnames that are also English words: they name a study only when capitalised (review 25, M2)
 bank['tutorRoutes']['common'] = sorted({w for w, n in df.items() if n >= 3} | set(manual))
+# review 40: method words a manager asks about get one plain definition, the same in the page and on the server
+bank['tutorRoutes']['glossary'] = [
+ [r'p[- ]?values?', 'A p-value is the chance of seeing a result at least this far from zero if the true effect were zero. By convention, below 0.05 is called statistically significant. It is not the chance that the finding is true.'],
+ [r'confidence intervals?|ci', 'A confidence interval is the range of effect sizes the data are compatible with. A 95% interval comes from a method that covers the true value in 95 of 100 repeated studies. A wide interval means an imprecise estimate.'],
+ [r'(statistical(ly)? )?significan(t|ce)|statistical significance', 'Statistically significant means the result would be unlikely, by convention under a 5% chance, if the true effect were zero. It does not say the effect is large enough to matter.'],
+ [r'(control|comparison) groups?|controls', 'A control group is the set of participants who do not get the intervention. Comparing them with those who do shows what the intervention changed.'],
+ [r'randomi[sz]ed( controlled)?( field)? (trials?|experiments?|stud(y|ies))|rcts?|randomi[sz]ation|random assignment|randomi[sz]ed', 'In a randomized experiment, chance decides who gets the intervention, so the groups differ only by it on average. A difference in outcomes can then be read as the effect of the intervention.'],
+ [r'pre-?regist(ered|ration|ering|er)', 'Preregistered means the authors recorded their hypotheses and analysis plan publicly before they collected the data, so the tests reported are the tests planned.'],
+ [r'effect sizes?', 'An effect size says how big a difference is, and not only whether one exists: for example a change in percentage points, in percent, or in standard deviations.'],
+ [r'percentage points?|pp', 'A percentage point is the plain difference between two percentages. Going from 10% to 15% is a rise of 5 percentage points, which is a 50% increase.'],
+ [r'standard deviations?|sd', 'A standard deviation measures how spread out values are around their average. By a common convention, an effect of 0.2 standard deviations is small, 0.5 medium and 0.8 large.'],
+ [r'field experiments?', 'A field experiment randomizes an intervention in a real setting, such as a workplace or a market, where people make their usual decisions.'],
+ [r'(natural|quasi)[- ]experiments?', 'A natural experiment uses an event outside the researchers’ control, such as a policy change, that reached some people and not others for reasons unrelated to the outcome.'],
+ [r'replications?|replicat(ed|e|ing)', 'A replication repeats a study with new data to check that the result holds. A finding that replicates in other samples deserves more weight than a single study.'],
+ [r'sample sizes?|n', 'Sample size is the number of participants or observations. Larger samples give more precise estimates.'],
+ [r'correlations?|causation|causality|correlation (and|vs\.?|versus) causation', 'Correlation means two things move together. Causation means that changing one changes the other. A randomized experiment is the standard way to tell the two apart.'],
+ [r'meta-?analys[ie]s', 'A meta-analysis pools the results of many studies of the same question into one estimate, weighting the more precise studies more.'],
+]
 p.write_text(json.dumps(bank, ensure_ascii=False, indent=1) + '\n'); print('routes', len(bank['tutorRoutes']['common']))

@@ -109,3 +109,12 @@ Run each through the loop and an independent reviewer before calling it done.
 - Review 38 (iteration 56): 86/100, 0 Major. Iterations 57 to 59 fix its introduced items, rebuild the allocate plate, fit the projector to any screen, put phone class panels on stated scales, rewrite three too-easy items and fix surname routing in the tutor.
 - A copy of the project lives on Eugen's computer: `Claude Cowork/5 Tools/The Human Variable/` (source tree plus `the-human-variable.bundle`, the full git history).
 - Owner decision pending: GitHub repo + license.
+
+## Where it stands after iteration 63 (2026-11-11)
+
+- Reviews 39 and 40 scored 85 and 84 (iterations 60 and 61). Iteration 62 fixed review 40's one Major (principle strip stretched in the full-width band, seen only with a record present). Iteration 63 is an audit round on review 40's Minors with no new layout.
+- Iteration 63: tutor glossary for method words (`tutorRoutes.glossary`, written by `tools/tutor_routes_2026_10_31.py`), a replication route, same-author routing when that author is on screen; allocate track on round ends; projector histogram bins that do not share an end; social12 shows the two measured callback rates; bz02 and rollout4 scenes use the study's own setting; a gate on comparative words in keyed options (`tests/test_bank.py`).
+- Lesson held from iterations 59 to 61: measure layouts with a record present, and do not start layout features between reviews.
+- GitHub: `eugendimant/the-human-variable`, public, MIT. This session pushes `master` after every commit. The `gh-pages` branch holds the built `index.html` for https://eugendimant.github.io/the-human-variable/; refresh it after each iteration (copy `index.html`, `LICENSE`, `.nojekyll`; force-push).
+- Live classroom needs the server (Render or Fly, files in the repo); GitHub Pages and Streamlit cannot run it.
+- Still open from review 40: projector text size at 720p, tutor misses on item-specific everyday questions, Library near-identical rows, two caption lines on rank plates, empty right column on about a third of wide reveals.

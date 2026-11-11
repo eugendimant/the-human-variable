@@ -2772,6 +2772,11 @@
    "source": "noy23",
    "quote": "The average time taken decreased by 40% and output quality rose by 18%. Inequality between workers decreased",
    "location": "Science abstract (version of record)"
+  },
+  {
+   "source": "noy23",
+   "quote": "Inequality between workers decreased, and concern and excitement about AI temporarily rose.",
+   "location": "Science abstract (version of record)"
   }
  ],
  "ai07": [
@@ -3483,6 +3488,21 @@
    "source": "resume04",
    "quote": "White names receive 50 percent more callbacks for interviews. Callbacks are also more responsive to resume quality for White names than for African-American ones.",
    "location": "AER abstract"
+  },
+  {
+   "source": "resume04",
+   "quote": "Resumes with White names have a 9.65 percent chance of receiving a callback.",
+   "location": "Section III.A, p. 997 (version of record)"
+  },
+  {
+   "source": "resume04",
+   "quote": "This represents a difference in callback rates of 3.20 percentage points, or 50 percent,",
+   "location": "Section III.A, p. 997 (version of record)"
+  },
+  {
+   "source": "resume04",
+   "printed": "6.45",
+   "location": "Table 1, African-American names, percent callback (9.65 minus 3.20)"
   }
  ],
  "social13": [

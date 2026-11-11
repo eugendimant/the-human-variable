@@ -486,3 +486,25 @@ def test_nearest_line_needs_two_distinctive_words():
 def test_offline_tutor_review38(q, cid, want):
     """Review 38 m1 and m2: a surname goes to the paper that carries it; publication, design and sample questions get their line."""
     assert want in T.curated(q, cid)['answer']
+
+
+@pytest.mark.parametrize('q,cid,want,cited', [
+    ('what is a p-value', 'ai02', 'A p-value is the chance', False),
+    ("So, what's a confidence interval?", 'bz02', 'range of effect sizes', False),
+    ('what does preregistered mean?', 'ai02', 'before they collected the data', False),
+    ('what is the p-value', 'ai02', 'Noy and Zhang', True),                        # "the" asks about this study
+    ('who replicated it', 'ai02', 'does not record whether the study has been replicated', True),
+    ('But did it replicate?', 'social10', 'independent replication', True),
+    ('Did Dietvorst test letting people adjust the model?', 'ai09', 'Dietvorst, Simmons & Massey (2018)', True),
+    ('What did Dietvorst find?', 'ai09', 'Seeing the model err', True),            # the author on screen, no other paper's word: stay
+])
+def test_offline_tutor_review40(q, cid, want, cited):
+    """Review 40: method words get one plain definition without a citation; a replication question is not a scope question;
+    the author on screen routes to the other paper only on a word that paper alone has."""
+    r = T.curated(q, cid)
+    assert want in r['answer'] and bool(r['citations']) == cited
+
+
+def test_glossary_definitions_fire_only_on_a_definition_question():
+    assert 'A p-value is' not in T.curated('was the p-value small?', 'ai02')['answer']
+    assert 'control group is the set' not in T.curated('did the control group change?', 'rollout4')['answer']

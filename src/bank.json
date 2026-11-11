@@ -2393,25 +2393,15 @@
    "question": "By how much did graded quality change with ChatGPT?",
    "answerTitle": "Quality improved 18%",
    "explain": "Noy and Zhang gave half of 453 college-educated professionals access to ChatGPT for occupation-specific writing tasks. Graded output quality rose 18%, and inequality between workers decreased.",
-   "implication": "Set up double-outcome tests, with blind quality evaluation.",
+   "implication": "When you pilot an AI writing tool, measure speed and quality together, and have graders judge the work without knowing who used AI.",
    "boundary": "Occupation-specific, incentivized writing tasks for 453 college-educated professionals.",
    "sources": [
     "noy23"
    ],
-   "visual": "bars",
-   "values": [
-    100,
-    118
-   ],
-   "labels": [
-    "Without AI",
-    "With AI"
-   ],
-   "unit": "quality index",
    "follow": [
     {
-     "q": "Did quality really improve?",
-     "a": "Yes. Average output quality rose 18%."
+     "q": "How did workers feel about AI afterwards?",
+     "a": "Concern and excitement about AI both rose, and the rise was temporary."
     },
     {
      "q": "Which tasks?",
@@ -2820,7 +2810,7 @@
    "options": [
     "Inertia, and the default read as advice",
     "The employer match required the default rate",
-    "Few employees knew they could change it, and few asked"
+    "Changing the rate took more paperwork than most would do"
    ],
    "answer": 0,
    "answerTitle": "People took the default as advice",
@@ -3480,16 +3470,6 @@
    "sources": [
     "resume04"
    ],
-   "visual": "bars",
-   "values": [
-    100,
-    150
-   ],
-   "labels": [
-    "Black-sounding",
-    "White-sounding"
-   ],
-   "unit": "callback rate index",
    "follow": [
     {
      "q": "Was the gap the same across jobs?",
@@ -3517,6 +3497,21 @@
    "study": {
     "design": "Field experiment (résumé audit)",
     "n": "Fictitious résumés sent to help-wanted ads in Boston and Chicago"
+   },
+   "chart": {
+    "labels": [
+     "African-American-sounding names",
+     "White-sounding names"
+    ],
+    "values": [
+     6.45,
+     9.65
+    ],
+    "unit": "%",
+    "highlight": null,
+    "decimals": 2,
+    "max": 10,
+    "note": "Share of résumés that got a callback. 9.65 is 50% more than 6.45."
    }
   },
   {
@@ -3808,7 +3803,7 @@
    "question": "How do you check whether their norms differ?",
    "options": [
     "Ask each team’s manager to describe the norm",
-    "Compare how often each team breaks the rule",
+    "Check which team breaks the rule more often",
     "Compare each team’s most common answer",
     "Ask each person how views are spread across colleagues"
    ],
@@ -4124,7 +4119,7 @@
    "options": [
     "Less is spent on Black patients at equal need",
     "The model used zip code as a proxy for race",
-    "The model had too little training data",
+    "The model had less training data on Black patients",
     "Race was an input to the model"
    ],
    "answer": 0,
@@ -4782,7 +4777,7 @@
    },
    "concept": "Deskilling risk",
    "title": "Tutoring with GPT-4",
-   "scene": "HR proposes unrestricted ChatGPT-style access in new-hire training. In a related field experiment, high school students practiced math with GPT-4, then took exams without it.",
+   "scene": "Last step: training. In a field experiment, nearly 1,000 high school students practiced math with unrestricted GPT-4, then took exams without it. Your plan gives new hires the same unrestricted access.",
    "question": "How did unrestricted-AI students score on unaided exams versus controls?",
    "estimate": {
     "target": -17,
@@ -4868,7 +4863,7 @@
    "format": "forecast",
    "concept": "Ad ROI precision",
    "title": "The noisy ROI test",
-   "scene": "Your CFO wants a randomized test to prove a digital campaign’s return before renewing it. Individual customers’ weekly sales swing wildly.",
+   "scene": "Twenty-five large randomized experiments tested digital ad campaigns at major US retailers and brokerages, covering $2.8 million of ad spending. A customer’s weekly sales swing far more than an ad can move them.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Over 100 percentage points wide",
    "explain": "The median confidence interval on return on investment was over 100 percentage points wide, because individual sales are very noisy relative to ad effects.",
@@ -7014,7 +7009,7 @@
     ],
     "unit": "%",
     "highlight": null,
-    "note": "Share who cooperate when they expect the partner to. The drop is about as large for a painting-taste outgroup as for a political one.",
+    "note": "Share who cooperate when they expect the partner to. Willingness drops about as much for a painting-taste outgroup, so it is expectations that set politics apart.",
     "decimals": 1
    }
   },
@@ -9143,6 +9138,10 @@
     "\\bpre-?regist\\w*"
    ],
    [
+    "replicated",
+    "\\b(who|has|have|had|was|were|been|anyone|any)\\b.{0,40}\\breplicat(ed|ions?)\\b|\\bdid\\b.{0,30}\\breplicate\\b|\\breplicated (by|elsewhere|since|again)\\b"
+   ],
+   [
     "peer",
     "\\bpeer[- ]?review\\w*|\\bwhere (was|is) (it|this|the study|the paper) published\\b|\\bwhich journal\\b"
    ],
@@ -9359,6 +9358,68 @@
    "train",
    "use",
    "work"
+  ],
+  "glossary": [
+   [
+    "p[- ]?values?",
+    "A p-value is the chance of seeing a result at least this far from zero if the true effect were zero. By convention, below 0.05 is called statistically significant. It is not the chance that the finding is true."
+   ],
+   [
+    "confidence intervals?|ci",
+    "A confidence interval is the range of effect sizes the data are compatible with. A 95% interval comes from a method that covers the true value in 95 of 100 repeated studies. A wide interval means an imprecise estimate."
+   ],
+   [
+    "(statistical(ly)? )?significan(t|ce)|statistical significance",
+    "Statistically significant means the result would be unlikely, by convention under a 5% chance, if the true effect were zero. It does not say the effect is large enough to matter."
+   ],
+   [
+    "(control|comparison) groups?|controls",
+    "A control group is the set of participants who do not get the intervention. Comparing them with those who do shows what the intervention changed."
+   ],
+   [
+    "randomi[sz]ed( controlled)?( field)? (trials?|experiments?|stud(y|ies))|rcts?|randomi[sz]ation|random assignment|randomi[sz]ed",
+    "In a randomized experiment, chance decides who gets the intervention, so the groups differ only by it on average. A difference in outcomes can then be read as the effect of the intervention."
+   ],
+   [
+    "pre-?regist(ered|ration|ering|er)",
+    "Preregistered means the authors recorded their hypotheses and analysis plan publicly before they collected the data, so the tests reported are the tests planned."
+   ],
+   [
+    "effect sizes?",
+    "An effect size says how big a difference is, and not only whether one exists: for example a change in percentage points, in percent, or in standard deviations."
+   ],
+   [
+    "percentage points?|pp",
+    "A percentage point is the plain difference between two percentages. Going from 10% to 15% is a rise of 5 percentage points, which is a 50% increase."
+   ],
+   [
+    "standard deviations?|sd",
+    "A standard deviation measures how spread out values are around their average. By a common convention, an effect of 0.2 standard deviations is small, 0.5 medium and 0.8 large."
+   ],
+   [
+    "field experiments?",
+    "A field experiment randomizes an intervention in a real setting, such as a workplace or a market, where people make their usual decisions."
+   ],
+   [
+    "(natural|quasi)[- ]experiments?",
+    "A natural experiment uses an event outside the researchers’ control, such as a policy change, that reached some people and not others for reasons unrelated to the outcome."
+   ],
+   [
+    "replications?|replicat(ed|e|ing)",
+    "A replication repeats a study with new data to check that the result holds. A finding that replicates in other samples deserves more weight than a single study."
+   ],
+   [
+    "sample sizes?|n",
+    "Sample size is the number of participants or observations. Larger samples give more precise estimates."
+   ],
+   [
+    "correlations?|causation|causality|correlation (and|vs\\.?|versus) causation",
+    "Correlation means two things move together. Causation means that changing one changes the other. A randomized experiment is the standard way to tell the two apart."
+   ],
+   [
+    "meta-?analys[ie]s",
+    "A meta-analysis pools the results of many studies of the same question into one estimate, weighting the more precise studies more."
+   ]
   ]
  }
 }

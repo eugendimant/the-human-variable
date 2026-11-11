@@ -47,7 +47,7 @@
    "Inertia, and the default read as advice"
   ],
   "options": [
-   "Few employees knew they could change it, and few asked",
+   "Changing the rate took more paperwork than most would do",
    "Inertia, and the default read as advice",
    "The employer match required the default rate"
   ]
@@ -177,7 +177,7 @@
   "options": [
    "Less is spent on Black patients at equal need",
    "Race was an input to the model",
-   "The model had too little training data",
+   "The model had less training data on Black patients",
    "The model used zip code as a proxy for race"
   ]
  },
@@ -502,8 +502,8 @@
   "options": [
    "Ask each person how views are spread across colleagues",
    "Ask each team’s manager to describe the norm",
-   "Compare each team’s most common answer",
-   "Compare how often each team breaks the rule"
+   "Check which team breaks the rule more often",
+   "Compare each team’s most common answer"
   ]
  }
 }
