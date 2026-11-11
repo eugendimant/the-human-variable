@@ -10,7 +10,7 @@ def quote(cid, src, q, loc):
 C['bz02']['scene'] = 'Twenty-five large randomized experiments tested digital ad campaigns at major US retailers and brokerages, covering $2.8 million of ad spending. A customer’s weekly sales swing far more than an ad can move them.'
 C['rollout4']['scene'] = 'Last step: training. In a field experiment, nearly 1,000 high school students practiced math with unrestricted GPT-4, then took exams without it. Your plan gives new hires the same unrestricted access.'
 # dimant-hate-choice: the figure's line says what the figure shows about the headline
-C['dimant-hate-choice']['chart']['note'] = 'Share who cooperate when they expect the partner to. Willingness drops about as much for a painting-taste outgroup, so it is expectations that set politics apart.'
+C['dimant-hate-choice']['chart']['note'] = 'Share who cooperate if the partner does. The drop is as large for painting taste, so expectations set politics apart.'
 # ai02: a manager line in plain words; the follow-up no longer repeats the screen
 c = C['ai02']
 c['implication'] = 'When you pilot an AI writing tool, measure speed and quality together, and have graders judge the work without knowing who used AI.'
