@@ -888,3 +888,16 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **m2.** Routes `peer` and `causal`; sample-size questions for more roles. Test `test_offline_tutor_review38`.
 - **Open.** Dietvorst 2015/2018 pick; "how much money was at stake"; definition questions; ai10 units; biz05 baselines; repeated numbers; phone slider label.
 - **Gates.** 366 passed; design lint by rule {}; build current.
+
+## Iteration 60 (2026-11-11): review 39
+
+- **Major I-1, fixed.** social01 no longer states the polarized result (the key of the next path decision). Keys: tight norms cluster choices near the average; a higher group average raised contributions (Result 4, read in the published article, p. 2255; quote stored).
+- **I-2.** Allocate plate: the study's value is printed on its dot; the scale spans the full track.
+- **I-3.** `fitProjector()` measures the content's own bottom edge.
+- **I-4, I-6.** Phone estimate histogram unit; the reconnect note is hidden in projector view.
+- **I-8.** The duration decline is dropped when the summary states a duration.
+- **I-9.** social13 asks about "certain preliminary rounds"; distractors are false for those rounds.
+- **Other.** A 50% forecast reads "You sat on the fence."; the AI preset chip only on AI-track items; ai10 units; biz05 first-week households.
+- **Sweep.** 112 decisions x 7 viewports: no content under the action bar, no text overlap in figures, no overflow.
+- **Open.** Empty right column on wide reveals; charts with no stated scale (axe12, social01); repeated headline number on estimate reveals; social20, dimant-conspiracy-choice distractors, axe10 claim; Dimant surname routing with a topic word; projector histogram empty bins.
+- **Gates.** 366 passed after merging duplicate CSS rules (lint, bank and browser suites rerun after the merge: 215 passed); design lint by rule {}; build current.

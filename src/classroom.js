@@ -124,7 +124,7 @@ let pollMisses = 0;
 function fitProjector() {   // the projected page always fits its screen, at 1280x720 as at 1440x900 (review 38, I-3)
   const b = document.body; b.style.zoom = '';
   if (!b.classList.contains('projector')) return;
-  const h = document.documentElement.scrollHeight;
+  const h = Math.max(0, ...[...document.querySelectorAll('.join-banner, .play-grid>.card')].map(e => e.getBoundingClientRect().bottom + scrollY)) + 20;   // the content's own bottom edge, not the wrapper's padding (review 39, I-3)
   if (h > innerHeight + 1) b.style.zoom = Math.max(.6, (innerHeight - 4) / h).toFixed(3);
 }
 function connNote() {   // the console says when its own polls fail (review 38, m9)

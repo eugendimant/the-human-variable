@@ -250,7 +250,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 fl = [f for f in fol if re.search(r'\b(long|last|later|weeks?|months?|years?|fade|persist|after)\b', f['q'] + ' ' + f['a'], re.I)]
                 fy = [f for f in c.get('follow', []) if re.search(r'\b(last|long|persist\w*|fade\w*)\b', f['q'], re.I)]   # "how long did it last?" still gets the item's own "Did it last?" answer, without its Yes or No (review 37)
                 if not fl and fy: return out(strip_yn(fy[0]['a']), c)
-                return out(fl[0]['a'] if fl else f"The lab’s summary does not record how long the effect lasted. Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
+                return out(fl[0]['a'] if fl else ('' if re.search(r'\b(\d+|one|two|three|four|five|six|nine|ten|twelve)[- ](days?|weeks?|months?|years?)\b|\b\d+ (days?|weeks?|months?|years?)\b', st.get('design', '') + ' ' + st.get('n', '') + ' ' + c['boundary'], re.I) else 'The lab’s summary does not record how long the effect lasted. ') + f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
             if name == 'ethics': return out(f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", c)
             if name == 'subgroup':
                 fh = [f for f in fol if re.search(R['subgroupFollow'], f['q'], re.I)]

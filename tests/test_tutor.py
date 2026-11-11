@@ -457,7 +457,7 @@ def test_writing_requests_are_declined_but_study_questions_are_not():
     ('Were the evaluators coauthors?', 'axe05', 'on the author team'),
     ('What does the study cover?', 'rollout2', 'One firm’s customer-support chat'),
     ('how long did the effect last', 'axb15', 'two-month follow-up'),
-    ('what is weight on advice', 'ai10', 'Weight on advice averaged 0.45'),
+    ('what is weight on advice', 'ai10', 'Weight on advice, how far people moved toward it, averaged 45%'),
     ('what did GPT-4 do without the profile?', 'axb08', 'GPT-4 without profiles'),
     ('was this chatgpt 3.5 or 4', 'axe05', 'GPT-3.5'),
     ('what is a brier score', 'forecast-teams-rank', '0 is the best score'),

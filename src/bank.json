@@ -2590,7 +2590,7 @@
    "scene": "People estimated a person’s weight from a photo, then saw an advice estimate and could revise. The same advice was labeled as coming from other people for some and from an algorithm for others. With human-labeled advice, they moved 30% of the way toward it.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "45% of the way, versus 30% for human advice",
-   "explain": "Weight on advice averaged 0.45 when the advice was labeled algorithmic and 0.30 when labeled human, for identical advice.",
+   "explain": "Weight on advice, how far people moved toward it, averaged 45% when the advice was labeled algorithmic and 30% when labeled human, for identical advice.",
    "implication": "Check whether experienced staff discount model advice; in this study, experts who relied less on the algorithm were less accurate.",
    "boundary": "Six experiments, mostly with lay participants, on estimation and forecasting tasks; one tested experienced forecasters.",
    "sources": [
@@ -2960,7 +2960,7 @@
     },
     {
      "q": "How large was the boomerang?",
-     "a": "Below-average households that saw only the neighborhood average rose from 10.38 to 11.27 kWh per day in the first week, and stayed higher three weeks later."
+     "a": "Among the below-average households measured in the first week, those that saw only the neighborhood average rose from 10.38 to 11.27 kWh per day, and they stayed higher three weeks later."
     },
     {
      "q": "Did heavy users keep saving?",
@@ -3178,16 +3178,16 @@
    "concept": "Norm distributions",
    "tag": "27 / CULTURE",
    "title": "Tight, loose or split",
-   "scene": "People saw how a group had behaved in a contribution game before choosing their own contribution. The group’s average was held fixed; only its shape changed: tightly clustered, widely spread, or split between the two extremes.",
+   "scene": "People saw how a group had behaved in a contribution game before choosing their own contribution. The researchers varied the group’s average and how tightly its choices clustered around that average.",
    "question": "Which two results did the experiments find?",
    "options": [
     "After a tight norm, choices clustered close to the average",
-    "After a polarized norm, most people chose extreme contributions",
-    "After a polarized norm, most people chose the middle contribution",
-    "Choices matched whenever the group average was the same, whatever its shape"
+    "A higher group average raised contributions",
+    "After a loose norm, choices clustered more closely than after a tight one",
+    "Choices matched whenever the group average was the same, whatever its spread"
    ],
    "answerTitle": "The shape of others’ behavior changed choices",
-   "explain": "Dimant, Gelfand, Hochleitner and Sonderegger showed about 1,200 Americans co-player behavior with the same mean but different spreads. Choices tracked the spread: contribution variance was 1.26 after a tight norm and 1.65 after a loose one. After a polarized norm, most people chose extreme contributions.",
+   "explain": "Dimant, Gelfand, Hochleitner and Sonderegger showed about 1,200 Americans co-player behavior with the same mean but different spreads. Choices tracked the spread: contribution variance was 1.26 after a tight norm and 1.65 after a loose one. People also contributed more when the group they saw had a higher average.",
    "implication": "Report the spread and clustering of team behavior alongside averages in culture and engagement dashboards.",
    "boundary": "Two-player contribution game with 1,203 US adults, varying the shape of the norm while holding its average fixed.",
    "sources": [
@@ -3525,7 +3525,7 @@
    "tag": "39 / HIRING",
    "title": "Screens at auditions",
    "scene": "Orchestra auditions begin concealing candidates’ identity behind screens.",
-   "question": "What did the authors estimate for women?",
+   "question": "What did the authors estimate for women in certain preliminary rounds?",
    "answerTitle": "About 50% likelier to advance from certain early rounds",
    "explain": "Goldin and Rouse estimate that the screen raised by 50 percent the chance a woman advanced from certain preliminary rounds, and that blind auditions explain about 30 percent of the rise in women among new hires. Some estimates are imprecise.",
    "implication": "Hide names and other identity cues in early screening rounds, then compare pass rates by group before and after.",
@@ -3562,10 +3562,10 @@
     "n": "Musicians auditioning at major US orchestras"
    },
    "options": [
-    "About 50% likelier to advance from certain preliminary rounds",
-    "About 5% likelier to advance from preliminary rounds",
+    "About 50% likelier to advance",
+    "About 5% likelier to advance",
     "No change in who advanced",
-    "Less likely to advance once screened"
+    "About 50% less likely to advance"
    ],
    "answer": 0
   },

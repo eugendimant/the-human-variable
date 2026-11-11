@@ -76,14 +76,14 @@
  },
  "social01": {
   "keyed": [
-   "After a polarized norm, most people chose extreme contributions",
+   "A higher group average raised contributions",
    "After a tight norm, choices clustered close to the average"
   ],
   "options": [
-   "After a polarized norm, most people chose extreme contributions",
-   "After a polarized norm, most people chose the middle contribution",
+   "A higher group average raised contributions",
+   "After a loose norm, choices clustered more closely than after a tight one",
    "After a tight norm, choices clustered close to the average",
-   "Choices matched whenever the group average was the same, whatever its shape"
+   "Choices matched whenever the group average was the same, whatever its spread"
   ]
  },
  "social04": {
@@ -108,12 +108,12 @@
  },
  "social13": {
   "keyed": [
-   "About 50% likelier to advance from certain preliminary rounds"
+   "About 50% likelier to advance"
   ],
   "options": [
-   "About 5% likelier to advance from preliminary rounds",
-   "About 50% likelier to advance from certain preliminary rounds",
-   "Less likely to advance once screened",
+   "About 5% likelier to advance",
+   "About 50% less likely to advance",
+   "About 50% likelier to advance",
    "No change in who advanced"
   ]
  },
