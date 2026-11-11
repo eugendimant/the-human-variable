@@ -763,3 +763,9 @@ p,li,dd{text-wrap:pretty}
 .r-hint{position:absolute;left:50%;top:-6px;transform:translateX(-50%);font-weight:700;font-size:15px;color:var(--you-ink);white-space:nowrap;pointer-events:none}.r-hint::after{content:'';position:absolute;left:50%;top:100%;width:2px;height:6px;background:var(--you-ink);opacity:.5}
 @media (min-width:1000px) and (min-height:760px){.focus-card:has(.q-col){min-height:calc(100vh - 250px);align-content:center}}   /* the question and its instrument sit in the middle of a tall screen, not stranded at the top (review 37, m8) */
 @media (max-width:640px){.tr-read b.empty{visibility:visible;color:transparent;position:relative}.tr-read b.empty::after{content:'?%';position:absolute;left:0;top:0;color:var(--rule-strong)}}   /* on a phone the read-out slot shows a quiet placeholder, so nothing jumps under the thumb at the first move (review 38, I-2) */
+.alloc-h{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}.alloc-h>span:last-child{flex:none;color:#b8c6ff}
+.alloc-cmp .hb-row.two{grid-template-areas:"l v1" "t2 v2";grid-template-columns:minmax(0,1fr) 124px;align-items:center;row-gap:0;padding:8px 0}
+.alloc-cmp .hb-row.two>.hb-track.efx{grid-area:t2}.alloc-cmp .hb-row.two>b.you{text-align:right;align-self:start}.alloc-cmp .hb-row.two>b.ev{text-align:right}
+.alloc-cmp .hb-row.two+.hb-row.two{border-top:1px solid rgba(255,255,255,.12)}
+@media (max-width:700px){.alloc-cmp .hb-row.two{grid-template-columns:minmax(0,1fr) 96px}}
+.alloc-cmp .hb-row:not(:has(.ev-note))>b.ev{color:var(--ink-2)}.plate .alloc-cmp .hb-row:not(:has(.ev-note))>b.ev{color:#d6def0}   /* amber for the option that worked best only (rule 29) */

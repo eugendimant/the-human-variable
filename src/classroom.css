@@ -107,3 +107,5 @@ body.projector .rank-proj .rp-badge{width:46px;height:46px;font-size:23px}
 body.projector:has(.rv) .rv>.reveal-body{display:none}
 body.projector:has(.rv) .pl-explain{margin:0 0 4px;font-family:var(--serif,Georgia,serif);font-size:clamp(17px,1.35vw,22px);line-height:1.45;color:#14203a}
 body.projector .rank-proj li{padding:4px 0}body.projector:has(.rv) .wrap{padding-bottom:24px !important}
+.conn-note{position:fixed;left:50%;top:10px;transform:translateX(-50%);margin:0;padding:8px 16px;border-radius:999px;background:#14203a;color:#fff;font-size:14px;font-weight:650;z-index:50}
+body.projector:has(.rv) .rv{border-top:0;padding-top:0}body.projector:has(.rv) .proj-left{margin-top:10px}body.projector:has(.rv) .rv-head .kicker{white-space:normal}

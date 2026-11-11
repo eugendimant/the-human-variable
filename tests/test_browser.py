@@ -512,3 +512,33 @@ def test_home_prompt_leaves_with_the_first_move(browser):
         pg = page(browser); pg.set_viewport_size({'width': w, 'height': 844}); pg.goto(URL); pg.wait_for_selector('.r-hint')
         pg.focus('#hero-range'); pg.keyboard.press('ArrowRight')
         assert pg.locator('.r-hint').count() == 0 and pg.text_content('#hero-read').strip().endswith('%')
+
+def test_projector_fits_a_720p_screen(browser, tmp_path):
+    """Review 38, I-3: open and revealed projector views end inside 1280x720."""
+    srv, inst, ctx, ph, _, app = _room(browser, tmp_path, 'fit720')
+    try:
+        c = next(x for x in LIVE if x['id'] == 'axf05')
+        inst.set_viewport_size({'width': 1280, 'height': 720})
+        inst.fill('#f-q', c['title'][:18]); inst.wait_for_timeout(300); inst.click(f'[data-open="{c["id"]}"]')
+        inst.evaluate("document.querySelector('[data-act=projector]').click()"); inst.wait_for_timeout(600)
+        assert inst.evaluate('document.documentElement.scrollHeight') <= 720
+        inst.evaluate("document.querySelector('[data-act=projector]').click()")
+        ph.wait_for_selector('#lock-btn', timeout=10000); answer(ph, c); ph.click('#lock-btn'); ph.wait_for_selector('text=Your answer is in', timeout=10000)
+        assert _count(inst, '1'); inst.click("text=Reveal to the room"); inst.wait_for_selector('.rv')
+        inst.evaluate("document.querySelector('[data-act=projector]').click()"); inst.wait_for_timeout(800)
+        assert inst.evaluate('document.documentElement.scrollHeight') <= 720
+        inst.evaluate("document.querySelector('[data-act=projector]').click()"); inst.wait_for_timeout(200)
+        assert inst.evaluate('document.body.style.zoom') == ''   # the console view is never scaled
+        ctx.close()
+    finally:
+        srv.shutdown()
+
+def test_allocate_plate_is_one_dot_plot(browser):
+    """Review 38, m3: one study dot per option on a labelled axis; the player's points are numbers, and only the best option is amber."""
+    for c in [x for x in LIVE if x['format'] == 'allocate']:
+        pg = page(browser); pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+        n = len(c['options'])
+        assert pg.locator('.alloc-cmp .hb-track.efx .dotv').count() == n and pg.locator('.alloc-cmp i.grow').count() == 0, c['id']
+        assert pg.locator('.alloc-cmp b.num.you').count() == n and 'Your points' in pg.text_content('.alloc-h')
+        cols = pg.evaluate("[...document.querySelectorAll('.alloc-cmp .hb-row.two')].map(r=>[!!r.querySelector('.ev-note'), getComputedStyle(r.querySelector('b.ev')).color])")
+        amber = {col for best, col in cols if best}; assert all(col not in amber for best, col in cols if not best), (c['id'], cols)

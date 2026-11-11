@@ -98,13 +98,13 @@ function reveal(c, a) {
     const ex = sx(ev), anc = ex > R - 200 ? 'end' : ex < L + 200 ? 'start' : 'middle';
     return `<svg class="dot-strip" viewBox="0 0 ${W} 235" role="img" aria-label="${esc(`Class answers, ${a.n} in all, median ${m(a.median)}; ${evText}${band != null ? `, hit band ${m(+b0.toFixed(1))} to ${m(+b1.toFixed(1))}` : ''}`)}">${bandRect}${marks}<line x1="${L}" y1="${base}" x2="${R}" y2="${base}" class="ds-axis"/><line x1="${ex}" y1="${top - 8}" x2="${ex}" y2="${base}" class="ds-ev"/><text x="${ex}" y="32" text-anchor="${anc}" class="ds-evl">${esc(evText)}</text>${a.median != null ? `<line x1="${sx(a.median)}" y1="${base}" x2="${sx(a.median)}" y2="${base + 12}" class="ds-med"/><text x="${sx(a.median)}" y="${base + 40}" text-anchor="${sx(a.median) < L + 110 ? 'start' : sx(a.median) > R - 110 ? 'end' : 'middle'}" class="ds-medl">class median ${esc(m(a.median))}</text>` : ''}${a.median == null || sx(a.median) - L > 150 ? `<text x="${L}" y="${base + 40}" class="ds-tick">${esc(m(a.lo))}</text>` : ''}${a.median == null || R - sx(a.median) > 150 ? `<text x="${R}" y="${base + 40}" text-anchor="end" class="ds-tick">${esc(m(a.hi))}</text>` : ''}</svg>` };
   if (a.hist && f === 'estimate') { const e = c.estimate, u = e.unit ?? '%'; chart = dotStrip(a, e.target, e.tolerance ?? null, u, `Study ${String(e.target).replace(/^-/, '\u2212')}${u}`) }
-  else if (a.hist) { const ev = f === 'estimate' ? c.estimate.target : c.forecast.truth ? 100 : 0, w = (a.hi - a.lo) / a.hist.length; chart = bars(a.hist.map((_, i) => `${Math.round(a.lo + i * w)} to ${Math.round(a.lo + (i + 1) * w)}`), a.hist, [Math.min(a.hist.length - 1, Math.floor((ev - a.lo) / w))], '', null, Math.max(1, a.n)) + `<p class="kicker">Class median ${a.median}. Evidence: ${f === 'estimate' ? c.estimate.target + (c.estimate.unit ?? '%') : c.forecast.truth ? 'the claim is true' : 'the claim is false'}.</p>` }
+  else if (a.hist) { const ev = f === 'estimate' ? c.estimate.target : c.forecast.truth ? 100 : 0, w = (a.hi - a.lo) / a.hist.length; const u = f === 'estimate' ? (c.estimate.unit ?? '%') : '%'; chart = bars(a.hist.map((_, i) => `${Math.round(a.lo + i * w)} to ${Math.round(a.lo + (i + 1) * w)}${u}`), a.hist, [Math.min(a.hist.length - 1, Math.floor((ev - a.lo) / w))], '', null, Math.max(1, a.n), null, f === 'estimate' ? `the study, ${c.estimate.target}${u}` : c.forecast.truth ? 'the claim is true' : 'the claim is false') + `<p class="kicker">Class median ${a.median}${u}.</p>` }   // the unit on every bin and the evidence named on its own row (review 38, m7)
   if (a.meanPosition) { const tieOf = i => (c.rankTies || []).find(t => t.includes(i)), place = k => { const g = tieOf(c.rankAnswer[k]); return g ? Math.min(...g.map(x => c.rankAnswer.indexOf(x))) : k };   // tied options share the higher place, "1=" (review 29, m8)
     chart = `<ol class="rank-proj">${c.rankAnswer.map((i, k) => `<li><span class="rp-badge${place(k) === 0 ? ' top' : ''}">${place(k) + 1}${tieOf(i) ? '=' : ''}</span><span class="rp-name">${esc(c.options[i])}${c.rankValues && c.rankValues[i] ? `<small>${esc(String(c.rankValues[i]).replace(/-(?=\d)/g, '−'))}</small>` : ''}</span><span class="rp-room"><span class="sr-only">Room’s average rank </span><b class="num">${a.meanPosition[i] == null ? '–' : Number(a.meanPosition[i]).toFixed(1)}</b></span></li>`).join('')}</ol><p class="kicker">1 is the study’s top place${(c.rankTies || []).length ? '; = marks places it did not separate' : ''}.</p>`;
     chart = '<p class="rp-cap" aria-hidden="true">Room’s average rank</p>' + chart; }   // one header, the measured value beside each name, a one-line key: the reveal fits one screen (review 37, m1)
   if (a.meanShare) { const o = order(c), best = c.allocate.best || [c.allocate.values.indexOf(Math.max(...c.allocate.values))]; chart = bars(o.map(x => x.t), o.map(x => a.meanShare[x.i]), o.map((x, k) => best.includes(x.i) ? k : -1).filter(k => k >= 0), ' pts', null, 100, null, 'worked best') + `<p class="kicker">Average share of the budget. Reported effects: ${c.options.map((o, i) => { const v = String(c.allocate.valueLabels ? c.allocate.valueLabels[i] : c.allocate.values[i]); return esc(o) + (/^baseline$/i.test(v) ? ' (baseline)' : ' ' + esc(v.replace('(n.s.)', ', not significant').replace(' ,', ','))) }).join('; ')}.</p>` }
   if (a.taskCounts) { const right = c.delegate.tasks.map((t, i) => [t.answer, ...(t.also || [])].reduce((x, j) => x + (a.taskCounts[i][j] || 0), 0)), tot = a.taskCounts.map(r => Object.values(r).reduce((x, y) => x + (y || 0), 0)), n = Math.max(1, ...tot);
-    chart = bars(c.delegate.tasks.map(t => t.text), right, [], '', right.map((r, i) => `${r} of ${tot[i]}`), n, c.delegate.tasks.map(t => 'Evidence: ' + [t.answer, ...(t.also || [])].map(j => c.delegate.choices[j]).join(' or '))) }
+    chart = '<p class="kicker rp-cap" style="text-align:left">In the room: routed as the evidence suggests</p>' + bars(c.delegate.tasks.map(t => t.text), right, [], '', right.map((r, i) => `${r} of ${tot[i]}`), n, c.delegate.tasks.map(t => 'Evidence: ' + [t.answer, ...(t.also || [])].map(j => c.delegate.choices[j]).join(' or '))) }   // the bars' measure is stated (review 38, m8)
   const s = BANK.sources[c.sources[0]];
   return `<div class="rv"><h3 class="reveal-title rv-lead">${esc(c.answerTitle)}</h3><div class="rv-head"><div><span class="kicker">The room</span><b class="num">${a.n}<small class="rv-unit"> ${a.n === 1 ? 'answer' : 'answers'}</small></b></div><div><span class="kicker">${({ allocate: 'Most points on the best option', delegate: 'Every task routed right', rank: 'Exact order' })[c.format] || 'Matched the evidence'}</span><b class="num">${a.shareCorrect ?? 0}%</b></div><div><span class="kicker">Average score</span><b class="num">${a.meanScore === null || a.meanScore === undefined ? '–' : String(a.meanScore).replace(/^-/, '\u2212')}</b></div>${a.meanConfidence !== null && a.meanConfidence !== undefined ? `<div><span class="kicker">Average confidence</span><b class="num">${a.meanConfidence}%</b></div>` : ''}</div>${chart ? `<div class="rv-chart">${chart}</div>` : ''}
     <p class="reveal-body">${esc(c.explain)}</p>
@@ -119,16 +119,30 @@ function console_() {
     <div class="play-grid" style="margin-top:16px">${stage()}<div class="side" style="top:16px">${live() && !showPicker ? `<div class="panel" style="padding:18px"><p style="margin:0 0 10px">The decision list is hidden while answers are live, so the projector shows only the question.</p><button class="btn btn-quiet" data-act="picker">Show the decision list</button></div>` : picker()}<div class="panel" style="padding:18px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-quiet" data-act="joining" aria-pressed="${state && state.joining === false ? 'true' : 'false'}">${state && state.joining === false ? 'Reopen joining' : 'Close joining'}</button><button class="btn btn-quiet" data-act="projector">Projector view</button><button class="btn btn-quiet" data-act="csv">Download answers (CSV)</button><button class="btn btn-quiet" data-act="copy">Copy join link</button><button class="btn btn-quiet" data-act="end">End session and delete data</button></div></div></div></section>`;
 }
 
-function render() { qs('#view').innerHTML = S ? (state ? console_() : '<p class="wrap" style="padding:40px 0">Connecting…</p>') : setup() }
+function render() { qs('#view').innerHTML = S ? (state ? console_() : '<p class="wrap" style="padding:40px 0">Connecting…</p>') : setup(); fitProjector(); connNote() }
+let pollMisses = 0;
+function fitProjector() {   // the projected page always fits its screen, at 1280x720 as at 1440x900 (review 38, I-3)
+  const b = document.body; b.style.zoom = '';
+  if (!b.classList.contains('projector')) return;
+  const h = document.documentElement.scrollHeight;
+  if (h > innerHeight + 1) b.style.zoom = Math.max(.6, (innerHeight - 4) / h).toFixed(3);
+}
+function connNote() {   // the console says when its own polls fail (review 38, m9)
+  let n = qs('#conn-note');
+  if (pollMisses < 2) { if (n) n.remove(); return }
+  if (!n) { n = document.createElement('p'); n.id = 'conn-note'; n.className = 'conn-note'; n.setAttribute('role', 'status'); n.textContent = 'Reconnecting to the class server… counts may be behind.'; document.body.append(n) }
+}
+addEventListener('resize', fitProjector);
 function focusKey(el) { if (!el || el === document.body) return null; if (el.id) return '#' + el.id; for (const k of ['act', 'open']) if (el.dataset && el.dataset[k]) return `[data-${k}="${el.dataset[k]}"]`; return null }
 function rerender() { const key = focusKey(document.activeElement), pos = qs('#pick-list')?.scrollTop, sel = document.activeElement?.selectionStart; render(); const pl = qs('#pick-list'); if (pos && pl) pl.scrollTop = pos; const el = key && qs(key); if (el) { el.focus({ preventScroll: true }); if (sel !== undefined && el.setSelectionRange) try { el.setSelectionRange(sel, sel) } catch { } } }
 async function poll() {
   if (!S) return;
   try {
     const d = await api('/api/rooms/' + S.code + (etag ? '?v=' + encodeURIComponent(etag) : ''));
+    if (pollMisses) { pollMisses = 0; connNote() }
     if (!d.same) { state = d; etag = d.etag || ''; if (d.evidence && BY[d.evidence.id]) Object.assign(BY[d.evidence.id], d.evidence); if (!fullLoaded) loadFull(); rerender() }
   }
-  catch (e) { if (/No session/.test(e.message)) { sessionStorage.removeItem('thv:session'); S = null; state = null; render(); toast('That session no longer exists.'); return } }
+  catch (e) { if (/No session/.test(e.message)) { sessionStorage.removeItem('thv:session'); S = null; state = null; render(); toast('That session no longer exists.'); return } pollMisses++; connNote() }
   clearTimeout(timer); timer = setTimeout(poll, state && state.phase === 'open' ? 1500 : 3000);
 }
 async function control(action, challenge) { try { state = await api(`/api/rooms/${S.code}/control`, { action, challenge }); etag = ''; rerender(); const h = qs('.stage-h'); if (action === 'open' && h) h.focus() } catch (e) { toast(e.message) } }
@@ -142,7 +156,7 @@ document.addEventListener('click', async e => {
   if (b.dataset.open) { showPicker = false; await control('open', b.dataset.open); return }
   const a = b.dataset.act;
   if (a === 'close' || a === 'reveal' || a === 'lobby') { showPicker = false; await control(a); return }
-  if (a === 'projector') { document.body.classList.toggle('projector'); const on = document.body.classList.contains('projector'); document.querySelectorAll('[data-act=projector]').forEach(x => x.textContent = on ? 'Exit projector view' : 'Projector view'); if (on) { scrollTo(0, 0); qs('.stage-h')?.focus({ preventScroll: true }) } return }
+  if (a === 'projector') { document.body.classList.toggle('projector'); const on = document.body.classList.contains('projector'); document.querySelectorAll('[data-act=projector]').forEach(x => x.textContent = on ? 'Exit projector view' : 'Projector view'); if (on) { scrollTo(0, 0); qs('.stage-h')?.focus({ preventScroll: true }) } fitProjector(); return }
   if (a === 'picker') { showPicker = true; rerender(); qs('#f-q')?.focus(); return }
   if (a === 'joining') { await control(state && state.joining === false ? 'unlockjoin' : 'lockjoin'); toast(state && state.joining === false ? 'Joining closed. Students already in can keep answering.' : 'Joining is open again.'); return }
   if (a === 'copy') { try { await navigator.clipboard.writeText(joinURL()); toast('Join link copied.') } catch { toast(joinURL()) } return }

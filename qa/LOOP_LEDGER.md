@@ -870,3 +870,13 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **m11, m15.** axf06 "model-adjusted difference"; "Your best: N" in the list.
 - **Open from review 38.** Projector at 1280x720 and open views; allocate plate; phone class panels; projector histogram unit and delegate caption; console poll notice; Thaler routing and tutor misses; ai10 units; biz05 baselines; weak items (social01, social13, bz11); repeated numbers; phone slider label.
 - **Gates.** 359 passed; design lint by rule {}; build current.
+
+## Iteration 58 (2026-11-11): review 38 visual round
+
+- **m3.** Allocate plate is one dot plot of the study's result per option; the player's points are numbers under a "Your points" header; amber only on the option that worked best; no scoring sentence (I-6 residue). Test `test_allocate_plate_is_one_dot_plot`.
+- **I-3.** `fitProjector()` scales the projected page to its screen (never the console view). Open and revealed views end inside 1280x720. Test `test_projector_fits_a_720p_screen`.
+- **I-4.** No hairline above the projector's right column; stat labels wrap evenly.
+- **m4 to m6.** Phone class panels: allocate on a 0 to 100 scale with whole points, rank as dots on a 1-to-N axis, histogram with counts, units and the study's value named.
+- **m7, m8.** Projector histogram bins carry the unit and the evidence row is named; delegate bars state their measure.
+- **m9.** The console shows a reconnecting note after two failed polls.
+- **Gates.** 361 passed; design lint by rule {}; build current.
