@@ -1,6 +1,6 @@
 # DOI check (2026-11-12)
 
-110 sources. 110 verified: the link is https://doi.org/<DOI>, the DOI resolves, and the registered title matches. 0 to check.
+114 sources. 114 verified: the link is https://doi.org/<DOI>, the DOI resolves, and the registered title matches. 0 to check.
 
 | Source | DOI | Registry | Title match | Result |
 |---|---|---|---|---|
@@ -55,7 +55,7 @@
 | iyengar00 | 10.1037/0022-3514.79.6.995 | crossref | 1.00 | ok |
 | scheib10 | 10.1086/651235 | crossref | 1.00 | ok |
 | kristal20 | 10.1073/pnas.1911695117 | crossref | 1.00 | ok |
-| shu12 | 10.1073/pnas.1209746109 | crossref | 0.89 | ok |
+| shu12 | 10.1073/pnas.1209746109 | crossref | 0.96 | ok |
 | card12 | 10.1257/aer.102.6.2981 | crossref | 1.00 | ok |
 | breza18 | 10.1093/qje/qjx041 | crossref | 1.00 | ok |
 | bohnet16 | 10.1287/mnsc.2015.2186 | crossref | 1.00 | ok |
@@ -114,3 +114,7 @@
 | isoni11 | 10.1257/aer.101.2.991 | crossref | 1.00 | ok |
 | huberman06 | 10.1111/j.1540-6261.2006.00854.x | crossref | 1.00 | ok |
 | manylabs14 | 10.1027/1864-9335/a000178 | crossref | 0.71 | ok |
+| fisar24 | 10.1287/mnsc.2023.03556 | crossref | 1.00 | ok |
+| huber23 | 10.1073/pnas.2215572120 | crossref | 1.00 | ok |
+| duckworth25 | 10.1073/pnas.2418616122 | crossref | 1.00 | ok |
+| buck21 | 10.1007/s11166-021-09352-x | crossref | 1.00 | ok |

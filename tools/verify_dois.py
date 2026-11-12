@@ -4,7 +4,7 @@ import json, re, sys, time, urllib.request, urllib.parse, difflib, datetime
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 S = json.loads((ROOT / 'src/bank.json').read_text())['sources']
-norm = lambda t: re.sub(r'[^a-z0-9 ]', '', re.sub(r'<[^>]+>', '', t or '').lower()).strip()
+norm = lambda t: ' '.join(re.sub(r'[^a-z0-9 ]', '', re.sub(r'<[^>]+>', '', t or '').lower()).split())
 def get(url, method='GET'):
     req = urllib.request.Request(url, method=method, headers={'User-Agent': 'the-human-variable/1.0 (mailto:edimant@sas.upenn.edu)'})
     return urllib.request.urlopen(req, timeout=30)

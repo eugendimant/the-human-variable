@@ -12,11 +12,11 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 
 ## Summary
 
-- Decisions in scored play: 112 (formats: forecast 35, choice 30, estimate 23, multi 11, delegate 4, causal 4, rank 3, allocate 2).
-- Sources: 110 (62 checked against the published full text, 3 against the authors' accepted manuscript, 1 against the publisher's abstract and figure legends, 43 against the published abstract, 1 quarantined).
+- Decisions in scored play: 116 (formats: forecast 35, choice 32, estimate 25, multi 11, delegate 4, causal 4, rank 3, allocate 2).
+- Sources: 114 (66 checked against the published full text, 3 against the authors' accepted manuscript, 1 against the publisher's abstract and figure legends, 43 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
 - Decisions retired with reasons: 35 (listed below).
-- Track balance: AI × Business 46, Culture & Society 30, Business 29, Judgment 7.
+- Track balance: AI × Business 46, Business 32, Culture & Society 31, Judgment 7.
 
 ## Sources
 
@@ -43,6 +43,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Bolton, Dimant & Schmidt (2021). *Observability and social image: On the robustness and fragility of reciprocity*. [doi:10.1016/j.jebo.2021.09.018](https://doi.org/10.1016/j.jebo.2021.09.018) | Journal of Economic Behavior & Organization 191 946-964 | Full text | dimant-observability-choice |  |
 | Breza, Kaur & Shamdasani (2018). *The Morale Effects of Pay Inequality*. [doi:10.1093/qje/qjx041](https://doi.org/10.1093/qje/qjx041) | The Quarterly Journal of Economics 133(2) 611-663 | Abstract | bz13 |  |
 | Brynjolfsson, Li & Raymond (2025). *Generative AI at Work*. [doi:10.1093/qje/qjae044](https://doi.org/10.1093/qje/qjae044) | Quarterly Journal of Economics 140(2) 889-942 | Abstract | axb13, rollout1, rollout2 |  |
+| Buckenmaier, Dimant, Posten & Schmidt (2021). *Efficient Institutions and Effective Deterrence: On Timing and Uncertainty of Formal Sanctions*. [doi:10.1007/s11166-021-09352-x](https://doi.org/10.1007/s11166-021-09352-x) | Journal of Risk and Uncertainty 62(2) 177-201 | Full text | dimant-deterrence-choice |  |
 | Buehler, Griffin & Ross (1994). *Exploring the "planning fallacy": Why people underestimate their task completion times*. [doi:10.1037/0022-3514.67.3.366](https://doi.org/10.1037/0022-3514.67.3.366) | Journal of Personality and Social Psychology 67(3) 366-381 | Full text | bz04 |  |
 | Bursztyn, González & Yanagizawa-Drott (2020). *Misperceived Social Norms: Women Working Outside the Home in Saudi Arabia*. [doi:10.1257/aer.20180975](https://doi.org/10.1257/aer.20180975) | American Economic Review 110(10) 2997-3029 | Full text | misperceived-norms-support, misperceived-norms-action |  |
 | Buçinca, Malaya & Gajos (2021). *To Trust or to Think: Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making*. [doi:10.1145/3449287](https://doi.org/10.1145/3449287) | Proceedings of the ACM on Human-Computer Interaction (CSCW1) 5(CSCW1) 1-21 | Abstract | axb10 |  |
@@ -66,7 +67,9 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Dimant, Gelfand, Hochleitner & Sonderegger (2025). *Strategic Behavior with Tight, Loose, and Polarized Norms*. [doi:10.1287/mnsc.2023.01022](https://doi.org/10.1287/mnsc.2023.01022) | Management Science 71(3) 2245-2263 | Full text | social01, dimant-polarizednorms-choice |  |
 | Dimant, van Kleef & Shalvi (2020). *Requiem for a Nudge: Framing effects in nudging honesty*. [doi:10.1016/j.jebo.2020.02.015](https://doi.org/10.1016/j.jebo.2020.02.015) | Journal of Economic Behavior & Organization 172 247-266 | Full text | dimant-requiem-forecast |  |
 | Doshi & Hauser (2024). *Generative AI enhances individual creativity but reduces the collective diversity of novel content*. [doi:10.1126/sciadv.adn5290](https://doi.org/10.1126/sciadv.adn5290) | Science Advances 10(28) eadn5290 | Full text | ai07 |  |
+| Duckworth et al. (2025). *A national megastudy shows that email nudges to elementary school teachers boost student math achievement, particularly when personalized*. [doi:10.1073/pnas.2418616122](https://doi.org/10.1073/pnas.2418616122) | Proceedings of the National Academy of Sciences 122(13) e2418616122 | Full text | dimant-megastudy-estimate |  |
 | Fischbacher & Föllmi-Heusi (2013). *Lies in Disguise: An Experimental Study on Cheating*. [doi:10.1111/jeea.12014](https://doi.org/10.1111/jeea.12014) | Journal of the European Economic Association 11(3) 525-547 | Abstract | lies-in-disguise |  |
+| Fišar, Greiner, Huber, Katok, Ozkes & the Management Science Reproducibility Collaboration (2024). *Reproducibility in Management Science*. [doi:10.1287/mnsc.2023.03556](https://doi.org/10.1287/mnsc.2023.03556) | Management Science 70(3) 1343-1356 | Full text | repro-msci-estimate |  |
 | Garvey, Kim & Duhachek (2023). *Bad News? Send an AI. Good News? Send a Human*. [doi:10.1177/00222429211066972](https://doi.org/10.1177/00222429211066972) | Journal of Marketing 87(1) 10-25 | Abstract | axf04 | ["Full text not read (paywalled; repository copy unreachable). Item is qualitative and uses no study numbers. Online first 2022-02-18; issue 2023.", "No retraction, correction or failed replication found in a web search."] |
 | Gneezy & Rustichini (2000). *A Fine is a Price*. [doi:10.1086/468061](https://doi.org/10.1086/468061) | The Journal of Legal Studies 29(1) 1-17 | Full text | bz08 |  |
 | Goh et al. (2024). *Large Language Model Influence on Diagnostic Reasoning*. [doi:10.1001/jamanetworkopen.2024.40969](https://doi.org/10.1001/jamanetworkopen.2024.40969) | JAMA Network Open 7(10) e2440969 | Full text | axf06 | ["The GPT-4-alone comparison is a secondary exploratory analysis. No retraction found."] |
@@ -80,6 +83,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Hallsworth, List, Metcalfe & Vlaev (2017). *The behavioralist as tax collector: Using natural field experiments to enhance tax compliance*. [doi:10.1016/j.jpubeco.2017.02.003](https://doi.org/10.1016/j.jpubeco.2017.02.003) | Journal of Public Economics 148 14-31 | Abstract | tax-letter-norms |  |
 | Hartmann, Exner & Domdey (2025). *The power of generative marketing: Can generative AI create superhuman visual marketing content?*. [doi:10.1016/j.ijresmar.2024.09.002](https://doi.org/10.1016/j.ijresmar.2024.09.002) | International Journal of Research in Marketing 42(1) 13-31 | Abstract | axe10 |  |
 | Hoffman, Kahn & Li (2018). *Discretion in Hiring*. [doi:10.1093/qje/qjx042](https://doi.org/10.1093/qje/qjx042) | The Quarterly Journal of Economics 133(2) 765-800 | Abstract | axb06 |  |
+| Huber et al. (2023). *Competition and moral behavior: A meta-analysis of forty-five crowd-sourced experimental designs*. [doi:10.1073/pnas.2215572120](https://doi.org/10.1073/pnas.2215572120) | Proceedings of the National Academy of Sciences 120(23) e2215572120 | Full text | dimant-competition-choice |  |
 | Huberman & Jiang (2006). *Offering versus Choice in 401(k) Plans: Equity Exposure and Number of Funds*. [doi:10.1111/j.1540-6261.2006.00854.x](https://doi.org/10.1111/j.1540-6261.2006.00854.x) | Journal of Finance 61(2) 763-801 | Abstract | bz16 |  |
 | Hui, Reshef & Zhou (2024). *The Short-Term Effects of Generative Artificial Intelligence on Employment: Evidence from an Online Labor Market*. [doi:10.1287/orsc.2023.18441](https://doi.org/10.1287/orsc.2023.18441) | Organization Science 35(6) 1977-1989 | Abstract | axe08 |  |
 | Isoni, Loomes & Sugden (2011). *The Willingness to Pay—Willingness to Accept Gap, the “Endowment Effect,” Subject Misconceptions, and Experimental Procedures for Eliciting Valuations: Comment*. [doi:10.1257/aer.101.2.991](https://doi.org/10.1257/aer.101.2.991) | American Economic Review 101(2) 991-1011 | Abstract | bz06 |  |

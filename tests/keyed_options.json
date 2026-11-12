@@ -505,5 +505,27 @@
    "Check which team breaks the rule more often",
    "Compare each team’s most common answer"
   ]
+ },
+ "dimant-competition-choice": {
+  "keyed": [
+   "A small adverse effect, and the designs disagreed widely"
+  ],
+  "options": [
+   "A large adverse effect, and the designs agreed closely",
+   "A large favorable effect, and the designs agreed closely",
+   "A small adverse effect, and the designs disagreed widely",
+   "A small favorable effect, and the designs disagreed widely"
+  ]
+ },
+ "dimant-deterrence-choice": {
+  "keyed": [
+   "Verdict and fine both immediate, or both delayed as far as possible"
+  ],
+  "options": [
+   "An immediate verdict with a delayed fine",
+   "The faster the verdict and the fine, the stronger the deterrence",
+   "The longer the verdict and the fine were delayed, the stronger the deterrence",
+   "Verdict and fine both immediate, or both delayed as far as possible"
+  ]
  }
 }

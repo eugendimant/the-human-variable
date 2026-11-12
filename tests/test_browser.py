@@ -585,3 +585,64 @@ def test_principle_strip_keeps_its_size_with_a_record(browser):
                 seen += 1; assert w <= 562, (c['id'], w)
         pg.close()
     assert seen >= 6
+
+
+def test_claims_are_answered_true_or_false_then_how_sure(browser):
+    """Owner, 2026-11-12: a percentage on a true/false claim read as odd. The player picks True or False, then how sure;
+    the stored answer is still the probability that the claim is true."""
+    c = next(x for x in LIVE if x['format'] == 'forecast')
+    pg = page(browser); pg.goto(URL + '?play=' + c['id']); pg.wait_for_selector('[data-tf="1"]')
+    assert pg.is_disabled('#lock-btn')
+    pg.keyboard.press('1'); assert pg.get_attribute('[data-tf="1"]', 'aria-pressed') == 'true' and pg.is_disabled('#lock-btn')   # how sure is still open
+    pg.eval_on_selector('#fc', "e=>{e.value=80;e.dispatchEvent(new Event('input',{bubbles:true}))}")
+    assert pg.text_content('#fc-read').strip() == '80%' and pg.is_enabled('#lock-btn')
+    pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+    plate = pg.inner_text('.plate')
+    assert 'You said' in plate and 'True' in plate and '80% sure' in plate and 'You gave it' not in plate
+    rec = pg.evaluate("JSON.parse(localStorage.getItem(Object.keys(localStorage).find(k => /record|thv/i.test(k)) || '[]') || '[]')")
+    assert not pg.errors, pg.errors
+
+
+def test_every_reveal_links_to_the_study(browser):
+    """Owner, 2026-11-12: every study opens at its DOI from the reveal (plate source line and the study card)."""
+    for cid in ('ai02', 'false-news-spread', 'dimant-hate-choice'):
+        c = next(x for x in LIVE if x['id'] == cid)
+        pg = page(browser); pg.goto(URL + '?play=' + cid); pg.wait_for_selector('#q-h'); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+        hrefs = pg.eval_on_selector_all('.reveal a[href^="https://doi.org/"]', 'a => a.map(x => x.href)')
+        assert len(hrefs) >= 1 and all(h.startswith('https://doi.org/10.') for h in hrefs), (cid, hrefs)
+
+
+def test_tutor_suggestions_all_get_an_answer(browser):
+    """Owner, 2026-11-12: more suggested questions, and each one has an answer for this study."""
+    for cid in ('false-news-spread', 'ai02', 'dimant-hate-choice', 'bz02'):
+        c = next(x for x in LIVE if x['id'] == cid)
+        pg = page(browser); pg.goto(URL + '?play=' + cid); pg.wait_for_selector('#q-h'); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('.tutor-chips button')
+        qs = pg.eval_on_selector_all('.tutor-chips button', 'b => b.map(x => x.dataset.ask)')
+        assert len(qs) >= 4, (cid, qs)
+        for q in qs:
+            pg.fill('#tutor-in', q); pg.press('#tutor-in', 'Enter'); pg.wait_for_function("q => { const a = document.querySelector('.tutor-answer'); return a && a.textContent.trim().length > 20 && !document.querySelector('.tutor.busy') }", arg=q); pg.wait_for_timeout(120)
+            a = pg.inner_text('.tutor-answer')
+            assert a and not re.search(r'does not record|could not match|outside what this lab covers', a), (cid, q, a[:80])
+
+
+def test_dimant_papers_carry_their_own_titles_and_links(browser):
+    """Owner, 2026-11-12: the research band lists every paper under its published title, linked to its DOI."""
+    pg = page(browser); pg.goto(URL); pg.wait_for_selector('.dimant')
+    rows = pg.eval_on_selector_all('.dimant ul a', 'a => a.map(x => [x.querySelector("strong").textContent, x.href])')
+    titles = {s['title'] for s in BANK['sources'].values() if 'Dimant' in (s.get('authors_full') or s['authors'])}
+    assert len(rows) >= 15 and all(t in titles and h.startswith('https://doi.org/10.') for t, h in rows), rows[:2]
+    assert any(t.startswith('Hate Trumps Love') for t, _ in rows)
+
+
+def test_question_screen_grows_into_a_large_screen(browser):
+    """Owner, 2026-11-12: no small block in the middle of a large screen. The card scales up, stays inside the screen, and the reveal is not scaled."""
+    for cid in ('false-news-spread', 'ai02', 'biz08'):
+        c = next(x for x in LIVE if x['id'] == cid)
+        for w, h in ((1440, 900), (1920, 1080)):
+            pg = page(browser, w, h); pg.goto(URL + '?play=' + cid); pg.wait_for_selector('#q-h'); pg.wait_for_timeout(250)
+            m = pg.evaluate("(() => { const c = document.querySelector('.focus-card'), r = c.getBoundingClientRect(), kids = [...c.children].map(e => e.getBoundingClientRect()); return { z: +c.style.zoom || 1, right: Math.max(...kids.map(k => k.right)), bottom: Math.max(...kids.map(k => k.bottom)), bar: document.querySelector('.actionbar').getBoundingClientRect().top, sw: document.documentElement.scrollWidth } })()")
+            assert m['z'] > 1.1 and m['right'] <= w + 1 and m['sw'] <= w + 1 and m['bottom'] <= m['bar'] + 1, (cid, w, m)
+            answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+            assert pg.evaluate("[...document.querySelectorAll('.focus-card')].every(c => !c.style.zoom)")
+        pg = page(browser, 390, 844); pg.goto(URL + '?play=' + cid); pg.wait_for_selector('#q-h')
+        assert pg.evaluate("!document.querySelector('.focus-card').style.zoom")

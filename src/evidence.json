@@ -4579,5 +4579,113 @@
    "printed": "Original study ES 0.93 for each anchoring item; replication ES (unweighted): babies born 2.60, Mt. Everest 2.45, Chicago 2.05, distance to NYC 1.27",
    "location": "Table 2, p. 147"
   }
+ ],
+ "repro-msci-estimate": [
+  {
+   "source": "fisar24",
+   "quote": "With the help of more than 700 reviewers, we assess the reproducibility of nearly 500 articles published in the journal Management Science before and after the introduction of a new Data and Code Disclosure policy in 2019.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "fisar24",
+   "quote": "the results of more than 95% of articles under the new disclosure policy could be fully or largely computationally reproduced. However, for 29% of articles, at least part of the data set was not accessible to the reviewer.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "fisar24",
+   "quote": "Considering all articles in our sample reduces the share of reproduced articles to 68%.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "fisar24",
+   "quote": "where only 12% of articles voluntarily provided replication materials, of which 55% could be (largely) reproduced.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "fisar24",
+   "quote": "Other reasons for unsuccessful reproduction attempts include missing code, unresolvable code errors, weak or missing documentation, and software and hardware requirements and code complexity.",
+   "location": "Abstract (version of record)"
+  }
+ ],
+ "dimant-competition-choice": [
+  {
+   "source": "huber23",
+   "quote": "In a large-scale online data collection, 18,123 experimental participants were randomly allocated to 45 randomly selected experimental designs out of 95 submitted designs.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "huber23",
+   "quote": "We find a small adverse effect of competition on moral behavior in a meta-analysis of the pooled data.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "huber23",
+   "quote": "The meta-analytic effect size in Cohen’s d units is −0.085 (95% CI [−0.147, −0.022], P = 0.008) for analytic approach A and −0.086 (95% CI [−0.144, −0.027], P = 0.004) for analytic approach B.",
+   "location": "Results (version of record)"
+  },
+  {
+   "source": "huber23",
+   "quote": "We find substantial design heterogeneity—estimated to be about 1.6 times as large as the average standard error of effect size estimates of the 45 research designs",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "huber23",
+   "quote": "A potential source of ambivalent empirical results on the same hypothesis is design heterogeneity—variation in true effect sizes across various reasonable experimental research protocols.",
+   "location": "Abstract (version of record)"
+  }
+ ],
+ "dimant-megastudy-estimate": [
+  {
+   "source": "duckworth25",
+   "quote": "we conducted a national megastudy in which 140,461 elementary school teachers who collectively taught 2,992,027 students were randomly assigned to receive a variety of behaviorally informed email nudges",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "duckworth25",
+   "quote": "Specifically, we partnered with the nonprofit educational platform Zearn Math to compare the impact of 15 different interventions with a reminder-only megastudy control condition.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "duckworth25",
+   "quote": "All 16 conditions entailed weekly emails delivered to teachers over 4-wk in the fall of 2021.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "duckworth25",
+   "quote": "The best-performing intervention, which encouraged teachers to log into Zearn Math for an updated report on how their students were doing that week, produced a 5.06% increase in students’ math progress (3.30% after accounting for the winner’s curse).",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "duckworth25",
+   "quote": "saw their students’ math progress boosted by an average of 1.89% during the 4-wk intervention period; emails referencing personalized data (i.e., classroom-specific statistics) outperformed emails that did not by 2.26%.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "duckworth25",
+   "quote": "these intervention effects were consistent across school socioeconomic status and school type (public, private, etc.) and, further, persisted in the 8-wk post-intervention period.",
+   "location": "Abstract (version of record)"
+  }
+ ],
+ "dimant-deterrence-choice": [
+  {
+   "source": "buck21",
+   "quote": "This paper presents the first controlled experiment to study a third important factor that has been mainly overlooked: the swiftness of formal sanctions.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "buck21",
+   "quote": "we find a surprising non-monotonic relation with deterrence: either no delay (immediate resolution and immediate punishment) or maximum delay (both resolution and punishment as much as possible delayed) emerge as most effective at deterring deviant behavior and recidivism.",
+   "location": "Abstract (version of record)"
+  },
+  {
+   "source": "buck21",
+   "quote": "A total of 296 subjects (46.6% male) participated in the experiment",
+   "location": "Section 2 (version of record)"
+  },
+  {
+   "source": "buck21",
+   "quote": "These cheating periods are followed by an investigation such that cheaters will be detected and fined with a given probability.",
+   "location": "Section 1 (version of record)"
+  }
  ]
 }

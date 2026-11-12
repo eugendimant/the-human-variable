@@ -21,6 +21,7 @@
 - Bolton, Dimant & Schmidt (2021). Observability and social image: On the robustness and fragility of reciprocity. *Journal of Economic Behavior & Organization* 191, 946-964. https://doi.org/10.1016/j.jebo.2021.09.018
 - Breza, Kaur & Shamdasani (2018). The Morale Effects of Pay Inequality. *The Quarterly Journal of Economics* 133(2), 611-663. https://doi.org/10.1093/qje/qjx041
 - Brynjolfsson, Li & Raymond (2025). Generative AI at Work. *Quarterly Journal of Economics* 140(2), 889-942. https://doi.org/10.1093/qje/qjae044
+- Buckenmaier, Dimant, Posten & Schmidt (2021). Efficient Institutions and Effective Deterrence: On Timing and Uncertainty of Formal Sanctions. *Journal of Risk and Uncertainty* 62(2), 177-201. https://doi.org/10.1007/s11166-021-09352-x
 - Buehler, Griffin & Ross (1994). Exploring the "planning fallacy": Why people underestimate their task completion times. *Journal of Personality and Social Psychology* 67(3), 366-381. https://doi.org/10.1037/0022-3514.67.3.366
 - Bursztyn, González & Yanagizawa-Drott (2020). Misperceived Social Norms: Women Working Outside the Home in Saudi Arabia. *American Economic Review* 110(10), 2997-3029. https://doi.org/10.1257/aer.20180975
 - Buçinca, Malaya & Gajos (2021). To Trust or to Think: Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making. *Proceedings of the ACM on Human-Computer Interaction (CSCW1)* 5(CSCW1), 1-21. https://doi.org/10.1145/3449287
@@ -44,7 +45,9 @@
 - Dimant, Gelfand, Hochleitner & Sonderegger (2025). Strategic Behavior with Tight, Loose, and Polarized Norms. *Management Science* 71(3), 2245-2263. https://doi.org/10.1287/mnsc.2023.01022
 - Dimant, van Kleef & Shalvi (2020). Requiem for a Nudge: Framing effects in nudging honesty. *Journal of Economic Behavior & Organization* 172, 247-266. https://doi.org/10.1016/j.jebo.2020.02.015
 - Doshi & Hauser (2024). Generative AI enhances individual creativity but reduces the collective diversity of novel content. *Science Advances* 10(28), eadn5290. https://doi.org/10.1126/sciadv.adn5290
+- Duckworth et al. (2025). A national megastudy shows that email nudges to elementary school teachers boost student math achievement, particularly when personalized. *Proceedings of the National Academy of Sciences* 122(13), e2418616122. https://doi.org/10.1073/pnas.2418616122
 - Fischbacher & Föllmi-Heusi (2013). Lies in Disguise: An Experimental Study on Cheating. *Journal of the European Economic Association* 11(3), 525-547. https://doi.org/10.1111/jeea.12014
+- Fišar, Greiner, Huber, Katok, Ozkes & the Management Science Reproducibility Collaboration (2024). Reproducibility in Management Science. *Management Science* 70(3), 1343-1356. https://doi.org/10.1287/mnsc.2023.03556
 - Garvey, Kim & Duhachek (2023). Bad News? Send an AI. Good News? Send a Human. *Journal of Marketing* 87(1), 10-25. https://doi.org/10.1177/00222429211066972
 - Gneezy & Rustichini (2000). A Fine is a Price. *The Journal of Legal Studies* 29(1), 1-17. https://doi.org/10.1086/468061
 - Goh et al. (2024). Large Language Model Influence on Diagnostic Reasoning. *JAMA Network Open* 7(10), e2440969. https://doi.org/10.1001/jamanetworkopen.2024.40969
@@ -58,6 +61,7 @@
 - Hallsworth, List, Metcalfe & Vlaev (2017). The behavioralist as tax collector: Using natural field experiments to enhance tax compliance. *Journal of Public Economics* 148, 14-31. https://doi.org/10.1016/j.jpubeco.2017.02.003
 - Hartmann, Exner & Domdey (2025). The power of generative marketing: Can generative AI create superhuman visual marketing content?. *International Journal of Research in Marketing* 42(1), 13-31. https://doi.org/10.1016/j.ijresmar.2024.09.002
 - Hoffman, Kahn & Li (2018). Discretion in Hiring. *The Quarterly Journal of Economics* 133(2), 765-800. https://doi.org/10.1093/qje/qjx042
+- Huber et al. (2023). Competition and moral behavior: A meta-analysis of forty-five crowd-sourced experimental designs. *Proceedings of the National Academy of Sciences* 120(23), e2215572120. https://doi.org/10.1073/pnas.2215572120
 - Huberman & Jiang (2006). Offering versus Choice in 401(k) Plans: Equity Exposure and Number of Funds. *Journal of Finance* 61(2), 763-801. https://doi.org/10.1111/j.1540-6261.2006.00854.x
 - Hui, Reshef & Zhou (2024). The Short-Term Effects of Generative Artificial Intelligence on Employment: Evidence from an Online Labor Market. *Organization Science* 35(6), 1977-1989. https://doi.org/10.1287/orsc.2023.18441
 - Isoni, Loomes & Sugden (2011). The Willingness to Pay—Willingness to Accept Gap, the “Endowment Effect,” Subject Misconceptions, and Experimental Procedures for Eliciting Valuations: Comment. *American Economic Review* 101(2), 991-1011. https://doi.org/10.1257/aer.101.2.991
