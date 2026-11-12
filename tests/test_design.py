@@ -285,3 +285,16 @@ def test_tie_leaves_flex_rows_and_path_lines_alone():
         assert pg.evaluate("document.querySelectorAll('summary .nw').length") == 0
         assert "li,summary" not in open(str(__import__('pathlib').Path(__file__).resolve().parents[1] / 'src' / 'tie.js'), encoding='utf-8').read()   # the flex summary row itself is never tied; its text span is
         b.close()
+
+
+def test_front_page_sample_has_no_try_again():
+    """Iteration 69: after the reveal, "Try again" gave the same question with the answer known. Only "Play five more" is left."""
+    from playwright.sync_api import sync_playwright
+    from test_browser import URL
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1280, 'height': 800}); pg.goto(URL); pg.wait_for_timeout(200)
+        pg.evaluate("const r = document.querySelector('#hero-range'); r.value = 40; r.dispatchEvent(new Event('input', {bubbles: true}))")
+        pg.click('[data-act=hero-lock]'); pg.wait_for_timeout(200)
+        assert pg.locator('[data-act=start-quick]').count() == 1 and pg.locator('[data-act=hero-reset]').count() == 0
+        assert 'Try again' not in pg.locator('.try-wrap').inner_text()
+        b.close()
