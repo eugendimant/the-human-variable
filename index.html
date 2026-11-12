@@ -453,7 +453,7 @@ body.in-play{background:var(--paper)}
 
 .focus-card.is-locked .opt[aria-pressed="true"],.focus-card.is-locked .meter-read b,.focus-card.is-locked .rank-item,.focus-card.is-locked .deleg-opts button[aria-pressed="true"]{animation:lockpulse .42s ease-out}
 @keyframes lockpulse{0%{transform:scale(1)}40%{transform:scale(1.025)}100%{transform:scale(1)}}
-.resume{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;padding:12px 16px!important;border-radius:var(--r-panel);background:var(--you-soft);color:var(--you-ink);max-width:calc(var(--max) - 2*var(--gut))}
+.resume{width:calc(100% - 2*var(--gut));display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;padding:12px 16px!important;border-radius:var(--r-panel);background:var(--you-soft);color:var(--you-ink);max-width:calc(var(--max) - 2*var(--gut))}
 :root{color-scheme:light}
 
 .hbars{display:grid;gap:14px;margin:6px 0 4px}
@@ -640,17 +640,12 @@ p,li,dd{text-wrap:pretty}
 .paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;row-gap:0}
 .path{position:relative;display:flex;flex-direction:column;gap:6px;text-align:left;color:var(--ink);background:none;border:0;border-top:1px solid var(--rule);border-radius:0;padding:24px 0 26px}
 .path strong{font-size:20px;letter-spacing:-.02em;line-height:1.15}
-.path span{font-family:var(--serif);font-size:16px;line-height:1.45;color:var(--ink-2);max-width:36em}
+.path>span{text-wrap:pretty;font-family:var(--serif);font-size:16px;line-height:1.45;color:var(--ink-2);max-width:36em}
 .path small{color:var(--muted);font-size:var(--t7)}
 .path:hover strong{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
-.paths .path:first-child{padding:24px 28px 26px;margin:12px 0;border:0;border-radius:var(--r-panel);background:var(--ink);color:#fff}
-.paths .path:first-child strong{font-size:clamp(24px,2.4vw,32px)}
-.paths .path:first-child span{font-size:18px;color:rgba(255,255,255,.9)}
-.paths .path:first-child small{color:rgba(255,255,255,.86)}
 .path-flag{font-style:normal;font-size:var(--t7);font-weight:700;color:#f0b43c}
 .strip{display:inline-block;margin:0 10px 0 0;vertical-align:-1px}.strip rect{fill:rgba(20,32,58,.16)}.strip rect.on{fill:var(--ink)}
-.paths .path:first-child .strip rect{fill:rgba(255,255,255,.22)}.paths .path:first-child .strip rect.on{fill:#fff}
-@media (max-width:640px){.paths{grid-template-columns:1fr}.paths .path:first-child{padding:20px}.path{padding:18px 0 20px}.path span{font-size:15px}}
+@media (max-width:640px){.paths{grid-template-columns:1fr}.path{padding:18px 0 20px}.path>span{font-size:15px}}
 /* Library: principles as an index with rules between entries, no drawings, progress as a word-sized strip */
 .theme{background:none;border:0;border-top:1px solid var(--rule);border-radius:0;box-shadow:none;padding:30px 0;margin:0}
 .theme-head h2{grid-row:1}.theme-head p{grid-row:1}
@@ -726,7 +721,7 @@ p,li,dd{text-wrap:pretty}
 .tr-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:14px}
 .tr-foot .try-result{flex:1 1 100%;margin:0;font-family:var(--serif);font-size:20px;line-height:1.4}
 .tr-foot .try-result:empty{display:none}
-.try-src{margin-left:auto;font-size:var(--t7);color:var(--muted)}
+.try-src{margin:10px 0 0;font-size:var(--t7);color:var(--muted)}.try-src a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:820px){.ruler-scale em.near{display:none}}   /* a numeral closer than one step to an end gives way on phones */
 @media (max-width:560px){.ruler-scale:has(em:nth-of-type(7)) em.alt{display:none}}   /* seven or more numerals: every other interior one gives way on phones (audit 37) */
 @media (max-width:820px){.tr-head{grid-template-columns:1fr}.tr-read{flex-direction:row;align-items:baseline;justify-content:flex-start;text-align:left}.ruler-scale i:not(.m):not(.l){display:none}.r-gap b,.r-mark b{font-size:13px}}
@@ -776,21 +771,18 @@ p,li,dd{text-wrap:pretty}
 .reveal.meta-wide>.rev-meta .theme-strip{max-width:560px}   /* the strip keeps its drawn size in the full-width band (review 40, I-1) */
 /* landing page: what it is, how a round works, one decision to try, then the paths (owner, 2026-11-11); the sample's question outranks its label and starts above the fold on laptops (review 41) */
 .hero:has(.intro){padding-top:clamp(20px,3vw,40px)}
-.intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(32px,5vw,88px);align-items:start}
+.intro{max-width:38em}
 .intro h1{font-size:clamp(36px,4.2vw,60px);line-height:1}
 .intro .hero-lede{margin:clamp(18px,2vw,26px) 0 clamp(22px,2.4vw,30px);max-width:31em}
 .intro .hero-meta{margin-top:20px}
-.how-h{font-size:var(--t6);font-weight:700;letter-spacing:0;color:var(--ink-2);margin:6px 0 10px}
-.round-steps{list-style:none;margin:0;padding:0;counter-reset:rs;border-bottom:1px solid var(--rule)}
-.round-steps li{counter-increment:rs;display:grid;grid-template-columns:2.4rem minmax(0,1fr);column-gap:10px;align-items:center;padding:13px 0 14px;border-top:1px solid var(--rule)}
-.round-steps li::before{content:counter(rs);font-size:30px;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--you-ink);font-variant-numeric:tabular-nums}
-.round-steps strong{font-size:var(--t4);line-height:1.2;letter-spacing:-.01em}
-.round-steps li>span{font-family:var(--serif);font-size:17px;line-height:1.4;color:var(--ink-2)}
-.try-wrap{margin-top:clamp(28px,3.2vw,44px);padding-top:clamp(20px,2.2vw,28px);border-top:1px solid var(--rule)}
-.try-wrap .row-head{align-items:baseline;margin-bottom:14px}.try-wrap .try-src{margin-left:auto}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(28px,3.2vw,44px)}
+.try-wrap{min-width:0}
+@media (min-width:1000px){.hero-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,5vw,88px);align-items:start}.try-wrap{padding:clamp(22px,2.2vw,32px);background:var(--surface);border:1px solid var(--rule);border-radius:var(--r-panel)}.try-wrap .tr-head{grid-template-columns:minmax(0,1fr);gap:8px}.try-wrap .tr-read{flex-direction:row;align-items:baseline;justify-content:flex-start;text-align:left;gap:12px}.try-wrap .tr-read b{font-size:clamp(44px,4.4vw,64px)}.try-wrap .tr-read b.empty{display:none}.try-wrap .tr-read:has(b.empty){display:none}}
+body:has(.credit) .foot-by{display:none}
+.try-wrap .row-head{align-items:baseline;margin-bottom:14px}
 .try-wrap .row-head h2{font-size:var(--t6);font-weight:700;letter-spacing:0;line-height:1.3;color:var(--ink-2)}
 .tr-q{font-size:clamp(23px,2.5vw,34px);line-height:1.14;letter-spacing:-.022em;font-weight:750;margin:0;max-width:26em}
-@media (max-width:900px){.intro{grid-template-columns:1fr}}
+
 @media (max-width:820px) and (min-width:641px){.tr-read:has(b.empty){display:none}}
 .by{margin:14px 0 0;font-size:var(--t6);line-height:1.6;color:var(--ink-2)}.by strong{color:var(--ink)}
 .by a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}.by a+a{margin-left:16px}
@@ -807,12 +799,17 @@ body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not
 
 /* owner, 2026-11-12: orphans are a no-no; the credit sits at the top; a quieter first screen; a random sample */
 .credit{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline;padding-top:16px;font-size:var(--t6);line-height:1.5;color:var(--ink-2)}
-.credit strong{color:var(--ink)}.credit a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+.credit strong{color:var(--ink)}.credit a{white-space:nowrap;display:inline-block;padding:6px 0;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
 .row-head .row-note{margin-right:auto;font-size:var(--t6);color:var(--muted)}
 .tr-scene{font-family:var(--serif);font-size:clamp(17px,1.5vw,20px);line-height:1.45;color:var(--ink-2);margin:0 0 10px;max-width:40em}
 .paper-more{margin-top:0}.paper-more summary{cursor:pointer;padding:14px 0;font-weight:650;color:#fff;list-style:none;border-bottom:1px solid rgba(255,255,255,.18)}
 .paper-more summary::-webkit-details-marker{display:none}.paper-more summary::after{content:' ▾';color:#b9c3dc}.paper-more[open] summary::after{content:' ▴'}
 .paper-more[open] summary{border-bottom:0}.paper-more .paper-list{border-top:0}
+
+.resume-r{display:flex;align-items:center;gap:6px}
+.resume-x{flex:none;width:40px;height:40px;margin:-6px -8px -6px 0;border:0;background:none;color:var(--you-ink);font-size:22px;line-height:1;cursor:pointer;border-radius:var(--r-panel)}
+.resume-x:hover{background:rgba(0,0,0,.06)}
+.credit+.resume{margin-top:10px}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="#" data-home="1" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -992,7 +989,7 @@ body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not
 </script>
 <script>// Shared by the game and the classroom pages (build.py puts it in front of app.js and classroom.js).
 function tieEnds(root) {   // owner, 2026-11-12: no word alone on the last line. The last two words of each text block stay together (a nowrap span; the text itself does not change).
-  for (const e of root.querySelectorAll('h1,h2,h3,h4,p,li,summary,figcaption,small,.scene,.q,.opt>span:nth-of-type(2),.tr-q,.tr-scene,.reveal-title,.study-line,.round-steps strong')) {
+  for (const e of root.querySelectorAll('h1,h2,h3,h4,p,li,figcaption,small,.scene,.q,.opt>span:nth-of-type(2),.tr-q,.tr-scene,.reveal-title,.study-line,.follow summary>span,.credit>span,.try-src,.row-note')) {
     if (e.closest('svg,script,style,textarea,input,select,.tutor-answer') || e.querySelector('.nw')) continue;
     let n = e.lastChild; while (n && !(n.nodeType === 3 && n.textContent.trim()) && n.nodeType === 3) n = n.previousSibling;
     if (!n || n.nodeType !== 3) continue;
@@ -1189,12 +1186,12 @@ function heroTry() {
   const h = st.hero, e = c.estimate, v = h.value, src = SOURCE[c.sources[0]];
   const gap = v === null ? 0 : Math.round(Math.abs(v - e.target) * 10) / 10;
   return `<section class="try-ruler" aria-labelledby="try-q" data-pool="${heroPool().map(x => x.id).join(',')}">
-    <div class="row-head"><h2>Try one now</h2><span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
-    <div class="tr-head"><div class="tr-text"><p class="tr-scene">${esc(c.scene)}</p><p class="tr-q" id="try-q">${esc(c.question)}</p></div>
+    <div class="row-head"><h2>Try one now</h2></div>
+    <div class="tr-head"><div class="tr-text"><p class="tr-scene">${esc(c.scene)}</p><p class="tr-q" id="try-q">${esc(c.question)}</p><p class="try-src">${h.done && src.url ? `<a href="${esc(src.url)}" target="_blank" rel="noopener noreferrer">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</a>` : `${esc(src.authors)}, ${esc(src.venue)} ${src.year}`}</p></div>
     <p class="tr-read ${h.done ? 'ev' : ''}"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${h.done ? e.target + '%' : v === null ? '00%' : v + '%'}</b><span class="hero-unit">${h.done ? 'the study found' : v === null ? '' : 'your call'}</span></p></div>
     <div class="ruler ${h.done ? 'done' : ''}">${h.done ? ruler(e.min, e.max, v, e.target, e.tolerance) : `${ruler(e.min, e.max, null, null, null)}${v === null ? '<span class="r-hint" aria-hidden="true">Slide to answer</span>' : ''}<label class="sr-only" for="hero-range">Your estimate, in percent. ${esc(c.question)}</label>
     <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">`}</div>
-    <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `The study found ${e.target}%. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} ${gap === 1 ? 'point' : 'points'} off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}</div>
+    <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `${gap === 0 ? 'You were exactly right.' : `You were ${gap} ${gap === 1 ? 'point' : 'points'} off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}</div>
   </section>`;
 }
 
@@ -1206,17 +1203,17 @@ function home() {
   const paths = (BANK.paths || []).map(p => ({ ...p, items: p.ids.filter(id => ALL.some(c => c.id === id)) })).filter(p => p.items.length);
   const done = new Set(records.map(r => r.id));
   const resume = paths.find(p => { const n = p.items.filter(id => done.has(id)).length; return n > 0 && n < p.items.length });
-  return `${resume ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button></div>` : ''}<div class="credit wrap"><span>Original concept by <strong>Dr. Eugen Dimant</strong>, University of Pennsylvania</span><a href="https://eugendimant.github.io" target="_blank" rel="noopener">eugendimant.github.io</a><a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a></div><section class="hero wrap"><div class="intro"><div class="intro-main"><h1>How well do you predict what people do?</h1>
-    <p class="hero-lede">The Human Variable is a decision game for managers and students. Each round gives you a situation from a published study. You make the call, then see how close you were.</p>
-    <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button>${location.protocol.startsWith('http') ? '<button class="link-btn" data-act="join">Join a live class</button>' : ''}</div></div>
-    <div class="how-box"><h2 class="how-h" id="how-h">How a round works</h2><ol class="round-steps" aria-labelledby="how-h"><li><strong>Read the situation</strong></li><li><strong>Make your call and say how sure you are</strong></li><li><strong>See what the study found</strong></li></ol></div></div>
-    <div class="try-wrap">${heroTry()}</div></section>
-  <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><span class="row-note">${ALL.length} decisions from ${nSrc} peer-reviewed studies</span><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
+  const credit = `<div class="credit wrap"><span>Original concept by <strong>Dr. Eugen Dimant</strong>, University of Pennsylvania</span><a href="https://eugendimant.github.io" target="_blank" rel="noopener">eugendimant.github.io</a><a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a></div>`;
+  return `${credit}${resume && store.get('thv:resume-off', '') !== resume.id ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><span class="resume-r"><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button><button class="resume-x" data-act="resume-off" data-id="${esc(resume.id)}" aria-label="Hide this reminder">&times;</button></span></div>` : ''}<section class="hero wrap"><div class="hero-grid"><div class="intro"><div class="intro-main"><h1>How well do you predict what people do?</h1>
+    <p class="hero-lede">Every round is a real situation from a published study. Make your call, then see what the researchers found.</p>
+    <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button></div></div></div>
+    <div class="try-wrap">${heroTry()}</div></div></section>
+  <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
-    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${pathStrip(p, done)}${pi === 0 ? 'Start here. ' : ''}${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
+    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
   </section>
-  ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p>How the shape of a norm, the visibility of peers and political identity change what people do at work and in society.</p><p class="dimant-stat">${ALL.filter(c => c.sources.some(id => dimant.some(d => d.id === id))).length} decisions in the game draw on ${dimant.length} of his published papers, in Management Science, PNAS Nexus, Scientific Reports and other journals.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
-    <div>${(rows => `<ul class="paper-list">${rows.slice(0, 5).join('')}</ul>${rows.length > 5 ? `<details class="paper-more"><summary>Show all ${rows.length} papers</summary><ul class="paper-list">${rows.slice(5).join('')}</ul></details>` : ''}`)(dimant.slice().sort((a, b) => b.year - a.year).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(s.title || (BANK.bandTitles || {})[s.id] || '')}</strong><small>${esc(s.authors)} (${s.year}), ${esc(s.venue)}</small></a></li>`))}</div></div></section>` : ''}`;
+  ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p class="dimant-stat">${ALL.filter(c => c.sources.some(id => dimant.some(d => d.id === id))).length} decisions in the game draw on ${dimant.length} of his published papers, in Management Science, PNAS Nexus, Scientific Reports and other journals.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
+    <div>${(rows => `<ul class="paper-list">${rows.slice(0, 3).join('')}</ul>${rows.length > 3 ? `<details class="paper-more"><summary>Show all ${rows.length} papers</summary><ul class="paper-list">${rows.slice(3).join('')}</ul></details>` : ''}`)(dimant.slice().sort((a, b) => b.year - a.year).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(s.title || (BANK.bandTitles || {})[s.id] || '')}</strong><small>${esc(s.authors)} (${s.year}), ${esc(s.venue)}</small></a></li>`))}</div></div></section>` : ''}`;
 }
 function customRound() {
   const counts = Object.fromEntries(TRACKS.map(t => [t, ALL.filter(c => c.track === t).length]));
@@ -1239,7 +1236,7 @@ function instrument(c) {
   if (c.format === 'forecast') {
     const tf = st.tf, sure = st.fcSure;   // the stored answer stays a probability: sure% if True, 100 - sure% if False
     return `<div class="opts tf" role="group" aria-label="True or false">${[[1, 'True'], [0, 'False']].map(([v, l], k) => `<button class="opt" data-tf="${v}" aria-pressed="${tf === v}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${k + 1}</span><span>${l}</span><span class="mark"></span></button>`).join('')}</div>
-      <div class="conf-row"><label for="fc">How sure are you?</label><input type="range" id="fc" min="50" max="100" step="5" value="${sure}" aria-valuetext="${sure} percent sure" class="${st.fcTouched ? '' : 'untouched'}" style="--fill:${st.fcTouched ? (sure - 50) * 2 : 0}%" ${rev ? 'disabled' : ''}><output id="fc-read" class="num ${st.fcTouched ? '' : 'empty'}" for="fc">${st.fcTouched ? sure + '%' : '?'}</output></div>
+      <div class="conf-row"><label for="fc">How sure are you?</label><input type="range" id="fc" min="50" max="100" step="5" value="${sure}" aria-valuetext="${st.fcTouched ? sure + ' percent sure' : 'not chosen yet'}" class="${st.fcTouched ? '' : 'untouched'}" style="--fill:${st.fcTouched ? (sure - 50) * 2 : 0}%" ${rev ? 'disabled' : ''}><output id="fc-read" class="num ${st.fcTouched ? '' : 'empty'}" for="fc">${st.fcTouched ? sure + '%' : '?'}</output></div>
       <div class="axis fc-axis"><span>50%: a coin flip</span><span>100%: certain</span></div>`;
   }
   if (c.format === 'rank') {
@@ -1364,7 +1361,7 @@ function studyCard(c, checked = true) {
 function tutorChips(c) {   // up to seven suggestions, each one checked against the offline tutor so a tap always gets a real answer (owner, 2026-11-12)
   const cand = ['How big is this effect in practice?', /AI/.test(c.track || '') ? 'Would this hold with AI tools today?' : 'What does the study cover?', 'How would I test this in my company?', 'Who took part in the study?', 'How long did the effect last?', 'Was the study preregistered?', 'Has it been replicated?', 'Who wrote the paper?', 'Is this cause or correlation?', 'What should a manager do with this?', 'Who funded the study?'];
   const ok = q => { try { const a = curated(q, c).text || ''; return a && !/does not record|could not match|outside what this lab covers|does not say/i.test(a) } catch (e) { return false } };
-  return cand.filter((q, k) => k < 3 || ok(q)).slice(0, 7);
+  return cand.filter(q => ok(q)).slice(0, 7);
 }
 function srcHtml(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.authors)} (${s.year}), ${esc(s.venue)}</a>.` : '' }   // every study opens at its DOI (owner, 2026-11-12)
 function srcLine(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: ${s.authors} (${s.year}), ${s.venue}.` : '' }
@@ -1408,7 +1405,7 @@ function play() {
   const tabs = [['questions', 'Questions'], ['scope', 'Scope'], ['source', 'Source'], ['note', 'Your note']];
   const tab = st.tab || 'questions';
   const src = SOURCE[c.sources[0]], [stLabel, stCls] = srcStatus(src);
-  const panel = tab === 'questions' ? `<div class="follow">${c.follow.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</div>${tutorPanel(c)}`
+  const panel = tab === 'questions' ? `<div class="follow">${c.follow.map(f => `<details><summary><span>${esc(f.q)}</span></summary><p>${esc(f.a)}</p></details>`).join('')}</div>${tutorPanel(c)}`
     : tab === 'scope' ? `<p class="deep-text">${esc(c.boundary)}</p>`
     : tab === 'source' ? c.sources.map(id => { const s = SOURCE[id], [l, k] = srcStatus(s); return `<div class="src"><p class="src-title">${esc(paperTitle(s) || 'Title shown once you have played every decision built on this paper')}</p><p>${esc(s.authors)}, <i>${esc(s.venue)}</i>${s.volume ? ' ' + esc(s.volume) : ''}, ${s.year}.</p><p class="row"><span class="status ${k}">${l}</span> <button class="link-btn" data-source="${esc(id)}">More on this source</button> <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article</a></p></div>` }).join('') + `<div class="sc-phone">${studyCard(c, false)}</div>`
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
@@ -1866,6 +1863,7 @@ document.addEventListener('click', e => {
   if (!a) return;
   if (a === 'skip-locked') { next(); return }
   if (a === 'leave') { if (st.room) { if (!confirm('Leave the live class?')) return; clearTimeout(st.room.timer); st.room = null } st.view = 'home'; render(true); return }
+  if (a === 'resume-off') { store.set('thv:resume-off', t.dataset.id); render(); qs('[data-act="go-start"]')?.focus(); return }
   if (a === 'toggle-custom') { st.custom = !st.custom; render(); qs('[data-act="toggle-custom"]')?.focus(); return }
   if (a === 'menu') { st.menu = !st.menu; t.setAttribute('aria-expanded', st.menu); qs('.nav').classList.toggle('open', st.menu); return }
   if (a === 'go-start') { const first = qs('#start .path'); if (first) { first.click(); return } qs('#start')?.scrollIntoView(); return }   // start the featured path straight away
