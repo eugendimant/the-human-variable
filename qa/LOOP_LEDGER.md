@@ -935,3 +935,12 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Open (review 41).** Projector text at 720p; three-step block reads as a template; biz01 numbers via a secondary source; record headline minus sign; tutor misses ("Was it a field experiment?"); two-part option cue on choice items; four fact-checks the reviewer could not complete.
 - **Gates.** 385 passed; design lint by rule {}; build current.
 - **Published.** GitHub `eugendimant/the-human-variable` (public, MIT), `gh-pages` branch holds the built game.
+
+## Iteration 66 (2026-11-12)
+
+- **Owner feedback.** Question screen scales up on large screens (`fitQuestion`, CSS zoom) and breaks lines without stranded words; claims answered True or False plus how sure (stored answer stays the probability); up to seven tutor suggestions, each checked against the offline tutor; "Research by Eugen Dimant" lists every paper under its published title with a DOI link; source line, study card and tutor citations link to the DOI.
+- **DOI check.** `tools/verify_dois.py`: 114 of 114 sources resolve and match their Crossref title (`qa/DOI_CHECK.md`).
+- **New decisions from the owner's papers,** each read in full: repro-msci-estimate (Fišar et al. 2024), dimant-competition-choice (Huber et al. 2023), dimant-megastudy-estimate (Duckworth et al. 2025), dimant-deterrence-choice (Buckenmaier, Dimant, Posten & Schmidt 2021). 116 decisions, 113 sources.
+- **Lint.** R21 measures boxes at design size (the question card is zoomed); headings use `text-wrap: pretty`.
+- **Gates.** 394 passed; design lint by rule {}; build current. Not yet reviewed.
+- **Handover.** `docs/HANDOVER_PROMPT.md` holds the prompt for a new project, with next steps and the evaluation method.
