@@ -924,3 +924,14 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Lesson.** Reviews 36 to 40: 86, 86, 85, 85, 84. Three of the last four rounds introduced a defect the next review caught. Measure layout with a record present; next round is an audit pass on review 40's remaining Minors, no new layout.
 - **Open (review 40).** Allocate scale ends and zero label at 390; projector text at 720p and open-view layout; histogram bin labels; surname + topic when the author is on screen; tutor misses; dimant-hate-choice figure; ai02 follow-up and index charts; bz02 and rollout4 scenes; wording cues on choice items; Library rows.
 - **Gates.** 368 passed; design lint by rule {}; build current.
+
+## Iterations 63 to 65 (2026-11-11 and 2026-11-12)
+
+- **Iteration 63.** Audit round on review 40's Minors: tutor glossary, replication route, same-author routing; round allocate ends; separate histogram bins; social12 measured callback rates (read in the published article); bz02 and rollout4 scenes; comparative-word gate.
+- **Iteration 64.** Owner: the landing page did not say what the game is. Rebuilt: headline, two-sentence description, how a round works, the sample under "Try one now", then the paths. Credit with name, website and email on the landing page, footer and research standard.
+- **Review 41 (snap63, finished on snap64): 84/100.** 0 Blocking, 1 Major (the closed-answers notice called `toast()`, an element, since iteration 62), 25 Minor. Full report: `qa/reviews/review41.md`.
+- **Iteration 65.** Fixes: notice() with a detector test; near matches drop the stored Yes or No; glossary phrasings; raters from the scene; social12 follow-up, amber bar and full-text status; rollout4 scene states the design; bz02 scene without the mechanism; dimant-hate-choice figure line restored; biz02 distractor; landing label smaller than its question and the sample above the fold; strip "+N" inside the strip; zero label on phones.
+- **Lesson.** Reviews 36 to 41: 86, 86, 85, 85, 84, 84. Iteration 63's content edits introduced five Minors: a rewritten scene needs the same check as an explanation (design stated correctly, no mechanism before the call).
+- **Open (review 41).** Projector text at 720p; three-step block reads as a template; biz01 numbers via a secondary source; record headline minus sign; tutor misses ("Was it a field experiment?"); two-part option cue on choice items; four fact-checks the reviewer could not complete.
+- **Gates.** 385 passed; design lint by rule {}; build current.
+- **Published.** GitHub `eugendimant/the-human-variable` (public, MIT), `gh-pages` branch holds the built game.
