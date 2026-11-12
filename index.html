@@ -988,12 +988,17 @@ body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not
 })(typeof window !== 'undefined' ? window : globalThis);
 </script>
 <script>// Shared by the game and the classroom pages (build.py puts it in front of app.js and classroom.js).
-function tieEnds(root) {   // owner, 2026-11-12: no word alone on the last line. The last two words of each text block stay together (a nowrap span; the text itself does not change).
-  for (const e of root.querySelectorAll('h1,h2,h3,h4,p,li,figcaption,small,.scene,.q,.opt>span:nth-of-type(2),.tr-q,.tr-scene,.reveal-title,.study-line,.follow summary>span,.credit>span,.try-src,.row-note')) {
-    if (e.closest('svg,script,style,textarea,input,select,.tutor-answer') || e.querySelector('.nw')) continue;
-    let n = e.lastChild; while (n && !(n.nodeType === 3 && n.textContent.trim()) && n.nodeType === 3) n = n.previousSibling;
-    if (!n || n.nodeType !== 3) continue;
-    const m = n.textContent.match(/^([\s\S]*\S)\s+(\S+\s*)$/); if (!m || !/\S\s+\S/.test(m[1] + ' ' + m[2]) ) continue;
+// Owner, 2026-11-12: no word alone on the last line, anywhere. In every text block the last two words stay together (a nowrap span; the text itself does not change).
+// Iteration 70: this walks every text block on the page instead of a list of selectors. Flex and grid boxes are skipped, because their text is an anonymous item and a nowrap span would be pushed away from the rest (review 43, M-1).
+const TIE_SKIP = 'svg,script,style,textarea,input,select,option,button,pre,code,.tutor-answer,[contenteditable],.nw';
+function tieEnds(root) {
+  for (const e of root.querySelectorAll('*')) {
+    if (e.matches(TIE_SKIP) || e.closest('svg,script,style,textarea,select,pre,.tutor-answer,.nw') || e.querySelector(':scope > .nw')) continue;
+    let n = e.lastChild; if (!n || n.nodeType !== 3 || !n.textContent.trim()) continue;
+    if (e.textContent.trim().split(/\s+/).length < 3) continue;   // a block of one or two words cannot strand a word
+    const cs = getComputedStyle(e), d = cs.display;
+    if (/flex|grid|contents|table(?!-cell)/.test(d) || cs.whiteSpace === 'nowrap' || cs.whiteSpace === 'pre') continue;
+    const m = n.textContent.match(/^([\s\S]*\S)\s+(\S+\s*)$/); if (!m) continue;
     const head = m[1], tail = m[2], k = head.search(/\S+$/); if (k < 0) continue;
     const pair = head.slice(k) + ' ' + tail; if (pair.trim().length > 26) continue;   // a long pair would push the page sideways on a phone
     const sp = document.createElement('span'); sp.className = 'nw'; sp.textContent = pair;
