@@ -184,12 +184,12 @@ function heroTry() {
   const h = st.hero, e = c.estimate, v = h.value, src = SOURCE[c.sources[0]];
   const gap = v === null ? 0 : Math.round(Math.abs(v - e.target) * 10) / 10;
   return `<section class="try-ruler" aria-labelledby="try-q" data-pool="${heroPool().map(x => x.id).join(',')}">
-    <div class="row-head"><h2>Try one now</h2><span class="try-src">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</span></div>
-    <div class="tr-head"><div class="tr-text"><p class="tr-scene">${esc(c.scene)}</p><p class="tr-q" id="try-q">${esc(c.question)}</p></div>
+    <div class="row-head"><h2>Try one now</h2></div>
+    <div class="tr-head"><div class="tr-text"><p class="tr-scene">${esc(c.scene)}</p><p class="tr-q" id="try-q">${esc(c.question)}</p><p class="try-src">${h.done && src.url ? `<a href="${esc(src.url)}" target="_blank" rel="noopener noreferrer">${esc(src.authors)}, ${esc(src.venue)} ${src.year}</a>` : `${esc(src.authors)}, ${esc(src.venue)} ${src.year}`}</p></div>
     <p class="tr-read ${h.done ? 'ev' : ''}"><b class="num ${v === null ? 'empty' : ''}" id="hero-read">${h.done ? e.target + '%' : v === null ? '00%' : v + '%'}</b><span class="hero-unit">${h.done ? 'the study found' : v === null ? '' : 'your call'}</span></p></div>
     <div class="ruler ${h.done ? 'done' : ''}">${h.done ? ruler(e.min, e.max, v, e.target, e.tolerance) : `${ruler(e.min, e.max, null, null, null)}${v === null ? '<span class="r-hint" aria-hidden="true">Slide to answer</span>' : ''}<label class="sr-only" for="hero-range">Your estimate, in percent. ${esc(c.question)}</label>
     <input id="hero-range" type="range" min="${e.min}" max="${e.max}" step="1" value="${v ?? Math.round((e.min + e.max) / 2)}" class="${v === null ? 'untouched' : ''}" style="--fill:${v === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%">`}</div>
-    <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `The study found ${e.target}%. ${gap === 0 ? 'You were exactly right.' : `You were ${gap} ${gap === 1 ? 'point' : 'points'} off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}</div>
+    <div class="tr-foot"><p class="try-result" aria-live="polite">${h.done ? `${gap === 0 ? 'You were exactly right.' : `You were ${gap} ${gap === 1 ? 'point' : 'points'} off.`}` : ''}</p>${h.done ? `<button class="btn btn-solid" data-act="start-quick">Play five more</button><button class="link-btn" data-act="hero-reset">Try again</button>` : `<button class="btn btn-you" data-act="hero-lock" ${v === null ? 'disabled' : ''}>Lock my estimate</button>`}</div>
   </section>`;
 }
 
@@ -201,17 +201,17 @@ function home() {
   const paths = (BANK.paths || []).map(p => ({ ...p, items: p.ids.filter(id => ALL.some(c => c.id === id)) })).filter(p => p.items.length);
   const done = new Set(records.map(r => r.id));
   const resume = paths.find(p => { const n = p.items.filter(id => done.has(id)).length; return n > 0 && n < p.items.length });
-  return `${resume ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button></div>` : ''}<div class="credit wrap"><span>Original concept by <strong>Dr. Eugen Dimant</strong>, University of Pennsylvania</span><a href="https://eugendimant.github.io" target="_blank" rel="noopener">eugendimant.github.io</a><a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a></div><section class="hero wrap"><div class="intro"><div class="intro-main"><h1>How well do you predict what people do?</h1>
-    <p class="hero-lede">The Human Variable is a decision game for managers and students. Each round gives you a situation from a published study. You make the call, then see how close you were.</p>
-    <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button>${location.protocol.startsWith('http') ? '<button class="link-btn" data-act="join">Join a live class</button>' : ''}</div></div>
-    <div class="how-box"><h2 class="how-h" id="how-h">How a round works</h2><ol class="round-steps" aria-labelledby="how-h"><li><strong>Read the situation</strong></li><li><strong>Make your call and say how sure you are</strong></li><li><strong>See what the study found</strong></li></ol></div></div>
-    <div class="try-wrap">${heroTry()}</div></section>
-  <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><span class="row-note">${ALL.length} decisions from ${nSrc} peer-reviewed studies</span><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
+  const credit = `<div class="credit wrap"><span>Original concept by <strong>Dr. Eugen Dimant</strong>, University of Pennsylvania</span><a href="https://eugendimant.github.io" target="_blank" rel="noopener">eugendimant.github.io</a><a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a></div>`;
+  return `${credit}${resume && store.get('thv:resume-off', '') !== resume.id ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><span class="resume-r"><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button><button class="resume-x" data-act="resume-off" data-id="${esc(resume.id)}" aria-label="Hide this reminder">&times;</button></span></div>` : ''}<section class="hero wrap"><div class="hero-grid"><div class="intro"><div class="intro-main"><h1>How well do you predict what people do?</h1>
+    <p class="hero-lede">Every round is a real situation from a published study. Make your call, then see what the researchers found.</p>
+    <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button></div></div></div>
+    <div class="try-wrap">${heroTry()}</div></div></section>
+  <section class="section wrap" id="start" aria-labelledby="paths-h"><div class="row-head"><h2 id="paths-h">Choose a path</h2><button class="link-btn" data-act="toggle-custom" aria-expanded="${st.custom ? 'true' : 'false'}">${st.custom ? 'Hide custom round' : 'Or build a custom round'}</button></div>
     ${st.custom ? customRound() : ''}
-    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${pathStrip(p, done)}${pi === 0 ? 'Start here. ' : ''}${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
+    <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
   </section>
-  ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p>How the shape of a norm, the visibility of peers and political identity change what people do at work and in society.</p><p class="dimant-stat">${ALL.filter(c => c.sources.some(id => dimant.some(d => d.id === id))).length} decisions in the game draw on ${dimant.length} of his published papers, in Management Science, PNAS Nexus, Scientific Reports and other journals.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
-    <div>${(rows => `<ul class="paper-list">${rows.slice(0, 5).join('')}</ul>${rows.length > 5 ? `<details class="paper-more"><summary>Show all ${rows.length} papers</summary><ul class="paper-list">${rows.slice(5).join('')}</ul></details>` : ''}`)(dimant.slice().sort((a, b) => b.year - a.year).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(s.title || (BANK.bandTitles || {})[s.id] || '')}</strong><small>${esc(s.authors)} (${s.year}), ${esc(s.venue)}</small></a></li>`))}</div></div></section>` : ''}`;
+  ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p class="dimant-stat">${ALL.filter(c => c.sources.some(id => dimant.some(d => d.id === id))).length} decisions in the game draw on ${dimant.length} of his published papers, in Management Science, PNAS Nexus, Scientific Reports and other journals.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
+    <div>${(rows => `<ul class="paper-list">${rows.slice(0, 3).join('')}</ul>${rows.length > 3 ? `<details class="paper-more"><summary>Show all ${rows.length} papers</summary><ul class="paper-list">${rows.slice(3).join('')}</ul></details>` : ''}`)(dimant.slice().sort((a, b) => b.year - a.year).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(s.title || (BANK.bandTitles || {})[s.id] || '')}</strong><small>${esc(s.authors)} (${s.year}), ${esc(s.venue)}</small></a></li>`))}</div></div></section>` : ''}`;
 }
 function customRound() {
   const counts = Object.fromEntries(TRACKS.map(t => [t, ALL.filter(c => c.track === t).length]));
@@ -234,7 +234,7 @@ function instrument(c) {
   if (c.format === 'forecast') {
     const tf = st.tf, sure = st.fcSure;   // the stored answer stays a probability: sure% if True, 100 - sure% if False
     return `<div class="opts tf" role="group" aria-label="True or false">${[[1, 'True'], [0, 'False']].map(([v, l], k) => `<button class="opt" data-tf="${v}" aria-pressed="${tf === v}" ${rev ? 'disabled' : ''}><span class="k" aria-hidden="true">${k + 1}</span><span>${l}</span><span class="mark"></span></button>`).join('')}</div>
-      <div class="conf-row"><label for="fc">How sure are you?</label><input type="range" id="fc" min="50" max="100" step="5" value="${sure}" aria-valuetext="${sure} percent sure" class="${st.fcTouched ? '' : 'untouched'}" style="--fill:${st.fcTouched ? (sure - 50) * 2 : 0}%" ${rev ? 'disabled' : ''}><output id="fc-read" class="num ${st.fcTouched ? '' : 'empty'}" for="fc">${st.fcTouched ? sure + '%' : '?'}</output></div>
+      <div class="conf-row"><label for="fc">How sure are you?</label><input type="range" id="fc" min="50" max="100" step="5" value="${sure}" aria-valuetext="${st.fcTouched ? sure + ' percent sure' : 'not chosen yet'}" class="${st.fcTouched ? '' : 'untouched'}" style="--fill:${st.fcTouched ? (sure - 50) * 2 : 0}%" ${rev ? 'disabled' : ''}><output id="fc-read" class="num ${st.fcTouched ? '' : 'empty'}" for="fc">${st.fcTouched ? sure + '%' : '?'}</output></div>
       <div class="axis fc-axis"><span>50%: a coin flip</span><span>100%: certain</span></div>`;
   }
   if (c.format === 'rank') {
@@ -359,7 +359,7 @@ function studyCard(c, checked = true) {
 function tutorChips(c) {   // up to seven suggestions, each one checked against the offline tutor so a tap always gets a real answer (owner, 2026-11-12)
   const cand = ['How big is this effect in practice?', /AI/.test(c.track || '') ? 'Would this hold with AI tools today?' : 'What does the study cover?', 'How would I test this in my company?', 'Who took part in the study?', 'How long did the effect last?', 'Was the study preregistered?', 'Has it been replicated?', 'Who wrote the paper?', 'Is this cause or correlation?', 'What should a manager do with this?', 'Who funded the study?'];
   const ok = q => { try { const a = curated(q, c).text || ''; return a && !/does not record|could not match|outside what this lab covers|does not say/i.test(a) } catch (e) { return false } };
-  return cand.filter((q, k) => k < 3 || ok(q)).slice(0, 7);
+  return cand.filter(q => ok(q)).slice(0, 7);
 }
 function srcHtml(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.authors)} (${s.year}), ${esc(s.venue)}</a>.` : '' }   // every study opens at its DOI (owner, 2026-11-12)
 function srcLine(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: ${s.authors} (${s.year}), ${s.venue}.` : '' }
@@ -403,7 +403,7 @@ function play() {
   const tabs = [['questions', 'Questions'], ['scope', 'Scope'], ['source', 'Source'], ['note', 'Your note']];
   const tab = st.tab || 'questions';
   const src = SOURCE[c.sources[0]], [stLabel, stCls] = srcStatus(src);
-  const panel = tab === 'questions' ? `<div class="follow">${c.follow.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</div>${tutorPanel(c)}`
+  const panel = tab === 'questions' ? `<div class="follow">${c.follow.map(f => `<details><summary><span>${esc(f.q)}</span></summary><p>${esc(f.a)}</p></details>`).join('')}</div>${tutorPanel(c)}`
     : tab === 'scope' ? `<p class="deep-text">${esc(c.boundary)}</p>`
     : tab === 'source' ? c.sources.map(id => { const s = SOURCE[id], [l, k] = srcStatus(s); return `<div class="src"><p class="src-title">${esc(paperTitle(s) || 'Title shown once you have played every decision built on this paper')}</p><p>${esc(s.authors)}, <i>${esc(s.venue)}</i>${s.volume ? ' ' + esc(s.volume) : ''}, ${s.year}.</p><p class="row"><span class="status ${k}">${l}</span> <button class="link-btn" data-source="${esc(id)}">More on this source</button> <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article</a></p></div>` }).join('') + `<div class="sc-phone">${studyCard(c, false)}</div>`
     : `<div class="note-box"><label for="note">Which decision in your work would you revisit, and what would you measure first?</label><textarea id="note" maxlength="480">${esc(notes[c.id] || '')}</textarea><button class="btn btn-quiet" data-act="save-note">Save on this device</button></div>`;
@@ -861,6 +861,7 @@ document.addEventListener('click', e => {
   if (!a) return;
   if (a === 'skip-locked') { next(); return }
   if (a === 'leave') { if (st.room) { if (!confirm('Leave the live class?')) return; clearTimeout(st.room.timer); st.room = null } st.view = 'home'; render(true); return }
+  if (a === 'resume-off') { store.set('thv:resume-off', t.dataset.id); render(); qs('[data-act="go-start"]')?.focus(); return }
   if (a === 'toggle-custom') { st.custom = !st.custom; render(); qs('[data-act="toggle-custom"]')?.focus(); return }
   if (a === 'menu') { st.menu = !st.menu; t.setAttribute('aria-expanded', st.menu); qs('.nav').classList.toggle('open', st.menu); return }
   if (a === 'go-start') { const first = qs('#start .path'); if (first) { first.click(); return } qs('#start')?.scrollIntoView(); return }   // start the featured path straight away

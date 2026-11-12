@@ -232,7 +232,7 @@ def test_front_page_sample_is_random_and_every_sample_works():
         for cid in pool:
             errs = []; q = b.new_page(); q.on('pageerror', lambda e: errs.append(str(e))); q.goto(URL + '?hero=' + cid)
             q.evaluate("()=>{const r=document.querySelector('#hero-range');r.value=Math.round((+r.min+ +r.max)/2);r.dispatchEvent(new Event('input',{bubbles:true}))}"); q.click('[data-act=hero-lock]'); q.wait_for_selector('.try-result:not(:empty)')
-            txt = q.text_content('.try-result'); assert txt.startswith('The study found ') and 'points off' in txt or 'exactly right' in txt, (cid, txt)
+            txt = q.text_content('.try-result'); assert txt.startswith('You were ') and ('points off' in txt or 'point off' in txt or 'exactly right' in txt), (cid, txt)
             assert not errs, (cid, errs); q.close()
         b.close()
 
@@ -254,4 +254,34 @@ def test_served_landing_page_names_the_owners_papers():
             visible = pg.evaluate("[...document.querySelectorAll('.dimant > div:last-child > .paper-list li')].length"); b.close()
     finally: srv.shutdown()
     assert len(titles) >= 15 and all(len(t) > 12 for t in titles), titles
-    assert visible == 5, visible   # five rows show; the rest sit under "Show all"
+    assert visible == 3, visible   # three rows show; the rest sit under "Show all"
+
+
+def test_resume_banner_sits_below_credit_and_can_be_closed():
+    """Iteration 68: the credit line comes first, the Continue banner can be closed, the choice survives a reload, and the landing page has no numbered how-it-works box."""
+    from playwright.sync_api import sync_playwright
+    from test_browser import URL
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 390, 'height': 844}); pg.goto(URL)
+        ids = pg.evaluate("BANK.paths.find(x => x.id === 'leading-ai').ids.slice(0, 2)")
+        recs = [{'id': i, 'format': 'choice', 'correct': True, 'score': 1, 'confidence': .7, 'at': 1, 'seed': 1} for i in ids]
+        pg.evaluate("r => localStorage.setItem('thv:v2:records', JSON.stringify(r))", recs); pg.reload()
+        assert pg.locator('.resume').count() == 1
+        assert pg.evaluate("document.querySelector('.credit').compareDocumentPosition(document.querySelector('.resume')) & 4")
+        assert pg.locator('.round-steps, .how-box').count() == 0
+        pg.click('.resume-x'); assert pg.locator('.resume').count() == 0
+        pg.reload(); assert pg.locator('.resume').count() == 0
+        b.close()
+
+
+def test_tie_leaves_flex_rows_and_path_lines_alone():
+    """Review 43, M-1 and m-1: tieEnds pushed the last two words of every accordion question (a flex row) 17 to 320 px away, and the path index line took the serif of the blurb. A tied pair never sits in a summary, and a path's count line keeps one typeface."""
+    from playwright.sync_api import sync_playwright
+    from test_browser import URL
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 390, 'height': 844}); pg.goto(URL); pg.wait_for_timeout(200)
+        fonts = pg.evaluate("[...document.querySelectorAll('.path small, .path small .nw')].map(e => getComputedStyle(e).fontFamily + '|' + getComputedStyle(e).fontSize)")
+        assert len(set(fonts)) == 1, fonts
+        assert pg.evaluate("document.querySelectorAll('summary .nw').length") == 0
+        assert "li,summary" not in open(str(__import__('pathlib').Path(__file__).resolve().parents[1] / 'src' / 'tie.js'), encoding='utf-8').read()   # the flex summary row itself is never tied; its text span is
+        b.close()
