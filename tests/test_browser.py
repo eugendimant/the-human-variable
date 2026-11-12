@@ -28,9 +28,11 @@ def answer(pg, c):
     f = c['format']
     if f in ('choice', 'causal'): pg.keyboard.press('1')
     elif f == 'multi': pg.keyboard.press('1'); pg.keyboard.press('2')
-    elif f in ('estimate', 'forecast'):
-        sel = '#est' if f == 'estimate' else '#fc'
-        pg.eval_on_selector(sel, "e=>{e.value=e.min;e.dispatchEvent(new Event('input',{bubbles:true}))}")
+    elif f == 'estimate':
+        pg.eval_on_selector('#est', "e=>{e.value=e.min;e.dispatchEvent(new Event('input',{bubbles:true}))}")
+    elif f == 'forecast':   # False, 100% sure: the stored probability is 0, as when the slider sat at its minimum
+        pg.keyboard.press('2')
+        pg.eval_on_selector('#fc', "e=>{e.value=e.max;e.dispatchEvent(new Event('input',{bubbles:true}))}")
     elif f == 'rank': pg.click('[data-rank="0"][data-dir="1"]')
     elif f == 'allocate': pass  # starts as an even split that sums to the budget
     elif f == 'delegate':

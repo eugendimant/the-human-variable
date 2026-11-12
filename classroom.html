@@ -505,8 +505,8 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
   .reveal>.deep .tabpanel:has(.follow) .tutor{margin-top:0}
   .focus:has(.reveal) .actionbar-in{max-width:1240px}
   /* the question screen uses the same two columns: the question on the left, your answer beside it (owner, 2026-11-01: fill the space) */
-  .focus:has(.q-col){max-width:1240px}
-  .focus:has(.q-col) .actionbar-in{max-width:1240px}
+  .focus:has(.q-col){max-width:var(--fitw,1240px)}
+  .focus:has(.q-col) .actionbar-in{max-width:var(--fitw,1240px)}
   .focus-card:has(.q-col){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
   .focus-card:has(.q-col)>.lock-note{grid-column:1/-1}
   .a-col{padding-top:8px;align-self:center}   /* the instrument sits level with the question, not stranded at the top (review 32, m10) */
@@ -795,6 +795,16 @@ p,li,dd{text-wrap:pretty}
 .by{margin:14px 0 0;font-size:var(--t6);line-height:1.6;color:var(--ink-2)}.by strong{color:var(--ink)}
 .by a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}.by a+a{margin-left:16px}
 .foot-by a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;margin-left:10px;white-space:nowrap}
+/* owner, 2026-11-12: no stranded last words on the question screen; study links; true or false; the Dimant papers under their own titles */
+.focus .scene,.focus .q{text-wrap:balance}
+.plate a,.study-card a,.tutor-answer cite a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.opts.tf{grid-template-columns:1fr 1fr;column-gap:14px;border-bottom:0;margin-bottom:22px}.opts.tf .opt{border:1px solid var(--rule-strong);border-radius:12px;padding-left:14px}
+.fc-axis{margin-top:6px}
+.dimant ul a{display:grid;gap:3px;padding:12px 0;color:inherit;text-decoration:none}.dimant ul a:hover strong{text-decoration:underline;text-underline-offset:3px}
+.dimant ul a strong{font-size:var(--t5);line-height:1.3}.dimant ul a small{color:#b9c3dc;font-size:var(--t7)}
+body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)) .actionbar-in{max-width:var(--fitw,820px)}
+.opt>span:nth-child(2){text-wrap:balance}
+.intro h1{text-wrap:balance}
 /* Instructor console additions */
 .field{height:46px;border:1px solid var(--rule);border-radius:var(--r-ctl);padding:0 12px;background:var(--surface)}
 .join-banner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 24px}

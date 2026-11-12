@@ -91,7 +91,7 @@ function start(pool, n) {
 }
 function startTrack() { const pool = st.track === 'Mixed' ? ALL : ALL.filter(c => c.track === st.track); start(pool.length ? pool : ALL, st.length) }
 function resetCard() {
-  const c = card(); st.tab = 'questions'; st.phase = 'predict'; st.touched = false; st.conf = 60; st.confTouched = false; st.tutor = { busy: false, text: '', cites: [] };
+  const c = card(); st.tab = 'questions'; st.phase = 'predict'; st.touched = false; st.tf = null; st.fcSure = 75; st.fcTouched = false; st.conf = 60; st.confTouched = false; st.tutor = { busy: false, text: '', cites: [] };
   if (!c) { st.resp = null; return }
   st.resp = c.format === 'multi' ? [] : c.format === 'rank' ? shuffle(c.options.map((_, i) => i), rng(hash(c.id + st.seed))) :
     c.format === 'allocate' ? evenSplit(c) : c.format === 'delegate' ? c.delegate.tasks.map(() => null) :
@@ -111,9 +111,10 @@ function confQuestion(c) {
     estimate: `How sure are you that you land within ${c.estimate ? c.estimate.tolerance : ''}${c.estimate && (c.estimate.unit ?? '%') === '%' ? ' points' : ''} of the study value?`,
     rank: 'How sure are you of the exact order?', delegate: 'How sure are you that every task is routed right?' })[c.format] || 'How sure are you?';
 }
+function fcSync() { st.touched = st.tf != null && st.fcTouched; st.resp = st.tf == null ? 50 : st.tf ? st.fcSure : 100 - st.fcSure }
 function lockReady(c) { return S.ready(c, st.resp) && (!needsTouch(c) || st.touched) && (noConf(c) || st.confTouched) }
 function lockHint(c) {
-  if (!S.ready(c, st.resp) || (needsTouch(c) && !st.touched)) return c.format === 'forecast' ? 'Move the slider to state a probability' : c.format === 'rank' ? 'Put the items in your order' : c.format === 'allocate' ? 'Split the budget your way' : 'Make your call';
+  if (!S.ready(c, st.resp) || (needsTouch(c) && !st.touched)) return c.format === 'forecast' ? (st.tf == null ? 'True or false?' : 'Now say how sure you are') : c.format === 'rank' ? 'Put the items in your order' : c.format === 'allocate' ? 'Split the budget your way' : 'Make your call';
   if (!noConf(c) && !st.confTouched) return 'Now say how sure you are';
   return '';
 }
@@ -204,7 +205,7 @@ function home() {
     <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${pathStrip(p, done)}${pi === 0 ? 'Start here. ' : ''}${p.items.length} decisions${p.case ? ', with a multi-step case' : ''}${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
   </section>
   ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p>How the shape of a norm, the visibility of peers and political identity change what people do at work and in society.</p><p class="dimant-stat">${ALL.filter(c => c.sources.some(id => dimant.some(d => d.id === id))).length} decisions in the game draw on ${dimant.length} of his published papers, in Management Science, PNAS Nexus, Scientific Reports and other journals.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
-    <ul class="paper-list">${dimant.slice(0, 6).map(s => `<li><button data-source="${esc(s.id)}"><strong>${esc(paperTitle(s) || ALL.find(c => c.sources.includes(s.id))?.title || s.venue)}</strong><small>${esc(s.venue)}, ${s.year}</small></button></li>`).join('')}</ul></div></section>` : ''}`;
+    <ul class="paper-list">${dimant.slice().sort((a, b) => b.year - a.year).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(s.title)}</strong><small>${esc(s.authors)} (${s.year}), ${esc(s.venue)}</small></a></li>`).join('')}</ul></div></section>` : ''}`;
 }
 function customRound() {
   const counts = Object.fromEntries(TRACKS.map(t => [t, ALL.filter(c => c.track === t).length]));
@@ -225,9 +226,10 @@ function instrument(c) {
       <div class="ruler">${ruler(e.min, e.max, null, null, null, e.unit ?? '%', e.step || 1)}<input type="range" id="est" aria-labelledby="est-label" min="${e.min}" max="${e.max}" step="${e.step || 1}" value="${v}" class="${r === null ? 'untouched' : ''}" style="--fill:${r === null ? 0 : (v - e.min) / (e.max - e.min) * 100}%" ${rev ? 'disabled' : ''}></div></div>`;   // the same measuring scale as the home page (redesign, round 36)
   }
   if (c.format === 'forecast') {
-    return `<div class="meter est-meter"><div class="meter-read"><span class="est-label" id="fc-label">Probability the claim is true</span><b class="${st.touched ? '' : 'empty'}" id="fc-read">${st.touched ? r + '%' : '00%'}</b></div>
-      <div class="ruler">${ruler(0, 100, null, null, null, '%', 5)}<input type="range" id="fc" aria-labelledby="fc-label" min="0" max="100" step="5" value="${r}" class="${st.touched ? '' : 'untouched'}" style="--fill:${st.touched ? r : 0}%" ${rev ? 'disabled' : ''}></div>
-      <div class="axis"><span>certainly false</span><span>certainly true</span></div></div>`;
+    const tf = st.tf, sure = st.fcSure;   // the stored answer stays a probability: sure% if True, 100 - sure% if False
+    return `<div class="opts tf" role="group" aria-label="True or false">${[[1, 'True'], [0, 'False']].map(([v, l], k) => `<button class="opt" data-tf="${v}" aria-pressed="${tf === v}" ${rev ? 'disabled' : ''}><span class="k">${k + 1}</span><span>${l}</span><span class="mark"></span></button>`).join('')}</div>
+      <div class="conf-row"><label for="fc">How sure are you?</label><input type="range" id="fc" min="50" max="100" step="5" value="${sure}" class="${st.fcTouched ? '' : 'untouched'}" style="--fill:${st.fcTouched ? (sure - 50) * 2 : 0}%" ${rev ? 'disabled' : ''}><output id="fc-read" class="num ${st.fcTouched ? '' : 'empty'}" for="fc">${st.fcTouched ? sure + '%' : '?'}</output></div>
+      <div class="axis fc-axis"><span>50%: a coin flip</span><span>100%: certain</span></div>`;
   }
   if (c.format === 'rank') {
     return `<p class="hint">First place goes at the top. Use the arrows to reorder.</p><ol class="rank-list">${r.map((oi, k) => `<li class="rank-item"><span class="pos">${k + 1}</span><span>${esc(c.options[oi])}</span><span class="rank-move"><button data-rank="${k}" data-dir="-1" aria-label="Move ${esc(c.options[oi])} up" ${k === 0 || rev ? 'disabled' : ''}>↑</button><button data-rank="${k}" data-dir="1" aria-label="Move ${esc(c.options[oi])} down" ${k === r.length - 1 || rev ? 'disabled' : ''}>↓</button></span></li>`).join('')}</ol>`;
@@ -299,7 +301,7 @@ function gapAxis({ min, max, unit = '%', you, ev, band, evLabel = 'Evidence', id
 function gapFigure(c, rec) {
   const r = rec.response; let body = '', cap = '';
   if (c.format === 'estimate') { const e = c.estimate; const u = (e.unit ?? '%') === '%' ? ' points' : e.unit, f = x => mn(x + (e.unit ?? '%')); body = (e.label ? `<p class="plate-h">${esc(e.label)}</p>` : '') + gapHead(f(r), f(e.target), rec.detail.gap <= e.tolerance ? 'Inside the band' : `${rec.detail.gap}${u} off`) + gapAxis({ min: e.min, max: e.max, unit: e.unit ?? '%', you: r, ev: e.target, band: e.tolerance, evLabel: 'Study', bare: true }); cap = c.chart ? '' : srcLine(c) }
-  else if (c.format === 'forecast') { body = gapHead(r + '%', c.forecast.truth ? 'True' : 'False', `${Math.abs(r - (c.forecast.truth ? 100 : 0))} points from the truth`, 'You gave it', 'The claim') + `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x + '%' }); cap = c.chart ? '' : srcLine(c) }   // the scoring rule lives in the record's "How scoring works", not on every forecast (review 37, m6)
+  else if (c.format === 'forecast') { body = gapHead(r === 50 ? 'Unsure' : r > 50 ? 'True' : 'False', c.forecast.truth ? 'True' : 'False', r === 50 ? 'You sat at 50%' : `You were ${Math.max(r, 100 - r)}% sure`, 'You said', 'The claim is') + `<p class="gap-claim">“${esc(c.forecast.claim)}”</p>` + gapAxis({ min: 0, max: 100, you: r, ev: c.forecast.truth ? 100 : 0, evText: c.forecast.truth ? 'Claim true' : 'Claim false', fmt: x => x === 0 ? 'False' : x === 100 ? 'True' : '', bare: true }); cap = c.chart ? '' : srcLine(c) }   // the scoring rule lives in the record's "How scoring works", not on every forecast (review 37, m6)
   else if (c.format === 'rank') {
     const truth = c.rankAnswer, ties = c.rankTies || [];
     const tied = (a, b) => ties.some(t => t.includes(a) && t.includes(b));
@@ -319,10 +321,10 @@ function gapFigure(c, rec) {
   else if (c.format === 'delegate') { body = `<p class="plate-h">Each task, routed as the evidence suggests; you matched ${rec.detail.right} of ${rec.detail.total}</p><ul class="deleg-cmp">${c.delegate.tasks.map((t, k) => `<li class="${okRoute(t, r[k]) ? 'ok' : ''}"><span>${esc(short(t.text, 70))}${t.why ? `<small class="deleg-why">${esc(t.why)}</small>` : ''}</span><span class="chip-row"><span class="chip you">You: ${esc(c.delegate.choices[r[k]] ?? '–')}</span>${okRoute(t, r[k]) ? '' : `<span class="chip ev">Evidence: ${[t.answer, ...(t.also || [])].map(i => esc(c.delegate.choices[i])).join(' or ')}</span>`}</span></li>`).join('')}</ul>`; cap = '' }
   else if (c.chart) { body = bars(c.chart); cap = srcLine(c) }
   else { body = `<p class="big-stat">${rec.correct ? 'Match' : rec.score > 0 ? 'Partial' : 'Miss'}</p>`; cap = '' }
-  if (c.chart && ['forecast', 'rank', 'estimate', 'delegate', 'allocate'].includes(c.format) && !(c.format === 'rank' && c.rankValues)) { body += `<div class="plate-more"><p class="plate-h">${esc((c.chart.note || '').replace(/\.$/, ''))}</p>${bars(c.chart)}<p class="small">${esc(srcLine(c))}</p></div>` }   // the paper's own figure under the format's gap view
+  if (c.chart && ['forecast', 'rank', 'estimate', 'delegate', 'allocate'].includes(c.format) && !(c.format === 'rank' && c.rankValues)) { body += `<div class="plate-more"><p class="plate-h">${esc((c.chart.note || '').replace(/\.$/, ''))}</p>${bars(c.chart)}<p class="small">${srcHtml(c)}</p></div>` }   // the paper's own figure under the format's gap view
   const opt = ['choice', 'causal', 'multi'].includes(c.format), plate = !(opt && !c.chart);   // the evidence sits on a dark plate; a plain option list stays light
   const legend = opt && c.chart ? `<p class="plate-h">${esc((c.chart.note || '').replace(/\.$/, ''))}</p>` : '';   // no colour keys: every mark is labelled where it sits
-  const main = opt && !c.chart ? instrument(c) : body, caption = opt && !c.chart || !cap ? '' : `<p class="gap-caption">${esc(cap)}</p>`;
+  const main = opt && !c.chart ? instrument(c) : body, caption = opt && !c.chart || !cap ? '' : `<p class="gap-caption">${cap === srcLine(c) ? srcHtml(c) : esc(cap)}</p>`;
   return `<figure class="gap${plate ? ' has-plate' : ''}" aria-labelledby="gap-h"><figcaption class="sr-only" id="gap-h">Your call against the evidence</figcaption>${plate ? `<div class="plate">${legend}${main}${caption}</div>` : `${legend}${main}${caption}`}${opt && c.chart ? `<div class="opts-recap">${instrument(c)}</div>` : ''}${shortFig(c) ? themeStrip(c, rec) : ''}</figure>`;   // the study card and the principle strip sit under the finding (review 32, m9)
 }
 // The signature moment of a numeric reveal: your number against the study's, large, with the gap between them.
@@ -345,9 +347,15 @@ function themeStrip(c, rec) {
   return `<div class="theme-strip"><p class="plate-h">Your calls on the principle “${esc(th.title)}”, as skill points versus guessing</p><svg viewBox="0 0 ${W} 104" role="img" aria-label="${esc(`This call ${mn(Math.round(sk(rec) * 100))}; your ${others.length} other calls on this principle: ${others.map(r => mn(Math.round(sk(r) * 100))).join(', ')}`)}"><line x1="${L}" y1="${y}" x2="${R}" y2="${y}" class="ts-ax"/><line x1="${sx(0)}" y1="${y - 14}" x2="${sx(0)}" y2="${y + 14}" class="ts-zero"/>${dots}<circle cx="${me}" cy="${y}" r="8" class="ts-me"/><text x="${Math.min(R - 40, Math.max(L + 40, me))}" y="${y - 16}" text-anchor="middle" class="ts-lab">this call</text><text x="${L}" y="${y + 56}" class="ts-tick">\u2212100</text><text x="${sx(0)}" y="${y + 56}" text-anchor="middle" class="ts-tick">0, guessing</text><text x="${R}" y="${y + 56}" text-anchor="end" class="ts-tick">100</text></svg><p class="small ts-cap">${(() => { const avg = others.reduce((t, r) => t + sk(r), 0) / others.length, d = Math.round((sk(rec) - avg) * 100); return `The small dots are your ${others.length} other calls on this principle. This call is ${Math.abs(d) < 5 ? 'close to their average' : `${Math.abs(d)} points ${d > 0 ? 'above' : 'below'} their average`}.` })()}</p></div>`;   // the marks explained in words, no colour key (review 28)
 }
 function studyCard(c, checked = true) {
-  const d = c.study || {}, s = SOURCE[c.sources[0]] || {}, rows = [['Design', d.design], ['Sample', sampleLine(c)], ['Published', s.venue ? `${s.venue}, ${s.year}` : ''], ['Checked', checked ? srcStatus(s)[0] : '']].filter(r => r[1]);
-  return `<dl class="study-card">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
+  const d = c.study || {}, s = SOURCE[c.sources[0]] || {}, rows = [['Design', d.design], ['Sample', sampleLine(c)], ['Published', s.venue ? `${s.venue}, ${s.year}` : ''], ['Checked', checked ? srcStatus(s)[0] : '']].filter(r => r[1]), link = k => k === 'Published' && s.url;
+  return `<dl class="study-card">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${link(k) ? `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(v)}</a>` : esc(v)}</dd></div>`).join('')}</dl>`;
 }
+function tutorChips(c) {   // up to seven suggestions, each one checked against the offline tutor so a tap always gets a real answer (owner, 2026-11-12)
+  const cand = ['How big is this effect in practice?', /AI/.test(c.track || '') ? 'Would this hold with AI tools today?' : 'What does the study cover?', 'How would I test this in my company?', 'Who took part in the study?', 'How long did the effect last?', 'Was the study preregistered?', 'Has it been replicated?', 'Who wrote the paper?', 'Is this cause or correlation?', 'What should a manager do with this?', 'Who funded the study?'];
+  const ok = q => { try { const a = curated(q, c).text || ''; return a && !/does not record|could not match|outside what this lab covers|does not say/i.test(a) } catch (e) { return false } };
+  return cand.filter((q, k) => k < 3 || ok(q)).slice(0, 7);
+}
+function srcHtml(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.authors)} (${s.year}), ${esc(s.venue)}</a>.` : '' }   // every study opens at its DOI (owner, 2026-11-12)
 function srcLine(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: ${s.authors} (${s.year}), ${s.venue}.` : '' }
 function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + '…' : s }
 function fmtU(v, u) { u = u || ''; return /^[$€£]/.test(u) ? u + v : v + u }   // currency before the number
@@ -382,7 +390,7 @@ function play() {
     const verb = { estimate: 'estimate', allocate: 'split', rank: 'ranking', delegate: 'routing', forecast: 'forecast' }[c.format] || 'answer';
     return `<section class="focus">${top}<article class="focus-card" aria-labelledby="q-h">${CLASS_LOCK && !st.room && !BY_ID[c.id].answerTitle ? '<p class="lock-note" role="note">A live class is running on this server, so results for decisions it has not reached open after it reveals them. You can still make your call now.</p>' : ''}
       <div class="q-col"><p class="scene">${esc(c.scene)}</p>
-      ${c.format === 'forecast' ? `<h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1><p class="hint fc-ask">How likely is it that the study found this?</p>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}<p class="study-line">${c.case ? `${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}. ` : ''}${esc([(c.study || {}).design, sampleLine(c), `${SOURCE[c.sources[0]].venue} ${SOURCE[c.sources[0]].year}`].filter(Boolean).map(x => x.replace(/\.$/, '')).join('. '))}.</p>${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : c.format === 'allocate' ? `<p class="hint">Spread ${(c.allocate && c.allocate.total) || 100} points by how likely each option is to be the one that worked best.</p>` : ''}
+      ${c.format === 'forecast' ? `<h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1><p class="hint fc-ask">Did the study find this? Say true or false, then how sure you are.</p>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}<p class="study-line">${c.case ? `${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}. ` : ''}${esc([(c.study || {}).design, sampleLine(c), `${SOURCE[c.sources[0]].venue} ${SOURCE[c.sources[0]].year}`].filter(Boolean).map(x => x.replace(/\.$/, '')).join('. '))}.</p>${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : c.format === 'allocate' ? `<p class="hint">Spread ${(c.allocate && c.allocate.total) || 100} points by how likely each option is to be the one that worked best.</p>` : ''}
       </div><div class="a-col">${instrument(c)}${conf}</div></article>
       <div class="actionbar"><div class="actionbar-in"><span class="kicker">${lockHint(c)}</span><button class="btn btn-you btn-lg" data-act="lock" id="lock-btn" ${ready ? '' : 'disabled'}>Lock my ${verb}</button></div></div></section>`;
   }
@@ -413,8 +421,8 @@ function tutorPanel(c) {
   const t = st.tutor;
   return `<div class="tutor" role="region" aria-labelledby="tutor-h"><h2 id="tutor-h">Ask your own question</h2>
     <form class="tutor-line" data-form="tutor"><label class="sr-only" for="tutor-in">Your question about this study</label><input id="tutor-in" maxlength="300" placeholder="For example: would this hold in a sales team?" autocomplete="off"><button class="btn btn-quiet" ${t.busy ? 'disabled' : ''}>${t.busy ? 'Thinking' : 'Ask'}</button></form>
-    ${t.suggest && t.suggest.length ? '' : `<div class="tutor-chips">${['How big is this effect in practice?', /AI/.test(c.track || '') ? 'Would this hold with AI tools today?' : 'What does the study cover?', 'How would I test this in my company?'].map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>`}
-    ${t.text ? `<div class="tutor-answer" aria-live="polite">${esc(t.text)}${t.cites.length ? '\n\n' + t.cites.map(x => `<cite>${esc(x)}</cite>`).join(' ') : ''}</div>` : ''}
+    ${t.suggest && t.suggest.length ? '' : `<div class="tutor-chips">${tutorChips(c).map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>`}
+    ${t.text ? `<div class="tutor-answer" aria-live="polite">${esc(t.text)}${t.cites.length ? '\n\n' + t.cites.map(x => { const u = (Object.values(SOURCE).find(z => cite(z.id) === x) || {}).url; return `<cite>${u ? `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(x)}</a>` : esc(x)}</cite>` }).join(' ') : ''}</div>` : ''}
     ${t.suggest && t.suggest.length ? `<div class="tutor-chips tutor-suggest">${t.suggest.map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>` : ''}
     <p class="small">${TUTOR_AI ? 'AI answers use only the lab’s checked sources. Check details in the source.' : 'Answers come from the lab’s checked summaries.'}</p></div>`;
 }
@@ -777,13 +785,26 @@ function render(moveFocus) {
   if (st.view === 'almanac' && !libraryLoaded) loadLibrary();
   v.innerHTML = st.view === 'home' ? home() : st.view === 'atlas' ? atlas() : st.view === 'almanac' ? almanac() : st.view === 'record' ? record() : play();
   document.body.classList.toggle('in-play', st.view === 'play');
-  balanceReveal();
+  balanceReveal(); fitQuestion();
   qa('.nav button').forEach(b => b.setAttribute('aria-current', (b.dataset.nav === st.view || (b.dataset.nav === 'almanac' && st.view === 'atlas')) ? 'page' : 'false'));
   qs('.nav').classList.toggle('open', st.menu);
   const c = card();
   document.title = (st.view === 'play' && c ? (st.phase === 'reveal' ? c.answerTitle : c.title) + ', ' : st.view === 'atlas' ? 'All decisions, ' : st.view === 'almanac' ? 'Principles, ' : st.view === 'record' ? 'Your record, ' : '') + 'The Human Variable';
   if (moveFocus && (st.phase === 'reveal' || st.hero.done)) animateReveal();
   if (moveFocus) { scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' }); const h = qs('#view h1'); if (h) { if (!h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }) } }
+}
+function fitQuestion() {   // on a large screen the question and its instrument scale up to use the room, instead of sitting small in the middle (owner, 2026-11-12)
+  const root = document.documentElement, card = st.view === 'play' && st.phase === 'predict' ? qs('.focus-card') : null, base = card && card.querySelector('.q-col') ? 1240 : 820;
+  root.style.removeProperty('--fitw'); qa('.focus-card').forEach(e => { e.style.zoom = ''; e.style.minHeight = '' });
+  if (!card || innerWidth < 1000) return;
+  const natural = () => Math.max(...[...card.children].map(e => e.offsetHeight)), avail = innerHeight - 230;
+  let z = Math.max(1, Math.min(1.6, innerWidth / (base === 1240 ? 1010 : 760), avail * 0.86 / natural()));
+  for (let k = 0; k < 4 && z > 1; k++) {
+    root.style.setProperty('--fitw', Math.min(base * z, innerWidth) + 'px'); card.style.zoom = z; card.style.minHeight = '0';
+    if (natural() * z <= avail * 0.9) break; z = Math.max(1, z - 0.08);
+  }
+  if (z <= 1) { root.style.removeProperty('--fitw'); card.style.zoom = ''; card.style.minHeight = ''; return }
+  card.style.minHeight = innerHeight >= 760 && base === 1240 ? (innerHeight - 250) / z + 'px' : '';
 }
 function balanceReveal() {   // the shorter column takes the study card and the principle strip (review 33, m9); a class, not a DOM move, so reading order stays put (audit 45)
   const rv = qs('.reveal'); if (!rv) return; rv.classList.remove('meta-right', 'meta-wide', 'meta-left', 'fig-tall'); const m0 = qs('.reveal>.rev-meta'); if (m0) m0.style.marginTop = '';
@@ -796,7 +817,7 @@ function balanceReveal() {   // the shorter column takes the study card and the 
   else if (gLeft < gWide && fb > lb) { rv.classList.add('meta-left'); const gap = meta.getBoundingClientRect().top - lb - 24; if (gap > 0) meta.style.marginTop = -gap + 'px' }   // a tall figure: the card sits under the text, pulled up beside the figure
   else rv.classList.add('meta-wide');
 }
-let balT; addEventListener('resize', () => { clearTimeout(balT); balT = setTimeout(balanceReveal, 150) });
+let balT; addEventListener('resize', () => { clearTimeout(balT); balT = setTimeout(() => { balanceReveal(); fitQuestion() }, 150) });
 function animateReveal() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   // the study's number counts up from the player's call: the one orchestrated moment of the reveal
@@ -827,6 +848,7 @@ document.addEventListener('click', e => {
     const c = card();
     if (t.dataset.choice !== undefined) { const i = +t.dataset.choice; if (c.format === 'multi') { const need = c.pick || (c.multiAnswers || []).length || 2; if (st.resp.includes(i)) st.resp = st.resp.filter(x => x !== i); else if (st.resp.length < need) st.resp = [...st.resp, i]; else { notice(`You can choose ${need}. Tap a choice again to remove it.`); return } } else st.resp = i; render(); qs(`[data-choice="${i}"]`)?.focus(); return }
     if (t.dataset.rank !== undefined) { const k = +t.dataset.rank, d = +t.dataset.dir, r = st.resp, j = k + d; if (j < 0 || j >= r.length) return;[r[k], r[j]] = [r[j], r[k]]; st.touched = true; render(); const sel = qs(`[data-rank="${j}"][data-dir="${d}"]`) || qs(`[data-rank="${j}"][data-dir="${-d}"]`); sel?.focus(); return }
+    if (t.dataset.tf !== undefined) { st.tf = +t.dataset.tf; fcSync(); render(); qs(`[data-tf="${st.tf}"]`)?.focus(); return }
     if (t.dataset.deleg !== undefined) { st.resp[+t.dataset.deleg] = +t.dataset.pick; render(); qs(`[data-deleg="${t.dataset.deleg}"][data-pick="${t.dataset.pick}"]`)?.focus(); return }
   }
   const a = t.dataset.act;
@@ -863,7 +885,7 @@ document.addEventListener('input', e => {
     return;
   }
   if (el.id === 'est') { st.resp = +el.value; setRange(el); qs('#est-read').textContent = mn(st.resp + (c.estimate.unit ?? '%')); qs('#est-read').classList.remove('empty'); syncLock(); return }
-  if (el.id === 'fc') { st.resp = +el.value; st.touched = true; setRange(el); qs('#fc-read').textContent = st.resp + '%'; qs('#fc-read').classList.remove('empty'); syncLock(); return }
+  if (el.id === 'fc') { st.fcSure = +el.value; st.fcTouched = true; fcSync(); el.style.setProperty('--fill', (st.fcSure - 50) * 2 + '%'); el.classList.remove('untouched'); qs('#fc-read').textContent = st.fcSure + '%'; qs('#fc-read').classList.remove('empty'); syncLock(); return }
   if (el.dataset.alloc !== undefined) {
     // The points always add up to the total: raising one option takes points from the others in proportion.
     const k = +el.dataset.alloc, a = c.allocate, step = a.step || 10, before = st.resp.slice();
@@ -900,6 +922,7 @@ document.addEventListener('keydown', e => {
   if (e.target.matches('[role=tab][data-tab]') && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { const t = qa('[data-tab]'), i = t.indexOf(e.target), n = t[(i + (e.key === 'ArrowRight' ? 1 : t.length - 1)) % t.length]; n.click(); e.preventDefault(); return }
   if (st.view !== 'play') return; const c = card(); if (!c) return;
   if (st.phase === 'predict') {
+    if (c.format === 'forecast' && (e.key === '1' || e.key === '2')) { qs(`[data-tf="${e.key === '1' ? 1 : 0}"]`)?.click(); return }
     if ((c.format === 'choice' || c.format === 'causal' || c.format === 'multi') && /^[1-9]$/.test(e.key)) { const o = optionOrder(c)[+e.key - 1]; if (o) qs(`[data-choice="${o.i}"]`)?.click(); return }
     if (e.key === 'Enter' && !e.target.matches('button, a, summary, textarea') && lockReady(c)) { e.preventDefault(); lock(); return }
   } else if ((e.key === 'n' || e.key === 'N') && !st.room) { next() }
