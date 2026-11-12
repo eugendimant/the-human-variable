@@ -282,8 +282,8 @@ def test_tie_leaves_flex_rows_and_path_lines_alone():
         b = p.chromium.launch(); pg = b.new_page(viewport={'width': 390, 'height': 844}); pg.goto(URL); pg.wait_for_timeout(200)
         fonts = pg.evaluate("[...document.querySelectorAll('.path small, .path small .nw')].map(e => getComputedStyle(e).fontFamily + '|' + getComputedStyle(e).fontSize)")
         assert len(set(fonts)) == 1, fonts
-        assert pg.evaluate("document.querySelectorAll('summary .nw').length") == 0
-        assert "li,summary" not in open(str(__import__('pathlib').Path(__file__).resolve().parents[1] / 'src' / 'tie.js'), encoding='utf-8').read()   # the flex summary row itself is never tied; its text span is
+        assert pg.evaluate("[...document.querySelectorAll('summary')].filter(e => /flex|grid/.test(getComputedStyle(e).display) && e.querySelector(':scope > .nw')).length") == 0   # a flex row's text is an anonymous item: a nowrap span there is pushed away from the rest
+        assert 'flex|grid' in open(str(__import__('pathlib').Path(__file__).resolve().parents[1] / 'src' / 'tie.js'), encoding='utf-8').read()
         b.close()
 
 
