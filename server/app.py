@@ -41,6 +41,7 @@ def public_bank() -> dict:
     """The bank as served to browsers: questions and bibliographic records, no answers. Evidence is fetched after a call is locked."""
     return {k: v for k, v in BANK.items() if k not in ('challenges', 'retired', 'unused_sources', 'sources', 'themes')} | {
         'public': True, 'sources': {sid: public_source(s) for sid, s in BANK['sources'].items()},
+        'bandTitles': {sid: s['title'] for sid, s in BANK['sources'].items() if re.search('Dimant', s.get('authors_full') or s.get('authors') or '') and s.get('title')},   # the landing page names the owner's papers on purpose (owner, 2026-11-12); review 42, M-1: the served page showed 18 empty rows
         'themes': [{k: t[k] for k in t if k != 'principle'} for t in BANK.get('themes', [])], 'challenges': [public_challenge(c) | {'sources': c['sources'], 'theme': c.get('theme')} for c in BANK['challenges'] if c['id'] in CHALLENGES]}
 
 def _public_page(name: str) -> bytes:

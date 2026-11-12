@@ -512,7 +512,7 @@ def test_glossary_definitions_fire_only_on_a_definition_question():
 
 @pytest.mark.parametrize('q,cid,want,bad', [
     ('Did the effect last?', 'axb15', 'persisted at the two-month follow-up', 'No.'),   # a near match never keeps the stored Yes or No
-    ('who graded the work?', 'ai02', 'graded the finished work blind', 'does not record'),
+    ('who graded the work?', 'ai02', 'Independent professionals graded the finished work', 'does not record'),
     ('whats a confidence interval', 'ai02', 'range of effect sizes', 'Noy'),
     ('Explain statistical significance to me', 'ai02', 'Statistically significant means', 'Noy'),
     ('what were the callback rates', 'social12', '9.65%', 'could not match'),

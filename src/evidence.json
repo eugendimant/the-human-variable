@@ -1932,7 +1932,7 @@
   },
   {
    "source": "masks22",
-   "quote": "negative and statistically significant for Democrat predictions (r(28) = -0.63, p = 0.0003)",
+   "quote": "negative and statistically significant for Democrat predictions (r(28) = −0.63, t(26) = −4.12, p = 0.0003)",
    "location": "Published version of record, Results"
   },
   {
@@ -2629,7 +2629,7 @@
   },
   {
    "source": "hate23",
-   "quote": "ingroup-love occurs in the perceptional domain whereas outgroup-hate occurs in the behavioral domain (how one helps/harms/cooperates with others).",
+   "quote": "ingroup-love occurs in the perceptional domain (how close one feels toward others), whereas outgroup-hate occurs in the behavioral domain (how one helps/harms/cooperates with others).",
    "location": "Published abstract"
   },
   {
@@ -4605,6 +4605,11 @@
    "source": "fisar24",
    "quote": "Other reasons for unsuccessful reproduction attempts include missing code, unresolvable code errors, weak or missing documentation, and software and hardware requirements and code complexity.",
    "location": "Abstract (version of record)"
+  },
+  {
+   "source": "fisar24",
+   "quote": "about 68% could be at least largely reproduced",
+   "location": "Introduction (version of record)"
   }
  ],
  "dimant-competition-choice": [
@@ -4632,6 +4637,11 @@
    "source": "huber23",
    "quote": "A potential source of ambivalent empirical results on the same hypothesis is design heterogeneity—variation in true effect sizes across various reasonable experimental research protocols.",
    "location": "Abstract (version of record)"
+  },
+  {
+   "source": "huber23",
+   "quote": "There is suggestive evidence of an adverse effect of competition on moral behavior in the meta-analysis (d = −0.085, 95% CI [−0.147, −0.022], P = 0.008).",
+   "location": "Figure 2 caption (version of record)"
   }
  ],
  "dimant-megastudy-estimate": [
@@ -4664,6 +4674,11 @@
    "source": "duckworth25",
    "quote": "these intervention effects were consistent across school socioeconomic status and school type (public, private, etc.) and, further, persisted in the 8-wk post-intervention period.",
    "location": "Abstract (version of record)"
+  },
+  {
+   "source": "duckworth25",
+   "quote": "In exploratory analyses, teachers who received any behaviorally informed email nudge (vs. a reminder-only megastudy control) saw their students’ math progress boosted by an average of 1.89% during the 4-wk intervention period; emails referencing personalized data (i.e., classroom-specific statistics) outperformed emails that did not by 2.26%.",
+   "location": "Abstract (version of record)"
   }
  ],
  "dimant-deterrence-choice": [
@@ -4686,6 +4701,21 @@
    "source": "buck21",
    "quote": "These cheating periods are followed by an investigation such that cheaters will be detected and fined with a given probability.",
    "location": "Section 1 (version of record)"
+  },
+  {
+   "source": "buck21",
+   "quote": "Resolution of uncertainty regarding whether cheating is detected (and hence whether there are sanctions) is either immediate (IR) or delayed by two periods (DR).",
+   "location": "Section 2.2 (version of record)"
+  },
+  {
+   "source": "buck21",
+   "quote": "Relative to the timing of resolution of uncertainty, punishment is either immediate (no delay or ND) or delayed by 2 rounds (delayed or D).",
+   "location": "Section 2.2 (version of record)"
+  },
+  {
+   "source": "buck21",
+   "quote": "A subject received 10 Experimental Currency Units (ECU) for a correct guess and 4 ECU for an incorrect guess.",
+   "location": "Section 2.1 (version of record)"
   }
  ]
 }

@@ -17,7 +17,7 @@ def build():
     html = (SRC / 'shell.html').read_text(encoding='utf-8')
     parts = {'/*@CSS@*/': css, '/*@BANK@*/': data,
              '/*@SCORING@*/': (SRC / 'scoring.js').read_text(encoding='utf-8'),
-             '/*@JS@*/': (SRC / 'app.js').read_text(encoding='utf-8')}
+             '/*@JS@*/': (SRC / 'tie.js').read_text(encoding='utf-8') + (SRC / 'app.js').read_text(encoding='utf-8')}
     for k, v in parts.items():
         assert html.count(k) == 1, k
         html = html.replace(k, v)
@@ -31,7 +31,7 @@ def build_classroom():
               .replace('/*@FONT_SERIF_I@*/', b64('newsreader-latin-wght-italic.woff2')))
     html = (SRC / 'classroom_shell.html').read_text(encoding='utf-8')
     parts = {'/*@CSS@*/': css, '/*@BANK@*/': json.dumps(bank, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/'),
-             '/*@QR@*/': (SRC / 'vendor' / 'qrcode.js').read_text(encoding='utf-8'), '/*@JS@*/': (SRC / 'classroom.js').read_text(encoding='utf-8')}
+             '/*@QR@*/': (SRC / 'vendor' / 'qrcode.js').read_text(encoding='utf-8'), '/*@JS@*/': (SRC / 'tie.js').read_text(encoding='utf-8') + (SRC / 'classroom.js').read_text(encoding='utf-8')}
     for k, v in parts.items():
         assert html.count(k) == 1, k
         html = html.replace(k, v)

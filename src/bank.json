@@ -2471,7 +2471,7 @@
    "concept": "Productivity",
    "tag": "02 / QUALITY",
    "title": "Faster, but worse?",
-   "scene": "In an online experiment, 453 professionals did short writing tasks for their occupation, half with ChatGPT. Independent professionals graded the finished work blind.",
+   "scene": "In an online experiment, 453 professionals did short writing tasks for their occupation, half with ChatGPT. Independent professionals graded the finished work.",
    "question": "By how much did graded quality change with ChatGPT?",
    "answerTitle": "Quality improved 18%",
    "explain": "Noy and Zhang gave half of 453 college-educated professionals access to ChatGPT for occupation-specific writing tasks. Graded output quality rose 18%, and inequality between workers decreased.",
@@ -4863,7 +4863,7 @@
    },
    "concept": "Deskilling risk",
    "title": "Tutoring with GPT-4",
-   "scene": "Last step: training. In a field experiment with nearly 1,000 high school students, some practiced math with unrestricted GPT-4, and everyone then took exams without it. Your plan gives new hires the same unrestricted access.",
+   "scene": "Last step: training. In a field experiment with nearly 1,000 high school students, some practiced math with unrestricted GPT-4, and everyone then took exams without it.",
    "question": "How did unrestricted-AI students score on unaided exams versus controls?",
    "estimate": {
     "target": -17,
@@ -7095,7 +7095,7 @@
     ],
     "unit": "%",
     "highlight": null,
-    "note": "Share who cooperate when they expect the partner to. The drop is about as large for a painting-taste outgroup as for a political one.",
+    "note": "Share of conditional cooperators, who cooperate if the partner does. The drop is about as large for a painting-taste outgroup as for a political one.",
     "decimals": 1
    }
   },
@@ -8390,17 +8390,17 @@
    "theme": "evidence",
    "title": "Can the result be rerun?",
    "scene": "More than 700 reviewers tried to reproduce the results of nearly 500 Management Science articles from the authors’ data and code. Since 2019 the journal requires authors to disclose both.",
-   "question": "Of all articles published under the new policy, what share could be reproduced?",
+   "question": "Of all articles published under the new policy, what share could be at least largely reproduced?",
    "estimate": {
     "target": 68,
     "min": 0,
     "max": 100,
     "tolerance": 6,
-    "label": "Share of articles reproduced",
+    "label": "Share at least largely reproduced",
     "unit": "%"
    },
-   "answerTitle": "68% could be reproduced",
-   "explain": "When data access and hardware or software were no obstacle, the results of more than 95% of articles under the new policy could be fully or largely reproduced. For 29% of articles at least part of the data set was not accessible to the reviewer, which brings the share across all articles to 68%. Before the policy, only 12% of articles provided replication materials, and 55% of those could be reproduced.",
+   "answerTitle": "About 68% could be at least largely reproduced",
+   "explain": "When data access and hardware or software were no obstacle, the results of more than 95% of articles under the new policy could be fully or largely reproduced. For 29% of articles at least part of the data set was not accessible to the reviewer, which brings the share across all articles to about 68% that could be at least largely reproduced. Before the policy, only 12% of articles provided replication materials, and 55% of those could be reproduced.",
    "implication": "Before you act on an analysis, ask for the data and code behind it. A disclosure rule made most results checkable.",
    "boundary": "Computational reproducibility for articles in one journal: rerunning the authors’ data and code to get the same results.",
    "sources": [
@@ -8438,7 +8438,7 @@
     "A large adverse effect, and the designs agreed closely",
     "A small favorable effect, and the designs disagreed widely",
     "A small adverse effect, and the designs disagreed widely",
-    "A large favorable effect, and the designs agreed closely"
+    "A small adverse effect, and the designs agreed closely"
    ],
    "answer": 2,
    "answerTitle": "A small adverse effect, and designs disagreed",
@@ -8463,7 +8463,7 @@
     },
     {
      "q": "How sure is the direction of the effect?",
-     "a": "The 95% interval runs from −0.147 to −0.022 standard deviations, so it excludes zero but stays small."
+     "a": "The 95% interval runs from −0.147 to −0.022 standard deviations, so it excludes zero but stays small. The authors call it suggestive evidence of an adverse effect."
     }
    ]
   },
@@ -8485,7 +8485,7 @@
     "unit": "%"
    },
    "answerTitle": "The best nudge added about 5%",
-   "explain": "The best email invited teachers to log in for an updated report on how their students were doing that week. It raised math progress by 5.06%, or 3.30% after accounting for the winner’s curse. Any behaviorally informed nudge raised progress by 1.89% on average, and emails with classroom-specific data beat the others by 2.26%.",
+   "explain": "The best email invited teachers to log in for an updated report on how their students were doing that week. It raised math progress by 5.06%, or 3.30% after accounting for the winner’s curse. In exploratory analyses, any behaviorally informed nudge raised progress by 1.89% on average, and emails with classroom-specific data beat the others by 2.26%.",
    "implication": "Expect small gains from one nudge. Test many versions at once, and discount the winner’s result before you scale it.",
    "boundary": "Emails to US elementary school teachers on one math platform, Zearn Math, in fall 2021. Progress was measured on the platform.",
    "sources": [
@@ -8502,7 +8502,7 @@
     },
     {
      "q": "Did personal data help?",
-     "a": "Yes. Emails that cited classroom-specific statistics outperformed emails that did not by 2.26%."
+     "a": "In exploratory analyses, yes. Emails that cited classroom-specific statistics outperformed emails that did not by 2.26%."
     },
     {
      "q": "Did the effect last?",
@@ -8517,19 +8517,19 @@
    "concept": "Swift sanctions",
    "theme": "honesty",
    "title": "Punish now or later?",
-   "scene": "In a lab experiment, 296 people played a card game for money and could cheat in some rounds. Cheaters were detected and fined with a set probability. The researchers varied how soon people learned the verdict and how soon the fine was imposed.",
+   "scene": "In a lab experiment, 296 people played a card game for money and could cheat in some rounds. Cheaters were detected and fined with a set probability. The researchers varied whether people learned the verdict right away or two rounds later, and whether the fine followed right away or two rounds after that.",
    "question": "Which timing deterred cheating best?",
    "options": [
-    "The faster the verdict and the fine, the stronger the deterrence",
-    "An immediate verdict with a delayed fine",
-    "Verdict and fine both immediate, or both delayed as far as possible",
-    "The longer the verdict and the fine were delayed, the stronger the deterrence"
+    "Deterrence rose steadily the sooner the verdict and the fine came",
+    "Deterrence rose steadily the later the verdict and the fine came",
+    "Deterrence was best when the verdict or the fine, but not both, came late",
+    "Deterrence was best with no delay or with the longest delay"
    ],
-   "answer": 2,
+   "answer": 3,
    "answerTitle": "No delay or full delay worked best",
    "explain": "Among 296 participants, deterrence did not rise or fall steadily with delay. Either no delay, with the verdict and the fine both immediate, or maximum delay, with both pushed back as far as possible, was most effective at deterring cheating and repeat cheating.",
-   "implication": "When you design a compliance process, set the verdict and the sanction on the same clock. A quick verdict with a slow penalty gives away deterrence.",
-   "boundary": "A laboratory cheating game with monetary fines.",
+   "implication": "When you design a compliance process, keep the verdict and the sanction on one clock. In this lab game, a quick verdict with a slow penalty gave away deterrence.",
+   "boundary": "A laboratory cheating game in one session: delays of two rounds, and fines in experimental currency.",
    "sources": [
     "buck21"
    ],
@@ -8548,7 +8548,7 @@
     },
     {
      "q": "What exactly was delayed?",
-     "a": "Two things: when people learned whether they would be punished, and when the punishment was imposed."
+     "a": "Two things: when people learned whether they would be punished, and when the punishment was imposed. Each delay lasted two rounds."
     }
    ]
   }

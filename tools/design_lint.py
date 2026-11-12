@@ -12,7 +12,7 @@ for c in LIVE: ONE.setdefault(c['format'], c['id'])
 
 def states(every=False):
     yield 'home', URL, None
-    for v in (41, 39, 40, 0, 60): yield f'home-done-{v}', URL, f'hero:{v}'   # the locked try-it, near the study value and at both ends (audit 36)
+    for v in (41, 39, 40, 0, 60): yield f'home-done-{v}', URL + '?hero=ai01', f'hero:{v}'   # the locked try-it, near the study value and at both ends (audit 36)
     yield 'library', URL + '#library', None
     yield 'all-decisions', URL + '#studies', None   # the real hash (review 28: '#atlas' silently linted the home page)
     yield 'record-empty', URL + '#record', None

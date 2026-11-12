@@ -102,7 +102,7 @@ def test_served_pages_carry_no_answers(base):
             if c['id'] not in cl.CHALLENGES: continue
             probes = [c['answerTitle'], c['explain'], c['implication']] + [f['a'] for f in c['follow']]
             probes += [cl.BANK['sources'][s]['takeaway'] for s in c['sources'] if cl.BANK['sources'][s].get('takeaway')]
-            probes += [cl.BANK['sources'][s]['title'] for s in c['sources'] if cl.BANK['sources'][s].get('title')]   # review 13, M1: titles state findings
+            probes += [cl.BANK['sources'][s]['title'] for s in c['sources'] if cl.BANK['sources'][s].get('title') and s not in app.public_bank()['bandTitles']]   # review 13, M1: titles state findings; the landing page names the owner's papers on purpose (review 42, M-1)
             if 'dag' in c:
                 probes += [c['dag']['alt']]
                 leaks += [(c['id'], n['label']) for n in c['dag']['nodes'] if n.get('mask') and ('"label":' + json.dumps(n['label'], ensure_ascii=False)) in text]

@@ -11,7 +11,7 @@ Sources:
 
 ## Structure
 
-1. **No label above a heading.** A short line sitting on top of a heading ("Try one now", "Your call") either repeats it or belongs in it. Fold the words into the heading or the sentence below, or drop them. Coloured dashes before a label count as the same device. *Detector R01.*
+1. **No label above a heading.** A short line sitting on top of a heading ("Your call") either repeats it or belongs in it. Exception, owner-approved 2026-11-11: the landing page keeps a small "Try one now" section label (14 px, the size of "How a round works") above its sample question; the question is the largest line of its section. Fold the words into the heading or the sentence below, or drop them. Coloured dashes before a label count as the same device. *Detector R01.*
 2. **No badge or pill above the main headline.** Status belongs in the sentence under the headline, or beside it. *Detector R02.*
 3. **No nested cards.** A boxed element inside another boxed element is flattened: inner groups use space, type and a rule, not a second border or shadow. *Detector R21.*
 4. **No grid of identical cards.** Six equal boxes with a picture on top is the template look. Paths are an index that varies with its content. *Detector R22.*
@@ -60,3 +60,5 @@ Sources:
 29. **Colour only the mark that proves the headline.** One amber bar per chart; the rest are grey. *Detector R29.*
 30. **Ask on every page: what would Tufte do?** Maximise data ink: remove boxes, rules, labels and decoration that encode nothing; show comparisons at the same scale; annotate the moment that matters in place; prefer a sentence with a number to a widget. The page-by-page answers are in `qa/TUFTE_PASS.md` and every reviewer repeats the question. *Reviewer.*
 31. **Labels in a figure never overlap each other or a data mark**, and explanations of a reference line go in the caption, not in the data area. *Detector R31.*
+32. **No orphans.** No word stands alone on the last line of a wrapped text block. `tieEnds()` in `src/app.js` keeps the last two words of each block together (a nowrap span; the text does not change). *Detector R34* (owner, 2026-11-12: "orphans are a no-no").
+33. **The credit sits at the top of the landing page, in one line,** not in the hero. The first screen holds the headline, two sentences, one button and the three steps as one line each (owner, 2026-11-12: "declutter the full frontal page").

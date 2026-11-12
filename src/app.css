@@ -104,7 +104,7 @@ a{color:var(--you-ink);text-underline-offset:3px}
 .paper-list li{border-bottom:1px solid var(--rule)}
 .paper-list button{width:100%;text-align:left;padding:16px 0;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline}
 .paper-list strong{font-weight:650;letter-spacing:-.01em}
-.paper-list small{color:var(--muted);font-size:var(--t7);white-space:nowrap}
+.paper-list small{color:var(--muted);font-size:var(--t7)}
 
 /* Play */
 .play{padding-top:28px;padding-bottom:64px}
@@ -364,7 +364,7 @@ body.in-play{background:var(--paper)}
 .focus-card{padding:clamp(8px,2vw,16px) 0 0}
 .eyebrow-line{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0 14px;font-size:var(--t6);color:var(--muted)}
 .eyebrow-line .fmt{font-weight:750;color:var(--you-ink)}
-.focus .scene{margin:0 0 6px;font-size:clamp(19px,1.7vw,22px)}
+.focus .scene{margin:0 0 6px;font-size:clamp(19px,1.7vw,22px);text-wrap:pretty}
 .study-line{margin:0 0 26px;font-size:var(--t7);color:var(--muted)}
 .focus .q{font-size:clamp(26px,3.2vw,40px);margin:0 0 26px}
 .conf-row{display:grid;grid-template-columns:minmax(0,1fr) 52px;gap:16px;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--rule)}.opts + .conf-row{border-top:0;padding-top:0}
@@ -773,19 +773,19 @@ p,li,dd{text-wrap:pretty}
 .alloc-cmp .hb-row.hb-ends{grid-template-columns:1fr}   /* the scale runs the full width of the dot tracks (review 39, I-2) */
 .reveal.meta-wide>.rev-meta .theme-strip{max-width:560px}   /* the strip keeps its drawn size in the full-width band (review 40, I-1) */
 /* landing page: what it is, how a round works, one decision to try, then the paths (owner, 2026-11-11); the sample's question outranks its label and starts above the fold on laptops (review 41) */
-.hero:has(.intro){padding-top:clamp(28px,4.2vw,60px)}
+.hero:has(.intro){padding-top:clamp(20px,3vw,40px)}
 .intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(32px,5vw,88px);align-items:start}
 .intro h1{font-size:clamp(36px,4.2vw,60px);line-height:1}
 .intro .hero-lede{margin:clamp(18px,2vw,26px) 0 clamp(22px,2.4vw,30px);max-width:31em}
 .intro .hero-meta{margin-top:20px}
 .how-h{font-size:var(--t6);font-weight:700;letter-spacing:0;color:var(--ink-2);margin:6px 0 10px}
 .round-steps{list-style:none;margin:0;padding:0;counter-reset:rs;border-bottom:1px solid var(--rule)}
-.round-steps li{counter-increment:rs;display:grid;grid-template-columns:2.4rem minmax(0,1fr);column-gap:10px;row-gap:3px;padding:16px 0 17px;border-top:1px solid var(--rule)}
-.round-steps li::before{content:counter(rs);grid-row:1 / span 2;font-size:30px;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--you-ink);font-variant-numeric:tabular-nums}
+.round-steps li{counter-increment:rs;display:grid;grid-template-columns:2.4rem minmax(0,1fr);column-gap:10px;align-items:center;padding:13px 0 14px;border-top:1px solid var(--rule)}
+.round-steps li::before{content:counter(rs);font-size:30px;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--you-ink);font-variant-numeric:tabular-nums}
 .round-steps strong{font-size:var(--t4);line-height:1.2;letter-spacing:-.01em}
-.round-steps span{font-family:var(--serif);font-size:17px;line-height:1.4;color:var(--ink-2)}
+.round-steps li>span{font-family:var(--serif);font-size:17px;line-height:1.4;color:var(--ink-2)}
 .try-wrap{margin-top:clamp(28px,3.2vw,44px);padding-top:clamp(20px,2.2vw,28px);border-top:1px solid var(--rule)}
-.try-wrap .row-head{align-items:baseline;margin-bottom:8px}.try-wrap .try-src{margin-left:auto}
+.try-wrap .row-head{align-items:baseline;margin-bottom:14px}.try-wrap .try-src{margin-left:auto}
 .try-wrap .row-head h2{font-size:var(--t6);font-weight:700;letter-spacing:0;line-height:1.3;color:var(--ink-2)}
 .tr-q{font-size:clamp(23px,2.5vw,34px);line-height:1.14;letter-spacing:-.022em;font-weight:750;margin:0;max-width:26em}
 @media (max-width:900px){.intro{grid-template-columns:1fr}}
@@ -794,11 +794,20 @@ p,li,dd{text-wrap:pretty}
 .by a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}.by a+a{margin-left:16px}
 .foot-by a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;margin-left:10px;white-space:nowrap}
 /* owner, 2026-11-12: no stranded last words on the question screen; study links; true or false; the Dimant papers under their own titles */
-.focus .scene{text-wrap:balance}.focus-card .q,.intro h1{text-wrap:pretty}
+.focus-card .q,.intro h1{text-wrap:pretty}
 .plate a,.study-card a,.tutor-answer cite a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .opts.tf{grid-template-columns:1fr 1fr;column-gap:14px;border-bottom:0;margin-bottom:22px}.opts.tf .opt{border:1px solid var(--rule-strong);border-radius:12px;padding-left:14px}
 .fc-axis{margin-top:6px}
-.dimant ul a{display:grid;gap:3px;padding:12px 0;color:inherit;text-decoration:none}.dimant ul a:hover strong{text-decoration:underline;text-underline-offset:3px}
+.dimant ul a{display:grid;gap:3px;padding:12px 0;color:inherit;text-decoration:none;min-width:0;overflow-wrap:anywhere}.dimant ul a:hover strong{text-decoration:underline;text-underline-offset:3px}
 .dimant ul a strong{font-size:var(--t5);line-height:1.3}.dimant ul a small{color:#b9c3dc;font-size:var(--t7)}
 body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)) .actionbar-in{max-width:var(--fitw,820px)}
 .opt>span:nth-child(2){text-wrap:balance}
+
+/* owner, 2026-11-12: orphans are a no-no; the credit sits at the top; a quieter first screen; a random sample */
+.credit{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline;padding-top:16px;font-size:var(--t6);line-height:1.5;color:var(--ink-2)}
+.credit strong{color:var(--ink)}.credit a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+.row-head .row-note{margin-right:auto;font-size:var(--t6);color:var(--muted)}
+.tr-scene{font-family:var(--serif);font-size:clamp(17px,1.5vw,20px);line-height:1.45;color:var(--ink-2);margin:0 0 10px;max-width:40em}
+.paper-more{margin-top:0}.paper-more summary{cursor:pointer;padding:14px 0;font-weight:650;color:#fff;list-style:none;border-bottom:1px solid rgba(255,255,255,.18)}
+.paper-more summary::-webkit-details-marker{display:none}.paper-more summary::after{content:' ▾';color:#b9c3dc}.paper-more[open] summary::after{content:' ▴'}
+.paper-more[open] summary{border-bottom:0}.paper-more .paper-list{border-top:0}

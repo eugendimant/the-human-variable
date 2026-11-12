@@ -125,5 +125,13 @@
   // R31: text clipped by its own overflow-hidden box (review 34: "(not signifi" on the allocate plate)
   for (const e of document.querySelectorAll('body *')) { if (!vis(e) || e.closest('svg,.sr-only,input,textarea,select')) continue; if (![...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
     const cs = getComputedStyle(e); if (/hidden|clip/.test(cs.overflowX) && e.scrollWidth > e.clientWidth + 2 && cs.textOverflow !== 'ellipsis') push('R31', name(e), 'clipped text: ' + e.textContent.trim().slice(0, 40)) }
+  // R34: a word alone on the last line of a wrapped text block (owner, 2026-11-12: "orphans are a no-no"). The last two words may sit in one nowrap unit (tieEnds in src/app.js).
+  for (const e of document.querySelectorAll('h1,h2,h3,h4,p,li,summary,figcaption,.scene,.q,.opt>span:nth-of-type(2),.tr-q,.tr-scene,.reveal-title,.study-line,.round-steps strong')) { if (!vis(e) || e.closest('svg,.sr-only,.tutor-answer,[hidden]')) continue;
+    if ([...e.children].some(k => !/^(inline|inline-block|contents)$/.test(getComputedStyle(k).display))) continue;   // a row of separate boxes (text and a button) is not one wrapped block
+    const cs = getComputedStyle(e), lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.3; if (e.getBoundingClientRect().height < lh * 1.6 || cs.display === 'inline') continue;
+    const tw = document.createTreeWalker(e, NodeFilter.SHOW_TEXT); const parts = []; let n; while ((n = tw.nextNode())) { if (n.parentElement.closest('svg,script,style')) continue; const tx = n.textContent; const re = /[^ \t\n\r]+/g; let m; while ((m = re.exec(tx))) parts.push([n, m.index, m.index + m[0].length]) }
+    if (parts.length < 3) continue; const rect = pr => { const rg = document.createRange(); rg.setStart(pr[0], pr[1]); rg.setEnd(pr[0], pr[2]); const rs = [...rg.getClientRects()]; return rs.length ? rs[rs.length - 1] : null };
+    const last = parts[parts.length - 1], prev = parts[parts.length - 2], a = rect(last), b = rect(prev); if (!a || !b) continue;
+    if (a.top > b.bottom - 2 && !/\u00a0/.test(last[0].textContent.slice(last[1], last[2]))) push('R34', name(e), 'one word alone on the last line: ' + last[0].textContent.slice(last[1], last[2])) }
   return out;
 }

@@ -120,7 +120,7 @@ function console_() {
     <div class="play-grid" style="margin-top:16px">${stage()}<div class="side" style="top:16px">${live() && !showPicker ? `<div class="panel" style="padding:18px"><p style="margin:0 0 10px">The decision list is hidden while answers are live, so the projector shows only the question.</p><button class="btn btn-quiet" data-act="picker">Show the decision list</button></div>` : picker()}<div class="panel" style="padding:18px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-quiet" data-act="joining" aria-pressed="${state && state.joining === false ? 'true' : 'false'}">${state && state.joining === false ? 'Reopen joining' : 'Close joining'}</button><button class="btn btn-quiet" data-act="projector">Projector view</button><button class="btn btn-quiet" data-act="csv">Download answers (CSV)</button><button class="btn btn-quiet" data-act="copy">Copy join link</button><button class="btn btn-quiet" data-act="end">End session and delete data</button></div></div></div></section>`;
 }
 
-function render() { qs('#view').innerHTML = S ? (state ? console_() : '<p class="wrap" style="padding:40px 0">Connecting…</p>') : setup(); fitProjector(); connNote() }
+function render() { qs('#view').innerHTML = S ? (state ? console_() : '<p class="wrap" style="padding:40px 0">Connecting…</p>') : setup(); fitProjector(); tieEnds(qs('#view')); connNote() }
 let pollMisses = 0;
 function fitProjector() {   // the projected page always fits its screen, at 1280x720 as at 1440x900 (review 38, I-3)
   const b = document.body; b.style.zoom = '';

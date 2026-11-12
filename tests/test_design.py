@@ -169,3 +169,89 @@ def test_clipped_text_is_caught():
         pg.set_content('<b style="display:block;width:300px;overflow:hidden;white-space:nowrap">+21.9% (not significant)</b>')
         clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R31' and 'clipped' in h[2]]; b.close()
     assert hit and not clean
+
+
+def test_orphan_is_caught():
+    """Owner, 2026-11-12: "orphans are a no-no". A word alone on the last line is flagged; the same text with its last two words tied is not."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    bad = '<p style="width:150px;font:16px sans-serif">alpha bravo charlie delta golftangofoxtrotwhiskeyyankee</p>'
+    good = '<p style="width:150px;font:16px sans-serif">alpha bravo charlie <span class="nw" style="white-space:nowrap">delta golftangofoxtrotwhiskeyyankee</span></p>'
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900})
+        pg.set_content(bad); hit = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R34']
+        pg.set_content(good); clean = [h for h in pg.evaluate(design_lint.JS) if h[0] == 'R34']; b.close()
+    assert hit and not clean, (hit, clean)
+
+
+def test_pages_tie_the_last_two_words():
+    """Owner, 2026-11-12: render() ties the last two words of every text block, so the landing page has no orphan at any width."""
+    from playwright.sync_api import sync_playwright
+    import design_lint
+    from test_browser import URL
+    with sync_playwright() as p:
+        b = p.chromium.launch(); hits = []
+        for w, h in ((390, 844), (820, 1100), (1280, 720), (1440, 900), (1920, 1080)):
+            pg = b.new_page(viewport={'width': w, 'height': h}); pg.goto(URL); pg.wait_for_timeout(300)
+            hits += [(w,) + tuple(x) for x in pg.evaluate(design_lint.JS) if x[0] == 'R34']; pg.close()
+        b.close()
+    assert not hits, hits
+
+
+def test_landing_page_has_no_sideways_scroll():
+    """Iteration 67: the Dimant paper list set its venue line to nowrap and pushed the landing page to 475 px at 390; no width may scroll sideways."""
+    from playwright.sync_api import sync_playwright
+    from test_browser import URL
+    with sync_playwright() as p:
+        b = p.chromium.launch(); wide = []
+        for w in (320, 360, 390, 430, 600, 820, 1024, 1280, 1440, 1920):
+            pg = b.new_page(viewport={'width': w, 'height': 844}); pg.goto(URL); pg.wait_for_timeout(200)
+            sw = pg.evaluate('document.documentElement.scrollWidth')
+            if sw > w: wide.append((w, sw))
+            pg.close()
+        b.close()
+    assert not wide, wide
+
+
+def test_front_page_sample_is_random_and_every_sample_works():
+    """Owner, 2026-11-12: "different studies at random on the front page, not just the same". The sample changes on each visit, never repeats the last one, and every candidate locks and reveals."""
+    from playwright.sync_api import sync_playwright
+    from test_browser import URL
+    with sync_playwright() as p:
+        b = p.chromium.launch(); seen = set()
+        for _ in range(14):
+            ctx = b.new_context(); pg = ctx.new_page(); pg.goto(URL); seen.add(pg.text_content('#try-q')); ctx.close()
+        assert len(seen) >= 4, seen
+        ctx = b.new_context(); pg = ctx.new_page(); pg.goto(URL); prev = pg.text_content('#try-q')
+        for _ in range(8):
+            pg.reload(); cur = pg.text_content('#try-q'); assert cur != prev, 'the same sample twice in a row'; prev = cur
+        ctx.close()
+        pool = pg_ids = None
+        pg = b.new_page(); pg.goto(URL)
+        pool = pg.get_attribute('.try-ruler', 'data-pool').split(','); assert len(pool) >= 6, pool
+        for cid in pool:
+            errs = []; q = b.new_page(); q.on('pageerror', lambda e: errs.append(str(e))); q.goto(URL + '?hero=' + cid)
+            q.evaluate("()=>{const r=document.querySelector('#hero-range');r.value=Math.round((+r.min+ +r.max)/2);r.dispatchEvent(new Event('input',{bubbles:true}))}"); q.click('[data-act=hero-lock]'); q.wait_for_selector('.try-result:not(:empty)')
+            txt = q.text_content('.try-result'); assert txt.startswith('The study found ') and 'points off' in txt or 'exactly right' in txt, (cid, txt)
+            assert not errs, (cid, errs); q.close()
+        b.close()
+
+
+def test_served_landing_page_names_the_owners_papers():
+    """Review 42, M-1: the server strips source titles, so the served band showed 18 empty rows while the offline file looked fine."""
+    import sys, tempfile, threading
+    from pathlib import Path
+    from playwright.sync_api import sync_playwright
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from server import app, classroom as cl
+    app.STORE = cl.Store(Path(tempfile.mkdtemp()) / 'band.sqlite3'); app.LIMIT = app.Limiter()
+    srv = app.Server(('127.0.0.1', 0), app.Handler); threading.Thread(target=srv.serve_forever, daemon=True).start()
+    base = f'http://127.0.0.1:{srv.server_address[1]}'
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(); pg = b.new_page(viewport={'width': 1440, 'height': 900}); pg.goto(base + '/'); pg.wait_for_timeout(300)
+            titles = pg.evaluate("[...document.querySelectorAll('.paper-list strong')].map(e => e.textContent.trim())")
+            visible = pg.evaluate("[...document.querySelectorAll('.dimant > div:last-child > .paper-list li')].length"); b.close()
+    finally: srv.shutdown()
+    assert len(titles) >= 15 and all(len(t) > 12 for t in titles), titles
+    assert visible == 5, visible   # five rows show; the rest sit under "Show all"
