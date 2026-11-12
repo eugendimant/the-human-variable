@@ -141,7 +141,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         exact = [f for f in fol if _norm(f['q']) in (_norm(question), _norm(bare))]
         jac = lambda f: len(set(tokens(f['q'])) & qt) / max(1, len(set(tokens(f['q'])) | qt))
         if exact: return out(exact[0]['a'], c)
-        gm = re.match(r"^(?:what(?:.s| is| are| does| do)|define|explain) (an? |the )?(?:term |word )?['\"\u201c\u201d\u2018\u2019]?(.+?)['\"\u201c\u201d\u2018\u2019]?( means?| stands? for)?\??$", bare)   # "what is a p-value?": a method word gets its plain definition; "what is the p-value?" asks about this study (review 40)
+        gm = re.match(r"^(?:what(?:.?s| is| are| does| do)|define|explain) (an? |the )?(?:term |word )?['\"\u201c\u201d\u2018\u2019]?(.+?)['\"\u201c\u201d\u2018\u2019]?( means?| stands? for)?(?: to me| for me| please| in plain (?:english|words))?[?.]?$", bare)   # "what is a p-value?": a method word gets its plain definition; "what is the p-value?" asks about this study (review 40)
         if gm and (gm.group(3) or gm.group(1) != 'the '):
             gd = next((d for rx, d in R.get('glossary', []) if re.fullmatch(rx, gm.group(2))), None)
             if gd: return {'answer': gd, 'citations': [], 'mode': 'curated'}
@@ -151,7 +151,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             return out(f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", c)   # an ethics question never gets a follow-up that happens to share its words (review 25, M2)
         openq = is_open(ql)
         fol = [f for f in fol if not openq or not re.match(r'(Yes|No)\b', f['a'])]
-        yn = lambda f: f['a'] if not (qt - set(tokens(f['q'])) - GENERIC - set(tokens(' '.join(R['filler'])))) else strip_yn(f['a'])   # a near match keeps its Yes or No only when the question adds no word of its own ("did the control group change?" is not "was there a control group?", review 26)
+        yn = lambda f: strip_yn(f['a'])   # only the stored question, word for word, keeps its Yes or No (review 41, m1)
         if fol and jac(max(fol, key=jac)) >= 0.6: return out(yn(max(fol, key=jac)), c)
         has = lambda w: any(w == x or (min(len(w), len(x)) >= 3 and (w.startswith(x) or x.startswith(w))) for x in qt)
         sub = [f for f in fol if len(set(tokens(f['q']))) >= 2 and all(has(w) for w in tokens(f['q']))]   # never on one shared word: review 29's one-word variant borrowed 'cost' and 'card' answers for significance questions in the golden diff   # every content word of a follow-up appears in the question (fix ~ fixed)
@@ -232,6 +232,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             if name == 'raters':   # who judged the outcome: a follow-up that says so, else the scope line
                 fr = [f for f in c.get('follow', []) if re.search(r'\b(rat(ed|ers?)|evaluat\w*|judg\w*|coders?|graded)\b', f['q'], re.I)]
                 rw = re.search(r'\b(rat(ed|ers?|ings?)|evaluat\w*|judg\w*|coders?|graded|review(ed|ers?))\b', c['boundary'] + ' ' + st.get('design', ''), re.I)   # no rater line in the summary: say so (review 38, I-8)
+                rs = next((x for x in re.sub(r'([.!?])\s+(?=[A-Z0-9])', r'\1\n', c.get('scene', '')).split('\n') if re.search(r'\b(rat(ed|ers?|ings?)|evaluat\w*|judg\w*|coders?|graded|review(ed|ers?))\b', x, re.I)), None)   # the scene names the graders (review 41)
+                if not fr and rs: return out(f"From the study’s setup: {rs.strip()}", c)
                 return out(strip_yn(fr[0]['a']) if fr else ('' if rw else 'The lab’s summary does not record who rated the outcome; the paper’s methods section does. ') + f"What the study covers: {c['boundary']}" + (f" Design: {st['design']}." if st.get('design') else ''), c)
             if name == 'scope': return out(f"What the study covers: {c['boundary']}" + (f" Sample: {st['n']}." if st.get('n') else ''), c)
             if name == 'prereg':
@@ -264,7 +266,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 fl = [f for f in fol if re.search(r'\b(long|last|later|weeks?|months?|years?|fade|persist|after)\b', f['q'] + ' ' + f['a'], re.I)]
                 fy = [f for f in c.get('follow', []) if re.search(r'\b(last|long|persist\w*|fade\w*)\b', f['q'], re.I)]   # "how long did it last?" still gets the item's own "Did it last?" answer, without its Yes or No (review 37)
                 if not fl and fy: return out(strip_yn(fy[0]['a']), c)
-                return out(fl[0]['a'] if fl else ('' if re.search(r'\b(\d+|one|two|three|four|five|six|nine|ten|twelve)[- ](days?|weeks?|months?|years?)\b|\b\d+ (days?|weeks?|months?|years?)\b', st.get('design', '') + ' ' + st.get('n', '') + ' ' + c['boundary'], re.I) else 'The lab’s summary does not record how long the effect lasted. ') + f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
+                return out(strip_yn(fl[0]['a']) if fl else ('' if re.search(r'\b(\d+|one|two|three|four|five|six|nine|ten|twelve)[- ](days?|weeks?|months?|years?)\b|\b\d+ (days?|weeks?|months?|years?)\b', st.get('design', '') + ' ' + st.get('n', '') + ' ' + c['boundary'], re.I) else 'The lab’s summary does not record how long the effect lasted. ') + f"Design: {st.get('design', 'see the paper')}." + (f" Sample: {st['n']}." if st.get('n') else '') + f" What the study covers: {c['boundary']}", c)
             if name == 'ethics': return out(f"The study measures what happened, not what is right; that call is yours. What it covers: {c['boundary']} What a manager can do with it: {c['implication']}", c)
             if name == 'subgroup':
                 fh = [f for f in fol if re.search(R['subgroupFollow'], f['q'], re.I)]

@@ -13,7 +13,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 ## Summary
 
 - Decisions in scored play: 112 (formats: forecast 35, choice 30, estimate 23, multi 11, delegate 4, causal 4, rank 3, allocate 2).
-- Sources: 110 (61 checked against the published full text, 3 against the authors' accepted manuscript, 1 against the publisher's abstract and figure legends, 44 against the published abstract, 1 quarantined).
+- Sources: 110 (62 checked against the published full text, 3 against the authors' accepted manuscript, 1 against the publisher's abstract and figure legends, 43 against the published abstract, 1 quarantined).
 - Corrections applied to the 28 carried-forward sources and their 60 decisions: 25 logged changes (`docs/audit/corrections_2026-10-31.json`).
 - Decisions retired with reasons: 35 (listed below).
 - Track balance: AI × Business 46, Culture & Society 30, Business 29, Judgment 7.
@@ -31,7 +31,7 @@ Generated from `src/bank.json` by `tools/make_audit_doc.py`. Audit date: 2026-10
 | Bastani et al. (2025). *Generative AI without guardrails can harm learning: Evidence from high school mathematics*. [doi:10.1073/pnas.2422633122](https://doi.org/10.1073/pnas.2422633122) | Proceedings of the National Academy of Sciences 122(26) e2422633122 | Full text | rollout4 | Correction (PNAS 2025, doi:10.1073/pnas.2518204122) fixes one author affiliation only; findings unchanged. |
 | Bates & Gupta (2017). *Smart groups of smart people: Evidence for IQ as the origin of collective intelligence in the performance of human groups*. [doi:10.1016/j.intell.2016.11.004](https://doi.org/10.1016/j.intell.2016.11.004) | Intelligence 60 46-56 | Abstract | social10 |  |
 | Benartzi & Thaler (2001). *Naive Diversification Strategies in Defined Contribution Saving Plans*. [doi:10.1257/aer.91.1.79](https://doi.org/10.1257/aer.91.1.79) | American Economic Review 91(1) 79-98 | Abstract | bz16 |  |
-| Bertrand & Mullainathan (2004). *Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination*. [doi:10.1257/0002828042002561](https://doi.org/10.1257/0002828042002561) | American Economic Review 94(4) 991-1013 | Abstract | social12 |  |
+| Bertrand & Mullainathan (2004). *Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination*. [doi:10.1257/0002828042002561](https://doi.org/10.1257/0002828042002561) | American Economic Review 94(4) 991-1013 | Full text | social12 |  |
 | Bertrand et al. (2010). *What's Advertising Content Worth? Evidence from a Consumer Credit Marketing Field Experiment*. [doi:10.1162/qjec.2010.125.1.263](https://doi.org/10.1162/qjec.2010.125.1.263) | The Quarterly Journal of Economics 125(1) 263-305 | Abstract | bz09 |  |
 | Bicchieri, Dimant & Sonderegger (2023). *It's not a lie if you believe the norm does not apply: Conditional norm-following and belief distortion*. [doi:10.1016/j.geb.2023.01.005](https://doi.org/10.1016/j.geb.2023.01.005) | Games and Economic Behavior 138 321-354 | Full text | dimant-notalie-causal |  |
 | Bicchieri, Dimant & Xiao (2021). *Deviant or wrong? The effects of norm information on the efficacy of punishment*. [doi:10.1016/j.jebo.2021.04.002](https://doi.org/10.1016/j.jebo.2021.04.002) | Journal of Economic Behavior & Organization 188 209-235 | Full text | dimant-deviant-choice |  |

@@ -618,3 +618,10 @@ def test_no_journal_headers_in_quotes():
     ev = json.loads((ROOT / 'src/evidence.json').read_text())
     bad = [(cid, q.get('quote', '')[:60]) for cid, qs in ev.items() for q in qs if re.search(r'©|\bvol\.\s*\d+.*\bpp\.\s*\d|INFORMS\b', q.get('quote', ''))]
     assert not bad, bad
+
+
+def test_page_never_calls_the_toast_element():
+    """Review 41 Major: `toast` is the #toast element; messages go through notice(). A call to toast() throws inside the poll."""
+    src = (ROOT / 'src/app.js').read_text()
+    assert not re.search(r"(?<![\w.'#\"])toast\(", src)
+    assert re.search(r"(?<![\w.'#\"])toast\(", "if (x) toast('closed')")   # the detector fires

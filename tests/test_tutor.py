@@ -192,7 +192,7 @@ REVIEW20 = [('Does the wallet key matter?', 'civic-wallet-rank', 'Did the key in
 def test_offline_tutor_review20_distinctive_words(q, cid, fq):
     """Review 20, minor 5: a distinctive word the question shares with a follow-up picks that follow-up."""
     c = T.CHALLENGES[cid]; r = T.curated(q, cid)['answer']
-    want = [f['a'] for f in c['follow'] if f['q'] == fq] if fq else []
+    want = [x for f in c['follow'] if f['q'] == fq for x in (f['a'], T.strip_yn(f['a']))] if fq else []   # a near match drops the stored Yes or No (review 41, m1)
     assert r in want or (not fq and r.startswith('I could not match') and T.curated(q, cid).get('suggest')), r[:120]   # iteration 33: a match on one word of a follow-up's answer is weak, so the reply offers the summary's questions
 
 
@@ -508,3 +508,15 @@ def test_offline_tutor_review40(q, cid, want, cited):
 def test_glossary_definitions_fire_only_on_a_definition_question():
     assert 'A p-value is' not in T.curated('was the p-value small?', 'ai02')['answer']
     assert 'control group is the set' not in T.curated('did the control group change?', 'rollout4')['answer']
+
+
+@pytest.mark.parametrize('q,cid,want,bad', [
+    ('Did the effect last?', 'axb15', 'persisted at the two-month follow-up', 'No.'),   # a near match never keeps the stored Yes or No
+    ('who graded the work?', 'ai02', 'graded the finished work blind', 'does not record'),
+    ('whats a confidence interval', 'ai02', 'range of effect sizes', 'Noy'),
+    ('Explain statistical significance to me', 'ai02', 'Statistically significant means', 'Noy'),
+    ('what were the callback rates', 'social12', '9.65%', 'could not match'),
+])
+def test_offline_tutor_review41(q, cid, want, bad):
+    a = T.curated(q, cid)['answer']
+    assert want in a and bad not in a

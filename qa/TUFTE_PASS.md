@@ -4,7 +4,7 @@ The question asked of every page (rule 30 in `qa/DESIGN_RULES.md`). Each answer 
 
 ## Home
 - **Decoration that encodes nothing goes.** The path drawings were removed. Each path now shows a word-sized strip beside its count: one tick per decision, filled once played. It records the path's length and your progress, and nothing else.
-- **Data before chrome.** The hero's demo is a real estimate with its evidence plate, not a picture of one. The "Try one now" label above it was dropped; the question is the heading.
+- **Data before chrome.** The hero's demo is a real estimate with its evidence plate, not a picture of one. Since 2026-11-11 the landing page opens by saying what the game is and how a round works (owner: the bare question confused first-time visitors); the demo follows under a small "Try one now" heading, with the question as the largest line of its section.
 - **No grid of identical boxes.** The paths read as an index with rules between entries. The featured path keeps the one dark surface.
 - **Headline in three lines** at desktop width, at a size that leaves room for the lede.
 

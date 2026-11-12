@@ -317,11 +317,11 @@
    "volume": "94(4)",
    "pages": "991-1013",
    "verification": {
-    "status": "verified_abstract",
-    "checked": "2026-10-31",
+    "status": "verified_full_text",
+    "checked": "2026-11-11",
     "metadata": "matched Crossref record",
-    "text_read": "abstract (Crossref, version of record) + full text of NBER WP w9873",
-    "text_url": "https://www.nber.org/system/files/working_papers/w9873/w9873.pdf"
+    "text_read": "full text of the published article (AER 94(4), pp. 991-1013): abstract, Section III.A and Table 1",
+    "text_url": "https://users.ssc.wisc.edu/~gwallace/Papers/Bertrand%20&%20Mullainathan%20(2004).pdf"
    }
   },
   "blind00": {
@@ -2810,7 +2810,7 @@
    "options": [
     "Inertia, and the default read as advice",
     "The employer match required the default rate",
-    "Changing the rate took more paperwork than most would do"
+    "Higher rates were closed to newer staff, and few asked"
    ],
    "answer": 0,
    "answerTitle": "People took the default as advice",
@@ -3472,6 +3472,10 @@
    ],
    "follow": [
     {
+     "q": "What were the two callback rates?",
+     "a": "9.65% for White-sounding names and 6.45% for African-American-sounding names, a gap of 3.20 percentage points."
+    },
+    {
      "q": "Was the gap the same across jobs?",
      "a": "Yes. The racial gap was uniform across occupation, industry and employer size."
     },
@@ -3508,7 +3512,7 @@
      9.65
     ],
     "unit": "%",
-    "highlight": null,
+    "highlight": 1,
     "decimals": 2,
     "max": 10,
     "note": "Share of résumés that got a callback. 9.65 is 50% more than 6.45."
@@ -4777,7 +4781,7 @@
    },
    "concept": "Deskilling risk",
    "title": "Tutoring with GPT-4",
-   "scene": "Last step: training. In a field experiment, nearly 1,000 high school students practiced math with unrestricted GPT-4, then took exams without it. Your plan gives new hires the same unrestricted access.",
+   "scene": "Last step: training. In a field experiment with nearly 1,000 high school students, some practiced math with unrestricted GPT-4, and everyone then took exams without it. Your plan gives new hires the same unrestricted access.",
    "question": "How did unrestricted-AI students score on unaided exams versus controls?",
    "estimate": {
     "target": -17,
@@ -4863,7 +4867,7 @@
    "format": "forecast",
    "concept": "Ad ROI precision",
    "title": "The noisy ROI test",
-   "scene": "Twenty-five large randomized experiments tested digital ad campaigns at major US retailers and brokerages, covering $2.8 million of ad spending. A customer’s weekly sales swing far more than an ad can move them.",
+   "scene": "Twenty-five large randomized experiments tested digital ad campaigns at major US retailers and brokerages, covering $2.8 million of ad spending. Each one estimated its campaign’s return on investment.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Over 100 percentage points wide",
    "explain": "The median confidence interval on return on investment was over 100 percentage points wide, because individual sales are very noisy relative to ad effects.",
@@ -7009,7 +7013,7 @@
     ],
     "unit": "%",
     "highlight": null,
-    "note": "Share who cooperate if the partner does. The drop is as large for painting taste, so expectations set politics apart.",
+    "note": "Share who cooperate when they expect the partner to. The drop is about as large for a painting-taste outgroup as for a political one.",
     "decimals": 1
    }
   },
