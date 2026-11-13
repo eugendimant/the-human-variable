@@ -990,6 +990,7 @@ body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not
 </script>
 <script>// Shared by the game and the classroom pages (build.py puts it in front of app.js and classroom.js).
 // Owner, 2026-11-12: no word alone on the last line, anywhere. In every text block the last two words stay together (a nowrap span; the text itself does not change).
+// Iteration 73: the tied pair is measured. If it is wider than 85% of its box it is put back, because it would push a long word to the next line and leave the line above short (review 45, m-I1; a long pair in a narrow column breaks one word per line).
 // Iteration 70: this walks every text block on the page instead of a list of selectors. Flex and grid boxes are skipped, because their text is an anonymous item and a nowrap span would be pushed away from the rest (review 43, M-1).
 const TIE_SKIP = 'svg,script,style,textarea,input,select,option,button,pre,code,.tutor-answer,[contenteditable],.nw';
 function tieEnds(root) {
@@ -1001,10 +1002,26 @@ function tieEnds(root) {
     if (/flex|grid|contents|table(?!-cell)/.test(d) || cs.whiteSpace === 'nowrap' || cs.whiteSpace === 'pre') continue;
     const m = n.textContent.match(/^([\s\S]*\S)\s+(\S+\s*)$/); if (!m) continue;
     const head = m[1], tail = m[2], k = head.search(/\S+$/); if (k < 0) continue;
-    const pair = head.slice(k) + ' ' + tail; if (pair.trim().length > 26) continue;   // a long pair would push the page sideways on a phone
+    const pair = head.slice(k) + ' ' + tail; if (pair.trim().length > 40) continue;
     const sp = document.createElement('span'); sp.className = 'nw'; sp.textContent = pair;
     n.textContent = head.slice(0, k); n.after(sp);
+    if (sp.offsetWidth > e.clientWidth) { sp.remove(); n.textContent = m[0] }   // a pair wider than its box would push the page sideways: it stays as it was
   }
+}
+
+function fitHeadings(root) {   // a heading with a line of one word (beside the tied pair, or last) is set smaller, 5% at a time up to 34%, until none is (review 45, m-I1). Call after the fonts load and after every resize.
+  for (const h of root.querySelectorAll('h1,h2,h3')) {
+    h.style.fontSize = ''; if (!stranded(h)) continue;
+    let f = parseFloat(getComputedStyle(h).fontSize);
+    for (let i = 0; i < 8 && stranded(h); i++) { f *= .95; h.style.fontSize = f + 'px' }
+    if (stranded(h)) h.style.fontSize = '';
+  }
+}
+function stranded(e) {   // true when a line of the block holds one word and is not the only line
+  const r = document.createRange(), lines = []; let top = null;
+  const w = document.createTreeWalker(e, NodeFilter.SHOW_TEXT); let t;
+  while ((t = w.nextNode())) for (const m of t.textContent.matchAll(/\S+/g)) { r.setStart(t, m.index); r.setEnd(t, m.index + m[0].length); const y = Math.round(r.getBoundingClientRect().top / 4); if (y !== top) { lines.push(0); top = y } lines[lines.length - 1]++ }
+  return lines.length > 1 && lines.some(c => c === 1);
 }
 (() => {
 'use strict';
@@ -1210,7 +1227,7 @@ function home() {
   const done = new Set(records.map(r => r.id));
   const resume = paths.find(p => { const n = p.items.filter(id => done.has(id)).length; return n > 0 && n < p.items.length });
   const credit = `<div class="credit wrap"><span>Original concept by <strong>Dr. Eugen Dimant</strong>, University of Pennsylvania</span><a href="https://eugendimant.github.io" target="_blank" rel="noopener">eugendimant.github.io</a><a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a></div>`;
-  return `${credit}${resume && store.get('thv:resume-off', '') !== resume.id ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><span class="resume-r"><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button><button class="resume-x" data-act="resume-off" data-id="${esc(resume.id)}" aria-label="Hide this reminder">&times;</button></span></div>` : ''}<section class="hero wrap"><div class="hero-grid"><div class="intro"><div class="intro-main"><h1>How well can you predict people’s actions?</h1>
+  return `${credit}${resume && store.get('thv:resume-off', '') !== resume.id ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><span class="resume-r"><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button><button class="resume-x" data-act="resume-off" data-id="${esc(resume.id)}" aria-label="Hide this reminder">&times;</button></span></div>` : ''}<section class="hero wrap"><div class="hero-grid"><div class="intro"><div class="intro-main"><h1><span class="nw">How well can</span> <span class="nw">you predict</span> <span class="nw">people’s actions?</span></h1>
     <p class="hero-lede">Each round presents a real-life situation, from a published research study, that you are asked to predict. Once you have made your prediction, you will then be shown what the researchers actually found.</p>
     <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button></div></div></div>
     <div class="try-wrap">${heroTry()}</div></div></section>
@@ -1799,7 +1816,7 @@ function render(moveFocus) {
   if (st.view === 'almanac' && !libraryLoaded) loadLibrary();
   v.innerHTML = st.view === 'home' ? home() : st.view === 'atlas' ? atlas() : st.view === 'almanac' ? almanac() : st.view === 'record' ? record() : play();
   document.body.classList.toggle('in-play', st.view === 'play');
-  balanceReveal(); fitQuestion(); tieEnds(v);
+  fitQuestion(); tieEnds(v); fitHeadings(v); balanceReveal();   // the reveal is balanced last: the tied pairs and smaller headings change the heights it measures
   qa('.nav button').forEach(b => b.setAttribute('aria-current', (b.dataset.nav === st.view || (b.dataset.nav === 'almanac' && st.view === 'atlas')) ? 'page' : 'false'));
   qs('.nav').classList.toggle('open', st.menu);
   const c = card();
@@ -1831,7 +1848,7 @@ function balanceReveal() {   // the shorter column takes the study card and the 
   else if (gLeft < gWide && fb > lb) { rv.classList.add('meta-left'); const gap = meta.getBoundingClientRect().top - lb - 24; if (gap > 0) meta.style.marginTop = -gap + 'px' }   // a tall figure: the card sits under the text, pulled up beside the figure
   else rv.classList.add('meta-wide');
 }
-let balT; addEventListener('resize', () => { clearTimeout(balT); balT = setTimeout(() => { balanceReveal(); fitQuestion() }, 150) });
+let balT; addEventListener('resize', () => { clearTimeout(balT); balT = setTimeout(() => { fitQuestion(); fitHeadings(qs('#view') || document); balanceReveal() }, 150) });
 function animateReveal() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   // the study's number counts up from the player's call: the one orchestrated moment of the reveal
@@ -1951,7 +1968,7 @@ if (PUBLIC) { TUTOR_REMOTE = '/api/tutor'; refreshLock() }
 if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; TUTOR_AI = true; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }
-try { document.fonts && document.fonts.ready.then(() => { const old = { ...TW }; for (const k in TW) delete TW[k]; const moved = Object.keys(old).some(k => { const i = k.indexOf('|'); return Math.abs(textWidth(k.slice(i + 1), +k.slice(0, i)) - old[k]) > .5 }); if (moved && document.querySelector('svg.dag')) { const f = document.activeElement && document.activeElement.matches('h1, h2') ? document.activeElement.id || document.activeElement.className : null; render(); if (f) { const e = document.getElementById(f) || document.querySelector('.' + String(f).split(' ')[0]); e && e.focus() } } }) } catch { }   // redraw only if the real font measures differently, and keep focus (audit 33)
+try { document.fonts && document.fonts.ready.then(() => { fitHeadings(qs('#view') || document); balanceReveal(); const old = { ...TW }; for (const k in TW) delete TW[k]; const moved = Object.keys(old).some(k => { const i = k.indexOf('|'); return Math.abs(textWidth(k.slice(i + 1), +k.slice(0, i)) - old[k]) > .5 }); if (moved && document.querySelector('svg.dag')) { const f = document.activeElement && document.activeElement.matches('h1, h2') ? document.activeElement.id || document.activeElement.className : null; render(); if (f) { const e = document.getElementById(f) || document.querySelector('.' + String(f).split(' ')[0]); e && e.focus() } } }) } catch { }   // redraw only if the real font measures differently, and keep focus (audit 33)
 if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else { const v = fromHash(location.hash); if (v !== 'play') st.view = v; render(); if (PARAM.get('play')) notice('That decision link is out of date. Pick a decision from the list.') }
 if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records, curated }; // test hook (offline file only)
 })();
