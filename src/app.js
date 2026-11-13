@@ -356,8 +356,8 @@ function studyCard(c, checked = true) {
   const d = c.study || {}, s = SOURCE[c.sources[0]] || {}, rows = [['Design', d.design], ['Sample', sampleLine(c)], ['Published', s.venue ? `${s.venue}, ${s.year}` : ''], ['Checked', checked ? srcStatus(s)[0] : '']].filter(r => r[1]), link = k => k === 'Published' && s.url;
   return `<dl class="study-card">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${link(k) ? `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(v)}</a>` : esc(v)}</dd></div>`).join('')}</dl>`;
 }
-function tutorParas(t) {   // the served tutor sends one run of text; a labelled part starts a new paragraph, as in the offline answers (review 46, m-2)
-  return String(t).replace(/([.!?”’)])[ \t]+(?=(?:Who was studied|Design|Sample|What the study covers|What the study measured|What it covers|What a manager (?:does|can do) with it|In practice|The study itself|The finding itself|Why):)/g, '$1\n\n');
+function tutorParas(t) {   // the offline and the served tutor give the same words; paragraphs are made here from the labels, so both look the same (review 46, m-2; review 48)
+  return String(t).replace(/\s*\n\n\s*/g, ' ').replace(/([.!?”’)])[ \t]+(?=(?:Who was studied|Design|Sample|What the study covers|What the study measured|What it covers|What a manager (?:does|can do) with it|In practice|The study itself|The finding itself|Why):)/g, '$1\n\n');
 }
 function durationOk(c) {   // the decision has a follow-up that asks outright whether or how long the effect lasted (review 47, m-I2)
   return (c.follow || []).some(x => /^(did the effect (last|fade|persist)|how long did the effect last)/i.test(x.q));

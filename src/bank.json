@@ -9411,7 +9411,7 @@
    ],
    [
     "authors",
-    "\\b(who (did|ran|conducted|carried out|is behind|made|performed) (the|this) [\\w-]+|who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\\b|\\bwhere (can|do|could) (i|we) (read|find|get) (the|this|it|that) (paper|study|article|full text)\\b"
+    "\\b(who (did|ran|conducted|carried out|is behind|made|performed) (the|this) [\\w-]+|who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\\b|\\bwhere (can|do|could) (i|we) (read|find|get) (the|this|it|that) (original |full |actual |published )?(paper|study|article|full text)\\b"
    ],
    [
     "voluntary",
@@ -9435,11 +9435,11 @@
    ],
    [
     "who",
-    "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students|clinicians|physicians|doctors|nurses|managers|firms|teams|forecasters|respondents|users|writers|developers|consultants|households|adults)|sample size|who took part|population)\\b|\\bwho (took part|participated|were the subjects|were they|were involved)\\b|\\bsubjects\\b"
+    "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students|clinicians|physicians|doctors|nurses|managers|firms|teams|forecasters|respondents|users|writers|developers|consultants|households|adults)|sample size|who took part|population)\\b|\\bwho (took part|participated|were the subjects|were they|were involved)\\b"
    ],
    [
     "catch",
-    "\\b(catch|backfire|downside|drawback|limit\\w*|risk|caveat|fail\\w*|weakness|criticis\\w*|question(ed)? this|later work)\\b|\\bhow (reliable|sure|certain|robust|solid) (is|are|can)\\b|\\bhow sure can (i|we) be\\b"
+    "\\b(catch|backfire|downside|drawback|limit\\w*|risk|caveat|fail\\w*|weakness|criticis\\w*|question(ed)? this|later work)\\b|\\bhow (reliable|sure|certain|robust|solid) (is|are) (this|that|it|the (study|finding|result|evidence|paper|effect))\\b|\\bhow sure can (i|we) be\\b"
    ],
    [
     "summary",

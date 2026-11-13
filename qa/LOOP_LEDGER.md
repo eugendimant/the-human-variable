@@ -1047,3 +1047,14 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Header.** The credit line sits in the header bar between the logo and the menu, on one row, at 1260 px and wider (sentence and website; the email stays in the page footer). Measured at 1260, 1300, 1440 and 1920 with "Join a class" showing: the credit ends at least 28 px before the menu starts and the menu stays on one line. Below 1260 px the page carries the credit as before.
 - **Tutor routes (m-1).** `tools/tutor_routes_review47_2026_11_13.py` widens five routes (who took part / subjects; "was it a field/lab/online study"; "where can I read the paper"; "one-line takeaway"; "how reliable / how sure can I be"). Page and server read the same table. Golden regenerated: 29 answers changed, all of them "Is this a lab study?" (now the design and sample line, was the scope line).
 - **Gates (iteration 76).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 48).
+
+## Review 48 (Sonnet 5.5 agent, on iteration 76): 81/100, 0 Blocking, 0 Major, 14 Minor, 4 Optional
+- **Held up:** header bar at nine widths (no overlap, no wrap, with and without "Join a class"); duration chip right on both decisions that show it; 26 of 26 quotes for the iteration-66 decisions; all 114 DOIs resolve; True/False scoring 12 of 12; no leak; 120 joins and answers; 240 plays with 0 stranded words.
+- **Introduced by 76:** the bare word "subjects" stole questions; "how reliable" matched other subjects ("How reliable is ChatGPT at writing?"); "original paper" missed.
+- **Score trend:** 84, 84, 83, 81, 81, 79, 79, 80, 81.
+
+## Iteration 77 (from review 48)
+- **Tutor routes.** "subjects" alone is gone (only "who were the subjects"); "how reliable" needs "this / it / the study / the finding / the result / the evidence / the paper / the effect"; "original, full, actual, published paper" accepted. Same script, idempotent; golden unchanged.
+- **Paragraphs (m-2, again).** Both tutors now give the same words; the page makes paragraphs from labels at render time for both, so the offline and the served answer look the same. (Old unlabelled breaks in the offline answers are gone.)
+- **Not changed:** meta-left hole beside the figure, reveal width, projector 1280x720 type, option cues, biz02 and bz14, landing lede rag, a phone that has not answered keeps live controls after answers close (server rejects it).
+- **Gates (iteration 77).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 49).
