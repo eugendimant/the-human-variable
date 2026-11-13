@@ -1084,3 +1084,8 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **I-1.** The counting rule moved from the question to the scene of repro-msci-estimate; the question is back to its original 15 words.
 - **I-2.** The explain of false-news-spread is back to its earlier wording; the key now reads "False stories were more novel, and humans spread them" (what the paper measured); the pin file is updated. Script `tools/review46_fixes_2026_11_13.py`, idempotent.
 - **Gates (iteration 80).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 51).
+
+## Iteration 81 (review 50, m-3 and m-6)
+- **Landing lede.** The owner's text is unchanged. It is cut into six phrases that wrap as wholes where the column is wide enough (1100 px and wider, and 600 to 900 px). Between 900 and 1100 px and below 600 px it wraps freely (the spans are `display:contents` there). Six short lines at 1440 px; no line starts with "from a" and none ends with "that you are".
+- **Projector.** Labels, units and tags are 17 px before the zoom. Smallest text at 1280x720 on the open view of the allocate item is 13.9 px (was 11.6); on the reveal 13.3 to 15 px.
+- **Gates (iteration 81).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 51).

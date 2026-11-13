@@ -115,3 +115,5 @@ body.projector:has(.rv) .wrap,body.projector .wrap{padding-bottom:20px !importan
 
 body.projector .join-banner .kicker,body.projector .btn,body.projector .stage-meta,body.projector .kicker.proj-factors{font-size:17px}   /* review 44, m-2: the chrome was 11 px after the fit zoom */
 body.projector:has(.rv) .rv-tag{font-size:.95em}body.projector:has(.rv) .play-grid>.card h3,body.projector:has(.rv) .kicker{font-size:17px}
+/* Projector: no label under 17 px before the zoom, the small units on the reveal too (review 50, m-3). */
+body.projector .kicker,body.projector .rv-unit,body.projector .rv-tag{font-size:17px}
