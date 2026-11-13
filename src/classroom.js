@@ -125,8 +125,16 @@ let pollMisses = 0;
 function fitProjector() {   // the projected page always fits its screen, at 1280x720 as at 1440x900 (review 38, I-3)
   const b = document.body; b.style.zoom = '';
   if (!b.classList.contains('projector')) return;
-  const h = Math.max(0, ...[...document.querySelectorAll('.join-banner, .play-grid>.card')].map(e => e.getBoundingClientRect().bottom + scrollY)) + 20;   // the content's own bottom edge, not the wrapper's padding (review 39, I-3)
-  if (h > innerHeight + 1) b.style.zoom = Math.max(.6, (innerHeight - 4) / h).toFixed(3);
+  const bottom = () => Math.max(0, ...[...document.querySelectorAll('.join-banner, .play-grid>.card')].map(e => e.getBoundingClientRect().bottom)) + 20;   // the content's own bottom edge on the screen, not the wrapper's padding (review 39, I-3)
+  let z = 1; if (bottom() <= innerHeight + 1) return;
+  // Review 44, m-2: one proportional step left the page at 0.77 with 120 px of empty screen below it, because the cards' heights do not scale in step with the zoom. Refine until the content ends just inside the screen.
+  for (let k = 0; k < 6; k++) {
+    b.style.zoom = z.toFixed(3); const e = bottom();
+    if (e > innerHeight) z = Math.max(.6, z * (innerHeight - 4) / e);
+    else if (e < innerHeight * .94 && z < 1) z = Math.min(1, z * (innerHeight - 4) / e);
+    else break;
+  }
+  b.style.zoom = z.toFixed(3); if (bottom() > innerHeight + 1) b.style.zoom = Math.max(.6, z * (innerHeight - 4) / bottom()).toFixed(3);
 }
 function connNote() {   // the console says when its own polls fail (review 38, m9)
   let n = qs('#conn-note');

@@ -21,8 +21,9 @@
   function estimate(c, value) {
     const e = c.estimate;
     const gap = Math.abs(value - e.target);
-    // Full credit inside the tolerance band, then linear decay to zero at two tolerances from the target.
-    const score = gap <= e.tolerance ? 1 : clamp(1 - (gap - e.tolerance) / e.tolerance, 0, 1);
+    // Graded by distance (owner, 2026-11-13: being inside the band must not score the same as being exact): 1 at the study value,
+    // one half at the edge of the band, zero at two tolerances. `correct` (inside the band) still feeds the calibration plot.
+    const score = clamp(1 - Math.max(0, gap - (e.step || 1) / 2) / (2 * e.tolerance), 0, 1);   // half a slider step is free: the nearest slider position to the study value scores 1
     return { score, correct: gap <= e.tolerance, detail: { gap: Math.round(gap * 10) / 10 } };
   }
 
@@ -155,10 +156,10 @@
       default: return 0;
     }
   }
-  // Best bank-wide average raw score of a no-information estimate strategy: one constant value everywhere (0.348), the same
-  // slider position everywhere (0.302) or a random position (0.176). A format constant, like 0.5 for a forecast, so every
+  // Best bank-wide average raw score of a no-information estimate strategy: one constant value everywhere (0.242), the same
+  // slider position everywhere (0.210) or a random position (lower). A format constant, like 0.5 for a forecast, so every
   // correct estimate earns full credit and no blind strategy earns skill on average.
-  const EST_BASE = 0.35;
+  const EST_BASE = 0.245;
   function skill(c, raw) { const b = baseline(c); return b >= 1 ? 0 : (raw - b) / (1 - b) }
 
   const api = { score, ready, baseline, skill, EST_BASE, statedProbability, calibration, toCalibrationRecord, formats: Object.keys(scorers) };

@@ -61,3 +61,17 @@ for(const c of B.challenges){let r=null;
 console.log(JSON.stringify(out))"""
     out = json.loads(subprocess.run(['node', '-e', js], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
     assert out and all(abs(v) < 0.05 for _, v in out), [x for x in out if abs(x[1]) >= 0.05]
+
+
+def test_estimate_credit_is_graded_by_distance():
+    """Owner, 2026-11-13: an estimate inside the band must not score the same as an exact one. 1 at the study value, 0.5 at the band's edge, 0 at twice the band, in the page and on the server."""
+    import subprocess, json as _j
+    c = {'id': 'x', 'format': 'estimate', 'estimate': {'target': 13, 'min': 0, 'max': 40, 'tolerance': 3, 'step': 1}}
+    gaps = [0, 1, 2, 3.5, 4, 6.5, 9]   # half a slider step is free, so the band's edge scores 0.5 at 3.5 and zero comes at 6.5
+    py = [scoring.score(c, 13 + g)['score'] for g in gaps]
+    js = "const S=require('./src/scoring.js');const c=%s;console.log(JSON.stringify(%s.map(g=>S.score(c,13+g).score)))" % (_j.dumps(c), _j.dumps(gaps))
+    node = _j.loads(subprocess.run(['node', '-e', js], cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+    assert all(abs(a - b) < 1e-9 for a, b in zip(py, node)), (py, node)
+    assert py[0] == 1 and abs(py[3] - 0.5) < 1e-9 and py[5] == 0 and py[6] == 0 and scoring.score(c, 13.4)['score'] == 1
+    assert py[0] > py[1] > py[2] > py[3] > py[4] > py[5], py          # every point closer earns more, inside the band too
+    assert scoring.score(c, 15)['correct'] and not scoring.score(c, 17)['correct']   # the band still decides "matches the study"

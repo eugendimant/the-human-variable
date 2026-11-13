@@ -13,7 +13,7 @@ def score(c: dict, r) -> dict:
         return {'score': hits / len(c['multiAnswers']), 'correct': hits == len(c['multiAnswers']) and len(s) == len(c['multiAnswers'])}
     if f == 'estimate':
         e = c['estimate']; gap = abs(r - e['target'])
-        sc = 1.0 if gap <= e['tolerance'] else _clamp(1 - (gap - e['tolerance']) / e['tolerance'], 0, 1)
+        sc = _clamp(1 - max(0.0, gap - e.get('step', 1) / 2) / (2 * e['tolerance']), 0, 1)   # graded by distance: 1 at the study value, 0.5 at the band's edge, 0 at two tolerances (owner, 2026-11-13)
         return {'score': sc, 'correct': gap <= e['tolerance']}
     if f == 'forecast':
         p = _clamp(float(r) / 100, 0, 1); t = 1 if c['forecast']['truth'] else 0; b = (p - t) ** 2

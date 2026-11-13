@@ -52,6 +52,7 @@ body.projector .rp-badge{width:56px;height:56px;font-size:28px}
 
 /* projector, before the reveal: the room's answer count fills the right half */
 body.projector .play-grid>.card:not(:has(.rv)) .count-row{grid-column:2;grid-row:1/span 30;align-self:center;display:grid;justify-items:center;text-align:center;gap:12px;padding:40px 0;border-left:1px solid #cbd3dd}
+body.projector .play-grid>.card:not(:has(.rv)){grid-template-columns:minmax(0,1.9fr) minmax(0,1fr)}   /* review 44, m-2: the question gets the width, the counter is narrower */
 body.projector .play-grid>.card:not(:has(.rv)) .count-row b{font-size:clamp(96px,10vw,168px);line-height:.9;letter-spacing:-.03em;color:#14203a}
 body.projector .play-grid>.card:not(:has(.rv)) .count-row span{font-size:clamp(18px,1.6vw,26px)}
 body.projector .play-grid>.card:not(:has(.rv)) .count-row .meter-bar{width:70%}
@@ -97,8 +98,8 @@ body.projector .join-code{font-size:clamp(36px,4vw,60px)}
 body.projector .qr{width:104px;height:104px}
 body.projector .present-opts li{padding-top:8px;padding-bottom:8px}
 body.projector .play-grid>.card{padding-top:28px;padding-bottom:28px}
-body.projector .play-grid>.card:not(:has(.rv)) .scene{font-size:clamp(16px,1.25vw,20px)}
-body.projector .play-grid>.card:not(:has(.rv)) .present-opts li{font-size:clamp(17px,1.4vw,22px)}
+body.projector .play-grid>.card:not(:has(.rv)) .scene{font-size:clamp(19px,1.7vw,26px)}
+body.projector .play-grid>.card:not(:has(.rv)) .present-opts li{font-size:clamp(21px,1.9vw,30px)}
 .rv-tag{font-style:normal;font-size:.8em;font-weight:750;color:var(--ev-ink,#7d5200);white-space:nowrap}
 .rv-track.ev-row{box-shadow:inset 0 0 0 2px var(--ev)}
 .rp-cap{margin:10px 0 0;text-align:right;font-size:.85em;font-weight:650;color:#56617a}
@@ -111,3 +112,6 @@ body.projector .rank-proj li{padding:4px 0}body.projector:has(.rv) .wrap{padding
 body.projector:has(.rv) .rv{border-top:0;padding-top:0}body.projector:has(.rv) .proj-left{margin-top:10px}body.projector:has(.rv) .rv-head .kicker{white-space:normal}
 body.projector .conn-note{display:none}   /* the room never sees the instructor's connection note (review 39, I-6) */
 body.projector:has(.rv) .wrap,body.projector .wrap{padding-bottom:20px !important}
+
+body.projector .join-banner .kicker,body.projector .btn,body.projector .stage-meta,body.projector .kicker.proj-factors{font-size:17px}   /* review 44, m-2: the chrome was 11 px after the fit zoom */
+body.projector:has(.rv) .rv-tag{font-size:.95em}body.projector:has(.rv) .play-grid>.card h3,body.projector:has(.rv) .kicker{font-size:17px}
