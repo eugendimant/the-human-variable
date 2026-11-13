@@ -808,3 +808,12 @@ body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not
 .resume-x{flex:none;width:40px;height:40px;margin:-6px -8px -6px 0;border:0;background:none;color:var(--you-ink);font-size:22px;line-height:1;cursor:pointer;border-radius:var(--r-panel)}
 .resume-x:hover{background:rgba(0,0,0,.06)}
 .credit+.resume{margin-top:10px}
+
+/* The credit sits in the header bar, on the one row with the logo and the menu, wherever it fits (owner, 2026-11-13: "all in one line and not crowded"). Below that width the page carries it, as before. */
+.bar-credit{display:none;margin:0 auto 0 28px;font-size:13px;line-height:1.3;color:var(--ink-2);white-space:nowrap;align-items:baseline;gap:0 16px}
+.bar-credit strong{color:var(--ink)}
+.bar-credit a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;display:inline-block;padding:6px 0}
+@media (min-width:1260px){.bar-credit{display:flex}.credit{display:none}body:has(.credit) .foot-by{display:block}}
+@media (min-width:1260px){.bar-credit a[href^="mailto"]{display:none}.nav button{white-space:nowrap;flex-shrink:0}}
+@media (min-width:1260px) and (max-width:1379px){.bar-credit a{display:none}}
+.bar-credit strong{white-space:nowrap}

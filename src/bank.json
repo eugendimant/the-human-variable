@@ -9411,7 +9411,7 @@
    ],
    [
     "authors",
-    "\\b(who (did|ran|conducted|carried out|is behind|made|performed) (the|this) [\\w-]+|who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\\b"
+    "\\b(who (did|ran|conducted|carried out|is behind|made|performed) (the|this) [\\w-]+|who wrote|authors?|which paper|what paper|citation|cite|reference|published where|which journal)\\b|\\bwhere (can|do|could) (i|we) (read|find|get) (the|this|it|that) (paper|study|article|full text)\\b"
    ],
    [
     "voluntary",
@@ -9435,15 +9435,15 @@
    ],
    [
     "who",
-    "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students|clinicians|physicians|doctors|nurses|managers|firms|teams|forecasters|respondents|users|writers|developers|consultants|households|adults)|sample size|who took part|population)\\b"
+    "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students|clinicians|physicians|doctors|nurses|managers|firms|teams|forecasters|respondents|users|writers|developers|consultants|households|adults)|sample size|who took part|population)\\b|\\bwho (took part|participated|were the subjects|were they|were involved)\\b|\\bsubjects\\b"
    ],
    [
     "catch",
-    "\\b(catch|backfire|downside|drawback|limit\\w*|risk|caveat|fail\\w*|weakness|criticis\\w*|question(ed)? this|later work)\\b"
+    "\\b(catch|backfire|downside|drawback|limit\\w*|risk|caveat|fail\\w*|weakness|criticis\\w*|question(ed)? this|later work)\\b|\\bhow (reliable|sure|certain|robust|solid) (is|are|can)\\b|\\bhow sure can (i|we) be\\b"
    ],
    [
     "summary",
-    "\\b(what did (the|this|they|it) (\\w+[- ]?)?(study |paper |analysis )?(find|show)|summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|main (results?|findings?)|in (one|a) sentence|one[- ]liner|define|definition of|(does|did|do) (it|this|that|the [\\w ]{1,30}) work(?=\\W*$)|did it work|what (did|was) (it|they) find|what was found)\\b"
+    "\\b(what did (the|this|they|it) (\\w+[- ]?)?(study |paper |analysis )?(find|show)|summar\\w*|explain|eli5|like i.?m (five|5)|like i am (five|5)|my boss|brief(ly)?|tl;?dr|in plain|simple terms|key (point|takeaway)|bottom line|main (results?|findings?)|in (one|a) sentence|one[- ]liner|define|definition of|(does|did|do) (it|this|that|the [\\w ]{1,30}) work(?=\\W*$)|did it work|what (did|was) (it|they) find|what was found)\\b|\\bone[- ]line\\b|\\btakeaway\\b"
    ],
    [
     "duration",
@@ -9471,7 +9471,7 @@
    ],
    [
     "design",
-    "\\b(how (was|were|did)|design|method|ran|sample|participants|conducted|setup|set up|randomi[sz]\\w*|control group)\\b"
+    "\\b(how (was|were|did)|design|method|ran|sample|participants|conducted|setup|set up|randomi[sz]\\w*|control group)\\b|\\b(was|is) (it|this|that) an? (field|lab|laboratory|online|survey|natural|randomi[sz]ed|real) (experiment|study|trial)\\b|\\bwhat (kind|type) of (study|experiment|trial)\\b"
    ],
    [
     "pilot",
