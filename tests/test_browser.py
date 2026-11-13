@@ -658,6 +658,8 @@ def test_live_forecast_result_is_two_bars(browser, tmp_path):
         rows = inst.locator('.rv-bars .rv-row')
         assert rows.count() in (2, 3) and 'Said true' in rows.nth(0).text_content() and 'Said false' in rows.nth(1).text_content()
         assert inst.locator('.rv-bars .rv-tag').count() == 1 and 'Class median' not in inst.text_content('.rv')
+        ph.wait_for_selector('.panel.gap .hbars', timeout=10000)   # the phone shows the same two bars (review 46, m-I1)
+        assert 'Said true' in ph.text_content('.panel.gap') and 'Said false' in ph.text_content('.panel.gap') and 'Class median' not in ph.text_content('.panel.gap') and ph.locator('.panel.gap svg').count() == 0
         ctx.close()
     finally:
         srv.shutdown()

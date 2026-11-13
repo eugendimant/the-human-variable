@@ -1016,3 +1016,18 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Landing headline.** Three nowrap phrases: "How well can / you predict / people's actions?" (m-I4).
 - **Live forecast result (m-I5).** Two bars, "Said true (above 50)" and "Said false (below 50)" (plus "Said 50, unsure" when used), the side the study found marked, a count on each. The median of probabilities is gone. Test `test_live_forecast_result_is_two_bars`.
 - **Gates (iteration 73).** 404 passed; design lint by rule {}; build current; tutor golden unchanged. Not yet reviewed (review 46).
+
+## Review 46 (Sonnet 5.5 agent, on iteration 73): 79/100, 0 Blocking, 0 Major, 16 Minor, 4 Optional
+- **Held up:** headings (500 plays, 5 widths: no one-word line in any h1 to h3, no overflow, no clipped text); estimate scoring (250 of 250 cases, page equals server); live class with no leak; axe 0 violations on 54 scans; 404 tests; all 18 Dimant DOIs resolve; the four iteration-66 decisions match their papers.
+- **Introduced by 73:** m-I1 phones still show the forecast histogram and "Class median"; m-I2 the "The claim is" label wraps to "The / claim is"; m-I3 one-word lines outside headings (bz04 gap "20.3", civic-wallet "46%").
+- **Open:** tutor 37% direct; served tutor drops paragraph breaks (30 of 66); chip "How long did the effect last?" wrong on about 14 of 19 decisions; placeholder "see the paper"; dimant-competition-choice wording; option cues; wide reveal gap (22 to 26 of 100 plays at 100 px or more); reveal narrower than the question screen; record page columns; projector at 1280x720; dimant-motivated broken sentence; rule 33 does not match the page.
+- **Score trend:** 84, 84, 83, 81, 81, 79, 79.
+
+## Iteration 74 (from review 46)
+- **Phones (m-I1).** The live forecast result on a phone is the same two bars as on the instructor page and projector ("Said true", "Said false", the study's side marked, no median). Test extended.
+- **Labels (m-I2, m-I3).** "The claim is" and the other label cells stay on one line; the gap text ("20.3 days off") is one unbreakable phrase.
+- **Tutor (m-2, m-3).** A served answer starts a new paragraph at each labelled part ("Design:", "What the study covers:", "In practice:", and others), as the offline answers do. The chip "How long did the effect last?" shows only where the decision has a follow-up about duration (it was wrong on about 14 of 19 decisions).
+- **Content (m-11).** dimant-motivated-estimate: "a self-serving tilt in the sources they consulted" (`tools/review46_fixes_2026_11_13.py`). Not changed: dimant-competition-choice (RULE 0 caution; its follow-up already quotes the authors' "suggestive evidence"), lies-in-disguise placeholder (needs a verified source quote).
+- **Rules (m-12).** DESIGN_RULES 33 now matches the page (the owner's lede, no numbered steps).
+- **Tried and reverted (m-8).** Zooming the reveal like the question screen: CSS zoom broke the vw-sized verdict numbers (label overlap, 30 lint hits), the plate's "You were 100% sure" and three tests. The reveal keeps its own column. `balanceReveal` now divides its margin by the zoom so a future zoom is safe.
+- **Gates (iteration 74).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 47).

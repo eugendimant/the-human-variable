@@ -298,3 +298,9 @@ def test_front_page_sample_has_no_try_again():
         assert pg.locator('[data-act=start-quick]').count() == 1 and pg.locator('[data-act=hero-reset]').count() == 0
         assert 'Try again' not in pg.locator('.try-wrap').inner_text()
         b.close()
+
+def test_served_tutor_text_gets_paragraphs_and_duration_chip_is_gated():
+    """Review 46, m-2 and m-3: labelled parts of a served answer start new paragraphs; the duration chip needs a follow-up about duration."""
+    js = (Path(__file__).resolve().parents[1] / "src/app.js").read_text()
+    assert 'function tutorParas' in js and 'esc(tutorParas(t.text))' in js
+    assert "How long did the effect last" in js and "fade" in js.split('function tutorChips')[1].split('function srcHtml')[0]

@@ -6897,7 +6897,7 @@
    "scene": "Before a game where lying paid, US online participants chose whose information to see: a peer reporting more lenient behavior or views on lying, or a stricter one. No political labels were shown.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "They tilted toward lenient peers: about 55%",
-   "explain": "Without identity cues, people chose lenient (above-median) peers’ information 54.61% of the time, a self-serving tilt in which sources they consulted.",
+   "explain": "Without identity cues, people chose lenient (above-median) peers’ information 54.61% of the time, a self-serving tilt in the sources they consulted.",
    "implication": "When employees pick their own benchmarks or peer examples, default them to representative norm data instead.",
    "boundary": "US participants choosing information sources before an undetectable lying game, with and without partisan identity cues.",
    "sources": [
