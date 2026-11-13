@@ -988,3 +988,9 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Fix.** `tieEnds` now walks every text block of the page (blocks of three words or more; flex and grid boxes, buttons, code and inputs are skipped; a pair over 26 characters is left alone). R34 now reads the real layout of every element, with no selector list. A first lint run with the new detector found one stranded word (`p.gh-gap`, a three-word block the old length test skipped); the test is now "three words or more".
 - **Gates.** See the line below.
 - **Gates (iteration 70).** 402 passed; design lint by rule {} with the all-element R34; build current; tutor golden unchanged. Not yet reviewed (review 45).
+
+## Iteration 71 (2026-11-12): small fixes from review 44
+- **m-4 fixed.** Notices (the closed-phase message on a phone) appear at the top, under the bar. At the bottom they sat on the options and the action bar.
+- **Decided, not changed.** m-10 (the sample can open on the racial-callback or the Saudi-men item): the owner saw both in his own screenshots and raised no objection, and they are two of five items in the sample pool, so they stay. m-I2 (locked card below the fold): the card ends at 760 px of 900 for the shorter items; no change.
+- **Still open from review 44:** m-2 projector text (`fitProjector` zooms the page down to 0.6 when the content is taller than the screen; the fix is a more compact projector layout, not a bigger zoom floor), m-3 forecast bars, m-5 wide reveal gap, m-6 to m-8 tutor, m-9 option cues, m-11 record columns, m-12 three decisions scroll at 1280x720.
+- **Gates (iteration 71).** 402 passed; design lint by rule {}; build current; tutor golden unchanged. Not yet reviewed (review 45).

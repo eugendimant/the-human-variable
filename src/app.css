@@ -267,7 +267,7 @@ input[type=range].untouched::-webkit-slider-runnable-track{background:var(--rule
 .modal .close{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:10px;border:1px solid var(--rule);font-size:20px}
 .modal table{border-collapse:collapse;width:100%;font-size:var(--t6)}
 .modal td,.modal th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
-.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);opacity:0;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:var(--t6);font-weight:600;transition:.25s;z-index:70;pointer-events:none;max-width:calc(100vw - 32px)}
+.toast{position:fixed;left:50%;top:76px;transform:translate(-50%,-30px);opacity:0;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:var(--t6);font-weight:600;transition:.25s;z-index:70;pointer-events:none;max-width:calc(100vw - 32px)}
 .toast.show{transform:translate(-50%,0);opacity:1}
 
 .foot{border-top:1px solid var(--rule);padding:28px 0 40px;font-size:var(--t6);color:var(--muted)}
