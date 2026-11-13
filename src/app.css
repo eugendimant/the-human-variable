@@ -814,6 +814,8 @@ body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not
 .bar-credit strong{color:var(--ink)}
 .bar-credit a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;display:inline-block;padding:6px 0}
 @media (min-width:1260px){.bar-credit{display:flex}.credit{display:none}body:has(.credit) .foot-by{display:block}}
-@media (min-width:1260px){.bar-credit a[href^="mailto"]{display:none}.nav button{white-space:nowrap;flex-shrink:0}}
+@media (min-width:1260px){.nav button{white-space:nowrap;flex-shrink:0}}
 @media (min-width:1260px) and (max-width:1379px){.bar-credit a{display:none}}
 .bar-credit strong{white-space:nowrap}
+
+.by-name{color:var(--ink)}.credit .by-name,.bar-credit .by-name,.foot .by-name{display:inline;padding:0;color:var(--ink);text-decoration:underline;text-underline-offset:3px}

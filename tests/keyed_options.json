@@ -305,11 +305,11 @@
  },
  "false-news-spread": {
   "keyed": [
-   "Novel false stories drew more human shares"
+   "False stories were more novel, and humans spread them"
   ],
   "options": [
    "Bots pushed false stories harder than true ones",
-   "Novel false stories drew more human shares",
+   "False stories were more novel, and humans spread them",
    "Platform ranking pushed false stories up",
    "The gap appeared for political stories, not others"
   ]

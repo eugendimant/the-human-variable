@@ -6059,13 +6059,13 @@
    "question": "What explains why false stories spread faster than true ones?",
    "options": [
     "The gap appeared for political stories, not others",
-    "Novel false stories drew more human shares",
+    "False stories were more novel, and humans spread them",
     "Bots pushed false stories harder than true ones",
     "Platform ranking pushed false stories up"
    ],
    "answer": 1,
    "answerTitle": "People, not bots, drove the faster spread",
-   "explain": "Across about 126,000 stories, falsehood spread farther and faster in all categories; bots accelerated true and false news at the same rate, so humans drove the gap; false news was also more novel than true news.",
+   "explain": "Across about 126,000 stories, falsehood spread farther and faster in all categories; bots accelerated true and false news at the same rate, so humans drove the gap.",
    "implication": "Counter workplace rumors by addressing human sharing, such as fast, specific official updates, rather than relying on filtering automated accounts.",
    "boundary": "Twitter from 2006 to 2017, with stories verified by fact-checkers; it describes how true and false stories diffused.",
    "sources": [
@@ -8389,8 +8389,8 @@
    "concept": "Reproducibility",
    "theme": "evidence",
    "title": "Can the result be rerun?",
-   "scene": "More than 700 reviewers tried to reproduce the results of nearly 500 Management Science articles from the authors’ data and code. Since 2019 the journal requires authors to disclose both.",
-   "question": "Of all articles under the new policy, what share could be at least largely reproduced, counting inaccessible data as not reproduced?",
+   "scene": "More than 700 reviewers tried to reproduce the results of nearly 500 Management Science articles from the authors’ data and code. Since 2019 the journal requires authors to disclose both. Articles whose data the reviewers could not access count as not reproduced.",
+   "question": "Of all articles published under the new policy, what share could be at least largely reproduced?",
    "estimate": {
     "target": 68,
     "min": 0,

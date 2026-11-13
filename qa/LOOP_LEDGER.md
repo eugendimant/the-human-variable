@@ -1072,3 +1072,15 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Content.** repro-msci-estimate question now states the counting rule ("counting inaccessible data as not reproduced", 21 words, inside the 22-word cap); false-news-spread explain names the novelty finding ("false news was also more novel than true news"; the quote is already in evidence.json). Script: `tools/review46_fixes_2026_11_13.py` (idempotent).
 - **Tried and not done:** moving the Questions block into the hole beside the figure (needs the tabs and the Ask card split across two columns; high risk for a Minor).
 - **Gates (iteration 79).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 50).
+
+## Review 50 (Sonnet 5.5 agent, on iteration 79): 82/100, 0 Blocking, 0 Major, 14 Minor, 4 Optional
+- **Held up:** 390 plays, 0 errors, 0 overflow, 0 stranded words; axe 0 violations on 44 scans; 80 of 81 quotes verbatim (one footnote number in the PDF text); page and server tutor identical on 80 questions and 716 chips; no leak; 120 joins; both iteration-79 content changes right against the paper.
+- **Introduced by 79:** I-1 the repro-msci question became a 6-line heading at 1280x720; I-2 false-news-spread follow-up repeated the explain and the key stated a mechanism the paper only suggests.
+- **Open:** tutor 22% direct (3 wrong), causal reveal hole 290 px at 1920, projector 11.6 px, five predict screens scroll at 1280x720, phone that has not answered keeps live buttons, landing lede rag, option and frame cues, a wrong forecast can show a small positive score by design, 11 px SVG text on a phone reveal.
+- **Score trend:** 84, 84, 83, 81, 81, 79, 79, 80, 81, 80, 82.
+
+## Iteration 80 (owner, 2026-11-13: "make my name clickable and have the email address underlying it"; review 50)
+- **Credit.** "Dr. Eugen Dimant" is the mailto link (underlined, title "Email Eugen Dimant") in the header bar, the page credit and the footer; the separate email text is gone from those three places (the research-standard paragraph still lists it). The footer's website link is tied to "Pennsylvania." so it never stands alone on a line at 390 px.
+- **I-1.** The counting rule moved from the question to the scene of repro-msci-estimate; the question is back to its original 15 words.
+- **I-2.** The explain of false-news-spread is back to its earlier wording; the key now reads "False stories were more novel, and humans spread them" (what the paper measured); the pin file is updated. Script `tools/review46_fixes_2026_11_13.py`, idempotent.
+- **Gates (iteration 80).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 51).
