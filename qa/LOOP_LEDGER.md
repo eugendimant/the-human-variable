@@ -1062,3 +1062,13 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 ## Iteration 78 (review 48, m-4)
 - **Reveal width.** The reveal column is as wide as the window allows up to 1480 px (at least the old 1240 px), instead of a fixed 1128 px; at 1920 px it is 1368 px wide against the question screen's 1808. The principle strip is capped at 640 px (was 560; the test bound moved with it). Text lines keep their 38 em measure.
 - **Gates (iteration 78).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 49).
+
+## Review 49 (Sonnet 5.5 agent, on iteration 78): 80/100, 0 Blocking, 0 Major, 13 Minor, 3 Optional
+- **Held up:** 260 plays over 26 decisions, 0 errors, 0 overflow, 0 stranded words, 0 clipping; axe 0 violations on 52 scans; header credit clean from 1260 to 1380; all 26 quotes for the iteration-66 decisions verbatim; no leak; 120 joins; True/False 12 of 12.
+- **Open:** the reveal is wider only from 1440 px up and the hole beside the figure grew to 291 px at 1600 and 1920 on axb05; projector 11.6 px; record page blank space; tutor 28% direct (own wording); one wrong tutor answer ("Was cheating real?"); option cues and strawmen; repro-msci question hid the counting rule; false-news-spread key named novelty but the explain did not.
+- **Score trend:** 84, 84, 83, 81, 81, 79, 79, 80, 81, 80.
+
+## Iteration 79 (from review 49)
+- **Content.** repro-msci-estimate question now states the counting rule ("counting inaccessible data as not reproduced", 21 words, inside the 22-word cap); false-news-spread explain names the novelty finding ("false news was also more novel than true news"; the quote is already in evidence.json). Script: `tools/review46_fixes_2026_11_13.py` (idempotent).
+- **Tried and not done:** moving the Questions block into the hole beside the figure (needs the tabs and the Ask card split across two columns; high risk for a Minor).
+- **Gates (iteration 79).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 50).
