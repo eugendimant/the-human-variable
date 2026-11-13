@@ -1031,3 +1031,14 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Rules (m-12).** DESIGN_RULES 33 now matches the page (the owner's lede, no numbered steps).
 - **Tried and reverted (m-8).** Zooming the reveal like the question screen: CSS zoom broke the vw-sized verdict numbers (label overlap, 30 lint hits), the plate's "You were 100% sure" and three tests. The reveal keeps its own column. `balanceReveal` now divides its margin by the zoom so a future zoom is safe.
 - **Gates (iteration 74).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 47).
+
+## Review 47 (Sonnet 5.5 agent, on iteration 74): 80/100, 0 Blocking, 0 Major, 17 Minor, 4 Optional
+- **Held up:** 405 tests, lint clean, axe 0 violations on 42 scans; four iteration-66 decisions match their papers (26 of 26 quotes verbatim); True/False scoring; no leak by any route in a live class; 120 joins accepted; no one-word line in any heading, label or gap text.
+- **Introduced by 74:** served tutor paragraphs differ from the offline tutor on 22 of 66 answers (same words); duration chip wrong on ai10; "46%" alone in a civic-wallet list item.
+- **Score trend:** 84, 84, 83, 81, 81, 79, 79, 80.
+
+## Iteration 75 (from review 47)
+- **Duration chip.** Shown only where a follow-up asks outright "Did the effect last/fade/persist?" or "How long did the effect last?" (ai10's "When did the preference fade?" no longer counts).
+- **Record page.** After the page is built, "By area" moves under "This round" when the left column is taller (`balanceRecord`).
+- **Not changed:** the reveal's width (zoom tried and reverted in iteration 74), wide-reveal gaps on meta-left items, projector at 1280x720, option cues, tutor coverage (41% direct; needs new checked follow-ups with source quotes), hedged-forecast wording (Brier rule: a 60% wrong call scores 0.28 by design).
+- **Gates (iteration 75).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 48).

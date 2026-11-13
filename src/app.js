@@ -359,10 +359,13 @@ function studyCard(c, checked = true) {
 function tutorParas(t) {   // the served tutor sends one run of text; a labelled part starts a new paragraph, as in the offline answers (review 46, m-2)
   return String(t).replace(/([.!?”’)])[ \t]+(?=(?:Who was studied|Design|Sample|What the study covers|What the study measured|What it covers|What a manager (?:does|can do) with it|In practice|The study itself|The finding itself|Why):)/g, '$1\n\n');
 }
+function durationOk(c) {   // the decision has a follow-up that asks outright whether or how long the effect lasted (review 47, m-I2)
+  return (c.follow || []).some(x => /^(did the effect (last|fade|persist)|how long did the effect last)/i.test(x.q));
+}
 function tutorChips(c) {   // up to seven suggestions, each one checked against the offline tutor so a tap always gets a real answer (owner, 2026-11-12)
   const cand = ['How big is this effect in practice?', /AI/.test(c.track || '') ? 'Would this hold with AI tools today?' : 'What does the study cover?', 'How would I test this in my company?', 'Who took part in the study?', 'How long did the effect last?', 'Was the study preregistered?', 'Has it been replicated?', 'Who wrote the paper?', 'Is this cause or correlation?', 'What should a manager do with this?', 'Who funded the study?'];
   const ok = q => { try { const a = curated(q, c).text || ''; return a && !/does not record|could not match|outside what this lab covers|does not say/i.test(a) } catch (e) { return false } };
-  return cand.filter(q => ok(q) && (!/How long did the effect last/.test(q) || (c.follow || []).some(f => /\b(last|long|persist\w*|fade\w*)\b/i.test(f.q)))).slice(0, 7);   // the duration chip only where the study answers it (review 46, m-3)
+  return cand.filter(q => ok(q) && (!/How long did the effect last/.test(q) || durationOk(c))).slice(0, 7);   // the duration chip only where the study answers it (review 46, m-3; review 47, m-I2)
 }
 function srcHtml(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.authors)} (${s.year}), ${esc(s.venue)}</a>.` : '' }   // every study opens at its DOI (owner, 2026-11-12)
 function srcLine(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: ${s.authors} (${s.year}), ${s.venue}.` : '' }
@@ -796,7 +799,7 @@ function render(moveFocus) {
   if (st.view === 'almanac' && !libraryLoaded) loadLibrary();
   v.innerHTML = st.view === 'home' ? home() : st.view === 'atlas' ? atlas() : st.view === 'almanac' ? almanac() : st.view === 'record' ? record() : play();
   document.body.classList.toggle('in-play', st.view === 'play');
-  fitQuestion(); tieEnds(v); fitHeadings(v); balanceReveal();   // the reveal is balanced last: the tied pairs and smaller headings change the heights it measures
+  fitQuestion(); tieEnds(v); fitHeadings(v); balanceReveal(); balanceRecord();   // the reveal is balanced last: the tied pairs and smaller headings change the heights it measures
   qa('.nav button').forEach(b => b.setAttribute('aria-current', (b.dataset.nav === st.view || (b.dataset.nav === 'almanac' && st.view === 'atlas')) ? 'page' : 'false'));
   qs('.nav').classList.toggle('open', st.menu);
   const c = card();
@@ -816,6 +819,10 @@ function fitQuestion() {   // on a large screen the question and its instrument 
   }
   if (z <= 1) { root.style.removeProperty('--fitw'); card.style.zoom = ''; card.style.minHeight = ''; return }
   card.style.minHeight = innerHeight >= 760 && base === 1240 ? (innerHeight - 250) / z + 'px' : '';
+}
+function balanceRecord() {   // the record page's two columns end together: "By area" goes under "This round" when the left column is the taller one (review 47, m-5)
+  const g = qs('.rec-grid'); if (!g) return; const [a, b] = g.querySelectorAll(':scope>.rec-col'); if (!a || !b) return;
+  const area = [...a.children].find(e => e.querySelector('h2')?.textContent === 'By area'); if (area && a.children.length > 1 && innerWidth > 820 && a.getBoundingClientRect().height > b.getBoundingClientRect().height + area.getBoundingClientRect().height / 2) b.appendChild(area);
 }
 function balanceReveal() {   // the shorter column takes the study card and the principle strip (review 33, m9); a class, not a DOM move, so reading order stays put (audit 45)
   const rv = qs('.reveal'); if (!rv) return; rv.classList.remove('meta-right', 'meta-wide', 'meta-left', 'fig-tall'); const m0 = qs('.reveal>.rev-meta'); if (m0) m0.style.marginTop = '';

@@ -303,4 +303,4 @@ def test_served_tutor_text_gets_paragraphs_and_duration_chip_is_gated():
     """Review 46, m-2 and m-3: labelled parts of a served answer start new paragraphs; the duration chip needs a follow-up about duration."""
     js = (Path(__file__).resolve().parents[1] / "src/app.js").read_text()
     assert 'function tutorParas' in js and 'esc(tutorParas(t.text))' in js
-    assert "How long did the effect last" in js and "fade" in js.split('function tutorChips')[1].split('function srcHtml')[0]
+    assert 'durationOk(c)' in js.split('function tutorChips')[1].split('function srcHtml')[0] and 'did the effect (last|fade|persist)' in js
