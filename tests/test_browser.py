@@ -646,3 +646,18 @@ def test_question_screen_grows_into_a_large_screen(browser):
             assert pg.evaluate("[...document.querySelectorAll('.focus-card')].every(c => !c.style.zoom)")
         pg = page(browser, 390, 844); pg.goto(URL + '?play=' + cid); pg.wait_for_selector('#q-h')
         assert pg.evaluate("!document.querySelector('.focus-card').style.zoom")
+
+def test_live_forecast_result_is_two_bars(browser, tmp_path):
+    """Review 45, m-I5: a true-or-false claim shows two bars (said true, said false), the right side marked, and no median of probabilities."""
+    srv, inst, ctx, ph, _, app = _room(browser, tmp_path, 'fcbars')
+    try:
+        c = next(x for x in LIVE if x['format'] == 'forecast')
+        inst.fill('#f-q', c['title'][:18]); inst.wait_for_timeout(300); inst.click(f'[data-open="{c["id"]}"]')
+        ph.wait_for_selector('#lock-btn', timeout=10000); answer(ph, c); ph.click('#lock-btn'); ph.wait_for_selector('text=Your answer is in', timeout=10000)
+        assert _count(inst, '1'); inst.click("text=Reveal to the room"); inst.wait_for_selector('.rv')
+        rows = inst.locator('.rv-bars .rv-row')
+        assert rows.count() in (2, 3) and 'Said true' in rows.nth(0).text_content() and 'Said false' in rows.nth(1).text_content()
+        assert inst.locator('.rv-bars .rv-tag').count() == 1 and 'Class median' not in inst.text_content('.rv')
+        ctx.close()
+    finally:
+        srv.shutdown()

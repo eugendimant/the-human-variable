@@ -202,7 +202,7 @@ function home() {
   const done = new Set(records.map(r => r.id));
   const resume = paths.find(p => { const n = p.items.filter(id => done.has(id)).length; return n > 0 && n < p.items.length });
   const credit = `<div class="credit wrap"><span>Original concept by <strong>Dr. Eugen Dimant</strong>, University of Pennsylvania</span><a href="https://eugendimant.github.io" target="_blank" rel="noopener">eugendimant.github.io</a><a href="mailto:edimant@sas.upenn.edu">edimant@sas.upenn.edu</a></div>`;
-  return `${credit}${resume && store.get('thv:resume-off', '') !== resume.id ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><span class="resume-r"><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button><button class="resume-x" data-act="resume-off" data-id="${esc(resume.id)}" aria-label="Hide this reminder">&times;</button></span></div>` : ''}<section class="hero wrap"><div class="hero-grid"><div class="intro"><div class="intro-main"><h1>How well can you predict people’s actions?</h1>
+  return `${credit}${resume && store.get('thv:resume-off', '') !== resume.id ? `<div class="resume wrap"><span>Continue <strong>${esc(resume.title)}</strong>: ${resume.items.filter(id => done.has(id)).length} of ${resume.items.length} played.</span><span class="resume-r"><button class="btn btn-quiet" data-path="${esc(resume.id)}" data-resume="1">Continue</button><button class="resume-x" data-act="resume-off" data-id="${esc(resume.id)}" aria-label="Hide this reminder">&times;</button></span></div>` : ''}<section class="hero wrap"><div class="hero-grid"><div class="intro"><div class="intro-main"><h1><span class="nw">How well can</span> <span class="nw">you predict</span> <span class="nw">people’s actions?</span></h1>
     <p class="hero-lede">Each round presents a real-life situation, from a published research study, that you are asked to predict. Once you have made your prediction, you will then be shown what the researchers actually found.</p>
     <div class="hero-actions"><button class="btn btn-solid btn-lg" data-act="go-start">Start playing</button></div></div></div>
     <div class="try-wrap">${heroTry()}</div></div></section>
@@ -791,7 +791,7 @@ function render(moveFocus) {
   if (st.view === 'almanac' && !libraryLoaded) loadLibrary();
   v.innerHTML = st.view === 'home' ? home() : st.view === 'atlas' ? atlas() : st.view === 'almanac' ? almanac() : st.view === 'record' ? record() : play();
   document.body.classList.toggle('in-play', st.view === 'play');
-  balanceReveal(); fitQuestion(); tieEnds(v);
+  fitQuestion(); tieEnds(v); fitHeadings(v); balanceReveal();   // the reveal is balanced last: the tied pairs and smaller headings change the heights it measures
   qa('.nav button').forEach(b => b.setAttribute('aria-current', (b.dataset.nav === st.view || (b.dataset.nav === 'almanac' && st.view === 'atlas')) ? 'page' : 'false'));
   qs('.nav').classList.toggle('open', st.menu);
   const c = card();
@@ -823,7 +823,7 @@ function balanceReveal() {   // the shorter column takes the study card and the 
   else if (gLeft < gWide && fb > lb) { rv.classList.add('meta-left'); const gap = meta.getBoundingClientRect().top - lb - 24; if (gap > 0) meta.style.marginTop = -gap + 'px' }   // a tall figure: the card sits under the text, pulled up beside the figure
   else rv.classList.add('meta-wide');
 }
-let balT; addEventListener('resize', () => { clearTimeout(balT); balT = setTimeout(() => { balanceReveal(); fitQuestion() }, 150) });
+let balT; addEventListener('resize', () => { clearTimeout(balT); balT = setTimeout(() => { fitQuestion(); fitHeadings(qs('#view') || document); balanceReveal() }, 150) });
 function animateReveal() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   // the study's number counts up from the player's call: the one orchestrated moment of the reveal
@@ -943,7 +943,7 @@ if (PUBLIC) { TUTOR_REMOTE = '/api/tutor'; refreshLock() }
 if (location.protocol.startsWith('http')) {
   fetch('/api/tutor/status').then(r => r.ok ? r.json() : null).then(d => { if (d && d.enabled) { TUTOR_REMOTE = '/api/tutor'; TUTOR_AI = true; if (st.view === 'play' && st.phase === 'reveal') render() } }).catch(() => { });
 }
-try { document.fonts && document.fonts.ready.then(() => { const old = { ...TW }; for (const k in TW) delete TW[k]; const moved = Object.keys(old).some(k => { const i = k.indexOf('|'); return Math.abs(textWidth(k.slice(i + 1), +k.slice(0, i)) - old[k]) > .5 }); if (moved && document.querySelector('svg.dag')) { const f = document.activeElement && document.activeElement.matches('h1, h2') ? document.activeElement.id || document.activeElement.className : null; render(); if (f) { const e = document.getElementById(f) || document.querySelector('.' + String(f).split(' ')[0]); e && e.focus() } } }) } catch { }   // redraw only if the real font measures differently, and keep focus (audit 33)
+try { document.fonts && document.fonts.ready.then(() => { fitHeadings(qs('#view') || document); balanceReveal(); const old = { ...TW }; for (const k in TW) delete TW[k]; const moved = Object.keys(old).some(k => { const i = k.indexOf('|'); return Math.abs(textWidth(k.slice(i + 1), +k.slice(0, i)) - old[k]) > .5 }); if (moved && document.querySelector('svg.dag')) { const f = document.activeElement && document.activeElement.matches('h1, h2') ? document.activeElement.id || document.activeElement.className : null; render(); if (f) { const e = document.getElementById(f) || document.querySelector('.' + String(f).split(' ')[0]); e && e.focus() } } }) } catch { }   // redraw only if the real font measures differently, and keep focus (audit 33)
 if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else { const v = fromHash(location.hash); if (v !== 'play') st.view = v; render(); if (PARAM.get('play')) notice('That decision link is out of date. Pick a decision from the list.') }
 if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records, curated }; // test hook (offline file only)
 })();
