@@ -1058,3 +1058,7 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Paragraphs (m-2, again).** Both tutors now give the same words; the page makes paragraphs from labels at render time for both, so the offline and the served answer look the same. (Old unlabelled breaks in the offline answers are gone.)
 - **Not changed:** meta-left hole beside the figure, reveal width, projector 1280x720 type, option cues, biz02 and bz14, landing lede rag, a phone that has not answered keeps live controls after answers close (server rejects it).
 - **Gates (iteration 77).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 49).
+
+## Iteration 78 (review 48, m-4)
+- **Reveal width.** The reveal column is as wide as the window allows up to 1480 px (at least the old 1240 px), instead of a fixed 1128 px; at 1920 px it is 1368 px wide against the question screen's 1808. The principle strip is capped at 640 px (was 560; the test bound moved with it). Text lines keep their 38 em measure.
+- **Gates (iteration 78).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 49).

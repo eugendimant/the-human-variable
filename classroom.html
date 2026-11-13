@@ -494,7 +494,7 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
 .dimant-band .paper-list li{border-color:rgba(255,255,255,.18)}
 /* wide screens: the reveal reads in two columns, the finding beside the evidence */
 @media (min-width:1200px){
-  .focus:has(.reveal){max-width:1240px}
+  .focus:has(.reveal){max-width:min(1480px,max(1240px,calc(100vw - 112px)))}   /* the reveal uses the width the question screen uses (review 48, m-4) */
   .focus:has(.reveal) .focus-top{max-width:none}
   .reveal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start;grid-auto-flow:row dense}   /* dense: a live-class panel in the right column no longer pushes the finding down (audit 42) */
   .reveal>*{grid-column:1}
@@ -503,7 +503,7 @@ input[type=range].untouched::-moz-range-thumb{opacity:.4}
   .reveal>.deep{grid-column:1/-1;margin-top:40px}   /* below both columns: no dead quadrant beside the questions (review 31) */
   .reveal>.deep .tabpanel:has(.follow){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);column-gap:56px;align-items:start}
   .reveal>.deep .tabpanel:has(.follow) .tutor{margin-top:0}
-  .focus:has(.reveal) .actionbar-in{max-width:1240px}
+  .focus:has(.reveal) .actionbar-in{max-width:min(1480px,max(1240px,calc(100vw - 112px)))}
   /* the question screen uses the same two columns: the question on the left, your answer beside it (owner, 2026-11-01: fill the space) */
   .focus:has(.q-col){max-width:var(--fitw,1240px)}
   .focus:has(.q-col) .actionbar-in{max-width:var(--fitw,1240px)}
@@ -684,7 +684,7 @@ p,li,dd{text-wrap:pretty}
 .plate .rc-dot::before{background:rgba(255,255,255,.3)}.plate .rc-dot::after{border-color:rgba(255,255,255,.3)}.plate .rc-dot i{background:#f0b43c}.plate .rc-dot b{color:#f0b43c}
 .hb-track i.room{background:#5b6b86}   /* the room in slate; blue is the player's own call (review 27, rule 18) */
 .tutor-suggest{margin-top:12px}
-.theme-strip{display:none;padding:14px 22px 18px;border-top:1px solid var(--rule)}.theme-strip svg{width:100%;height:auto;display:block;font-family:"Schibsted Grotesk",system-ui}.theme-strip .ts-ax{stroke:var(--rule);stroke-width:2}.theme-strip .ts-zero{stroke:#8a96a8;stroke-dasharray:3 3}.theme-strip .ts-o{fill:#9aa6b8}.theme-strip .ts-me{fill:var(--you);stroke:#fff;stroke-width:2}.theme-strip .ts-lab{fill:var(--you-ink);font-size:17px;font-weight:700}.theme-strip .ts-tick{fill:var(--muted);font-size:15px}.theme-strip .plate-h{color:var(--ink-2)}
+.theme-strip{display:none;max-width:640px;padding:14px 22px 18px;border-top:1px solid var(--rule)}.theme-strip svg{width:100%;height:auto;display:block;font-family:"Schibsted Grotesk",system-ui}.theme-strip .ts-ax{stroke:var(--rule);stroke-width:2}.theme-strip .ts-zero{stroke:#8a96a8;stroke-dasharray:3 3}.theme-strip .ts-o{fill:#9aa6b8}.theme-strip .ts-me{fill:var(--you);stroke:#fff;stroke-width:2}.theme-strip .ts-lab{fill:var(--you-ink);font-size:17px;font-weight:700}.theme-strip .ts-tick{fill:var(--muted);font-size:15px}.theme-strip .plate-h{color:var(--ink-2)}
 @media (min-width:1200px){.theme-strip{display:block}}   /* the wide reveal's second column: this call against your other calls on the principle (review 27, o3) */
 .cal-sum{font-size:17px;font-weight:650;margin:18px 0 0}
 .hb-ends{margin-top:-2px}.hb-scale{position:relative;display:block;height:16px;font-size:12.5px;color:var(--muted)}.hb-scale em{position:absolute;font-style:normal;top:0}.hb-scale em:first-child{left:0}.hb-scale em:last-child{right:0}.hb-scale em[style]{transform:translateX(-50%)}.plate .hb-scale{color:#b9c4dd}

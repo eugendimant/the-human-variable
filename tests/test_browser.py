@@ -572,7 +572,7 @@ def test_reveal_layout_sweep(browser):
     assert not bad, bad
 
 def test_principle_strip_keeps_its_size_with_a_record(browser):
-    """Review 40, I-1: after earlier calls on the same principle the strip appears; in every placement it stays at most 560 px wide."""
+    """Review 40, I-1: after earlier calls on the same principle the strip appears; in every placement it stays at most 640 px wide (560 before the reveal column was widened in iteration 78)."""
     by = {}
     for c in LIVE: by.setdefault(c['theme'], []).append(c)
     seen = 0
@@ -582,7 +582,7 @@ def test_principle_strip_keeps_its_size_with_a_record(browser):
         for c in cs[:5]:
             pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h'); pg.wait_for_timeout(250)
             for w in pg.evaluate("[...document.querySelectorAll('.theme-strip, .theme-strip svg')].map(e=>Math.round(e.getBoundingClientRect().width))"):
-                seen += 1; assert w <= 562, (c['id'], w)
+                seen += 1; assert w <= 642, (c["id"], w)
         pg.close()
     assert seen >= 6
 
