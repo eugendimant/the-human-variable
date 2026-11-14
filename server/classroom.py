@@ -18,6 +18,7 @@ RETENTION_HOURS = float(os.environ.get('THV_RETENTION_HOURS', '48'))
 MAX_PARTICIPANTS = int(os.environ.get('THV_MAX_PARTICIPANTS', '120'))
 CLASS_LOCK_HOURS = float(os.environ.get('THV_CLASS_LOCK_HOURS', '3'))
 # A class holds the lock only while its instructor is active: the open console refreshes it, students joining do not.
+OPEN_HOLD_HOURS = float(os.environ.get('THV_OPEN_HOLD_HOURS', '2'))   # an abandoned room releases its open decision after two quiet hours, not six (review 53, m-6)
 CLASS_LOCK_IDLE_MIN = float(os.environ.get('THV_CLASS_LOCK_IDLE_MIN', '20'))  # measured from instructor activity only
 CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'  # no 0/O/1/I
 
@@ -245,11 +246,11 @@ class Store:
         val = (bool(rows), allowed); self._lock = (now, val); return val
 
     def open_challenges(self) -> set:
-        """Decisions currently open or closed-but-unrevealed in a session active in the last six hours (cached for 2 s).
+        """Decisions currently open or closed-but-unrevealed in a session whose console was active in the last OPEN_HOLD_HOURS (2) hours (cached for 2 s).
         Settled (tests/test_http.py): an open question stays held while the console is quiet, since an instructor may talk for longer than the lock's idle window."""
         now = time.time(); hit = getattr(self, '_open', None)
         if hit and now - hit[0] < 2: return hit[1]
-        rows = self.db().execute("SELECT challenge FROM sessions WHERE phase IN ('open','closed') AND beat > ?", (now - 6 * 3600,)).fetchall()   # instructor activity only, as for the lock
+        rows = self.db().execute("SELECT challenge FROM sessions WHERE phase IN ('open','closed') AND beat > ?", (now - OPEN_HOLD_HOURS * 3600,)).fetchall()   # instructor activity only, as for the lock
         val = {r[0] for r in rows if r[0]}; self._open = (now, val); return val
 
     # score: 0 to 100 for most formats; forecasts and point splits run from -100 (confident miss, or all points on a wrong option) to 100.

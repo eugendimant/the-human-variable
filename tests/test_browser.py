@@ -663,3 +663,17 @@ def test_live_forecast_result_is_two_bars(browser, tmp_path):
         ctx.close()
     finally:
         srv.shutdown()
+
+
+def test_closed_answers_leave_an_unanswered_phone_without_live_controls(browser, tmp_path):
+    """Review 53, m-3 (top-10 item 3): when the instructor stops answers, a phone that has not answered shows 'Answers are closed.' and has no option, slider or lock button."""
+    srv, inst, ctx, ph, ch, _ = _room(browser, tmp_path, 'closedphone')
+    try:
+        inst.click(f'[data-open="{ch[0]["id"]}"]'); ph.wait_for_selector('.opt', timeout=10000)
+        inst.click('[data-act="close"]')
+        ph.wait_for_selector('text=Answers are closed.', timeout=15000)
+        assert ph.locator('.opt').count() == 0 and ph.locator('#lock-btn').count() == 0 and ph.locator('#conf').count() == 0
+        assert not ph.locator('#toast.show').count()
+        ctx.close()
+    finally:
+        srv.shutdown()

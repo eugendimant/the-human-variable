@@ -9394,6 +9394,10 @@
     "\\b(who (paid|pays|funded|financed|sponsored)|fund(ed|ing|ers?)\\b|sponsor\\w*)"
    ],
    [
+    "setting",
+    "\\bwhere (was|were|did) (it|this|the (study|experiment|trial|test|data))\\b.*\\b(run|conducted|done|carried out|take place|collected|happen)|\\bwhich (country|city|university|school|state|company|firm|platform|marketplace|market|hotels?|website|app|bank|hospital)\\b|\\bwhat (country|city|platform|company|firm|marketplace) (was|were|is)\\b|\\bwhere (in the world|was this)\\b"
+   ],
+   [
     "raters",
     "\\bwho (rated|evaluated|judged|scored|graded|assessed|coded|reviewed)\\b|\\b(raters?|evaluators?|judges|coders|graders) (were|was|are)\\b|\\b(were|was|are) the (raters?|evaluators?|judges|coders|graders)\\b"
    ],
@@ -9443,7 +9447,7 @@
    ],
    [
     "who",
-    "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students|clinicians|physicians|doctors|nurses|managers|firms|teams|forecasters|respondents|users|writers|developers|consultants|households|adults)|sample size|who took part|population)\\b|\\bwho (took part|participated|were the subjects|were they|were involved)\\b"
+    "\\b(who (was|were) (studied|in it|tested|the participants)|(were|was) (these|they|those|the participants|the subjects) (all )?(students|workers|professionals|managers|employees|experts|consumers|patients|real \\w+)|participants?|how many (people|participants|subjects|workers|agents|guests|customers|patients|employees|students|clinicians|physicians|doctors|nurses|managers|firms|teams|forecasters|respondents|users|writers|developers|consultants|households|adults)|sample size|who took part|population)\\b|\\bwho (took part|participated|were the subjects|were they|were involved)\\b|\\bwho (was|were) (surveyed|interviewed|sampled|asked|tested|recruited|in (the|this) (\\w+ )?(study|experiment|trial|sample|survey))\\b"
    ],
    [
     "catch",
@@ -9459,7 +9463,7 @@
    ],
    [
     "subgroup",
-    "\\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\\w*|good writers|junior|senior|novices?|newcomers?|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b"
+    "\\b(already (good|skilled|strong|experienced)|weaker|stronger|less skilled|(low|high)[- ]skill\\w*|good writers|junior|senior|novices?|newcomers?|experienced|who (benefit|gain)|which (workers|employees|people|staff|agents)|subgroup|women|men|gender|older|younger|age group|differently)\\b|\\b(low|high)[- ](and|or)[- ](low|high)\\b|\\b(top|bottom|best|worst|weak(est)?|strong(est)?) (performers?|workers|students|players)\\b|\\btop performers?\\b"
    ],
    [
     "numbers",
@@ -9487,7 +9491,7 @@
    ],
    [
     "size",
-    "\\b(big|size|large|how much|practice|magnitude)\\b"
+    "\\b(big|size|large|how much|practice|magnitude)\\b|\\bis [\\d.,]+ ?(percent|%|points?|pp)? (a lot|large|big|small|high|low|much|meaningful)\\b"
    ],
    [
     "define",
@@ -9692,7 +9696,172 @@
    [
     "meta-?analys[ie]s",
     "A meta-analysis pools the results of many studies of the same question into one estimate, weighting the more precise studies more."
+   ],
+   [
+    "algorithm aversion",
+    "Algorithm aversion is the tendency to prefer a human judgment to an algorithm’s, often after seeing the algorithm make a mistake."
+   ],
+   [
+    "(the )?endowment effects?",
+    "The endowment effect is valuing something more once you own it. People ask more to give an item up than they would pay to get it."
+   ],
+   [
+    "loss aversion",
+    "Loss aversion is the tendency for a loss to weigh more than a gain of the same size."
+   ],
+   [
+    "choice overload",
+    "Choice overload is the idea that too many options make a decision harder. People may choose less, or put the decision off."
+   ],
+   [
+    "overconfidence|overprecision",
+    "Overconfidence means being more sure of your answers than your accuracy justifies."
+   ],
+   [
+    "calibration|calibrated",
+    "Calibration compares how sure people say they are with how often they are right. A well-calibrated person who says 70% is right about 70% of the time."
+   ],
+   [
+    "anchoring|anchor(s|ing effect)?",
+    "Anchoring is when an early number pulls later estimates toward it, even when the number is irrelevant."
+   ],
+   [
+    "defaults?|default effects?",
+    "A default is the option that applies when a person makes no choice. Many people keep it, so the choice of default can change outcomes."
+   ],
+   [
+    "inertia|status quo bias",
+    "Inertia is staying with the current option when switching would be easy."
+   ],
+   [
+    "sunk[- ]costs?( fallacy)?",
+    "The sunk-cost fallacy is continuing something because of what you already spent, not because of what it will return."
+   ],
+   [
+    "planning fallacy",
+    "The planning fallacy is the habit of underestimating how long a task will take and what it will cost."
+   ],
+   [
+    "pluralistic ignorance",
+    "Pluralistic ignorance is when most people privately doubt a norm but wrongly believe that most others accept it."
+   ],
+   [
+    "(social |descriptive |injunctive )?norms?",
+    "A social norm is a shared rule about what people do (descriptive) or about what they should do (injunctive)."
+   ],
+   [
+    "(a )?(tight|loose) (norms?|cultures?)",
+    "In a tight norm, a rule is strongly enforced and leaves little room to deviate. A loose norm allows more variety."
+   ],
+   [
+    "out[- ]?group hate|in[- ]?group love|in[- ]?group favou?ritism",
+    "Out-group hate is hostility or harm toward people outside your own group. In-group love is help for your own group. The two are different motives."
+   ],
+   [
+    "polari[sz]ation",
+    "Polarization is a growing distance between groups, such as parties, in beliefs, attitudes or trust."
+   ],
+   [
+    "motivated (beliefs?|reasoning)",
+    "Motivated beliefs are beliefs shaped by what a person wants to be true."
+   ],
+   [
+    "confirmation bias",
+    "Confirmation bias is favoring evidence that fits what you already believe."
+   ],
+   [
+    "framing( effects?)?",
+    "A framing effect is when the same facts, described differently, lead to different choices."
+   ],
+   [
+    "nudges?",
+    "A nudge changes how options are presented, not the options or their prices, to steer choices."
+   ],
+   [
+    "present bias",
+    "Present bias is giving too much weight to the near future against the later future."
+   ],
+   [
+    "deterrence",
+    "Deterrence is the idea that a sanction, or the threat of one, reduces unwanted behavior. Severity is how harsh the sanction is. Certainty is how likely it is to be applied."
+   ],
+   [
+    "spill ?overs?",
+    "A spillover is an effect that reaches people or outcomes beyond the ones targeted."
+   ],
+   [
+    "homophily",
+    "Homophily is the tendency to connect with people who are similar to you."
+   ],
+   [
+    "echo chambers?",
+    "An echo chamber is a setting where people mainly meet views like their own."
+   ],
+   [
+    "wisdom of (the )?crowds?",
+    "The wisdom of crowds is the finding that the average of many independent estimates is often more accurate than most single estimates."
+   ],
+   [
+    "conformity|social proof",
+    "Conformity is changing your behavior to match what others do."
+   ],
+   [
+    "reciprocity",
+    "Reciprocity is returning a good or a bad act in kind."
+   ],
+   [
+    "base rates?",
+    "A base rate is how common something is in the whole population, before any specific information."
+   ],
+   [
+    "placebo",
+    "A placebo is an inactive treatment given to a comparison group, so that the effect of the real treatment can be told apart from expectation."
+   ],
+   [
+    "human[- ]in[- ]the[- ]loop",
+    "Human-in-the-loop means a person reviews or approves what an automated system produces."
+   ],
+   [
+    "hallucinations?",
+    "A hallucination is a fluent but false statement produced by a language model."
+   ],
+   [
+    "(large language models?|llms?)",
+    "A large language model is a program trained on large amounts of text to predict and generate text."
+   ],
+   [
+    "a/?b tests?|split tests?",
+    "An A/B test shows two versions to different users at random and compares an outcome."
+   ],
+   [
+    "jagged frontier",
+    "The jagged frontier is the uneven line between tasks that AI does well and tasks it does poorly. It does not follow how hard a task looks to a person."
+   ],
+   [
+    "megastud(y|ies)",
+    "A megastudy tests many interventions at once on the same outcome, with one large sample."
+   ],
+   [
+    "naive diversification",
+    "Naive diversification is spreading choices evenly across the options on offer, whatever their merits."
+   ],
+   [
+    "willingness to (pay|accept)",
+    "Willingness to pay is the most a person would pay for something. Willingness to accept is the least they would take to give it up."
+   ],
+   [
+    "heterogeneity|heterogeneous effects?",
+    "Heterogeneity means the effect differs between groups of people, not only on average."
+   ],
+   [
+    "selection bias",
+    "Selection bias is when the people in a study differ from the wider group in a way that affects the result."
+   ],
+   [
+    "external validity|generali[sz]ability",
+    "External validity is how far a result holds for other people, places and times than the ones studied."
    ]
-  ]
+  ],
+  "glossaryThe": "algorithm aversion|(the )?endowment effects?|loss aversion|choice overload|overconfidence|overprecision|calibration|calibrated|anchoring|anchor(s|ing effect)?|defaults?|default effects?|inertia|status quo bias|sunk[- ]costs?( fallacy)?|planning fallacy|pluralistic ignorance|(social |descriptive |injunctive )?norms?|(a )?(tight|loose) (norms?|cultures?)|out[- ]?group hate|in[- ]?group love|in[- ]?group favou?ritism|polari[sz]ation|motivated (beliefs?|reasoning)|confirmation bias|framing( effects?)?|nudges?|present bias|deterrence|spill ?overs?|homophily|echo chambers?|wisdom of (the )?crowds?|conformity|social proof|reciprocity|base rates?|placebo|human[- ]in[- ]the[- ]loop|hallucinations?|(large language models?|llms?)|a/?b tests?|split tests?|jagged frontier|megastud(y|ies)|naive diversification|willingness to (pay|accept)|heterogeneity|heterogeneous effects?|selection bias|external validity|generali[sz]ability"
  }
 }

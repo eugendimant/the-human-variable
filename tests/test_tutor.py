@@ -520,3 +520,17 @@ def test_glossary_definitions_fire_only_on_a_definition_question():
 def test_offline_tutor_review41(q, cid, want, bad):
     a = T.curated(q, cid)['answer']
     assert want in a and bad not in a
+
+
+@pytest.mark.parametrize('q,cid,want', [
+    ('What is the endowment effect?', 'bz06', 'valuing something more once you own it'),
+    ('What does algorithm aversion mean?', 'ai09', 'prefer a human judgment'),
+    ('What is choice overload?', 'bz10', 'too many options'),
+    ('What is out-group hate?', 'dimant-hate-choice', 'hostility or harm'),
+    ('Which marketplace was it?', 'bz09', 'does not name the exact setting'),
+    ('Where was the experiment run?', 'ai01', 'does not name the exact setting'),
+])
+def test_top10_concept_glossary_and_setting_route(q, cid, want):
+    """Top-10 item 1 (review 53, m-1): a named concept gets its plain definition, and a where-or-which-firm question gets the scene plus a pointer to the paper, not 'I could not match'. The page tutor says the same (tests/test_browser)."""
+    assert want in T.curated(q, cid)['answer']
+    assert 'could not match' not in T.curated(q, cid)['answer']

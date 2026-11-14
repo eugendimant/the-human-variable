@@ -141,10 +141,12 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
         exact = [f for f in fol if _norm(f['q']) in (_norm(question), _norm(bare))]
         jac = lambda f: len(set(tokens(f['q'])) & qt) / max(1, len(set(tokens(f['q'])) | qt))
         if exact: return out(exact[0]['a'], c)
+        late = None   # a definition kept back for a question the item's own follow-ups did not answer
         gm = re.match(r"^(?:what(?:.?s| is| are| does| do)|define|explain) (an? |the )?(?:term |word )?['\"\u201c\u201d\u2018\u2019]?(.+?)['\"\u201c\u201d\u2018\u2019]?( means?| stands? for)?(?: to me| for me| please| in plain (?:english|words))?[?.]?$", bare)   # "what is a p-value?": a method word gets its plain definition; "what is the p-value?" asks about this study (review 40)
-        if gm and (gm.group(3) or gm.group(1) != 'the '):
+        if gm and (gm.group(3) or gm.group(1) != 'the ' or re.fullmatch(R.get('glossaryThe', '(?!)'), gm.group(2))):   # a named concept ("what is the endowment effect?") is defined; a measure of this study ("the p-value") is not
             gd = next((d for rx, d in R.get('glossary', []) if re.fullmatch(rx, gm.group(2))), None)
-            if gd: return {'answer': gd, 'citations': [], 'mode': 'curated'}
+            if gd and not (re.fullmatch(R.get('glossaryThe', '(?!)'), gm.group(2)) and any(all(w[:6] in f['q'].lower() for w in gm.group(2).split()) for f in fol)): return {'answer': gd, 'citations': [], 'mode': 'curated'}   # the item's own follow-up defines its own term first
+            late = gd
         if re.search(r"\b(ethic\w*|unethical|moral\w*|fair to|unfair\w*|allowed|legal(?!\s+(team|department|counsel|staff|work))\w*)\b|\bis (it|this|that) (really )?(fair|right|wrong|ok|okay)\b", ql):
             fe = [f for f in fol if re.search(r"\b(ethic\w*|unethical|moral\w*|fair|unfair\w*|allowed|legal\w*)\b", f['q'], re.I) and jac(f) >= 0.3]   # the item's own ethics follow-up (audit 30)
             if fe: return out(fe[0]['a'], c)
@@ -228,6 +230,8 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 fw = fw or [f for f in fol if re.search(r'\b(because|read (this|it)? ?as|reason|motive|concern|suggest)', f['a'], re.I) and (rare & set(tokens(f['a'])))]
                 if fw: return out(fw[0]['a'], c)
                 whyq = True; continue
+            if name == 'setting':   # where, which firm or platform: the scene says what it says, the paper says the rest (review 53)
+                return out(f"The lab's summary does not name the exact setting beyond this: {c.get('scene', '')} The paper states it. The paper: {_papers(c)}.", c)
             if name == 'funding': return out(f"The lab's summary does not record who funded the study; the paper's acknowledgements do. The paper: {_papers(c)}.", c)
             if name == 'raters':   # who judged the outcome: a follow-up that says so, else the scope line
                 fr = [f for f in c.get('follow', []) if re.search(r'\b(rat(ed|ers?)|evaluat\w*|judg\w*|coders?|graded)\b', f['q'], re.I)]
@@ -288,6 +292,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
             sh = lambda x: len(core & set(tokens(x)))
             near = max(_sents(c), key=sh, default='')
             if near and sh(near) >= 2 and 3 * sh(near) >= 2 * len(core): return out(f"The closest line in this study’s summary: {near}", c)
+        if late: return {'answer': late, 'citations': [{'id': s, 'label': cite_label(s)} for s in c['sources']], 'mode': 'curated'}   # no follow-up answered it: the plain definition
         if rare:   # a weak match is not an answer: give the finding and offer the summary's own questions (review 27; replaces one-word and answer-text borrowing)
             r = out(f"I could not match that question to this study’s summary. Here is what the study found: {c['answerTitle']}. {c['explain']} Its summary answers the questions below.", c)
             r['suggest'] = [f['q'] for f in sorted(c.get('follow', []), key=lambda f: -len(qt & set(tokens(f['q'] + ' ' + f['a']))))][:3]; return r   # closest first (audit 33)

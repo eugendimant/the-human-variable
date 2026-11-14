@@ -1119,3 +1119,13 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 ## Iteration 84 (review 53, I-1 and m-8)
 - **Record page.** The one-column mode is left-aligned with the header edge. The minus sign in the headline number has a 0.07 em gap to the digit.
 - **Gates (iteration 84).** 405 passed; design lint by rule {} (after one R17 fix on the minus span); build current. Not yet reviewed (review 54).
+
+## Iteration 85 (owner, 2026-11-14: "implement the top 10 improvements; the Gemini key comes later and the tool needs a fallback")
+- **Rule.** The no-key tutor is the fallback and must stay fully usable; a Gemini layer is added later on top of it (not built).
+- **1. Tutor coverage** (`tools/tutor_glossary_2026_11_14.py`): 40 plain concept definitions (algorithm aversion, endowment effect, choice overload, tight norm, out-group hate, overconfidence, and others; no study numbers). "What is the endowment effect?" now gets its definition (`glossaryThe`); an item's own follow-up that defines its own term still wins; a definition is the last resort when no follow-up answers. A `setting` route answers where/which firm/which platform with the scene plus a pointer to the paper. Three more question families: who was surveyed or in the study, "is N percent a lot", low and high performers. Page and server tutor stay identical.
+- **2. First chip.** "How big is this effect in practice?" no longer leads the chips, because it repeated the screen on every decision.
+- **3. Closed phone.** A phone that has not answered when answers stop shows "Answers are closed." with no option, slider or lock button; the toast ellipse is gone.
+- **4. Abandoned class.** An open decision in a room whose console has been quiet for two hours is released (was six; `THV_OPEN_HOLD_HOURS`).
+- **5. Predict screens at 1280x720.** Option rows and the causal graph are tighter on short wide screens; on all 116 decisions nothing sits under the action bar.
+- **Not changed:** projector body text (zoom-fitted at 720p, any increase shrinks the fit), the causal reveal hole at 1920 (structural, high risk), option cues, biz08's sample line (no sourced number).
+- **Gates (iteration 85).** 413 passed; design lint by rule {}; build current. Not yet reviewed (review 54).
