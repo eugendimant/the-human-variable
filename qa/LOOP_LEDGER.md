@@ -1089,3 +1089,13 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Landing lede.** The owner's text is unchanged. It is cut into six phrases that wrap as wholes where the column is wide enough (1100 px and wider, and 600 to 900 px). Between 900 and 1100 px and below 600 px it wraps freely (the spans are `display:contents` there). Six short lines at 1440 px; no line starts with "from a" and none ends with "that you are".
 - **Projector.** Labels, units and tags are 17 px before the zoom. Smallest text at 1280x720 on the open view of the allocate item is 13.9 px (was 11.6); on the reveal 13.3 to 15 px.
 - **Gates (iteration 81).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 51).
+
+## Review 51 (on iteration 81): 82/100, 0 Blocking, 0 Major, 13 Minor, 4 Optional
+- **Held up:** 400 plays, 0 errors; axe 0 violations on 61 scans; page and server tutor identical on 106 questions; all 26 stored quotes verbatim; no answer leak by any route.
+- **Introduced by 81:** the projector text is 12.9 to 17 px, not a 17 px floor (body text about 13 px). The earlier ledger line "17 px" applies to labels, units and tags only. Optional: the false-news-spread key is now the longest option.
+- **Tutor (m-1):** 46% direct, 27 partial, 26 miss, 4 wrong.
+- **Score trend:** 84, 84, 83, 81, 81, 79, 79, 80, 81, 80, 82, 82.
+
+## Iteration 82 (review 51, m-1)
+- **Four wrong tutor answers fixed** by `tools/tutor_review51_2026_11_14.py` (data only): ai10 experts question now gets the experts follow-up (`subgroupFollow` gains `^did (experts?|...)`); social04 follow-up reworded "Did beliefs change later in the semester?" so duration questions find it; facebook-deactivation gains "How long did people stay off Facebook?"; axb01 gains "When does a human reviewer help?" (answer from the stored explain). Golden files regenerated.
+- **Gates (iteration 82).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 52).

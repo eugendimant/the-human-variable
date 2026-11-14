@@ -3346,7 +3346,7 @@
      "a": "College students, across four studies, who rated their own comfort with campus drinking and estimated the average student’s comfort."
     },
     {
-     "q": "Did beliefs change over time?",
+     "q": "Did beliefs change later in the semester?",
      "a": "In a study that followed students over a semester, men shifted their attitudes toward the norm they mistakenly perceived. Women did not."
     },
     {
@@ -4038,6 +4038,10 @@
     {
      "q": "Do humans with AI beat humans alone?",
      "a": "Yes. Against humans alone, human-AI systems performed better on average. The losses appear only against the better of the two."
+    },
+    {
+     "q": "When does a human reviewer help?",
+     "a": "When the human was the better performer. Teams gained then, and lost when the AI was the better performer."
     },
     {
      "q": "Which task types lost most?",
@@ -5993,6 +5997,10 @@
     {
      "q": "How much time did it free up?",
      "a": "Deactivating Facebook freed up about 60 minutes per day for the average person in the treatment group."
+    },
+    {
+     "q": "How long did people stay off Facebook?",
+     "a": "The deactivation lasted four weeks. The payment figure asks what people needed to be paid to deactivate for that long."
     },
     {
      "q": "Did people go back to Facebook afterward?",
@@ -9512,7 +9520,7 @@
    "study",
    "this"
   ],
-  "subgroupFollow": "^(who\\b.*\\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\\b)",
+  "subgroupFollow": "^(who\\b.*\\b(gain|gained|benefit|benefited|most|least|helped|lost)|which (workers|agents|employees|people|consultants|staff|groups?)\\b)|^did (experts?|experienced \\w+|professionals?|novices?|women|men|older \\w+|younger \\w+) ",
   "wordSurnames": [
    "bail",
    "bloom",
