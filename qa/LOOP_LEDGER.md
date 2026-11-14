@@ -1099,3 +1099,13 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 ## Iteration 82 (review 51, m-1)
 - **Four wrong tutor answers fixed** by `tools/tutor_review51_2026_11_14.py` (data only): ai10 experts question now gets the experts follow-up (`subgroupFollow` gains `^did (experts?|...)`); social04 follow-up reworded "Did beliefs change later in the semester?" so duration questions find it; facebook-deactivation gains "How long did people stay off Facebook?"; axb01 gains "When does a human reviewer help?" (answer from the stored explain). Golden files regenerated.
 - **Gates (iteration 82).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 52).
+
+## Review 52 (on iteration 82): 81/100, 0 Blocking, 0 Major, 12 Minor, 5 Optional
+- **Held up:** 580 plays, 0 errors; axe 0 violations on 50 scans; page and server tutor identical on 126 questions and 716 chips; no answer leak; Crossref has all 114 DOIs; the four iteration 82 tutor fixes hold for the wordings tried (axb01 misses two other wordings).
+- **Open:** tutor about 22% direct with 4 wrong (genai2, axf06, rollout1, axb15); record page column holes at 1 to 7 calls; causal reveal hole 290 px at 1920; projector body text about 13 px; closed phone keeps live controls; five predict screens scroll at 1280x720; axb12 scene names the mechanism; biz08 'who took part' answer is 'see the paper'.
+- **Score trend:** 84, 84, 83, 81, 81, 79, 79, 80, 81, 80, 82, 82, 81.
+
+## Iteration 83 (review 52, m-5 and m-8)
+- **Record page.** With fewer than eight calls the record is one centred column (`rec-stack`), so neither side leaves a hole.
+- **axb12.** The scene no longer says the platform delivers the ad "cost-effectively" (`tools/review52_fixes_2026_11_14.py`).
+- **Gates (iteration 83).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 53).

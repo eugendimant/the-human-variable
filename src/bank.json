@@ -4574,7 +4574,7 @@
    "format": "choice",
    "concept": "Algorithmic bias",
    "title": "Who saw the STEM ad?",
-   "scene": "A firm runs a gender-neutral ad promoting STEM careers and lets the platform’s algorithm deliver it cost-effectively. Fewer women than men end up seeing it.",
+   "scene": "A firm runs a gender-neutral ad promoting STEM careers and lets the platform’s algorithm deliver it. Fewer women than men end up seeing it.",
    "question": "What best explains the gap?",
    "options": [
     "Women scrolled past the ads more often",

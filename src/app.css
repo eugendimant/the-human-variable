@@ -823,3 +823,6 @@ body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not
 /* The lede breaks between its phrases, not inside them, where the column is wide enough for a whole phrase (owner, 2026-11-13; review 50, m-6). */
 .hero-lede .ph{display:contents}
 @media (min-width:1100px),(min-width:600px) and (max-width:900px){.hero-lede .ph{display:inline-block;white-space:nowrap}}
+
+/* review 52, m-5: with fewer than eight calls the record is one column, so neither side leaves a hole */
+.rec-grid.rec-stack{grid-template-columns:minmax(0,1fr);max-width:760px;margin-left:auto;margin-right:auto}
