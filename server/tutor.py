@@ -231,7 +231,7 @@ def curated(question: str, challenge_id: str | None, exclude=None) -> dict:
                 if fw: return out(fw[0]['a'], c)
                 whyq = True; continue
             if name == 'setting':   # where, which firm or platform: the scene says what it says, the paper says the rest (review 53)
-                return out(f"The lab's summary does not name the exact setting beyond this: {c.get('scene', '')} The paper states it. The paper: {_papers(c)}.", c)
+                return out(f"From the summary: {c.get('scene', '')} {c['boundary']} The paper gives the full setting. The paper: {_papers(c)}.", c)
             if name == 'funding': return out(f"The lab's summary does not record who funded the study; the paper's acknowledgements do. The paper: {_papers(c)}.", c)
             if name == 'raters':   # who judged the outcome: a follow-up that says so, else the scope line
                 fr = [f for f in c.get('follow', []) if re.search(r'\b(rat(ed|ers?)|evaluat\w*|judg\w*|coders?|graded)\b', f['q'], re.I)]

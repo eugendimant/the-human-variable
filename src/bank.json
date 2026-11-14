@@ -9459,7 +9459,7 @@
    ],
    [
     "duration",
-    "\\b(how long|last(ed)?|persist\\w*|fade\\w*|long[- ]term|over time|stick)\\b"
+    "\\b(how long|last(ed)?|persist\\w*|fade\\w*|long[- ]term|over time|(did|does|will) it stick|stick(s)? around)\\b"
    ],
    [
     "subgroup",
@@ -9714,10 +9714,6 @@
     "Choice overload is the idea that too many options make a decision harder. People may choose less, or put the decision off."
    ],
    [
-    "overconfidence|overprecision",
-    "Overconfidence means being more sure of your answers than your accuracy justifies."
-   ],
-   [
     "calibration|calibrated",
     "Calibration compares how sure people say they are with how often they are right. A well-calibrated person who says 70% is right about 70% of the time."
    ],
@@ -9748,10 +9744,6 @@
    [
     "(social |descriptive |injunctive )?norms?",
     "A social norm is a shared rule about what people do (descriptive) or about what they should do (injunctive)."
-   ],
-   [
-    "(a )?(tight|loose) (norms?|cultures?)",
-    "In a tight norm, a rule is strongly enforced and leaves little room to deviate. A loose norm allows more variety."
    ],
    [
     "out[- ]?group hate|in[- ]?group love|in[- ]?group favou?ritism",
@@ -9860,8 +9852,40 @@
    [
     "external validity|generali[sz]ability",
     "External validity is how far a result holds for other people, places and times than the ones studied."
+   ],
+   [
+    "overconfidence",
+    "Overconfidence means being more sure of your answers than your accuracy justifies."
+   ],
+   [
+    "proxy( variables?)?",
+    "A proxy stands in for something that is hard to measure, such as using cost as a stand-in for need."
+   ],
+   [
+    "attrition",
+    "Attrition is when participants drop out of a study before it ends. It matters when the people who leave differ from those who stay."
+   ],
+   [
+    "crowding out",
+    "Crowding out is when an outside reward or rule reduces a person’s own motivation to do the right thing."
+   ],
+   [
+    "intention[- ]to[- ]treat|itt",
+    "Intention to treat compares people by the group they were assigned to, whether or not they used the treatment."
+   ],
+   [
+    "opt[- ]out( defaults?)?|opt[- ]in( defaults?)?",
+    "An opt-out default enrolls people unless they say no. An opt-in default enrolls them only if they say yes."
+   ],
+   [
+    "algorithm appreciation",
+    "Algorithm appreciation is the tendency to rely on an algorithm’s advice more than on advice from a person."
+   ],
+   [
+    "celerity",
+    "Celerity is how quickly a sanction follows the act."
    ]
   ],
-  "glossaryThe": "algorithm aversion|(the )?endowment effects?|loss aversion|choice overload|overconfidence|overprecision|calibration|calibrated|anchoring|anchor(s|ing effect)?|defaults?|default effects?|inertia|status quo bias|sunk[- ]costs?( fallacy)?|planning fallacy|pluralistic ignorance|(social |descriptive |injunctive )?norms?|(a )?(tight|loose) (norms?|cultures?)|out[- ]?group hate|in[- ]?group love|in[- ]?group favou?ritism|polari[sz]ation|motivated (beliefs?|reasoning)|confirmation bias|framing( effects?)?|nudges?|present bias|deterrence|spill ?overs?|homophily|echo chambers?|wisdom of (the )?crowds?|conformity|social proof|reciprocity|base rates?|placebo|human[- ]in[- ]the[- ]loop|hallucinations?|(large language models?|llms?)|a/?b tests?|split tests?|jagged frontier|megastud(y|ies)|naive diversification|willingness to (pay|accept)|heterogeneity|heterogeneous effects?|selection bias|external validity|generali[sz]ability"
+  "glossaryThe": "algorithm aversion|(the )?endowment effects?|loss aversion|choice overload|overconfidence|calibration|calibrated|anchoring|anchor(s|ing effect)?|defaults?|default effects?|inertia|status quo bias|sunk[- ]costs?( fallacy)?|planning fallacy|pluralistic ignorance|(social |descriptive |injunctive )?norms?|out[- ]?group hate|in[- ]?group love|in[- ]?group favou?ritism|polari[sz]ation|motivated (beliefs?|reasoning)|confirmation bias|framing( effects?)?|nudges?|present bias|deterrence|spill ?overs?|homophily|echo chambers?|wisdom of (the )?crowds?|conformity|social proof|reciprocity|base rates?|placebo|human[- ]in[- ]the[- ]loop|hallucinations?|(large language models?|llms?)|a/?b tests?|split tests?|jagged frontier|megastud(y|ies)|naive diversification|proxy( variables?)?|attrition|crowding out|intention[- ]to[- ]treat|itt|opt[- ]out( defaults?)?|opt[- ]in( defaults?)?|algorithm appreciation|celerity|willingness to (pay|accept)|heterogeneity|heterogeneous effects?|selection bias|external validity|generali[sz]ability"
  }
 }

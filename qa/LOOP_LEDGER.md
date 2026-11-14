@@ -1129,3 +1129,14 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **5. Predict screens at 1280x720.** Option rows and the causal graph are tighter on short wide screens; on all 116 decisions nothing sits under the action bar.
 - **Not changed:** projector body text (zoom-fitted at 720p, any increase shrinks the fit), the causal reveal hole at 1920 (structural, high risk), option cues, biz08's sample line (no sourced number).
 - **Gates (iteration 85).** 413 passed; design lint by rule {}; build current. Not yet reviewed (review 54).
+
+## Review 54 (on iteration 85): 80/100, 0 Blocking, 0 Major, 9 Minor, 4 Optional
+- **Held up:** 135 plays, 0 errors; axe 0 violations on 25 scans; page and server tutor identical on 165 questions; closed phone, late join, reload, dropped link and 120 joins behave; all leak probes held during an open decision. The reviewer could not finish pytest or the lint in its own copy (both pass in mine).
+- **Tutor in own wording:** 35% direct, 27% partial, 36% miss, 3% wrong (5 of 165); useful answers 61%.
+- **Introduced by 85:** causal graph labels shrank to 8.7 to 10.3 px at 1280x720; the 'tight norm' definition overrode the study's own meaning; the setting route ignored the stored boundary; 'stick' fired the duration route; 'overprecision' defined overconfidence.
+- **Not fixed (documented):** the served page keeps `bandTitles` (the owner's papers on the landing page) next to each decision's `sources` map; the paper's authors, year, venue and DOI link are in the served source records for the same reason, so a student who reads the page source can identify the paper before the call. Closing it needs the source map to arrive with the evidence, a larger change. Causal reveal hole 285 px at 1920; projector body text 13.9 to 15 px; 1024x768 scrolls on 12 predict screens (reachable by scroll; the page keeps room under the action bar).
+
+## Iteration 86 (review 54)
+- **Graph labels.** The causal graph keeps its full size (labels 13.3 px or more at 1280x720, 1366x768); the short-screen room comes from tighter option rows and from hiding the one-line hint.
+- **Tutor.** The tight and loose norm entry and the overprecision alternative are removed (the study's own wording wins). Setting answers now quote the summary's scene and boundary. 'Stick' no longer fires the duration route (only 'did it stick' and 'stick around'). Added definitions: proxy, attrition, crowding out, intention to treat, opt-out and opt-in default, algorithm appreciation, celerity.
+- **Gates (iteration 86).** 413 passed; design lint by rule {}; build current. Not yet reviewed (review 55).

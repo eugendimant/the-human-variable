@@ -527,8 +527,8 @@ def test_offline_tutor_review41(q, cid, want, bad):
     ('What does algorithm aversion mean?', 'ai09', 'prefer a human judgment'),
     ('What is choice overload?', 'bz10', 'too many options'),
     ('What is out-group hate?', 'dimant-hate-choice', 'hostility or harm'),
-    ('Which marketplace was it?', 'bz09', 'does not name the exact setting'),
-    ('Where was the experiment run?', 'ai01', 'does not name the exact setting'),
+    ('Which marketplace was it?', 'bz09', 'The paper gives the full setting'),
+    ('Where was the experiment run?', 'ai01', 'The paper gives the full setting'),
 ])
 def test_top10_concept_glossary_and_setting_route(q, cid, want):
     """Top-10 item 1 (review 53, m-1): a named concept gets its plain definition, and a where-or-which-firm question gets the scene plus a pointer to the paper, not 'I could not match'. The page tutor says the same (tests/test_browser)."""
