@@ -1140,3 +1140,13 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Graph labels.** The causal graph keeps its full size (labels 13.3 px or more at 1280x720, 1366x768); the short-screen room comes from tighter option rows and from hiding the one-line hint.
 - **Tutor.** The tight and loose norm entry and the overprecision alternative are removed (the study's own wording wins). Setting answers now quote the summary's scene and boundary. 'Stick' no longer fires the duration route (only 'did it stick' and 'stick around'). Added definitions: proxy, attrition, crowding out, intention to treat, opt-out and opt-in default, algorithm appreciation, celerity.
 - **Gates (iteration 86).** 413 passed; design lint by rule {}; build current. Not yet reviewed (review 55).
+
+## Review 55 (on iteration 86): 80/100, 0 Blocking, 1 Major, 9 Minor, 4 Optional
+- **Major M-1 (introduced by iteration 84):** the record headline's minus sign was 14 px and muted beside 128 px digits, because `.score-big span{font-size:var(--t6)}` outranked the new `.score-big .neg` rule. A negative total read as positive. My own screenshot check in iteration 84 used a one-call record before the span existed in the page, and the lint's R17 saw only the letter spacing, not the size.
+- **Held up:** pytest 413 passed and lint clean in the reviewer's own copy; axe 0 violations on 49 scans; page and server tutor identical on 115 questions; 112 plays, 0 errors; closed phone, dropped link and answer-leak probes behaved.
+- **Open Minors:** confidence slider under the action bar on one causal item at 1280x720 and 1366x768; 10.3 px diagram labels on the projector causal reveal; solo-play toast over the live-class notice; offline-then-closed phone message; tutor 33% direct, 3 wrong (ai09, axb08, bz07); wide-reveal column holes; the paper-title map in the served page (documented in review 54); projector console below the fold after Reveal; reveal tab row half under the bar at 1280x720.
+- **Score trend:** 84, 84, 83, 81, 81, 79, 79, 80, 81, 80, 82, 82, 81, 80, 80, 80.
+
+## Iteration 87 (review 55, M-1)
+- **Minus sign.** `.score-big .num .neg{font-size:inherit;color:inherit}`. New test `test_record_headline_minus_is_as_large_as_its_digits` compares the span's size and colour with the digits' at 1440 and 390.
+- **Gates (iteration 87).** 414 passed; design lint by rule {}; build current. Not yet reviewed (review 56).

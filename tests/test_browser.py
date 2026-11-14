@@ -677,3 +677,14 @@ def test_closed_answers_leave_an_unanswered_phone_without_live_controls(browser,
         ctx.close()
     finally:
         srv.shutdown()
+
+
+def test_record_headline_minus_is_as_large_as_its_digits(browser):
+    """Review 55, M-1: a negative headline's minus sign has the digits' size and colour at 1440 and 390 (the .score-big span rule once made it 14 px)."""
+    for w in (1440, 390):
+        pg = page(browser); pg.set_viewport_size({'width': w, 'height': 900}); pg.goto(URL); pg.evaluate("localStorage.clear()")
+        c = next(x for x in LIVE if x['format'] == 'choice'); pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+        pg.goto(URL + '#record'); pg.reload(); pg.wait_for_selector('.score-big .num')
+        pg.evaluate("document.querySelector('.score-big .num').innerHTML = '<span class=\"neg\">\\u2212</span>37'")
+        a, b = pg.evaluate("(()=>{const n=document.querySelector('.score-big .num'), g=n.querySelector('.neg'); return [getComputedStyle(n).fontSize+getComputedStyle(n).color, getComputedStyle(g).fontSize+getComputedStyle(g).color]})()")
+        assert a == b, (w, a, b)

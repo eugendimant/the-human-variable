@@ -828,7 +828,7 @@ body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not
 
 /* review 52, m-5: with fewer than eight calls the record is one column, so neither side leaves a hole */
 .rec-grid.rec-stack{grid-template-columns:minmax(0,1fr);max-width:760px}
-.score-big .neg{letter-spacing:0;margin-right:.07em}
+.score-big .num .neg{font-size:inherit;color:inherit;letter-spacing:0;margin-right:.07em}   /* review 55, M-1: .score-big span is 14 px and muted; the minus is part of the number */
 /* review 53, m-5: on a short wide screen (a projector at 1280x720) the question screens of the causal items fit without scrolling */
 @media (min-width:1000px) and (max-height:760px){.focus-card .opt{padding-top:7px;padding-bottom:7px}.focus-card .dag{margin-bottom:10px}.focus-card .dag-hint{display:none}}
 /* Instructor console additions */
