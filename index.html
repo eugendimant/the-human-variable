@@ -827,7 +827,8 @@ body.in-play .focus:not(:has(.reveal)):not(:has(.q-col)),body.in-play .focus:not
 @media (min-width:1100px),(min-width:600px) and (max-width:900px){.hero-lede .ph{display:inline-block;white-space:nowrap}}
 
 /* review 52, m-5: with fewer than eight calls the record is one column, so neither side leaves a hole */
-.rec-grid.rec-stack{grid-template-columns:minmax(0,1fr);max-width:760px;margin-left:auto;margin-right:auto}
+.rec-grid.rec-stack{grid-template-columns:minmax(0,1fr);max-width:760px}
+.score-big .neg{letter-spacing:0;margin-right:.07em}
 </style></head>
 <body>
 <header class="bar"><div class="bar-in"><a class="brand" href="#" data-home="1" aria-label="The Human Variable, home"><span id="brand-glyph"></span>The Human Variable</a>
@@ -1651,7 +1652,7 @@ function record() {
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete' : 'Your record'}</h1>
-    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? mn(sess ?? meanScore) : '–'}</b><span class="score-unit">skill points<br>versus guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing, 100 is perfect, and a confident miss can fall far below 0. A confident forecast miss costs more than a wrong pick.</span></div>
+    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? mn(sess ?? meanScore).replace(/^\u2212/, '<span class="neg">\u2212</span>') : '–'}</b><span class="score-unit">skill points<br>versus guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing, 100 is perfect, and a confident miss can fall far below 0. A confident forecast miss costs more than a wrong pick.</span></div>
 ${sess !== null ? `<dl class="score-meta"><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl>` : ''}</div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid${all.length < 8 ? ' rec-stack' : ''}">

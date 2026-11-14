@@ -1109,3 +1109,13 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Record page.** With fewer than eight calls the record is one centred column (`rec-stack`), so neither side leaves a hole.
 - **axb12.** The scene no longer says the platform delivers the ad "cost-effectively" (`tools/review52_fixes_2026_11_14.py`).
 - **Gates (iteration 83).** 405 passed; design lint by rule {}; build current. Not yet reviewed (review 53).
+
+## Review 53 (on iteration 83): 80/100, 0 Blocking, 0 Major, 12 Minor, 5 Optional
+- **Held up:** 276 plays, 0 errors; axe 0 violations on 53 scans; page and server tutor identical on 97 questions and 716 chips; no answer leak; all 26 quotes verbatim.
+- **Introduced by 83:** the one-column record sat 204 px right of the header edge at 1920.
+- **Open:** tutor coverage in natural wording (13 of 97 direct, 45 no match); the first chip repeats the screen; closed phone keeps live controls; causal reveal hole 290 px at 1920; six predict screens scroll at 1280x720; one abandoned class locks practice for up to six hours; option cues in axb08, social16, social14, dimant-deterrence-choice.
+- **Score trend:** 84, 84, 83, 81, 81, 79, 79, 80, 81, 80, 82, 82, 81, 80.
+
+## Iteration 84 (review 53, I-1 and m-8)
+- **Record page.** The one-column mode is left-aligned with the header edge. The minus sign in the headline number has a 0.07 em gap to the digit.
+- **Gates (iteration 84).** 405 passed; design lint by rule {} (after one R17 fix on the minus span); build current. Not yet reviewed (review 54).
