@@ -6455,7 +6455,7 @@
     "truth": false
    },
    "answerTitle": "No message worked; forecasters still overestimated effects",
-   "explain": "Across 4,931 participants, none of the 7 nudges raised mask-wearing intentions or pledges in either party. Forecasters reliably overestimated the effects, most of all for Democrats.",
+   "explain": "Across 4,931 participants, there was no evidence that any of the 7 nudges promoted mask-wearing among Democrats or Republicans. Forecasters overestimated the effects in the pooled sample, and for Democrats too.",
    "implication": "Treat expert predictions about which message works as hypotheses. Run a small randomized test before scaling a compliance campaign.",
    "boundary": "One topic (COVID-19 mask-wearing), US Democrats and Republicans, and seven short messages.",
    "sources": [

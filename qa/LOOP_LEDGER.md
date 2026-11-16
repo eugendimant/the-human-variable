@@ -1169,3 +1169,8 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Causal reveal at 1920 (m-4).** The tabs and questions now run down the left column when the figure is taller; the mid-page hole is gone and the page ends with open space under the figure.
 - **Record headline (m-7).** The headline never falls below -100, the floor of each call in the list. Delegate chips are 13 px or more (m-13).
 - **Not changed:** the slider's mid-track thumb and "?" before the first touch (it shows "not chosen yet"); the "invisible focus stop" is the browser wrapping from the last control to its own address bar.
+
+## Iteration 90
+- **Review 57 (on iteration 89): 81/100, 0 Blocking, 0 Major, 8 Minor, 3 Optional.** Report: qa/reviews/review57.md. The review took 2 points off for two iteration 89 claims it could not meet: causal and pick-two reveals still leave 300 to 430 px of open space (the hole moved to the bottom of the page), and projector text is 14.9 to 15.2 px on several formats at 1280x720.
+- Fixed: dimant-masks-forecast's explanation now says only what the stored quotes say (m-9; `tools/review57_fixes_2026_11_16.py`, golden regenerated). Projector rows read "Said true" and "Said false" (m-4).
+- Not changed, on purpose: "Unsure" at exactly 50% (the game stores a probability, not a pick, and 50% is no information; m-3). Stranded words from m-8: a fix in `tieEnds` passed every test with and without it, so it is not shipped; the detector (R34) does not see the reviewer's cases.
