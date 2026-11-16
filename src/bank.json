@@ -9467,7 +9467,7 @@
    ],
    [
     "numbers",
-    "\\b(how many|what share|what percent\\w*|what proportion|what fraction|how much (more|less|higher|lower))\\b"
+    "\\b(how many|what share|what percent\\w*|what proportion|what fraction|how much (more|less|higher|lower))\\b|\\bwhat (were|was|are|is) the [\\w ]{0,25}(percent\\w*|rates?|numbers?|figures?|shares?|proportions?)\\b"
    ],
    [
     "signif",
@@ -9483,7 +9483,7 @@
    ],
    [
     "design",
-    "\\b(how (was|were|did)|design|method|ran|sample|participants|conducted|setup|set up|randomi[sz]\\w*|control group)\\b|\\b(was|is) (it|this|that) an? (field|lab|laboratory|online|survey|natural|randomi[sz]ed|real) (experiment|study|trial)\\b|\\bwhat (kind|type) of (study|experiment|trial)\\b"
+    "\\b(how (was|were|did)|design|method|ran|sample|participants|conducted|setup|set up|randomi[sz]\\w*|control group)\\b|\\b(was|is) (it|this|that) an? (field|lab|laboratory|online|survey|natural|randomi[sz]ed|real) (experiment|study|trial)\\b|\\bwhat (kind|type) of (study|experiment|trial)\\b|\\bhow (was|were) (the |this |that )?\\w+( \\w+)? (measured|tested|run|collected|built|fixed|constructed|studied|identified|detected|assessed)\\b"
    ],
    [
     "pilot",

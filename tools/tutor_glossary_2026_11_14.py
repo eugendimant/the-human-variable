@@ -84,3 +84,13 @@ B = json.loads(bp.read_text()); R = B['tutorRoutes']['routes']
 i = next(k for k, (n, _) in enumerate(R) if n == 'duration')
 R[i][1] = R[i][1].replace('|stick)', '|(did|does|will) it stick|stick(s)? around)')
 bp.write_text(json.dumps(B, ensure_ascii=False, indent=1) + '\n')
+# round 5 (2026-11-16): more phrasings of questions the stored text already answers. Idempotent.
+B = json.loads(bp.read_text()); R = B['tutorRoutes']['routes']
+ADD = {
+    'numbers': r'\bwhat (were|was|are|is) the [\w ]{0,25}(percent\w*|rates?|numbers?|figures?|shares?|proportions?)\b',
+    'design': r'\bhow (was|were) (the |this |that )?\w+( \w+)? (measured|tested|run|collected|built|fixed|constructed|studied|identified|detected|assessed)\b',
+}
+for name, add in ADD.items():
+    i = next(k for k, (n, _) in enumerate(R) if n == name)
+    if add not in R[i][1]: R[i][1] += '|' + add
+bp.write_text(json.dumps(B, ensure_ascii=False, indent=1) + '\n')

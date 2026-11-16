@@ -1150,3 +1150,11 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 ## Iteration 87 (review 55, M-1)
 - **Minus sign.** `.score-big .num .neg{font-size:inherit;color:inherit}`. New test `test_record_headline_minus_is_as_large_as_its_digits` compares the span's size and colour with the digits' at 1440 and 390.
 - **Gates (iteration 87).** 414 passed; design lint by rule {}; build current. Not yet reviewed (review 56).
+
+## Iteration 88 (owner, 2026-11-16: "5 more rounds of: how much can we cut, streamline, automate, make dynamic")
+- **Round 1, cut.** The reveal had four tabs. Scope held one sentence and Source repeated the study card's Published line. Both are gone: the study card gains a full-width "Covers" row and the tabs are Questions and Your note.
+- **Round 2, streamline.** Checked the suggested-question chips for cuts and kept them: the owner asked for more of them on 2026-11-12, and tests require at least four. No change.
+- **Round 3, automate.** `tools/gates.sh NN` runs build check, design lint and pytest one after the other and writes `lintNN.txt` and `pytestNN.txt`. `tools/deliver.sh NN` copies the page to gh-pages and writes the zip and bundle. Also tried a looser "closest line" rule for the tutor and reverted it: it answered "which interface was worst" with a line that did not answer it, against review 27's rule.
+- **Round 4, dynamic.** The record page offers "Practise <area>, your weakest area" when two areas have two calls or more. It starts a round in the lowest-skill area, with unplayed decisions first. Test `test_record_offers_a_round_in_the_weakest_area`.
+- **Round 5, tutor fallback.** Two more phrasings reach the stored text: "what were the callback percentages" (numbers) and "how was the bias measured" (design). Tutor answers with no key: unchanged otherwise.
+- **Gates (iteration 88).** 415 passed; design lint by rule {}; build current. Not yet reviewed (review 56).

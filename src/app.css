@@ -602,7 +602,7 @@ body.projector .qr{background:#fff;padding:8px;border-radius:10px;box-sizing:con
 .plate .gap-legend .tag{background:#f0b43c;color:#14203a}
 .study-card{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin:0;padding:18px 22px 20px;border-top:1px solid var(--rule)}
 .study-card dt{font-size:var(--t7);color:var(--muted);font-weight:650;margin-bottom:2px}.study-card dd{margin:0;font-size:var(--t6);line-height:1.4;color:var(--ink)}
-.rev-meta .study-card{padding:16px 0 0;border-top:1px solid var(--rule)}
+.rev-meta .study-card{padding:16px 0 0;border-top:1px solid var(--rule)}.study-card .wide{grid-column:1/-1}
 .rev-meta .theme-strip{padding:14px 0 0;margin-top:18px}
 @media (max-width:520px){.study-card{grid-template-columns:1fr}}
 .reveal{position:relative}

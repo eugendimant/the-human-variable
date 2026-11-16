@@ -688,3 +688,17 @@ def test_record_headline_minus_is_as_large_as_its_digits(browser):
         pg.evaluate("document.querySelector('.score-big .num').innerHTML = '<span class=\"neg\">\\u2212</span>37'")
         a, b = pg.evaluate("(()=>{const n=document.querySelector('.score-big .num'), g=n.querySelector('.neg'); return [getComputedStyle(n).fontSize+getComputedStyle(n).color, getComputedStyle(g).fontSize+getComputedStyle(g).color]})()")
         assert a == b, (w, a, b)
+
+
+def test_record_offers_a_round_in_the_weakest_area(browser):
+    """Round 4 (2026-11-16): with two calls or more in two areas, the record offers a round in the area with the lowest skill, and the first card comes from that area."""
+    pg = page(browser); pg.goto(URL); pg.evaluate("localStorage.clear()")
+    tracks = sorted({c['track'] for c in LIVE})[:2]
+    for tr in tracks:
+        for c in [x for x in LIVE if x['track'] == tr and x['format'] == 'choice'][:2]:
+            pg.goto(URL + '?play=' + c['id']); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+    pg.goto(URL + '#record'); pg.reload(); pg.wait_for_selector('[data-act="replay"]')
+    b = pg.locator('[data-act="weak"]'); assert b.count() == 1
+    want = b.get_attribute('data-area'); assert want in tracks and want in b.text_content()
+    b.click(); pg.wait_for_timeout(800)
+    assert pg.evaluate("THV.st.view") == 'play' and pg.evaluate("THV.st.deck[0].track") == want
