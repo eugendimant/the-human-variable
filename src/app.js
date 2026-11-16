@@ -211,7 +211,7 @@ function home() {
     <div class="paths">${paths.map((p, pi) => { const n = p.items.filter(id => done.has(id)).length; return `<button class="path" data-path="${esc(p.id)}" data-kind="${['leading-ai', 'ai-customers', 'trust-algo', 'truth'].includes(p.id) ? 'ai' : 'bx'}"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span><small>${p.items.length} decisions${n ? `, ${n} played` : ''}</small></button>` }).join('')}</div>
   </section>
   ${dimant.length ? `<section class="section wrap dimant-band"><div class="dimant"><div><h2>Research by Eugen Dimant</h2><p class="dimant-stat">${ALL.filter(c => c.sources.some(id => dimant.some(d => d.id === id))).length} decisions in the game draw on ${dimant.length} of his published papers, in Management Science, PNAS Nexus, Scientific Reports and other journals.</p><button class="btn btn-line" data-path="dimant-lab">Play this path</button></div>
-    <div>${(rows => `<ul class="paper-list">${rows.slice(0, 3).join('')}</ul>${rows.length > 3 ? `<details class="paper-more"><summary>Show all ${rows.length} papers</summary><ul class="paper-list">${rows.slice(3).join('')}</ul></details>` : ''}`)(dimant.slice().sort((a, b) => b.year - a.year).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(s.title || (BANK.bandTitles || {})[s.id] || '')}</strong><small>${esc(s.authors)} (${s.year}), ${esc(s.venue)}</small></a></li>`))}</div></div></section>` : ''}`;
+    <div>${(rows => `<ul class="paper-list">${rows.slice(0, 3).join('')}</ul>${rows.length > 3 ? `<details class="paper-more"><summary>Show all ${rows.length} papers</summary><ul class="paper-list">${rows.slice(3).join('')}</ul></details>` : ''}`)(((BANK.bandPapers && BANK.bandPapers.length) ? BANK.bandPapers : dimant.slice().sort((a, b) => b.year - a.year)).map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(s.title || '')}</strong><small>${s.authors ? `${esc(s.authors)} (${s.year}), ${esc(s.venue)}` : esc(s.year)}</small></a></li>`))}</div></div></section>` : ''}`;
 }
 function customRound() {
   const counts = Object.fromEntries(TRACKS.map(t => [t, ALL.filter(c => c.track === t).length]));
@@ -362,10 +362,11 @@ function tutorParas(t) {   // the offline and the served tutor give the same wor
 function durationOk(c) {   // the decision has a follow-up that asks outright whether or how long the effect lasted (review 47, m-I2)
   return (c.follow || []).some(x => /^(did the effect (last|fade|persist)|how long did the effect last)/i.test(x.q));
 }
-function tutorChips(c) {   // up to seven suggestions, each one checked against the offline tutor so a tap always gets a real answer (owner, 2026-11-12)
+function tutorChips(c, all) {   // up to seven suggestions, each one checked against the offline tutor so a tap always gets a real answer (owner, 2026-11-12). Without a model the list is the whole menu and nothing can be typed, so no question can miss (owner, 2026-11-16)
   const cand = [/AI/.test(c.track || '') ? 'Would this hold with AI tools today?' : 'What does the study cover?', 'How would I test this in my company?', 'Who took part in the study?', 'How long did the effect last?', 'Was the study preregistered?', 'Has it been replicated?', 'Who wrote the paper?', 'Is this cause or correlation?', 'What should a manager do with this?', 'Who funded the study?'];
   const ok = q => { try { const a = curated(q, c).text || ''; return a && !/does not record|could not match|outside what this lab covers|does not say/i.test(a) } catch (e) { return false } };
-  return cand.filter(q => ok(q) && (!/How long did the effect last/.test(q) || durationOk(c))).slice(0, 7);   // the duration chip only where the study answers it (review 46, m-3; review 47, m-I2)
+  const base = cand.filter(q => ok(q) && (!/How long did the effect last/.test(q) || durationOk(c)));   // the duration chip only where the study answers it (review 46, m-3; review 47, m-I2)
+  return all ? base : base.slice(0, 7);   // the decision's own questions are already open as the list beside it, each with its stored answer
 }
 function srcHtml(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.authors)} (${s.year}), ${esc(s.venue)}</a>.` : '' }   // every study opens at its DOI (owner, 2026-11-12)
 function srcLine(c) { const s = SOURCE[c.sources[0]] || {}; return s.authors ? `Source: ${s.authors} (${s.year}), ${s.venue}.` : '' }
@@ -428,13 +429,14 @@ function play() {
 let TUTOR_REMOTE = null; // the server endpoint, when the page is served
 let TUTOR_AI = false;   // true only when the server reports a configured model
 function tutorPanel(c) {
-  const t = st.tutor;
-  return `<div class="tutor" role="region" aria-labelledby="tutor-h"><h2 id="tutor-h">Ask your own question</h2>
-    <form class="tutor-line" data-form="tutor"><label class="sr-only" for="tutor-in">Your question about this study</label><input id="tutor-in" maxlength="300" placeholder="For example: would this hold in a sales team?" autocomplete="off"><button class="btn btn-quiet" ${t.busy ? 'disabled' : ''}>${t.busy ? 'Thinking' : 'Ask'}</button></form>
-    ${t.suggest && t.suggest.length ? '' : `<div class="tutor-chips">${tutorChips(c).map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>`}
+  const t = st.tutor, menu = !TUTOR_AI, qs0 = tutorChips(c, menu);   // no model: a menu of checked questions, no typing, so no question can get a wrong answer (owner, 2026-11-16)
+  const chips = (list, cls) => `<div class="tutor-chips${cls ? ' ' + cls : ''}">${list.map(q => `<button data-ask="${esc(q)}"${menu && t.asked === q ? ' aria-pressed="true"' : ''}>${esc(q)}</button>`).join('')}</div>`;
+  return `<div class="tutor" role="region" aria-labelledby="tutor-h"><h2 id="tutor-h">${menu ? 'Questions about this study' : 'Ask your own question'}</h2>
+    ${menu ? '' : `<form class="tutor-line" data-form="tutor"><label class="sr-only" for="tutor-in">Your question about this study</label><input id="tutor-in" maxlength="300" placeholder="For example: would this hold in a sales team?" autocomplete="off"><button class="btn btn-quiet" ${t.busy ? 'disabled' : ''}>${t.busy ? 'Thinking' : 'Ask'}</button></form>`}
+    ${menu || !(t.suggest && t.suggest.length) ? chips(qs0) : ''}
     ${t.text ? `<div class="tutor-answer" aria-live="polite">${esc(tutorParas(t.text))}${t.cites.length ? '\n\n' + t.cites.map(x => { const u = (Object.values(SOURCE).find(z => cite(z.id) === x) || {}).url; return `<cite>${u ? `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(x)}</a>` : esc(x)}</cite>` }).join(' ') : ''}</div>` : ''}
-    ${t.suggest && t.suggest.length ? `<div class="tutor-chips tutor-suggest">${t.suggest.map(q => `<button data-ask="${esc(q)}">${esc(q)}</button>`).join('')}</div>` : ''}
-    <p class="small">${TUTOR_AI ? 'AI answers use only the lab’s checked sources. Check details in the source.' : 'Answers come from the lab’s checked summaries.'}</p></div>`;
+    ${!menu && t.suggest && t.suggest.length ? chips(t.suggest, 'tutor-suggest') : ''}
+    <p class="small">${TUTOR_AI ? 'AI answers use only the lab’s checked sources. Check details in the source.' : 'Each answer comes from the lab’s checked summary of the study.'}</p></div>`;
 }
 // Offline tutor. The same routing table and order as server/tutor.py curated (BANK.tutorRoutes), so both tutors agree.
 const TR = BANK.tutorRoutes || { stop: [], generic: [], suffixes: [], syn: {}, routes: [], subgroupFollow: '^who\\b' };
@@ -540,7 +542,7 @@ async function ask(q) {
       if (res.ok && typeof d.answer === 'string' && d.answer.trim()) { st.tutor = { busy: false, text: d.answer.slice(0, 1600), cites: (d.citations || []).map(x => x.label).slice(0, 4), suggest: Array.isArray(d.suggest) ? d.suggest.slice(0, 3).map(String) : null }; render(); return }
     } catch { }
   }
-  const a = curated(q, c); st.tutor = { busy: false, text: a.text, cites: a.cites, suggest: a.suggest || null }; render();
+  const a = curated(q, c); st.tutor = { busy: false, text: a.text, cites: a.cites, suggest: a.suggest || null, asked: q }; render();
 }
 function clientId() { let id = store.get('thv:client', null); if (!id) { id = Math.random().toString(36).slice(2, 12); store.set('thv:client', id) } return id }
 
@@ -580,7 +582,7 @@ function almanac() {
 }
 
 // Pooled skill above guessing: (mean score - mean chance level) / (1 - mean chance level), on first tries only.
-function pooledSkill(xs) { if (!xs.length) return null; const raw = xs.reduce((a, r) => a + r.score, 0) / xs.length, base = xs.reduce((a, r) => a + (typeof r.base === 'number' ? r.base : S.baseline(BY_ID[r.id])), 0) / xs.length; return pct(base >= 1 ? 0 : (raw - base) / (1 - base)) }
+function pooledSkill(xs) { if (!xs.length) return null; const raw = xs.reduce((a, r) => a + r.score, 0) / xs.length, base = xs.reduce((a, r) => a + (typeof r.base === 'number' ? r.base : S.baseline(BY_ID[r.id])), 0) / xs.length; return Math.max(-100, pct(base >= 1 ? 0 : (raw - base) / (1 - base))) }   // never below the per-call floor of −100, so the headline stays on the scale of the list (review 56, m-7)
 const firstTries = () => { const seen = new Set(); return records.filter(r => BY_ID[r.id] && !seen.has(r.id) && seen.add(r.id)) };
 
 // ----- record -----
@@ -609,7 +611,7 @@ function record() {
   const gapLine = cal.overconfidence === null ? '' : cal.overconfidence > 3 ? `${Math.round(cal.overconfidence)} points more confident than accurate` : cal.overconfidence < -3 ? `${Math.round(-cal.overconfidence)} points less confident than accurate` : 'Confidence matches accuracy';
   if (!all.length && !st.session.length) return `<section class="rec-head wrap"><h1>Your record</h1><p class="hero-lede">Nothing here yet. Your skill score, your calibration and every call you make appear after your first decision.</p><div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play a round</button></div></section>`;
   return `<section class="rec-head wrap"><h1>${st.session.length ? 'Round complete' : 'Your record'}</h1>
-    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? mn(sess ?? meanScore).replace(/^\u2212/, '<span class="neg">\u2212</span>') : '–'}</b><span class="score-unit">skill points<br>versus guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing, 100 is perfect, and a confident miss can fall far below 0. A confident forecast miss costs more than a wrong pick.</span></div>
+    <div class="score-strip"><div class="score-big"><div class="score-row"><b class="num">${typeof (sess ?? meanScore) === 'number' ? mn(sess ?? meanScore).replace(/^\u2212/, '<span class="neg">\u2212</span>') : '–'}</b><span class="score-unit">skill points<br>versus guessing</span>${sess === null ? spark : ''}</div><span>${sess !== null ? `Skill this round, ${st.session.length} call${st.session.length === 1 ? '' : 's'}` : `Skill over ${all.length} call${all.length === 1 ? '' : 's'}`}${(sess !== null ? st.session.length : all.length) < 5 ? ' (a few calls swing it widely)' : ''}: 0 is guessing, 100 is perfect, and a confident miss can fall below 0, down to −100. A confident forecast miss costs more than a wrong pick.</span></div>
 ${sess !== null ? `<dl class="score-meta"><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl>` : ''}</div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid${all.length < 8 ? ' rec-stack' : ''}">
@@ -617,7 +619,7 @@ ${sess !== null ? `<dl class="score-meta"><div><dt>Decisions played on this devi
       <div class="rec-col"><div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><p class="small">Scores per decision; the big number above subtracts what guessing earns.</p><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><button class="link-quiet" data-play="${esc(r.id)}">${esc(c.title)}</button><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${mn(pct(r.score))}<span class="bar-score"><b class="zero"></b><i style="${sbar(pct(r.score))}"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a path to start your record.</span></li>'}</ul></div></div>
     </div>
     <details class="how"><summary>How scoring works</summary><p>The headline is skill above guessing: each score is rescaled so that what a no-information strategy earns on that format (a 50% forecast, a random order, an even split, a random pick, the best blind estimating strategy across all estimates, such as always answering the same number) counts as 0 and a perfect call as 100. Below it, each decision's own score works as follows. Decisions score 0 to 100 with partial credit, except forecasts and point splits, which run from −100 to 100. An estimate earns 100 at the study's value, 50 at the edge of the shaded band and 0 at twice the band's half-width, with the credit falling evenly in between; landing inside the band still counts as matching the study in your record and calibration. Ranks score the share of pairs in the measured order. Point splits use the same proper rule as forecasts: all points on the option that worked best earn 100, and spreading points pays when you are unsure. Forecasts use a proper scoring rule built on the Brier score, the standard in forecasting tournaments: a confident correct call earns 100, saying 50% earns 50, and a confident wrong call costs up to 100 points, so stating your true belief always pays best. Your stated confidence does not change a decision's score; the calibration plot compares it with how often you were right (for forecasts, the probability is the statement). This is a learning record, not a validated assessment.</p></details>
-    <div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play another round</button>${weak ? `<button class="btn btn-quiet btn-lg" data-act="weak" data-area="${esc(weak)}">Practise ${esc(weak)}, your weakest area</button>` : ''}<span class="tool-links"><button class="link-btn" data-act="csv">Export CSV</button><button class="link-btn" data-act="json">Export JSON</button><button class="link-btn" data-act="erase">Erase this device’s record</button></span></div></section>`;
+    <div class="tools"><button class="btn btn-solid btn-lg" data-act="replay">Play another round</button>${weak ? `<button class="btn btn-quiet btn-lg" data-act="weak" data-area="${esc(weak)}">Practise ${esc(weak)}, your&nbsp;weakest&nbsp;area</button>` : ''}<span class="tool-links"><button class="link-btn" data-act="csv">Export CSV</button><button class="link-btn" data-act="json">Export JSON</button><button class="link-btn" data-act="erase">Erase this device’s record</button></span></div></section>`;
 }
 // Each dot's call count goes on the first side (right, left, above, below) where it touches no dot and no other label (review 27, rule 31).
 function calLabels(pts, sx, sy, P, W) {
@@ -659,7 +661,7 @@ function sourceModal(id) {
     ${s.takeaway && used.every(c => records.some(r => r.id === c.id)) ? `<p><strong>What the lab uses.</strong> ${esc(s.takeaway)}</p>` : `<p>The paper’s finding appears here once you have played ${used.length > 1 ? 'every decision' : 'the decision'} built on it.</p>`}
     <p><strong>How it was checked.</strong> ${esc(srcStatus(s)[0])}${v.checked ? ' on ' + esc(v.checked) : ''}. Metadata matched against the DOI registry.${v.note ? ' ' + esc(v.note) : ''}</p>
     ${used.length ? `<p><strong>Decisions built on it:</strong> ${used.map(c => `<button class="link-btn" data-play="${esc(c.id)}">${esc(c.title)}</button>`).join(', ')}.</p>` : ''}
-    <p><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article (DOI ${esc(s.doi)})</a></p>`, 'Source details');
+    ${s.url ? `<p><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Open the article (DOI ${esc(s.doi)})</a></p>` : '<p class="small">The link to the article appears once you have played the decision.</p>'}`, 'Source details');
 }
 function methodsModal() {
   const live = Object.values(SOURCE).filter(isLive), q = Object.values(SOURCE).filter(s => !isLive(s));
@@ -831,7 +833,7 @@ function balanceReveal() {   // the shorter column takes the study card and the 
   const fig = qs('.reveal>figure.gap'), meta = qs('.reveal>.rev-meta'), left = qs('.reveal>.action-note'), zz = parseFloat(rv.style.zoom) || 1;   // rectangles are in screen pixels; a margin is in the zoomed box's pixels
   if (!fig || !meta || !left || innerWidth < 1200 || qs('.reveal>section.gap')) return;   // a live-class panel already lengthens the right column
   const fb = fig.getBoundingClientRect().bottom, lb = left.getBoundingClientRect().bottom, mh = meta.getBoundingClientRect().height;
-  if (fb > lb + mh + 120) { rv.classList.add('fig-tall'); const dp = qs('.reveal>.deep'); if (!dp || dp.getBoundingClientRect().bottom - fig.getBoundingClientRect().bottom < 260) return; rv.classList.remove('fig-tall') }   // kept only when the text column then ends near the figure; otherwise the figure column would end in a long blank (review 40, I-2)   // a figure much taller than the text: the card, the tabs and the question box all run down the text column beside it (review 39)
+  if (fb > lb + mh + 120) { rv.classList.add('fig-tall'); const dp = qs('.reveal>.deep'); if (!dp || dp.getBoundingClientRect().bottom - fig.getBoundingClientRect().bottom < 420) return; rv.classList.remove('fig-tall') }   // kept only when the text column then ends near the figure; otherwise the figure column would end in a long blank (review 40, I-2)   // a figure much taller than the text: the card, the tabs and the question box all run down the text column beside it (review 39)
   const gWide = Math.abs(lb - fb), gRight = Math.abs(fb + 24 + mh - lb), gLeft = Math.abs(lb + mh - fb);   // empty space each placement leaves: one band under both columns, under the figure, or under the text (review 39)
   if (gRight < gWide && gRight <= gLeft && lb > fb) { rv.classList.add('meta-right'); const gap = meta.getBoundingClientRect().top - fig.getBoundingClientRect().bottom - 24; if (gap > 0) meta.style.marginTop = -gap / zz + 'px' }   // pulled up to sit under the figure, not in a row below the left column (audit 47)
   else if (gLeft < gWide && fb > lb) { rv.classList.add('meta-left'); const gap = meta.getBoundingClientRect().top - lb - 24; if (gap > 0) meta.style.marginTop = -gap / zz + 'px' }   // a tall figure: the card sits under the text, pulled up beside the figure
@@ -960,5 +962,5 @@ if (location.protocol.startsWith('http')) {
 }
 try { document.fonts && document.fonts.ready.then(() => { fitHeadings(qs('#view') || document); balanceReveal(); const old = { ...TW }; for (const k in TW) delete TW[k]; const moved = Object.keys(old).some(k => { const i = k.indexOf('|'); return Math.abs(textWidth(k.slice(i + 1), +k.slice(0, i)) - old[k]) > .5 }); if (moved && document.querySelector('svg.dag')) { const f = document.activeElement && document.activeElement.matches('h1, h2') ? document.activeElement.id || document.activeElement.className : null; render(); if (f) { const e = document.getElementById(f) || document.querySelector('.' + String(f).split(' ')[0]); e && e.focus() } } }) } catch { }   // redraw only if the real font measures differently, and keep focus (audit 33)
 if (PARAM.get('room')) { render(); roomJoin(PARAM.get('room')) } else if (PARAM.get('play') && BY_ID[PARAM.get('play')]) { const c = ALL.find(x => x.id === PARAM.get('play')); if (c) start([c], 1); else render() } else { const v = fromHash(location.hash); if (v !== 'play') st.view = v; render(); if (PARAM.get('play')) notice('That decision link is out of date. Pick a decision from the list.') }
-if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records, curated }; // test hook (offline file only)
+if (!PUBLIC || PARAM.has('debug')) window.THV = { st, ALL, BY_ID, records: () => records, curated, tutorChips }; // test hook (offline file only)
 })();

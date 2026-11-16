@@ -620,7 +620,7 @@ def test_tutor_suggestions_all_get_an_answer(browser):
         qs = pg.eval_on_selector_all('.tutor-chips button', 'b => b.map(x => x.dataset.ask)')
         assert len(qs) >= 4, (cid, qs)
         for q in qs:
-            pg.fill('#tutor-in', q); pg.press('#tutor-in', 'Enter'); pg.wait_for_function("q => { const a = document.querySelector('.tutor-answer'); return a && a.textContent.trim().length > 20 && !document.querySelector('.tutor.busy') }", arg=q); pg.wait_for_timeout(120)
+            pg.evaluate("q => document.querySelector('.tutor-chips button[data-ask]') && [...document.querySelectorAll('.tutor-chips button')].find(b => b.dataset.ask === q).click()", q); pg.wait_for_function("q => { const a = document.querySelector('.tutor-answer'); return a && a.textContent.trim().length > 20 && !document.querySelector('.tutor.busy') }", arg=q); pg.wait_for_timeout(120)
             a = pg.inner_text('.tutor-answer')
             assert a and not re.search(r'does not record|could not match|outside what this lab covers', a), (cid, q, a[:80])
 
@@ -702,3 +702,41 @@ def test_record_offers_a_round_in_the_weakest_area(browser):
     want = b.get_attribute('data-area'); assert want in tracks and want in b.text_content()
     b.click(); pg.wait_for_timeout(800)
     assert pg.evaluate("THV.st.view") == 'play' and pg.evaluate("THV.st.deck[0].track") == want
+
+
+def test_tutor_without_a_model_is_a_menu_and_every_question_has_its_checked_answer(browser):
+    """Owner, 2026-11-16: without a key the tutor must never give a wrong answer. It offers a menu, no typing. Every question in the menu of every decision gets a direct answer, and a decision's own question gets that decision's own stored answer."""
+    pg = page(browser); pg.goto(URL + '?play=false-news-spread'); pg.wait_for_selector('#q-h')
+    c = next(x for x in LIVE if x['id'] == 'false-news-spread'); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('.tutor-chips button')
+    assert pg.locator('#tutor-in').count() == 0
+    bad = pg.evaluate("""() => { const out = []; for (const c of THV.ALL) { const menu = THV.tutorChips(c, true); if (menu.length < 4) out.push([c.id, 'short menu', menu.length]);
+      for (const q of menu) { const a = THV.curated(q, c).text || ''; if (a.length < 20 || /does not record|could not match|outside what this lab covers|does not say/i.test(a)) out.push([c.id, q, a.slice(0, 60)]) }
+      for (const f of c.follow || []) { const a = THV.curated(f.q, c).text || ''; if (!a.startsWith(f.a.slice(0, 30)) && !a.includes(f.a.slice(0, 30))) out.push([c.id, 'own question', f.q, a.slice(0, 60)]) } } return out }""")
+    assert not bad, bad[:5]
+
+
+def test_served_landing_lists_the_owners_papers_and_a_played_decision_links_its_paper(browser, tmp_path):
+    """Review 56, m-10: served without source ids, the band still shows every title with its DOI link, and the source link arrives with the evidence."""
+    import subprocess, sys, socket, time, os
+    s = socket.socket(); s.bind(('127.0.0.1', 0)); port = s.getsockname()[1]; s.close()
+    env = dict(os.environ, PORT=str(port), THV_DATA_DIR=str(tmp_path))
+    proc = subprocess.Popen([sys.executable, 'start_classroom.py'], cwd=str(Path(__file__).resolve().parents[1]), env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    try:
+        time.sleep(1.5); pg = page(browser); pg.goto(f'http://127.0.0.1:{port}/'); pg.wait_for_selector('.dimant ul a')
+        rows = pg.eval_on_selector_all('.dimant ul a', 'a => a.map(x => [x.querySelector("strong").textContent, x.href])')
+        assert len(rows) >= 15 and all(t and h.startswith('https://doi.org/10.') for t, h in rows), rows[:2]
+        pg.goto(f'http://127.0.0.1:{port}/?play=dimant-hate-choice'); pg.wait_for_selector('#q-h')
+        c = next(x for x in LIVE if x['id'] == 'dimant-hate-choice'); answer(pg, c); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+        assert pg.eval_on_selector_all('.reveal a[href^="https://doi.org/10."]', 'a => a.length') >= 1
+        assert not pg.errors, pg.errors; pg.close()
+    finally: proc.kill()
+
+
+def test_record_headline_never_falls_below_minus_100(browser):
+    """Review 56, m-7: three confident forecast misses give a pooled skill of -300 on the raw formula; the headline stays on the scale of the list, at -100."""
+    pg = page(browser); pg.goto(URL); pg.evaluate("localStorage.clear()")
+    ids = [c['id'] for c in LIVE if c['format'] == 'forecast'][:3]
+    pg.evaluate("ids => localStorage.setItem('thv:v2:records', JSON.stringify(ids.map(id => ({ id, format: 'forecast', score: -1, base: 0.5, correct: false, confidence: 100, response: 100, at: new Date().toISOString(), seed: 1, detail: {}, title: 't', answerTitle: 'a', implication: 'i', outcome: 0 }))))", ids)
+    pg.goto(URL + '#record'); pg.reload(); pg.wait_for_selector('.score-big .num')
+    txt = pg.inner_text('.score-big .num').replace('\u2212', '-').strip()
+    assert txt == '-100', txt

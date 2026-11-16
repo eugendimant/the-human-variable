@@ -128,7 +128,8 @@ function fitProjector() {   // the projected page always fits its screen, at 128
   const b = document.body; b.style.zoom = '';
   if (!b.classList.contains('projector')) return;
   const bottom = () => Math.max(0, ...[...document.querySelectorAll('.join-banner, .play-grid>.card')].map(e => e.getBoundingClientRect().bottom)) + 20;   // the content's own bottom edge on the screen, not the wrapper's padding (review 39, I-3)
-  let z = 1; if (bottom() <= innerHeight + 1) return;
+  b.classList.remove('proj-tight'); let z = 1; if (bottom() <= innerHeight + 1) return;
+  b.classList.add('proj-tight'); if (bottom() <= innerHeight + 1) return;   // a short screen drops the secondary lines first, so the rest keeps its size (review 56, m-5)
   // Review 44, m-2: one proportional step left the page at 0.77 with 120 px of empty screen below it, because the cards' heights do not scale in step with the zoom. Refine until the content ends just inside the screen.
   for (let k = 0; k < 6; k++) {
     b.style.zoom = z.toFixed(3); const e = bottom();

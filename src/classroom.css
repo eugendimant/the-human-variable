@@ -117,3 +117,7 @@ body.projector .join-banner .kicker,body.projector .btn,body.projector .stage-me
 body.projector:has(.rv) .rv-tag{font-size:.95em}body.projector:has(.rv) .play-grid>.card h3,body.projector:has(.rv) .kicker{font-size:17px}
 /* Projector: no label under 17 px before the zoom, the small units on the reveal too (review 50, m-3). */
 body.projector .kicker,body.projector .rv-unit,body.projector .rv-tag{font-size:17px}
+
+/* a short projected screen: secondary lines go, the question, the options and the lesson keep their size (review 56, m-5) */
+body.projector.proj-tight .stage-meta,body.projector.proj-tight .proj-factors,body.projector.proj-tight .join-text .kicker:last-child:not(:nth-child(3)),body.projector.proj-tight .proj-left .lesson:last-child{display:none}
+body.projector:has(.rv) .proj-left .lesson p,body.projector:has(.rv) .proj-left .pl-explain{font-size:clamp(16px,1.25vw,21px)}

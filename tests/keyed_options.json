@@ -70,8 +70,8 @@
   ],
   "options": [
    "Adding a review step",
-   "Automating an existing step",
-   "Removing an existing step"
+   "Removing an existing step",
+   "Replacing a step with a different one"
   ]
  },
  "social01": {
@@ -209,10 +209,10 @@
    "Showing ads to young women costs more"
   ],
   "options": [
+   "Advertisers bid less to reach women",
    "Showing ads to young women costs more",
    "The ad copy appealed more to men",
-   "The algorithm learned women click less",
-   "Women scrolled past the ads more often"
+   "The algorithm learned women click less"
   ]
  },
  "rollout1": {
@@ -330,10 +330,10 @@
    "Randomly correcting beliefs cut obstructionism ratings"
   ],
   "options": [
+   "A survey tracked the same partisans over several months",
    "Inaccuracy tracked heavy political news consumption",
    "Randomly correcting beliefs cut obstructionism ratings",
-   "The most inaccurate partisans were also the most hostile",
-   "The same bias appeared in a national sample"
+   "The most inaccurate partisans were also the most hostile"
   ]
  },
  "forecast-training": {

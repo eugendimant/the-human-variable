@@ -102,7 +102,7 @@ def test_served_pages_carry_no_answers(base):
             if c['id'] not in cl.CHALLENGES: continue
             probes = [c['answerTitle'], c['explain'], c['implication']] + [f['a'] for f in c['follow']]
             probes += [cl.BANK['sources'][s]['takeaway'] for s in c['sources'] if cl.BANK['sources'][s].get('takeaway')]
-            probes += [cl.BANK['sources'][s]['title'] for s in c['sources'] if cl.BANK['sources'][s].get('title') and s not in app.public_bank()['bandTitles']]   # review 13, M1: titles state findings; the landing page names the owner's papers on purpose (review 42, M-1)
+            probes += [cl.BANK['sources'][s]['title'] for s in c['sources'] if cl.BANK['sources'][s].get('title') and cl.BANK['sources'][s]['title'] not in {r['title'] for r in app.public_bank()['bandPapers']}]   # review 13, M1: titles state findings; the landing page names the owner's papers on purpose (review 42, M-1)
             if 'dag' in c:
                 probes += [c['dag']['alt']]
                 leaks += [(c['id'], n['label']) for n in c['dag']['nodes'] if n.get('mask') and ('"label":' + json.dumps(n['label'], ensure_ascii=False)) in text]
@@ -303,3 +303,12 @@ def test_malformed_open_is_a_400(base):
     """Review 37, m10: an object as the decision id is refused cleanly."""
     s, room, _ = req(base, '/api/rooms', {'title': 'Bad open'})
     assert req(base, f"/api/rooms/{room['code']}/control", {'action': 'open', 'challenge': {'x': 1}}, key=room['secret'], client='bo1')[0] == 400
+
+
+def test_served_page_does_not_join_a_dimant_paper_to_its_decision():
+    """Review 56, m-10: the list of the owner's papers has no source id, and a decision's source has no link or DOI until its evidence is open."""
+    bank = app.public_bank()
+    dimant = [sid for sid, s in cl.BANK['sources'].items() if 'Dimant' in (s.get('authors_full') or s['authors'])]
+    assert dimant and all('url' not in bank['sources'][sid] and 'doi' not in bank['sources'][sid] for sid in dimant)
+    assert len(bank['bandPapers']) >= 15 and all(set(r) == {'title', 'url', 'year'} for r in bank['bandPapers'])
+    assert 'bandTitles' not in bank

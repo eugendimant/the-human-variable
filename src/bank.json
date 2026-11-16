@@ -3080,7 +3080,7 @@
    "options": [
     "Adding a review step",
     "Removing an existing step",
-    "Automating an existing step"
+    "Replacing a step with a different one"
    ],
    "answer": 1,
    "answerTitle": "Subtraction is often missed",
@@ -3137,7 +3137,7 @@
    "track": "Business",
    "concept": "Innovation",
    "tag": "20 / COGNITIVE LOAD",
-   "title": "Under pressure",
+   "title": "A second task",
    "scene": "In one experiment, people improved a pattern on a grid; some did it while keeping track of a second task at the same time.",
    "question": "How likely is it that the study found this?",
    "answerTitle": "Pressure favors additions",
@@ -4577,7 +4577,7 @@
    "scene": "A firm runs a gender-neutral ad promoting STEM careers and lets the platform’s algorithm deliver it. Fewer women than men end up seeing it.",
    "question": "What best explains the gap?",
    "options": [
-    "Women scrolled past the ads more often",
+    "Advertisers bid less to reach women",
     "Showing ads to young women costs more",
     "The ad copy appealed more to men",
     "The algorithm learned women click less"
@@ -5121,7 +5121,7 @@
    "format": "choice",
    "concept": "Endowment effect",
    "title": "Mugs, sellers and buyers",
-   "scene": "In classic classroom markets, students given a mug asked a median $7.12 to sell it, while buyers offered $2.87. Plott and Zeiler reran the design with training, practice rounds and anonymous offers.",
+   "scene": "In classic classroom markets, students given a mug asked a median $7.12 to sell it, while buyers offered $2.87. Plott and Zeiler reran the design.",
    "question": "What happened to the gap between sellers and buyers?",
    "answerTitle": "Under careful procedures, the mug gap disappeared",
    "explain": "Sellers’ median of $7.12 against buyers’ $2.87 in the original markets gave way to no gap under Plott and Zeiler’s procedures. Isoni, Loomes and Sugden later confirmed this for mugs but found a persistent gap for lotteries.",
@@ -6214,7 +6214,7 @@
    "question": "What best shows the inaccuracy itself drives obstructionism beliefs?",
    "options": [
     "Randomly correcting beliefs cut obstructionism ratings",
-    "The same bias appeared in a national sample",
+    "A survey tracked the same partisans over several months",
     "The most inaccurate partisans were also the most hostile",
     "Inaccuracy tracked heavy political news consumption"
    ],
@@ -6668,7 +6668,7 @@
    "format": "multi",
    "track": "Culture & Society",
    "concept": "Behavioral contagion",
-   "title": "Which behavior spreads faster?",
+   "title": "Peers and behavior",
    "scene": "In an experiment, people saw what peers had chosen before making their own pro-social or anti-social choices. The design also varied how socially close those peers were.",
    "question": "Which two findings did the study report?",
    "options": [

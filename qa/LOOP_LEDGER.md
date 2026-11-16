@@ -1158,3 +1158,14 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - **Round 4, dynamic.** The record page offers "Practise <area>, your weakest area" when two areas have two calls or more. It starts a round in the lowest-skill area, with unplayed decisions first. Test `test_record_offers_a_round_in_the_weakest_area`.
 - **Round 5, tutor fallback.** Two more phrasings reach the stored text: "what were the callback percentages" (numbers) and "how was the bias measured" (design). Tutor answers with no key: unchanged otherwise.
 - **Gates (iteration 88).** 415 passed; design lint by rule {}; build current. Not yet reviewed (review 56).
+
+## Iteration 89
+- **Review 56 (on iteration 88): 82/100, 0 Blocking, 0 Major, 14 Minor, 8 Optional.** Report: qa/reviews/review56.md. Caps unchanged: key-less tutor (43% direct), causal reveal hole at 1920, projector text, option cues, served paper titles.
+- Fixed: the "Practise <area>" button stranded the word "area" at 390 px. The last three words now stay together.
+- **Tutor without a model (owner, 2026-11-16: "get this to 100%, failproof").** The page now shows a menu of checked questions and no text box when no model is configured. Each menu question is tested against the stored text on all decisions, and each decision's own questions give their stored answer. The text box returns with a model. The server tutor is unchanged.
+- **Served page (review 56, m-10).** Papers by the owner now go to the landing band as a list of title, link and year with no source id. A decision's source gets its link and DOI with the evidence, not before. Test: `test_served_page_does_not_join_a_dimant_paper_to_its_decision`.
+- **Projector (m-5).** On a short screen the projector drops the secondary lines (study line, factors, session title, "where the evidence comes from") before it zooms. At 1280x720 the reveal text is now 16 px or more.
+- **Option cues (m-8, m-9).** `tools/review56_cues_2026_11_16.py`: new distractors in meta-perception-causal, biz07 and axb12; bz06's scene no longer names the procedures; two titles changed. bz15 is unchanged: the paper's own finding is the textbook one.
+- **Causal reveal at 1920 (m-4).** The tabs and questions now run down the left column when the figure is taller; the mid-page hole is gone and the page ends with open space under the figure.
+- **Record headline (m-7).** The headline never falls below -100, the floor of each call in the list. Delegate chips are 13 px or more (m-13).
+- **Not changed:** the slider's mid-track thumb and "?" before the first touch (it shows "not chosen yet"); the "invisible focus stop" is the browser wrapping from the last control to its own address bar.

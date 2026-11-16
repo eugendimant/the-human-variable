@@ -22,10 +22,12 @@ FRAME_ANCESTORS = os.environ.get('THV_FRAME_ANCESTORS', "'self'")
 STATIC = {'/': 'index.html', '/index.html': 'index.html', '/classroom': 'classroom.html', '/classroom.html': 'classroom.html'}
 LOOPBACK = os.environ.get('HOST', '127.0.0.1') in ('127.0.0.1', 'localhost', '::1')
 
+DIMANT = re.compile('Dimant')
 SOURCE_PRIVATE = ('takeaway', 'flags', 'title')   # many paper titles state their finding, so titles travel with the evidence
 def public_source(s: dict) -> dict:
     """Bibliographic record only: takeaways and notes state findings, so they travel with the evidence."""
     out = {k: v for k, v in s.items() if k not in SOURCE_PRIVATE}
+    if DIMANT.search(s.get('authors_full') or s.get('authors') or ''): out.pop('url', None); out.pop('doi', None)   # a paper's link and its listed title would join a decision to a finding-stating title; both arrive with the evidence (review 56, m-10)
     out['verification'] = {k: v for k, v in s.get('verification', {}).items() if k in ('status', 'checked', 'metadata', 'text_read')}
     return out
 SRC_DECISIONS = {}
@@ -34,14 +36,14 @@ for _c in BANK['challenges']:
 def with_sources(c: dict, hide=None) -> dict:
     """A full decision plus the private fields of its sources, for /api/reveal and /api/library.
     A source's takeaway can state a sibling decision's answer, so during a class it travels only once every decision on that source is open."""
-    keys = lambda sid: ('flags',) if hide and any(hide(x) for x in SRC_DECISIONS.get(sid, []) if x in CHALLENGES) else ('takeaway', 'title', 'flags')
+    keys = lambda sid: ('flags',) if hide and any(hide(x) for x in SRC_DECISIONS.get(sid, []) if x in CHALLENGES) else ('takeaway', 'title', 'flags', 'url', 'doi')
     return c | {'sourceNotes': {sid: {k: BANK['sources'][sid][k] for k in keys(sid) if k in BANK['sources'][sid]} | (
         {'note': BANK['sources'][sid]['verification']['note']} if BANK['sources'][sid].get('verification', {}).get('note') else {}) for sid in c['sources'] if sid in BANK['sources']}}
 def public_bank() -> dict:
     """The bank as served to browsers: questions and bibliographic records, no answers. Evidence is fetched after a call is locked."""
     return {k: v for k, v in BANK.items() if k not in ('challenges', 'retired', 'unused_sources', 'sources', 'themes')} | {
         'public': True, 'sources': {sid: public_source(s) for sid, s in BANK['sources'].items()},
-        'bandTitles': {sid: s['title'] for sid, s in BANK['sources'].items() if re.search('Dimant', s.get('authors_full') or s.get('authors') or '') and s.get('title')},   # the landing page names the owner's papers on purpose (owner, 2026-11-12); review 42, M-1: the served page showed 18 empty rows
+        'bandPapers': sorted(({'title': s['title'], 'url': s['url'], 'year': s['year']} for s in BANK['sources'].values() if DIMANT.search(s.get('authors_full') or s.get('authors') or '') and s.get('title')), key=lambda r: (-r['year'], r['title'])),   # the landing page names the owner's papers on purpose (owner, 2026-11-12); a list with no source id, so a title cannot be read against its decision (review 56, m-10)
         'themes': [{k: t[k] for k in t if k != 'principle'} for t in BANK.get('themes', [])], 'challenges': [public_challenge(c) | {'sources': c['sources'], 'theme': c.get('theme')} for c in BANK['challenges'] if c['id'] in CHALLENGES]}
 
 def _public_page(name: str) -> bytes:
