@@ -1,0 +1,9 @@
+# Owner decisions the loop needs (defaults apply until Eugen says otherwise)
+
+Five caps have held the score down for 10 to 15 reviews. Each one is partly a choice only Eugen can make, so builders kept circling them. Each has a default below. The loop works to the default, and Eugen can overrule any of them with one line.
+
+1. **Tutor without a key.** The default target is 90 per cent direct answers or a plain "the stored text does not say", with 0 wrong answers, on a fixed regression set of 60 questions (`qa/path-to-95/tutor_regression.json`, written in round 0 from `tests/tutor_wide_questions.json` and `tests/tutor_phrasings.json`, then frozen: 10 numbers, 10 design, 10 scope, 10 "for a manager", 10 off-topic, 10 naming another study). The menu without a model stays as it is (iteration 89). Review 57 measured 43 per cent direct before iteration 89. *Alternative:* drop the tutor from the scored product when no key is set, which takes A4 out of scope and re-weights it to B4.
+2. **Paper map in the served page.** By default, a decision's source title, authors, year and DOI arrive with the evidence and never before. The landing band keeps Eugen's papers as a list of title, link and year with no decision id (iteration 89). G3 checks this.
+3. **Projector.** The default is the E2 numbers: 24 px body at 1080p, at least 16 px everywhere at 720p, full width and one column of the big numbers. This changes the console's look.
+4. **"Unsure" at 50 per cent.** The game stores a probability, so 50 per cent carries no information. The default is to label it "No lean (50%)" rather than "Unsure", so the label stops contradicting the slider.
+5. **Option cues.** By default, B2's blind options test decides, not taste. Where a paper's own finding is the textbook answer (bz15), the item stays, but its options get a distractor that is just as plausible.
