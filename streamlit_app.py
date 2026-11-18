@@ -15,4 +15,6 @@ pages = [
     st.Page(instructor.run, title='Run a class', url_path='teach'),
     st.Page(tutor_page.run, title='Ask the tutor', url_path='tutor'),
 ]
-st.navigation(pages, position='sidebar').run()   # the game has its own top navigation; class pages sit in the sidebar
+try: nav = st.navigation(pages, position='hidden')   # no menu of internal pages; the links sit at the top of every page (owner, 2026-11-18)
+except TypeError: nav = st.navigation(pages, position='sidebar')   # an older Streamlit; the sidebar is hidden by CSS
+nav.run()

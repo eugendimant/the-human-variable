@@ -25,15 +25,22 @@ def run():
     style(); S = store(); ss = st.session_state
     st.title('Run a live class')
     if 'inst' not in ss:
-        st.write('Students join on the **Join a class** page with a code. You open one decision at a time and reveal the class picture next to the evidence.')
+        pc = secret('THV_INSTRUCTOR_PASSCODE')
+        if not pc:
+            st.error('The admin area is switched off until an instructor passcode is set. Add THV_INSTRUCTOR_PASSCODE to the app secrets.'); return
+        if not ss.get('admin_ok'):   # nothing about running a class is shown before the passcode (owner, 2026-11-18)
+            st.write('Enter the passcode to open the admin area.')
+            with st.form('unlock'):
+                pw = st.text_input('Passcode', type='password')
+                if st.form_submit_button('Open admin', type='primary'):
+                    if hmac.compare_digest(str(pw).encode(), pc.encode()): ss.admin_ok = True; st.rerun()
+                    else: st.error('Wrong passcode.')
+            return
+        st.write('Students join with the code you get here, on the **Join a class** button of the front page. You open one decision at a time and reveal the class picture next to the evidence.')
         with st.form('create'):
-            title = st.text_input('Session name', max_chars=80, placeholder='Leading with AI, week 3')
-            pw = st.text_input('Instructor passcode', type='password') if secret('THV_INSTRUCTOR_PASSCODE') else ''
-            if st.form_submit_button('Create the session', type='primary'):
-                if secret('THV_INSTRUCTOR_PASSCODE') and not hmac.compare_digest(str(pw).encode(), secret('THV_INSTRUCTOR_PASSCODE').encode()): st.error('Wrong passcode.')
-                else: ss.inst = S.create(title); st.rerun()
-        st.caption('Answers are stored by participant number only and deleted when you end the session or after 48 hours.')
-        if not secret('THV_INSTRUCTOR_PASSCODE'): st.warning('No instructor passcode is set, so anyone who opens this page can start a class. Set THV_INSTRUCTOR_PASSCODE in the app secrets before sharing the link. Without it, Play stays on as self-study and carries the answers: a student who opened Play before your class started keeps them. For classes, set the passcode, which turns self-study play off.')
+            title = st.text_input('Class name', max_chars=80, placeholder='Leading with AI, week 3')
+            if st.form_submit_button('Create a new class', type='primary'): ss.inst = S.create(title); st.rerun()
+        st.caption('Answers are stored by participant number only and deleted when you end the class or after 48 hours.')
         return
     I = ss.inst
     join = join_url(I['code'])

@@ -1,5 +1,5 @@
 import streamlit as st
-from .common import ROOT, embed, secret, store
+from .common import ROOT, embed, secret, store, style
 
 @st.cache_data
 def page_html() -> str:
@@ -13,10 +13,13 @@ def run():
       [data-testid="stDecoration"]{display:none}
       iframe{width:100% !important;height:calc(100vh - 2.6rem) !important;border:0}
       footer{display:none}
-    </style>""", unsafe_allow_html=True)
-    # The embedded game is the self-study file, which carries its answers. A deployment set up for classes
-    # (instructor passcode configured) leaves solo play off unless THV_STREAMLIT_SOLO=1 asks for it.
-    solo = secret('THV_STREAMLIT_SOLO', '0' if secret('THV_INSTRUCTOR_PASSCODE') else '1') == '1'
+      [data-testid="stSidebar"],[data-testid="stSidebarCollapsedControl"],[data-testid="collapsedControl"]{display:none !important}
+    </style>
+    """, unsafe_allow_html=True)
+    style()
+    # Everyone can play solo unless THV_STREAMLIT_SOLO=0 turns it off (owner, 2026-11-18). Solo play pauses on its own while a
+    # class has an unrevealed decision. The embedded game cannot reach the class API from its frame, so the join link sits above it.
+    solo = secret('THV_STREAMLIT_SOLO', '1') == '1'
     if not solo:
         st.title('The Human Variable')
         st.write('This deployment runs live classes. Open **Join a class** and enter the code on the instructor screen. Self-study play is available in the offline game your instructor shares.')

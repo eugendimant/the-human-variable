@@ -40,7 +40,10 @@ h1 { font-weight: 800; letter-spacing: -0.035em; }
 .stButton button[kind="primary"], .stFormSubmitButton button[kind="primaryFormSubmit"] { background: #14203a; color: #fff; }
 .stButton button:hover { border-color: #2f54eb; color: #2f54eb; }
 .stButton button[kind="primary"]:hover, .stFormSubmitButton button:hover { background: #1f3cc2; border-color: #1f3cc2; color: #fff; }   /* white on blue keeps 6:1 (audit 34) */
-[data-testid="stSidebar"] { background: #fff; border-right: 1px solid #cbd3dd; }
+[data-testid="stSidebar"], [data-testid="stSidebarCollapsedControl"], [data-testid="collapsedControl"], [data-testid="stSidebarNav"] { display: none !important; }   /* no menu of internal pages: students use the links above, the instructor page asks for its passcode (owner, 2026-11-18) */
+.thv-links { position: fixed; top: .55rem; right: 6.5rem; z-index: 1000000; display: flex; gap: 8px; font: 600 14px/1.2 'Helvetica Neue', Arial, sans-serif; }
+.thv-links a { color: #14203a; text-decoration: none; border: 1px solid #14203a; border-radius: 6px; padding: 6px 12px; background: #fff; }
+.thv-links a:hover { border-color: #2f54eb; color: #2f54eb; }
 .block-container { padding-top: 1.2rem; max-width: 1180px; }
 h1, h2, h3 { letter-spacing: -0.02em; }
 .thv-code { font-size: 64px; font-weight: 800; letter-spacing: .12em; color: #14203a; line-height: 1; }
@@ -48,7 +51,9 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .thv-ev { color: #7d5200; font-weight: 700; }
 </style>"""
 
-def style(): st.markdown(STYLE, unsafe_allow_html=True)
+LINKS = '<div class="thv-links"><a href="./" target="_self">Play</a><a href="join" target="_self">Join a class</a><a href="tutor" target="_self">Ask the tutor</a><a href="teach" target="_self">Admin</a></div>'
+
+def style(): st.markdown(STYLE + LINKS, unsafe_allow_html=True)
 
 # Same option order as the projector console and the phone page (src/classroom.js order()):
 # FNV-1a hash of the decision id and session code seeds a mulberry32 shuffle.
