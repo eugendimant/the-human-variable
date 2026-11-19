@@ -89,6 +89,16 @@ function start(pool, n) {
   refreshLock();
   st.deck = buildDeck(pool, n, st.seed); st.i = 0; st.session = []; resetCard(); st.view = 'play'; render(true);
 }
+function freshRound(n = 10) {   // "Start playing": a new mix every time, decisions not yet played first, spread over areas and formats (owner, 2026-11-19)
+  const R = rng(st.seed), last = new Map(records.map(r => [r.id, r.at || '']));
+  const rank = c => last.has(c.id) ? 1 : 0, pool = shuffle(ALL.filter(c => c.id !== (st.hero || {}).id), R).sort((a, b) => rank(a) - rank(b) || (last.get(a.id) || '').localeCompare(last.get(b.id) || ''));
+  const pick = [], tr = {}, fm = {}, cs = new Set();
+  while (pick.length < n && pool.length) {
+    let best = 0, bs = 1e9; for (let k = 0; k < Math.min(pool.length, 24); k++) { const c = pool[k], s = rank(c) * 100 + (tr[c.track] || 0) * 3 + (fm[c.format] || 0) * 2 + (c.case && cs.has(c.case.id) ? 50 : 0); if (s < bs) { bs = s; best = k } }
+    const c = pool.splice(best, 1)[0]; pick.push(c); tr[c.track] = (tr[c.track] || 0) + 1; fm[c.format] = (fm[c.format] || 0) + 1; if (c.case) cs.add(c.case.id)
+  }
+  st.track = 'Mixed'; start([...new Set(pick.flatMap(c => c.case ? ALL.filter(x => x.case && x.case.id === c.case.id) : [c]))], n);   // a multi-step case always comes whole
+}
 function startTrack() { const pool = st.track === 'Mixed' ? ALL : ALL.filter(c => c.track === st.track); start(pool.length ? pool : ALL, st.length) }
 function resetCard() {
   const c = card(); st.tab = 'questions'; st.phase = 'predict'; st.touched = false; st.tf = null; st.fcSure = 75; st.fcTouched = false; st.conf = 60; st.confTouched = false; st.tutor = { busy: false, text: '', cites: [] };
@@ -103,19 +113,12 @@ function optionOrder(c) { return shuffle(c.options.map((t, i) => ({ t, i })), rn
 
 const okRoute = (t, m) => m === t.answer || (t.also || []).includes(m);
 function needsTouch(c) { return ['forecast', 'rank', 'allocate'].includes(c.format) }
-// Forecasts and allocations are probability statements already, so they take no separate confidence.
-const noConf = c => c.format === 'forecast' || c.format === 'allocate';
-// What "right" means for the confidence question, per format (matches S.score().correct).
-function confQuestion(c) {
-  return ({ choice: 'How sure are you that this is right?', causal: 'How sure are you that this is right?', multi: 'How sure are you that both picks are right?',
-    estimate: `How sure are you that you land within ${c.estimate ? c.estimate.tolerance : ''}${c.estimate && (c.estimate.unit ?? '%') === '%' ? ' points' : ''} of the study value?`,
-    rank: 'How sure are you of the exact order?', delegate: 'How sure are you that every task is routed right?' })[c.format] || 'How sure are you?';
-}
+// No format asks "how sure are you" apart from the forecast, where the probability is the answer itself. The confidence slider fed only a side statistic and was never part of the score (owner, 2026-11-19).
+const noConf = c => true;
 function fcSync() { st.touched = st.tf != null && st.fcTouched; st.resp = st.tf == null ? 50 : st.tf ? st.fcSure : 100 - st.fcSure }
 function lockReady(c) { return S.ready(c, st.resp) && (!needsTouch(c) || st.touched) && (noConf(c) || st.confTouched) }
 function lockHint(c) {
   if (!S.ready(c, st.resp) || (needsTouch(c) && !st.touched)) return c.format === 'forecast' ? (st.tf == null ? 'True or false?' : 'Now say how sure you are') : c.format === 'rank' ? 'Put the items in your order' : c.format === 'allocate' ? 'Split the budget your way' : 'Make your call';
-  if (!noConf(c) && !st.confTouched) return 'Now say how sure you are';
   return '';
 }
 function syncLock() { const c = card(); const b = qs('#lock-btn'); if (!c || !b) return; b.disabled = !lockReady(c); const h = qs('.actionbar .kicker'); if (h) h.textContent = lockHint(c) }
@@ -345,7 +348,7 @@ function themeStrip(c, rec) {
   const th = (BANK.themes || []).find(t => t.id === c.theme); if (!th) return '';
   const sk = r => { const b = typeof r.base === 'number' ? r.base : S.baseline(BY_ID[r.id]); return Math.max(-1, Math.min(1, b >= 1 ? 0 : (r.score - b) / (1 - b))) };
   const others = firstTries().filter(r => r.id !== c.id && BY_ID[r.id] && BY_ID[r.id].theme === c.theme);
-  if (others.length < 2) return '';
+  if (others.length < 4) return '';
   const W = 520, L = 16, R = W - 16, y = 40, sx = v => L + (v + 1) / 2 * (R - L), me = sx(sk(rec));
   const key = v => Math.round(v * 20), groups = {}; others.forEach(r => { const k = key(sk(r)); (groups[k] = groups[k] || []).push(r) });   // calls within 5 skill points share a column
   const mine = key(sk(rec)), dots = Object.entries(groups).map(([k, rs]) => { const x = sx(+k / 20), start = +k === mine ? 1 : 0, n = rs.length, shown = Math.min(n, 3 - start);
@@ -399,12 +402,11 @@ function play() {
   const label = c.case ? `<p class="case-line">${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}</p>` : '';
   if (!rev) {
     const ready = lockReady(c);
-    const conf = noConf(c) ? '' : `<div class="conf-row"><label for="conf">${confQuestion(c)}</label>${(() => { const mn = c.format === 'choice' || c.format === 'causal' ? Math.round(100 / c.options.length / 5) * 5 : 0; return `<input type="range" id="conf" min="${mn}" max="100" step="5" value="${st.conf}" class="${st.confTouched ? '' : 'untouched'}" style="--fill:${st.confTouched ? (st.conf - mn) / (100 - mn) * 100 : 0}%"><output id="conf-read" class="num ${st.confTouched ? '' : 'empty'}" for="conf">${st.confTouched ? st.conf + '%' : '?'}</output>` })()}</div>`;
     const verb = { estimate: 'estimate', allocate: 'split', rank: 'ranking', delegate: 'routing', forecast: 'forecast' }[c.format] || 'answer';
     return `<section class="focus">${top}<article class="focus-card" aria-labelledby="q-h">${CLASS_LOCK && !st.room && !BY_ID[c.id].answerTitle ? '<p class="lock-note" role="note">A live class is running on this server, so results for decisions it has not reached open after it reveals them. You can still make your call now.</p>' : ''}
       <div class="q-col"><p class="scene">${esc(c.scene)}</p>
       ${c.format === 'forecast' ? `<h1 class="q q-claim" id="q-h" tabindex="-1">“${esc(c.forecast.claim)}”</h1><p class="hint fc-ask">Did the study find this? Say true or false, then how sure you are.</p>` : `<h1 class="q" id="q-h" tabindex="-1">${esc(c.question)}</h1>`}<p class="study-line">${c.case ? `${esc(c.case.title)}, step ${c.case.step} of ${c.case.of}. ` : ''}${esc([(c.study || {}).design, sampleLine(c), `${SOURCE[c.sources[0]].venue} ${SOURCE[c.sources[0]].year}`].filter(Boolean).map(x => x.replace(/\.$/, '')).join('. '))}.</p>${c.format === 'multi' ? '<p class="hint">Choose two.</p>' : c.format === 'allocate' ? `<p class="hint">Spread ${(c.allocate && c.allocate.total) || 100} points by how likely each option is to be the one that worked best.</p>` : ''}
-      </div><div class="a-col">${instrument(c)}${conf}</div></article>
+      </div><div class="a-col">${instrument(c)}</div></article>
       <div class="actionbar"><div class="actionbar-in"><span class="kicker">${lockHint(c)}</span><button class="btn btn-you btn-lg" data-act="lock" id="lock-btn" ${ready ? '' : 'disabled'}>Lock my ${verb}</button></div></div></section>`;
   }
   const tabs = [['questions', 'Questions'], ['note', 'Your note']];   // Scope moved into the study card and Source is the card's Published link (round 1 cut, 2026-11-16)
@@ -615,7 +617,7 @@ function record() {
 ${sess !== null ? `<dl class="score-meta"><div><dt>Decisions played on this device</dt><dd class="num">${all.length}</dd></div></dl>` : ''}</div>
     ${summary}</section>
     <section class="wrap"><div class="rec-grid${all.length < 8 ? ' rec-stack' : ''}">
-      <div class="rec-col"><div class="panel rec-panel"><h2>${gapLine ? (/^\d/.test(gapLine) ? 'You were ' + gapLine : gapLine) : 'Calibration'}</h2><p>How sure you said you were, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${n < 3 ? '<small>Score shows after 3 calls</small>' : `${mn(sc)}<span class="bar-score"><b class="zero"></b><i style="${sbar(sc)}"></i></span>`}</span></li>`).join('')}</ul></div>` : ''}</div>
+      <div class="rec-col">${cal.n >= 3 ? `<div class="panel rec-panel"><h2>${gapLine ? (/^\d/.test(gapLine) ? 'You were ' + gapLine : gapLine) : 'Calibration'}</h2><p>How sure you said you were on forecasts and splits, against how often you were right. Dots on the diagonal mean your confidence can be trusted.</p>${calPlot(cal)}</div>` : ''}${played.length > 1 ? `<div class="panel rec-panel"><h2>By area</h2><ul class="hist">${played.map(([t, n, sc]) => `<li><span>${esc(t)}<br><small>${n} call${n === 1 ? '' : 's'}</small></span><span class="num">${n < 3 ? '<small>Score shows after 3 calls</small>' : `${mn(sc)}<span class="bar-score"><b class="zero"></b><i style="${sbar(sc)}"></i></span>`}</span></li>`).join('')}</ul></div>` : ''}</div>
       <div class="rec-col"><div class="panel rec-panel"><h2>${st.session.length ? 'This round' : 'Recent calls'}</h2><p class="small">Scores per decision; the big number above subtracts what guessing earns.</p><ul class="hist">${last.length ? last.slice().reverse().map(r => { const c = BY_ID[r.id]; return `<li><span><button class="link-quiet" data-play="${esc(r.id)}">${esc(c.title)}</button><br><small>${FORMAT_NAME[r.format]}, ${esc(c.track)}</small></span><span class="num">${mn(pct(r.score))}<span class="bar-score"><b class="zero"></b><i style="${sbar(pct(r.score))}"></i></span></span></li>` }).join('') : '<li><span>No calls yet. Play a path to start your record.</span></li>'}</ul></div></div>
     </div>
     <details class="how"><summary>How scoring works</summary><p>The headline is skill above guessing: each score is rescaled so that what a no-information strategy earns on that format (a 50% forecast, a random order, an even split, a random pick, the best blind estimating strategy across all estimates, such as always answering the same number) counts as 0 and a perfect call as 100. Below it, each decision's own score works as follows. Decisions score 0 to 100 with partial credit, except forecasts and point splits, which run from −100 to 100. An estimate earns 100 at the study's value, 50 at the edge of the shaded band and 0 at twice the band's half-width, with the credit falling evenly in between; landing inside the band still counts as matching the study in your record and calibration. Ranks score the share of pairs in the measured order. Point splits use the same proper rule as forecasts: all points on the option that worked best earn 100, and spreading points pays when you are unsure. Forecasts use a proper scoring rule built on the Brier score, the standard in forecasting tournaments: a confident correct call earns 100, saying 50% earns 50, and a confident wrong call costs up to 100 points, so stating your true belief always pays best. Your stated confidence does not change a decision's score; the calibration plot compares it with how often you were right (for forecasts, the probability is the statement). This is a learning record, not a validated assessment.</p></details>
@@ -880,7 +882,7 @@ document.addEventListener('click', e => {
   if (a === 'resume-off') { store.set('thv:resume-off', t.dataset.id); render(); qs('[data-act="go-start"]')?.focus(); return }
   if (a === 'toggle-custom') { st.custom = !st.custom; render(); qs('[data-act="toggle-custom"]')?.focus(); return }
   if (a === 'menu') { st.menu = !st.menu; t.setAttribute('aria-expanded', st.menu); qs('.nav').classList.toggle('open', st.menu); return }
-  if (a === 'go-start') { const first = qs('#start .path'); if (first) { first.click(); return } qs('#start')?.scrollIntoView(); return }   // start the featured path straight away
+  if (a === 'go-start') { st.seed = (Math.random() * 2 ** 32) >>> 0; freshRound(); return }   // a new mix of decisions every time; the curated paths stay below (owner, 2026-11-19)
   if (a === 'start' || a === 'replay') { st.seed = (Math.random() * 2 ** 32) >>> 0; startTrack(); return }
   if (a === 'weak') { const tr = t.dataset.area, seen = new Set(records.map(r => r.id)), pool = ALL.filter(c => c.track === tr), fresh = pool.filter(c => !seen.has(c.id)); st.seed = (Math.random() * 2 ** 32) >>> 0; st.track = tr; start(fresh.length >= 3 ? fresh : pool, st.length); return }   // unplayed decisions first
   if (a === 'start-quick') { st.seed = (Math.random() * 2 ** 32) >>> 0; st.track = 'Mixed'; start(ALL.filter(c => c.id !== st.hero.id), 5); return }
@@ -902,7 +904,6 @@ document.addEventListener('input', e => {
   const el = e.target, c = card();
   if (el.id === 'hero-range') { st.hero.value = +el.value; setRange(el); qs('.r-hint')?.remove();   // the prompt leaves with the first move (review 38, I-1)
     const hr = qs('#hero-read'); hr.textContent = el.value + '%'; hr.classList.remove('empty'); const hu = qs('.hero-unit'); if (hu) hu.textContent = 'less time, your call'; if (hu) hu.hidden = false; qs('[data-act="hero-lock"]').disabled = false; return }
-  if (el.id === 'conf') { st.conf = +el.value; st.confTouched = true; setRange(el); const o = qs('#conf-read'); o.textContent = st.conf + '%'; o.classList.remove('empty'); syncLock(); return }
   if (!c || st.phase !== 'predict') {
     if (el.id === 'atlas-q') { st.atlasQuery = el.value; const tmp = document.createElement('div'); tmp.innerHTML = atlas(); qs('#atlas-grid').replaceWith(tmp.querySelector('#atlas-grid')); qs('#atlas-count').textContent = tmp.querySelector('#atlas-count').textContent }
     return;

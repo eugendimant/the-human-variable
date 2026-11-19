@@ -1180,3 +1180,8 @@ Reviewers have scored visual 12/15 for six reviews and called the look "a well-m
 - Gemini: the key is read from the server environment (`GEMINI_API_KEY` or `GOOGLE_API_KEY`); a static host cannot use it. No live call has been made yet.
 - **Streamlit (owner, 2026-11-18).** Solo play is now the default on Streamlit even when a passcode is set (`THV_STREAMLIT_SOLO=0` turns it off), and a "Join a class" button sits above the game. Solo play still pauses while a class has an unrevealed decision.
 - **Streamlit admin (owner, 2026-11-18).** The sidebar menu is hidden. Every page has links to Play, Join a class, Ask the tutor and Admin at the top. The admin page shows only a passcode field until the passcode is right, then "Create a new class"; with no passcode set it stays off. Tests: `tests/test_streamlit_admin.py`.
+
+## Iteration 92
+- **Confidence slider removed (owner, 2026-11-19: "justify it or remove it").** It was never part of any score: choice, causal, pick-two, estimate, ranking and delegate scores come from the answer alone. It only fed a side chart. Each decision asked one extra thing and then showed "100% sure" beside a score that ignored it. The forecast keeps its probability, because there the probability is the answer. The server accepts and discards a confidence value. The record's calibration chart shows only after three forecasts or splits.
+- **Start playing (owner, 2026-11-19: same questions every time).** It now builds a new round of 10 decisions each time: decisions not yet played first, then the least recently played, spread over areas and formats, multi-step cases whole. The curated paths stay below.
+- The principle strip on a reveal needs 4 earlier calls on that principle (was 2); with fewer it said little and confused.

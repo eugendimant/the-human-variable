@@ -164,11 +164,8 @@ class Store:
         if challenge is not None and challenge != r[3]: raise Conflict('The class has moved on; that answer was for an earlier decision')   # never filed under another decision (audit 49, M1)
         c = CHALLENGES[r[3]]
         if not scoring.valid(c, answer): raise ClassroomError('That answer does not fit this decision')
-        if c['format'] not in ('forecast', 'allocate'):  # both are probability statements already
-            if type(confidence) not in (int, float) or not 0 <= confidence <= 100: raise ClassroomError('Confidence must be 0 to 100')
-            confidence = int(round(confidence))
-        else:
-            confidence = None
+        if confidence is not None and (type(confidence) not in (int, float) or not 0 <= confidence <= 100): raise ClassroomError('Confidence must be 0 to 100')
+        confidence = None   # no format asks for it any more; a client that still sends one is not stored (owner, 2026-11-19)
         s = scoring.score(c, answer)
         with self.lock:
             db = self.db()

@@ -39,8 +39,6 @@ def answer(pg, c):
         for i in range(len(c['delegate']['tasks'])): pg.click(f'[data-deleg="{i}"][data-pick="0"]')
     if f == 'allocate':  # move one slider so the split is the player's own
         pg.eval_on_selector('[data-alloc="0"]', "e=>{e.value=+e.value+10;e.dispatchEvent(new Event('input',{bubbles:true}))}")
-    if f not in ('forecast', 'allocate'):
-        pg.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}")
 
 def one_of_each():
     seen = {}
@@ -118,7 +116,7 @@ def test_live_classroom_three_phones(browser, tmp_path):
         inst.click(f'[data-open="{c["id"]}"]')
         for ph in phones:
             ph.wait_for_selector('.opt', timeout=10000); ph.locator('.opt').first.click()
-            ph.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); ph.click('#lock-btn')
+            ph.click('#lock-btn')
         phones[0].wait_for_selector('text=Your answer is in', timeout=10000)
         for _ in range(40):
             if (inst.text_content('#resp-count') or '').strip() == '3': break
@@ -131,12 +129,13 @@ def test_live_classroom_three_phones(browser, tmp_path):
     finally:
         srv.shutdown()
 
-def test_lock_requires_confidence_and_touch(browser):
+def test_lock_needs_an_answer_and_no_confidence_slider_exists(browser):
+    """Owner, 2026-11-19: no format asks "how sure are you" apart from the forecast; a pick, or a touched ranking, is enough to lock."""
     pg = page(browser); c = next(x for x in LIVE if x['format'] == 'choice'); pg.goto(URL + '?play=' + c['id'])
-    pg.keyboard.press('1'); assert not pg.is_enabled('#lock-btn')
-    pg.eval_on_selector('#conf', "e=>{e.value=80;e.dispatchEvent(new Event('input',{bubbles:true}))}"); assert pg.is_enabled('#lock-btn')
+    assert not pg.is_enabled('#lock-btn') and pg.locator('#conf').count() == 0
+    pg.keyboard.press('1'); assert pg.is_enabled('#lock-btn')
     r = next(x for x in LIVE if x['format'] == 'rank'); pg.goto(URL + '?play=' + r['id'])
-    pg.eval_on_selector('#conf', "e=>{e.value=80;e.dispatchEvent(new Event('input',{bubbles:true}))}"); assert not pg.is_enabled('#lock-btn')
+    assert not pg.is_enabled('#lock-btn')
     pg.click('[data-rank="0"][data-dir="1"]'); assert pg.is_enabled('#lock-btn')
 
 def test_causal_diagram_hides_answer_until_reveal(browser):
@@ -284,7 +283,6 @@ def test_record_is_identical_offline_and_hosted(browser, tmp_path):
         txt = pg.inner_text('.score-strip'); ctx.close(); return txt
     def route0(pg, c):
         for k in range(len(c['delegate']['tasks'])): pg.click(f'[data-deleg="{k}"][data-pick="0"]')
-        if pg.locator('#conf').count(): pg.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}")
     try:
         for plays in ([(c, answer) for c in one_of_each()], [(c, route0) for c in LIVE if c['format'] == 'delegate']):
             txt, recs = hosted(plays)
@@ -368,7 +366,7 @@ def _room(browser, tmp_path, name):
 
 def _lock(ph):
     ph.locator('.opt').first.click()
-    ph.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); ph.click('#lock-btn')
+    ph.click('#lock-btn')
 
 def _count(inst, want):
     for _ in range(60):
@@ -432,7 +430,7 @@ def test_reveal_marks_the_study_answer_nobody_picked(browser, tmp_path):
         c = ch[0]; inst.click(f'[data-open="{c["id"]}"]'); ph.wait_for_selector('.opt', timeout=10000)
         wrong = next(i for i, o in enumerate(c['options']) if i != c['answer'])
         ph.locator('.opt', has_text=c['options'][wrong]).first.click()
-        ph.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); ph.click('#lock-btn')
+        ph.click('#lock-btn')
         ph.wait_for_selector('text=Your answer is in', timeout=10000); assert _count(inst, '1')
         inst.click("text=Reveal to the room"); inst.wait_for_selector('.rv-tag')
         row = inst.locator('.rv-row', has=inst.locator('.rv-tag'))
@@ -471,7 +469,7 @@ def test_half_right_pick_two_is_not_called_wrong(browser):
     pg = page(browser); pg.goto(URL + '?play=' + c['id'])
     good, bad = c['options'][c['multiAnswers'][0]], next(o for i, o in enumerate(c['options']) if i not in c['multiAnswers'])
     pg.locator('.opt', has_text=good).first.click(); pg.locator('.opt', has_text=bad).first.click()
-    pg.eval_on_selector('#conf', "e=>{e.value=70;e.dispatchEvent(new Event('input',{bubbles:true}))}"); pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
+    pg.click('#lock-btn'); pg.wait_for_selector('#r-h')
     v = pg.text_content('.verdict strong'); assert v == 'Some right, no better than guessing.', v
 
 def test_class_panel_names_the_evidence_row_for_rank_and_allocate(browser, tmp_path):
@@ -740,3 +738,20 @@ def test_record_headline_never_falls_below_minus_100(browser):
     pg.goto(URL + '#record'); pg.reload(); pg.wait_for_selector('.score-big .num')
     txt = pg.inner_text('.score-big .num').replace('\u2212', '-').strip()
     assert txt == '-100', txt
+
+
+def test_start_playing_gives_a_new_mix_each_time_and_prefers_decisions_not_yet_played(browser):
+    """Owner, 2026-11-19: reopening the page and pressing Start playing must not repeat the same questions."""
+    decks = []
+    for _ in range(3):
+        pg = page(browser); pg.goto(URL); pg.evaluate("localStorage.clear()"); pg.reload(); pg.wait_for_selector('[data-act="go-start"]')
+        pg.click('[data-act="go-start"]'); pg.wait_for_selector('#q-h')
+        decks.append(pg.evaluate("THV.st.deck.map(c => c.id)")); pg.close()
+    assert len({tuple(d) for d in decks}) == 3 and all(len(d) >= 8 for d in decks), decks
+    pg = page(browser); pg.goto(URL); pg.evaluate("localStorage.clear()"); pg.reload(); pg.wait_for_selector('[data-act="go-start"]')
+    pg.click('[data-act="go-start"]'); pg.wait_for_selector('#q-h'); first = pg.evaluate("THV.st.deck.map(c => c.id)")
+    recs = [{'id': i, 'format': 'choice', 'score': 0.5, 'correct': False, 'confidence': None, 'response': 0, 'at': '2026-01-01T00:00:00Z', 'seed': 1, 'detail': {}, 'title': 't', 'answerTitle': 'a', 'implication': 'i'} for i in first]
+    pg.evaluate("r => localStorage.setItem('thv:v2:records', JSON.stringify(r))", recs); pg.goto(URL); pg.reload(); pg.wait_for_selector('[data-act="go-start"]')
+    pg.click('[data-act="go-start"]'); pg.wait_for_selector('#q-h'); again = pg.evaluate("THV.st.deck.map(c => c.id)")
+    assert not set(again) & set(first), (first, again)
+    assert len({c for c in pg.evaluate("THV.st.deck.map(c => c.track)")}) >= 3
